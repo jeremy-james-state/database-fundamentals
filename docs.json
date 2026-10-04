@@ -20,7 +20,8 @@
           "quickstart",
           "blank"
         ],
-        "expanded": true
+        "expanded": true,
+        "hidden": true
       },
       {
         "group": "Templates",
