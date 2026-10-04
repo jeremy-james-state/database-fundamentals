@@ -19,7 +19,8 @@
           "index",
           "quickstart",
           "blank"
-        ]
+        ],
+        "expanded": true
       },
       {
         "group": "Templates",
@@ -68,12 +69,6 @@
   "footer": {
     "socials": {
       "github": "https://github.com/jeremy-james-state/database-fundamentals"
-    }
-  },
-  "fonts": {
-    "heading": {
-      "family": "Inter",
-      "weight": 400
     }
   },
   "styling": {
