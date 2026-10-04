@@ -3,8 +3,8 @@
   "theme": "mint",
   "name": "Database Fundamentals",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
+    "primary": "#BCD2C4",
+    "light": "#BCD2C4",
     "dark": "#15803D"
   },
   "favicon": "/favicon.svg",
@@ -56,14 +56,12 @@
       "github": "https://github.com/jeremy-james-state/database-fundamentals"
     }
   },
-  "fonts": {
-    "heading": {
-      "family": "Inter",
-      "weight": 300
-    },
-    "body": {
-      "family": "Inter",
-      "weight": 300
+  "appearance": {
+    "strict": true
+  },
+  "background": {
+    "color": {
+      "dark": "#141414"
     }
   }
 }
