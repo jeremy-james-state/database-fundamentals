@@ -1,0 +1,54 @@
+---
+title: "Open a SQLite database"
+description: "Open a .db file in the sqlite3 program so you can run SQL."
+---
+
+This guide shows you how to open a SQLite database file in `sqlite3` so you can type queries.
+
+## Prerequisites
+
+- The `sqlite3` command available in your terminal
+- A database file, for example `books.db`
+
+## Open the file
+
+<Steps>
+  <Step title="Start sqlite3 with the file">
+    In your shell (prompt usually `$`), run:
+
+    ```bash
+    sqlite3 books.db
+    ```
+
+    Replace `books.db` with your path. This is the database **file**. Table names come later, in `FROM`.
+  </Step>
+  <Step title="Confirm you are in SQLite">
+    The prompt changes from `$` to `sqlite>`. SQL you type here is sent to the DBMS.
+
+    Clear the screen with `Ctrl+L` if you want a blank prompt. That is a terminal shortcut, not SQL.
+  </Step>
+  <Step title="Leave when you are done">
+    `.quit` is a SQLite command, not a SQL keyword:
+
+    ```text
+    sqlite> .quit
+    ```
+
+    You return to the shell.
+  </Step>
+</Steps>
+
+## Verify the result
+
+You succeeded when the prompt is `sqlite>` after open, and `$` (or your shell prompt) after `.quit`.
+
+## Troubleshooting
+
+- **`sqlite3: command not found`**: install SQLite and confirm it is on your `PATH`.
+- **Prompt still `$`**: the program did not start. Check the command spelling.
+- **No such table after `SELECT`**: you opened the wrong file, or the table name is not what you used in `FROM`.
+
+## Related pages
+
+- [Query a table](/tutorials/query-a-table)
+- [About databases](/concepts/databases)

@@ -1,47 +1,44 @@
 ---
-title: "Quickstart!!!!???"
-description: "Begin with a guide on the fastest path to a successful outcome"
+title: "Quickstart"
+description: "Open a SQLite database and return ten titles from a books table."
 ---
 
-Describe how someone begins using your product. What is the first thing they need to do? Are there any prerequisites?
-
-A quickstart should take someone from zero to using your product. They'll get a quick win and a sense of what they can accomplish.
+Open a database file and run one `SELECT` so you see rows in the terminal.
 
 ## Prerequisites
 
-Before you begin, you must have:
-
-- Requirement one (for example, Node.js 18+, a free account, an API key)
-- Requirement two (for example, a compatible device, a compatible browser, a compatible operating system)
+- The `sqlite3` command
+- A `books.db` file with a `books` table that has a `title` column
 
 ## Get started
 
 <Steps>
-  <Step title="Install">
-    Describe how to install your product or sign up.
+  <Step title="Open the database">
+    In a terminal:
 
     ```bash
-    npm install your-package
+    sqlite3 books.db
+    ```
+
+    The prompt becomes `sqlite>`. See [open a SQLite database](/how-to/open-a-database) if this fails.
+  </Step>
+  <Step title="Select every column">
+    `*` is all columns. `FROM` names the table, not the file.
+
+    ```sql
+    SELECT *
+    FROM books;
     ```
   </Step>
-  <Step title="Configure">
-    Describe any setup or configuration needed before first use.
-
-    ```bash
-    your-cli init
+  <Step title="Peek at ten titles">
+    ```sql
+    SELECT title
+    FROM books
+    LIMIT 10;
     ```
-  </Step>
-  <Step title="Run it">
-    Show the first thing a user does to see it working.
 
-    ```bash
-    your-cli start
-    ```
+    End the statement with a semicolon. Leave SQLite with `.quit`.
   </Step>
 </Steps>
 
-<Tip>
-  Give people a way to get help. This could be a link to a support page, a chat with a customer support agent, or a forum for your product.
-
-  Example: Need help? Reach out to us at [support@yourcompany.com](mailto:support@yourcompany.com).
-</Tip>
+You succeeded when ten titles (or fewer) print. Continue with [query a table](/tutorials/query-a-table) for `WHERE`, `LIKE`, `ORDER BY`, and aggregates.

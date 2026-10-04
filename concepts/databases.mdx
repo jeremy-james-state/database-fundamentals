@@ -1,0 +1,56 @@
+---
+title: "About databases"
+description: "Understand what a database is, how a DBMS runs it, and when to leave a spreadsheet."
+---
+
+A **database** is an organized collection of data you can create, read, update, and delete. Those four actions are often called **CRUD**.
+
+You do not edit the files by hand. You talk to a **database management system** (DBMS): software that stores the data and runs your statements.
+
+## How a database works
+
+You send SQL to the DBMS. The DBMS:
+
+- Accepts the statement through an **interface** (for example the `sqlite3` program)
+- Keeps **storage** for tables on disk
+- Uses a **query processor** to parse the statement, plan how to read the table, and return rows
+
+The database is the collection. The DBMS is the program. In everyday speech people say “database” for both. Keep the split when you choose tools or debug a connection.
+
+## Spreadsheets to databases
+
+A spreadsheet can hold a table. Move to a database when you need:
+
+- **Scale**: millions of rows, not a sheet you can scroll
+- **Frequent updates**: many writes per second, not one person editing a file
+- **Speed**: search with algorithms (including indexes) instead of scanning every row with find-in-page
+
+Those algorithms are why a lookup that is painful in a huge spreadsheet can be fast in a database.
+
+## Choosing a DBMS
+
+Products differ on two axes you will meet early:
+
+| Choice | What you get | What you take on |
+| --- | --- | --- |
+| **Proprietary** | Paid product, often with vendor support | License cost and vendor lock-in |
+| **Open source** | Free to run (`SQLite`, `PostgreSQL`, `MySQL`) | You operate it yourself |
+| **Heavier / fully featured** | More types, users, and server features | More resources to run |
+| **Lighter** | Small footprint (`SQLite`) | Fewer server features |
+
+This site’s examples use SQLite unless a page says otherwise. You will see PostgreSQL and MySQL in later lessons as heavier, fully featured systems.
+
+## When to use a database
+
+- **Shared, growing data**: many readers or writers, or data that outgrows a sheet
+- **Repeated questions**: the same lookup, filter, or total, run often
+- **Skip it when**: a short list in a spreadsheet is enough and will stay small
+
+## Related ideas
+
+Data in a database sits in [tables](/concepts/tables). You query those tables with [SQL](/concepts/sql). To open a SQLite file, see [open a SQLite database](/how-to/open-a-database).
+
+## Common mix-ups
+
+- **Database vs table**: CRUD applies to the collection. One `SELECT` still reads a table.
+- **DBMS vs SQL**: SQL is the language. The DBMS is the software that understands a dialect of that language.

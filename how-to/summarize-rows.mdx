@@ -1,0 +1,67 @@
+---
+title: "Summarize rows"
+description: "Compute COUNT, AVG, MIN, MAX, and SUM, then rename the result with AS and drop duplicates with DISTINCT."
+---
+
+This guide shows you how to turn many rows into a single number (or a list of unique values).
+
+## Prerequisites
+
+- A numeric or text column to summarize
+- How to write `SELECT` and `FROM`
+
+## Aggregate and rename
+
+<Steps>
+  <Step title="Apply an aggregate function">
+    An **aggregate function** takes many rows and returns one value: `COUNT`, `AVG`, `MIN`, `MAX`, `SUM`.
+
+    ```sql
+    SELECT AVG(rating)
+    FROM books;
+    ```
+
+    ```sql
+    SELECT COUNT(*)
+    FROM books;
+    ```
+
+    `COUNT(*)` counts rows. `COUNT(translator)` counts non-`NULL` values in that column only.
+  </Step>
+  <Step title="Round and name the output">
+    `ROUND(expression, decimal_places)` is not an aggregate. It wraps a value. `AS` names any expression in the `SELECT` list.
+
+    ```sql
+    SELECT ROUND(AVG(rating), 2) AS average_rating
+    FROM books;
+    ```
+  </Step>
+  <Step title="Count distinct values">
+    `DISTINCT` drops duplicate values. Use it in the select list, or inside `COUNT`.
+
+    ```sql
+    SELECT DISTINCT publisher
+    FROM books;
+    ```
+
+    ```sql
+    SELECT COUNT(DISTINCT publisher) AS publisher_count
+    FROM books;
+    ```
+  </Step>
+</Steps>
+
+## Verify the result
+
+You succeeded when you get one number for an aggregate (not one row per book), and `COUNT(DISTINCT publisher)` is smaller than `COUNT(*)` if publishers repeat.
+
+## Troubleshooting
+
+- **`COUNT(*)` and `COUNT(column)` disagree**: the column contains `NULL`. That is expected.
+- **`MIN`/`MAX` on titles is not shortest/longest**: those functions follow sort order, not length.
+- **Ugly column header**: add `AS` with a name you would show someone else.
+
+## Related pages
+
+- [Aggregate functions reference](/reference/aggregate-functions)
+- [About SQL](/concepts/sql)

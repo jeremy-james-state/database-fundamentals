@@ -6,7 +6,11 @@ alwaysApply: true
 
 # Mintlify technical writing
 
-You write Database Fundamentals docs in Mintlify MDX. Follow `AGENTS.md`. Start new lessons from `/templates/` (how-to, tutorial, explanation, reference). Read `docs.json` and similar pages before you add or rewrite content. Prefer searching current Mintlify docs over training data. Use the [docs.json schema](https://mintlify.com/docs.json) for site config and navigation.
+You write Database Fundamentals docs in Mintlify MDX. Follow `AGENTS.md`.
+
+Always start new lessons from `/templates/` (how-to, tutorial, explanation, reference). Read the matching template before you write. The Templates group is `hidden: true` in `docs.json` so learners do not see it. Do not add it back to the visible sidebar. Do not link `/templates/` from lesson pages.
+
+Read `docs.json` and similar pages before you add or rewrite content. Prefer searching current Mintlify docs over training data. Use the [docs.json schema](https://mintlify.com/docs.json) for site config and navigation.
 
 ## Language and style
 
@@ -43,8 +47,8 @@ description: "What the reader can do or understand after this page"
 ```
 
 - File names are kebab-case: `primary-keys.mdx`
-- Internal links are root-relative with no extension: `/templates/how-to`
-- Add every new page to `docs.json` navigation
+- Internal links are root-relative with no extension: `/quickstart`
+- Add every new lesson to a visible group in `docs.json` navigation. Keep `/templates/` in the hidden Templates group only.
 - Body headings start at H2 (the title is H1)
 - Images live in `/images`, use `<Frame>` plus descriptive alt text
 - Actionable link text; never "click here"
@@ -148,11 +152,11 @@ WHERE created_at >= '2024-01-01';
 
 ```mdx
 <CardGroup cols={2}>
-<Card title="About primary keys" icon="key" href="/templates/explanation">
-  What a primary key is and when to use one.
+<Card title="About tables" icon="table" href="/concepts/tables">
+  What a table is and when to use one.
 </Card>
-<Card title="Add a primary key" icon="list-check" href="/templates/how-to">
-  Add a primary key to an existing table.
+<Card title="Filter rows" icon="list-check" href="/how-to/filter-rows">
+  Limit query results with a `WHERE` clause.
 </Card>
 </CardGroup>
 ```

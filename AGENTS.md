@@ -39,10 +39,12 @@
 - Every MDX page starts with YAML frontmatter: `title` and `description`
 - File names are kebab-case: `primary-keys.mdx`
 - Internal links are root-relative and have no extension: `/quickstart`
-- New pages must be added to `docs.json` navigation or they stay hidden
+- New lessons must be added to a visible group in `docs.json` or they stay hidden
+- `/templates/` is listed in a `hidden: true` group. Do not unhide it. Do not link it from lessons. Copy a template, then add the new file to a visible group.
 - Store images in `/images` and wrap them in `<Frame>` with descriptive alt text
 - Use `<Steps>` for procedures, `<Tabs>` for alternatives, `<CodeGroup>` for the same example in multiple languages
-- Start a new lesson from `/templates/` (how-to, tutorial, explanation, or reference)
+- Start every new lesson from `/templates/` (how-to, tutorial, explanation, or reference). Copy the matching template. Do not invent a page shape.
+- The Templates group stays in `docs.json` with `hidden: true`. Learners never see it in the sidebar, search, or AI chat. You still read those files and use them as the source of page structure.
 - Code blocks always include a language tag
 - Mark unknowns with `{/* TODO: ... */}` instead of guessing
 

@@ -1,0 +1,86 @@
+---
+title: "Aggregate functions reference"
+description: "Syntax for COUNT, AVG, MIN, MAX, SUM, ROUND, AS, and DISTINCT."
+---
+
+An **aggregate function** takes many rows and returns one value. `ROUND` formats a number. `AS` names a result column. `DISTINCT` drops duplicates.
+
+## Syntax
+
+```sql
+SELECT aggregate(column)
+FROM table;
+
+SELECT ROUND(aggregate(column), decimal_places) AS alias
+FROM table;
+
+SELECT COUNT(DISTINCT column)
+FROM table;
+```
+
+## Functions
+
+<ParamField body="COUNT(*)" type="integer">
+  Number of rows.
+</ParamField>
+
+<ParamField body="COUNT(column)" type="integer">
+  Number of non-`NULL` values in that column.
+</ParamField>
+
+<ParamField body="COUNT(DISTINCT column)" type="integer">
+  Number of unique non-`NULL` values.
+</ParamField>
+
+<ParamField body="AVG(column)" type="real">
+  Average of numeric values.
+</ParamField>
+
+<ParamField body="MIN(column)" type="same as column">
+  Smallest value. For text, earliest in sort order, not shortest string.
+</ParamField>
+
+<ParamField body="MAX(column)" type="same as column">
+  Largest value. For text, latest in sort order, not longest string.
+</ParamField>
+
+<ParamField body="SUM(column)" type="numeric">
+  Total of numeric values.
+</ParamField>
+
+<ParamField body="ROUND(expression, decimal_places)" type="real">
+  Rounds `expression` to that many digits after the decimal point. Not itself an aggregate.
+</ParamField>
+
+<ParamField body="AS alias" type="identifier">
+  Names the output column. Valid on any select-list expression.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql Average
+SELECT AVG(rating)
+FROM books;
+```
+
+```sql Rounded alias
+SELECT ROUND(AVG(rating), 2) AS average_rating
+FROM books;
+```
+
+```sql Count rows
+SELECT COUNT(*)
+FROM books;
+```
+
+```sql Distinct count
+SELECT COUNT(DISTINCT publisher) AS publisher_count
+FROM books;
+```
+</CodeGroup>
+
+## Related references
+
+- [SELECT](/reference/select)
+- [Summarize rows](/how-to/summarize-rows)

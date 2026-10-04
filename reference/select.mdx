@@ -1,0 +1,81 @@
+---
+title: "SELECT reference"
+description: "Syntax for SELECT, FROM, LIMIT, DISTINCT, and AS in SQLite."
+---
+
+`SELECT` returns columns from a table. `FROM` names the table. `LIMIT` caps how many rows you get. `DISTINCT` drops duplicate rows in the result. `AS` names an output column.
+
+## Syntax
+
+```sql
+SELECT [DISTINCT] column_or_expression [AS alias] [, ...]
+FROM table
+[WHERE condition]
+[ORDER BY expression [ASC | DESC], ...]
+[LIMIT count];
+```
+
+`*` stands for every column:
+
+```sql
+SELECT *
+FROM books;
+```
+
+## Arguments
+
+<ParamField body="column_or_expression" type="identifier or expression" required>
+  A column name, `*`, or an expression such as `AVG(rating)`. Commas separate items in this list. Keywords are not comma-separated.
+</ParamField>
+
+<ParamField body="AS alias" type="identifier">
+  Name for that item in the result. Works for any select-list expression, not only aggregates.
+</ParamField>
+
+<ParamField body="FROM table" type="identifier" required>
+  The table to read. This is not the `.db` file name.
+</ParamField>
+
+<ParamField body="LIMIT count" type="integer">
+  Maximum number of rows to return. Without `ORDER BY`, which rows you get is whatever order the table stores.
+</ParamField>
+
+<ParamField body="DISTINCT" type="keyword">
+  Keep unique combinations in the select list.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql Columns
+SELECT title, author
+FROM books;
+```
+
+```sql Peek
+SELECT title
+FROM books
+LIMIT 10;
+```
+
+```sql Distinct
+SELECT DISTINCT publisher
+FROM books;
+```
+</CodeGroup>
+
+## Result
+
+<ResponseField name="title" type="text">
+  Book title, if selected.
+</ResponseField>
+
+<ResponseField name="author" type="text">
+  Author name, if selected.
+</ResponseField>
+
+## Related references
+
+- [WHERE](/reference/where)
+- [ORDER BY](/reference/order-by)
+- [About SQL](/concepts/sql)

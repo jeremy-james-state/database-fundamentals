@@ -7,14 +7,12 @@
     "light": "#BCD2C4",
     "dark": "#15803D"
   },
-  "favicon": {
-    "light": "/logo/icon-light.svg",
-    "dark": "/logo/icon-dark.svg"
-  },
+  "favicon": "/favicon.svg",
   "navigation": {
     "pages": [
       {
         "group": "Getting Started",
+        "expanded": true,
         "pages": [
           "index",
           "quickstart",
@@ -22,7 +20,40 @@
         ]
       },
       {
+        "group": "Concepts",
+        "expanded": true,
+        "pages": [
+          "concepts/tables",
+          "concepts/databases",
+          "concepts/sql"
+        ]
+      },
+      {
+        "group": "Query data",
+        "expanded": true,
+        "pages": [
+          "tutorials/query-a-table",
+          "how-to/open-a-database",
+          "how-to/filter-rows",
+          "how-to/match-patterns",
+          "how-to/sort-rows",
+          "how-to/summarize-rows"
+        ]
+      },
+      {
+        "group": "Reference",
+        "expanded": true,
+        "pages": [
+          "reference/select",
+          "reference/where",
+          "reference/like",
+          "reference/order-by",
+          "reference/aggregate-functions"
+        ]
+      },
+      {
         "group": "Templates",
+        "hidden": true,
         "pages": [
           "templates/index",
           "templates/how-to",
@@ -31,27 +62,11 @@
           "templates/reference"
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "GitHub",
-          "href": "https://github.com/jeremy-james-state/database-fundamentals",
-          "icon": "github"
-        }
-      ]
-    }
+    ]
   },
   "logo": {
     "light": "/logo/light.svg",
     "dark": "/logo/dark.svg"
-  },
-  "navbar": {
-    "primary": {
-      "type": "button",
-      "label": "GitHub",
-      "href": "https://github.com/jeremy-james-state/database-fundamentals"
-    }
   },
   "contextual": {
     "options": [
@@ -64,11 +79,6 @@
       "cursor",
       "vscode"
     ]
-  },
-  "footer": {
-    "socials": {
-      "github": "https://github.com/jeremy-james-state/database-fundamentals"
-    }
   },
   "fonts": {
     "heading": {

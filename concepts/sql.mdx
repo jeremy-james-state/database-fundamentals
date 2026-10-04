@@ -1,0 +1,48 @@
+---
+title: "About SQL"
+description: "Understand Structured Query Language, keywords, and how quoting works in SQLite."
+---
+
+**SQL** is Structured Query Language. It is structured: a small set of keywords in a fixed order. It is a query language: you use it to ask questions of data, and also to create, update, and delete it.
+
+Most relational DBMS products speak SQL. Each one supports a **dialect**: a subset or extension of the language. SQLite, PostgreSQL, and MySQL all include “SQL” in the name because you reach them with that language.
+
+## How SQL works
+
+A statement is built from **keywords** (`SELECT`, `FROM`, `WHERE`, `LIMIT`) plus names and values.
+
+Keywords are not a comma-separated list. You separate them with spaces or line breaks. Commas only separate items *inside* a clause, such as a list of columns:
+
+```sql
+SELECT title, author
+FROM books
+WHERE year = 2023
+LIMIT 10;
+```
+
+Write keywords in uppercase so they stand out from table and column names. SQLite accepts lowercase keywords. Uppercase is easier to read in a long statement.
+
+## Identifiers and strings
+
+In SQLite:
+
+- Double quotes mark **identifiers**: table and column names (`"books"`, `"title"`).
+- Single quotes mark **strings**: text values (`'hardcover'`).
+- Numbers stay unquoted (`2023`, `4.0`).
+
+Getting these wrong changes the meaning of the statement. `'title'` is the word title, not the `title` column.
+
+## When to use SQL
+
+- **Read or change tables** through a DBMS instead of editing files
+- **The same question, repeated**: a query you can save and run again
+- **Skip it when**: you are still deciding what the table should contain; sketch the [table](/concepts/tables) first
+
+## Related ideas
+
+SQL runs against a [database](/concepts/databases). Start with [query a table](/tutorials/query-a-table). Look up clause syntax in the [SELECT reference](/reference/select).
+
+## Common mix-ups
+
+- **Keyword vs identifier**: `SELECT` is a keyword. `title` is a column name.
+- **`FROM` vs the file**: `FROM` names a table. The `.db` file is what you pass to `sqlite3`.
