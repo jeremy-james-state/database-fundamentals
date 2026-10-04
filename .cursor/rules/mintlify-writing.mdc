@@ -1,0 +1,184 @@
+---
+description: Mintlify technical writing for Database Fundamentals (voice, MDX components, templates)
+globs: "**/*.{mdx,md,json}"
+alwaysApply: true
+---
+
+# Mintlify technical writing
+
+You write Database Fundamentals docs in Mintlify MDX. Follow `AGENTS.md`. Start new lessons from `/templates/` (how-to, tutorial, explanation, reference). Read `docs.json` and similar pages before you add or rewrite content. Prefer searching current Mintlify docs over training data. Use the [docs.json schema](https://mintlify.com/docs.json) for site config and navigation.
+
+## Language and style
+
+- Second person ("you") for instructions
+- Active voice; present tense for current state, future tense for outcomes
+- Sentence case for headings
+- One idea per sentence; parallel lists, headings, and steps
+- Bold UI labels; backtick paths, commands, SQL, and identifiers
+- Define jargon on first use
+- No marketing language, filler, or "simply / just / easily"
+- Say **table**, **row**, **column**, **primary key**, **query**; say **database** only for the whole system; prefer **schema** over **model** unless you mean an ORM
+- Do not invent dialects, vendors, or features that are not on the page
+- Do not document Mintlify, Cursor, or this repo on lesson pages
+
+## Organization
+
+- Lead with the outcome (inverted pyramid)
+- Basic concepts before advanced ones
+- Prerequisites before procedures
+- Expected result after each major step
+- Keyword-rich, descriptive headings
+- Troubleshooting for likely failures
+- Verification when success is not obvious
+
+## Page structure
+
+Every page starts with YAML frontmatter:
+
+```yaml
+---
+title: "Clear, specific, keyword-rich title"
+description: "What the reader can do or understand after this page"
+---
+```
+
+- File names are kebab-case: `primary-keys.mdx`
+- Internal links are root-relative with no extension: `/templates/how-to`
+- Add every new page to `docs.json` navigation
+- Body headings start at H2 (the title is H1)
+- Images live in `/images`, use `<Frame>` plus descriptive alt text
+- Actionable link text; never "click here"
+- Code blocks always have a language tag; use realistic names (`orders`, `customer_id`), not `foo`/`bar`
+- Never put real secrets in examples
+- Mark unknowns with `{/* TODO: ... */}` instead of guessing
+- After edits: `mint validate` and `mint broken-links`
+
+## Component selection
+
+- **Steps** for sequential procedures
+- **Tabs** for alternative approaches or dialects
+- **CodeGroup** for the same example in more than one SQL dialect or language
+- **Accordions** for optional or troubleshooting detail
+- **Note** extra context; **Tip** advice; **Info** neutral background; **Warning** destructive risk; **Check** success
+- **Card** / **CardGroup** for linked next steps
+- **ParamField** / **ResponseField** / **Expandable** for reference of clauses, arguments, and nested results
+- **RequestExample** / **ResponseExample** only if you document an HTTP API
+- Do not add components that only decorate the page
+
+## Callouts
+
+```mdx
+<Note>Supporting context the reader can skip.</Note>
+<Tip>A shortcut or better default.</Tip>
+<Warning>Data loss, irreversible `DROP`, or breaking change.</Warning>
+<Info>Neutral background, such as which SQL this example uses.</Info>
+<Check>How to confirm the change worked.</Check>
+```
+
+## Code
+
+```sql orders.sql
+SELECT customer_id, COUNT(*) AS order_count
+FROM orders
+GROUP BY customer_id;
+```
+
+````mdx
+<CodeGroup>
+```sql PostgreSQL
+SELECT customer_id
+FROM orders
+WHERE created_at >= DATE '2024-01-01';
+```
+
+```sql SQLite
+SELECT customer_id
+FROM orders
+WHERE created_at >= '2024-01-01';
+```
+</CodeGroup>
+````
+
+## Structure
+
+````mdx
+<Steps>
+<Step title="Create the table">
+  Run the `CREATE TABLE` statement.
+
+  <Check>Confirm the table exists in the schema listing.</Check>
+</Step>
+<Step title="Add the primary key">
+  ```sql
+  ALTER TABLE orders
+  ADD CONSTRAINT orders_pk PRIMARY KEY (order_id);
+  ```
+
+  <Warning>Do not run this until duplicate `order_id` values are gone.</Warning>
+</Step>
+</Steps>
+````
+
+````mdx
+<Tabs>
+<Tab title="PostgreSQL">
+  ```sql
+  CREATE INDEX orders_customer_id_idx ON orders (customer_id);
+  ```
+</Tab>
+<Tab title="SQLite">
+  ```sql
+  CREATE INDEX orders_customer_id_idx ON orders (customer_id);
+  ```
+</Tab>
+</Tabs>
+````
+
+```mdx
+<AccordionGroup>
+<Accordion title="Query returns no rows">
+  - Confirm the table has data
+  - Check the `WHERE` clause types (text vs number)
+</Accordion>
+<Accordion title="Primary key error">
+  Duplicate values in the key column block the constraint
+</Accordion>
+</AccordionGroup>
+```
+
+```mdx
+<CardGroup cols={2}>
+<Card title="About primary keys" icon="key" href="/templates/explanation">
+  What a primary key is and when to use one.
+</Card>
+<Card title="Add a primary key" icon="list-check" href="/templates/how-to">
+  Add a primary key to an existing table.
+</Card>
+</CardGroup>
+```
+
+## Reference fields
+
+```mdx
+<ParamField body="customer_id" type="integer" required>
+  Identifies the customer. Must match `customers.customer_id`.
+</ParamField>
+
+<ResponseField name="order_count" type="integer" required>
+  Number of rows in `orders` for that customer.
+</ResponseField>
+```
+
+## Media
+
+```mdx
+<Frame>
+<img src="/images/orders-schema.png" alt="orders table with order_id as primary key and customer_id as a foreign key" />
+</Frame>
+```
+
+```mdx
+<Tooltip tip="A column or set of columns that uniquely identifies each row">
+primary key
+</Tooltip>
+```

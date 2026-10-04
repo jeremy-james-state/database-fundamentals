@@ -7,14 +7,18 @@
     "light": "#BCD2C4",
     "dark": "#15803D"
   },
-  "favicon": "/favicon.png",
+  "favicon": {
+    "light": "/logo/icon-light.svg",
+    "dark": "/logo/icon-dark.svg"
+  },
   "navigation": {
     "pages": [
       {
         "group": "Getting Started",
         "pages": [
           "index",
-          "quickstart"
+          "quickstart",
+          "blank"
         ]
       },
       {
