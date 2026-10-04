@@ -29,15 +29,16 @@
         ]
       },
       {
-        "group": "Query data",
+        "group": "Querying",
         "expanded": true,
         "pages": [
-          "tutorials/query-a-table",
           "how-to/open-a-database",
+          "how-to/select-columns",
           "how-to/filter-rows",
           "how-to/match-patterns",
           "how-to/sort-rows",
-          "how-to/summarize-rows"
+          "how-to/summarize-rows",
+          "tutorials/query-a-table"
         ]
       },
       {

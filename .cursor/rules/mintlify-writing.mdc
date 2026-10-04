@@ -42,13 +42,17 @@ Every page starts with YAML frontmatter:
 ```yaml
 ---
 title: "Clear, specific, keyword-rich title"
-description: "What the reader can do or understand after this page"
+description: "What the thing is, or what it does — not a syllabus for the page"
 ---
 ```
 
 - File names are kebab-case: `primary-keys.mdx`
+- Explanation titles are the concept name (`Tables`, `SQL`), not `About …`
+- Reference titles are the clause or topic (`SELECT`, `ORDER BY`), not `… reference`
+- Explanation `description` states what the concept is. Reference `description` states what the construct does. How-to and tutorial `description` state the task.
+- Mintlify shows `description` under the title. Do not restate it in the first body paragraph. Start the body with a new fact. Do not open with "This page explains", "This guide shows you", or "In this tutorial you" if that repeats the title or description.
 - Internal links are root-relative with no extension: `/quickstart`
-- Add every new lesson to a visible group in `docs.json` navigation. Keep `/templates/` in the hidden Templates group only.
+- Add every new lesson to a visible group in `docs.json` navigation. Keep `/templates/` in the hidden Templates group only. Topic groups (for example Querying) hold how-tos in working order (open, select, filter, match, sort, summarize), then the tutorial last. Do not add Tutorial or How-to as group names.
 - Body headings start at H2 (the title is H1)
 - Images live in `/images`, use `<Frame>` plus descriptive alt text
 - Actionable link text; never "click here"
@@ -152,7 +156,7 @@ WHERE created_at >= '2024-01-01';
 
 ```mdx
 <CardGroup cols={2}>
-<Card title="About tables" icon="table" href="/concepts/tables">
+<Card title="Tables" icon="table" href="/concepts/tables">
   What a table is and when to use one.
 </Card>
 <Card title="Filter rows" icon="list-check" href="/how-to/filter-rows">

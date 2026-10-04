@@ -1,20 +1,18 @@
 ---
 title: "Filter rows"
-description: "Keep rows where a WHERE condition is true, using operators, AND, OR, NULL, and ranges."
+description: "Keep rows where a WHERE condition is true."
 ---
-
-This guide shows you how to filter rows so the result contains only the items you asked for.
 
 ## Prerequisites
 
 - A table you can query, for example `books`
-- How to write `SELECT` and `FROM` ([query a table](/tutorials/query-a-table))
+- How to write `SELECT` and `FROM` ([select columns](/how-to/select-columns))
 
 ## Keep matching rows
 
 <Steps>
   <Step title="Add a WHERE condition">
-    `WHERE` keeps rows where the condition is true.
+    Add `WHERE` after `FROM`.
 
     ```sql
     SELECT title, author
@@ -99,6 +97,6 @@ You succeeded when every returned row matches the condition, and rows that fail 
 
 ## Related pages
 
-- [WHERE reference](/reference/where)
+- [Select columns](/how-to/select-columns)
+- [WHERE](/reference/where)
 - [Match text patterns](/how-to/match-patterns)
-- [About SQL](/concepts/sql)

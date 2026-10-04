@@ -1,0 +1,55 @@
+---
+title: "Select columns"
+description: "Return columns from a table and cap how many rows you get."
+---
+
+## Prerequisites
+
+- An open SQLite session ([open a SQLite database](/how-to/open-a-database))
+- A `books` table
+
+## Return columns
+
+<Steps>
+  <Step title="Select every column">
+    `SELECT` chooses columns. `*` is all columns. `FROM` names the table, not the `.db` file.
+
+    ```sql
+    SELECT *
+    FROM books;
+    ```
+  </Step>
+  <Step title="Name the columns you want">
+    Commas separate columns. Do not put commas between keywords.
+
+    ```sql
+    SELECT title, author
+    FROM books;
+    ```
+  </Step>
+  <Step title="Cap the row count">
+    `LIMIT` stops after that many rows. `SELECT`, `FROM`, and `LIMIT` are keywords.
+
+    ```sql
+    SELECT title
+    FROM books
+    LIMIT 10;
+    ```
+  </Step>
+</Steps>
+
+## Verify the result
+
+You succeeded when the result shows the columns you named, and `LIMIT 10` prints at most ten rows.
+
+## Troubleshooting
+
+- **Too many columns**: use column names instead of `*`.
+- **No such table**: `FROM` takes the table name (`books`), not `books.db`.
+- **Statement seems to hang or never runs**: end it with a semicolon.
+
+## Related pages
+
+- [SELECT](/reference/select)
+- [Filter rows](/how-to/filter-rows)
+- [Tutorial](/tutorials/query-a-table)

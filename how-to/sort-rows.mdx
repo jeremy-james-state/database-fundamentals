@@ -1,20 +1,18 @@
 ---
 title: "Sort rows"
-description: "Order query results with ORDER BY, including ASC, DESC, and multiple columns."
+description: "Order query results with ORDER BY."
 ---
-
-This guide shows you how to sort the rows a query returns.
 
 ## Prerequisites
 
-- A `SELECT` that already returns the columns you want
+- A `SELECT` that already returns the columns you want ([select columns](/how-to/select-columns))
 - Optional: `LIMIT` to take the first *n* rows after the sort
 
 ## Sort the result
 
 <Steps>
   <Step title="Order by one column">
-    `ORDER BY` sorts the result. The default is **ascending** (`ASC`): least to greatest for numbers, A to Z for text.
+    Add `ORDER BY` after `FROM`. The default is **ascending** (`ASC`): least to greatest for numbers, A to Z for text.
 
     ```sql
     SELECT title, rating
@@ -59,5 +57,5 @@ You succeeded when the first row is the extreme you wanted (highest rating, or e
 
 ## Related pages
 
-- [ORDER BY reference](/reference/order-by)
-- [Query a table](/tutorials/query-a-table)
+- [ORDER BY](/reference/order-by)
+- [Tutorial](/tutorials/query-a-table)

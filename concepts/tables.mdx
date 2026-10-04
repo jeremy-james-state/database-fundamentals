@@ -1,28 +1,26 @@
 ---
-title: "About tables"
-description: "Understand tables, rows, and columns as the basic shape of relational data."
+title: "Tables"
+description: "A table stores a set of items. Each row is one item. Each column is one attribute."
 ---
-
-A **table** stores a set of items. Each **row** is one item. Each **column** is one attribute of that item.
 
 You already know this shape from paper lists and spreadsheets. Databases use the same grid: items down, attributes across.
 
 ## How a table works
 
-Take a `books` table.
+Take a `books` table:
 
-- One row is one book.
-- `title` is an attribute of that book.
-- `author` is another attribute.
-- `year` is another.
+| title | author | year |
+| --- | --- | --- |
+| The Left Hand of Darkness | Ursula K. Le Guin | 1969 |
+| Kindred | Octavia E. Butler | 1979 |
 
-Two books never share a row. Two attributes never share a column. If you need a third fact about each book, you add a column. If you add a book, you add a row.
+Each <Tooltip tip="One item in the table">row</Tooltip> is one book. Each <Tooltip tip="One attribute of every item">column</Tooltip> is one kind of fact. Each <Tooltip tip="One value: one row and one column">cell</Tooltip> is one fact, such as `1969`. Add a book with a new row. Add a fact about every book with a new column.
 
 ## Why databases use tables
 
-A table makes each fact sit in a known place. You can ask for every title, or every book from `2023`, without reading a paragraph of prose.
+A table makes each fact sit in a known place. You can ask for every title, or every book from `1969`, without reading a paragraph of prose.
 
-The same idea is old. Ledgers used rows and columns long before software. Spreadsheets and databases both inherited that grid.
+Ledgers used rows and columns long before software.
 
 ## When to use a table
 
@@ -32,7 +30,7 @@ The same idea is old. Ledgers used rows and columns long before software. Spread
 
 ## Related ideas
 
-A table lives inside a [database](/concepts/databases). You read its rows with [SQL](/concepts/sql). See [query a table](/tutorials/query-a-table) to select rows.
+A table lives inside a [database](/concepts/databases). You read its rows with [SQL](/concepts/sql). See the [Tutorial](/tutorials/query-a-table) to select rows.
 
 ## Common mix-ups
 

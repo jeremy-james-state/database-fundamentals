@@ -37,9 +37,18 @@
 ## Page conventions
 
 - Every MDX page starts with YAML frontmatter: `title` and `description`
+- `description` names the thing, not the page. Do not start with "Understand", "Learn", or "Syntax for". Do not inventory every subtopic.
+- Mintlify shows `description` under the title. Do not repeat it in the first body paragraph. The body starts with a new fact: a reason, acronym, analogy, dialect note, or the first step.
+- Do not open with "This page explains", "This guide shows you", or "In this tutorial you" restating the title or description. If the description already states the definition or task, skip that sentence.
+- Explanation `description`: what the concept is (`A table stores a set of items. Each row is one item. Each column is one attribute.`)
+- Reference `description`: what the construct is or does (`Returns columns from a table.`)
+- How-to and tutorial `description`: the task and result (`Keep rows where a WHERE condition is true.`)
 - File names are kebab-case: `primary-keys.mdx`
+- Explanation titles are the concept name in sentence case (`Tables`, `SQL`). Do not prefix with `About`. The Concepts group already labels the type.
+- Reference titles are the clause or topic (`SELECT`, `ORDER BY`). Do not suffix with `reference`. The Reference group already labels the type.
 - Internal links are root-relative and have no extension: `/quickstart`
 - New lessons must be added to a visible group in `docs.json` or they stay hidden
+- Sidebar groups are topics, not template names. **Querying** holds how-tos for that activity in working order (open, select, filter, match, sort, summarize), then the tutorial last. Put a new page in the topic group it belongs to. Use the matching template; do not add a Tutorial or How-to group.
 - `/templates/` is listed in a `hidden: true` group. Do not unhide it. Do not link it from lessons. Copy a template, then add the new file to a visible group.
 - Store images in `/images` and wrap them in `<Frame>` with descriptive alt text
 - Use `<Steps>` for procedures, `<Tabs>` for alternatives, `<CodeGroup>` for the same example in multiple languages

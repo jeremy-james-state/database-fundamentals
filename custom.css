@@ -1,9 +1,42 @@
-#page-title,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: 400 !important;
+.mdx-content.prose {
+  font-size: 1.15em !important;
 }
+
+#page-title,
+.mdx-content.prose h1 {
+  font-size: calc(1.875rem * 1.1) !important;
+}
+
+.mdx-content.prose h2 {
+  font-size: calc(1.5rem * 1.1) !important;
+}
+
+.mdx-content.prose h3 {
+  font-size: calc(1.25rem * 1.1) !important;
+}
+
+.mdx-content.prose h4,
+.mdx-content.prose h5,
+.mdx-content.prose h6 {
+  font-size: calc(1.125rem * 1.1) !important;
+}
+
+.code-block {
+  font-size: 1.15em !important;
+}
+
+chat-assistant-floating-input,
+#chat-assistant-sheet,
+.fixed.z-999.cursor-grab {
+  display: none !important;
+}
+
+#footer a[href*="mintlify.com"] {
+  display: none !important;
+}
+
+#footer {
+  padding-top: 1.25rem !important;
+  padding-bottom: 3.5rem !important;
+}
+
