@@ -15,8 +15,7 @@
         "expanded": true,
         "pages": [
           "index",
-          "quickstart",
-          "blank"
+          "quickstart"
         ]
       },
       {
@@ -45,11 +44,50 @@
         "group": "Reference",
         "expanded": true,
         "pages": [
-          "reference/select",
-          "reference/where",
-          "reference/like",
-          "reference/order-by",
-          "reference/aggregate-functions"
+          {
+            "group": "Read",
+            "expanded": false,
+            "pages": [
+              "reference/select",
+              "reference/from",
+              "reference/limit"
+            ]
+          },
+          {
+            "group": "Filter",
+            "expanded": false,
+            "pages": [
+              "reference/where",
+              "reference/not",
+              "reference/and",
+              "reference/or",
+              "reference/null",
+              "reference/like"
+            ]
+          },
+          {
+            "group": "Sort",
+            "expanded": false,
+            "pages": [
+              "reference/order-by",
+              "reference/asc",
+              "reference/desc"
+            ]
+          },
+          {
+            "group": "Summarize",
+            "expanded": false,
+            "pages": [
+              "reference/count",
+              "reference/avg",
+              "reference/min",
+              "reference/max",
+              "reference/sum",
+              "reference/round",
+              "reference/as",
+              "reference/distinct"
+            ]
+          }
         ]
       },
       {

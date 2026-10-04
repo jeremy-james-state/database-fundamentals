@@ -3,15 +3,20 @@ title: "SQL"
 description: "SQL is the language you use to read and change tables."
 ---
 
-**SQL** is Structured Query Language. Statements use a small set of keywords in a fixed order.
+**SQL** stands for Structured Query Language. *Structured* means a small set of reserved words in a fixed order. *Query* means you ask questions of data. The same language also creates, updates, and deletes rows.
 
-Most relational DBMS products speak SQL. Each one supports a **dialect**: a subset or extension of the language. SQLite, PostgreSQL, and MySQL all include “SQL” in the name because you reach them with that language.
+Most relational DBMS products speak SQL. Each one supports a **dialect**: a subset or extension of the language. This site’s examples use SQLite unless a page says otherwise.
 
-## How SQL works
+## Parts of the language
 
-A statement is built from **keywords** (`SELECT`, `FROM`, `WHERE`, `LIMIT`) plus names and values.
+A statement is made of four kinds of token:
 
-Keywords are not a comma-separated list. You separate them with spaces or line breaks. Commas only separate items *inside* a clause, such as a list of columns:
+| Kind | What it is | Examples |
+| --- | --- | --- |
+| **Keyword** | A reserved word that tells the DBMS what to do | `SELECT`, `FROM`, `WHERE` |
+| **Identifier** | A name you give a table or column | `books`, `title` |
+| **Value** | Data: text, a number, or missing | `'hardcover'`, `2023`, `NULL` |
+| **Function** | A name that takes input and returns a result | `AVG(rating)`, `COUNT(*)` |
 
 ```sql
 SELECT title, author
@@ -20,29 +25,66 @@ WHERE year = 2023
 LIMIT 10;
 ```
 
-Write keywords in uppercase so they stand out from table and column names. SQLite accepts lowercase keywords. Uppercase is easier to read in a long statement.
+In that statement, `SELECT`, `FROM`, `WHERE`, and `LIMIT` are keywords. `title`, `author`, `books`, and `year` are identifiers. `2023` and `10` are values.
 
-## Identifiers and strings
+## Keywords
 
-In SQLite:
+A **keyword** is a word SQL already defines. You do not invent keywords. You choose among them.
 
-- Double quotes mark **identifiers**: table and column names (`"books"`, `"title"`).
-- Single quotes mark **strings**: text values (`'hardcover'`).
-- Numbers stay unquoted (`2023`, `4.0`).
+Keywords sit in a fixed order. You do not put commas between keywords. You separate them with spaces or line breaks. Commas only separate items *inside* a list, such as columns after `SELECT`:
 
-Getting these wrong changes the meaning of the statement. `'title'` is the word title, not the `title` column.
+```sql
+SELECT title, author
+FROM books;
+```
+
+Write keywords in uppercase so they stand out from identifiers. SQLite accepts lowercase keywords. Uppercase is easier to read in a long statement.
+
+Look up each keyword under [Reference](/reference/select).
+
+## Identifiers and values
+
+A bare word in a statement can look like a name or like data. Quotes tell the DBMS which you mean.
+
+| | Identifier | Value |
+| --- | --- | --- |
+| **What it is** | A name you give a table or column | The data you compare or return |
+| **Examples** | `books`, `title`, `year` | `'hardcover'`, `2023`, `NULL` |
+| **Quotes in SQLite** | Double quotes if you quote it (`"books"`), or bare if the name is simple | Single quotes for text (`'hardcover'`); numbers stay unquoted; missing data is `NULL` |
+
+`'title'` is the word title, not the `title` column. `"title"` (or bare `title`) is the column.
+
+## (Aggregator) functions {#aggregator-functions}
+
+These functions are often called **aggregates**. One turns many rows into one value. A ledger can list every amount, then one total at the bottom. `COUNT`, `AVG`, `MIN`, `MAX`, and `SUM` are that total: you no longer get one result row per book.
+
+```sql
+SELECT AVG(rating)
+FROM books;
+```
+
+That result is not a `books` row. There is no `title` next to the average unless you ask a different question.
+
+- `COUNT(*)` counts rows. `COUNT(column)` skips `NULL` in that column.
+- `MIN` and `MAX` follow sort order. For text, that is A to Z, not shortest to longest.
+- `ROUND` only changes how a number looks. It is not an aggregator. `AS` names a column. `DISTINCT` drops duplicates. Those can sit next to an aggregator, but they are not aggregators.
+
+Practice on [summarize rows](/how-to/summarize-rows). Look up each function under Summarize in Reference, starting with [COUNT](/reference/count).
 
 ## When to use SQL
 
 - **Talk to a DBMS**: read or change tables without editing files
 - **The same question, repeated**: a query you can save and run again
+- **A total over a set**: average, count, min, max, or sum
 - **Skip it when**: you are still deciding what the table should contain; sketch the [table](/concepts/tables) first
 
 ## Related ideas
 
-SQL runs against a [database](/concepts/databases). Start with the [Tutorial](/tutorials/query-a-table). Look up clause syntax in the [SELECT](/reference/select) page.
+SQL runs against a [database](/concepts/databases). Start with the [Tutorial](/tutorials/query-a-table). Look up each keyword in [Reference](/reference/select).
 
 ## Common mix-ups
 
-- **Keyword vs identifier**: `SELECT` is a keyword. `title` is a column name.
+- **Keyword vs identifier**: `SELECT` is a keyword. `title` is an identifier (a column name).
+- **Identifier vs string value**: `title` is the column. `'title'` is the word title.
 - **`FROM` vs the file**: `FROM` names a table. The `.db` file is what you pass to `sqlite3`.
+- **Aggregator vs row list**: an aggregator returns one value for the set, not one row per item.

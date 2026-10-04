@@ -1,0 +1,38 @@
+---
+title: "OR"
+description: "Keeps a row when at least one combined WHERE condition is true."
+---
+
+Group `OR` with parentheses before you mix it with `AND`.
+
+## Syntax
+
+```sql
+SELECT column
+FROM table
+WHERE condition OR condition;
+```
+
+## Arguments
+
+<ParamField body="condition" type="boolean expression" required>
+  At least one side must be true. Without parentheses, `AND` binds tighter than `OR` in SQLite.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql Either year
+SELECT title, author
+FROM books
+WHERE year = 2022
+   OR year = 2023;
+```
+</CodeGroup>
+
+## Related references
+
+- [AND](/reference/and)
+- [NOT](/reference/not)
+- [WHERE](/reference/where)
+- [Filter rows](/how-to/filter-rows)

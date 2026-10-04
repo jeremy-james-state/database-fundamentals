@@ -1,0 +1,37 @@
+---
+title: "DESC"
+description: "Sorts greatest to least. Z to A for text."
+---
+
+Use `DESC` when you want the highest values first.
+
+## Syntax
+
+```sql
+SELECT column
+FROM table
+ORDER BY expression DESC;
+```
+
+## Arguments
+
+<ParamField body="expression" type="column or expression" required>
+  The value to sort. Later `ORDER BY` items still break ties.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql Highest first
+SELECT title, rating
+FROM books
+ORDER BY rating DESC
+LIMIT 10;
+```
+</CodeGroup>
+
+## Related references
+
+- [ASC](/reference/asc)
+- [ORDER BY](/reference/order-by)
+- [Sort rows](/how-to/sort-rows)

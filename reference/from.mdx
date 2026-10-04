@@ -1,0 +1,33 @@
+---
+title: "FROM"
+description: "Names the table to read."
+---
+
+This is the table, not the `.db` file you pass to `sqlite3`.
+
+## Syntax
+
+```sql
+SELECT column
+FROM table;
+```
+
+## Arguments
+
+<ParamField body="table" type="identifier" required>
+  The table to read, for example `books`.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql Table name
+SELECT title
+FROM books;
+```
+</CodeGroup>
+
+## Related references
+
+- [SELECT](/reference/select)
+- [Select columns](/how-to/select-columns)

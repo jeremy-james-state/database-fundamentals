@@ -1,0 +1,35 @@
+---
+title: "AVG"
+description: "Returns the average of numeric values."
+---
+
+`NULL` values are skipped. Wrap with `ROUND` if you want fewer decimal places.
+
+## Syntax
+
+```sql
+SELECT AVG(column)
+FROM table;
+```
+
+## Arguments
+
+<ParamField body="column" type="numeric" required>
+  The numeric column to average, for example `rating`.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql Mean rating
+SELECT AVG(rating)
+FROM books;
+```
+</CodeGroup>
+
+## Related references
+
+- [ROUND](/reference/round)
+- [SUM](/reference/sum)
+- [SQL](/concepts/sql#aggregator-functions)
+- [Summarize rows](/how-to/summarize-rows)

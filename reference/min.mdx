@@ -1,0 +1,34 @@
+---
+title: "MIN"
+description: "Returns the smallest value."
+---
+
+For text, that is earliest in sort order, not the shortest string.
+
+## Syntax
+
+```sql
+SELECT MIN(column)
+FROM table;
+```
+
+## Arguments
+
+<ParamField body="column" type="identifier" required>
+  The column to compare. `NULL` is skipped.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql Lowest rating
+SELECT MIN(rating)
+FROM books;
+```
+</CodeGroup>
+
+## Related references
+
+- [MAX](/reference/max)
+- [ORDER BY](/reference/order-by)
+- [SQL](/concepts/sql#aggregator-functions)

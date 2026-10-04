@@ -1,0 +1,38 @@
+---
+title: "AND"
+description: "Requires every combined WHERE condition to be true."
+---
+
+Parentheses `()` group parts. People often call those brackets.
+
+## Syntax
+
+```sql
+SELECT column
+FROM table
+WHERE condition AND condition;
+```
+
+## Arguments
+
+<ParamField body="condition" type="boolean expression" required>
+  Each side must be true for the row to stay. `BETWEEN x AND y` uses `AND` in a range, not as this combiner.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql Two tests
+SELECT title, format
+FROM books
+WHERE (year = 2022 OR year = 2023)
+  AND format != 'hardcover';
+```
+</CodeGroup>
+
+## Related references
+
+- [OR](/reference/or)
+- [NOT](/reference/not)
+- [WHERE](/reference/where)
+- [Filter rows](/how-to/filter-rows)

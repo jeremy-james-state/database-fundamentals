@@ -1,0 +1,42 @@
+---
+title: "DISTINCT"
+description: "Drops duplicate values from the result."
+---
+
+Use it in the select list, or inside `COUNT`.
+
+## Syntax
+
+```sql
+SELECT DISTINCT column
+FROM table;
+
+SELECT COUNT(DISTINCT column)
+FROM table;
+```
+
+## Arguments
+
+<ParamField body="column" type="identifier" required>
+  The value that must be unique in the result.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql Unique publishers
+SELECT DISTINCT publisher
+FROM books;
+```
+
+```sql Unique count
+SELECT COUNT(DISTINCT publisher) AS publisher_count
+FROM books;
+```
+</CodeGroup>
+
+## Related references
+
+- [SELECT](/reference/select)
+- [COUNT](/reference/count)
+- [Summarize rows](/how-to/summarize-rows)

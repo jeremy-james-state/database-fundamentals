@@ -21,6 +21,7 @@ Read `docs.json` and similar pages before you add or rewrite content. Prefer sea
 - Bold UI labels; backtick paths, commands, SQL, and identifiers
 - Define jargon on first use
 - No marketing language, filler, or "simply / just / easily"
+- Do not put author process or outline notes on the page ("group it here", "we put these together so", "this section covers"). Explain the idea; let the heading and layout show the structure.
 - Say **table**, **row**, **column**, **primary key**, **query**; say **database** only for the whole system; prefer **schema** over **model** unless you mean an ORM
 - Do not invent dialects, vendors, or features that are not on the page
 - Do not document Mintlify, Cursor, or this repo on lesson pages
@@ -47,12 +48,12 @@ description: "What the thing is, or what it does — not a syllabus for the page
 ```
 
 - File names are kebab-case: `primary-keys.mdx`
-- Explanation titles are the concept name (`Tables`, `SQL`), not `About …`
-- Reference titles are the clause or topic (`SELECT`, `ORDER BY`), not `… reference`
+- Explanation titles are the concept name (`Tables`, `SQL`), not `About …`. Do not nest a page inside a group of the same name. SQL family ideas such as aggregator functions live on the SQL page. Keyword lookup stays in Reference.
+- Reference titles are the clause, keyword, or function (`SELECT`, `FROM`, `COUNT`), not `… reference`. Nest keywords under Read, Filter, Sort, and Summarize. Operators such as `=` stay on WHERE.
 - Explanation `description` states what the concept is. Reference `description` states what the construct does. How-to and tutorial `description` state the task.
 - Mintlify shows `description` under the title. Do not restate it in the first body paragraph. Start the body with a new fact. Do not open with "This page explains", "This guide shows you", or "In this tutorial you" if that repeats the title or description.
 - Internal links are root-relative with no extension: `/quickstart`
-- Add every new lesson to a visible group in `docs.json` navigation. Keep `/templates/` in the hidden Templates group only. Topic groups (for example Querying) hold how-tos in working order (open, select, filter, match, sort, summarize), then the tutorial last. Do not add Tutorial or How-to as group names.
+- Add every new lesson to a visible group in `docs.json` navigation. Keep `/templates/` in the hidden Templates group only. Topic groups (for example Querying) hold how-tos in working order (open, select, filter, match, sort, summarize), then the tutorial last. Do not add Tutorial or How-to as group names. **Reference** nests keywords under Read, Filter, Sort, and Summarize. Do not nest Concepts as SQL under SQL.
 - Body headings start at H2 (the title is H1)
 - Images live in `/images`, use `<Frame>` plus descriptive alt text
 - Actionable link text; never "click here"

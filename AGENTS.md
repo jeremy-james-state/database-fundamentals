@@ -26,6 +26,7 @@
 - Code formatting for file names, commands, paths, and code references
 - Lead with the outcome, then the steps
 - No marketing language, filler, or “simply / just / easily”
+- Do not put author process or outline notes on the page (“group it here”, “we put these together so”, “this section covers”). Explain the idea; let the heading and layout show the structure.
 
 ## Content boundaries
 
@@ -44,8 +45,9 @@
 - Reference `description`: what the construct is or does (`Returns columns from a table.`)
 - How-to and tutorial `description`: the task and result (`Keep rows where a WHERE condition is true.`)
 - File names are kebab-case: `primary-keys.mdx`
-- Explanation titles are the concept name in sentence case (`Tables`, `SQL`). Do not prefix with `About`. The Concepts group already labels the type.
-- Reference titles are the clause or topic (`SELECT`, `ORDER BY`). Do not suffix with `reference`. The Reference group already labels the type.
+- Explanation titles are the concept name in sentence case (`Tables`, `SQL`). Do not prefix with `About`. The Concepts group already labels the type. Do not nest a page inside a group of the same name (no SQL under SQL). Put SQL family ideas such as aggregator functions on the [SQL](/concepts/sql) page, not as separate Concepts pages. Do not put keyword lookup pages in Concepts; those stay in Reference.
+- Reference titles are the clause, keyword, or function (`SELECT`, `FROM`, `COUNT`). Do not suffix with `reference`. The Reference group already labels the type.
+- **Reference** lists SQL keywords from the querying lessons. Nest them under Read, Filter, Sort, and Summarize (`expanded: false`). One page per keyword or clause, in lecture order inside each nest. Operators such as `=` are not keywords; keep them on [WHERE](/reference/where). Family names such as aggregator functions belong on the [SQL](/concepts/sql) concept page, not in the keyword nests. Do not replace the top-level Reference group with tabs.
 - Internal links are root-relative and have no extension: `/quickstart`
 - New lessons must be added to a visible group in `docs.json` or they stay hidden
 - Sidebar groups are topics, not template names. **Querying** holds how-tos for that activity in working order (open, select, filter, match, sort, summarize), then the tutorial last. Put a new page in the topic group it belongs to. Use the matching template; do not add a Tutorial or How-to group.

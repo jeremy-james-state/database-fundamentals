@@ -1,0 +1,36 @@
+---
+title: "LIMIT"
+description: "Caps how many rows the query returns."
+---
+
+Without `ORDER BY`, which rows you get is whatever order the table stores.
+
+## Syntax
+
+```sql
+SELECT column
+FROM table
+LIMIT count;
+```
+
+## Arguments
+
+<ParamField body="count" type="integer" required>
+  Maximum number of rows to return.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql Peek
+SELECT title
+FROM books
+LIMIT 10;
+```
+</CodeGroup>
+
+## Related references
+
+- [SELECT](/reference/select)
+- [ORDER BY](/reference/order-by)
+- [Select columns](/how-to/select-columns)
