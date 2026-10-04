@@ -1,0 +1,68 @@
+---
+title: "[Start with a verb]"
+description: "[Do this task] to [get this result]."
+---
+
+<Note>
+  Template: copy this file, replace `[placeholders]`, then add the page to `docs.json`. Delete this note.
+</Note>
+
+This guide shows you how to [do the task] so you [get the result].
+
+## Prerequisites
+
+List only what you need before you start:
+
+- [Required knowledge, for example how to write a `SELECT`]
+- [Required objects, for example a `orders` table]
+
+## [Do the task]
+
+<Steps>
+  <Step title="[First action]">
+    Open [tool or client] and connect to the database.
+
+    ```sql
+    -- Replace with a real statement the reader can run
+    SELECT *
+    FROM [table];
+    ```
+  </Step>
+  <Step title="[Second action]">
+    [Do the next concrete action.]
+
+    ```sql
+    -- Example of the change
+    ALTER TABLE [table]
+    ADD CONSTRAINT [constraint_name] PRIMARY KEY ([column]);
+    ```
+
+    <Tip>
+      [Tip that prevents a common mistake.]
+    </Tip>
+  </Step>
+  <Step title="[Confirm the change]">
+    Run a query that shows the result.
+
+    ```sql
+    -- Example check
+    SELECT [column]
+    FROM [table]
+    WHERE [column] IS NOT NULL;
+    ```
+  </Step>
+</Steps>
+
+## Verify the result
+
+You succeeded when [observable result, for example each row has a unique `id`].
+
+## Troubleshooting
+
+- **[What went wrong]**: [How to fix it]
+- **[Another error]**: [How to fix it]
+
+## Related pages
+
+- [Related how-to](/templates/how-to)
+- [Related explanation](/templates/explanation)

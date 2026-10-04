@@ -1,0 +1,76 @@
+---
+title: "[Name] reference"
+description: "Syntax, options, and examples for [SQL feature or clause]."
+---
+
+<Note>
+  Template: copy this file, replace `[placeholders]`, then add the page to `docs.json`. Delete this note.
+</Note>
+
+[One sentence: what this clause, function, or constraint does.]
+
+## Syntax
+
+```sql
+-- Canonical shape. Use realistic names, not foo/bar.
+[STATEMENT] [table] (
+  [column] [type]
+);
+```
+
+## Arguments
+
+<ParamField body="[name]" type="[type]" required>
+  [What this argument is and when you need it.]
+</ParamField>
+
+<ParamField body="[name]" type="[type]" default="[value]">
+  [What this argument does.]
+
+  Options:
+
+  - `[option1]`: [When to use it]
+  - `[option2]`: [When to use it]
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql Basic
+SELECT [column]
+FROM [table]
+WHERE [column] = 1;
+```
+
+```sql With extra options
+SELECT [column]
+FROM [table]
+WHERE [column] = 1
+ORDER BY [column];
+```
+</CodeGroup>
+
+## Result
+
+<ResponseField name="[column]" type="[type]" required>
+  [What the result column contains.]
+</ResponseField>
+
+<ResponseField name="[column]" type="[type]">
+  [What another result column contains.]
+</ResponseField>
+
+Example result:
+
+```json
+{
+  "[column]": "[value]"
+}
+```
+
+{/* Prefer a SQL result table in the lesson if JSON does not match the topic. */}
+
+## Related references
+
+- [Related syntax](/templates/reference)
+- [Explanation of the concept](/templates/explanation)

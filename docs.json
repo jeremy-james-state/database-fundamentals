@@ -7,7 +7,7 @@
     "light": "#BCD2C4",
     "dark": "#15803D"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/favicon.png",
   "navigation": {
     "pages": [
       {
@@ -15,6 +15,16 @@
         "pages": [
           "index",
           "quickstart"
+        ]
+      },
+      {
+        "group": "Templates",
+        "pages": [
+          "templates/index",
+          "templates/how-to",
+          "templates/tutorial",
+          "templates/explanation",
+          "templates/reference"
         ]
       }
     ],
@@ -55,6 +65,15 @@
     "socials": {
       "github": "https://github.com/jeremy-james-state/database-fundamentals"
     }
+  },
+  "fonts": {
+    "heading": {
+      "family": "Inter",
+      "weight": 400
+    }
+  },
+  "styling": {
+    "eyebrows": "breadcrumbs"
   },
   "appearance": {
     "strict": true

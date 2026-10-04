@@ -42,6 +42,7 @@
 - New pages must be added to `docs.json` navigation or they stay hidden
 - Store images in `/images` and wrap them in `<Frame>` with descriptive alt text
 - Use `<Steps>` for procedures, `<Tabs>` for alternatives, `<CodeGroup>` for the same example in multiple languages
+- Start a new lesson from `/templates/` (how-to, tutorial, explanation, or reference)
 - Code blocks always include a language tag
 - Mark unknowns with `{/* TODO: ... */}` instead of guessing
 
