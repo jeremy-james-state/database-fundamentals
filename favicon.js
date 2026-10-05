@@ -1,7 +1,5 @@
-(function setFavicons() {
-  const href = document.documentElement.classList.contains("dark")
-    ? "/logo/icon-dark.svg"
-    : "/logo/icon-light.svg";
+(function setFavicon() {
+  const href = "/favicon.svg";
 
   function apply() {
     const icons = [...document.querySelectorAll('link[rel="icon"], link[rel="shortcut icon"]')];
