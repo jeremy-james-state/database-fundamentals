@@ -125,6 +125,11 @@
       "weight": 400
     }
   },
+  "footer": {
+    "socials": {
+      "github": "https://github.com/jeremy-james-state/database-fundamentals"
+    }
+  },
   "styling": {
     "eyebrows": "breadcrumbs"
   },
