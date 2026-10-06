@@ -1,7 +1,7 @@
 ---
 title: "B-trees"
 description: "A B-tree is a sorted tree many indexes use so a search can skip most of the table."
-keywords: ["CS50"]
+keywords: ["CS50", "index structure", "balanced tree"]
 ---
 
 Think of a family tree of **ranges**, not people. The **root** (parent) sends you left or right. **Children** narrow the range. **Leaves** hold the actual indexed values (and pointers to rows).
@@ -28,18 +28,3 @@ You give up some space: the tree is stored next to the table.
 
 - **You are reading a query plan**: “SEARCH … USING INDEX” means a tree walk, not a full scan
 - **Skip deep implementation detail when**: you only need to choose which columns to index; the DBMS owns the tree
-
-## Related ideas
-
-[Partial indexes](/concepts/indexes#partial-index) build a smaller tree over a subset of rows.
-
-## Common mix-ups
-
-- **Leaf vs parent**: leaves hold the data you look up. Parents only guide the path.
-- **B-tree vs the table**: the table still has the rows. The B-tree is the shortcut map.
-
-## Further reading
-
-- [Indexes](/concepts/indexes)
-- [Create an index](/how-to/create-an-index)
-- [Explain a query plan](/how-to/explain-a-query-plan)

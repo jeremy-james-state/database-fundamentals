@@ -1,7 +1,7 @@
 ---
 title: "Scaling"
 description: "Scaling is changing capacity so an application can handle more (or less) load."
-keywords: ["CS50"]
+keywords: ["CS50", "vertical", "horizontal", "capacity"]
 ---
 
 **Capacity** is how much work the system can take: more users, more rows, more queries per second. You scale **up** when load grows. You can also scale **down** when you no longer need the extra machines.
@@ -26,18 +26,3 @@ One machine has a ceiling. Vertical scaling hits that ceiling. Horizontal scalin
 - **Vertical**: one server still fits; you want a simpler ops story
 - **Horizontal**: one box cannot hold the data or the query load
 - **Skip complex topologies when**: SQLite on one machine still meets the load
-
-## Related ideas
-
-[Indexes](/concepts/indexes) and [transactions](/concepts/transactions) make one server go further. Replication and sharding are for when one server is not enough.
-
-## Common mix-ups
-
-- **Vertical vs horizontal**: more power on one host vs more hosts
-- **Scale vs optimize**: indexes make queries cheaper; scaling adds capacity
-
-## Further reading
-
-- [Database servers](/concepts/database-servers)
-- [Replication](/concepts/replication)
-- [Sharding](/concepts/sharding)

@@ -1,10 +1,10 @@
 ---
 title: "Server types"
 description: "MySQL and PostgreSQL use strict column types. SQLite mostly uses storage-class affinities."
-keywords: ["CS50"]
+keywords: ["CS50", "INT", "VARCHAR", "CHAR", "TEXT", "DECIMAL", "FLOAT", "DATETIME", "TIMESTAMP", "SERIAL"]
 ---
 
-The same idea—“this column is text”—becomes `TEXT` in SQLite, often `VARCHAR(n)` or `CHAR(n)` on a server. Wrong values are more likely to be rejected.
+The type is a property of the **column**. Every value in that column must fit it. SQLite mostly [prefers a storage class](/concepts/storage-classes). MySQL and PostgreSQL reject the wrong shape more often.
 
 ## How types map from SQLite
 
@@ -19,30 +19,40 @@ The same idea—“this column is text”—becomes `TEXT` in SQLite, often `VAR
 
 `ENUM` allows one value from a fixed list. `SET` allows zero or more from a list (MySQL).
 
-**Floating-point imprecision:** `FLOAT` and `DOUBLE` are approximate. Money and exact decimals belong in fixed-precision types (`DECIMAL` / `NUMERIC`), not binary floating point.
+### Text
+
+- **`CHAR(n)`**: always `n` characters. The DBMS pads shorter values. Use it for codes of a known width (`CHAR(2)` for a US state).
+- **`VARCHAR(n)`**: up to `n` characters. Use it for names, emails, and other short text with a real cap.
+- **`TEXT`**: long copy with no useful max (reviews, articles). SQLite uses `TEXT` for all of these.
+
+A product code or card number that must keep leading zeros is text, not an integer.
+
+### Numbers
+
+- **Integers** (`INT`, `BIGINT`, `TINYINT`, and the Postgres sizes): counts, quantities, invented ids.
+- **`FLOAT` / `DOUBLE`**: approximate decimals. Fine for measurements. Not money: rounding accumulates.
+- **`DECIMAL(p, s)` / `NUMERIC(p, s)`**: exact decimal. `p` is total digits; `s` is digits after the point. Prices and currency go here.
+
+### Date and time
+
+- **`DATE`**: calendar day.
+- **`TIME`**: time of day.
+- **`DATETIME`** (MySQL): date and time with no time zone.
+- **`TIMESTAMP`**: date and time. In MySQL it is stored in UTC and converted on read. PostgreSQL uses `TIMESTAMP WITH TIME ZONE` when you need a zone.
+
+[AVG](/reference/avg) and [SUM](/reference/sum) need numeric columns. [LIKE](/reference/like) needs text.
 
 ## Why servers are stricter
 
-Affinity in SQLite will coerce when it can. MySQL and Postgres enforce the declared type more tightly by default. That catches bad inserts earlier.
+Affinity in SQLite will coerce when it can. MySQL and Postgres enforce the declared type more tightly by default. That catches bad inserts earlier and sizes each row from the type you named.
 
 ## When to pick a type
 
+- **`CHAR(n)`**: every value is the same width
 - **`VARCHAR(n)`**: text with a known upper length
+- **`TEXT`**: long prose; or any text in SQLite
 - **`AUTO_INCREMENT` / `SERIAL`**: invent integer keys
+- **`DECIMAL` / `NUMERIC`**: money
 - **`DATE` / `TIMESTAMP`**: real calendar values, not free-form strings
 - **Skip `FLOAT` for money**: use exact numeric types
-
-## Related ideas
-
-Inspect MySQL columns with [DESCRIBE](/reference/describe). Change a type with [MODIFY](/how-to/modify-a-column).
-
-## Common mix-ups
-
-- **Affinity vs type**: SQLite prefers; servers require
-- **`ENUM` vs `CHECK`**: both limit values; dialect support differs
-
-## Further reading
-
-- [Storage classes](/concepts/storage-classes)
-- [Database servers](/concepts/database-servers)
-- [Create a table in MySQL](/how-to/create-a-mysql-table)
+- **Skip integer for codes**: if leading zeros or digits-as-labels matter, use text

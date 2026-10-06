@@ -1,10 +1,10 @@
 ---
 title: "SELECT"
 description: "Returns columns from a table."
-keywords: ["CS50"]
+keywords: ["CS50", "SELECT", "columns", "star", "projection", "retrieve"]
 ---
 
-`*` stands for every column. Commas separate columns, not keywords.
+`*` stands for every column. Commas separate columns, not clauses.
 
 ## Syntax
 
@@ -26,7 +26,7 @@ FROM books;
 ## Arguments
 
 <ParamField body="column_or_expression" type="identifier or expression" required>
-  A column name, `*`, or an expression such as `AVG(rating)`. Commas separate items in this list. Keywords are not comma-separated.
+  A column name, `*`, or an expression such as `AVG(rating)`. Commas separate items in this list. Clauses are not comma-separated.
 </ParamField>
 
 <ParamField body="AS alias" type="identifier">
@@ -41,7 +41,7 @@ FROM books;
   Maximum number of rows to return. Without `ORDER BY`, which rows you get is whatever order the table stores.
 </ParamField>
 
-<ParamField body="DISTINCT" type="keyword">
+<ParamField body="DISTINCT" type="reserved word">
   Keep unique combinations in the select list.
 </ParamField>
 

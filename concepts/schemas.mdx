@@ -1,22 +1,26 @@
 ---
 title: "Schemas"
-description: "A schema is the tables, columns, types, and constraints that organize a database."
-keywords: ["CS50"]
+description: "A schema is the structure of a database — not the row data. It names the tables, columns, types, and how those tables relate."
+keywords: ["CS50", ".schema", "CREATE TABLE", "structure", "database schema", "table schema"]
 ---
 
-`.schema` prints the `CREATE TABLE` statements that built it. That listing *is* the schema in SQL form.
+You decide it before you load rows. Links between tables usually go through [keys](/concepts/keys) and [constraints](/concepts/constraints). Each [table](/concepts/tables) stores one [entity](/concepts/entities) (or one [relationship](/concepts/relationships) between entities). Each column is one [attribute](/concepts/attributes) with a [storage class](/concepts/storage-classes) (or [server type](/concepts/server-types)) the DBMS will try to store.
 
-## How a schema works
+## Database schema
 
-You design the schema before you load rows. Each table names an entity. Each column names one attribute and a [storage class](/concepts/storage-classes) the DBMS will try to store.
+A **database schema** is the whole set of tables and how they link. When people say “the schema,” they usually mean this — the map of the database.
 
-A **database schema** is the whole set of tables. A **table schema** is one `CREATE TABLE`.
+## Table schema
 
-SQLite can show you either:
+A **table schema** is one table’s definition: columns, types, and rules for that table. In SQL that is typically a `CREATE TABLE` statement.
+
+## `.schema`
+
+In SQLite, `.schema` prints the `CREATE TABLE` (and related) statements that built the structure. That listing *is* the schema in SQL form.
 
 ```text
 sqlite> .schema
-sqlite> .schema stations
+sqlite> .schema books
 ```
 
 The SQL equivalent reads the catalog:
@@ -27,29 +31,14 @@ FROM sqlite_master
 WHERE type = 'table';
 ```
 
-## Why databases use a schema
+Keep a `schema.sql` file if you want to rebuild the empty structure: edit the file, then [apply it](/how-to/apply-a-schema-file).
 
-Without it you only see values. You cannot tell whether `amount` is text or a number, or whether `station_id` must match `stations`.
+## Why
 
-Keeping the schema in a `schema.sql` file lets you rebuild the empty structure: edit the file, then [apply it](/how-to/apply-a-schema-file).
+Without a schema you only see values. You cannot tell whether `amount` is text or a number, or whether `book_id` on ratings must match `books`.
 
-## When to use a schema
+## When
 
 - **Before data**: decide tables and keys, then insert
 - **To inspect**: `.schema` or `sqlite_master` when you did not write the `CREATE`
 - **Skip inventing a new schema when**: one [table](/concepts/tables) already holds similar items
-
-## Related ideas
-
-[Normalization](/concepts/normalization) decides how many tables. [Keys](/concepts/keys) connect them. [Constraints](/concepts/constraints) reject bad rows. [CREATE TABLE](/reference/create-table) writes the schema down.
-
-## Common mix-ups
-
-- **Schema vs data**: `CREATE TABLE` is structure. Rows are data. `.schema` does not print the rows.
-- **`.schema` vs SQL**: `.schema` is a SQLite command. `SELECT sql FROM sqlite_master` is SQL.
-
-## Further reading
-
-- [Show a schema](/how-to/show-a-schema)
-- [Create a table](/how-to/create-a-table)
-- [Normalization](/concepts/normalization)

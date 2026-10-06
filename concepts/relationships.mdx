@@ -1,48 +1,81 @@
 ---
 title: "Relationships"
 description: "A relationship is how rows in one table correspond to rows in another."
-keywords: ["CS50"]
+keywords: ["CS50", "one-to-many", "many-to-many", "one-to-one", "join table", "relational", "cardinality"]
 ---
 
-A **relational database** stores data in more than one table and keeps those tables connected. One table for authors, one for books, one for publishers.
+In a [relational database](/concepts/databases), a **relationship** is how rows in one table correspond to rows in another. Each [entity](/concepts/entities) is usually its own table; [keys](/concepts/keys) make the link explicit. Row order is not a relationship — you cannot assume the first author wrote the first book.
 
-Row order is not a relationship. You cannot assume the first author wrote the first book.
+## Cardinality
 
-## How a relationship works
+**Cardinality** is how many rows on each side of a relationship may match:
 
-Count how many rows on each side can match:
+| Cardinality | Count |
+| --- | --- |
+| **One-to-one** | At most one ↔ at most one |
+| **One-to-many** | One ↔ many |
+| **Many-to-many** | Many ↔ many |
 
-| Name | Meaning | Example |
+Pick the cardinality from the real world first. Then choose keys and tables that implement it. Draw it with Crow’s foot or Chen notation on an [Entity-Relationship Diagram](/concepts/entity-relationship-diagrams).
+
+## One-to-one
+
+**What it is:** one row here matches **at most one** row there, and the other way around.
+
+| books.book_id | books.isbn |
+| --- | --- |
+| 1 | 978-0-8078-8442-3 |
+| 2 | 978-0-441-56959-5 |
+
+Each book has one ISBN; each ISBN belongs to one book. You can keep `isbn` as a column on `books` — you do not need a second table for that fact.
+
+**When you use it:** a fact that belongs to exactly one row and never fans out (one passport per person, one ISBN per book).
+
+**When you skip it:** if one side can grow to many (one author, many books), that is **one-to-many**, not one-to-one. Forcing one-to-one means copying rows or leaving empty holes when a second book appears.
+
+## One-to-many
+
+**What it is:** one row here matches **many** rows there. The many side holds a [foreign key](/concepts/keys#foreign-key) to the one side’s primary key.
+
+**publishers** (one)
+
+| publisher_id (PK) | name |
+| --- | --- |
+| 1 | Ace |
+| 2 | Beacon |
+
+**books** (many) — `publisher_id` is the foreign key
+
+| book_id (PK) | title | publisher_id (FK) |
 | --- | --- | --- |
-| **One-to-one** | One row here matches at most one row there | One book, one ISBN |
-| **One-to-many** | One row here matches many rows there | One publisher, many books |
-| **Many-to-many** | Many rows here match many rows there | Many authors, many books |
+| 1 | Neuromancer | 1 |
+| 2 | Kindred | 2 |
+| 3 | Count Zero | 1 |
 
-A one-to-one arrangement breaks when one author writes a second book: you would copy the author, or leave a hole in the other table.
+Ace publishes two books. Each book has one publisher.
 
-A many-to-many match uses a third table: the [join table](/concepts/keys#join-tables).
+**When you use it:** one parent owns many children — one publisher, many books; one book, many ratings; one customer, many orders.
 
-## Why databases use relationships
+**When you skip it:** if both sides can have many matches (authors ↔ books), you need **many-to-many**.
 
-One table that repeats the publisher on every book wastes space and goes stale when the publisher’s name changes. Split the facts. Connect them with [keys](/concepts/keys).
+## Many-to-many
 
-## When to use a relationship
+**What it is:** many rows here match many rows there. You do not put foreign keys on both entity tables alone. You add a third table — a [join table](/concepts/keys#join-tables) — that holds **two** foreign keys.
 
-- **Facts that belong to different items**: authors vs books vs ratings
-- **Repeating groups**: many ratings for one book
-- **Skip it when**: you still have one grid of similar items; stay on a [table](/concepts/tables)
+**authored** (join table)
 
-## Related ideas
+| author_id (FK → authors) | book_id (FK → books) |
+| --- | --- |
+| 2 | 1 |
+| 2 | 4 |
+| 7 | 1 |
 
-You draw these links on an [entity-relationship diagram](/concepts/entity-relationship-diagrams). You query them with [subqueries](/how-to/nest-a-query) or a [JOIN](/how-to/join-tables).
+Author `2` wrote books `1` and `4`. Book `1` has authors `2` and `7`.
 
-## Common mix-ups
+**When you use it:** both sides fan out — many authors, many books; many students, many courses.
 
-- **Same row number vs a key**: matching by position is the honor system. A [primary key](/concepts/keys) stays with the item when rows move.
-- **One-to-many vs many-to-many**: one publisher to many books needs a foreign key on `books`. Many authors to many books need a join table.
+**When you skip it:** if one side clearly owns the other, stay on **one-to-many** and put a single foreign key on the many side.
 
-## Further reading
+## Why
 
-- [Keys](/concepts/keys)
-- [Entity-relationship diagrams](/concepts/entity-relationship-diagrams)
-- [Tutorial](/tutorials/query-related-tables)
+One table that repeats the publisher on every book wastes space and goes stale when the publisher’s name changes. Split the facts. Connect them with [keys](/concepts/keys). Draw the cardinality on an [Entity-Relationship Diagram](/concepts/entity-relationship-diagrams) before you write `JOIN`.

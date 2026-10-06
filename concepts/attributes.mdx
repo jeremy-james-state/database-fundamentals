@@ -1,0 +1,40 @@
+---
+title: "Attributes"
+description: "An attribute is one fact about an entity. In the table it becomes a column with a type."
+keywords: ["CS50", "attribute", "column", "data type", "storage class", "entity vs attribute"]
+---
+
+You name the [entity](/concepts/entities) first, then list the facts that belong to it. Those facts are **attributes**.
+
+In the [table](/concepts/tables), **each attribute sits in one [column](/concepts/tables#columns)**. Same name in both layers is common (`year` attribute → `year` column). The value of an attribute on one [instance](/concepts/entities#instances) sits in a [cell](/concepts/tables#cells) of that column.
+
+| Design | Table | Example |
+| --- | --- | --- |
+| Attribute | Column | `title`, `year`, `isbn` |
+| Value on an instance | Cell in that column | `1979` |
+
+A book’s year is an attribute of `books`, not its own entity. A customer’s email is an attribute of `customers`.
+
+Some attributes do extra work as [keys](/concepts/keys) — they still occupy a column; the key is the role, not a separate kind of field.
+
+## Types
+
+Every attribute needs a type so the DBMS knows how to store and compare values. In SQLite, each value has one of five [storage classes](/concepts/storage-classes):
+
+| Class | Holds |
+| --- | --- |
+| `NULL` | Missing value |
+| `INTEGER` | Whole numbers (counts, ids, money in cents) |
+| `REAL` | Floating-point numbers |
+| `TEXT` | Characters (names, codes, labels) |
+| `BLOB` | Raw bytes (files you must not reinterpret) |
+
+A column also has an **affinity** (`TEXT`, `INTEGER`, `REAL`, `NUMERIC`, `BLOB`) — what SQLite prefers to convert an insert into. `NUMERIC` accepts integer or real; it is the default if you omit a type. SQLite has no boolean type: use `INTEGER` `0`/`1` or `TEXT`, plus a [CHECK](/reference/check) if the set is closed.
+
+MySQL and PostgreSQL use stricter [server types](/concepts/server-types) on the column (`INT`, `VARCHAR`, `DECIMAL`, `DATE`, and the rest). Map from the same needs: text, whole numbers, exact decimals, date/time. Wrong type blocks aggregates and joins later.
+
+## Entity or attribute
+
+- **Attribute**: a single fact that describes one entity (`year` on `books`)
+- **Entity**: a kind of thing with its own facts and identity (`authors`, not `author_name` stuffed into `books` when authors need email, bio, and many books)
+- **Skip a new entity when**: the value never needs its own attributes or relationships — keep it as an attribute

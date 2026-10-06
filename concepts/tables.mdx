@@ -1,10 +1,12 @@
 ---
 title: "Tables"
-description: "A table stores a set of items. Each row is one item. Each column is one attribute."
-keywords: ["CS50"]
+description: "A table is structured data in a grid. Each row is one item. Each column is one attribute. Each cell holds a value."
+keywords: ["CS50", "row", "column", "spreadsheet", "grid", "cell", "value", "entity vs table", "primary key", "structured", "set", "relational model"]
 ---
 
-You already know this shape from paper lists and spreadsheets. Databases use the same grid: items down, attributes across.
+A table is **structured** data: items down, attributes across, one value in each cell. That fixed grid is why [SQL](/concepts/sql) is *Structured* Query Language — the language assumes rows, columns, and values in known places. You already know the shape from paper lists and spreadsheets.
+
+In design terms, the table is the physical form of an [entity](/concepts/entities) — attributes become columns, instances become rows, and the unique identifier becomes the [primary key](/concepts/keys).
 
 ## How a table works
 
@@ -15,25 +17,58 @@ Take a `books` table:
 | The Left Hand of Darkness | Ursula K. Le Guin | 1969 |
 | Kindred | Octavia E. Butler | 1979 |
 
-Each <Tooltip tip="One item in the table">row</Tooltip> is one book. Each <Tooltip tip="One attribute of every item">column</Tooltip> is one kind of fact. Each <Tooltip tip="One value: one row and one column">cell</Tooltip> is one fact, such as `1969`. Add a book with a new row. Add a fact about every book with a new column.
+### Rows
 
-## Why databases use tables
+A <Tooltip tip="One item in the table">row</Tooltip> is one item. In `books`, each row is one book. Add a book with a new row.
+
+### Columns
+
+A <Tooltip tip="One attribute of every item">column</Tooltip> is one kind of fact about every item: `title`, `author`, `year`. Add a fact about every book with a new column.
+
+### Cells
+
+Where a row and a column meet is a <Tooltip tip="The intersection of one row and one column">cell</Tooltip>. In `books`, Kindred’s `year` is one cell.
+
+### Values
+
+The data in that cell is a <Tooltip tip="The data stored in one cell">value</Tooltip>. Kindred’s year cell holds `1979`.
+
+That value is the attribute on that instance — the year of that book. In SQL, [values](/concepts/sql#values) are also what you compare and return.
+
+## Tables as sets
+
+A <Tooltip tip="An unordered collection of unique elements">set</Tooltip> is an unordered collection of unique elements. Codd’s relational model builds on that idea: a table is a set of rows under one [schema](/concepts/schemas) — the same columns for every row.
+
+Row order is arbitrary unless you ask for it with [`ORDER BY`](/reference/order-by). Uniqueness is a [primary key](/concepts/keys) rule and part of first normal form — see [normalization](/concepts/normalization).
+
+SQL works on whole collections of rows: keep rows with [`WHERE`](/reference/where), summarize with [`GROUP BY`](/reference/group-by), combine result sets with [`UNION`](/reference/union), [`INTERSECT`](/reference/intersect), and [`EXCEPT`](/reference/except). Matching every row of one table to every row of another is a Cartesian product — a building block for joins, rarely the answer you want alone.
+
+{/*
+## Under review
+
+Draft notes parked here until the teaching path is ready.
+
+### Why databases use tables
 
 A table makes each fact sit in a known place. You can ask for every title, or every book from `1969`, without reading a paragraph of prose.
 
 Ledgers used rows and columns long before software.
 
-## When to use a table
+### When to use a table
 
 - **A set of similar items**: books, orders, customers
 - **The same attributes on every item**: every book has a title and an author
 - **Skip it when**: you only have one unstructured blob of text with no repeating attributes
 
-## Related ideas
+### Related ideas
 
-A table lives inside a [database](/concepts/databases). You read its rows with [SQL](/concepts/sql). See the [Tutorial](/tutorials/query-a-table) to select rows.
+The full conceptual-to-physical map lives on [Entities](/concepts/entities). Columns are [attributes](/concepts/attributes); each has a [storage class](/concepts/storage-classes) in SQLite, or a [server type](/concepts/server-types) in MySQL and PostgreSQL. The table lives inside a [database](/concepts/databases). You read its rows with [SQL](/concepts/sql). See the [Tutorial](/tutorials/query-a-table) to select rows.
 
-## Common mix-ups
+### Common mix-ups
 
+- **Entity vs table**: the entity is the kind of thing in the design. The table is the grid the DBMS stores. See [Entities](/concepts/entities).
 - **Table vs database**: the table is one grid. The database is the whole collection of tables and the system around them.
 - **Row vs column**: the row is the item. The column is one kind of fact about every item.
+- **Cell vs value**: the cell is the place (one row and one column). The value is the data in that place.
+- **Sorted rows**: a table is a set. Storage order is not a guarantee — use [`ORDER BY`](/reference/order-by) when order matters.
+*/}

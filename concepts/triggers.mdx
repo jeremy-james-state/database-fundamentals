@@ -1,7 +1,7 @@
 ---
 title: "Triggers"
 description: "A trigger is a stored SQL statement that runs automatically before or after another statement."
-keywords: ["CS50"]
+keywords: ["CS50", "BEFORE", "AFTER", "automate", "INSERT trigger"]
 ---
 
 You name it, choose **BEFORE** or **AFTER** an `INSERT`, `UPDATE`, or `DELETE`, and put the work between `BEGIN` and `END`. SQLite runs that body **FOR EACH ROW** that the original statement touches.
@@ -34,19 +34,3 @@ You give up a schema that is only tables. Debugging a surprise insert means read
 
 - **The same follow-up every time**: log a sale, copy a title
 - **Skip it when**: you can write the second statement yourself and will remember; keep the schema smaller
-
-## Related ideas
-
-A trigger is not a [constraint](/concepts/constraints). Constraints reject a row. Triggers run extra SQL. [Soft deletion](/concepts/soft-deletion) is a pattern you can implement with `UPDATE`, with or without a trigger on a view.
-
-## Common mix-ups
-
-- **BEFORE vs AFTER vs INSTEAD OF**: BEFORE and AFTER wrap a table change. INSTEAD OF replaces a write on a view.
-- **One statement vs many**: `BEGIN` … `END` can hold more than one statement. Each still ends with a semicolon.
-
-## Further reading
-
-- [Create a trigger](/how-to/create-a-trigger)
-- [Write through a view](/how-to/write-through-a-view)
-- [CREATE TRIGGER](/reference/create-trigger)
-- [INSERT](/reference/insert)

@@ -1,7 +1,7 @@
 ---
 title: "Stored procedures"
 description: "A stored procedure is named SQL saved in the server that you run with CALL."
-keywords: ["CS50"]
+keywords: ["CS50", "CALL", "procedure", "MySQL"]
 ---
 
 Unlike a [view](/concepts/views), a procedure can run multiple statements, take parameters, and use `IF` / `ELSE`. It lives in the database so many clients share the same logic.
@@ -31,18 +31,3 @@ Automation and a single place for a multi-step rule. You give up some portabilit
 
 - **The same multi-step write from many clients**
 - **Skip it when**: a view (read-only shape) or app code is clearer
-
-## Related ideas
-
-[Triggers](/concepts/triggers) fire on row changes. Procedures run when you `CALL` them. Prefer [prepared statements](/concepts/sql-injection) for user input either way.
-
-## Common mix-ups
-
-- **Procedure vs view**: views are queried like tables. Procedures are executed.
-- **Procedure vs trigger**: you call a procedure; a trigger runs from an `INSERT`/`UPDATE`/`DELETE`
-
-## Further reading
-
-- [Create a stored procedure](/how-to/create-a-stored-procedure)
-- [CREATE PROCEDURE](/reference/create-procedure)
-- [CALL](/reference/call)

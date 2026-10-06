@@ -1,7 +1,7 @@
 ---
 title: "CREATE TRIGGER"
 description: "Stores SQL that runs automatically before or after INSERT, UPDATE, or DELETE."
-keywords: ["CS50"]
+keywords: ["CS50", "CREATE TRIGGER", "automatic SQL"]
 ---
 
 `.schema` lists triggers with tables. Drop a trigger with `DROP TRIGGER name` if you need to replace it.
@@ -27,7 +27,7 @@ On a [view](/concepts/views), use **`INSTEAD OF`**: SQLite cannot change the vie
   Unique among triggers in this database.
 </ParamField>
 
-<ParamField body="AFTER, BEFORE, or INSTEAD OF" type="keyword" required>
+<ParamField body="AFTER, BEFORE, or INSTEAD OF" type="reserved word" required>
   When the body runs. `INSTEAD OF` replaces the original `INSERT`, `UPDATE`, or `DELETE` (typical on views).
 </ParamField>
 

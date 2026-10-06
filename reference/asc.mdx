@@ -1,38 +1,7 @@
 ---
 title: "ASC"
-description: "Sorts least to greatest. A to Z for text."
-keywords: ["CS50"]
+description: "Sorts least to greatest on ORDER BY. A to Z for text."
+keywords: ["CS50", "ASC", "ascending sort"]
 ---
 
-This is the default if you omit `ASC` and `DESC` on `ORDER BY`.
-
-## Syntax
-
-```sql
-SELECT column
-FROM table
-ORDER BY expression ASC;
-```
-
-## Arguments
-
-<ParamField body="expression" type="column or expression" required>
-  The value to sort. `ASC` after it is optional because it is already the default.
-</ParamField>
-
-## Examples
-
-<CodeGroup>
-```sql Lowest first
-SELECT title, rating
-FROM books
-ORDER BY rating ASC
-LIMIT 10;
-```
-</CodeGroup>
-
-## Related references
-
-- [DESC](/reference/desc)
-- [ORDER BY](/reference/order-by)
-- [Sort rows](/how-to/sort-rows)
+`ASC` is documented on [ORDER BY](/reference/order-by#asc). It is the default sort direction.

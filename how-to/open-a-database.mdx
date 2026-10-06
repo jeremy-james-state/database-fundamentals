@@ -1,54 +1,58 @@
 ---
 title: "Open a SQLite database"
-description: "Open a .db file in the sqlite3 program so you can run SQL."
-keywords: ["CS50"]
+description: "Create or open a .db file in sqlite3 so you can run SQL."
+keywords: ["CS50", "create database", "sqlite3", ".db"]
 ---
+
+SQLite has no `CREATE DATABASE` statement. You create the database by opening a **file path**. If that file does not exist yet, `sqlite3` creates an empty database there.
 
 ## Prerequisites
 
 - The `sqlite3` command available in your terminal
-- A database file, for example `books.db`
 
-## Open the file
+## Create or open the file
 
 <Steps>
-  <Step title="Start sqlite3 with the file">
+  <Step title="Start sqlite3 with a path">
     In your shell (prompt usually `$`), run:
 
     ```bash
     sqlite3 books.db
     ```
 
-    Replace `books.db` with your path. This is the database **file**. Table names come later, in `FROM`.
+    Use a new name to create a database. Use an existing path to open one you already have. This is the database **file**. Table names come later, in `FROM`.
   </Step>
   <Step title="Confirm you are in SQLite">
     The prompt changes from `$` to `sqlite>`. SQL you type here is sent to the DBMS.
 
+    A brand-new file has no tables yet. Next you [create a table](/how-to/create-a-table) or [apply a schema file](/how-to/apply-a-schema-file).
+
     Clear the screen with `Ctrl+L` if you want a blank prompt. That is a terminal shortcut, not SQL.
   </Step>
   <Step title="Leave when you are done">
-    `.quit` is a SQLite command, not a SQL keyword:
+    `.quit` is a SQLite command, not SQL:
 
     ```text
     sqlite> .quit
     ```
 
-    You return to the shell.
+    You return to the shell. The `.db` file stays on disk.
   </Step>
 </Steps>
 
 ## Verify the result
 
-You succeeded when the prompt is `sqlite>` after open, and `$` (or your shell prompt) after `.quit`.
+You succeeded when the prompt is `sqlite>` after open, and `$` (or your shell prompt) after `.quit`. For a new path, the file appears in the folder (`ls books.db`).
 
 ## Troubleshooting
 
 - **`sqlite3: command not found`**: install SQLite and confirm it is on your `PATH`.
 - **Prompt still `$`**: the program did not start. Check the command spelling.
-- **No such table after `SELECT`**: you opened the wrong file, or the table name is not what you used in `FROM`.
+- **No such table after `SELECT`**: you opened the wrong file, the database is still empty, or the table name is not what you used in `FROM`.
 
 ## Related pages
 
+- [Create a table](/how-to/create-a-table)
 - [Select columns](/how-to/select-columns)
-- [Tutorial](/tutorials/query-a-table)
 - [Databases](/concepts/databases)
+- [Tutorial](/tutorials/query-a-table)

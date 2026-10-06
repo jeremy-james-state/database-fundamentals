@@ -1,10 +1,10 @@
 ---
 title: "ORDER BY"
 description: "Sorts the rows a query returns."
-keywords: ["CS50"]
+keywords: ["CS50", "ORDER BY", "sort", "ascending", "descending", "ASC", "DESC"]
 ---
 
-`ORDER BY` works for numbers and for text.
+`ORDER BY` works for numbers and for text. Direction is `ASC` or `DESC` after each expression.
 
 ## Syntax
 
@@ -20,13 +20,27 @@ ORDER BY expression [ASC | DESC] [, expression [ASC | DESC] ...];
   Usually a column name. Earlier expressions in the list take priority. Later ones break ties.
 </ParamField>
 
-<ParamField body="ASC" type="keyword" default="ASC">
-  Least to greatest. A to Z for text. This is the default if you omit `ASC` and `DESC`.
-</ParamField>
+## ASC
 
-<ParamField body="DESC" type="keyword">
-  Greatest to least. Z to A for text.
-</ParamField>
+`ASC` sorts least to greatest (A to Z for text). It is the **default** if you omit `ASC` and `DESC`.
+
+```sql
+SELECT title, rating
+FROM books
+ORDER BY rating ASC
+LIMIT 10;
+```
+
+## DESC
+
+`DESC` sorts greatest to least (Z to A for text). Use it when you want the highest values first.
+
+```sql
+SELECT title, rating
+FROM books
+ORDER BY rating DESC
+LIMIT 10;
+```
 
 ## Examples
 
@@ -55,7 +69,5 @@ LIMIT 10;
 
 ## Related references
 
-- [ASC](/reference/asc)
-- [DESC](/reference/desc)
 - [LIMIT](/reference/limit)
 - [Sort rows](/how-to/sort-rows)

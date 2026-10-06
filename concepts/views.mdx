@@ -1,7 +1,7 @@
 ---
 title: "Views"
 description: "A view is a named query you can SELECT from like a table. It does not store its own rows."
-keywords: ["CS50"]
+keywords: ["CS50", "virtual table", "CTE", "temporary view"]
 ---
 
 You write a `SELECT`, then save it with [CREATE VIEW](/reference/create-view). Every time you query the view, SQLite runs that query again against the underlying tables.
@@ -43,21 +43,3 @@ You cannot always `UPDATE` or `DELETE` a view directly. Change the underlying ta
 - **Temporary view**: you are exploring and do not want it saved
 - **CTE**: you need a named subquery once, inside this statement
 - **Skip a permanent view when**: the query is a one-off; use a CTE or a bare `SELECT`
-
-## Related ideas
-
-[Soft deletion](/concepts/soft-deletion) pairs well with a “current rows” view. [Triggers](/concepts/triggers) can run **INSTEAD OF** writes on a view.
-
-## Common mix-ups
-
-- **View vs table**: a table stores rows. A view stores a query.
-- **Temporary view vs CTE**: temporary lasts the connection. A CTE lasts one statement.
-- **`WITH` vs `CREATE VIEW`**: `WITH` is not a view in the schema. It is only a CTE for that query.
-
-## Further reading
-
-- [Create a view](/how-to/create-a-view)
-- [Create a temporary view](/how-to/create-a-temporary-view)
-- [Use a CTE](/how-to/use-a-cte)
-- [CREATE VIEW](/reference/create-view)
-- [WITH](/reference/with)
