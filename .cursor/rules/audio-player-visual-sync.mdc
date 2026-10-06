@@ -1,0 +1,37 @@
+---
+description: Audio lesson player — visuals must match the current lyric; one idea per beat
+globs: audio/player/**/*
+alwaysApply: false
+---
+
+# Visual ↔ lyric sync
+
+The player in `audio/player/` is a lyric-synced lesson, not a slide deck.
+
+Author beats in this order (`audio/authoring/lesson-flow.js`): **learning goals → milestones → visual plan → narration last**. `visual-stage.js` `lyricMin` / `sceneIntent` must match `media/cues.json`. After scene edits, run `node audio/player/eval-visual-sync.mjs` and `node audio/authoring/assert-sync.mjs`.
+
+
+## One idea per beat
+
+- Show only what the current lyric is saying. Do not stack a second concept (table + “entity?”, schema + “what’s a primary key?”).
+- Do not spoil: no schema, PK glow, or punchline before those words.
+- Diagrams only when they explain the spoken point (a table when saying table; FK pairs when saying tables relate).
+
+## Questions vs syllabus vs schema
+
+- Lyrics that ask “what is a database / why tables / primary key / RDBMS” → `sceneIntent: "questions"` (checklist, one Q at a time). **Not** numbered outline, **not** schema.
+- Numbered lesson outline only if the voice lists those headings. If it doesn’t, delete or retarget the outline scene.
+- Schema (`kind: "schema"`) only when speech is “collection of tables” / related tables — never during the question run.
+
+## Reveal rhythm
+
+- Highlights (`highlight-dups`, `missing`, `pulse-col`, legend callouts) wait for the words, then appear — same beat as “You need structure.”
+- Large frost punchlines are story turns only (max ~3–4). Not on recap, outline, vendors, or SQL clauses.
+
+```js
+// ❌ BAD — syllabus on question lyrics
+{ fromLyric: 9, kind: "roadmap", steps: [{ lyricMin: 11, actions: ["section:rdb"] }] }
+
+// ✅ GOOD — one spoken question, one checklist row
+{ sceneIntent: "questions", steps: [{ lyricMin: 11, actions: ["q:2"] }] }
+```

@@ -1,0 +1,99 @@
+Picture a club with fifty members, and one spreadsheet holding the whole story: names in one column, emails in the next, and phone numbers down the side. At first it feels like the grown-up way to keep track of people.
+
+Then the cracks show. Someone gets added twice. Someone else’s email gets overwritten by a copy-paste that nobody notices until it’s too late.
+
+And it doesn’t stop there. Suddenly you’re tracking payments, then committees, then event RSVPs — three extra jobs stuffed into a sheet that was only meant to hold a roster. The whole thing turns into a mess.
+
+That’s the moment. You don’t need a bigger spreadsheet. You need structure: a better way to organize the data, connect it, and keep it from falling apart.
+
+That’s where databases come in.
+
+So what is a database, really? Why do we use tables instead of one giant sheet? What’s a primary key? And why does almost every app you touch — social media, banking, you name it — run on something called an RDBMS?
+
+Here’s the short version. A database organizes data with structure — tables, not one giant sheet. Each table holds one kind of thing, in rows and columns. A primary key uniquely identifies a row, so you can point at it and nowhere else. An RDBMS is the software that stores that world. SQL is how you talk to it.
+
+And before we’re done, you’ll write your first line of SQL.
+
+A relational database is a collection of related tables.
+
+Not one giant sheet. Separate tables, each with one job, that you connect when you need the whole story.
+
+This diagram is a tiny store. We'll add one table at a time, so you can actually see the pieces.
+
+First: users. These are the people with accounts.
+
+Each row is one person — an email, an id, a password. Hold that picture. Users is the hub. Other tables will point back here.
+
+Now products. That's the catalog — the things the store sells.
+
+A product id, and a product name. Different entity, so a different table. Users stay put. Products is its own box.
+
+Reviews live in a third table.
+
+A review has an id, some text, and a time. It also has two pointers, because a review is a relationship: someone wrote it, about a product.
+
+Look at reviews.email. That value matches users.email.
+
+That's who wrote the review. Same email, two tables. The relationship is the match.
+
+There's a second pointer. Reviews.product_id matches products.product_id.
+
+That's which item they reviewed. Two quiet matches, and you can ask who said what about which product.
+
+States is a tiny lookup. A state id and a name — so you don't spell California fifty different ways.
+
+Addresses hang off users.
+
+Street, city, postal code. Plus a user id that points back to users: whose place this is.
+
+And a state id that points at states. Those matching fields light up the same way. That's whose address, and which state.
+
+The tables stay small. Inside each table: rows, columns, and keys. Between the tables: relationships. That's what a relational database is made of.
+
+Next we'll look inside one table: products.
+
+A table looks a lot like a spreadsheet, with rows and columns, but it isn’t a junk drawer. One table has one job: it represents a single entity, or a single relationship between entities.
+
+So what’s an entity? It’s just a thing you can describe — a product, a customer, an order — something with attributes you actually care about.
+
+Let’s say you run an online store called the Sci-Fi Collective. They sell weird gear, including a time machine that only takes you back five minutes, which is perfect for the days you forgot your keys.
+
+Each product is an entity. It has a name, a description, a price, and a manufacturer. Those become the columns in your table, and each product becomes a row.
+
+You’ll almost always add one more column: a product ID that has to be unique, with no doubles, so you can point at exactly one product and nowhere else. That’s your primary key: one per table, the handle that means this row and only this row.
+
+Keep one entity per table. Break that rule, and things get ugly fast.
+
+What if you cram customers and products into one giant table? You’ll repeat the same customer info over and over. That’s redundancy — and then the real problems show up.
+
+Here’s a delete anomaly. That customer only lives in one row. Delete the product, and you’ve just deleted the customer too.
+
+Here’s an insertion anomaly. You want to add a product nobody’s bought yet, but the table demands customer info on every row. So you’re stuck. You can’t even insert the product.
+
+One table, one entity — or one clear relationship. Hold that line, and your data stays clean.
+
+Now, the software that runs all of this is the RDBMS: the relational database management system. You’ll hear names like MySQL, MariaDB, PostgreSQL, SQL Server, and SQLite. It talks to the hardware, stores the data, and gives you tools to work with it.
+
+The big one is SQL, Structured Query Language. That’s how you create tables, change data, and ask questions. Vendors add their own flavors, but the core language travels well. Learn it once, and you can move around.
+
+You don’t always have to write SQL by hand — some tools generate it for you. But knowing SQL makes you sharper. You’ll catch integrity problems sooner, understand performance better, and scale with fewer surprises.
+
+Okay. First query.
+
+We’re using the Sci-Fi Collective’s product table, and the goal is simple: get the names of products that cost more than twenty bucks.
+
+Here it is. SELECT name FROM product WHERE price is greater than 20, and finish with a semicolon.
+
+Run it, and you should get one column with three product names. That’s your first SQL query.
+
+Typo a column name — “names” instead of “name” — and SQL will yell at you. Good. It’s picky on purpose.
+
+So what’s actually happening? SELECT picks the columns; we asked for name. FROM picks the table; that’s product. WHERE filters the rows; only prices over twenty. And the semicolon means we’re done here.
+
+SQL reads a bit like English, if English skipped the small talk and made you stick to the script. Specific clauses. Specific shape. The database does exactly what you asked — nothing more.
+
+Quick recap. Spreadsheets break when life gets complicated, and structure matters. Relational databases organize data into tables around entities, with primary keys to identify each row. An RDBMS manages that world, and SQL is how you talk to it.
+
+Those are the foundations — and they’re just the start.
+
+Next time, we dig into the building blocks of SQL so you can read and write queries without guessing.

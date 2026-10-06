@@ -1,1 +1,5 @@
 .DS_Store
+
+# player local tooling
+audio/player/.venv/
+audio/authoring/spoken/

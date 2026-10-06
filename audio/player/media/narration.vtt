@@ -1,0 +1,489 @@
+WEBVTT
+
+1
+00:00:00,050 --> 00:00:01,736
+Alright — picture this.
+
+2
+00:00:01,736 --> 00:00:08,500
+You’re keeping track of fifty club members in a spreadsheet: names, emails, and phone numbers.
+
+3
+00:00:08,500 --> 00:00:11,138
+It feels simple enough… until it isn’t.
+
+4
+00:00:11,138 --> 00:00:12,944
+Someone gets added twice.
+
+5
+00:00:12,944 --> 00:00:15,555
+Someone else’s email gets overwritten.
+
+6
+00:00:15,555 --> 00:00:23,152
+Suddenly you’re tracking payments, committees, and event RSVPs — and the whole thing turns into a mess.
+
+7
+00:00:23,152 --> 00:00:26,750
+That’s the moment you realize you don’t need a bigger spreadsheet.
+
+8
+00:00:26,750 --> 00:00:33,430
+You need structure: a better way to organize the data, connect it, and keep it from falling apart.
+
+9
+00:00:33,430 --> 00:00:35,388
+That’s where databases come in.
+
+10
+00:00:35,388 --> 00:00:37,305
+So what is a database, really?
+
+11
+00:00:37,305 --> 00:00:38,861
+Why do we use tables?
+
+12
+00:00:38,861 --> 00:00:40,430
+What’s a primary key?
+
+13
+00:00:40,430 --> 00:00:48,430
+And why does almost every app you use — social media, banking, you name it — run on something called an RDBMS?
+
+14
+00:00:48,480 --> 00:00:49,916
+Here's the short version.
+
+15
+00:00:49,916 --> 00:00:55,485
+A database organizes data with structure — tables, not one giant sheet.
+
+16
+00:00:55,485 --> 00:00:59,777
+Each table holds one kind of thing, in rows and columns.
+
+17
+00:00:59,777 --> 00:01:05,638
+A primary key uniquely identifies a row, so you can point at it and nowhere else.
+
+18
+00:01:05,638 --> 00:01:09,402
+An RDBMS is the software that stores that world.
+
+19
+00:01:09,402 --> 00:01:11,332
+SQL is how you talk to it.
+
+20
+00:01:11,398 --> 00:01:15,009
+And before we’re done, you’ll write your first line of SQL.
+
+21
+00:01:15,059 --> 00:01:19,163
+A relational database is a collection of related tables.
+
+22
+00:01:19,163 --> 00:01:20,816
+Not one giant sheet.
+
+23
+00:01:20,816 --> 00:01:26,524
+Separate tables, each with one job, that you connect when you need the whole story.
+
+24
+00:01:26,524 --> 00:01:29,052
+This diagram is a tiny store.
+
+25
+00:01:29,052 --> 00:01:33,191
+We'll add one table at a time, so you can actually see the pieces.
+
+26
+00:01:33,191 --> 00:01:34,885
+First: users.
+
+27
+00:01:34,885 --> 00:01:36,885
+These are the people with accounts.
+
+28
+00:01:36,885 --> 00:01:42,024
+Each row is one person — an email, an id, a password.
+
+29
+00:01:42,024 --> 00:01:43,316
+Hold that picture.
+
+30
+00:01:43,316 --> 00:01:44,816
+Users is the hub.
+
+31
+00:01:44,816 --> 00:01:47,038
+Other tables will point back here.
+
+32
+00:01:47,038 --> 00:01:48,330
+Now products.
+
+33
+00:01:48,330 --> 00:01:51,455
+That's the catalog — the things the store sells.
+
+34
+00:01:51,455 --> 00:01:54,135
+A product id, and a product name.
+
+35
+00:01:54,135 --> 00:01:56,580
+Different entity, so a different table.
+
+36
+00:01:56,580 --> 00:01:57,955
+Users stay put.
+
+37
+00:01:57,955 --> 00:01:59,830
+Products is its own box.
+
+38
+00:01:59,830 --> 00:02:02,302
+Reviews live in a third table.
+
+39
+00:02:02,302 --> 00:02:05,955
+A review has an id, some text, and a time.
+
+40
+00:02:05,955 --> 00:02:12,705
+It also has two pointers, because a review is a relationship: someone wrote it, about a product.
+
+41
+00:02:12,705 --> 00:02:14,691
+Look at reviews.email.
+
+42
+00:02:14,691 --> 00:02:17,496
+That value matches users.email.
+
+43
+00:02:17,496 --> 00:02:19,094
+That's who wrote the review.
+
+44
+00:02:19,094 --> 00:02:21,260
+Same email, two tables.
+
+45
+00:02:21,260 --> 00:02:23,427
+The relationship is the match.
+
+46
+00:02:23,427 --> 00:02:24,941
+There's a second pointer.
+
+47
+00:02:24,941 --> 00:02:30,038
+Reviews.product_id matches products.product_id.
+
+48
+00:02:30,038 --> 00:02:31,955
+That's which item they reviewed.
+
+49
+00:02:31,955 --> 00:02:36,108
+Two quiet matches, and you can ask who said what about which product.
+
+50
+00:02:36,108 --> 00:02:37,969
+States is a tiny lookup.
+
+51
+00:02:37,969 --> 00:02:43,302
+A state id and a name — so you don't spell California fifty different ways.
+
+52
+00:02:43,302 --> 00:02:45,330
+Addresses hang off users.
+
+53
+00:02:45,330 --> 00:02:47,955
+Street, city, postal code.
+
+54
+00:02:47,955 --> 00:02:52,830
+Plus a user id that points back to users: whose place this is.
+
+55
+00:02:52,830 --> 00:02:55,469
+And a state id that points at states.
+
+56
+00:02:55,469 --> 00:02:58,177
+Those matching fields light up the same way.
+
+57
+00:02:58,177 --> 00:03:00,691
+That's whose address, and which state.
+
+58
+00:03:00,691 --> 00:03:02,385
+The tables stay small.
+
+59
+00:03:02,385 --> 00:03:06,941
+Inside each table: rows, columns, and keys.
+
+60
+00:03:06,941 --> 00:03:09,663
+Between the tables: relationships.
+
+61
+00:03:09,663 --> 00:03:12,552
+That's what a relational database is made of.
+
+62
+00:03:12,552 --> 00:03:15,705
+Next we'll look inside one table: products.
+
+63
+00:03:15,756 --> 00:03:21,922
+A table looks a lot like a spreadsheet — with rows and columns — but it isn’t a junk drawer.
+
+64
+00:03:21,922 --> 00:03:28,964
+One table has one job: it represents a single entity, or a single relationship between entities.
+
+65
+00:03:28,964 --> 00:03:30,297
+So what’s an entity?
+
+66
+00:03:30,297 --> 00:03:38,145
+It’s just a thing you can describe — a product, a customer, an order — something with attributes you care about.
+
+67
+00:03:38,145 --> 00:03:41,756
+Let’s say you run an online store called the Sci-Fi Collective.
+
+68
+00:03:41,756 --> 00:03:49,839
+They sell weird gear, including a time machine that only takes you back five minutes — you know, in case you forgot your keys.
+
+69
+00:03:49,839 --> 00:03:51,728
+Each product is an entity.
+
+70
+00:03:51,728 --> 00:03:56,561
+It has a name, a description, a price, and a manufacturer.
+
+71
+00:03:56,561 --> 00:04:01,103
+Those become the columns in your table, and each product becomes a row.
+
+72
+00:04:01,103 --> 00:04:05,381
+And you’ll almost always add one more column: a product ID.
+
+73
+00:04:05,381 --> 00:04:12,228
+It has to be unique — no doubles — so you can point at exactly one product and nowhere else.
+
+74
+00:04:12,228 --> 00:04:18,381
+That’s your primary key: one per table, the “this row — and only this row” handle.
+
+75
+00:04:18,381 --> 00:04:20,339
+Keep one entity per table.
+
+76
+00:04:20,339 --> 00:04:23,450
+Break that rule, and things get ugly fast.
+
+77
+00:04:23,450 --> 00:04:27,589
+What if you cram customers and products into one giant table?
+
+78
+00:04:27,589 --> 00:04:31,075
+You’ll repeat the same customer info over and over.
+
+79
+00:04:31,075 --> 00:04:34,700
+That’s redundancy — and then the real problems show up.
+
+80
+00:04:34,700 --> 00:04:39,506
+Here’s a delete anomaly: that customer only lives in one row.
+
+81
+00:04:39,506 --> 00:04:43,103
+Delete the product, and you’ve just deleted the customer too.
+
+82
+00:04:43,103 --> 00:04:51,825
+Here’s an insertion anomaly: you want to add a product nobody’s bought yet, but the table demands customer info on every row.
+
+83
+00:04:51,825 --> 00:04:54,867
+So you’re stuck — you can’t even insert the product.
+
+84
+00:04:54,867 --> 00:04:55,936
+One table.
+
+85
+00:04:55,936 --> 00:04:58,978
+One entity — or one clear relationship.
+
+86
+00:04:58,978 --> 00:05:01,783
+Hold that line, and your data stays clean.
+
+87
+00:05:01,783 --> 00:05:08,895
+Now, the software that runs all of this is the RDBMS: the relational database management system.
+
+88
+00:05:08,895 --> 00:05:16,270
+You’ll hear names like MySQL, MariaDB, PostgreSQL, SQL Server, and SQLite.
+
+89
+00:05:16,270 --> 00:05:21,297
+It talks to the hardware, stores the data, and gives you tools to work with it.
+
+90
+00:05:21,297 --> 00:05:24,908
+The big one is SQL — Structured Query Language.
+
+91
+00:05:24,908 --> 00:05:29,214
+That’s how you create tables, change data, and ask questions.
+
+92
+00:05:29,214 --> 00:05:33,797
+Vendors add their own flavors, but the core language travels well.
+
+93
+00:05:33,797 --> 00:05:36,408
+Learn it once, and you can move around.
+
+94
+00:05:36,408 --> 00:05:41,131
+You don’t always have to write SQL by hand — some tools generate it for you.
+
+95
+00:05:41,131 --> 00:05:43,436
+But knowing SQL makes you sharper.
+
+96
+00:05:43,436 --> 00:05:50,311
+You’ll catch integrity problems sooner, understand performance better, and scale with fewer surprises.
+
+97
+00:05:50,311 --> 00:05:51,853
+Okay — first query.
+
+98
+00:05:51,853 --> 00:05:55,006
+We’re using the Sci-Fi Collective’s product table.
+
+99
+00:05:55,006 --> 00:05:59,283
+The goal is to get the names of products that cost more than twenty bucks.
+
+100
+00:05:59,283 --> 00:06:00,270
+Here it is:
+
+101
+00:06:00,270 --> 00:06:06,450
+SELECT name FROM product WHERE price is greater than 20 — and finish with a semicolon.
+
+102
+00:06:06,450 --> 00:06:07,242
+Run it.
+
+103
+00:06:07,292 --> 00:06:10,325
+You should get one column with three product names.
+
+104
+00:06:10,386 --> 00:06:12,344
+That’s your first SQL query.
+
+105
+00:06:12,344 --> 00:06:18,108
+Typo a column name — “names” instead of “name” — and SQL will yell at you.
+
+106
+00:06:18,108 --> 00:06:18,844
+Good.
+
+107
+00:06:18,844 --> 00:06:20,567
+It’s picky on purpose.
+
+108
+00:06:20,567 --> 00:06:22,247
+So what’s actually happening?
+
+109
+00:06:22,247 --> 00:06:25,289
+SELECT picks the columns — we asked for name.
+
+110
+00:06:25,289 --> 00:06:27,469
+FROM picks the table — product.
+
+111
+00:06:27,469 --> 00:06:31,025
+WHERE filters the rows — only prices over twenty.
+
+112
+00:06:31,025 --> 00:06:33,580
+And the semicolon means we’re done here.
+
+113
+00:06:33,580 --> 00:06:39,692
+SQL reads a bit like English… if English skipped the small talk and made you stick to the script.
+
+114
+00:06:39,692 --> 00:06:41,344
+Specific clauses.
+
+115
+00:06:41,344 --> 00:06:42,692
+Specific shape.
+
+116
+00:06:42,692 --> 00:06:46,400
+The database does exactly what you asked — nothing more.
+
+117
+00:06:46,505 --> 00:06:47,649
+Quick recap.
+
+118
+00:06:47,649 --> 00:06:52,441
+Spreadsheets break when life gets complicated, and structure matters.
+
+119
+00:06:52,441 --> 00:07:00,816
+Relational databases organize data into tables around entities, with primary keys to identify each row.
+
+120
+00:07:00,816 --> 00:07:05,482
+An RDBMS manages that world, and SQL is how you talk to it.
+
+121
+00:07:05,482 --> 00:07:08,760
+Those are the foundations — and they’re just the start.
+
+122
+00:07:08,760 --> 00:07:15,343
+Next time, we dig into the building blocks of SQL so you can read and write queries without guessing.

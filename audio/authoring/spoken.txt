@@ -1,0 +1,25 @@
+Picture a club with fifty members, and one spreadsheet holding the whole story: names, emails, and phone numbers.
+
+Then the cracks show. Someone gets added twice. Someone else’s email gets overwritten.
+
+Suddenly you’re tracking payments, committees, and event RSVPs. You don’t need a bigger spreadsheet. You need structure.
+
+So what is a database, really? Why tables? What’s a primary key? Why an RDBMS? Here’s the short version — then you’ll write a line of SQL.
+
+A relational database is a collection of related tables. Add users, then products, then reviews. Matching keys are the relationships. Inside each table: rows, columns, and keys. That’s what it is made of.
+
+A table looks like a spreadsheet, with rows and columns, but it isn’t a junk drawer. One table has one job.
+
+So what’s an entity? A thing you can describe — a product, a customer, an order.
+
+Each product is an entity. Name, description, price, manufacturer become columns; each product is a row. The unique product ID is the primary key.
+
+Cram customers and products together and you get redundancy, a delete anomaly, and an insertion anomaly. One table, one entity.
+
+The RDBMS is the software that stores this world. SQL is how you talk to it.
+
+SELECT name FROM product WHERE price > 20. You should get one column with three product names.
+
+SELECT picks columns. FROM picks the table. WHERE filters rows.
+
+Spreadsheets break. Relational databases organize tables around entities, with keys. An RDBMS manages that world, and SQL is how you talk to it.
