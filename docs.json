@@ -187,140 +187,123 @@
         ]
       },
       {
-        "group": "Reference",
-        "expanded": true,
+        "group": "Reference · Read",
         "pages": [
-          {
-            "group": "Read",
-            "expanded": false,
-            "pages": [
-              "reference/select",
-              "reference/from",
-              "reference/limit",
-              "reference/with"
-            ]
-          },
-          {
-            "group": "Filter",
-            "expanded": false,
-            "pages": [
-              "reference/where",
-              "reference/not",
-              "reference/and",
-              "reference/or",
-              "reference/null",
-              "reference/like",
-              "reference/in"
-            ]
-          },
-          {
-            "group": "Sort",
-            "expanded": false,
-            "pages": [
-              "reference/order-by",
-              "reference/asc",
-              "reference/desc"
-            ]
-          },
-          {
-            "group": "Summarize",
-            "expanded": false,
-            "pages": [
-              "reference/count",
-              "reference/avg",
-              "reference/min",
-              "reference/max",
-              "reference/sum",
-              "reference/round",
-              "reference/as",
-              "reference/distinct",
-              "reference/group-by",
-              "reference/having"
-            ]
-          },
-          {
-            "group": "Relate",
-            "expanded": false,
-            "pages": [
-              "reference/join",
-              "reference/inner-join",
-              "reference/left-join",
-              "reference/right-join",
-              "reference/full-join",
-              "reference/natural-join"
-            ]
-          },
-          {
-            "group": "Combine",
-            "expanded": false,
-            "pages": [
-              "reference/union",
-              "reference/intersect",
-              "reference/except"
-            ]
-          },
-          {
-            "group": "Write",
-            "expanded": false,
-            "pages": [
-              "reference/insert",
-              "reference/update",
-              "reference/delete",
-              "reference/begin",
-              "reference/commit",
-              "reference/rollback",
-              "reference/trim",
-              "reference/upper",
-              "reference/lower"
-            ]
-          },
-          {
-            "group": "Optimize",
-            "expanded": false,
-            "pages": [
-              "reference/create-index",
-              "reference/drop-index",
-              "reference/explain-query-plan",
-              "reference/vacuum"
-            ]
-          },
-          {
-            "group": "Define",
-            "expanded": false,
-            "pages": [
-              "reference/create-table",
-              "reference/drop-table",
-              "reference/alter-table",
-              "reference/create-view",
-              "reference/drop-view",
-              "reference/create-trigger",
-              "reference/create-procedure"
-            ]
-          },
-          {
-            "group": "Access",
-            "expanded": false,
-            "pages": [
-              "reference/describe",
-              "reference/call",
-              "reference/grant",
-              "reference/revoke",
-              "reference/prepare",
-              "reference/execute"
-            ]
-          },
-          {
-            "group": "Constrain",
-            "expanded": false,
-            "pages": [
-              "reference/primary-key",
-              "reference/foreign-key",
-              "reference/not-null",
-              "reference/unique",
-              "reference/default",
-              "reference/check"
-            ]
-          }
+          "reference/select",
+          "reference/from",
+          "reference/limit",
+          "reference/with"
+        ]
+      },
+      {
+        "group": "Reference · Filter",
+        "pages": [
+          "reference/where",
+          "reference/not",
+          "reference/and",
+          "reference/or",
+          "reference/null",
+          "reference/like",
+          "reference/in"
+        ]
+      },
+      {
+        "group": "Reference · Sort",
+        "pages": [
+          "reference/order-by",
+          "reference/asc",
+          "reference/desc"
+        ]
+      },
+      {
+        "group": "Reference · Summarize",
+        "pages": [
+          "reference/count",
+          "reference/avg",
+          "reference/min",
+          "reference/max",
+          "reference/sum",
+          "reference/round",
+          "reference/as",
+          "reference/distinct",
+          "reference/group-by",
+          "reference/having"
+        ]
+      },
+      {
+        "group": "Reference · Relate",
+        "pages": [
+          "reference/join",
+          "reference/inner-join",
+          "reference/left-join",
+          "reference/right-join",
+          "reference/full-join",
+          "reference/natural-join"
+        ]
+      },
+      {
+        "group": "Reference · Combine",
+        "pages": [
+          "reference/union",
+          "reference/intersect",
+          "reference/except"
+        ]
+      },
+      {
+        "group": "Reference · Write",
+        "pages": [
+          "reference/insert",
+          "reference/update",
+          "reference/delete",
+          "reference/begin",
+          "reference/commit",
+          "reference/rollback",
+          "reference/trim",
+          "reference/upper",
+          "reference/lower"
+        ]
+      },
+      {
+        "group": "Reference · Optimize",
+        "pages": [
+          "reference/create-index",
+          "reference/drop-index",
+          "reference/explain-query-plan",
+          "reference/vacuum"
+        ]
+      },
+      {
+        "group": "Reference · Define",
+        "pages": [
+          "reference/create-table",
+          "reference/drop-table",
+          "reference/alter-table",
+          "reference/create-view",
+          "reference/drop-view",
+          "reference/create-trigger",
+          "reference/create-procedure"
+        ]
+      },
+      {
+        "group": "Reference · Access",
+        "pages": [
+          "reference/describe",
+          "reference/call",
+          "reference/grant",
+          "reference/revoke",
+          "reference/prepare",
+          "reference/execute"
+        ]
+      },
+      {
+        "group": "Reference · Constrain",
+        "pages": [
+          "reference/primary-key",
+          "reference/foreign-key",
+          "reference/not-null",
+          "reference/unique",
+          "reference/default",
+          "reference/check"
         ]
       },
       {

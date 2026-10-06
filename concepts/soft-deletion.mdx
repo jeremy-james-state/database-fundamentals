@@ -1,6 +1,7 @@
 ---
 title: "Soft deletion"
 description: "Soft deletion marks a row as gone without removing it. A deleted or archived column holds that mark."
+keywords: ["CS50"]
 ---
 
 A hard [DELETE](/reference/delete) drops the row. Recovery means a backup. A **soft delete** [UPDATE](/reference/update)s a flag such as `deleted` from `0` to `1`. Queries that should see “live” rows add `WHERE deleted != 1`.

@@ -1,6 +1,7 @@
 ---
 title: "SQL injection"
 description: "SQL injection is when untrusted input is pasted into a statement string and runs as SQL."
+keywords: ["CS50"]
 ---
 
 If you build `SELECT … WHERE id = ` + user_text, an attacker can send `1 OR 1=1` or a `UNION` that reveals other tables. The DBMS cannot tell your query from theirs.
