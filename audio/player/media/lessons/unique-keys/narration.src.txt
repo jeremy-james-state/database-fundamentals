@@ -1,0 +1,321 @@
+A primary key is unique and not null, and there is only one per table.
+
+A UNIQUE constraint is unique, and it may allow nulls depending on the engine.
+
+You use UNIQUE for the candidate keys you did not promote.
+
+email UNIQUE on customers.
+
+ISBN UNIQUE on books.
+
+The primary key is still customer_id or book_id.
+
+Queries and foreign keys prefer the dull primary key.
+
+Humans still need the natural one to stay unique.
+
+SQLite treats NULLs in UNIQUE as distinct from each other.
+
+You can insert two rows with NULL email if email is unique and nullable.
+
+PostgreSQL's UNIQUE behaves the same with NULL: NULL does not equal NULL.
+
+If you meant at most one empty email, you wanted a partial unique index or a NOT NULL.
+
+Composite unique constraints are common.
+
+UNIQUE student_id, course_id on enrollment.
+
+That is the pair lock from the many-to-many lesson.
+
+A unique constraint is an index in most engines.
+
+You get a lookup as a side effect.
+
+Do not skip UNIQUE because you plan to be careful.
+
+The second clerk will not be careful.
+
+Naming the constraint makes errors readable.
+
+customers_email_key is a better message than a generic unique violation.
+
+Primary key versus unique is also about foreign keys.
+
+A foreign key must point at a unique set of columns, usually the primary key.
+
+Pointing at a UNIQUE natural key is allowed in many engines.
+
+It makes later key changes painful.
+
+Prefer pointing at the surrogate.
+
+Keep the natural unique for humans and imports.
+
+When an import must match on ISBN, look up book_id, then store book_id on the child.
+
+Do not copy ISBN onto every order line unless you are denormalizing on purpose.
+
+One primary key.
+
+As many UNIQUE constraints as you have real candidate keys.
+
+Nulls called out in public.
+
+That is the whole policy.
+
+Partial unique indexes in PostgreSQL let you say email is unique among rows that are not deleted.
+
+WHERE deleted_at IS NULL.
+
+That is how soft-delete and uniqueness coexist.
+
+Without it, a retired email blocks a new customer forever, or you reuse emails in a mess.
+
+MySQL and SQLite have their own partial-index stories.
+
+Read them before you promise the policy.
+
+Case folding belongs with uniqueness for emails.
+
+A unique index on lower(email) is a functional unique index in PostgreSQL.
+
+Without it, Maya@ and maya@ both get in.
+
+Include that in the candidate-key meeting.
+
+Uniqueness is a business rule.
+
+The constraint is how the rule survives a busy hour.
+
+When an import fails on UNIQUE, the failure is data, not drama.
+
+Show the duplicate.
+
+Merge or reject.
+
+Do not DROP INDEX to make the import finish.
+
+That is how you buy a weekend.
+
+Primary key names are often implicit.
+
+UNIQUE names should not be.
+
+You will read them in logs.
+
+Treat them as prose.
+
+One primary, many UNIQUE, nulls explicit, pointers at the surrogate.
+
+You can run a store on that sentence.
+
+Most uniqueness bugs are a missing sentence, not a missing feature.
+
+Write it, then type UNIQUE.
+
+Uniqueness is a product promise.
+
+The database is the enforcer you hired.
+
+If you fire the enforcer for an import, you own the duplicates.
+
+Keep the enforcer.
+
+Stage the import.
+
+Merge in daylight.
+
+UNIQUE is daylight.
+
+Null policy is part of the promise.
+
+Say whether unknown emails are allowed twice.
+
+If no, NOT NULL.
+
+If yes among retired rows, a partial unique index.
+
+Write that in the same comment as the constraint name.
+
+Future incidents will open that comment first.
+
+Make it worth opening.
+
+One primary, many UNIQUE, pointers at the dull key.
+
+Keep saying it.
+
+Constraints are rules the engine enforces so rows stay honest.
+
+Think of them as traffic rules: not suggestions, not application hope.
+
+PRIMARY KEY and UNIQUE both refuse duplicates.
+
+They are not the same tool.
+
+A primary key identifies the row, is unique, and in SQL is also NOT NULL.
+
+A table has one primary key.
+
+Foreign keys point at it, or at a unique column you explicitly allow, depending on the engine.
+
+UNIQUE can sit on email, username, or phone while the primary key is a dull id.
+
+UNIQUE may allow NULL in many engines, and NULLs do not collide with each other the way values do, depending on the dialect.
+
+Two users with NULL email can both exist under UNIQUE(email) in engines that treat NULL as distinct.
+
+If email must be present and unique, you want UNIQUE and NOT NULL, or a primary key on email, which carries NOT NULL.
+
+Do not make email the primary key because it is unique today.
+
+People change email.
+
+Children that pointed at the old email become a migration.
+
+Dull id as primary key, UNIQUE on email, is the usual adult design.
+
+The extra thing a primary key does is say: this is the identity other tables should copy.
+
+UNIQUE says: this value may not repeat, but it is not necessarily the identity of the row.
+
+Choosing UNIQUE when you meant primary key leaves you without a natural parent for foreign keys.
+
+Choosing primary key on a value you will edit breaks references.
+
+You can have several UNIQUE constraints.
+
+You cannot have several primary keys.
+
+Composite UNIQUE (store_id, sku) means the pair is unique, not each column alone.
+
+Two stores may sell the same sku.
+
+Name the constraints so errors are readable.
+
+When implementing, write PRIMARY KEY on the identity, UNIQUE on natural handles people search, FOREIGN KEY on the copies.
+
+Then duplicates fail at the door instead of in a nightly cleanup.
+
+That failure is the feature.
+
+If an application needs to tell a user that username is taken, catch the unique violation.
+
+Do not SELECT then INSERT and hope nobody else grabbed the name.
+
+The constraint is the race-proof rule.
+
+Primary versus unique is the difference between who you are and what else must not collide.
+
+Keep who you are dull and stable.
+
+Keep collisions on the columns humans care about.
+
+Recommended practice: surrogate primary key, unique natural handles, foreign keys to the surrogate, not null on handles that login needs.
+
+Anti-pattern: unique without not null on email, then three accounts with empty email.
+
+Anti-pattern: primary key on phone, then a user changes phone and every child row needs a cascade.
+
+Anti-pattern: no unique on username, primary key on id, application checks uniqueness with SELECT, two signups collide.
+
+The constraint was the missing piece.
+
+Primary versus unique is those practices, not a trivia difference in nullability only.
+
+Nullability is one difference.
+
+Count of keys per table is another.
+
+Who children point at is the one that breaks designs.
+
+Point at identity.
+
+Uniquely constrain the rest.
+
+Close with questions, the way a careful lecture does.
+
+Answer in a sentence you could defend at a keyboard.
+
+What is a constraint?
+
+A rule the engine enforces, not application hope.
+
+What do PRIMARY KEY and UNIQUE share?
+
+They refuse duplicate values.
+
+How many primary keys per table?
+
+One.
+
+How many UNIQUE constraints?
+
+As many as you have honest handles.
+
+Does PRIMARY KEY allow NULL?
+
+No.
+
+Does UNIQUE allow NULL?
+
+Often yes, and NULLs may not collide, depending on dialect.
+
+What should children point at?
+
+The identity, usually a dull primary key.
+
+Why not primary key on email?
+
+People change email; children would have to move.
+
+Why UNIQUE on email anyway?
+
+Login still cannot share an email.
+
+Composite UNIQUE meaning?
+
+The pair is unique, not each column alone.
+
+SELECT then INSERT for uniqueness?
+
+A race. Use the constraint.
+
+Traffic metaphor?
+
+Unique is a parking rule; primary key is the VIN.
+
+Can UNIQUE replace a primary key for identity?
+
+It can be unique without being the pointer you want.
+
+Named constraints?
+
+Yes, so errors read as English.
+
+Username taken?
+
+Catch the unique violation.
+
+Phone UNIQUE NULL allowed?
+
+Two NULLs may both exist.
+
+Email UNIQUE NOT NULL?
+
+Present and unique, still not necessarily the primary key.
+
+store_id plus sku?
+
+Composite unique so two stores share sku text.
+
+Who are you versus what must not collide?
+
+Primary versus unique.
+
+Recommended pattern?
+
+Surrogate primary key, unique natural handles, foreign keys to the surrogate.
+
+If an answer needed a second table, go draw it before you write more SQL.

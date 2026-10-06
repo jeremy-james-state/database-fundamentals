@@ -1,0 +1,1458 @@
+{
+  "title": "Indexes",
+  "subtitle": "B-trees and when to use them",
+  "audio": "narration.mp3",
+  "duration": 524.616,
+  "slides": [],
+  "scenes": [
+    {
+      "id": "explain",
+      "label": "EXPLAIN",
+      "kind": "sql",
+      "title": "Ask the planner",
+      "prompt": "Before a fifth index",
+      "sql": [
+        "EXPLAIN QUERY PLAN",
+        "SELECT * FROM orders",
+        "WHERE customer_id = 1;"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 0,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 1,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 2,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 0,
+      "toLyric": 8
+    },
+    {
+      "id": "btree",
+      "label": "B-tree",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "customer",
+        "city",
+        "total"
+      ],
+      "rows": [
+        [
+          "101",
+          "Maya",
+          "Austin",
+          "42.00"
+        ],
+        [
+          "102",
+          "Jordan",
+          "Austin",
+          "18.50"
+        ],
+        [
+          "103",
+          "Sofia",
+          "Denver",
+          "61.00"
+        ],
+        [
+          "104",
+          "Maya",
+          "Austin",
+          "9.25"
+        ]
+      ],
+      "fromLyric": 8,
+      "toLyric": 11,
+      "steps": [
+        {
+          "lyricMin": 8,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "create",
+      "label": "CREATE INDEX",
+      "kind": "sql",
+      "title": "Join columns",
+      "prompt": "orders.customer_id",
+      "sql": [
+        "CREATE INDEX orders_customer_id_idx",
+        "ON orders (customer_id);"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 11,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 11,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 12,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 11,
+      "toLyric": 16
+    },
+    {
+      "id": "explain-2",
+      "label": "EXPLAIN",
+      "kind": "sql",
+      "title": "Ask the planner",
+      "prompt": "Before a fifth index",
+      "sql": [
+        "EXPLAIN QUERY PLAN",
+        "SELECT * FROM orders",
+        "WHERE customer_id = 1;"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 16,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 16,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 17,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 16,
+      "toLyric": 28
+    },
+    {
+      "id": "btree-2",
+      "label": "B-tree",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "customer",
+        "city",
+        "total"
+      ],
+      "rows": [
+        [
+          "101",
+          "Maya",
+          "Austin",
+          "42.00"
+        ],
+        [
+          "102",
+          "Jordan",
+          "Austin",
+          "18.50"
+        ],
+        [
+          "103",
+          "Sofia",
+          "Denver",
+          "61.00"
+        ],
+        [
+          "104",
+          "Maya",
+          "Austin",
+          "9.25"
+        ]
+      ],
+      "fromLyric": 28,
+      "toLyric": 29,
+      "steps": [
+        {
+          "lyricMin": 28,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "when",
+      "label": "When",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "customer",
+        "city",
+        "total"
+      ],
+      "rows": [
+        [
+          "101",
+          "Maya",
+          "Austin",
+          "42.00"
+        ],
+        [
+          "102",
+          "Jordan",
+          "Austin",
+          "18.50"
+        ],
+        [
+          "103",
+          "Sofia",
+          "Denver",
+          "61.00"
+        ],
+        [
+          "104",
+          "Maya",
+          "Austin",
+          "9.25"
+        ]
+      ],
+      "fromLyric": 29,
+      "toLyric": 36,
+      "steps": [
+        {
+          "lyricMin": 29,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "explain-3",
+      "label": "EXPLAIN",
+      "kind": "sql",
+      "title": "Ask the planner",
+      "prompt": "Before a fifth index",
+      "sql": [
+        "EXPLAIN QUERY PLAN",
+        "SELECT * FROM orders",
+        "WHERE customer_id = 1;"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 36,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 36,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 51,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 36,
+      "toLyric": 62
+    },
+    {
+      "id": "when-2",
+      "label": "When",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "customer",
+        "city",
+        "total"
+      ],
+      "rows": [
+        [
+          "101",
+          "Maya",
+          "Austin",
+          "42.00"
+        ],
+        [
+          "102",
+          "Jordan",
+          "Austin",
+          "18.50"
+        ],
+        [
+          "103",
+          "Sofia",
+          "Denver",
+          "61.00"
+        ],
+        [
+          "104",
+          "Maya",
+          "Austin",
+          "9.25"
+        ]
+      ],
+      "fromLyric": 62,
+      "toLyric": 67,
+      "steps": [
+        {
+          "lyricMin": 62,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "btree-3",
+      "label": "B-tree",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "customer",
+        "city",
+        "total"
+      ],
+      "rows": [
+        [
+          "101",
+          "Maya",
+          "Austin",
+          "42.00"
+        ],
+        [
+          "102",
+          "Jordan",
+          "Austin",
+          "18.50"
+        ],
+        [
+          "103",
+          "Sofia",
+          "Denver",
+          "61.00"
+        ],
+        [
+          "104",
+          "Maya",
+          "Austin",
+          "9.25"
+        ]
+      ],
+      "fromLyric": 67,
+      "toLyric": 72,
+      "steps": [
+        {
+          "lyricMin": 67,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "when-3",
+      "label": "When",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "customer",
+        "city",
+        "total"
+      ],
+      "rows": [
+        [
+          "101",
+          "Maya",
+          "Austin",
+          "42.00"
+        ],
+        [
+          "102",
+          "Jordan",
+          "Austin",
+          "18.50"
+        ],
+        [
+          "103",
+          "Sofia",
+          "Denver",
+          "61.00"
+        ],
+        [
+          "104",
+          "Maya",
+          "Austin",
+          "9.25"
+        ]
+      ],
+      "fromLyric": 72,
+      "toLyric": 75,
+      "steps": [
+        {
+          "lyricMin": 72,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "explain-4",
+      "label": "EXPLAIN",
+      "kind": "sql",
+      "title": "Ask the planner",
+      "prompt": "Before a fifth index",
+      "sql": [
+        "EXPLAIN QUERY PLAN",
+        "SELECT * FROM orders",
+        "WHERE customer_id = 1;"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 75,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 75,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 76,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 75,
+      "toLyric": 121
+    },
+    {
+      "id": "when-4",
+      "label": "When",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "customer",
+        "city",
+        "total"
+      ],
+      "rows": [
+        [
+          "101",
+          "Maya",
+          "Austin",
+          "42.00"
+        ],
+        [
+          "102",
+          "Jordan",
+          "Austin",
+          "18.50"
+        ],
+        [
+          "103",
+          "Sofia",
+          "Denver",
+          "61.00"
+        ],
+        [
+          "104",
+          "Maya",
+          "Austin",
+          "9.25"
+        ]
+      ],
+      "fromLyric": 121,
+      "toLyric": 138,
+      "steps": [
+        {
+          "lyricMin": 121,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "btree-4",
+      "label": "B-tree",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "customer",
+        "city",
+        "total"
+      ],
+      "rows": [
+        [
+          "101",
+          "Maya",
+          "Austin",
+          "42.00"
+        ],
+        [
+          "102",
+          "Jordan",
+          "Austin",
+          "18.50"
+        ],
+        [
+          "103",
+          "Sofia",
+          "Denver",
+          "61.00"
+        ],
+        [
+          "104",
+          "Maya",
+          "Austin",
+          "9.25"
+        ]
+      ],
+      "fromLyric": 138,
+      "toLyric": 146,
+      "steps": [
+        {
+          "lyricMin": 138,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows"
+          ]
+        }
+      ]
+    }
+  ],
+  "lyrics": [
+    {
+      "start": 0.05,
+      "end": 5.972,
+      "text": "An index is extra structure that helps the engine find rows without reading the whole table.",
+      "slide": ""
+    },
+    {
+      "start": 5.972,
+      "end": 10.041,
+      "text": "Without one, a WHERE on email walks every customer.",
+      "slide": ""
+    },
+    {
+      "start": 10.041,
+      "end": 11.861,
+      "text": "That is a sequential scan.",
+      "slide": ""
+    },
+    {
+      "start": 11.861,
+      "end": 13.305,
+      "text": "Fine at four rows.",
+      "slide": ""
+    },
+    {
+      "start": 13.305,
+      "end": 15.041,
+      "text": "Painful at four million.",
+      "slide": ""
+    },
+    {
+      "start": 15.041,
+      "end": 18.222,
+      "text": "A B-tree keeps keys in sorted pages.",
+      "slide": ""
+    },
+    {
+      "start": 18.222,
+      "end": 19.972,
+      "text": "Lookups are logarithmic.",
+      "slide": ""
+    },
+    {
+      "start": 19.972,
+      "end": 25.611,
+      "text": "Range queries work: email greater than m, placed_at last week.",
+      "slide": ""
+    },
+    {
+      "start": 25.611,
+      "end": 28.875,
+      "text": "The primary key usually already has an index.",
+      "slide": ""
+    },
+    {
+      "start": 28.875,
+      "end": 31.527,
+      "text": "UNIQUE usually already has an index.",
+      "slide": ""
+    },
+    {
+      "start": 31.527,
+      "end": 35.0,
+      "text": "You add more for the columns you filter and join on.",
+      "slide": ""
+    },
+    {
+      "start": 35.0,
+      "end": 38.555,
+      "text": "orders.customer_id is a join column.",
+      "slide": ""
+    },
+    {
+      "start": 38.555,
+      "end": 42.944,
+      "text": "Index it if the engine did not already, because of the foreign key.",
+      "slide": ""
+    },
+    {
+      "start": 42.944,
+      "end": 45.569,
+      "text": "Some engines index foreign keys for you.",
+      "slide": ""
+    },
+    {
+      "start": 45.569,
+      "end": 46.763,
+      "text": "Some do not.",
+      "slide": ""
+    },
+    {
+      "start": 46.763,
+      "end": 47.583,
+      "text": "Check.",
+      "slide": ""
+    },
+    {
+      "start": 47.583,
+      "end": 53.958,
+      "text": "A covering index includes the columns a query selects, so the engine can skip the table heap.",
+      "slide": ""
+    },
+    {
+      "start": 53.958,
+      "end": 55.791,
+      "text": "That is a later tuning move.",
+      "slide": ""
+    },
+    {
+      "start": 55.791,
+      "end": 58.75,
+      "text": "A partial index covers only some rows.",
+      "slide": ""
+    },
+    {
+      "start": 58.75,
+      "end": 61.402,
+      "text": "WHERE deleted_at IS NULL.",
+      "slide": ""
+    },
+    {
+      "start": 61.402,
+      "end": 63.93,
+      "text": "Useful when most rows are archived.",
+      "slide": ""
+    },
+    {
+      "start": 63.93,
+      "end": 65.833,
+      "text": "Indexes cost writes.",
+      "slide": ""
+    },
+    {
+      "start": 65.833,
+      "end": 69.75,
+      "text": "Every INSERT, UPDATE, and DELETE maintains them.",
+      "slide": ""
+    },
+    {
+      "start": 69.75,
+      "end": 71.5,
+      "text": "They also cost disk.",
+      "slide": ""
+    },
+    {
+      "start": 71.5,
+      "end": 73.513,
+      "text": "Do not index every column.",
+      "slide": ""
+    },
+    {
+      "start": 73.513,
+      "end": 78.361,
+      "text": "Index the ones in WHERE, JOIN, and ORDER BY that actually run.",
+      "slide": ""
+    },
+    {
+      "start": 78.361,
+      "end": 80.638,
+      "text": "EXPLAIN a query before you argue.",
+      "slide": ""
+    },
+    {
+      "start": 80.638,
+      "end": 85.347,
+      "text": "If it already uses a primary key lookup, another index will not help.",
+      "slide": ""
+    },
+    {
+      "start": 85.347,
+      "end": 92.486,
+      "text": "Low-cardinality columns like a boolean make weak indexes unless you combine them or use a partial index.",
+      "slide": ""
+    },
+    {
+      "start": 92.486,
+      "end": 95.305,
+      "text": "Write CREATE INDEX with a name you can drop.",
+      "slide": ""
+    },
+    {
+      "start": 95.305,
+      "end": 98.763,
+      "text": "orders_customer_id_idx.",
+      "slide": ""
+    },
+    {
+      "start": 98.763,
+      "end": 99.652,
+      "text": "Measure.",
+      "slide": ""
+    },
+    {
+      "start": 99.652,
+      "end": 105.166,
+      "text": "If a report is still slow, look at the query shape before adding a fifth index.",
+      "slide": ""
+    },
+    {
+      "start": 105.166,
+      "end": 108.291,
+      "text": "Normalization and indexes are partners.",
+      "slide": ""
+    },
+    {
+      "start": 108.291,
+      "end": 111.138,
+      "text": "A good key lets a small index do a lot.",
+      "slide": ""
+    },
+    {
+      "start": 111.138,
+      "end": 114.458,
+      "text": "A wide, messy row makes a fat index.",
+      "slide": ""
+    },
+    {
+      "start": 114.458,
+      "end": 117.847,
+      "text": "Find without a full scan, but only where you look.",
+      "slide": ""
+    },
+    {
+      "start": 117.847,
+      "end": 120.305,
+      "text": "B-trees are not the only structure.",
+      "slide": ""
+    },
+    {
+      "start": 120.305,
+      "end": 125.625,
+      "text": "Hash indexes exist for equality in some engines and not in SQLite.",
+      "slide": ""
+    },
+    {
+      "start": 125.625,
+      "end": 130.611,
+      "text": "GIN and GiST in PostgreSQL serve documents and geometry.",
+      "slide": ""
+    },
+    {
+      "start": 130.611,
+      "end": 134.541,
+      "text": "You do not need them to understand why email should be indexed.",
+      "slide": ""
+    },
+    {
+      "start": 134.541,
+      "end": 137.472,
+      "text": "You need them when you search inside JSON later.",
+      "slide": ""
+    },
+    {
+      "start": 137.472,
+      "end": 141.333,
+      "text": "Clustered indexes in some engines are the table order.",
+      "slide": ""
+    },
+    {
+      "start": 141.333,
+      "end": 147.041,
+      "text": "SQLite's WITHOUT ROWID tables make the primary key the table organization.",
+      "slide": ""
+    },
+    {
+      "start": 147.041,
+      "end": 150.402,
+      "text": "That is physical design, after the logical key.",
+      "slide": ""
+    },
+    {
+      "start": 150.402,
+      "end": 153.625,
+      "text": "Fillfactor and reindex are maintenance.",
+      "slide": ""
+    },
+    {
+      "start": 153.625,
+      "end": 158.055,
+      "text": "VACUUM in SQLite reclaims space and can help the planner.",
+      "slide": ""
+    },
+    {
+      "start": 158.055,
+      "end": 159.583,
+      "text": "That is a later how-to.",
+      "slide": ""
+    },
+    {
+      "start": 159.583,
+      "end": 163.444,
+      "text": "Here, know that indexes fragment under heavy writes.",
+      "slide": ""
+    },
+    {
+      "start": 163.444,
+      "end": 165.93,
+      "text": "Measure again after a bulk load.",
+      "slide": ""
+    },
+    {
+      "start": 165.93,
+      "end": 168.986,
+      "text": "Composite indexes have a left-prefix rule.",
+      "slide": ""
+    },
+    {
+      "start": 168.986,
+      "end": 174.416,
+      "text": "An index on city, last_name helps WHERE city equals Austin.",
+      "slide": ""
+    },
+    {
+      "start": 174.416,
+      "end": 180.194,
+      "text": "It does not help WHERE last_name equals Maya as well as the other order would.",
+      "slide": ""
+    },
+    {
+      "start": 180.194,
+      "end": 186.569,
+      "text": "Put equality columns that shrink the set first, in the way your queries actually filter.",
+      "slide": ""
+    },
+    {
+      "start": 186.569,
+      "end": 189.18,
+      "text": "Do not guess the order without EXPLAIN.",
+      "slide": ""
+    },
+    {
+      "start": 189.18,
+      "end": 191.888,
+      "text": "Unused indexes still cost writes.",
+      "slide": ""
+    },
+    {
+      "start": 191.888,
+      "end": 194.208,
+      "text": "Drop them when the query is gone.",
+      "slide": ""
+    },
+    {
+      "start": 194.208,
+      "end": 196.555,
+      "text": "Name them so you can find who asked.",
+      "slide": ""
+    },
+    {
+      "start": 196.555,
+      "end": 199.069,
+      "text": "A comment in the migration is enough.",
+      "slide": ""
+    },
+    {
+      "start": 199.069,
+      "end": 204.25,
+      "text": "Find without a full scan, where you actually look, and not everywhere else.",
+      "slide": ""
+    },
+    {
+      "start": 204.25,
+      "end": 207.958,
+      "text": "That sentence is the whole index policy for this course.",
+      "slide": ""
+    },
+    {
+      "start": 207.958,
+      "end": 212.125,
+      "text": "B-trees, JOIN columns, EXPLAIN, then stop.",
+      "slide": ""
+    },
+    {
+      "start": 212.125,
+      "end": 215.833,
+      "text": "If you cannot name the query, you cannot name the index.",
+      "slide": ""
+    },
+    {
+      "start": 215.833,
+      "end": 217.458,
+      "text": "Write the query first.",
+      "slide": ""
+    },
+    {
+      "start": 217.458,
+      "end": 218.513,
+      "text": "EXPLAIN it.",
+      "slide": ""
+    },
+    {
+      "start": 218.513,
+      "end": 222.638,
+      "text": "If it scans a toy table, wait until the table is not a toy.",
+      "slide": ""
+    },
+    {
+      "start": 222.638,
+      "end": 228.444,
+      "text": "If it scans a large table on a column you filter every time, index that column.",
+      "slide": ""
+    },
+    {
+      "start": 228.444,
+      "end": 232.0,
+      "text": "If it already seeks on the primary key, walk away.",
+      "slide": ""
+    },
+    {
+      "start": 232.0,
+      "end": 236.916,
+      "text": "If writes hurt after the fifth index, drop the one whose query retired.",
+      "slide": ""
+    },
+    {
+      "start": 236.916,
+      "end": 240.375,
+      "text": "Names in migrations are how you find the retiree.",
+      "slide": ""
+    },
+    {
+      "start": 240.375,
+      "end": 243.166,
+      "text": "B-trees for equality and ranges.",
+      "slide": ""
+    },
+    {
+      "start": 243.166,
+      "end": 245.347,
+      "text": "Left prefix for composites.",
+      "slide": ""
+    },
+    {
+      "start": 245.347,
+      "end": 247.25,
+      "text": "Partial for the live subset.",
+      "slide": ""
+    },
+    {
+      "start": 247.25,
+      "end": 249.319,
+      "text": "That is enough policy to start.",
+      "slide": ""
+    },
+    {
+      "start": 249.319,
+      "end": 253.166,
+      "text": "Exotic index types can wait for exotic predicates.",
+      "slide": ""
+    },
+    {
+      "start": 253.166,
+      "end": 255.194,
+      "text": "Most stores are WHERE and JOIN.",
+      "slide": ""
+    },
+    {
+      "start": 255.194,
+      "end": 257.597,
+      "text": "Index those, then measure again.",
+      "slide": ""
+    },
+    {
+      "start": 257.597,
+      "end": 265.305,
+      "text": "An index is a lookup structure beside the table, like a book's table of contents, pointing at where a row lives.",
+      "slide": ""
+    },
+    {
+      "start": 265.305,
+      "end": 268.583,
+      "text": "Without one, a search can walk every row.",
+      "slide": ""
+    },
+    {
+      "start": 268.583,
+      "end": 273.0,
+      "text": "That is a sequential scan, and it gets slower as the table grows.",
+      "slide": ""
+    },
+    {
+      "start": 273.0,
+      "end": 277.305,
+      "text": "With a useful index, the engine jumps closer to the matches.",
+      "slide": ""
+    },
+    {
+      "start": 277.305,
+      "end": 283.541,
+      "text": "A B-tree index keeps keys in a balanced tree so every lookup is about the same depth.",
+      "slide": ""
+    },
+    {
+      "start": 283.541,
+      "end": 292.736,
+      "text": "Equality and ranges both like B-trees: customer_id equals seven, created_at greater than a date.",
+      "slide": ""
+    },
+    {
+      "start": 292.85,
+      "end": 296.591,
+      "text": "ORDER BY on an indexed column can avoid a separate sort.",
+      "slide": ""
+    },
+    {
+      "start": 296.591,
+      "end": 300.022,
+      "text": "The tree is a copy of the key values plus pointers.",
+      "slide": ""
+    },
+    {
+      "start": 300.022,
+      "end": 305.98,
+      "text": "Insert, update, and delete must maintain the tree, so writes get a little slower.",
+      "slide": ""
+    },
+    {
+      "start": 305.98,
+      "end": 308.661,
+      "text": "That is the tax you pay for faster reads.",
+      "slide": ""
+    },
+    {
+      "start": 308.661,
+      "end": 315.119,
+      "text": "Create an index on columns you filter and join, not on every column because it felt complete.",
+      "slide": ""
+    },
+    {
+      "start": 315.119,
+      "end": 319.216,
+      "text": "Each extra index is another structure to store and update.",
+      "slide": ""
+    },
+    {
+      "start": 319.216,
+      "end": 329.55,
+      "text": "A composite index on (city, created_at) helps a filter that uses city, or city and created_at, left to right.",
+      "slide": ""
+    },
+    {
+      "start": 329.55,
+      "end": 335.063,
+      "text": "It may not help a filter that only uses created_at, depending on the engine.",
+      "slide": ""
+    },
+    {
+      "start": 335.063,
+      "end": 338.313,
+      "text": "Lead with the equality column you actually use.",
+      "slide": ""
+    },
+    {
+      "start": 338.313,
+      "end": 343.216,
+      "text": "Primary keys and unique constraints usually already have an index.",
+      "slide": ""
+    },
+    {
+      "start": 343.216,
+      "end": 346.925,
+      "text": "Do not invent a second one for the same columns without a reason.",
+      "slide": ""
+    },
+    {
+      "start": 346.925,
+      "end": 354.147,
+      "text": "Full-text indexes are for language: words in a description, a body of text, a title search.",
+      "slide": ""
+    },
+    {
+      "start": 354.147,
+      "end": 360.744,
+      "text": "A B-tree on a huge TEXT column is a poor match for find me reviews that mention delayed shipping.",
+      "slide": ""
+    },
+    {
+      "start": 360.744,
+      "end": 368.452,
+      "text": "Full-text tokenization splits text into words, often ignores common words, and can rank by relevance.",
+      "slide": ""
+    },
+    {
+      "start": 368.452,
+      "end": 376.841,
+      "text": "It is not the same as LIKE percent delayed percent, which cannot use a normal B-tree well when the pattern starts with a wildcard.",
+      "slide": ""
+    },
+    {
+      "start": 376.841,
+      "end": 383.661,
+      "text": "Use B-tree for keys, dates, statuses, and the columns in JOIN and WHERE equality.",
+      "slide": ""
+    },
+    {
+      "start": 383.661,
+      "end": 386.55,
+      "text": "Use full-text for natural language search.",
+      "slide": ""
+    },
+    {
+      "start": 386.55,
+      "end": 393.452,
+      "text": "Clustered versus heap storage, hash indexes, and covering indexes are extra costumes.",
+      "slide": ""
+    },
+    {
+      "start": 393.452,
+      "end": 398.147,
+      "text": "Most application work is B-tree plus the occasional full-text.",
+      "slide": ""
+    },
+    {
+      "start": 398.147,
+      "end": 401.23,
+      "text": "Prove it with EXPLAIN when a query is slow.",
+      "slide": ""
+    },
+    {
+      "start": 401.23,
+      "end": 408.744,
+      "text": "If the plan still scans the heap of a large table, your WHERE is not using an index, or no index matches.",
+      "slide": ""
+    },
+    {
+      "start": 408.744,
+      "end": 413.286,
+      "text": "If writes crawled after you added six indexes, you over-indexed.",
+      "slide": ""
+    },
+    {
+      "start": 413.286,
+      "end": 415.8,
+      "text": "Index the questions you actually ask.",
+      "slide": ""
+    },
+    {
+      "start": 415.8,
+      "end": 418.133,
+      "text": "Not the columns you might someday filter.",
+      "slide": ""
+    },
+    {
+      "start": 418.133,
+      "end": 421.744,
+      "text": "A bookstore needs title search and isbn lookup.",
+      "slide": ""
+    },
+    {
+      "start": 421.744,
+      "end": 425.355,
+      "text": "It does not need an index on every descriptive adjective.",
+      "slide": ""
+    },
+    {
+      "start": 425.355,
+      "end": 428.619,
+      "text": "Measure, then add, then measure again.",
+      "slide": ""
+    },
+    {
+      "start": 428.619,
+      "end": 431.397,
+      "text": "The index is a tool, not a trophy.",
+      "slide": ""
+    },
+    {
+      "start": 431.397,
+      "end": 439.022,
+      "text": "B-tree on orders.customer_id speeds WHERE customer_id equals and JOIN customers.",
+      "slide": ""
+    },
+    {
+      "start": 439.022,
+      "end": 443.369,
+      "text": "B-tree on created_at speeds recent-order ranges.",
+      "slide": ""
+    },
+    {
+      "start": 443.369,
+      "end": 447.119,
+      "text": "Full-text on reviews.body speeds language search.",
+      "slide": ""
+    },
+    {
+      "start": 447.119,
+      "end": 450.119,
+      "text": "LIKE percent heat still struggles on a B-tree.",
+      "slide": ""
+    },
+    {
+      "start": 450.119,
+      "end": 452.855,
+      "text": "A shopping app search box is full-text.",
+      "slide": ""
+    },
+    {
+      "start": 452.855,
+      "end": 455.966,
+      "text": "An admin lookup by id is B-tree.",
+      "slide": ""
+    },
+    {
+      "start": 455.966,
+      "end": 466.355,
+      "text": "EXPLAIN a slow list of a customer's orders; if it scans orders, add customer_id index unless it is already a foreign key with an index.",
+      "slide": ""
+    },
+    {
+      "start": 466.355,
+      "end": 468.98,
+      "text": "Some engines index foreign keys for you.",
+      "slide": ""
+    },
+    {
+      "start": 468.98,
+      "end": 470.175,
+      "text": "Some do not.",
+      "slide": ""
+    },
+    {
+      "start": 470.175,
+      "end": 470.925,
+      "text": "Look.",
+      "slide": ""
+    },
+    {
+      "start": 470.925,
+      "end": 475.647,
+      "text": "Then stop adding indexes until the next slow query names a column.",
+      "slide": ""
+    },
+    {
+      "start": 475.647,
+      "end": 479.286,
+      "text": "Close with questions, the way a careful lecture does.",
+      "slide": ""
+    },
+    {
+      "start": 479.286,
+      "end": 482.341,
+      "text": "Answer in a sentence you could defend at a keyboard.",
+      "slide": ""
+    },
+    {
+      "start": 482.341,
+      "end": 483.675,
+      "text": "What is an index?",
+      "slide": ""
+    },
+    {
+      "start": 483.675,
+      "end": 486.133,
+      "text": "A lookup structure beside the table.",
+      "slide": ""
+    },
+    {
+      "start": 486.133,
+      "end": 487.55,
+      "text": "B-tree good for?",
+      "slide": ""
+    },
+    {
+      "start": 487.55,
+      "end": 491.258,
+      "text": "Equality, ranges, many ORDER BY keys.",
+      "slide": ""
+    },
+    {
+      "start": 491.258,
+      "end": 492.688,
+      "text": "Full-text good for?",
+      "slide": ""
+    },
+    {
+      "start": 492.688,
+      "end": 494.341,
+      "text": "Natural language search.",
+      "slide": ""
+    },
+    {
+      "start": 494.341,
+      "end": 495.508,
+      "text": "Write tax?",
+      "slide": ""
+    },
+    {
+      "start": 495.508,
+      "end": 497.647,
+      "text": "Each index must be maintained.",
+      "slide": ""
+    },
+    {
+      "start": 497.647,
+      "end": 499.077,
+      "text": "Index every column?",
+      "slide": ""
+    },
+    {
+      "start": 499.077,
+      "end": 499.841,
+      "text": "No.",
+      "slide": ""
+    },
+    {
+      "start": 499.841,
+      "end": 501.813,
+      "text": "Left prefix of composite?",
+      "slide": ""
+    },
+    {
+      "start": 501.813,
+      "end": 504.786,
+      "text": "Helps filters that start from the leading column.",
+      "slide": ""
+    },
+    {
+      "start": 504.786,
+      "end": 506.119,
+      "text": "LIKE percent word?",
+      "slide": ""
+    },
+    {
+      "start": 506.119,
+      "end": 508.022,
+      "text": "B-tree will not help much.",
+      "slide": ""
+    },
+    {
+      "start": 508.022,
+      "end": 510.522,
+      "text": "Primary key already indexed?",
+      "slide": ""
+    },
+    {
+      "start": 510.522,
+      "end": 511.48,
+      "text": "Usually.",
+      "slide": ""
+    },
+    {
+      "start": 511.48,
+      "end": 513.313,
+      "text": "Foreign keys indexed?",
+      "slide": ""
+    },
+    {
+      "start": 513.313,
+      "end": 514.772,
+      "text": "Depends on the engine.",
+      "slide": ""
+    },
+    {
+      "start": 514.772,
+      "end": 515.522,
+      "text": "Look.",
+      "slide": ""
+    },
+    {
+      "start": 515.522,
+      "end": 516.369,
+      "text": "Prove it?",
+      "slide": ""
+    },
+    {
+      "start": 516.369,
+      "end": 519.827,
+      "text": "EXPLAIN, then add, then EXPLAIN again.",
+      "slide": ""
+    },
+    {
+      "start": 519.827,
+      "end": 524.55,
+      "text": "If an answer needed a second table, go draw it before you write more SQL.",
+      "slide": ""
+    }
+  ]
+}

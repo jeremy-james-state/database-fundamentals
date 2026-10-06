@@ -1,0 +1,289 @@
+An index is extra structure that helps the engine find rows without reading the whole table.
+
+Without one, a WHERE on email walks every customer.
+
+That is a sequential scan.
+
+Fine at four rows.
+
+Painful at four million.
+
+A B-tree keeps keys in sorted pages.
+
+Lookups are logarithmic.
+
+Range queries work: email greater than m, placed_at last week.
+
+The primary key usually already has an index.
+
+UNIQUE usually already has an index.
+
+You add more for the columns you filter and join on.
+
+orders.customer_id is a join column.
+
+Index it if the engine did not already, because of the foreign key.
+
+Some engines index foreign keys for you.
+
+Some do not.
+
+Check.
+
+A covering index includes the columns a query selects, so the engine can skip the table heap.
+
+That is a later tuning move.
+
+A partial index covers only some rows.
+
+WHERE deleted_at IS NULL.
+
+Useful when most rows are archived.
+
+Indexes cost writes.
+
+Every INSERT, UPDATE, and DELETE maintains them.
+
+They also cost disk.
+
+Do not index every column.
+
+Index the ones in WHERE, JOIN, and ORDER BY that actually run.
+
+EXPLAIN a query before you argue.
+
+If it already uses a primary key lookup, another index will not help.
+
+Low-cardinality columns like a boolean make weak indexes unless you combine them or use a partial index.
+
+Write CREATE INDEX with a name you can drop.
+
+orders_customer_id_idx.
+
+Measure.
+
+If a report is still slow, look at the query shape before adding a fifth index.
+
+Normalization and indexes are partners.
+
+A good key lets a small index do a lot.
+
+A wide, messy row makes a fat index.
+
+Find without a full scan, but only where you look.
+
+B-trees are not the only structure.
+
+Hash indexes exist for equality in some engines and not in SQLite.
+
+GIN and GiST in PostgreSQL serve documents and geometry.
+
+You do not need them to understand why email should be indexed.
+
+You need them when you search inside JSON later.
+
+Clustered indexes in some engines are the table order.
+
+SQLite's WITHOUT ROWID tables make the primary key the table organization.
+
+That is physical design, after the logical key.
+
+Fillfactor and reindex are maintenance.
+
+VACUUM in SQLite reclaims space and can help the planner.
+
+That is a later how-to.
+
+Here, know that indexes fragment under heavy writes.
+
+Measure again after a bulk load.
+
+Composite indexes have a left-prefix rule.
+
+An index on city, last_name helps WHERE city equals Austin.
+
+It does not help WHERE last_name equals Maya as well as the other order would.
+
+Put equality columns that shrink the set first, in the way your queries actually filter.
+
+Do not guess the order without EXPLAIN.
+
+Unused indexes still cost writes.
+
+Drop them when the query is gone.
+
+Name them so you can find who asked.
+
+A comment in the migration is enough.
+
+Find without a full scan, where you actually look, and not everywhere else.
+
+That sentence is the whole index policy for this course.
+
+B-trees, JOIN columns, EXPLAIN, then stop.
+
+If you cannot name the query, you cannot name the index.
+
+Write the query first.
+
+EXPLAIN it.
+
+If it scans a toy table, wait until the table is not a toy.
+
+If it scans a large table on a column you filter every time, index that column.
+
+If it already seeks on the primary key, walk away.
+
+If writes hurt after the fifth index, drop the one whose query retired.
+
+Names in migrations are how you find the retiree.
+
+B-trees for equality and ranges.
+
+Left prefix for composites.
+
+Partial for the live subset.
+
+That is enough policy to start.
+
+Exotic index types can wait for exotic predicates.
+
+Most stores are WHERE and JOIN.
+
+Index those, then measure again.
+
+An index is a lookup structure beside the table, like a book's table of contents, pointing at where a row lives.
+
+Without one, a search can walk every row.
+
+That is a sequential scan, and it gets slower as the table grows.
+
+With a useful index, the engine jumps closer to the matches.
+
+A B-tree index keeps keys in a balanced tree so every lookup is about the same depth.
+
+Equality and ranges both like B-trees: customer_id equals seven, created_at greater than a date.
+
+ORDER BY on an indexed column can avoid a separate sort.
+
+The tree is a copy of the key values plus pointers.
+
+Insert, update, and delete must maintain the tree, so writes get a little slower.
+
+That is the tax you pay for faster reads.
+
+Create an index on columns you filter and join, not on every column because it felt complete.
+
+Each extra index is another structure to store and update.
+
+A composite index on (city, created_at) helps a filter that uses city, or city and created_at, left to right.
+
+It may not help a filter that only uses created_at, depending on the engine.
+
+Lead with the equality column you actually use.
+
+Primary keys and unique constraints usually already have an index.
+
+Do not invent a second one for the same columns without a reason.
+
+Full-text indexes are for language: words in a description, a body of text, a title search.
+
+A B-tree on a huge TEXT column is a poor match for find me reviews that mention delayed shipping.
+
+Full-text tokenization splits text into words, often ignores common words, and can rank by relevance.
+
+It is not the same as LIKE percent delayed percent, which cannot use a normal B-tree well when the pattern starts with a wildcard.
+
+Use B-tree for keys, dates, statuses, and the columns in JOIN and WHERE equality.
+
+Use full-text for natural language search.
+
+Clustered versus heap storage, hash indexes, and covering indexes are extra costumes.
+
+Most application work is B-tree plus the occasional full-text.
+
+Prove it with EXPLAIN when a query is slow.
+
+If the plan still scans the heap of a large table, your WHERE is not using an index, or no index matches.
+
+If writes crawled after you added six indexes, you over-indexed.
+
+Index the questions you actually ask.
+
+Not the columns you might someday filter.
+
+A bookstore needs title search and isbn lookup.
+
+It does not need an index on every descriptive adjective.
+
+Measure, then add, then measure again.
+
+The index is a tool, not a trophy.
+
+B-tree on orders.customer_id speeds WHERE customer_id equals and JOIN customers.
+
+B-tree on created_at speeds recent-order ranges.
+
+Full-text on reviews.body speeds language search.
+
+LIKE percent heat still struggles on a B-tree.
+
+A shopping app search box is full-text.
+
+An admin lookup by id is B-tree.
+
+EXPLAIN a slow list of a customer's orders; if it scans orders, add customer_id index unless it is already a foreign key with an index.
+
+Some engines index foreign keys for you.
+
+Some do not.
+
+Look.
+
+Then stop adding indexes until the next slow query names a column.
+
+Close with questions, the way a careful lecture does.
+
+Answer in a sentence you could defend at a keyboard.
+
+What is an index?
+
+A lookup structure beside the table.
+
+B-tree good for?
+
+Equality, ranges, many ORDER BY keys.
+
+Full-text good for?
+
+Natural language search.
+
+Write tax?
+
+Each index must be maintained.
+
+Index every column?
+
+No.
+
+Left prefix of composite?
+
+Helps filters that start from the leading column.
+
+LIKE percent word?
+
+B-tree will not help much.
+
+Primary key already indexed?
+
+Usually.
+
+Foreign keys indexed?
+
+Depends on the engine. Look.
+
+Prove it?
+
+EXPLAIN, then add, then EXPLAIN again.
+
+If an answer needed a second table, go draw it before you write more SQL.

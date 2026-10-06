@@ -1,0 +1,1191 @@
+{
+  "title": "One-to-one",
+  "subtitle": "When two tables share a single partner",
+  "audio": "narration.mp3",
+  "duration": 595.2,
+  "slides": [],
+  "scenes": [
+    {
+      "id": "pair",
+      "label": "Pair",
+      "kind": "schema",
+      "title": "Customer and credentials",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "name"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "creds",
+          "label": "credentials",
+          "cols": [
+            "customer_id",
+            "password_hash"
+          ],
+          "pk": "customer_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 0,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 1,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 0,
+      "toLyric": 95
+    },
+    {
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "name"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "creds",
+          "label": "credentials",
+          "cols": [
+            "customer_id",
+            "password_hash"
+          ],
+          "pk": "customer_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "title": "Customer and credentials",
+      "id": "why",
+      "label": "Pair",
+      "kind": "schema",
+      "fromLyric": 95,
+      "toLyric": 99,
+      "steps": [
+        {
+          "lyricMin": 95,
+          "actions": [
+            "enter",
+            "show-schema",
+            "show-title"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pair-2",
+      "label": "Pair",
+      "kind": "schema",
+      "title": "Customer and credentials",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "name"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "creds",
+          "label": "credentials",
+          "cols": [
+            "customer_id",
+            "password_hash"
+          ],
+          "pk": "customer_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 99,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 100,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 99,
+      "toLyric": 153
+    },
+    {
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "name"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "creds",
+          "label": "credentials",
+          "cols": [
+            "customer_id",
+            "password_hash"
+          ],
+          "pk": "customer_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "title": "Customer and credentials",
+      "id": "check",
+      "label": "Pair",
+      "kind": "schema",
+      "fromLyric": 153,
+      "toLyric": 167,
+      "steps": [
+        {
+          "lyricMin": 153,
+          "actions": [
+            "enter",
+            "show-schema",
+            "show-title"
+          ]
+        }
+      ]
+    }
+  ],
+  "lyrics": [
+    {
+      "start": 0.05,
+      "end": 6.625,
+      "text": "One-to-one means each row on the left partners with at most one row on the right, and the other way too.",
+      "slide": ""
+    },
+    {
+      "start": 6.625,
+      "end": 9.208,
+      "text": "A customer has one credentials row.",
+      "slide": ""
+    },
+    {
+      "start": 9.208,
+      "end": 12.25,
+      "text": "A credentials row belongs to one customer.",
+      "slide": ""
+    },
+    {
+      "start": 12.25,
+      "end": 15.486,
+      "text": "You could put password_hash on customers.",
+      "slide": ""
+    },
+    {
+      "start": 15.486,
+      "end": 18.68,
+      "text": "You split it because the facts have a different audience.",
+      "slide": ""
+    },
+    {
+      "start": 18.68,
+      "end": 20.305,
+      "text": "Names are widely read.",
+      "slide": ""
+    },
+    {
+      "start": 20.305,
+      "end": 21.555,
+      "text": "Hashes are not.",
+      "slide": ""
+    },
+    {
+      "start": 21.555,
+      "end": 26.444,
+      "text": "The split is a privacy and permission move as much as a modeling move.",
+      "slide": ""
+    },
+    {
+      "start": 26.444,
+      "end": 31.694,
+      "text": "The primary key of credentials is often the same customer_id.",
+      "slide": ""
+    },
+    {
+      "start": 31.694,
+      "end": 34.875,
+      "text": "That shared primary key enforces the one.",
+      "slide": ""
+    },
+    {
+      "start": 34.875,
+      "end": 37.68,
+      "text": "You cannot insert two hashes for Maya.",
+      "slide": ""
+    },
+    {
+      "start": 37.68,
+      "end": 40.444,
+      "text": "The second insert collides on the key.",
+      "slide": ""
+    },
+    {
+      "start": 40.444,
+      "end": 44.777,
+      "text": "A unique foreign key also works if the child has its own id.",
+      "slide": ""
+    },
+    {
+      "start": 44.777,
+      "end": 49.652,
+      "text": "UNIQUE on customer_id in the child is the one-to-one lock.",
+      "slide": ""
+    },
+    {
+      "start": 49.652,
+      "end": 53.263,
+      "text": "Without UNIQUE, you accidentally built one-to-many.",
+      "slide": ""
+    },
+    {
+      "start": 53.263,
+      "end": 59.111,
+      "text": "Optional one-to-one uses a nullable unique foreign key, or simply no child row.",
+      "slide": ""
+    },
+    {
+      "start": 59.111,
+      "end": 62.375,
+      "text": "A customer without credentials has not signed in yet.",
+      "slide": ""
+    },
+    {
+      "start": 62.375,
+      "end": 63.93,
+      "text": "Left join to find them.",
+      "slide": ""
+    },
+    {
+      "start": 63.93,
+      "end": 68.513,
+      "text": "Do not fake one-to-one with an application check and a plain foreign key.",
+      "slide": ""
+    },
+    {
+      "start": 68.513,
+      "end": 71.027,
+      "text": "Two sessions will insert two children.",
+      "slide": ""
+    },
+    {
+      "start": 71.027,
+      "end": 74.125,
+      "text": "Let the unique key refuse the second.",
+      "slide": ""
+    },
+    {
+      "start": 74.125,
+      "end": 77.888,
+      "text": "When both sides are required, you have a packaging question.",
+      "slide": ""
+    },
+    {
+      "start": 77.888,
+      "end": 79.819,
+      "text": "Maybe it should have been one table.",
+      "slide": ""
+    },
+    {
+      "start": 79.819,
+      "end": 85.305,
+      "text": "Split anyway if the columns are wide, secret, or rarely read together.",
+      "slide": ""
+    },
+    {
+      "start": 85.305,
+      "end": 91.68,
+      "text": "A shipping profile that every customer must have can still be a second table if the warehouse owns it.",
+      "slide": ""
+    },
+    {
+      "start": 91.68,
+      "end": 94.083,
+      "text": "Joins for one-to-one stay simple.",
+      "slide": ""
+    },
+    {
+      "start": 94.083,
+      "end": 100.222,
+      "text": "ON credentials.customer_id equals customers.customer_id.",
+      "slide": ""
+    },
+    {
+      "start": 100.222,
+      "end": 102.694,
+      "text": "You do not expect a fan-out of rows.",
+      "slide": ""
+    },
+    {
+      "start": 102.694,
+      "end": 107.694,
+      "text": "If the result duplicates a customer, your unique constraint is missing.",
+      "slide": ""
+    },
+    {
+      "start": 107.694,
+      "end": 111.875,
+      "text": "Name the pair in the diagram as a single bar on both ends.",
+      "slide": ""
+    },
+    {
+      "start": 111.875,
+      "end": 113.222,
+      "text": "Say the sentence.",
+      "slide": ""
+    },
+    {
+      "start": 113.222,
+      "end": 116.263,
+      "text": "Each customer has at most one credentials row.",
+      "slide": ""
+    },
+    {
+      "start": 116.263,
+      "end": 119.986,
+      "text": "Each credentials row belongs to exactly one customer.",
+      "slide": ""
+    },
+    {
+      "start": 119.986,
+      "end": 123.777,
+      "text": "If either sentence is wrong, pick a different cardinality.",
+      "slide": ""
+    },
+    {
+      "start": 123.777,
+      "end": 127.763,
+      "text": "Vertical split of a wide row is a physical one-to-one.",
+      "slide": ""
+    },
+    {
+      "start": 127.763,
+      "end": 129.291,
+      "text": "You still share the key.",
+      "slide": ""
+    },
+    {
+      "start": 129.291,
+      "end": 132.597,
+      "text": "Do it when some columns are huge and rarely read.",
+      "slide": ""
+    },
+    {
+      "start": 132.597,
+      "end": 135.402,
+      "text": "A biography TEXT might live next door.",
+      "slide": ""
+    },
+    {
+      "start": 135.402,
+      "end": 138.805,
+      "text": "Do not split a row because a form had two tabs.",
+      "slide": ""
+    },
+    {
+      "start": 138.805,
+      "end": 140.75,
+      "text": "Tabs are not cardinality.",
+      "slide": ""
+    },
+    {
+      "start": 140.75,
+      "end": 145.25,
+      "text": "Extension tables that may never exist are optional one-to-one.",
+      "slide": ""
+    },
+    {
+      "start": 145.25,
+      "end": 148.555,
+      "text": "A tax-exempt certificate for a few customers.",
+      "slide": ""
+    },
+    {
+      "start": 148.555,
+      "end": 154.375,
+      "text": "Do not put nullable certificate columns on every customer if the facts are a bundle.",
+      "slide": ""
+    },
+    {
+      "start": 154.375,
+      "end": 156.513,
+      "text": "The bundle is the child table.",
+      "slide": ""
+    },
+    {
+      "start": 156.513,
+      "end": 161.013,
+      "text": "Shared primary key makes a join look like an extension of the row.",
+      "slide": ""
+    },
+    {
+      "start": 161.013,
+      "end": 164.555,
+      "text": "ORM tools sometimes call this a composed class.",
+      "slide": ""
+    },
+    {
+      "start": 164.555,
+      "end": 167.305,
+      "text": "The database still sees two tables.",
+      "slide": ""
+    },
+    {
+      "start": 167.305,
+      "end": 174.597,
+      "text": "Keep the foreign key, even if the primary key is shared, so the engine refuses a child with no parent.",
+      "slide": ""
+    },
+    {
+      "start": 174.597,
+      "end": 178.138,
+      "text": "A shared key without a foreign key is a rumor.",
+      "slide": ""
+    },
+    {
+      "start": 178.138,
+      "end": 184.0,
+      "text": "When both tables grow independently, revisit whether you still mean one-to-one.",
+      "slide": ""
+    },
+    {
+      "start": 184.0,
+      "end": 188.472,
+      "text": "If a customer can grow two certificates, the cardinality changed.",
+      "slide": ""
+    },
+    {
+      "start": 188.472,
+      "end": 190.583,
+      "text": "Do not ignore the second insert.",
+      "slide": ""
+    },
+    {
+      "start": 190.583,
+      "end": 193.166,
+      "text": "UNIQUE will scream if you still claimed one.",
+      "slide": ""
+    },
+    {
+      "start": 193.166,
+      "end": 194.013,
+      "text": "Listen.",
+      "slide": ""
+    },
+    {
+      "start": 194.013,
+      "end": 200.0,
+      "text": "Change the diagram to one-to-many, or refuse the second certificate in the product.",
+      "slide": ""
+    },
+    {
+      "start": 200.0,
+      "end": 201.458,
+      "text": "Either is a decision.",
+      "slide": ""
+    },
+    {
+      "start": 201.458,
+      "end": 203.472,
+      "text": "A silent duplicate is not.",
+      "slide": ""
+    },
+    {
+      "start": 203.472,
+      "end": 206.597,
+      "text": "Bars on both ends, or a change of shape.",
+      "slide": ""
+    },
+    {
+      "start": 206.597,
+      "end": 208.902,
+      "text": "Say it, then lock it with a key.",
+      "slide": ""
+    },
+    {
+      "start": 208.902,
+      "end": 212.875,
+      "text": "If you are splitting because a slide had two boxes, stop.",
+      "slide": ""
+    },
+    {
+      "start": 212.875,
+      "end": 216.861,
+      "text": "If you are splitting because two audiences exist, continue.",
+      "slide": ""
+    },
+    {
+      "start": 216.861,
+      "end": 221.402,
+      "text": "If you are splitting because a column is huge and cold, continue.",
+      "slide": ""
+    },
+    {
+      "start": 221.402,
+      "end": 225.166,
+      "text": "If you are splitting and forgetting UNIQUE, you built many.",
+      "slide": ""
+    },
+    {
+      "start": 225.166,
+      "end": 227.555,
+      "text": "The last case is the silent one.",
+      "slide": ""
+    },
+    {
+      "start": 227.555,
+      "end": 230.888,
+      "text": "Add the unique key the same day as the table.",
+      "slide": ""
+    },
+    {
+      "start": 230.888,
+      "end": 232.416,
+      "text": "Join once and count.",
+      "slide": ""
+    },
+    {
+      "start": 232.416,
+      "end": 238.402,
+      "text": "The count of customers should match the count of pairs, plus the unmatched optionals.",
+      "slide": ""
+    },
+    {
+      "start": 238.402,
+      "end": 241.833,
+      "text": "If it does not, cardinality already drifted.",
+      "slide": ""
+    },
+    {
+      "start": 241.833,
+      "end": 244.916,
+      "text": "Fix the constraint before you fix the report.",
+      "slide": ""
+    },
+    {
+      "start": 244.916,
+      "end": 246.708,
+      "text": "Reports lie to be helpful.",
+      "slide": ""
+    },
+    {
+      "start": 246.708,
+      "end": 248.347,
+      "text": "Constraints refuse.",
+      "slide": ""
+    },
+    {
+      "start": 248.347,
+      "end": 249.777,
+      "text": "Prefer refuse.",
+      "slide": ""
+    },
+    {
+      "start": 249.777,
+      "end": 255.958,
+      "text": "Cardinality is how many instances of one entity associate with one instance of another.",
+      "slide": ""
+    },
+    {
+      "start": 255.958,
+      "end": 260.5,
+      "text": "An entity is the idea; a table is the implementation.",
+      "slide": ""
+    },
+    {
+      "start": 260.5,
+      "end": 265.902,
+      "text": "An instance is the idea of one thing; a row is the implementation.",
+      "slide": ""
+    },
+    {
+      "start": 265.902,
+      "end": 271.541,
+      "text": "Every relationship has two directions, and each direction gets its own sentence.",
+      "slide": ""
+    },
+    {
+      "start": 271.541,
+      "end": 276.194,
+      "text": "A user has zero, one, or more accounts is one direction.",
+      "slide": ""
+    },
+    {
+      "start": 276.194,
+      "end": 279.375,
+      "text": "An account belongs to one user is the other.",
+      "slide": ""
+    },
+    {
+      "start": 279.375,
+      "end": 282.791,
+      "text": "The subject of the sentence is where the arrow starts.",
+      "slide": ""
+    },
+    {
+      "start": 282.914,
+      "end": 289.044,
+      "text": "The object is where the marks sit in crow's foot: near the entity whose count you are stating.",
+      "slide": ""
+    },
+    {
+      "start": 289.044,
+      "end": 294.1,
+      "text": "A circle is zero, a bar is one, a crow's foot is many.",
+      "slide": ""
+    },
+    {
+      "start": 294.1,
+      "end": 296.572,
+      "text": "Min and max travel as a pair.",
+      "slide": ""
+    },
+    {
+      "start": 296.572,
+      "end": 302.877,
+      "text": "One-to-one means each instance on this side matches at most one on that side, and vice versa.",
+      "slide": ""
+    },
+    {
+      "start": 302.877,
+      "end": 309.989,
+      "text": "A person and a current passport, if your rules say one live passport per person, can be one-to-one.",
+      "slide": ""
+    },
+    {
+      "start": 309.989,
+      "end": 314.766,
+      "text": "A person and a user profile that must not be shared is one-to-one.",
+      "slide": ""
+    },
+    {
+      "start": 314.766,
+      "end": 320.641,
+      "text": "Optional one-to-one still uses zero on the min: a user may have no profile yet.",
+      "slide": ""
+    },
+    {
+      "start": 320.641,
+      "end": 329.141,
+      "text": "Mandatory one-to-one uses one as the min on both sides, and that is rare because inserts have to create both rows together.",
+      "slide": ""
+    },
+    {
+      "start": 329.141,
+      "end": 335.183,
+      "text": "In tables, one-to-one is usually a shared primary key, or a unique foreign key.",
+      "slide": ""
+    },
+    {
+      "start": 335.183,
+      "end": 342.711,
+      "text": "If profiles.user_id is UNIQUE and points at users, a user cannot own two profiles.",
+      "slide": ""
+    },
+    {
+      "start": 342.711,
+      "end": 347.489,
+      "text": "If you forget UNIQUE, your one-to-one is a one-to-many in costume.",
+      "slide": ""
+    },
+    {
+      "start": 347.489,
+      "end": 353.558,
+      "text": "Split a table into one-to-one when some attributes are bulky, secret, or rare.",
+      "slide": ""
+    },
+    {
+      "start": 353.558,
+      "end": 361.141,
+      "text": "Addresses, credentials, or medical details might live in a satellite table so the main row stays lean.",
+      "slide": ""
+    },
+    {
+      "start": 361.141,
+      "end": 364.252,
+      "text": "Do not split because a screen has two tabs.",
+      "slide": ""
+    },
+    {
+      "start": 364.252,
+      "end": 365.975,
+      "text": "Screens are not schemas.",
+      "slide": ""
+    },
+    {
+      "start": 365.975,
+      "end": 376.919,
+      "text": "Do not force one-to-one on things the business already treats as many: a customer and their orders is not one-to-one because a second order exists in the English.",
+      "slide": ""
+    },
+    {
+      "start": 376.919,
+      "end": 382.391,
+      "text": "Listen for at most one, exactly one, optional extra sheet of facts.",
+      "slide": ""
+    },
+    {
+      "start": 382.391,
+      "end": 384.35,
+      "text": "Those phrases are the lesson.",
+      "slide": ""
+    },
+    {
+      "start": 384.35,
+      "end": 386.016,
+      "text": "Draw both sentences.",
+      "slide": ""
+    },
+    {
+      "start": 386.016,
+      "end": 390.502,
+      "text": "If either sentence says many, you are in a different cardinality.",
+      "slide": ""
+    },
+    {
+      "start": 390.502,
+      "end": 395.891,
+      "text": "If both say at most one, put a unique foreign key on one side and stop.",
+      "slide": ""
+    },
+    {
+      "start": 395.891,
+      "end": 397.975,
+      "text": "The unique is the enforcement.",
+      "slide": ""
+    },
+    {
+      "start": 397.975,
+      "end": 402.836,
+      "text": "The line on the diagram is only a claim until the unique exists.",
+      "slide": ""
+    },
+    {
+      "start": 402.836,
+      "end": 409.572,
+      "text": "Q and A for this idea is short on purpose: can this side have two, and can that side have two.",
+      "slide": ""
+    },
+    {
+      "start": 409.572,
+      "end": 412.655,
+      "text": "If both answers are no, you have one-to-one.",
+      "slide": ""
+    },
+    {
+      "start": 412.655,
+      "end": 415.558,
+      "text": "If you hesitated, you do not have it yet.",
+      "slide": ""
+    },
+    {
+      "start": 415.558,
+      "end": 419.183,
+      "text": "Go back to the requirement, not to a prettier diagram.",
+      "slide": ""
+    },
+    {
+      "start": 419.183,
+      "end": 430.086,
+      "text": "Implementation patterns: shared primary key, unique foreign key on either side, or a single table if the satellite is always present and tiny.",
+      "slide": ""
+    },
+    {
+      "start": 430.086,
+      "end": 432.002,
+      "text": "Single table is allowed.",
+      "slide": ""
+    },
+    {
+      "start": 432.002,
+      "end": 434.905,
+      "text": "One-to-one does not require two tables.",
+      "slide": ""
+    },
+    {
+      "start": 434.905,
+      "end": 439.502,
+      "text": "Two tables are for optional, bulky, or secret satellites.",
+      "slide": ""
+    },
+    {
+      "start": 439.502,
+      "end": 445.211,
+      "text": "If every user has exactly one profile of three columns, keep them on users.",
+      "slide": ""
+    },
+    {
+      "start": 445.211,
+      "end": 451.586,
+      "text": "The cardinality can still be described as one-to-one with a person entity if you later split.",
+      "slide": ""
+    },
+    {
+      "start": 451.586,
+      "end": 453.864,
+      "text": "Do not split early for purity.",
+      "slide": ""
+    },
+    {
+      "start": 453.864,
+      "end": 457.433,
+      "text": "Do split when NULL piles or security says so.",
+      "slide": ""
+    },
+    {
+      "start": 457.433,
+      "end": 469.919,
+      "text": "Real-world examples: country and capital, if you model current capital only; person and medical record number issued one-for-one; order and shipment if your shop ships once.",
+      "slide": ""
+    },
+    {
+      "start": 469.919,
+      "end": 472.905,
+      "text": "If you ship twice, shipment became many.",
+      "slide": ""
+    },
+    {
+      "start": 472.905,
+      "end": 474.211,
+      "text": "Listen for once.",
+      "slide": ""
+    },
+    {
+      "start": 474.211,
+      "end": 479.211,
+      "text": "Once is the word that makes this lesson fifteen minutes instead of a definition.",
+      "slide": ""
+    },
+    {
+      "start": 479.211,
+      "end": 483.655,
+      "text": "Ask once, at most one, exactly one, optional.",
+      "slide": ""
+    },
+    {
+      "start": 483.655,
+      "end": 485.85,
+      "text": "Put the answers on both ends.",
+      "slide": ""
+    },
+    {
+      "start": 485.85,
+      "end": 486.822,
+      "text": "Then draw.",
+      "slide": ""
+    },
+    {
+      "start": 486.822,
+      "end": 488.03,
+      "text": "Then UNIQUE.",
+      "slide": ""
+    },
+    {
+      "start": 488.03,
+      "end": 490.391,
+      "text": "Then join and expect one row.",
+      "slide": ""
+    },
+    {
+      "start": 490.391,
+      "end": 492.211,
+      "text": "That sequence is the film.",
+      "slide": ""
+    },
+    {
+      "start": 492.211,
+      "end": 495.85,
+      "text": "Close with questions, the way a careful lecture does.",
+      "slide": ""
+    },
+    {
+      "start": 495.85,
+      "end": 498.905,
+      "text": "Answer in a sentence you could defend at a keyboard.",
+      "slide": ""
+    },
+    {
+      "start": 498.905,
+      "end": 500.364,
+      "text": "What is cardinality?",
+      "slide": ""
+    },
+    {
+      "start": 500.364,
+      "end": 504.072,
+      "text": "How many instances associate with one instance of the other.",
+      "slide": ""
+    },
+    {
+      "start": 504.072,
+      "end": 505.627,
+      "text": "Why two sentences?",
+      "slide": ""
+    },
+    {
+      "start": 505.627,
+      "end": 508.475,
+      "text": "Every relationship has two directions.",
+      "slide": ""
+    },
+    {
+      "start": 508.475,
+      "end": 510.78,
+      "text": "What marks mean zero, one, many?",
+      "slide": ""
+    },
+    {
+      "start": 510.78,
+      "end": 513.377,
+      "text": "Circle, bar, crow's foot.",
+      "slide": ""
+    },
+    {
+      "start": 513.377,
+      "end": 514.752,
+      "text": "What is one-to-one?",
+      "slide": ""
+    },
+    {
+      "start": 514.752,
+      "end": 516.794,
+      "text": "At most one on both maxima.",
+      "slide": ""
+    },
+    {
+      "start": 516.794,
+      "end": 518.28,
+      "text": "Optional one-to-one?",
+      "slide": ""
+    },
+    {
+      "start": 518.28,
+      "end": 521.53,
+      "text": "Min zero on one side, max still one.",
+      "slide": ""
+    },
+    {
+      "start": 521.53,
+      "end": 523.516,
+      "text": "How do you enforce it in SQL?",
+      "slide": ""
+    },
+    {
+      "start": 523.516,
+      "end": 527.197,
+      "text": "UNIQUE on the foreign key, or a shared primary key.",
+      "slide": ""
+    },
+    {
+      "start": 527.197,
+      "end": 528.85,
+      "text": "What if you forget UNIQUE?",
+      "slide": ""
+    },
+    {
+      "start": 528.85,
+      "end": 530.586,
+      "text": "It becomes one-to-many.",
+      "slide": ""
+    },
+    {
+      "start": 530.586,
+      "end": 532.697,
+      "text": "When do you split a satellite table?",
+      "slide": ""
+    },
+    {
+      "start": 532.697,
+      "end": 537.808,
+      "text": "Bulky, secret, or rare facts, not because a screen has tabs.",
+      "slide": ""
+    },
+    {
+      "start": 537.808,
+      "end": 539.405,
+      "text": "When do you keep one table?",
+      "slide": ""
+    },
+    {
+      "start": 539.405,
+      "end": 542.03,
+      "text": "Tiny attributes always present.",
+      "slide": ""
+    },
+    {
+      "start": 542.03,
+      "end": 544.141,
+      "text": "Person and current passport?",
+      "slide": ""
+    },
+    {
+      "start": 544.141,
+      "end": 547.405,
+      "text": "One-to-one if the rule is one live passport.",
+      "slide": ""
+    },
+    {
+      "start": 547.405,
+      "end": 549.516,
+      "text": "Person and passport history?",
+      "slide": ""
+    },
+    {
+      "start": 549.516,
+      "end": 551.197,
+      "text": "One-to-many of events.",
+      "slide": ""
+    },
+    {
+      "start": 551.197,
+      "end": 553.919,
+      "text": "Does one-to-one require two tables?",
+      "slide": ""
+    },
+    {
+      "start": 553.919,
+      "end": 554.683,
+      "text": "No.",
+      "slide": ""
+    },
+    {
+      "start": 554.683,
+      "end": 556.058,
+      "text": "What grain of time?",
+      "slide": ""
+    },
+    {
+      "start": 556.058,
+      "end": 559.627,
+      "text": "Current versus history changes the cardinality.",
+      "slide": ""
+    },
+    {
+      "start": 559.627,
+      "end": 561.502,
+      "text": "What join fan-out means?",
+      "slide": ""
+    },
+    {
+      "start": 561.502,
+      "end": 563.169,
+      "text": "Your unique is missing.",
+      "slide": ""
+    },
+    {
+      "start": 563.169,
+      "end": 565.141,
+      "text": "Country and current capital?",
+      "slide": ""
+    },
+    {
+      "start": 565.141,
+      "end": 566.627,
+      "text": "Often one-to-one.",
+      "slide": ""
+    },
+    {
+      "start": 566.627,
+      "end": 569.03,
+      "text": "Order and shipment if you ship twice?",
+      "slide": ""
+    },
+    {
+      "start": 569.03,
+      "end": 570.239,
+      "text": "Many, not one.",
+      "slide": ""
+    },
+    {
+      "start": 570.239,
+      "end": 572.155,
+      "text": "What word should you listen for?",
+      "slide": ""
+    },
+    {
+      "start": 572.282,
+      "end": 576.343,
+      "text": "Once, at most one, exactly one, optional.",
+      "slide": ""
+    },
+    {
+      "start": 576.343,
+      "end": 578.12,
+      "text": "Chen versus crow's foot?",
+      "slide": ""
+    },
+    {
+      "start": 578.12,
+      "end": 580.315,
+      "text": "Pick one notation and stay.",
+      "slide": ""
+    },
+    {
+      "start": 580.315,
+      "end": 581.898,
+      "text": "Can both mins be one?",
+      "slide": ""
+    },
+    {
+      "start": 581.898,
+      "end": 585.857,
+      "text": "Yes, but inserts must create both rows together.",
+      "slide": ""
+    },
+    {
+      "start": 585.857,
+      "end": 588.37,
+      "text": "If you hesitate on can this side have two?",
+      "slide": ""
+    },
+    {
+      "start": 588.37,
+      "end": 590.426,
+      "text": "You do not have one-to-one yet.",
+      "slide": ""
+    },
+    {
+      "start": 590.426,
+      "end": 595.148,
+      "text": "If an answer needed a second table, go draw it before you write more SQL.",
+      "slide": ""
+    }
+  ]
+}

@@ -1,0 +1,2404 @@
+{
+  "title": "Joins",
+  "subtitle": "Match rows across tables",
+  "audio": "narration.mp3",
+  "duration": 631.992,
+  "slides": [],
+  "scenes": [
+    {
+      "id": "match",
+      "label": "Match",
+      "kind": "schema",
+      "title": "Same key, two tables",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "name"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id",
+            "total"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 0,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 1,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 0,
+      "toLyric": 9
+    },
+    {
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "name"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id",
+            "total"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "title": "Same key, two tables",
+      "id": "kinds",
+      "label": "Match",
+      "kind": "schema",
+      "fromLyric": 9,
+      "toLyric": 10,
+      "steps": [
+        {
+          "lyricMin": 9,
+          "actions": [
+            "enter",
+            "show-schema",
+            "show-title"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "match-2",
+      "label": "Match",
+      "kind": "schema",
+      "title": "Same key, two tables",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "name"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id",
+            "total"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 10,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 11,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 10,
+      "toLyric": 15
+    },
+    {
+      "id": "inner",
+      "label": "INNER",
+      "kind": "sql",
+      "title": "Inner join",
+      "prompt": "Pairs that match",
+      "sql": [
+        "SELECT c.name, o.total",
+        "FROM customers AS c",
+        "JOIN orders AS o",
+        "ON c.customer_id = o.customer_id;"
+      ],
+      "products": [
+        [
+          "1",
+          "Maya",
+          "42.00"
+        ],
+        [
+          "2",
+          "Jordan",
+          "18.50"
+        ],
+        [
+          "3",
+          "Sofia",
+          "61.00"
+        ],
+        [
+          "4",
+          "Maya",
+          "9.25"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 15,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 15,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 15,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 15,
+      "toLyric": 16
+    },
+    {
+      "id": "left",
+      "label": "LEFT",
+      "kind": "sql",
+      "title": "Left join",
+      "prompt": "Keep unmatched left rows",
+      "sql": [
+        "SELECT c.name, o.total",
+        "FROM customers AS c",
+        "LEFT JOIN orders AS o",
+        "ON c.customer_id = o.customer_id;"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 16,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 16,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 17,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 16,
+      "toLyric": 18
+    },
+    {
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "name"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id",
+            "total"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "title": "Same key, two tables",
+      "id": "kinds-2",
+      "label": "Match",
+      "kind": "schema",
+      "fromLyric": 18,
+      "toLyric": 19,
+      "steps": [
+        {
+          "lyricMin": 18,
+          "actions": [
+            "enter",
+            "show-schema",
+            "show-title"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "match-3",
+      "label": "Match",
+      "kind": "schema",
+      "title": "Same key, two tables",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "name"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id",
+            "total"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 19,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 19,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 19,
+      "toLyric": 20
+    },
+    {
+      "id": "left-2",
+      "label": "LEFT",
+      "kind": "sql",
+      "title": "Left join",
+      "prompt": "Keep unmatched left rows",
+      "sql": [
+        "SELECT c.name, o.total",
+        "FROM customers AS c",
+        "LEFT JOIN orders AS o",
+        "ON c.customer_id = o.customer_id;"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 20,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 20,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 21,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 20,
+      "toLyric": 25
+    },
+    {
+      "id": "match-4",
+      "label": "Match",
+      "kind": "schema",
+      "title": "Same key, two tables",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "name"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id",
+            "total"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 25,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 26,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 25,
+      "toLyric": 28
+    },
+    {
+      "id": "inner-2",
+      "label": "INNER",
+      "kind": "sql",
+      "title": "Inner join",
+      "prompt": "Pairs that match",
+      "sql": [
+        "SELECT c.name, o.total",
+        "FROM customers AS c",
+        "JOIN orders AS o",
+        "ON c.customer_id = o.customer_id;"
+      ],
+      "products": [
+        [
+          "1",
+          "Maya",
+          "42.00"
+        ],
+        [
+          "2",
+          "Jordan",
+          "18.50"
+        ],
+        [
+          "3",
+          "Sofia",
+          "61.00"
+        ],
+        [
+          "4",
+          "Maya",
+          "9.25"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 28,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 28,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 29,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 28,
+      "toLyric": 36
+    },
+    {
+      "id": "match-5",
+      "label": "Match",
+      "kind": "schema",
+      "title": "Same key, two tables",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "name"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id",
+            "total"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 36,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 37,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 36,
+      "toLyric": 38
+    },
+    {
+      "id": "left-3",
+      "label": "LEFT",
+      "kind": "sql",
+      "title": "Left join",
+      "prompt": "Keep unmatched left rows",
+      "sql": [
+        "SELECT c.name, o.total",
+        "FROM customers AS c",
+        "LEFT JOIN orders AS o",
+        "ON c.customer_id = o.customer_id;"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 38,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 38,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 58,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 38,
+      "toLyric": 67
+    },
+    {
+      "id": "match-6",
+      "label": "Match",
+      "kind": "schema",
+      "title": "Same key, two tables",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "name"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id",
+            "total"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 67,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 68,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 67,
+      "toLyric": 69
+    },
+    {
+      "id": "inner-3",
+      "label": "INNER",
+      "kind": "sql",
+      "title": "Inner join",
+      "prompt": "Pairs that match",
+      "sql": [
+        "SELECT c.name, o.total",
+        "FROM customers AS c",
+        "JOIN orders AS o",
+        "ON c.customer_id = o.customer_id;"
+      ],
+      "products": [
+        [
+          "1",
+          "Maya",
+          "42.00"
+        ],
+        [
+          "2",
+          "Jordan",
+          "18.50"
+        ],
+        [
+          "3",
+          "Sofia",
+          "61.00"
+        ],
+        [
+          "4",
+          "Maya",
+          "9.25"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 69,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 69,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 69,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 69,
+      "toLyric": 70
+    },
+    {
+      "id": "match-7",
+      "label": "Match",
+      "kind": "schema",
+      "title": "Same key, two tables",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "name"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id",
+            "total"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 70,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 71,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 70,
+      "toLyric": 72
+    },
+    {
+      "id": "left-4",
+      "label": "LEFT",
+      "kind": "sql",
+      "title": "Left join",
+      "prompt": "Keep unmatched left rows",
+      "sql": [
+        "SELECT c.name, o.total",
+        "FROM customers AS c",
+        "LEFT JOIN orders AS o",
+        "ON c.customer_id = o.customer_id;"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 72,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 72,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 73,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 72,
+      "toLyric": 75
+    },
+    {
+      "id": "match-8",
+      "label": "Match",
+      "kind": "schema",
+      "title": "Same key, two tables",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "name"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id",
+            "total"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 75,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 76,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 75,
+      "toLyric": 81
+    },
+    {
+      "id": "inner-4",
+      "label": "INNER",
+      "kind": "sql",
+      "title": "Inner join",
+      "prompt": "Pairs that match",
+      "sql": [
+        "SELECT c.name, o.total",
+        "FROM customers AS c",
+        "JOIN orders AS o",
+        "ON c.customer_id = o.customer_id;"
+      ],
+      "products": [
+        [
+          "1",
+          "Maya",
+          "42.00"
+        ],
+        [
+          "2",
+          "Jordan",
+          "18.50"
+        ],
+        [
+          "3",
+          "Sofia",
+          "61.00"
+        ],
+        [
+          "4",
+          "Maya",
+          "9.25"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 81,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 81,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 82,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 81,
+      "toLyric": 96
+    },
+    {
+      "id": "left-5",
+      "label": "LEFT",
+      "kind": "sql",
+      "title": "Left join",
+      "prompt": "Keep unmatched left rows",
+      "sql": [
+        "SELECT c.name, o.total",
+        "FROM customers AS c",
+        "LEFT JOIN orders AS o",
+        "ON c.customer_id = o.customer_id;"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 96,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 97,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 98,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 96,
+      "toLyric": 101
+    },
+    {
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "name"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id",
+            "total"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "title": "Same key, two tables",
+      "id": "kinds-3",
+      "label": "Match",
+      "kind": "schema",
+      "fromLyric": 101,
+      "toLyric": 103,
+      "steps": [
+        {
+          "lyricMin": 101,
+          "actions": [
+            "enter",
+            "show-schema",
+            "show-title"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "left-6",
+      "label": "LEFT",
+      "kind": "sql",
+      "title": "Left join",
+      "prompt": "Keep unmatched left rows",
+      "sql": [
+        "SELECT c.name, o.total",
+        "FROM customers AS c",
+        "LEFT JOIN orders AS o",
+        "ON c.customer_id = o.customer_id;"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 103,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 103,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 104,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 103,
+      "toLyric": 113
+    },
+    {
+      "id": "inner-5",
+      "label": "INNER",
+      "kind": "sql",
+      "title": "Inner join",
+      "prompt": "Pairs that match",
+      "sql": [
+        "SELECT c.name, o.total",
+        "FROM customers AS c",
+        "JOIN orders AS o",
+        "ON c.customer_id = o.customer_id;"
+      ],
+      "products": [
+        [
+          "1",
+          "Maya",
+          "42.00"
+        ],
+        [
+          "2",
+          "Jordan",
+          "18.50"
+        ],
+        [
+          "3",
+          "Sofia",
+          "61.00"
+        ],
+        [
+          "4",
+          "Maya",
+          "9.25"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 113,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 113,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 119,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 113,
+      "toLyric": 133
+    },
+    {
+      "id": "left-7",
+      "label": "LEFT",
+      "kind": "sql",
+      "title": "Left join",
+      "prompt": "Keep unmatched left rows",
+      "sql": [
+        "SELECT c.name, o.total",
+        "FROM customers AS c",
+        "LEFT JOIN orders AS o",
+        "ON c.customer_id = o.customer_id;"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 133,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 133,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 134,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 133,
+      "toLyric": 151
+    },
+    {
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "name"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id",
+            "total"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "title": "Same key, two tables",
+      "id": "kinds-4",
+      "label": "Match",
+      "kind": "schema",
+      "fromLyric": 151,
+      "toLyric": 153,
+      "steps": [
+        {
+          "lyricMin": 151,
+          "actions": [
+            "enter",
+            "show-schema",
+            "show-title"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "left-8",
+      "label": "LEFT",
+      "kind": "sql",
+      "title": "Left join",
+      "prompt": "Keep unmatched left rows",
+      "sql": [
+        "SELECT c.name, o.total",
+        "FROM customers AS c",
+        "LEFT JOIN orders AS o",
+        "ON c.customer_id = o.customer_id;"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 153,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 153,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 153,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 153,
+      "toLyric": 154
+    },
+    {
+      "id": "inner-6",
+      "label": "INNER",
+      "kind": "sql",
+      "title": "Inner join",
+      "prompt": "Pairs that match",
+      "sql": [
+        "SELECT c.name, o.total",
+        "FROM customers AS c",
+        "JOIN orders AS o",
+        "ON c.customer_id = o.customer_id;"
+      ],
+      "products": [
+        [
+          "1",
+          "Maya",
+          "42.00"
+        ],
+        [
+          "2",
+          "Jordan",
+          "18.50"
+        ],
+        [
+          "3",
+          "Sofia",
+          "61.00"
+        ],
+        [
+          "4",
+          "Maya",
+          "9.25"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 154,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 154,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 164,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 154,
+      "toLyric": 172
+    },
+    {
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "name"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id",
+            "total"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "title": "Same key, two tables",
+      "id": "kinds-5",
+      "label": "Match",
+      "kind": "schema",
+      "fromLyric": 172,
+      "toLyric": 177,
+      "steps": [
+        {
+          "lyricMin": 172,
+          "actions": [
+            "enter",
+            "show-schema",
+            "show-title"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "inner-7",
+      "label": "INNER",
+      "kind": "sql",
+      "title": "Inner join",
+      "prompt": "Pairs that match",
+      "sql": [
+        "SELECT c.name, o.total",
+        "FROM customers AS c",
+        "JOIN orders AS o",
+        "ON c.customer_id = o.customer_id;"
+      ],
+      "products": [
+        [
+          "1",
+          "Maya",
+          "42.00"
+        ],
+        [
+          "2",
+          "Jordan",
+          "18.50"
+        ],
+        [
+          "3",
+          "Sofia",
+          "61.00"
+        ],
+        [
+          "4",
+          "Maya",
+          "9.25"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 177,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 177,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 178,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 177,
+      "toLyric": 182
+    }
+  ],
+  "lyrics": [
+    {
+      "start": 0.05,
+      "end": 5.055,
+      "text": "A join is how you read two tables as if they were one honest list.",
+      "slide": ""
+    },
+    {
+      "start": 5.055,
+      "end": 6.819,
+      "text": "customers has names.",
+      "slide": ""
+    },
+    {
+      "start": 6.819,
+      "end": 8.361,
+      "text": "orders has totals.",
+      "slide": ""
+    },
+    {
+      "start": 8.361,
+      "end": 12.5,
+      "text": "Neither table has the full sentence: Maya spent forty-two.",
+      "slide": ""
+    },
+    {
+      "start": 12.5,
+      "end": 16.138,
+      "text": "The sentence appears when customer_id matches.",
+      "slide": ""
+    },
+    {
+      "start": 16.138,
+      "end": 23.777,
+      "text": "FROM customers JOIN orders ON customers.customer_id equals orders.customer_id.",
+      "slide": ""
+    },
+    {
+      "start": 23.777,
+      "end": 25.319,
+      "text": "ON is the match rule.",
+      "slide": ""
+    },
+    {
+      "start": 25.319,
+      "end": 29.083,
+      "text": "It is not a filter in the WHERE sense, though it looks like one.",
+      "slide": ""
+    },
+    {
+      "start": 29.083,
+      "end": 33.083,
+      "text": "It says which row on the left belongs with which row on the right.",
+      "slide": ""
+    },
+    {
+      "start": 33.083,
+      "end": 36.888,
+      "text": "Inner join keeps a pair only when both sides match.",
+      "slide": ""
+    },
+    {
+      "start": 36.888,
+      "end": 40.736,
+      "text": "Maya has two orders, so Maya appears twice.",
+      "slide": ""
+    },
+    {
+      "start": 40.736,
+      "end": 42.833,
+      "text": "That duplication is correct.",
+      "slide": ""
+    },
+    {
+      "start": 42.833,
+      "end": 44.916,
+      "text": "She really did order twice.",
+      "slide": ""
+    },
+    {
+      "start": 44.916,
+      "end": 48.569,
+      "text": "A customer with no orders disappears from an inner join.",
+      "slide": ""
+    },
+    {
+      "start": 48.569,
+      "end": 52.93,
+      "text": "An order whose customer_id is missing disappears too.",
+      "slide": ""
+    },
+    {
+      "start": 52.93,
+      "end": 56.291,
+      "text": "Left join keeps every row from the left table.",
+      "slide": ""
+    },
+    {
+      "start": 56.291,
+      "end": 59.736,
+      "text": "When there is no match, the right-hand columns are NULL.",
+      "slide": ""
+    },
+    {
+      "start": 59.736,
+      "end": 62.541,
+      "text": "Those empty cells are the point, not a bug.",
+      "slide": ""
+    },
+    {
+      "start": 62.541,
+      "end": 65.236,
+      "text": "They show you customers who have not ordered yet.",
+      "slide": ""
+    },
+    {
+      "start": 65.236,
+      "end": 68.513,
+      "text": "Right join keeps every row from the right table.",
+      "slide": ""
+    },
+    {
+      "start": 68.513,
+      "end": 72.75,
+      "text": "Most people write a left join and swap the table order instead.",
+      "slide": ""
+    },
+    {
+      "start": 72.75,
+      "end": 76.444,
+      "text": "Full join keeps unmatched rows from both sides.",
+      "slide": ""
+    },
+    {
+      "start": 76.444,
+      "end": 79.833,
+      "text": "SQLite does not ship a full join keyword.",
+      "slide": ""
+    },
+    {
+      "start": 79.833,
+      "end": 84.111,
+      "text": "You can still build the idea with a union of two left joins.",
+      "slide": ""
+    },
+    {
+      "start": 84.111,
+      "end": 87.555,
+      "text": "CROSS JOIN pairs every row with every row.",
+      "slide": ""
+    },
+    {
+      "start": 87.555,
+      "end": 91.138,
+      "text": "Four customers and four orders become sixteen rows.",
+      "slide": ""
+    },
+    {
+      "start": 91.138,
+      "end": 94.722,
+      "text": "Use it only when you mean a combination, not a match.",
+      "slide": ""
+    },
+    {
+      "start": 94.722,
+      "end": 99.305,
+      "text": "When a result explodes in size, you probably forgot the ON clause.",
+      "slide": ""
+    },
+    {
+      "start": 99.305,
+      "end": 102.722,
+      "text": "That accidental cross join is a famous mess.",
+      "slide": ""
+    },
+    {
+      "start": 102.722,
+      "end": 105.972,
+      "text": "Natural join matches columns that share a name.",
+      "slide": ""
+    },
+    {
+      "start": 105.972,
+      "end": 108.486,
+      "text": "It saves typing and hides the rule.",
+      "slide": ""
+    },
+    {
+      "start": 108.486,
+      "end": 110.958,
+      "text": "Prefer ON with explicit columns.",
+      "slide": ""
+    },
+    {
+      "start": 110.958,
+      "end": 112.555,
+      "text": "You can see the contract.",
+      "slide": ""
+    },
+    {
+      "start": 112.555,
+      "end": 115.777,
+      "text": "Join more than two tables by repeating the pattern.",
+      "slide": ""
+    },
+    {
+      "start": 115.777,
+      "end": 119.444,
+      "text": "Match orders to customers, then orders to stores.",
+      "slide": ""
+    },
+    {
+      "start": 119.444,
+      "end": 121.5,
+      "text": "Each ON is one relationship.",
+      "slide": ""
+    },
+    {
+      "start": 121.5,
+      "end": 124.694,
+      "text": "WHERE after a join filters the paired rows.",
+      "slide": ""
+    },
+    {
+      "start": 124.694,
+      "end": 129.041,
+      "text": "Put city equals Austin in WHERE if you only want Austin pairs.",
+      "slide": ""
+    },
+    {
+      "start": 129.041,
+      "end": 132.611,
+      "text": "Do not put the match itself in WHERE if you meant a left join.",
+      "slide": ""
+    },
+    {
+      "start": 132.611,
+      "end": 138.083,
+      "text": "A condition on the right table in WHERE can turn a left join back into an inner join.",
+      "slide": ""
+    },
+    {
+      "start": 138.083,
+      "end": 139.694,
+      "text": "Keep match rules in ON.",
+      "slide": ""
+    },
+    {
+      "start": 139.694,
+      "end": 143.111,
+      "text": "Keep extra filters in WHERE, and watch NULLs.",
+      "slide": ""
+    },
+    {
+      "start": 143.111,
+      "end": 145.263,
+      "text": "Aliases keep the sentence short.",
+      "slide": ""
+    },
+    {
+      "start": 145.263,
+      "end": 153.513,
+      "text": "FROM customers AS c JOIN orders AS o ON c.customer_id equals o.customer_id.",
+      "slide": ""
+    },
+    {
+      "start": 153.513,
+      "end": 156.638,
+      "text": "Qualify every column when names collide.",
+      "slide": ""
+    },
+    {
+      "start": 156.638,
+      "end": 161.361,
+      "text": "Run the inner join, then the left join, on the same ON clause.",
+      "slide": ""
+    },
+    {
+      "start": 161.361,
+      "end": 163.041,
+      "text": "Compare the row counts.",
+      "slide": ""
+    },
+    {
+      "start": 163.041,
+      "end": 166.236,
+      "text": "The extra empty cells tell you who has no partner.",
+      "slide": ""
+    },
+    {
+      "start": 166.236,
+      "end": 168.333,
+      "text": "That is the join doing its job.",
+      "slide": ""
+    },
+    {
+      "start": 168.333,
+      "end": 171.5,
+      "text": "A join condition with OR is usually a mistake.",
+      "slide": ""
+    },
+    {
+      "start": 171.5,
+      "end": 175.166,
+      "text": "You meant two different relationships, or you meant a filter.",
+      "slide": ""
+    },
+    {
+      "start": 175.166,
+      "end": 176.388,
+      "text": "Keep ON tight.",
+      "slide": ""
+    },
+    {
+      "start": 176.388,
+      "end": 182.458,
+      "text": "Inequality joins exist: every order whose total is greater than a threshold row.",
+      "slide": ""
+    },
+    {
+      "start": 182.458,
+      "end": 184.347,
+      "text": "They are rare in this course.",
+      "slide": ""
+    },
+    {
+      "start": 184.347,
+      "end": 186.694,
+      "text": "They can explode like a cross join.",
+      "slide": ""
+    },
+    {
+      "start": 186.694,
+      "end": 188.93,
+      "text": "Prefer equality on keys.",
+      "slide": ""
+    },
+    {
+      "start": 188.93,
+      "end": 192.555,
+      "text": "USING is a shorthand when both columns share a name.",
+      "slide": ""
+    },
+    {
+      "start": 192.555,
+      "end": 195.486,
+      "text": "JOIN orders USING customer_id.",
+      "slide": ""
+    },
+    {
+      "start": 195.486,
+      "end": 200.291,
+      "text": "It also folds the two columns into one in the result in some engines.",
+      "slide": ""
+    },
+    {
+      "start": 200.291,
+      "end": 202.18,
+      "text": "ON is clearer while you learn.",
+      "slide": ""
+    },
+    {
+      "start": 202.18,
+      "end": 203.972,
+      "text": "Select the columns you need.",
+      "slide": ""
+    },
+    {
+      "start": 203.972,
+      "end": 210.222,
+      "text": "SELECT star after a join duplicates customer_id and hides which table it came from.",
+      "slide": ""
+    },
+    {
+      "start": 210.222,
+      "end": 211.25,
+      "text": "Qualify.",
+      "slide": ""
+    },
+    {
+      "start": 211.25,
+      "end": 216.722,
+      "text": "c.customer_id, o.order_id, o.total.",
+      "slide": ""
+    },
+    {
+      "start": 216.722,
+      "end": 220.166,
+      "text": "When you join three tables, walk with your finger.",
+      "slide": ""
+    },
+    {
+      "start": 220.166,
+      "end": 223.361,
+      "text": "customers to orders on customer_id.",
+      "slide": ""
+    },
+    {
+      "start": 223.361,
+      "end": 226.291,
+      "text": "orders to lines on order_id.",
+      "slide": ""
+    },
+    {
+      "start": 226.291,
+      "end": 230.541,
+      "text": "If a hop is missing, you invented a cross join in the middle.",
+      "slide": ""
+    },
+    {
+      "start": 230.541,
+      "end": 236.402,
+      "text": "COUNT after a join counts pairs, not customers, unless you DISTINCT or group.",
+      "slide": ""
+    },
+    {
+      "start": 236.402,
+      "end": 239.777,
+      "text": "Maya's two orders become two in the count.",
+      "slide": ""
+    },
+    {
+      "start": 239.777,
+      "end": 243.0,
+      "text": "That is why summaries often group after they join.",
+      "slide": ""
+    },
+    {
+      "start": 243.0,
+      "end": 245.944,
+      "text": "NULL on the match column never equals NULL.",
+      "slide": ""
+    },
+    {
+      "start": 245.944,
+      "end": 249.888,
+      "text": "Those rows only survive a left join as unmatched.",
+      "slide": ""
+    },
+    {
+      "start": 249.888,
+      "end": 257.361,
+      "text": "If you stored missing customers as zero, zero will join to nothing useful unless you have a fake customer zero.",
+      "slide": ""
+    },
+    {
+      "start": 257.361,
+      "end": 262.847,
+      "text": "Prefer NULL and a left join, or a real guest customer row, and pick one.",
+      "slide": ""
+    },
+    {
+      "start": 262.847,
+      "end": 269.944,
+      "text": "Practice with the four orders and three customers until the inner and left counts are numbers you can explain.",
+      "slide": ""
+    },
+    {
+      "start": 269.944,
+      "end": 272.388,
+      "text": "Then the syntax is just spelling.",
+      "slide": ""
+    },
+    {
+      "start": 272.388,
+      "end": 274.319,
+      "text": "The idea is the match.",
+      "slide": ""
+    },
+    {
+      "start": 274.319,
+      "end": 275.583,
+      "text": "Name the match.",
+      "slide": ""
+    },
+    {
+      "start": 275.583,
+      "end": 276.666,
+      "text": "Keep it in ON.",
+      "slide": ""
+    },
+    {
+      "start": 276.666,
+      "end": 280.0,
+      "text": "Then choose which unmatched rows you still want to see.",
+      "slide": ""
+    },
+    {
+      "start": 280.0,
+      "end": 284.555,
+      "text": "A join is how you ask a question that no single table can answer.",
+      "slide": ""
+    },
+    {
+      "start": 284.555,
+      "end": 286.833,
+      "text": "Product names live on products.",
+      "slide": ""
+    },
+    {
+      "start": 286.833,
+      "end": 289.208,
+      "text": "Review text lives on reviews.",
+      "slide": ""
+    },
+    {
+      "start": 289.322,
+      "end": 293.202,
+      "text": "The question which reviews belong to which product needs both.",
+      "slide": ""
+    },
+    {
+      "start": 293.202,
+      "end": 301.716,
+      "text": "FROM products JOIN reviews ON products.product_id equals reviews.product_id is the map.",
+      "slide": ""
+    },
+    {
+      "start": 301.716,
+      "end": 303.369,
+      "text": "ON is the matching rule.",
+      "slide": ""
+    },
+    {
+      "start": 303.369,
+      "end": 304.966,
+      "text": "It is not decoration.",
+      "slide": ""
+    },
+    {
+      "start": 304.966,
+      "end": 309.452,
+      "text": "Without a matching rule, every product pairs with every review.",
+      "slide": ""
+    },
+    {
+      "start": 309.452,
+      "end": 314.16,
+      "text": "That Cartesian product is huge, and almost every pair is a lie.",
+      "slide": ""
+    },
+    {
+      "start": 314.16,
+      "end": 316.202,
+      "text": "The engine is not being clever.",
+      "slide": ""
+    },
+    {
+      "start": 316.202,
+      "end": 319.994,
+      "text": "It is being literal: you asked for every combination.",
+      "slide": ""
+    },
+    {
+      "start": 319.994,
+      "end": 322.994,
+      "text": "INNER JOIN keeps only pairs that match.",
+      "slide": ""
+    },
+    {
+      "start": 322.994,
+      "end": 326.605,
+      "text": "A product with no reviews disappears from an inner join.",
+      "slide": ""
+    },
+    {
+      "start": 326.605,
+      "end": 332.16,
+      "text": "A review whose product_id is missing from products also disappears.",
+      "slide": ""
+    },
+    {
+      "start": 332.16,
+      "end": 335.535,
+      "text": "LEFT JOIN keeps every row from the left table.",
+      "slide": ""
+    },
+    {
+      "start": 335.535,
+      "end": 338.98,
+      "text": "When there is no match, the right-hand columns are NULL.",
+      "slide": ""
+    },
+    {
+      "start": 338.98,
+      "end": 346.535,
+      "text": "That is how you find products that have never been reviewed: LEFT JOIN, then WHERE review_id IS NULL.",
+      "slide": ""
+    },
+    {
+      "start": 346.535,
+      "end": 349.855,
+      "text": "RIGHT JOIN keeps every row from the right table.",
+      "slide": ""
+    },
+    {
+      "start": 349.855,
+      "end": 357.313,
+      "text": "FULL OUTER JOIN, where the engine has it, keeps rows from both sides, with NULLs where a match is missing.",
+      "slide": ""
+    },
+    {
+      "start": 357.313,
+      "end": 360.341,
+      "text": "Most day-to-day work is inner or left.",
+      "slide": ""
+    },
+    {
+      "start": 360.341,
+      "end": 364.355,
+      "text": "Say which rows you refuse to lose before you pick the join type.",
+      "slide": ""
+    },
+    {
+      "start": 364.355,
+      "end": 367.702,
+      "text": "WHERE after a join filters the combined rows.",
+      "slide": ""
+    },
+    {
+      "start": 367.702,
+      "end": 374.035,
+      "text": "Putting a right-table filter in WHERE on a left join can accidentally turn it into an inner join.",
+      "slide": ""
+    },
+    {
+      "start": 374.035,
+      "end": 380.785,
+      "text": "If you meant to keep unmatched left rows, put that filter in ON, or test IS NULL on purpose.",
+      "slide": ""
+    },
+    {
+      "start": 380.785,
+      "end": 382.897,
+      "text": "JOIN is about how rows meet.",
+      "slide": ""
+    },
+    {
+      "start": 382.897,
+      "end": 385.938,
+      "text": "WHERE is about which combined rows you still want.",
+      "slide": ""
+    },
+    {
+      "start": 385.938,
+      "end": 393.244,
+      "text": "Aliases shorten table names so products.product_id can be p.product_id.",
+      "slide": ""
+    },
+    {
+      "start": 393.244,
+      "end": 397.244,
+      "text": "Once you alias, use the alias everywhere in that query.",
+      "slide": ""
+    },
+    {
+      "start": 397.244,
+      "end": 401.23,
+      "text": "Qualify every column that exists on more than one table.",
+      "slide": ""
+    },
+    {
+      "start": 401.23,
+      "end": 406.938,
+      "text": "product_id without a table name is ambiguous once both tables have it.",
+      "slide": ""
+    },
+    {
+      "start": 406.938,
+      "end": 410.549,
+      "text": "You can join more than two tables, one pair at a time.",
+      "slide": ""
+    },
+    {
+      "start": 410.549,
+      "end": 415.855,
+      "text": "Each ON should name a real key relationship, not a guess that two names look similar.",
+      "slide": ""
+    },
+    {
+      "start": 415.855,
+      "end": 421.16,
+      "text": "Joining on city because both tables have a city column is usually a mistake.",
+      "slide": ""
+    },
+    {
+      "start": 421.16,
+      "end": 423.23,
+      "text": "Cities are not identifiers.",
+      "slide": ""
+    },
+    {
+      "start": 423.23,
+      "end": 424.202,
+      "text": "Keys are.",
+      "slide": ""
+    },
+    {
+      "start": 424.202,
+      "end": 432.16,
+      "text": "Read a join query as: start from this table, bring matching rows from that table, then keep the ones that still matter.",
+      "slide": ""
+    },
+    {
+      "start": 432.16,
+      "end": 437.244,
+      "text": "If the row count explodes, you probably matched too loosely or forgot ON.",
+      "slide": ""
+    },
+    {
+      "start": 437.244,
+      "end": 442.869,
+      "text": "If the row count collapses to nothing, you probably inner-joined past a missing parent.",
+      "slide": ""
+    },
+    {
+      "start": 442.869,
+      "end": 446.438,
+      "text": "Check counts at each join when the result looks wrong.",
+      "slide": ""
+    },
+    {
+      "start": 446.438,
+      "end": 448.202,
+      "text": "The join is not magic.",
+      "slide": ""
+    },
+    {
+      "start": 448.202,
+      "end": 451.535,
+      "text": "It is a matching rule you can say in one sentence.",
+      "slide": ""
+    },
+    {
+      "start": 451.535,
+      "end": 455.202,
+      "text": "If you cannot say the sentence, do not write the JOIN yet.",
+      "slide": ""
+    },
+    {
+      "start": 455.202,
+      "end": 458.452,
+      "text": "WHERE versus JOIN, as the lecture insists.",
+      "slide": ""
+    },
+    {
+      "start": 458.452,
+      "end": 468.313,
+      "text": "Old style FROM products, reviews WHERE products.product_id equals reviews.product_id is an inner join in costume.",
+      "slide": ""
+    },
+    {
+      "start": 468.313,
+      "end": 471.716,
+      "text": "Miss the WHERE and you have a Cartesian product again.",
+      "slide": ""
+    },
+    {
+      "start": 471.716,
+      "end": 474.452,
+      "text": "JOIN ON makes the matching rule visible.",
+      "slide": ""
+    },
+    {
+      "start": 474.452,
+      "end": 476.355,
+      "text": "Prefer the visible form.",
+      "slide": ""
+    },
+    {
+      "start": 476.355,
+      "end": 483.452,
+      "text": "A WHERE that further filters price greater than twenty after the join is a row filter on the combined result.",
+      "slide": ""
+    },
+    {
+      "start": 483.452,
+      "end": 485.105,
+      "text": "It is not a second join.",
+      "slide": ""
+    },
+    {
+      "start": 485.105,
+      "end": 488.924,
+      "text": "People confuse them because both can mention two tables.",
+      "slide": ""
+    },
+    {
+      "start": 488.924,
+      "end": 490.619,
+      "text": "ON is for how they meet.",
+      "slide": ""
+    },
+    {
+      "start": 490.619,
+      "end": 492.563,
+      "text": "WHERE is for who remains.",
+      "slide": ""
+    },
+    {
+      "start": 492.563,
+      "end": 498.549,
+      "text": "If you write LEFT JOIN and then WHERE right.key IS NOT NULL, you asked for inner.",
+      "slide": ""
+    },
+    {
+      "start": 498.549,
+      "end": 500.799,
+      "text": "Write INNER JOIN if that is what you meant.",
+      "slide": ""
+    },
+    {
+      "start": 500.799,
+      "end": 513.008,
+      "text": "The comparison of WHERE and JOIN is this: one combines, one selects, and stuffing combine logic into WHERE is how 2010 tutorials hid the Cartesian risk.",
+      "slide": ""
+    },
+    {
+      "start": 513.008,
+      "end": 514.174,
+      "text": "Do not hide it.",
+      "slide": ""
+    },
+    {
+      "start": 514.174,
+      "end": 517.438,
+      "text": "JOIN ON, then WHERE, then the rest.",
+      "slide": ""
+    },
+    {
+      "start": 517.438,
+      "end": 521.077,
+      "text": "Close with questions, the way a careful lecture does.",
+      "slide": ""
+    },
+    {
+      "start": 521.077,
+      "end": 524.133,
+      "text": "Answer in a sentence you could defend at a keyboard.",
+      "slide": ""
+    },
+    {
+      "start": 524.133,
+      "end": 525.827,
+      "text": "What question needs a join?",
+      "slide": ""
+    },
+    {
+      "start": 525.827,
+      "end": 528.313,
+      "text": "One that no single table can answer.",
+      "slide": ""
+    },
+    {
+      "start": 528.313,
+      "end": 529.466,
+      "text": "What does ON do?",
+      "slide": ""
+    },
+    {
+      "start": 529.466,
+      "end": 532.508,
+      "text": "It states the matching rule, usually a key.",
+      "slide": ""
+    },
+    {
+      "start": 532.508,
+      "end": 534.591,
+      "text": "What is a Cartesian product here?",
+      "slide": ""
+    },
+    {
+      "start": 534.591,
+      "end": 538.049,
+      "text": "Every row paired with every row because ON was missing.",
+      "slide": ""
+    },
+    {
+      "start": 538.049,
+      "end": 539.674,
+      "text": "What does INNER JOIN drop?",
+      "slide": ""
+    },
+    {
+      "start": 539.674,
+      "end": 542.147,
+      "text": "Unmatched rows from both sides.",
+      "slide": ""
+    },
+    {
+      "start": 542.147,
+      "end": 543.799,
+      "text": "What does LEFT JOIN keep?",
+      "slide": ""
+    },
+    {
+      "start": 543.799,
+      "end": 547.855,
+      "text": "Every row from the left table, NULL on the right when missing.",
+      "slide": ""
+    },
+    {
+      "start": 547.855,
+      "end": 550.202,
+      "text": "How do you find parents with no children?",
+      "slide": ""
+    },
+    {
+      "start": 550.202,
+      "end": 553.674,
+      "text": "LEFT JOIN, then WHERE child key IS NULL.",
+      "slide": ""
+    },
+    {
+      "start": 553.674,
+      "end": 557.216,
+      "text": "When does WHERE turn a left join into an inner join?",
+      "slide": ""
+    },
+    {
+      "start": 557.216,
+      "end": 559.855,
+      "text": "When it demands a non-NULL right column.",
+      "slide": ""
+    },
+    {
+      "start": 559.855,
+      "end": 561.272,
+      "text": "Join versus WHERE?",
+      "slide": ""
+    },
+    {
+      "start": 561.272,
+      "end": 564.813,
+      "text": "JOIN combines, WHERE filters the combination.",
+      "slide": ""
+    },
+    {
+      "start": 564.813,
+      "end": 566.466,
+      "text": "Why alias tables?",
+      "slide": ""
+    },
+    {
+      "start": 566.466,
+      "end": 572.022,
+      "text": "Shorter names, required once you alias, and to qualify shared column names.",
+      "slide": ""
+    },
+    {
+      "start": 572.138,
+      "end": 574.685,
+      "text": "Why qualify product_id?",
+      "slide": ""
+    },
+    {
+      "start": 574.685,
+      "end": 576.907,
+      "text": "Both tables have it after a join.",
+      "slide": ""
+    },
+    {
+      "start": 576.907,
+      "end": 579.213,
+      "text": "Is joining on city usually right?",
+      "slide": ""
+    },
+    {
+      "start": 579.213,
+      "end": 579.976,
+      "text": "No.",
+      "slide": ""
+    },
+    {
+      "start": 579.976,
+      "end": 582.046,
+      "text": "Cities are not identifiers.",
+      "slide": ""
+    },
+    {
+      "start": 582.046,
+      "end": 584.074,
+      "text": "Why did the product name repeat?",
+      "slide": ""
+    },
+    {
+      "start": 584.074,
+      "end": 588.851,
+      "text": "Two reviews, so two result rows; the grain is the review.",
+      "slide": ""
+    },
+    {
+      "start": 588.851,
+      "end": 590.879,
+      "text": "Should you SUM price on that grain?",
+      "slide": ""
+    },
+    {
+      "start": 590.879,
+      "end": 593.949,
+      "text": "Not if you would count the product twice by accident.",
+      "slide": ""
+    },
+    {
+      "start": 593.949,
+      "end": 596.115,
+      "text": "Old comma FROM with WHERE match?",
+      "slide": ""
+    },
+    {
+      "start": 596.115,
+      "end": 599.838,
+      "text": "An inner join in costume, easy to forget the match.",
+      "slide": ""
+    },
+    {
+      "start": 599.838,
+      "end": 601.949,
+      "text": "What do you count after each join?",
+      "slide": ""
+    },
+    {
+      "start": 601.949,
+      "end": 605.643,
+      "text": "Row counts, to catch explosion or collapse.",
+      "slide": ""
+    },
+    {
+      "start": 605.643,
+      "end": 607.851,
+      "text": "RIGHT JOIN in one sentence?",
+      "slide": ""
+    },
+    {
+      "start": 607.851,
+      "end": 610.296,
+      "text": "Keep every row from the right table.",
+      "slide": ""
+    },
+    {
+      "start": 610.296,
+      "end": 612.435,
+      "text": "FULL OUTER in one sentence?",
+      "slide": ""
+    },
+    {
+      "start": 612.435,
+      "end": 616.449,
+      "text": "Keep rows from both sides, NULL where a match is missing.",
+      "slide": ""
+    },
+    {
+      "start": 616.449,
+      "end": 618.56,
+      "text": "Which two types do most work?",
+      "slide": ""
+    },
+    {
+      "start": 618.56,
+      "end": 619.99,
+      "text": "INNER and LEFT.",
+      "slide": ""
+    },
+    {
+      "start": 619.99,
+      "end": 622.546,
+      "text": "What sentence must you say before JOIN?",
+      "slide": ""
+    },
+    {
+      "start": 622.546,
+      "end": 624.032,
+      "text": "How these rows meet.",
+      "slide": ""
+    },
+    {
+      "start": 624.032,
+      "end": 625.435,
+      "text": "If you cannot say it?",
+      "slide": ""
+    },
+    {
+      "start": 625.435,
+      "end": 627.213,
+      "text": "Do not write the JOIN yet.",
+      "slide": ""
+    },
+    {
+      "start": 627.213,
+      "end": 631.935,
+      "text": "If an answer needed a second table, go draw it before you write more SQL.",
+      "slide": ""
+    }
+  ]
+}

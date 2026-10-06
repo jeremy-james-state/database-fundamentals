@@ -1,0 +1,1007 @@
+{
+  "title": "Boyce\u2013Codd normal form",
+  "subtitle": "When 3NF still leaks",
+  "audio": "narration.mp3",
+  "duration": 389.664,
+  "slides": [],
+  "scenes": [
+    {
+      "id": "rule",
+      "label": "Schedule",
+      "kind": "table",
+      "headers": [
+        "room",
+        "time_slot",
+        "teacher"
+      ],
+      "rows": [
+        [
+          "A",
+          "09:00",
+          "Lee"
+        ],
+        [
+          "A",
+          "11:00",
+          "Perez"
+        ],
+        [
+          "B",
+          "09:00",
+          "Perez"
+        ]
+      ],
+      "fromLyric": 0,
+      "toLyric": 6,
+      "steps": [
+        {
+          "lyricMin": 0,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sched",
+      "label": "Schedule",
+      "kind": "table",
+      "headers": [
+        "room",
+        "time_slot",
+        "teacher"
+      ],
+      "rows": [
+        [
+          "A",
+          "09:00",
+          "Lee"
+        ],
+        [
+          "A",
+          "11:00",
+          "Perez"
+        ],
+        [
+          "B",
+          "09:00",
+          "Perez"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 6,
+          "actions": [
+            "enter",
+            "show-header"
+          ]
+        },
+        {
+          "lyricMin": 7,
+          "actions": [
+            "reveal-rows"
+          ]
+        }
+      ],
+      "fromLyric": 6,
+      "toLyric": 21
+    },
+    {
+      "id": "when",
+      "label": "Schedule",
+      "kind": "table",
+      "headers": [
+        "room",
+        "time_slot",
+        "teacher"
+      ],
+      "rows": [
+        [
+          "A",
+          "09:00",
+          "Lee"
+        ],
+        [
+          "A",
+          "11:00",
+          "Perez"
+        ],
+        [
+          "B",
+          "09:00",
+          "Perez"
+        ]
+      ],
+      "fromLyric": 21,
+      "toLyric": 26,
+      "steps": [
+        {
+          "lyricMin": 21,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rule-2",
+      "label": "Schedule",
+      "kind": "table",
+      "headers": [
+        "room",
+        "time_slot",
+        "teacher"
+      ],
+      "rows": [
+        [
+          "A",
+          "09:00",
+          "Lee"
+        ],
+        [
+          "A",
+          "11:00",
+          "Perez"
+        ],
+        [
+          "B",
+          "09:00",
+          "Perez"
+        ]
+      ],
+      "fromLyric": 26,
+      "toLyric": 30,
+      "steps": [
+        {
+          "lyricMin": 26,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "leak",
+      "label": "Schedule",
+      "kind": "table",
+      "headers": [
+        "room",
+        "time_slot",
+        "teacher"
+      ],
+      "rows": [
+        [
+          "A",
+          "09:00",
+          "Lee"
+        ],
+        [
+          "A",
+          "11:00",
+          "Perez"
+        ],
+        [
+          "B",
+          "09:00",
+          "Perez"
+        ]
+      ],
+      "fromLyric": 30,
+      "toLyric": 34,
+      "steps": [
+        {
+          "lyricMin": 30,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sched-2",
+      "label": "Schedule",
+      "kind": "table",
+      "headers": [
+        "room",
+        "time_slot",
+        "teacher"
+      ],
+      "rows": [
+        [
+          "A",
+          "09:00",
+          "Lee"
+        ],
+        [
+          "A",
+          "11:00",
+          "Perez"
+        ],
+        [
+          "B",
+          "09:00",
+          "Perez"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 34,
+          "actions": [
+            "enter",
+            "show-header"
+          ]
+        },
+        {
+          "lyricMin": 36,
+          "actions": [
+            "reveal-rows"
+          ]
+        }
+      ],
+      "fromLyric": 34,
+      "toLyric": 44
+    },
+    {
+      "id": "rule-3",
+      "label": "Schedule",
+      "kind": "table",
+      "headers": [
+        "room",
+        "time_slot",
+        "teacher"
+      ],
+      "rows": [
+        [
+          "A",
+          "09:00",
+          "Lee"
+        ],
+        [
+          "A",
+          "11:00",
+          "Perez"
+        ],
+        [
+          "B",
+          "09:00",
+          "Perez"
+        ]
+      ],
+      "fromLyric": 44,
+      "toLyric": 69,
+      "steps": [
+        {
+          "lyricMin": 44,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "when-2",
+      "label": "Schedule",
+      "kind": "table",
+      "headers": [
+        "room",
+        "time_slot",
+        "teacher"
+      ],
+      "rows": [
+        [
+          "A",
+          "09:00",
+          "Lee"
+        ],
+        [
+          "A",
+          "11:00",
+          "Perez"
+        ],
+        [
+          "B",
+          "09:00",
+          "Perez"
+        ]
+      ],
+      "fromLyric": 69,
+      "toLyric": 76,
+      "steps": [
+        {
+          "lyricMin": 69,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rule-4",
+      "label": "Schedule",
+      "kind": "table",
+      "headers": [
+        "room",
+        "time_slot",
+        "teacher"
+      ],
+      "rows": [
+        [
+          "A",
+          "09:00",
+          "Lee"
+        ],
+        [
+          "A",
+          "11:00",
+          "Perez"
+        ],
+        [
+          "B",
+          "09:00",
+          "Perez"
+        ]
+      ],
+      "fromLyric": 76,
+      "toLyric": 94,
+      "steps": [
+        {
+          "lyricMin": 76,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "when-3",
+      "label": "Schedule",
+      "kind": "table",
+      "headers": [
+        "room",
+        "time_slot",
+        "teacher"
+      ],
+      "rows": [
+        [
+          "A",
+          "09:00",
+          "Lee"
+        ],
+        [
+          "A",
+          "11:00",
+          "Perez"
+        ],
+        [
+          "B",
+          "09:00",
+          "Perez"
+        ]
+      ],
+      "fromLyric": 94,
+      "toLyric": 98,
+      "steps": [
+        {
+          "lyricMin": 94,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    }
+  ],
+  "lyrics": [
+    {
+      "start": 0.05,
+      "end": 3.472,
+      "text": "Boyce\u2013Codd normal form is a stricter third.",
+      "slide": ""
+    },
+    {
+      "start": 3.472,
+      "end": 6.444,
+      "text": "Every determinant must be a candidate key.",
+      "slide": ""
+    },
+    {
+      "start": 6.444,
+      "end": 10.638,
+      "text": "A determinant is a set of columns that determines other columns.",
+      "slide": ""
+    },
+    {
+      "start": 10.638,
+      "end": 16.305,
+      "text": "Third normal form mostly watches non-key columns depending on other non-key columns.",
+      "slide": ""
+    },
+    {
+      "start": 16.305,
+      "end": 20.0,
+      "text": "It can miss a case where a non-key determines part of the key.",
+      "slide": ""
+    },
+    {
+      "start": 20.0,
+      "end": 23.777,
+      "text": "That case shows up with overlapping candidate keys.",
+      "slide": ""
+    },
+    {
+      "start": 23.777,
+      "end": 27.805,
+      "text": "Imagine a table of rooms, times, and teachers.",
+      "slide": ""
+    },
+    {
+      "start": 27.805,
+      "end": 30.513,
+      "text": "A room and a time determine the teacher.",
+      "slide": ""
+    },
+    {
+      "start": 30.513,
+      "end": 33.152,
+      "text": "A teacher and a time determine the room.",
+      "slide": ""
+    },
+    {
+      "start": 33.152,
+      "end": 35.416,
+      "text": "Both pairs are candidate keys.",
+      "slide": ""
+    },
+    {
+      "start": 35.416,
+      "end": 44.916,
+      "text": "If you pick room plus time as the primary key, teacher is a non-key that still determines room \u2014 a piece of the key \u2014 when you also know time.",
+      "slide": ""
+    },
+    {
+      "start": 44.916,
+      "end": 46.416,
+      "text": "The language is dry.",
+      "slide": ""
+    },
+    {
+      "start": 46.416,
+      "end": 50.277,
+      "text": "The bug is a constraint you cannot say with primary key alone.",
+      "slide": ""
+    },
+    {
+      "start": 50.277,
+      "end": 56.583,
+      "text": "Two teachers could be assigned to the same room at the same time if you only unique the wrong pair.",
+      "slide": ""
+    },
+    {
+      "start": 56.583,
+      "end": 63.611,
+      "text": "BCNF says: split until every rule of the form A determines B is a key of its table.",
+      "slide": ""
+    },
+    {
+      "start": 63.611,
+      "end": 68.986,
+      "text": "One table for room, time, teacher with a key that matches one rule.",
+      "slide": ""
+    },
+    {
+      "start": 68.986,
+      "end": 72.097,
+      "text": "Another table if a second rule still needs a home.",
+      "slide": ""
+    },
+    {
+      "start": 72.097,
+      "end": 74.861,
+      "text": "You will join them to reconstruct the schedule.",
+      "slide": ""
+    },
+    {
+      "start": 74.861,
+      "end": 78.041,
+      "text": "That join is the cost of an honest constraint.",
+      "slide": ""
+    },
+    {
+      "start": 78.041,
+      "end": 81.5,
+      "text": "Most bookstore tables never need this conversation.",
+      "slide": ""
+    },
+    {
+      "start": 81.5,
+      "end": 85.361,
+      "text": "You meet it when two different unique pairs both seem right.",
+      "slide": ""
+    },
+    {
+      "start": 85.361,
+      "end": 87.361,
+      "text": "Do not ignore the second pair.",
+      "slide": ""
+    },
+    {
+      "start": 87.361,
+      "end": 91.541,
+      "text": "Put UNIQUE on it, or split until both rules are keys.",
+      "slide": ""
+    },
+    {
+      "start": 91.541,
+      "end": 97.041,
+      "text": "If UNIQUE on both pairs is enough for your engine to refuse bad rows, you may stop.",
+      "slide": ""
+    },
+    {
+      "start": 97.041,
+      "end": 100.5,
+      "text": "BCNF is the design version of that refusal.",
+      "slide": ""
+    },
+    {
+      "start": 100.5,
+      "end": 103.708,
+      "text": "It wants the rule to be a key, not a footnote.",
+      "slide": ""
+    },
+    {
+      "start": 103.708,
+      "end": 109.833,
+      "text": "When someone says a table is in third but still feels twisty, look for overlapping keys.",
+      "slide": ""
+    },
+    {
+      "start": 109.833,
+      "end": 111.888,
+      "text": "Name both candidate keys.",
+      "slide": ""
+    },
+    {
+      "start": 111.888,
+      "end": 116.152,
+      "text": "Ask whether a non-key is determining part of the primary key.",
+      "slide": ""
+    },
+    {
+      "start": 116.152,
+      "end": 118.208,
+      "text": "If yes, you found the leak.",
+      "slide": ""
+    },
+    {
+      "start": 118.208,
+      "end": 123.416,
+      "text": "Split, or add the missing unique constraint, and write down which you chose.",
+      "slide": ""
+    },
+    {
+      "start": 123.416,
+      "end": 131.583,
+      "text": "The classic textbook example uses something like a student, a subject, and a teacher who is the only teacher of that subject.",
+      "slide": ""
+    },
+    {
+      "start": 131.583,
+      "end": 135.597,
+      "text": "If each subject has one teacher, teacher determines subject.",
+      "slide": ""
+    },
+    {
+      "start": 135.597,
+      "end": 142.347,
+      "text": "If the key was student plus subject, teacher is a non-key determining subject, a piece of the key.",
+      "slide": ""
+    },
+    {
+      "start": 142.347,
+      "end": 148.319,
+      "text": "Split: one table of subject and teacher, one table of student and subject.",
+      "slide": ""
+    },
+    {
+      "start": 148.319,
+      "end": 151.541,
+      "text": "Now each determinant is a key of its table.",
+      "slide": ""
+    },
+    {
+      "start": 151.541,
+      "end": 153.694,
+      "text": "You join to see who teaches Maya.",
+      "slide": ""
+    },
+    {
+      "start": 153.694,
+      "end": 155.68,
+      "text": "That split is BCNF.",
+      "slide": ""
+    },
+    {
+      "start": 155.68,
+      "end": 162.944,
+      "text": "If the real world allows two teachers per subject, the determinant vanished and you needed a different model anyway.",
+      "slide": ""
+    },
+    {
+      "start": 162.944,
+      "end": 166.319,
+      "text": "The form follows the rule, not the other way around.",
+      "slide": ""
+    },
+    {
+      "start": 166.319,
+      "end": 169.722,
+      "text": "Write the rules in English before you chase the acronym.",
+      "slide": ""
+    },
+    {
+      "start": 169.722,
+      "end": 172.944,
+      "text": "A room cannot host two classes at the same time.",
+      "slide": ""
+    },
+    {
+      "start": 172.944,
+      "end": 176.263,
+      "text": "A teacher cannot be in two rooms at the same time.",
+      "slide": ""
+    },
+    {
+      "start": 176.263,
+      "end": 177.777,
+      "text": "Those are two rules.",
+      "slide": ""
+    },
+    {
+      "start": 177.777,
+      "end": 181.944,
+      "text": "Two rules often want two unique pairs or two tables.",
+      "slide": ""
+    },
+    {
+      "start": 181.944,
+      "end": 185.291,
+      "text": "BCNF is a way to notice you only enforced one.",
+      "slide": ""
+    },
+    {
+      "start": 185.291,
+      "end": 190.666,
+      "text": "Do not rename third normal form to Boyce\u2013Codd on a slide to look strict.",
+      "slide": ""
+    },
+    {
+      "start": 190.666,
+      "end": 193.291,
+      "text": "Use it when overlapping keys appear.",
+      "slide": ""
+    },
+    {
+      "start": 193.291,
+      "end": 196.18,
+      "text": "Otherwise, third is the working stop.",
+      "slide": ""
+    },
+    {
+      "start": 196.18,
+      "end": 197.972,
+      "text": "The acronyms are a ladder.",
+      "slide": ""
+    },
+    {
+      "start": 197.972,
+      "end": 202.055,
+      "text": "You climb when a leak appears, not because the ladder is there.",
+      "slide": ""
+    },
+    {
+      "start": 202.055,
+      "end": 203.25,
+      "text": "Name the leak.",
+      "slide": ""
+    },
+    {
+      "start": 203.25,
+      "end": 204.791,
+      "text": "Name the determinant.",
+      "slide": ""
+    },
+    {
+      "start": 204.791,
+      "end": 205.861,
+      "text": "Make it a key.",
+      "slide": ""
+    },
+    {
+      "start": 205.861,
+      "end": 208.486,
+      "text": "That is the lesson, in one charge.",
+      "slide": ""
+    },
+    {
+      "start": 208.486,
+      "end": 211.847,
+      "text": "Write the rules on paper before you pick a primary key.",
+      "slide": ""
+    },
+    {
+      "start": 211.847,
+      "end": 216.166,
+      "text": "Each rule of the form this determines that wants to be a key somewhere.",
+      "slide": ""
+    },
+    {
+      "start": 216.166,
+      "end": 222.819,
+      "text": "If two rules overlap, one table may not be able to say both with a single primary key.",
+      "slide": ""
+    },
+    {
+      "start": 222.819,
+      "end": 225.861,
+      "text": "UNIQUE on the second pair is the small fix.",
+      "slide": ""
+    },
+    {
+      "start": 225.861,
+      "end": 227.972,
+      "text": "A split is the large fix.",
+      "slide": ""
+    },
+    {
+      "start": 227.972,
+      "end": 230.736,
+      "text": "Either fix is BCNF in spirit.",
+      "slide": ""
+    },
+    {
+      "start": 230.736,
+      "end": 234.388,
+      "text": "Ignoring the second rule is how double booking appears.",
+      "slide": ""
+    },
+    {
+      "start": 234.388,
+      "end": 236.888,
+      "text": "Double booking is not an edge case.",
+      "slide": ""
+    },
+    {
+      "start": 236.888,
+      "end": 239.18,
+      "text": "It is the rule you did not enforce.",
+      "slide": ""
+    },
+    {
+      "start": 239.18,
+      "end": 242.083,
+      "text": "Overlapping keys are rare in a bookstore.",
+      "slide": ""
+    },
+    {
+      "start": 242.083,
+      "end": 246.027,
+      "text": "They are common in schedules, assignments, and seats.",
+      "slide": ""
+    },
+    {
+      "start": 246.027,
+      "end": 248.958,
+      "text": "When you meet a schedule, remember this lesson.",
+      "slide": ""
+    },
+    {
+      "start": 248.958,
+      "end": 250.5,
+      "text": "Name both keys.",
+      "slide": ""
+    },
+    {
+      "start": 250.5,
+      "end": 251.722,
+      "text": "Enforce both.",
+      "slide": ""
+    },
+    {
+      "start": 251.722,
+      "end": 252.986,
+      "text": "Join if you split.",
+      "slide": ""
+    },
+    {
+      "start": 252.986,
+      "end": 256.069,
+      "text": "That is stricter third, in working clothes.",
+      "slide": ""
+    },
+    {
+      "start": 256.069,
+      "end": 258.583,
+      "text": "You do not need the acronym in production.",
+      "slide": ""
+    },
+    {
+      "start": 258.583,
+      "end": 260.625,
+      "text": "You need both rules on the table.",
+      "slide": ""
+    },
+    {
+      "start": 260.625,
+      "end": 261.652,
+      "text": "Put them there.",
+      "slide": ""
+    },
+    {
+      "start": 261.652,
+      "end": 264.291,
+      "text": "Then 3NF's leak is closed.",
+      "slide": ""
+    },
+    {
+      "start": 264.291,
+      "end": 268.833,
+      "text": "You can satisfy third normal form and still have a table that breaks.",
+      "slide": ""
+    },
+    {
+      "start": 268.833,
+      "end": 275.638,
+      "text": "Raymond Boyce found that in the 1970s, working examples where two candidate keys overlapped.",
+      "slide": ""
+    },
+    {
+      "start": 275.762,
+      "end": 280.462,
+      "text": "Codd's third form was protecting non-key columns from bad dependencies.",
+      "slide": ""
+    },
+    {
+      "start": 280.462,
+      "end": 288.198,
+      "text": "When a determinant was itself part of a key, third could look satisfied while a dependency still caused anomalies.",
+      "slide": ""
+    },
+    {
+      "start": 288.198,
+      "end": 295.656,
+      "text": "Boyce\u2013Codd normal form says: every determinant of a functional dependency must be a candidate key.",
+      "slide": ""
+    },
+    {
+      "start": 295.656,
+      "end": 299.587,
+      "text": "Not merely: non-keys must not depend on non-keys.",
+      "slide": ""
+    },
+    {
+      "start": 299.587,
+      "end": 311.114,
+      "text": "If room determines building in a table whose keys are (student, room) and (student, building) style overlaps, you can get a mess third did not catch cleanly.",
+      "slide": ""
+    },
+    {
+      "start": 311.114,
+      "end": 320.225,
+      "text": "A classic shape is: a table with two overlapping candidate keys, and one attribute determining another that is also in a key.",
+      "slide": ""
+    },
+    {
+      "start": 320.225,
+      "end": 327.295,
+      "text": "The fix is still a split: put the determining pair in its own table whose key is the real determinant.",
+      "slide": ""
+    },
+    {
+      "start": 327.295,
+      "end": 331.253,
+      "text": "Boyce died young, and Codd named the form after both of them.",
+      "slide": ""
+    },
+    {
+      "start": 331.253,
+      "end": 333.017,
+      "text": "The story is not trivia.",
+      "slide": ""
+    },
+    {
+      "start": 333.017,
+      "end": 337.712,
+      "text": "It is a reminder that definitions get sharper when someone tries to break them.",
+      "slide": ""
+    },
+    {
+      "start": 337.712,
+      "end": 343.989,
+      "text": "Most schemas that reached a clean third never meet a Boyce\u2013Codd violation in daily work.",
+      "slide": ""
+    },
+    {
+      "start": 343.989,
+      "end": 349.35,
+      "text": "When they do, it is usually overlapping natural keys you insisted on keeping.",
+      "slide": ""
+    },
+    {
+      "start": 349.35,
+      "end": 357.809,
+      "text": "A surrogate primary key does not automatically grant Boyce\u2013Codd if another unique combination still determines a column badly.",
+      "slide": ""
+    },
+    {
+      "start": 357.809,
+      "end": 362.17,
+      "text": "Look at every uniqueness rule, not only the PRIMARY KEY line.",
+      "slide": ""
+    },
+    {
+      "start": 362.17,
+      "end": 366.712,
+      "text": "If A determines B, A should be a candidate key of that table.",
+      "slide": ""
+    },
+    {
+      "start": 366.712,
+      "end": 369.753,
+      "text": "If A is not, B does not belong here.",
+      "slide": ""
+    },
+    {
+      "start": 369.753,
+      "end": 373.864,
+      "text": "That one sentence is the operational form of BCNF.",
+      "slide": ""
+    },
+    {
+      "start": 373.864,
+      "end": 380.225,
+      "text": "Use it when third is done and a unique constraint still feels like it is smuggling a second table.",
+      "slide": ""
+    },
+    {
+      "start": 380.225,
+      "end": 385.587,
+      "text": "Then split, and let each table have determinants that are keys, nothing less.",
+      "slide": ""
+    },
+    {
+      "start": 385.587,
+      "end": 387.253,
+      "text": "You are not being fancy.",
+      "slide": ""
+    },
+    {
+      "start": 387.253,
+      "end": 389.6,
+      "text": "You are finishing the job third started.",
+      "slide": ""
+    }
+  ]
+}

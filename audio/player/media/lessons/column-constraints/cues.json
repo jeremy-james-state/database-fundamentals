@@ -1,0 +1,1993 @@
+{
+  "title": "Column constraints",
+  "subtitle": "NOT NULL, DEFAULT, CHECK",
+  "audio": "narration.mp3",
+  "duration": 848.88,
+  "slides": [],
+  "scenes": [
+    {
+      "id": "chk",
+      "label": "Checks",
+      "kind": "sql",
+      "title": "Promises on a column",
+      "prompt": "quantity and total",
+      "sql": [
+        "CREATE TABLE orders (",
+        "  order_id INTEGER PRIMARY KEY,",
+        "  quantity INTEGER NOT NULL CHECK (quantity > 0),",
+        "  total DECIMAL(10, 2) NOT NULL CHECK (total >= 0),",
+        "  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP",
+        ");"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 0,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 5,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 5,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 0,
+      "toLyric": 6
+    },
+    {
+      "id": "trio",
+      "label": "OK",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "quantity",
+        "total"
+      ],
+      "rows": [
+        [
+          "101",
+          "2",
+          "42.00"
+        ],
+        [
+          "102",
+          "1",
+          "18.50"
+        ]
+      ],
+      "fromLyric": 6,
+      "toLyric": 9,
+      "steps": [
+        {
+          "lyricMin": 6,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chk-2",
+      "label": "Checks",
+      "kind": "sql",
+      "title": "Promises on a column",
+      "prompt": "quantity and total",
+      "sql": [
+        "CREATE TABLE orders (",
+        "  order_id INTEGER PRIMARY KEY,",
+        "  quantity INTEGER NOT NULL CHECK (quantity > 0),",
+        "  total DECIMAL(10, 2) NOT NULL CHECK (total >= 0),",
+        "  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP",
+        ");"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 9,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 24,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 25,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 9,
+      "toLyric": 31
+    },
+    {
+      "id": "nulls",
+      "label": "OK",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "quantity",
+        "total"
+      ],
+      "rows": [
+        [
+          "101",
+          "2",
+          "42.00"
+        ],
+        [
+          "102",
+          "1",
+          "18.50"
+        ]
+      ],
+      "fromLyric": 31,
+      "toLyric": 33,
+      "steps": [
+        {
+          "lyricMin": 31,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chk-3",
+      "label": "Checks",
+      "kind": "sql",
+      "title": "Promises on a column",
+      "prompt": "quantity and total",
+      "sql": [
+        "CREATE TABLE orders (",
+        "  order_id INTEGER PRIMARY KEY,",
+        "  quantity INTEGER NOT NULL CHECK (quantity > 0),",
+        "  total DECIMAL(10, 2) NOT NULL CHECK (total >= 0),",
+        "  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP",
+        ");"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 33,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 33,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 33,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 33,
+      "toLyric": 34
+    },
+    {
+      "id": "trio-2",
+      "label": "OK",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "quantity",
+        "total"
+      ],
+      "rows": [
+        [
+          "101",
+          "2",
+          "42.00"
+        ],
+        [
+          "102",
+          "1",
+          "18.50"
+        ]
+      ],
+      "fromLyric": 34,
+      "toLyric": 36,
+      "steps": [
+        {
+          "lyricMin": 34,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chk-4",
+      "label": "Checks",
+      "kind": "sql",
+      "title": "Promises on a column",
+      "prompt": "quantity and total",
+      "sql": [
+        "CREATE TABLE orders (",
+        "  order_id INTEGER PRIMARY KEY,",
+        "  quantity INTEGER NOT NULL CHECK (quantity > 0),",
+        "  total DECIMAL(10, 2) NOT NULL CHECK (total >= 0),",
+        "  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP",
+        ");"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 36,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 79,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 79,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 36,
+      "toLyric": 129
+    },
+    {
+      "id": "trio-3",
+      "label": "OK",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "quantity",
+        "total"
+      ],
+      "rows": [
+        [
+          "101",
+          "2",
+          "42.00"
+        ],
+        [
+          "102",
+          "1",
+          "18.50"
+        ]
+      ],
+      "fromLyric": 129,
+      "toLyric": 132,
+      "steps": [
+        {
+          "lyricMin": 129,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chk-5",
+      "label": "Checks",
+      "kind": "sql",
+      "title": "Promises on a column",
+      "prompt": "quantity and total",
+      "sql": [
+        "CREATE TABLE orders (",
+        "  order_id INTEGER PRIMARY KEY,",
+        "  quantity INTEGER NOT NULL CHECK (quantity > 0),",
+        "  total DECIMAL(10, 2) NOT NULL CHECK (total >= 0),",
+        "  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP",
+        ");"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 132,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 141,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 142,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 132,
+      "toLyric": 149
+    },
+    {
+      "id": "nulls-2",
+      "label": "OK",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "quantity",
+        "total"
+      ],
+      "rows": [
+        [
+          "101",
+          "2",
+          "42.00"
+        ],
+        [
+          "102",
+          "1",
+          "18.50"
+        ]
+      ],
+      "fromLyric": 149,
+      "toLyric": 154,
+      "steps": [
+        {
+          "lyricMin": 149,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chk-6",
+      "label": "Checks",
+      "kind": "sql",
+      "title": "Promises on a column",
+      "prompt": "quantity and total",
+      "sql": [
+        "CREATE TABLE orders (",
+        "  order_id INTEGER PRIMARY KEY,",
+        "  quantity INTEGER NOT NULL CHECK (quantity > 0),",
+        "  total DECIMAL(10, 2) NOT NULL CHECK (total >= 0),",
+        "  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP",
+        ");"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 154,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 157,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 158,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 154,
+      "toLyric": 171
+    },
+    {
+      "id": "english",
+      "label": "OK",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "quantity",
+        "total"
+      ],
+      "rows": [
+        [
+          "101",
+          "2",
+          "42.00"
+        ],
+        [
+          "102",
+          "1",
+          "18.50"
+        ]
+      ],
+      "fromLyric": 171,
+      "toLyric": 175,
+      "steps": [
+        {
+          "lyricMin": 171,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chk-7",
+      "label": "Checks",
+      "kind": "sql",
+      "title": "Promises on a column",
+      "prompt": "quantity and total",
+      "sql": [
+        "CREATE TABLE orders (",
+        "  order_id INTEGER PRIMARY KEY,",
+        "  quantity INTEGER NOT NULL CHECK (quantity > 0),",
+        "  total DECIMAL(10, 2) NOT NULL CHECK (total >= 0),",
+        "  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP",
+        ");"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 175,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 176,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 177,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 175,
+      "toLyric": 207
+    },
+    {
+      "id": "trio-4",
+      "label": "OK",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "quantity",
+        "total"
+      ],
+      "rows": [
+        [
+          "101",
+          "2",
+          "42.00"
+        ],
+        [
+          "102",
+          "1",
+          "18.50"
+        ]
+      ],
+      "fromLyric": 207,
+      "toLyric": 213,
+      "steps": [
+        {
+          "lyricMin": 207,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ok",
+      "label": "OK",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "quantity",
+        "total"
+      ],
+      "rows": [
+        [
+          "101",
+          "2",
+          "42.00"
+        ],
+        [
+          "102",
+          "1",
+          "18.50"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 213,
+          "actions": [
+            "enter",
+            "show-header"
+          ]
+        },
+        {
+          "lyricMin": 213,
+          "actions": [
+            "reveal-rows"
+          ]
+        }
+      ],
+      "fromLyric": 213,
+      "toLyric": 216
+    },
+    {
+      "id": "chk-8",
+      "label": "Checks",
+      "kind": "sql",
+      "title": "Promises on a column",
+      "prompt": "quantity and total",
+      "sql": [
+        "CREATE TABLE orders (",
+        "  order_id INTEGER PRIMARY KEY,",
+        "  quantity INTEGER NOT NULL CHECK (quantity > 0),",
+        "  total DECIMAL(10, 2) NOT NULL CHECK (total >= 0),",
+        "  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP",
+        ");"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 216,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 226,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 227,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 216,
+      "toLyric": 231
+    }
+  ],
+  "lyrics": [
+    {
+      "start": 0.05,
+      "end": 2.055,
+      "text": "A type is a coarse promise.",
+      "slide": ""
+    },
+    {
+      "start": 2.055,
+      "end": 6.388,
+      "text": "INTEGER says whole numbers, not that quantity is at least one.",
+      "slide": ""
+    },
+    {
+      "start": 6.388,
+      "end": 9.111,
+      "text": "Constraints are the finer promises.",
+      "slide": ""
+    },
+    {
+      "start": 9.111,
+      "end": 12.18,
+      "text": "NOT NULL means the fact must exist.",
+      "slide": ""
+    },
+    {
+      "start": 12.18,
+      "end": 13.708,
+      "text": "name TEXT NOT NULL.",
+      "slide": ""
+    },
+    {
+      "start": 13.708,
+      "end": 16.777,
+      "text": "The engine refuses an insert that skips it.",
+      "slide": ""
+    },
+    {
+      "start": 16.777,
+      "end": 20.5,
+      "text": "DEFAULT fills a value when the insert omits the column.",
+      "slide": ""
+    },
+    {
+      "start": 20.5,
+      "end": 22.555,
+      "text": "DEFAULT zero for a counter.",
+      "slide": ""
+    },
+    {
+      "start": 22.555,
+      "end": 26.861,
+      "text": "DEFAULT CURRENT_TIMESTAMP for created_at.",
+      "slide": ""
+    },
+    {
+      "start": 26.861,
+      "end": 31.875,
+      "text": "DEFAULT is not a substitute for NOT NULL if you still want the column present.",
+      "slide": ""
+    },
+    {
+      "start": 31.875,
+      "end": 33.0,
+      "text": "They pair well.",
+      "slide": ""
+    },
+    {
+      "start": 33.0,
+      "end": 35.333,
+      "text": "CHECK is a boolean test on the row.",
+      "slide": ""
+    },
+    {
+      "start": 35.333,
+      "end": 37.791,
+      "text": "CHECK quantity greater than zero.",
+      "slide": ""
+    },
+    {
+      "start": 37.791,
+      "end": 40.138,
+      "text": "CHECK rating BETWEEN one AND five.",
+      "slide": ""
+    },
+    {
+      "start": 40.138,
+      "end": 43.43,
+      "text": "CHECK price greater than or equal to zero.",
+      "slide": ""
+    },
+    {
+      "start": 43.43,
+      "end": 46.013,
+      "text": "The test may mention more than one column.",
+      "slide": ""
+    },
+    {
+      "start": 46.013,
+      "end": 50.68,
+      "text": "CHECK end_on greater than or equal to start_on.",
+      "slide": ""
+    },
+    {
+      "start": 50.68,
+      "end": 52.847,
+      "text": "Keep CHECKs cheap and obvious.",
+      "slide": ""
+    },
+    {
+      "start": 52.847,
+      "end": 58.611,
+      "text": "A CHECK that looks up another table is a foreign key, or a trigger, depending on the engine.",
+      "slide": ""
+    },
+    {
+      "start": 58.611,
+      "end": 61.694,
+      "text": "SQLite CHECKs are real if you keep them on.",
+      "slide": ""
+    },
+    {
+      "start": 61.694,
+      "end": 63.833,
+      "text": "Some old environments skipped them.",
+      "slide": ""
+    },
+    {
+      "start": 63.833,
+      "end": 64.972,
+      "text": "Know your engine.",
+      "slide": ""
+    },
+    {
+      "start": 64.972,
+      "end": 66.402,
+      "text": "Name the constraint.",
+      "slide": ""
+    },
+    {
+      "start": 66.402,
+      "end": 72.055,
+      "text": "orders_quantity_positive is a better failure than CHECK constraint failed.",
+      "slide": ""
+    },
+    {
+      "start": 72.055,
+      "end": 75.472,
+      "text": "Column constraints run on INSERT and UPDATE.",
+      "slide": ""
+    },
+    {
+      "start": 75.472,
+      "end": 78.68,
+      "text": "They do not clean rows that were loaded with checks off.",
+      "slide": ""
+    },
+    {
+      "start": 78.68,
+      "end": 82.166,
+      "text": "VALIDATE after a bulk load if your dialect can.",
+      "slide": ""
+    },
+    {
+      "start": 82.166,
+      "end": 86.555,
+      "text": "Do not encode a relationship in CHECK when a foreign key exists.",
+      "slide": ""
+    },
+    {
+      "start": 86.555,
+      "end": 90.722,
+      "text": "Do not encode a unique rule in CHECK when UNIQUE exists.",
+      "slide": ""
+    },
+    {
+      "start": 90.722,
+      "end": 93.055,
+      "text": "Use the tool that states the meaning.",
+      "slide": ""
+    },
+    {
+      "start": 93.055,
+      "end": 98.097,
+      "text": "NULL still bypasses most CHECKs, because unknown is not true.",
+      "slide": ""
+    },
+    {
+      "start": 98.097,
+      "end": 105.722,
+      "text": "If zero is allowed and empty is not, NOT NULL plus CHECK quantity greater than or equal to zero.",
+      "slide": ""
+    },
+    {
+      "start": 105.722,
+      "end": 108.291,
+      "text": "Write the promises in English first.",
+      "slide": ""
+    },
+    {
+      "start": 108.291,
+      "end": 109.527,
+      "text": "Must exist.",
+      "slide": ""
+    },
+    {
+      "start": 109.527,
+      "end": 111.694,
+      "text": "If omitted, use this.",
+      "slide": ""
+    },
+    {
+      "start": 111.694,
+      "end": 113.291,
+      "text": "Must pass this test.",
+      "slide": ""
+    },
+    {
+      "start": 113.291,
+      "end": 117.527,
+      "text": "Then NOT NULL, DEFAULT, CHECK fall out of the sentences.",
+      "slide": ""
+    },
+    {
+      "start": 117.527,
+      "end": 124.027,
+      "text": "CHECK (email LIKE %@%) is a weak email validator, and still better than nothing.",
+      "slide": ""
+    },
+    {
+      "start": 124.027,
+      "end": 127.0,
+      "text": "Do not try to parse RFC email in CHECK.",
+      "slide": ""
+    },
+    {
+      "start": 127.0,
+      "end": 131.944,
+      "text": "Do it in the application or a real library, then keep a coarse CHECK.",
+      "slide": ""
+    },
+    {
+      "start": 131.944,
+      "end": 138.916,
+      "text": "Exclusion constraints in PostgreSQL are a cousin: this range may not overlap that range.",
+      "slide": ""
+    },
+    {
+      "start": 138.916,
+      "end": 144.625,
+      "text": "They are how rooms and time slots refuse double booking when UNIQUE is not enough.",
+      "slide": ""
+    },
+    {
+      "start": 144.625,
+      "end": 145.625,
+      "text": "Know the name.",
+      "slide": ""
+    },
+    {
+      "start": 145.625,
+      "end": 147.333,
+      "text": "Use it when you meet the room.",
+      "slide": ""
+    },
+    {
+      "start": 147.333,
+      "end": 150.763,
+      "text": "DEFAULT random() is a cute way to get a surprise.",
+      "slide": ""
+    },
+    {
+      "start": 150.763,
+      "end": 151.708,
+      "text": "Do not.",
+      "slide": ""
+    },
+    {
+      "start": 151.708,
+      "end": 158.652,
+      "text": "Defaults should be dull: zero, empty forbidden, now, a known status_id.",
+      "slide": ""
+    },
+    {
+      "start": 158.652,
+      "end": 162.555,
+      "text": "A default that hides a missing fact will poison reports.",
+      "slide": ""
+    },
+    {
+      "start": 162.555,
+      "end": 169.694,
+      "text": "If you do not know the city, NULL, not Unknown string, unless Unknown is a real place in your lookup table.",
+      "slide": ""
+    },
+    {
+      "start": 169.694,
+      "end": 173.666,
+      "text": "Domain types in some engines bundle a type plus a CHECK.",
+      "slide": ""
+    },
+    {
+      "start": 173.666,
+      "end": 175.847,
+      "text": "They are reusable promises.",
+      "slide": ""
+    },
+    {
+      "start": 175.847,
+      "end": 178.75,
+      "text": "A column-level CHECK is enough while you learn.",
+      "slide": ""
+    },
+    {
+      "start": 178.75,
+      "end": 184.833,
+      "text": "Disable constraints only in a locked maintenance window, and re-enable with validation.",
+      "slide": ""
+    },
+    {
+      "start": 184.833,
+      "end": 189.222,
+      "text": "A loader that needs them off is a loader that should write to staging instead.",
+      "slide": ""
+    },
+    {
+      "start": 189.222,
+      "end": 191.166,
+      "text": "Staging has loose rules.",
+      "slide": ""
+    },
+    {
+      "start": 191.166,
+      "end": 193.263,
+      "text": "The real table has tight ones.",
+      "slide": ""
+    },
+    {
+      "start": 193.263,
+      "end": 196.5,
+      "text": "Copy with a query that only moves clean rows.",
+      "slide": ""
+    },
+    {
+      "start": 196.5,
+      "end": 200.111,
+      "text": "The promises you wrote in English are the acceptance tests.",
+      "slide": ""
+    },
+    {
+      "start": 200.111,
+      "end": 202.666,
+      "text": "NOT NULL, DEFAULT, CHECK.",
+      "slide": ""
+    },
+    {
+      "start": 202.666,
+      "end": 205.319,
+      "text": "Three tools, a lot of quiet tables.",
+      "slide": ""
+    },
+    {
+      "start": 205.319,
+      "end": 207.694,
+      "text": "Quiet tables make quiet nights.",
+      "slide": ""
+    },
+    {
+      "start": 207.694,
+      "end": 209.708,
+      "text": "A type lets 0 through.",
+      "slide": ""
+    },
+    {
+      "start": 209.708,
+      "end": 212.791,
+      "text": "A CHECK decides whether 0 is a quantity.",
+      "slide": ""
+    },
+    {
+      "start": 212.791,
+      "end": 216.361,
+      "text": "A DEFAULT decides what happens when the app is silent.",
+      "slide": ""
+    },
+    {
+      "start": 216.361,
+      "end": 219.111,
+      "text": "NOT NULL decides whether silence is allowed.",
+      "slide": ""
+    },
+    {
+      "start": 219.111,
+      "end": 222.333,
+      "text": "Four decisions, four tools if you count the type.",
+      "slide": ""
+    },
+    {
+      "start": 222.333,
+      "end": 225.43,
+      "text": "Skip one, and the table will invent a meaning.",
+      "slide": ""
+    },
+    {
+      "start": 225.43,
+      "end": 230.027,
+      "text": "Invented meanings show up in dashboards as mysterious zeros.",
+      "slide": ""
+    },
+    {
+      "start": 230.027,
+      "end": 232.736,
+      "text": "Mysterious zeros become meetings.",
+      "slide": ""
+    },
+    {
+      "start": 232.736,
+      "end": 236.597,
+      "text": "Meetings are more expensive than CHECK (quantity > 0).",
+      "slide": ""
+    },
+    {
+      "start": 236.597,
+      "end": 237.791,
+      "text": "Name the CHECK.",
+      "slide": ""
+    },
+    {
+      "start": 237.791,
+      "end": 239.416,
+      "text": "Refuse the mystery.",
+      "slide": ""
+    },
+    {
+      "start": 239.416,
+      "end": 242.055,
+      "text": "English first, keywords second.",
+      "slide": ""
+    },
+    {
+      "start": 242.055,
+      "end": 246.694,
+      "text": "The table will keep the promise at 2 a.m. when nobody is in the meeting.",
+      "slide": ""
+    },
+    {
+      "start": 246.694,
+      "end": 248.805,
+      "text": "That is the point of a constraint.",
+      "slide": ""
+    },
+    {
+      "start": 248.805,
+      "end": 255.625,
+      "text": "NOT NULL, DEFAULT, and CHECK look optional until a NULL status means pending and failed at once.",
+      "slide": ""
+    },
+    {
+      "start": 255.625,
+      "end": 257.875,
+      "text": "NULL is unknown or missing.",
+      "slide": ""
+    },
+    {
+      "start": 257.875,
+      "end": 269.805,
+      "text": "Aggregates that meet a NULL can go quiet: SUM of a set containing NULL may ignore it, AVG too, while an expression like price plus tax becomes NULL if tax is NULL.",
+      "slide": ""
+    },
+    {
+      "start": 269.805,
+      "end": 272.291,
+      "text": "Know the difference before you allow the hole.",
+      "slide": ""
+    },
+    {
+      "start": 272.291,
+      "end": 277.402,
+      "text": "NOT NULL means the column will not accept NULL on INSERT or UPDATE.",
+      "slide": ""
+    },
+    {
+      "start": 277.402,
+      "end": 282.375,
+      "text": "Username, password hash, and last name often cannot be holes.",
+      "slide": ""
+    },
+    {
+      "start": 282.375,
+      "end": 285.75,
+      "text": "Phone might be a hole if the business does not require it.",
+      "slide": ""
+    },
+    {
+      "start": 285.866,
+      "end": 292.024,
+      "text": "People treat NOT NULL as a column property, like a type, so it is often unnamed.",
+      "slide": ""
+    },
+    {
+      "start": 292.024,
+      "end": 293.899,
+      "text": "You still choose it on purpose.",
+      "slide": ""
+    },
+    {
+      "start": 293.899,
+      "end": 297.107,
+      "text": "A primary key already implies NOT NULL.",
+      "slide": ""
+    },
+    {
+      "start": 297.107,
+      "end": 299.024,
+      "text": "Saying it twice is noise.",
+      "slide": ""
+    },
+    {
+      "start": 299.024,
+      "end": 305.218,
+      "text": "Saying it on email when email is UNIQUE is not noise if you refuse accounts without email.",
+      "slide": ""
+    },
+    {
+      "start": 305.218,
+      "end": 309.024,
+      "text": "DEFAULT supplies a value when INSERT omits the column.",
+      "slide": ""
+    },
+    {
+      "start": 309.024,
+      "end": 311.718,
+      "text": "It is not a check that the value is wise.",
+      "slide": ""
+    },
+    {
+      "start": 311.718,
+      "end": 317.302,
+      "text": "DEFAULT CURRENT_TIMESTAMP on created_at writes the clock you meant.",
+      "slide": ""
+    },
+    {
+      "start": 317.302,
+      "end": 321.302,
+      "text": "DEFAULT zero on a quantity can hide a forgotten value.",
+      "slide": ""
+    },
+    {
+      "start": 321.302,
+      "end": 324.663,
+      "text": "Choose defaults that are true history, not a shrug.",
+      "slide": ""
+    },
+    {
+      "start": 324.663,
+      "end": 332.774,
+      "text": "A new NOT NULL column on a table that already has rows needs a default, or the ALTER fails, or old rows become lies.",
+      "slide": ""
+    },
+    {
+      "start": 332.774,
+      "end": 335.927,
+      "text": "CHECK is a boolean test the row must pass.",
+      "slide": ""
+    },
+    {
+      "start": 335.927,
+      "end": 340.413,
+      "text": "CHECK (price >= 0) stops a negative price.",
+      "slide": ""
+    },
+    {
+      "start": 340.413,
+      "end": 347.774,
+      "text": "CHECK (status IN ('open', 'paid', 'canceled')) stops a status nobody defined.",
+      "slide": ""
+    },
+    {
+      "start": 347.774,
+      "end": 353.441,
+      "text": "CHECK can compare two columns: end_date >= start_date.",
+      "slide": ""
+    },
+    {
+      "start": 353.441,
+      "end": 357.01,
+      "text": "Keep CHECK expressions sargable and obvious.",
+      "slide": ""
+    },
+    {
+      "start": 357.01,
+      "end": 361.566,
+      "text": "A check that calls a vague function nobody can read will not be maintained.",
+      "slide": ""
+    },
+    {
+      "start": 361.566,
+      "end": 363.232,
+      "text": "Some engines skip CHECK.",
+      "slide": ""
+    },
+    {
+      "start": 363.232,
+      "end": 364.288,
+      "text": "Know yours.",
+      "slide": ""
+    },
+    {
+      "start": 364.288,
+      "end": 366.538,
+      "text": "NOT NULL is about presence.",
+      "slide": ""
+    },
+    {
+      "start": 366.538,
+      "end": 369.385,
+      "text": "DEFAULT is about what presence is assumed.",
+      "slide": ""
+    },
+    {
+      "start": 369.385,
+      "end": 372.718,
+      "text": "CHECK is about whether the present value is legal.",
+      "slide": ""
+    },
+    {
+      "start": 372.718,
+      "end": 376.246,
+      "text": "Together they encode business rules next to the type.",
+      "slide": ""
+    },
+    {
+      "start": 376.246,
+      "end": 380.024,
+      "text": "Application code still validates for friendly errors.",
+      "slide": ""
+    },
+    {
+      "start": 380.024,
+      "end": 386.788,
+      "text": "The table validates for truth when a second writer appears, or a tool, or a tired INSERT.",
+      "slide": ""
+    },
+    {
+      "start": 386.788,
+      "end": 392.802,
+      "text": "Ignore them and the database will store a negative salary with a NULL status and a smile.",
+      "slide": ""
+    },
+    {
+      "start": 392.802,
+      "end": 399.496,
+      "text": "Name CHECK constraints so the error names the rule: orders_total_nonnegative.",
+      "slide": ""
+    },
+    {
+      "start": 399.496,
+      "end": 402.899,
+      "text": "Then a failed write is a sentence, not a puzzle.",
+      "slide": ""
+    },
+    {
+      "start": 402.899,
+      "end": 407.441,
+      "text": "Write the three on every column that has a rule in the interviews.",
+      "slide": ""
+    },
+    {
+      "start": 407.441,
+      "end": 412.913,
+      "text": "If the interview never said the rule, do not invent a CHECK that will surprise the business.",
+      "slide": ""
+    },
+    {
+      "start": 412.913,
+      "end": 415.816,
+      "text": "Constraints are requirements in SQL form.",
+      "slide": ""
+    },
+    {
+      "start": 415.816,
+      "end": 417.135,
+      "text": "Not decoration.",
+      "slide": ""
+    },
+    {
+      "start": 417.135,
+      "end": 418.163,
+      "text": "Not later.",
+      "slide": ""
+    },
+    {
+      "start": 418.163,
+      "end": 422.441,
+      "text": "On the column, when you CREATE, while you still remember why.",
+      "slide": ""
+    },
+    {
+      "start": 422.441,
+      "end": 428.704,
+      "text": "Revisit them when a rule changes, with ALTER, the same as any other contract.",
+      "slide": ""
+    },
+    {
+      "start": 428.704,
+      "end": 435.816,
+      "text": "A status that gained a new legal value needs the CHECK rewritten, not a silent VARCHAR that already allowed it.",
+      "slide": ""
+    },
+    {
+      "start": 435.816,
+      "end": 439.468,
+      "text": "That rewrite is cheaper than a year of fake statuses.",
+      "slide": ""
+    },
+    {
+      "start": 439.468,
+      "end": 449.454,
+      "text": "Practice: take one table from the store schema and say for each column: hole or not, default or not, extra test or not.",
+      "slide": ""
+    },
+    {
+      "start": 449.454,
+      "end": 453.038,
+      "text": "If you cannot answer, the requirement is unfinished.",
+      "slide": ""
+    },
+    {
+      "start": 453.038,
+      "end": 456.038,
+      "text": "Finish the requirement, then the constraint.",
+      "slide": ""
+    },
+    {
+      "start": 456.038,
+      "end": 460.454,
+      "text": "That is how NOT NULL, DEFAULT, and CHECK earn their keep.",
+      "slide": ""
+    },
+    {
+      "start": 460.454,
+      "end": 472.399,
+      "text": "Dialect notes without turning into a vendor manual: some engines ignore CHECK, some allow multiple NULLs under UNIQUE, some attach NOT NULL as a property you cannot name.",
+      "slide": ""
+    },
+    {
+      "start": 472.399,
+      "end": 473.454,
+      "text": "Read yours.",
+      "slide": ""
+    },
+    {
+      "start": 473.454,
+      "end": 479.524,
+      "text": "The ideas stay: refuse holes, fill omissions, refuse illegal values.",
+      "slide": ""
+    },
+    {
+      "start": 479.524,
+      "end": 489.371,
+      "text": "If CHECK is missing in an engine, you might use a trigger, which is a later tool, or you refuse in the application and accept the risk of a second writer.",
+      "slide": ""
+    },
+    {
+      "start": 489.371,
+      "end": 492.607,
+      "text": "Prefer an engine that can CHECK if the rule matters.",
+      "slide": ""
+    },
+    {
+      "start": 492.607,
+      "end": 499.093,
+      "text": "This course is fundamentals: the rule belongs next to the column whenever the engine can hold it.",
+      "slide": ""
+    },
+    {
+      "start": 499.093,
+      "end": 506.663,
+      "text": "Walk DEFAULT CURRENT_DATE on an order_date and then INSERT an explicit old date for backfill.",
+      "slide": ""
+    },
+    {
+      "start": 506.663,
+      "end": 509.593,
+      "text": "Explicit values override defaults.",
+      "slide": ""
+    },
+    {
+      "start": 509.593,
+      "end": 513.066,
+      "text": "Defaults are for omission, not for locking the column.",
+      "slide": ""
+    },
+    {
+      "start": 513.066,
+      "end": 516.288,
+      "text": "CHECK still validates the explicit old date.",
+      "slide": ""
+    },
+    {
+      "start": 516.288,
+      "end": 520.482,
+      "text": "If backfill can be yesterday, the check must allow yesterday.",
+      "slide": ""
+    },
+    {
+      "start": 520.482,
+      "end": 526.454,
+      "text": "If it cannot, the check and the backfill policy disagree, and you found a requirement bug.",
+      "slide": ""
+    },
+    {
+      "start": 526.454,
+      "end": 530.843,
+      "text": "That is why this lecture is long: every keyword meets a policy.",
+      "slide": ""
+    },
+    {
+      "start": 530.843,
+      "end": 534.482,
+      "text": "Close with questions, the way a careful lecture does.",
+      "slide": ""
+    },
+    {
+      "start": 534.482,
+      "end": 537.538,
+      "text": "Answer in a sentence you could defend at a keyboard.",
+      "slide": ""
+    },
+    {
+      "start": 537.538,
+      "end": 538.593,
+      "text": "What is NULL?",
+      "slide": ""
+    },
+    {
+      "start": 538.593,
+      "end": 542.829,
+      "text": "Unknown or missing, not zero, not empty string.",
+      "slide": ""
+    },
+    {
+      "start": 542.829,
+      "end": 544.579,
+      "text": "What does NOT NULL refuse?",
+      "slide": ""
+    },
+    {
+      "start": 544.579,
+      "end": 546.677,
+      "text": "Holes on INSERT and UPDATE.",
+      "slide": ""
+    },
+    {
+      "start": 546.677,
+      "end": 548.191,
+      "text": "What does DEFAULT do?",
+      "slide": ""
+    },
+    {
+      "start": 548.191,
+      "end": 551.399,
+      "text": "Fills a value when INSERT omits the column.",
+      "slide": ""
+    },
+    {
+      "start": 551.399,
+      "end": 553.746,
+      "text": "Does DEFAULT block bad UPDATEs?",
+      "slide": ""
+    },
+    {
+      "start": 553.746,
+      "end": 554.51,
+      "text": "No.",
+      "slide": ""
+    },
+    {
+      "start": 554.51,
+      "end": 555.607,
+      "text": "CHECK does.",
+      "slide": ""
+    },
+    {
+      "start": 555.607,
+      "end": 556.843,
+      "text": "What does CHECK do?",
+      "slide": ""
+    },
+    {
+      "start": 556.843,
+      "end": 559.441,
+      "text": "A boolean test the row must pass.",
+      "slide": ""
+    },
+    {
+      "start": 559.441,
+      "end": 562.135,
+      "text": "SUM versus a plus expression with NULL?",
+      "slide": ""
+    },
+    {
+      "start": 562.135,
+      "end": 565.371,
+      "text": "SUM often skips NULL; plus becomes NULL.",
+      "slide": ""
+    },
+    {
+      "start": 565.371,
+      "end": 568.149,
+      "text": "DEFAULT zero on unknown quantity?",
+      "slide": ""
+    },
+    {
+      "start": 568.149,
+      "end": 569.066,
+      "text": "A lie.",
+      "slide": ""
+    },
+    {
+      "start": 569.066,
+      "end": 571.135,
+      "text": "Zero is a real quantity.",
+      "slide": ""
+    },
+    {
+      "start": 571.135,
+      "end": 574.524,
+      "text": "NOT NULL plus DEFAULT plus CHECK on status?",
+      "slide": ""
+    },
+    {
+      "start": 574.524,
+      "end": 577.677,
+      "text": "Presence, starting value, legal list.",
+      "slide": ""
+    },
+    {
+      "start": 577.802,
+      "end": 579.238,
+      "text": "New legal status?",
+      "slide": ""
+    },
+    {
+      "start": 579.238,
+      "end": 582.446,
+      "text": "ALTER the CHECK, do not hope VARCHAR allows it.",
+      "slide": ""
+    },
+    {
+      "start": 582.446,
+      "end": 583.682,
+      "text": "Why name CHECK?",
+      "slide": ""
+    },
+    {
+      "start": 583.682,
+      "end": 585.571,
+      "text": "So the error names the rule.",
+      "slide": ""
+    },
+    {
+      "start": 585.571,
+      "end": 587.321,
+      "text": "Do some engines skip CHECK?",
+      "slide": ""
+    },
+    {
+      "start": 587.321,
+      "end": 588.224,
+      "text": "Yes.",
+      "slide": ""
+    },
+    {
+      "start": 588.224,
+      "end": 589.279,
+      "text": "Know yours.",
+      "slide": ""
+    },
+    {
+      "start": 589.279,
+      "end": 591.21,
+      "text": "Is NOT NULL usually named?",
+      "slide": ""
+    },
+    {
+      "start": 591.21,
+      "end": 593.64,
+      "text": "Often treated as a column property.",
+      "slide": ""
+    },
+    {
+      "start": 593.64,
+      "end": 595.738,
+      "text": "Primary key and NOT NULL?",
+      "slide": ""
+    },
+    {
+      "start": 595.738,
+      "end": 598.835,
+      "text": "Primary key already implies NOT NULL.",
+      "slide": ""
+    },
+    {
+      "start": 598.835,
+      "end": 600.265,
+      "text": "Test which writes?",
+      "slide": ""
+    },
+    {
+      "start": 600.265,
+      "end": 605.099,
+      "text": "INSERT omit, INSERT illegal, UPDATE illegal, UPDATE NULL.",
+      "slide": ""
+    },
+    {
+      "start": 605.099,
+      "end": 607.821,
+      "text": "Are the three keywords the same sentence?",
+      "slide": ""
+    },
+    {
+      "start": 607.821,
+      "end": 608.585,
+      "text": "No.",
+      "slide": ""
+    },
+    {
+      "start": 608.585,
+      "end": 613.224,
+      "text": "Required, if omitted use this, if present it must pass.",
+      "slide": ""
+    },
+    {
+      "start": 613.224,
+      "end": 614.377,
+      "text": "Second writer?",
+      "slide": ""
+    },
+    {
+      "start": 614.377,
+      "end": 617.502,
+      "text": "The table still enforces when an app does not.",
+      "slide": ""
+    },
+    {
+      "start": 617.502,
+      "end": 618.765,
+      "text": "Negative salary?",
+      "slide": ""
+    },
+    {
+      "start": 618.765,
+      "end": 624.029,
+      "text": "CHECK (salary >= 0), and NOT NULL if it must exist.",
+      "slide": ""
+    },
+    {
+      "start": 624.029,
+      "end": 626.085,
+      "text": "created_at DEFAULT?",
+      "slide": ""
+    },
+    {
+      "start": 626.085,
+      "end": 628.265,
+      "text": "A true clock, not a shrug.",
+      "slide": ""
+    },
+    {
+      "start": 628.265,
+      "end": 630.696,
+      "text": "ALTER add NOT NULL to old rows?",
+      "slide": ""
+    },
+    {
+      "start": 630.696,
+      "end": 633.39,
+      "text": "Need a default or fill the holes first.",
+      "slide": ""
+    },
+    {
+      "start": 633.39,
+      "end": 634.835,
+      "text": "When do you skip a CHECK?",
+      "slide": ""
+    },
+    {
+      "start": 634.835,
+      "end": 637.988,
+      "text": "Only with a reason the data owner would agree to.",
+      "slide": ""
+    },
+    {
+      "start": 637.988,
+      "end": 639.96,
+      "text": "What is this lecture really about?",
+      "slide": ""
+    },
+    {
+      "start": 639.96,
+      "end": 643.724,
+      "text": "Business rules next to types, not optional decoration.",
+      "slide": ""
+    },
+    {
+      "start": 643.724,
+      "end": 645.293,
+      "text": "Dialect differences?",
+      "slide": ""
+    },
+    {
+      "start": 645.293,
+      "end": 649.585,
+      "text": "Read yours for CHECK and UNIQUE NULL, keep the three ideas.",
+      "slide": ""
+    },
+    {
+      "start": 649.585,
+      "end": 652.127,
+      "text": "Explicit INSERT versus default?",
+      "slide": ""
+    },
+    {
+      "start": 652.127,
+      "end": 655.279,
+      "text": "Explicit wins; CHECK still validates.",
+      "slide": ""
+    },
+    {
+      "start": 655.279,
+      "end": 657.029,
+      "text": "Backfill versus CHECK?",
+      "slide": ""
+    },
+    {
+      "start": 657.029,
+      "end": 660.863,
+      "text": "If they disagree, the requirement is unfinished.",
+      "slide": ""
+    },
+    {
+      "start": 660.863,
+      "end": 662.154,
+      "text": "Three tests?",
+      "slide": ""
+    },
+    {
+      "start": 662.154,
+      "end": 665.543,
+      "text": "NULL path, default path, illegal value.",
+      "slide": ""
+    },
+    {
+      "start": 665.543,
+      "end": 666.321,
+      "text": "Goal?",
+      "slide": ""
+    },
+    {
+      "start": 666.321,
+      "end": 668.932,
+      "text": "Boring columns that refuse nonsense.",
+      "slide": ""
+    },
+    {
+      "start": 668.932,
+      "end": 670.599,
+      "text": "Optional constraints?",
+      "slide": ""
+    },
+    {
+      "start": 670.599,
+      "end": 672.682,
+      "text": "How negative salaries arrived.",
+      "slide": ""
+    },
+    {
+      "start": 672.682,
+      "end": 673.807,
+      "text": "When to write them?",
+      "slide": ""
+    },
+    {
+      "start": 673.807,
+      "end": 676.377,
+      "text": "At CREATE, while you remember why.",
+      "slide": ""
+    },
+    {
+      "start": 676.377,
+      "end": 677.64,
+      "text": "When to revisit?",
+      "slide": ""
+    },
+    {
+      "start": 677.64,
+      "end": 680.085,
+      "text": "When a rule changes, with ALTER.",
+      "slide": ""
+    },
+    {
+      "start": 680.085,
+      "end": 682.154,
+      "text": "If the interview never said the rule?",
+      "slide": ""
+    },
+    {
+      "start": 682.154,
+      "end": 684.39,
+      "text": "Do not invent a surprising CHECK.",
+      "slide": ""
+    },
+    {
+      "start": 684.39,
+      "end": 689.113,
+      "text": "If an answer needed a second table, go draw it before you write more SQL.",
+      "slide": ""
+    },
+    {
+      "start": 689.113,
+      "end": 710.265,
+      "text": "Walk every column on orders: order_id PRIMARY KEY, customer_id NOT NULL REFERENCES, placed_at NOT NULL DEFAULT now, status NOT NULL DEFAULT open CHECK in the list, total DECIMAL NOT NULL CHECK greater than or equal to zero, notes TEXT NULL.",
+      "slide": ""
+    },
+    {
+      "start": 710.265,
+      "end": 713.488,
+      "text": "That one table is the whole lecture in costume.",
+      "slide": ""
+    },
+    {
+      "start": 713.488,
+      "end": 716.043,
+      "text": "order_id is identity.",
+      "slide": ""
+    },
+    {
+      "start": 716.043,
+      "end": 722.168,
+      "text": "customer_id is presence plus a foreign key, which is next door's lesson.",
+      "slide": ""
+    },
+    {
+      "start": 722.168,
+      "end": 726.863,
+      "text": "placed_at refuses holes and fills the clock when omitted.",
+      "slide": ""
+    },
+    {
+      "start": 726.863,
+      "end": 732.307,
+      "text": "status refuses holes, starts open, refuses invented words.",
+      "slide": ""
+    },
+    {
+      "start": 732.307,
+      "end": 736.043,
+      "text": "total refuses holes and refuses negative money.",
+      "slide": ""
+    },
+    {
+      "start": 736.043,
+      "end": 741.904,
+      "text": "notes may be a hole, and empty string is a different choice you should not mix without a rule.",
+      "slide": ""
+    },
+    {
+      "start": 741.904,
+      "end": 746.724,
+      "text": "INSERT that omits status becomes open, then CHECK still accepts open.",
+      "slide": ""
+    },
+    {
+      "start": 746.724,
+      "end": 751.085,
+      "text": "UPDATE status to shipped fails until shipped is in the list.",
+      "slide": ""
+    },
+    {
+      "start": 751.085,
+      "end": 756.349,
+      "text": "UPDATE total to minus one fails even though the row already existed.",
+      "slide": ""
+    },
+    {
+      "start": 756.349,
+      "end": 763.293,
+      "text": "INSERT that omits notes stores NULL, and COUNT notes ignores that row, while COUNT star does not.",
+      "slide": ""
+    },
+    {
+      "start": 763.293,
+      "end": 767.252,
+      "text": "That NULL lesson again, now attached to a real column.",
+      "slide": ""
+    },
+    {
+      "start": 767.252,
+      "end": 772.349,
+      "text": "DEFAULT and CHECK together on status are why marketing cannot sneak a string.",
+      "slide": ""
+    },
+    {
+      "start": 772.349,
+      "end": 779.154,
+      "text": "NOT NULL on total is why a forgotten total is not a silent NULL that poisons a plus tax expression.",
+      "slide": ""
+    },
+    {
+      "start": 779.154,
+      "end": 786.168,
+      "text": "If tax is a separate column, decide NOT NULL DEFAULT zero versus NULL means unknown tax.",
+      "slide": ""
+    },
+    {
+      "start": 786.168,
+      "end": 788.71,
+      "text": "Unknown tax cannot be invoiced.",
+      "slide": ""
+    },
+    {
+      "start": 788.71,
+      "end": 794.043,
+      "text": "So NOT NULL DEFAULT zero may be honest for tax, and a lie for quantity.",
+      "slide": ""
+    },
+    {
+      "start": 794.043,
+      "end": 795.099,
+      "text": "Say which.",
+      "slide": ""
+    },
+    {
+      "start": 795.099,
+      "end": 800.39,
+      "text": "Write the CHECK that quantity is greater than zero if free gifts are stored another way.",
+      "slide": ""
+    },
+    {
+      "start": 800.39,
+      "end": 808.377,
+      "text": "If free gifts exist, quantity greater than or equal to zero, and a gift flag, or a zero-price product.",
+      "slide": ""
+    },
+    {
+      "start": 808.377,
+      "end": 810.043,
+      "text": "The CHECK is the policy.",
+      "slide": ""
+    },
+    {
+      "start": 810.043,
+      "end": 817.46,
+      "text": "Eighteen minutes is policies meeting keywords, over and over, until you can do it cold on a new table.",
+      "slide": ""
+    },
+    {
+      "start": 817.46,
+      "end": 829.807,
+      "text": "Do it cold on reviews next: review_id, product_id NOT NULL, body NOT NULL, rating CHECK between one and five, created_at DEFAULT now.",
+      "slide": ""
+    },
+    {
+      "start": 829.807,
+      "end": 836.682,
+      "text": "If rating can be skipped, allow NULL and do not DEFAULT three, because three is a real opinion.",
+      "slide": ""
+    },
+    {
+      "start": 836.682,
+      "end": 841.043,
+      "text": "That is the last mile of NOT NULL, DEFAULT, and CHECK.",
+      "slide": ""
+    },
+    {
+      "start": 841.043,
+      "end": 843.474,
+      "text": "You are not recapping three words.",
+      "slide": ""
+    },
+    {
+      "start": 843.474,
+      "end": 848.807,
+      "text": "You are refusing fake ratings, fake totals, and fake statuses at the door.",
+      "slide": ""
+    }
+  ]
+}

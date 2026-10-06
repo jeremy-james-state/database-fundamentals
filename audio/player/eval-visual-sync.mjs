@@ -5,7 +5,7 @@
  *
  *   node audio/player/eval-visual-sync.mjs
  */
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { SCENES, sceneAtLyric, activeActions } from "./visual-stage.js";
@@ -204,4 +204,92 @@ if (!findings.length) {
   console.log("No high-confidence mismatches.");
 }
 
-process.exit(fails.length ? 1 : 0);
+function playlistActions(scene, lyricIndex) {
+  const actions = new Set();
+  for (const step of scene.steps || []) {
+    if (step.lyricMin == null || lyricIndex >= step.lyricMin) {
+      for (const a of step.actions || []) actions.add(a);
+    }
+  }
+  return actions;
+}
+
+function sceneAtCues(scenes, i) {
+  return scenes.find((s) => i >= s.fromLyric && i < s.toLyric) || scenes[scenes.length - 1];
+}
+
+const catalog = JSON.parse(readFileSync(join(dir, "media/lessons.json"), "utf8"));
+let playlistFails = 0;
+console.log("\nPlaylist lessons 2–28\n");
+for (const lesson of catalog.lessons || []) {
+  if (lesson.id === "relational-databases") continue;
+  const cuesPath = join(dir, lesson.cues);
+  if (!existsSync(cuesPath)) {
+    playlistFails += 1;
+    console.log(`FAIL ${lesson.id} missing cues`);
+    continue;
+  }
+  const data = JSON.parse(readFileSync(cuesPath, "utf8"));
+  const lines = data.lyrics || [];
+  const scenes = data.scenes || [];
+  if (!scenes.length) {
+    playlistFails += 1;
+    console.log(`FAIL ${lesson.id} no scenes`);
+    continue;
+  }
+  let local = 0;
+  for (let i = 0; i < lines.length; i += 1) {
+    const text = String(lines[i].text || "");
+    const scene = sceneAtCues(scenes, i);
+    if (!scene) {
+      local += 1;
+      console.log(`FAIL ${lesson.id} L${i} uncovered`);
+      break;
+    }
+    const acts = playlistActions(scene, i);
+    const dataTalk =
+      /\b(maya|jordan|sofia|four rows|without a filter|ordered twice|picture an orders)\b/i.test(text);
+    if (scene.kind === "bullets") {
+      local += 1;
+      console.log(`FAIL ${lesson.id} L${i} text-only bullets: “${text.slice(0, 72)}”`);
+      break;
+    }
+    if (scene.kind === "table" && (scene.rows || []).length && dataTalk && !acts.has("reveal-rows") && !acts.has("show-header")) {
+      local += 1;
+      console.log(`FAIL ${lesson.id} L${i} table rows hidden while speaking data: “${text.slice(0, 72)}”`);
+    }
+    if (lesson.id === "filter-and-summarize") {
+      const teachFilter = /\b(AND requires|OR lets|Parentheses keep|city equals Austin|total greater than|You can ask for both)\b/i.test(text);
+      if (teachFilter && scene.kind === "sql") {
+        local += 1;
+        console.log(`FAIL ${lesson.id} L${i} filter lyric on SQL card, need table: “${text.slice(0, 72)}”`);
+      }
+      if (teachFilter && scene.kind === "table" && !/keep-rows:|split-binds|pulse-col:|cond-cols:|parens/.test([...acts].join(","))) {
+        local += 1;
+        console.log(`FAIL ${lesson.id} L${i} filter lyric without row/column choreography: “${text.slice(0, 72)}”`);
+      }
+    }
+  }
+  const tableScenes = scenes.filter((s) => s.kind === "table" && (s.rows || []).length);
+  for (const scene of tableScenes) {
+    const reveal = (scene.steps || []).find((st) => (st.actions || []).includes("reveal-rows"));
+    if (!reveal) {
+      local += 1;
+      console.log(`FAIL ${lesson.id} ${scene.id} has rows but no reveal-rows`);
+      continue;
+    }
+    if (reveal.lyricMin > scene.fromLyric + 3) {
+      local += 1;
+      console.log(
+        `FAIL ${lesson.id} ${scene.id} reveal-rows at ${reveal.lyricMin} (scene starts ${scene.fromLyric})`
+      );
+    }
+  }
+  if (!local) console.log(`OK ${lesson.id} ${scenes.length} scenes`);
+  playlistFails += local;
+}
+
+if (playlistFails) console.log(`\n${playlistFails} playlist visual fail(s)`);
+else console.log("\nOK playlist scenes track spoken data / SQL.");
+
+process.exit(fails.length || playlistFails ? 1 : 0);

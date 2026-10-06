@@ -1,0 +1,504 @@
+1
+00:00:00,050 --> 00:00:02,402
+Numbers in tables are not one type.
+
+2
+00:00:02,402 --> 00:00:03,763
+Integers count.
+
+3
+00:00:03,763 --> 00:00:07,416
+Decimals measure money and other exact fractions.
+
+4
+00:00:07,416 --> 00:00:10,194
+Floats approximate scientific values.
+
+5
+00:00:10,194 --> 00:00:12,666
+If you mix them, you will round a dollar.
+
+6
+00:00:12,666 --> 00:00:17,513
+INTEGER, INT, BIGINT are whole numbers of different ranges.
+
+7
+00:00:17,513 --> 00:00:20,375
+customer_id is an integer.
+
+8
+00:00:20,375 --> 00:00:23,430
+quantity is an integer if you sell whole books.
+
+9
+00:00:23,430 --> 00:00:25,472
+Do not use a float for a count.
+
+10
+00:00:25,472 --> 00:00:29,722
+DECIMAL p comma s stores exact decimal digits.
+
+11
+00:00:29,722 --> 00:00:31,402
+p is total digits.
+
+12
+00:00:31,402 --> 00:00:33,472
+s is digits after the point.
+
+13
+00:00:33,472 --> 00:00:36,916
+DECIMAL ten comma two is a common money shape.
+
+14
+00:00:36,916 --> 00:00:40,361
+Forty-two dollars and fifteen cents is exact.
+
+15
+00:00:40,361 --> 00:00:44,027
+NUMERIC is often the same family as DECIMAL.
+
+16
+00:00:44,027 --> 00:00:47,694
+REAL and DOUBLE PRECISION are binary floating point.
+
+17
+00:00:47,694 --> 00:00:52,125
+They are fast, and they cannot represent one tenth exactly.
+
+18
+00:00:52,125 --> 00:00:54,680
+Summing a column of floats can drift.
+
+19
+00:00:54,680 --> 00:00:57,250
+That drift is unacceptable for money.
+
+20
+00:00:57,250 --> 00:00:59,500
+It may be fine for a sensor reading.
+
+21
+00:00:59,500 --> 00:01:02,194
+SQLite has a softer type system.
+
+22
+00:01:02,194 --> 00:01:06,763
+A column declared INTEGER can still hold text unless you constrain it.
+
+23
+00:01:06,763 --> 00:01:08,736
+Affinity is not a CHECK.
+
+24
+00:01:08,736 --> 00:01:13,638
+If you need integer only, say so with a constraint or a stricter engine.
+
+25
+00:01:13,638 --> 00:01:17,541
+Auto incrementing integers make convenient surrogates.
+
+26
+00:01:17,541 --> 00:01:18,930
+They are not magic.
+
+27
+00:01:18,930 --> 00:01:21,583
+Gaps appear after a rolled-back insert.
+
+28
+00:01:21,583 --> 00:01:23,847
+Do not treat them as row counts.
+
+29
+00:01:23,847 --> 00:01:28,277
+BOOLEAN is a number in some dialects and a real type in others.
+
+30
+00:01:28,277 --> 00:01:31,277
+Store it as a real boolean when you can.
+
+31
+00:01:31,277 --> 00:01:34,458
+Or as a constrained integer zero or one.
+
+32
+00:01:34,458 --> 00:01:37,430
+Do not store yes as text if you mean a flag.
+
+33
+00:01:37,430 --> 00:01:39,555
+Overflow is a real error.
+
+34
+00:01:39,555 --> 00:01:41,569
+TINYINT cannot hold a million.
+
+35
+00:01:41,569 --> 00:01:45,736
+Pick a range with room, not a range that matches today's sample.
+
+36
+00:01:45,736 --> 00:01:47,111
+Write the sentence.
+
+37
+00:01:47,111 --> 00:01:53,375
+This column is a count of books, whole, never negative, fits in a normal integer.
+
+38
+00:01:53,375 --> 00:01:58,208
+This column is a price in dollars, exact cents, never a float.
+
+39
+00:01:58,208 --> 00:02:00,125
+Then the type is obvious.
+
+40
+00:02:00,125 --> 00:02:03,208
+Money in integer cents is a valid design.
+
+41
+00:02:03,208 --> 00:02:07,569
+total_cents INTEGER, and you format dollars at the edge.
+
+42
+00:02:07,569 --> 00:02:10,222
+DECIMAL is the other valid design.
+
+43
+00:02:10,222 --> 00:02:14,458
+Mixing them in one table is a third, invalid design.
+
+44
+00:02:14,458 --> 00:02:17,083
+Pick one and convert at the boundary.
+
+45
+00:02:17,083 --> 00:02:19,444
+Percentages can be DECIMAL too.
+
+46
+00:02:19,444 --> 00:02:23,000
+A float percent will surprise you in a tax calculation.
+
+47
+00:02:23,000 --> 00:02:28,194
+Scientific measurements can stay FLOAT if the instrument was already approximate.
+
+48
+00:02:28,194 --> 00:02:31,166
+Do not fake precision the sensor never had.
+
+49
+00:02:31,166 --> 00:02:34,930
+SERIAL and IDENTITY are integer generators.
+
+50
+00:02:34,930 --> 00:02:36,694
+They are not a type of quantity.
+
+51
+00:02:36,694 --> 00:02:38,375
+Do not use them on total.
+
+52
+00:02:38,375 --> 00:02:41,375
+Unsigned integers exist in some engines.
+
+53
+00:02:41,375 --> 00:02:45,208
+They forbid negatives, which a CHECK can also do more clearly.
+
+54
+00:02:45,208 --> 00:02:49,194
+Prefer a signed integer plus CHECK if you want portable SQL.
+
+55
+00:02:49,194 --> 00:02:52,222
+Division in integer types truncates.
+
+56
+00:02:52,222 --> 00:02:56,597
+quantity divided by two may be a whole number you did not mean.
+
+57
+00:02:56,597 --> 00:03:00,722
+If you need a rate, use DECIMAL and say how many places.
+
+58
+00:03:00,722 --> 00:03:03,875
+NaN and infinity can appear in floats.
+
+59
+00:03:03,875 --> 00:03:05,861
+They should never appear in money.
+
+60
+00:03:05,861 --> 00:03:09,597
+The family you chose at the start forbids them, or should.
+
+61
+00:03:09,597 --> 00:03:18,263
+Write examples in the comment: quantity 2, total 42.00, tax_rate 0.08.
+
+62
+00:03:18,263 --> 00:03:22,611
+If an example needs a float, you picked the float family on purpose.
+
+63
+00:03:22,611 --> 00:03:24,861
+Counts, money, science.
+
+64
+00:03:24,861 --> 00:03:26,013
+Three homes.
+
+65
+00:03:26,013 --> 00:03:27,777
+Put each column in one.
+
+66
+00:03:27,777 --> 00:03:31,916
+If a spreadsheet formatted it as currency, it is not a float.
+
+67
+00:03:31,916 --> 00:03:34,472
+If a sensor emitted it, it might be.
+
+68
+00:03:34,472 --> 00:03:37,430
+If a person counted it, it is an integer.
+
+69
+00:03:37,430 --> 00:03:40,750
+Say those three sentences when a column is born.
+
+70
+00:03:40,750 --> 00:03:44,916
+Then DECIMAL, FLOAT, or INTEGER is not a debate.
+
+71
+00:03:44,916 --> 00:03:46,569
+It is a classification.
+
+72
+00:03:46,569 --> 00:03:49,597
+Misclassification is how pennies vanish.
+
+73
+00:03:49,597 --> 00:03:54,041
+Pennies vanishing is how finance stops trusting the database.
+
+74
+00:03:54,041 --> 00:03:56,527
+Keep their trust with exact types.
+
+75
+00:03:56,527 --> 00:04:00,972
+Keep science honest with approximate types that admit they are approximate.
+
+76
+00:04:00,972 --> 00:04:02,263
+Keep counts whole.
+
+77
+00:04:02,263 --> 00:04:04,236
+The rest is dialect spelling.
+
+78
+00:04:04,236 --> 00:04:10,180
+Whole numbers, approximate fractions, and exact decimals are three different jobs.
+
+79
+00:04:10,180 --> 00:04:18,069
+Integers count things: quantities, ids you generated, flags stored as zero and one if you must.
+
+80
+00:04:18,069 --> 00:04:20,486
+Signed integers allow negatives.
+
+81
+00:04:20,486 --> 00:04:23,847
+Unsigned, where the engine has them, do not.
+
+82
+00:04:23,847 --> 00:04:28,194
+TINYINT through BIGINT are range costumes around the same idea.
+
+83
+00:04:28,194 --> 00:04:30,180
+Do not memorize the ranges.
+
+84
+00:04:30,180 --> 00:04:36,888
+Look them up when a column is born, and pick the smallest range that cannot overflow in real life.
+
+85
+00:04:36,888 --> 00:04:42,583
+Overflow is a silent disaster if the engine wraps, or a loud one if it errors.
+
+86
+00:04:42,583 --> 00:04:43,722
+Prefer loud.
+
+87
+00:04:43,722 --> 00:04:47,069
+FLOAT and DOUBLE are binary approximations.
+
+88
+00:04:47,186 --> 00:04:53,149
+They are correct for scientific measurements where 0.1 repeating is a known compromise.
+
+89
+00:04:53,149 --> 00:04:54,719
+They are wrong for money.
+
+90
+00:04:54,719 --> 00:05:02,816
+The Vancouver stock index story is the parable: tiny errors, added every trade, became a crash in trust.
+
+91
+00:05:02,816 --> 00:05:08,261
+If you add a price to a price in FLOAT, you can get a value that is not any real cent.
+
+92
+00:05:08,261 --> 00:05:15,663
+DECIMAL, also called NUMERIC, stores exact base-ten values with a declared precision and scale.
+
+93
+00:05:15,663 --> 00:05:23,024
+DECIMAL eight comma two means eight digits total, two after the point: a money column with room to breathe.
+
+94
+00:05:23,024 --> 00:05:29,011
+Money, interest rates you must audit, and anything a receipt will print belong in DECIMAL.
+
+95
+00:05:29,011 --> 00:05:33,774
+Percentages you will multiply back into money belong in DECIMAL too.
+
+96
+00:05:33,774 --> 00:05:40,941
+Sensor readings, graphics, and statistics that already live in floating point may honestly be FLOAT.
+
+97
+00:05:40,941 --> 00:05:43,483
+Say approximate in the comment if you do.
+
+98
+00:05:43,483 --> 00:05:46,899
+Do not use FLOAT because it felt like the default number.
+
+99
+00:05:46,899 --> 00:05:48,622
+There is no default number.
+
+100
+00:05:48,622 --> 00:05:54,302
+There is a classification: counted, exact fraction, approximate fraction.
+
+101
+00:05:54,302 --> 00:05:58,441
+If a spreadsheet formatted it as currency, it is not a float.
+
+102
+00:05:58,441 --> 00:06:01,399
+If a person counted it, it is an integer.
+
+103
+00:06:01,399 --> 00:06:04,761
+If a lab instrument emitted it, it might be a float.
+
+104
+00:06:04,761 --> 00:06:07,788
+Misclassification is how pennies vanish.
+
+105
+00:06:07,788 --> 00:06:12,233
+Pennies vanishing is how finance stops trusting the database.
+
+106
+00:06:12,233 --> 00:06:14,719
+Keep their trust with exact types.
+
+107
+00:06:14,719 --> 00:06:18,358
+Keep science honest with types that admit they are approximate.
+
+108
+00:06:18,358 --> 00:06:19,649
+Keep counts whole.
+
+109
+00:06:19,649 --> 00:06:26,288
+The rest is spelling in your dialect: INT versus INTEGER, DECIMAL versus NUMERIC.
+
+110
+00:06:26,288 --> 00:06:27,816
+Spelling is easy.
+
+111
+00:06:27,816 --> 00:06:30,122
+Classification is the lesson.
+
+112
+00:06:30,122 --> 00:06:33,761
+Close with questions, the way a careful lecture does.
+
+113
+00:06:33,761 --> 00:06:36,816
+Answer in a sentence you could defend at a keyboard.
+
+114
+00:06:36,816 --> 00:06:38,052
+Integers for?
+
+115
+00:06:38,052 --> 00:06:39,816
+Counts and whole ids.
+
+116
+00:06:39,816 --> 00:06:41,038
+DECIMAL for?
+
+117
+00:06:41,038 --> 00:06:43,288
+Money and exact fractions.
+
+118
+00:06:43,288 --> 00:06:44,316
+FLOAT for?
+
+119
+00:06:44,316 --> 00:06:47,080
+Approximate measurements that admit error.
+
+120
+00:06:47,080 --> 00:06:48,497
+Why not FLOAT money?
+
+121
+00:06:48,497 --> 00:06:50,719
+Binary error accumulates.
+
+122
+00:06:50,719 --> 00:06:52,274
+Stock index parable?
+
+123
+00:06:52,274 --> 00:06:54,649
+Tiny errors, lost trust.
+
+124
+00:06:54,649 --> 00:06:56,636
+Classification sentences?
+
+125
+00:06:56,636 --> 00:06:59,205
+Counted, exact, approximate.
+
+126
+00:06:59,205 --> 00:07:03,927
+If an answer needed a second table, go draw it before you write more SQL.
+

@@ -1,0 +1,1156 @@
+{
+  "title": "Number types",
+  "subtitle": "INT, DECIMAL, FLOAT",
+  "audio": "narration.mp3",
+  "duration": 423.984,
+  "slides": [],
+  "scenes": [
+    {
+      "id": "nums",
+      "label": "Sample",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "quantity",
+        "total"
+      ],
+      "rows": [
+        [
+          "101",
+          "2",
+          "42.00"
+        ],
+        [
+          "102",
+          "1",
+          "18.50"
+        ]
+      ],
+      "fromLyric": 0,
+      "toLyric": 17,
+      "steps": [
+        {
+          "lyricMin": 0,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "traps",
+      "label": "Sample",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "quantity",
+        "total"
+      ],
+      "rows": [
+        [
+          "101",
+          "2",
+          "42.00"
+        ],
+        [
+          "102",
+          "1",
+          "18.50"
+        ]
+      ],
+      "fromLyric": 17,
+      "toLyric": 35,
+      "steps": [
+        {
+          "lyricMin": 17,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pick",
+      "label": "Sample",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "quantity",
+        "total"
+      ],
+      "rows": [
+        [
+          "101",
+          "2",
+          "42.00"
+        ],
+        [
+          "102",
+          "1",
+          "18.50"
+        ]
+      ],
+      "fromLyric": 35,
+      "toLyric": 46,
+      "steps": [
+        {
+          "lyricMin": 35,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nums-2",
+      "label": "Sample",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "quantity",
+        "total"
+      ],
+      "rows": [
+        [
+          "101",
+          "2",
+          "42.00"
+        ],
+        [
+          "102",
+          "1",
+          "18.50"
+        ]
+      ],
+      "fromLyric": 46,
+      "toLyric": 60,
+      "steps": [
+        {
+          "lyricMin": 46,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sample",
+      "label": "Sample",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "quantity",
+        "total"
+      ],
+      "rows": [
+        [
+          "101",
+          "2",
+          "42.00"
+        ],
+        [
+          "102",
+          "1",
+          "18.50"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 60,
+          "actions": [
+            "enter",
+            "show-header"
+          ]
+        },
+        {
+          "lyricMin": 61,
+          "actions": [
+            "reveal-rows"
+          ]
+        }
+      ],
+      "fromLyric": 60,
+      "toLyric": 74
+    },
+    {
+      "id": "nums-3",
+      "label": "Sample",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "quantity",
+        "total"
+      ],
+      "rows": [
+        [
+          "101",
+          "2",
+          "42.00"
+        ],
+        [
+          "102",
+          "1",
+          "18.50"
+        ]
+      ],
+      "fromLyric": 74,
+      "toLyric": 77,
+      "steps": [
+        {
+          "lyricMin": 74,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pick-2",
+      "label": "Sample",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "quantity",
+        "total"
+      ],
+      "rows": [
+        [
+          "101",
+          "2",
+          "42.00"
+        ],
+        [
+          "102",
+          "1",
+          "18.50"
+        ]
+      ],
+      "fromLyric": 77,
+      "toLyric": 84,
+      "steps": [
+        {
+          "lyricMin": 77,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "traps-2",
+      "label": "Sample",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "quantity",
+        "total"
+      ],
+      "rows": [
+        [
+          "101",
+          "2",
+          "42.00"
+        ],
+        [
+          "102",
+          "1",
+          "18.50"
+        ]
+      ],
+      "fromLyric": 84,
+      "toLyric": 92,
+      "steps": [
+        {
+          "lyricMin": 84,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nums-4",
+      "label": "Sample",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "quantity",
+        "total"
+      ],
+      "rows": [
+        [
+          "101",
+          "2",
+          "42.00"
+        ],
+        [
+          "102",
+          "1",
+          "18.50"
+        ]
+      ],
+      "fromLyric": 92,
+      "toLyric": 99,
+      "steps": [
+        {
+          "lyricMin": 92,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pick-3",
+      "label": "Sample",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "quantity",
+        "total"
+      ],
+      "rows": [
+        [
+          "101",
+          "2",
+          "42.00"
+        ],
+        [
+          "102",
+          "1",
+          "18.50"
+        ]
+      ],
+      "fromLyric": 99,
+      "toLyric": 106,
+      "steps": [
+        {
+          "lyricMin": 99,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nums-5",
+      "label": "Sample",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "quantity",
+        "total"
+      ],
+      "rows": [
+        [
+          "101",
+          "2",
+          "42.00"
+        ],
+        [
+          "102",
+          "1",
+          "18.50"
+        ]
+      ],
+      "fromLyric": 106,
+      "toLyric": 126,
+      "steps": [
+        {
+          "lyricMin": 106,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    }
+  ],
+  "lyrics": [
+    {
+      "start": 0.05,
+      "end": 2.402,
+      "text": "Numbers in tables are not one type.",
+      "slide": ""
+    },
+    {
+      "start": 2.402,
+      "end": 3.763,
+      "text": "Integers count.",
+      "slide": ""
+    },
+    {
+      "start": 3.763,
+      "end": 7.416,
+      "text": "Decimals measure money and other exact fractions.",
+      "slide": ""
+    },
+    {
+      "start": 7.416,
+      "end": 10.194,
+      "text": "Floats approximate scientific values.",
+      "slide": ""
+    },
+    {
+      "start": 10.194,
+      "end": 12.666,
+      "text": "If you mix them, you will round a dollar.",
+      "slide": ""
+    },
+    {
+      "start": 12.666,
+      "end": 17.513,
+      "text": "INTEGER, INT, BIGINT are whole numbers of different ranges.",
+      "slide": ""
+    },
+    {
+      "start": 17.513,
+      "end": 20.375,
+      "text": "customer_id is an integer.",
+      "slide": ""
+    },
+    {
+      "start": 20.375,
+      "end": 23.43,
+      "text": "quantity is an integer if you sell whole books.",
+      "slide": ""
+    },
+    {
+      "start": 23.43,
+      "end": 25.472,
+      "text": "Do not use a float for a count.",
+      "slide": ""
+    },
+    {
+      "start": 25.472,
+      "end": 29.722,
+      "text": "DECIMAL p comma s stores exact decimal digits.",
+      "slide": ""
+    },
+    {
+      "start": 29.722,
+      "end": 31.402,
+      "text": "p is total digits.",
+      "slide": ""
+    },
+    {
+      "start": 31.402,
+      "end": 33.472,
+      "text": "s is digits after the point.",
+      "slide": ""
+    },
+    {
+      "start": 33.472,
+      "end": 36.916,
+      "text": "DECIMAL ten comma two is a common money shape.",
+      "slide": ""
+    },
+    {
+      "start": 36.916,
+      "end": 40.361,
+      "text": "Forty-two dollars and fifteen cents is exact.",
+      "slide": ""
+    },
+    {
+      "start": 40.361,
+      "end": 44.027,
+      "text": "NUMERIC is often the same family as DECIMAL.",
+      "slide": ""
+    },
+    {
+      "start": 44.027,
+      "end": 47.694,
+      "text": "REAL and DOUBLE PRECISION are binary floating point.",
+      "slide": ""
+    },
+    {
+      "start": 47.694,
+      "end": 52.125,
+      "text": "They are fast, and they cannot represent one tenth exactly.",
+      "slide": ""
+    },
+    {
+      "start": 52.125,
+      "end": 54.68,
+      "text": "Summing a column of floats can drift.",
+      "slide": ""
+    },
+    {
+      "start": 54.68,
+      "end": 57.25,
+      "text": "That drift is unacceptable for money.",
+      "slide": ""
+    },
+    {
+      "start": 57.25,
+      "end": 59.5,
+      "text": "It may be fine for a sensor reading.",
+      "slide": ""
+    },
+    {
+      "start": 59.5,
+      "end": 62.194,
+      "text": "SQLite has a softer type system.",
+      "slide": ""
+    },
+    {
+      "start": 62.194,
+      "end": 66.763,
+      "text": "A column declared INTEGER can still hold text unless you constrain it.",
+      "slide": ""
+    },
+    {
+      "start": 66.763,
+      "end": 68.736,
+      "text": "Affinity is not a CHECK.",
+      "slide": ""
+    },
+    {
+      "start": 68.736,
+      "end": 73.638,
+      "text": "If you need integer only, say so with a constraint or a stricter engine.",
+      "slide": ""
+    },
+    {
+      "start": 73.638,
+      "end": 77.541,
+      "text": "Auto incrementing integers make convenient surrogates.",
+      "slide": ""
+    },
+    {
+      "start": 77.541,
+      "end": 78.93,
+      "text": "They are not magic.",
+      "slide": ""
+    },
+    {
+      "start": 78.93,
+      "end": 81.583,
+      "text": "Gaps appear after a rolled-back insert.",
+      "slide": ""
+    },
+    {
+      "start": 81.583,
+      "end": 83.847,
+      "text": "Do not treat them as row counts.",
+      "slide": ""
+    },
+    {
+      "start": 83.847,
+      "end": 88.277,
+      "text": "BOOLEAN is a number in some dialects and a real type in others.",
+      "slide": ""
+    },
+    {
+      "start": 88.277,
+      "end": 91.277,
+      "text": "Store it as a real boolean when you can.",
+      "slide": ""
+    },
+    {
+      "start": 91.277,
+      "end": 94.458,
+      "text": "Or as a constrained integer zero or one.",
+      "slide": ""
+    },
+    {
+      "start": 94.458,
+      "end": 97.43,
+      "text": "Do not store yes as text if you mean a flag.",
+      "slide": ""
+    },
+    {
+      "start": 97.43,
+      "end": 99.555,
+      "text": "Overflow is a real error.",
+      "slide": ""
+    },
+    {
+      "start": 99.555,
+      "end": 101.569,
+      "text": "TINYINT cannot hold a million.",
+      "slide": ""
+    },
+    {
+      "start": 101.569,
+      "end": 105.736,
+      "text": "Pick a range with room, not a range that matches today's sample.",
+      "slide": ""
+    },
+    {
+      "start": 105.736,
+      "end": 107.111,
+      "text": "Write the sentence.",
+      "slide": ""
+    },
+    {
+      "start": 107.111,
+      "end": 113.375,
+      "text": "This column is a count of books, whole, never negative, fits in a normal integer.",
+      "slide": ""
+    },
+    {
+      "start": 113.375,
+      "end": 118.208,
+      "text": "This column is a price in dollars, exact cents, never a float.",
+      "slide": ""
+    },
+    {
+      "start": 118.208,
+      "end": 120.125,
+      "text": "Then the type is obvious.",
+      "slide": ""
+    },
+    {
+      "start": 120.125,
+      "end": 123.208,
+      "text": "Money in integer cents is a valid design.",
+      "slide": ""
+    },
+    {
+      "start": 123.208,
+      "end": 127.569,
+      "text": "total_cents INTEGER, and you format dollars at the edge.",
+      "slide": ""
+    },
+    {
+      "start": 127.569,
+      "end": 130.222,
+      "text": "DECIMAL is the other valid design.",
+      "slide": ""
+    },
+    {
+      "start": 130.222,
+      "end": 134.458,
+      "text": "Mixing them in one table is a third, invalid design.",
+      "slide": ""
+    },
+    {
+      "start": 134.458,
+      "end": 137.083,
+      "text": "Pick one and convert at the boundary.",
+      "slide": ""
+    },
+    {
+      "start": 137.083,
+      "end": 139.444,
+      "text": "Percentages can be DECIMAL too.",
+      "slide": ""
+    },
+    {
+      "start": 139.444,
+      "end": 143.0,
+      "text": "A float percent will surprise you in a tax calculation.",
+      "slide": ""
+    },
+    {
+      "start": 143.0,
+      "end": 148.194,
+      "text": "Scientific measurements can stay FLOAT if the instrument was already approximate.",
+      "slide": ""
+    },
+    {
+      "start": 148.194,
+      "end": 151.166,
+      "text": "Do not fake precision the sensor never had.",
+      "slide": ""
+    },
+    {
+      "start": 151.166,
+      "end": 154.93,
+      "text": "SERIAL and IDENTITY are integer generators.",
+      "slide": ""
+    },
+    {
+      "start": 154.93,
+      "end": 156.694,
+      "text": "They are not a type of quantity.",
+      "slide": ""
+    },
+    {
+      "start": 156.694,
+      "end": 158.375,
+      "text": "Do not use them on total.",
+      "slide": ""
+    },
+    {
+      "start": 158.375,
+      "end": 161.375,
+      "text": "Unsigned integers exist in some engines.",
+      "slide": ""
+    },
+    {
+      "start": 161.375,
+      "end": 165.208,
+      "text": "They forbid negatives, which a CHECK can also do more clearly.",
+      "slide": ""
+    },
+    {
+      "start": 165.208,
+      "end": 169.194,
+      "text": "Prefer a signed integer plus CHECK if you want portable SQL.",
+      "slide": ""
+    },
+    {
+      "start": 169.194,
+      "end": 172.222,
+      "text": "Division in integer types truncates.",
+      "slide": ""
+    },
+    {
+      "start": 172.222,
+      "end": 176.597,
+      "text": "quantity divided by two may be a whole number you did not mean.",
+      "slide": ""
+    },
+    {
+      "start": 176.597,
+      "end": 180.722,
+      "text": "If you need a rate, use DECIMAL and say how many places.",
+      "slide": ""
+    },
+    {
+      "start": 180.722,
+      "end": 183.875,
+      "text": "NaN and infinity can appear in floats.",
+      "slide": ""
+    },
+    {
+      "start": 183.875,
+      "end": 185.861,
+      "text": "They should never appear in money.",
+      "slide": ""
+    },
+    {
+      "start": 185.861,
+      "end": 189.597,
+      "text": "The family you chose at the start forbids them, or should.",
+      "slide": ""
+    },
+    {
+      "start": 189.597,
+      "end": 198.263,
+      "text": "Write examples in the comment: quantity 2, total 42.00, tax_rate 0.08.",
+      "slide": ""
+    },
+    {
+      "start": 198.263,
+      "end": 202.611,
+      "text": "If an example needs a float, you picked the float family on purpose.",
+      "slide": ""
+    },
+    {
+      "start": 202.611,
+      "end": 204.861,
+      "text": "Counts, money, science.",
+      "slide": ""
+    },
+    {
+      "start": 204.861,
+      "end": 206.013,
+      "text": "Three homes.",
+      "slide": ""
+    },
+    {
+      "start": 206.013,
+      "end": 207.777,
+      "text": "Put each column in one.",
+      "slide": ""
+    },
+    {
+      "start": 207.777,
+      "end": 211.916,
+      "text": "If a spreadsheet formatted it as currency, it is not a float.",
+      "slide": ""
+    },
+    {
+      "start": 211.916,
+      "end": 214.472,
+      "text": "If a sensor emitted it, it might be.",
+      "slide": ""
+    },
+    {
+      "start": 214.472,
+      "end": 217.43,
+      "text": "If a person counted it, it is an integer.",
+      "slide": ""
+    },
+    {
+      "start": 217.43,
+      "end": 220.75,
+      "text": "Say those three sentences when a column is born.",
+      "slide": ""
+    },
+    {
+      "start": 220.75,
+      "end": 224.916,
+      "text": "Then DECIMAL, FLOAT, or INTEGER is not a debate.",
+      "slide": ""
+    },
+    {
+      "start": 224.916,
+      "end": 226.569,
+      "text": "It is a classification.",
+      "slide": ""
+    },
+    {
+      "start": 226.569,
+      "end": 229.597,
+      "text": "Misclassification is how pennies vanish.",
+      "slide": ""
+    },
+    {
+      "start": 229.597,
+      "end": 234.041,
+      "text": "Pennies vanishing is how finance stops trusting the database.",
+      "slide": ""
+    },
+    {
+      "start": 234.041,
+      "end": 236.527,
+      "text": "Keep their trust with exact types.",
+      "slide": ""
+    },
+    {
+      "start": 236.527,
+      "end": 240.972,
+      "text": "Keep science honest with approximate types that admit they are approximate.",
+      "slide": ""
+    },
+    {
+      "start": 240.972,
+      "end": 242.263,
+      "text": "Keep counts whole.",
+      "slide": ""
+    },
+    {
+      "start": 242.263,
+      "end": 244.236,
+      "text": "The rest is dialect spelling.",
+      "slide": ""
+    },
+    {
+      "start": 244.236,
+      "end": 250.18,
+      "text": "Whole numbers, approximate fractions, and exact decimals are three different jobs.",
+      "slide": ""
+    },
+    {
+      "start": 250.18,
+      "end": 258.069,
+      "text": "Integers count things: quantities, ids you generated, flags stored as zero and one if you must.",
+      "slide": ""
+    },
+    {
+      "start": 258.069,
+      "end": 260.486,
+      "text": "Signed integers allow negatives.",
+      "slide": ""
+    },
+    {
+      "start": 260.486,
+      "end": 263.847,
+      "text": "Unsigned, where the engine has them, do not.",
+      "slide": ""
+    },
+    {
+      "start": 263.847,
+      "end": 268.194,
+      "text": "TINYINT through BIGINT are range costumes around the same idea.",
+      "slide": ""
+    },
+    {
+      "start": 268.194,
+      "end": 270.18,
+      "text": "Do not memorize the ranges.",
+      "slide": ""
+    },
+    {
+      "start": 270.18,
+      "end": 276.888,
+      "text": "Look them up when a column is born, and pick the smallest range that cannot overflow in real life.",
+      "slide": ""
+    },
+    {
+      "start": 276.888,
+      "end": 282.583,
+      "text": "Overflow is a silent disaster if the engine wraps, or a loud one if it errors.",
+      "slide": ""
+    },
+    {
+      "start": 282.583,
+      "end": 283.722,
+      "text": "Prefer loud.",
+      "slide": ""
+    },
+    {
+      "start": 283.722,
+      "end": 287.069,
+      "text": "FLOAT and DOUBLE are binary approximations.",
+      "slide": ""
+    },
+    {
+      "start": 287.186,
+      "end": 293.149,
+      "text": "They are correct for scientific measurements where 0.1 repeating is a known compromise.",
+      "slide": ""
+    },
+    {
+      "start": 293.149,
+      "end": 294.719,
+      "text": "They are wrong for money.",
+      "slide": ""
+    },
+    {
+      "start": 294.719,
+      "end": 302.816,
+      "text": "The Vancouver stock index story is the parable: tiny errors, added every trade, became a crash in trust.",
+      "slide": ""
+    },
+    {
+      "start": 302.816,
+      "end": 308.261,
+      "text": "If you add a price to a price in FLOAT, you can get a value that is not any real cent.",
+      "slide": ""
+    },
+    {
+      "start": 308.261,
+      "end": 315.663,
+      "text": "DECIMAL, also called NUMERIC, stores exact base-ten values with a declared precision and scale.",
+      "slide": ""
+    },
+    {
+      "start": 315.663,
+      "end": 323.024,
+      "text": "DECIMAL eight comma two means eight digits total, two after the point: a money column with room to breathe.",
+      "slide": ""
+    },
+    {
+      "start": 323.024,
+      "end": 329.011,
+      "text": "Money, interest rates you must audit, and anything a receipt will print belong in DECIMAL.",
+      "slide": ""
+    },
+    {
+      "start": 329.011,
+      "end": 333.774,
+      "text": "Percentages you will multiply back into money belong in DECIMAL too.",
+      "slide": ""
+    },
+    {
+      "start": 333.774,
+      "end": 340.941,
+      "text": "Sensor readings, graphics, and statistics that already live in floating point may honestly be FLOAT.",
+      "slide": ""
+    },
+    {
+      "start": 340.941,
+      "end": 343.483,
+      "text": "Say approximate in the comment if you do.",
+      "slide": ""
+    },
+    {
+      "start": 343.483,
+      "end": 346.899,
+      "text": "Do not use FLOAT because it felt like the default number.",
+      "slide": ""
+    },
+    {
+      "start": 346.899,
+      "end": 348.622,
+      "text": "There is no default number.",
+      "slide": ""
+    },
+    {
+      "start": 348.622,
+      "end": 354.302,
+      "text": "There is a classification: counted, exact fraction, approximate fraction.",
+      "slide": ""
+    },
+    {
+      "start": 354.302,
+      "end": 358.441,
+      "text": "If a spreadsheet formatted it as currency, it is not a float.",
+      "slide": ""
+    },
+    {
+      "start": 358.441,
+      "end": 361.399,
+      "text": "If a person counted it, it is an integer.",
+      "slide": ""
+    },
+    {
+      "start": 361.399,
+      "end": 364.761,
+      "text": "If a lab instrument emitted it, it might be a float.",
+      "slide": ""
+    },
+    {
+      "start": 364.761,
+      "end": 367.788,
+      "text": "Misclassification is how pennies vanish.",
+      "slide": ""
+    },
+    {
+      "start": 367.788,
+      "end": 372.233,
+      "text": "Pennies vanishing is how finance stops trusting the database.",
+      "slide": ""
+    },
+    {
+      "start": 372.233,
+      "end": 374.719,
+      "text": "Keep their trust with exact types.",
+      "slide": ""
+    },
+    {
+      "start": 374.719,
+      "end": 378.358,
+      "text": "Keep science honest with types that admit they are approximate.",
+      "slide": ""
+    },
+    {
+      "start": 378.358,
+      "end": 379.649,
+      "text": "Keep counts whole.",
+      "slide": ""
+    },
+    {
+      "start": 379.649,
+      "end": 386.288,
+      "text": "The rest is spelling in your dialect: INT versus INTEGER, DECIMAL versus NUMERIC.",
+      "slide": ""
+    },
+    {
+      "start": 386.288,
+      "end": 387.816,
+      "text": "Spelling is easy.",
+      "slide": ""
+    },
+    {
+      "start": 387.816,
+      "end": 390.122,
+      "text": "Classification is the lesson.",
+      "slide": ""
+    },
+    {
+      "start": 390.122,
+      "end": 393.761,
+      "text": "Close with questions, the way a careful lecture does.",
+      "slide": ""
+    },
+    {
+      "start": 393.761,
+      "end": 396.816,
+      "text": "Answer in a sentence you could defend at a keyboard.",
+      "slide": ""
+    },
+    {
+      "start": 396.816,
+      "end": 398.052,
+      "text": "Integers for?",
+      "slide": ""
+    },
+    {
+      "start": 398.052,
+      "end": 399.816,
+      "text": "Counts and whole ids.",
+      "slide": ""
+    },
+    {
+      "start": 399.816,
+      "end": 401.038,
+      "text": "DECIMAL for?",
+      "slide": ""
+    },
+    {
+      "start": 401.038,
+      "end": 403.288,
+      "text": "Money and exact fractions.",
+      "slide": ""
+    },
+    {
+      "start": 403.288,
+      "end": 404.316,
+      "text": "FLOAT for?",
+      "slide": ""
+    },
+    {
+      "start": 404.316,
+      "end": 407.08,
+      "text": "Approximate measurements that admit error.",
+      "slide": ""
+    },
+    {
+      "start": 407.08,
+      "end": 408.497,
+      "text": "Why not FLOAT money?",
+      "slide": ""
+    },
+    {
+      "start": 408.497,
+      "end": 410.719,
+      "text": "Binary error accumulates.",
+      "slide": ""
+    },
+    {
+      "start": 410.719,
+      "end": 412.274,
+      "text": "Stock index parable?",
+      "slide": ""
+    },
+    {
+      "start": 412.274,
+      "end": 414.649,
+      "text": "Tiny errors, lost trust.",
+      "slide": ""
+    },
+    {
+      "start": 414.649,
+      "end": 416.636,
+      "text": "Classification sentences?",
+      "slide": ""
+    },
+    {
+      "start": 416.636,
+      "end": 419.205,
+      "text": "Counted, exact, approximate.",
+      "slide": ""
+    },
+    {
+      "start": 419.205,
+      "end": 423.927,
+      "text": "If an answer needed a second table, go draw it before you write more SQL.",
+      "slide": ""
+    }
+  ]
+}

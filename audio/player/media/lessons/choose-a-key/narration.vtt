@@ -1,0 +1,600 @@
+1
+00:00:00,050 --> 00:00:03,930
+A key is how you tell rows apart and how you point at them later.
+
+2
+00:00:03,930 --> 00:00:09,305
+Start with a super key: any set of columns that is unique for every row.
+
+3
+00:00:09,305 --> 00:00:13,527
+The whole row is a super key if no two rows are identical.
+
+4
+00:00:13,527 --> 00:00:15,222
+That is a weak compliment.
+
+5
+00:00:15,222 --> 00:00:16,777
+You want a smaller set.
+
+6
+00:00:16,777 --> 00:00:23,222
+A candidate key is a super key with no leftover column you could drop and still be unique.
+
+7
+00:00:23,222 --> 00:00:27,083
+email might be a candidate if you truly never repeat it.
+
+8
+00:00:27,083 --> 00:00:30,361
+customer_id might be another candidate.
+
+9
+00:00:30,361 --> 00:00:33,388
+You pick one candidate to be the primary key.
+
+10
+00:00:33,388 --> 00:00:35,208
+The others can stay UNIQUE.
+
+11
+00:00:35,208 --> 00:00:40,111
+A good primary key is unique, always present, and stable.
+
+12
+00:00:40,111 --> 00:00:44,763
+Stable means it does not change because marketing renamed a product code.
+
+13
+00:00:44,763 --> 00:00:50,263
+Natural keys come from the world: ISBN, email, government id.
+
+14
+00:00:50,263 --> 00:00:54,041
+They are meaningful, and they change when the world changes.
+
+15
+00:00:54,041 --> 00:00:58,791
+Surrogate keys are invented: an integer the database assigns.
+
+16
+00:00:58,791 --> 00:01:01,222
+They are dull, and that is the point.
+
+17
+00:01:01,222 --> 00:01:03,625
+They do not encode the customer's city.
+
+18
+00:01:03,625 --> 00:01:06,416
+They do not change when the email changes.
+
+19
+00:01:06,416 --> 00:01:10,736
+Prefer a surrogate for the primary key when the natural ones wiggle.
+
+20
+00:01:10,736 --> 00:01:14,458
+Still put UNIQUE on the natural candidates you care about.
+
+21
+00:01:14,458 --> 00:01:19,833
+ISBN should stay unique even if book_id is the primary key.
+
+22
+00:01:19,833 --> 00:01:21,833
+Composite keys are allowed.
+
+23
+00:01:21,833 --> 00:01:25,444
+order_id and line_no together.
+
+24
+00:01:25,444 --> 00:01:27,625
+They are honest for weak entities.
+
+25
+00:01:27,625 --> 00:01:32,013
+They are clumsy as foreign keys in every child of the child.
+
+26
+00:01:32,013 --> 00:01:36,277
+Sometimes a surrogate on the line table is worth the extra column.
+
+27
+00:01:36,277 --> 00:01:38,944
+Never use a name as a primary key.
+
+28
+00:01:38,944 --> 00:01:41,194
+Never use a mutable status.
+
+29
+00:01:41,194 --> 00:01:46,125
+Never use something you would be embarrassed to print on an invoice ten years later.
+
+30
+00:01:46,125 --> 00:01:48,250
+Write down every candidate.
+
+31
+00:01:48,250 --> 00:01:50,333
+Strike the ones that can be null.
+
+32
+00:01:50,333 --> 00:01:52,361
+Strike the ones that change.
+
+33
+00:01:52,361 --> 00:01:56,125
+Strike the ones that are too wide to copy into children.
+
+34
+00:01:56,125 --> 00:01:57,888
+Pick the dullest remaining.
+
+35
+00:01:57,888 --> 00:02:02,708
+That dull integer is how orders will find customers for the rest of the sketch.
+
+36
+00:02:02,708 --> 00:02:04,958
+UUIDs are surrogates too.
+
+37
+00:02:04,958 --> 00:02:08,458
+They spread better across shards, and they are wide.
+
+38
+00:02:08,458 --> 00:02:11,222
+Integers are easier to type while you learn.
+
+39
+00:02:11,222 --> 00:02:14,652
+Either is dull enough if you do not encode meaning in them.
+
+40
+00:02:14,652 --> 00:02:17,013
+Do not put the year into the id.
+
+41
+00:02:17,013 --> 00:02:19,694
+Do not put the table name into the id.
+
+42
+00:02:19,694 --> 00:02:21,902
+Those facts belong in columns.
+
+43
+00:02:21,902 --> 00:02:25,708
+Natural keys that look unique globally often are not.
+
+44
+00:02:25,708 --> 00:02:27,180
+Email changes.
+
+45
+00:02:27,180 --> 00:02:29,041
+Phone numbers are reused.
+
+46
+00:02:29,041 --> 00:02:32,847
+National ids are sensitive and not always present.
+
+47
+00:02:32,847 --> 00:02:42,375
+ISBN is one of the better natural keys, and still needs UNIQUE beside a surrogate if you also sell used copies as inventory rows.
+
+48
+00:02:42,375 --> 00:02:45,388
+Inventory is a different entity from title.
+
+49
+00:02:45,388 --> 00:02:48,347
+The key conversation will catch that if you let it.
+
+50
+00:02:48,347 --> 00:02:52,361
+Composite primary keys make ORM tools grumpy.
+
+51
+00:02:52,361 --> 00:02:56,194
+That is not a modeling reason, but it is a project reason.
+
+52
+00:02:56,194 --> 00:03:00,597
+If you add a surrogate to please a tool, keep the composite UNIQUE.
+
+53
+00:03:00,597 --> 00:03:03,208
+The tool should not erase the candidate.
+
+54
+00:03:03,208 --> 00:03:05,694
+Document why the primary key won.
+
+55
+00:03:05,694 --> 00:03:09,069
+A one-line comment in the schema file is enough.
+
+56
+00:03:09,069 --> 00:03:13,777
+Future you will thank present you when someone wants to key on email again.
+
+57
+00:03:13,777 --> 00:03:16,972
+Dull, present, stable, unique.
+
+58
+00:03:16,972 --> 00:03:19,402
+Write those four words above the column.
+
+59
+00:03:19,402 --> 00:03:20,416
+Then pick.
+
+60
+00:03:20,416 --> 00:03:24,444
+A key you are proud of is often a key that encodes a story.
+
+61
+00:03:24,444 --> 00:03:25,902
+Stories change.
+
+62
+00:03:25,902 --> 00:03:27,333
+Dull keys do not.
+
+63
+00:03:27,333 --> 00:03:31,819
+If you can say the key out loud as a sentence about the business, look again.
+
+64
+00:03:31,819 --> 00:03:35,944
+customer_id 104 is not a sentence.
+
+65
+00:03:35,944 --> 00:03:41,500
+AUSTIN-MAYA-2024 is a sentence, and a trap.
+
+66
+00:03:41,500 --> 00:03:43,486
+Keep the story in columns.
+
+67
+00:03:43,486 --> 00:03:45,555
+Keep the key empty of plot.
+
+68
+00:03:45,555 --> 00:03:48,347
+UNIQUE the story if it must stay unique.
+
+69
+00:03:48,347 --> 00:03:50,208
+Point children at the dull one.
+
+70
+00:03:50,208 --> 00:03:53,277
+That split will still look wise in five years.
+
+71
+00:03:53,277 --> 00:03:58,027
+Write it into the schema comments so nobody 'improves' the id later.
+
+72
+00:03:58,027 --> 00:04:01,194
+Improvement is how encoded keys are born.
+
+73
+00:04:01,194 --> 00:04:02,875
+Refuse the improvement.
+
+74
+00:04:02,875 --> 00:04:04,402
+Pick dull, and stop.
+
+75
+00:04:04,402 --> 00:04:06,027
+People change names.
+
+76
+00:04:06,027 --> 00:04:07,513
+They share birthdays.
+
+77
+00:04:07,513 --> 00:04:14,361
+Systems that treated name plus date of birth as identity have merged two humans into one record.
+
+78
+00:04:14,361 --> 00:04:23,333
+A primary key is one or more attributes that identify a row, unique, and never a second meaning hiding in the same columns.
+
+79
+00:04:23,333 --> 00:04:26,444
+A table has exactly one primary key.
+
+80
+00:04:26,444 --> 00:04:32,736
+A super key is any set of columns that is still unique, including extras you do not need.
+
+81
+00:04:32,736 --> 00:04:37,236
+email plus city might still be unique because email already was.
+
+82
+00:04:37,236 --> 00:04:39,000
+The city is surplus.
+
+83
+00:04:39,122 --> 00:04:46,127
+A candidate key is a super key with no surplus: take anything away and uniqueness dies.
+
+84
+00:04:46,127 --> 00:04:48,099
+email might be a candidate.
+
+85
+00:04:48,099 --> 00:04:49,863
+username might be another.
+
+86
+00:04:49,863 --> 00:04:52,891
+You pick one candidate to be the primary key.
+
+87
+00:04:52,891 --> 00:04:55,335
+The others can be UNIQUE constraints.
+
+88
+00:04:55,335 --> 00:05:05,002
+The process is: list candidates from real data, pick the stable dull one, or invent a surrogate if none of the candidates will stay still.
+
+89
+00:05:05,002 --> 00:05:10,849
+Natural keys come from the world: ISBN, national identifiers, email.
+
+90
+00:05:10,849 --> 00:05:13,474
+They are tempting because they look meaningful.
+
+91
+00:05:13,474 --> 00:05:19,572
+They are dangerous when the world reissues them, recycles them, or lets people change them.
+
+92
+00:05:19,572 --> 00:05:26,363
+A surrogate is an attribute you create, often an integer, that means only: this row.
+
+93
+00:05:26,363 --> 00:05:31,238
+customer_id one hundred four is not a sentence about the business.
+
+94
+00:05:31,238 --> 00:05:42,044
+AUSTIN-MAYA-2024 is a sentence, and a trap, because Austin, Maya, and 2024 can all change their jobs in that code.
+
+95
+00:05:42,044 --> 00:05:43,863
+Keep story in columns.
+
+96
+00:05:43,863 --> 00:05:46,599
+Keep the primary key empty of plot.
+
+97
+00:05:46,599 --> 00:05:54,780
+Composite keys are honest when identity is honestly several parts: order_id plus line_number.
+
+98
+00:05:54,780 --> 00:05:59,808
+They are painful as parents, because every child must copy every part.
+
+99
+00:05:59,808 --> 00:06:04,002
+If many tables will point here, a small surrogate is kinder.
+
+100
+00:06:04,002 --> 00:06:12,947
+Never use a value people type from memory as the only identity if a typo would attach medical or money rows to the wrong person.
+
+101
+00:06:12,947 --> 00:06:15,127
+Never pick a key you will want to edit.
+
+102
+00:06:15,127 --> 00:06:17,294
+Primary keys are referenced.
+
+103
+00:06:17,294 --> 00:06:21,405
+Edits cascade into every child or they are refused.
+
+104
+00:06:21,405 --> 00:06:28,599
+If you must expose a public code, make it UNIQUE and still keep a dull internal id as the primary key.
+
+105
+00:06:28,599 --> 00:06:30,599
+Children point at the dull one.
+
+106
+00:06:30,599 --> 00:06:32,738
+Humans search on the public one.
+
+107
+00:06:32,738 --> 00:06:35,974
+Look at sample data before you declare uniqueness.
+
+108
+00:06:35,974 --> 00:06:41,294
+Two rows that look unique in a spreadsheet of twenty can collide at twenty thousand.
+
+109
+00:06:41,294 --> 00:06:48,030
+If no candidate survives contact with growth, create the new attribute and make it the primary key.
+
+110
+00:06:48,030 --> 00:06:50,155
+That is not a failure of modeling.
+
+111
+00:06:50,155 --> 00:06:54,752
+That is how most operational tables stay identifyable for a decade.
+
+112
+00:06:54,752 --> 00:07:03,488
+Write the choice down: this is the primary key, these are the unique candidates, this is why the meaningful code is not the pointer.
+
+113
+00:07:03,488 --> 00:07:08,210
+Then refuse the later improvement that encodes a city into the id.
+
+114
+00:07:08,210 --> 00:07:11,377
+Improvement is how encoded keys are born.
+
+115
+00:07:11,377 --> 00:07:14,210
+Pick keys for five store tables in order.
+
+116
+00:07:14,210 --> 00:07:20,280
+users: candidate email, candidate username, surrogate user_id.
+
+117
+00:07:20,280 --> 00:07:28,919
+Email changes, username might be recycled, so user_id primary, UNIQUE email, UNIQUE username.
+
+118
+00:07:28,919 --> 00:07:36,974
+products: SKU looks natural and is reused by vendors, so product_id surrogate, UNIQUE sku.
+
+119
+00:07:36,974 --> 00:07:41,544
+orders: order_id surrogate, not a date stamp code.
+
+120
+00:07:41,544 --> 00:07:54,058
+reviews: review_id surrogate, because the same user can review twice if the business allows, or UNIQUE (user_id, product_id) if it does not.
+
+121
+00:07:54,058 --> 00:08:05,016
+order_lines: composite (order_id, line_no) is honest, or line_id surrogate if fulfillment talks in global ids.
+
+122
+00:08:05,016 --> 00:08:11,516
+Super keys would include user_id plus email; that extra email is surplus.
+
+123
+00:08:11,516 --> 00:08:14,919
+Candidate keys are the minimal unique sets.
+
+124
+00:08:14,919 --> 00:08:17,391
+Primary is the candidate you point at.
+
+125
+00:08:17,391 --> 00:08:22,155
+The hospital parable stays in your ear: do not pick name plus birth date.
+
+126
+00:08:22,155 --> 00:08:24,433
+Look at sample rows that collide.
+
+127
+00:08:24,433 --> 00:08:25,585
+Then pick dull.
+
+128
+00:08:25,585 --> 00:08:29,224
+Close with questions, the way a careful lecture does.
+
+129
+00:08:29,224 --> 00:08:32,280
+Answer in a sentence you could defend at a keyboard.
+
+130
+00:08:32,280 --> 00:08:33,947
+What is a primary key?
+
+131
+00:08:33,947 --> 00:08:39,127
+The candidate you pick to identify the row, unique, one per table.
+
+132
+00:08:39,127 --> 00:08:40,183
+Super key?
+
+133
+00:08:40,183 --> 00:08:43,794
+Any unique set, including surplus columns.
+
+134
+00:08:43,794 --> 00:08:44,988
+Candidate key?
+
+135
+00:08:44,988 --> 00:08:46,724
+A minimal unique set.
+
+136
+00:08:46,724 --> 00:08:48,474
+Natural versus surrogate?
+
+137
+00:08:48,474 --> 00:08:51,655
+From the world versus invented as this-row.
+
+138
+00:08:51,655 --> 00:08:53,085
+Why dull ids?
+
+139
+00:08:53,085 --> 00:08:55,877
+They do not encode a story that will change.
+
+140
+00:08:55,877 --> 00:08:57,363
+Name plus birth date?
+
+141
+00:08:57,363 --> 00:08:59,766
+A merging disaster waiting to happen.
+
+142
+00:08:59,766 --> 00:09:01,627
+Email as primary key?
+
+143
+00:09:01,627 --> 00:09:04,724
+Usually a unique handle, not the pointer.
+
+144
+00:09:04,724 --> 00:09:06,322
+Composite as parent?
+
+145
+00:09:06,322 --> 00:09:10,974
+Every child copies every part; often a surrogate is kinder.
+
+146
+00:09:10,974 --> 00:09:12,391
+Look at sample data?
+
+147
+00:09:12,391 --> 00:09:15,919
+Collisions appear at scale, not at twenty rows.
+
+148
+00:09:15,919 --> 00:09:18,377
+Public code plus internal id?
+
+149
+00:09:18,377 --> 00:09:21,669
+UNIQUE the code, point children at the id.
+
+150
+00:09:21,669 --> 00:09:26,391
+If an answer needed a second table, go draw it before you write more SQL.
+

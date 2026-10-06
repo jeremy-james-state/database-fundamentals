@@ -1,0 +1,1162 @@
+{
+  "title": "Many-to-many",
+  "subtitle": "A table that is the relationship",
+  "audio": "narration.mp3",
+  "duration": 405.144,
+  "slides": [],
+  "scenes": [
+    {
+      "id": "bridge",
+      "label": "Bridge",
+      "kind": "schema",
+      "title": "Enrollment",
+      "tables": [
+        {
+          "id": "students",
+          "label": "students",
+          "cols": [
+            "student_id",
+            "name"
+          ],
+          "pk": "student_id"
+        },
+        {
+          "id": "courses",
+          "label": "courses",
+          "cols": [
+            "course_id",
+            "title"
+          ],
+          "pk": "course_id"
+        },
+        {
+          "id": "enroll",
+          "label": "enrollment",
+          "cols": [
+            "student_id",
+            "course_id",
+            "grade"
+          ],
+          "pk": "student_id",
+          "fks": {
+            "student_id": "students.student_id",
+            "course_id": "courses.course_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 0,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 1,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 0,
+      "toLyric": 17
+    },
+    {
+      "tables": [
+        {
+          "id": "students",
+          "label": "students",
+          "cols": [
+            "student_id",
+            "name"
+          ],
+          "pk": "student_id"
+        },
+        {
+          "id": "courses",
+          "label": "courses",
+          "cols": [
+            "course_id",
+            "title"
+          ],
+          "pk": "course_id"
+        },
+        {
+          "id": "enroll",
+          "label": "enrollment",
+          "cols": [
+            "student_id",
+            "course_id",
+            "grade"
+          ],
+          "pk": "student_id",
+          "fks": {
+            "student_id": "students.student_id",
+            "course_id": "courses.course_id"
+          }
+        }
+      ],
+      "title": "Enrollment",
+      "id": "facts",
+      "label": "Bridge",
+      "kind": "schema",
+      "fromLyric": 17,
+      "toLyric": 19,
+      "steps": [
+        {
+          "lyricMin": 17,
+          "actions": [
+            "enter",
+            "show-schema",
+            "show-title"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bridge-2",
+      "label": "Bridge",
+      "kind": "schema",
+      "title": "Enrollment",
+      "tables": [
+        {
+          "id": "students",
+          "label": "students",
+          "cols": [
+            "student_id",
+            "name"
+          ],
+          "pk": "student_id"
+        },
+        {
+          "id": "courses",
+          "label": "courses",
+          "cols": [
+            "course_id",
+            "title"
+          ],
+          "pk": "course_id"
+        },
+        {
+          "id": "enroll",
+          "label": "enrollment",
+          "cols": [
+            "student_id",
+            "course_id",
+            "grade"
+          ],
+          "pk": "student_id",
+          "fks": {
+            "student_id": "students.student_id",
+            "course_id": "courses.course_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 19,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 20,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 19,
+      "toLyric": 40
+    },
+    {
+      "tables": [
+        {
+          "id": "students",
+          "label": "students",
+          "cols": [
+            "student_id",
+            "name"
+          ],
+          "pk": "student_id"
+        },
+        {
+          "id": "courses",
+          "label": "courses",
+          "cols": [
+            "course_id",
+            "title"
+          ],
+          "pk": "course_id"
+        },
+        {
+          "id": "enroll",
+          "label": "enrollment",
+          "cols": [
+            "student_id",
+            "course_id",
+            "grade"
+          ],
+          "pk": "student_id",
+          "fks": {
+            "student_id": "students.student_id",
+            "course_id": "courses.course_id"
+          }
+        }
+      ],
+      "title": "Enrollment",
+      "id": "facts-2",
+      "label": "Bridge",
+      "kind": "schema",
+      "fromLyric": 40,
+      "toLyric": 44,
+      "steps": [
+        {
+          "lyricMin": 40,
+          "actions": [
+            "enter",
+            "show-schema",
+            "show-title"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bridge-3",
+      "label": "Bridge",
+      "kind": "schema",
+      "title": "Enrollment",
+      "tables": [
+        {
+          "id": "students",
+          "label": "students",
+          "cols": [
+            "student_id",
+            "name"
+          ],
+          "pk": "student_id"
+        },
+        {
+          "id": "courses",
+          "label": "courses",
+          "cols": [
+            "course_id",
+            "title"
+          ],
+          "pk": "course_id"
+        },
+        {
+          "id": "enroll",
+          "label": "enrollment",
+          "cols": [
+            "student_id",
+            "course_id",
+            "grade"
+          ],
+          "pk": "student_id",
+          "fks": {
+            "student_id": "students.student_id",
+            "course_id": "courses.course_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 44,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 45,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 44,
+      "toLyric": 56
+    },
+    {
+      "id": "join",
+      "label": "Join",
+      "kind": "sql",
+      "title": "Two hops",
+      "prompt": "Titles for a student",
+      "sql": [
+        "SELECT c.title, e.grade",
+        "FROM enrollment AS e",
+        "JOIN courses AS c ON c.course_id = e.course_id",
+        "WHERE e.student_id = 1;"
+      ],
+      "products": [
+        [
+          "1",
+          "Harbor Light",
+          "A"
+        ],
+        [
+          "2",
+          "Quiet Fields",
+          "B"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 56,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 56,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 57,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 56,
+      "toLyric": 59
+    },
+    {
+      "id": "bridge-4",
+      "label": "Bridge",
+      "kind": "schema",
+      "title": "Enrollment",
+      "tables": [
+        {
+          "id": "students",
+          "label": "students",
+          "cols": [
+            "student_id",
+            "name"
+          ],
+          "pk": "student_id"
+        },
+        {
+          "id": "courses",
+          "label": "courses",
+          "cols": [
+            "course_id",
+            "title"
+          ],
+          "pk": "course_id"
+        },
+        {
+          "id": "enroll",
+          "label": "enrollment",
+          "cols": [
+            "student_id",
+            "course_id",
+            "grade"
+          ],
+          "pk": "student_id",
+          "fks": {
+            "student_id": "students.student_id",
+            "course_id": "courses.course_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 59,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 60,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 59,
+      "toLyric": 70
+    },
+    {
+      "id": "join-2",
+      "label": "Join",
+      "kind": "sql",
+      "title": "Two hops",
+      "prompt": "Titles for a student",
+      "sql": [
+        "SELECT c.title, e.grade",
+        "FROM enrollment AS e",
+        "JOIN courses AS c ON c.course_id = e.course_id",
+        "WHERE e.student_id = 1;"
+      ],
+      "products": [
+        [
+          "1",
+          "Harbor Light",
+          "A"
+        ],
+        [
+          "2",
+          "Quiet Fields",
+          "B"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 70,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 70,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 71,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 70,
+      "toLyric": 76
+    },
+    {
+      "id": "bridge-5",
+      "label": "Bridge",
+      "kind": "schema",
+      "title": "Enrollment",
+      "tables": [
+        {
+          "id": "students",
+          "label": "students",
+          "cols": [
+            "student_id",
+            "name"
+          ],
+          "pk": "student_id"
+        },
+        {
+          "id": "courses",
+          "label": "courses",
+          "cols": [
+            "course_id",
+            "title"
+          ],
+          "pk": "course_id"
+        },
+        {
+          "id": "enroll",
+          "label": "enrollment",
+          "cols": [
+            "student_id",
+            "course_id",
+            "grade"
+          ],
+          "pk": "student_id",
+          "fks": {
+            "student_id": "students.student_id",
+            "course_id": "courses.course_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 76,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 77,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 76,
+      "toLyric": 111
+    }
+  ],
+  "lyrics": [
+    {
+      "start": 0.05,
+      "end": 7.333,
+      "text": "Many-to-many means each left row can meet many right rows, and each right row can meet many left rows.",
+      "slide": ""
+    },
+    {
+      "start": 7.333,
+      "end": 9.444,
+      "text": "A student takes many courses.",
+      "slide": ""
+    },
+    {
+      "start": 9.444,
+      "end": 11.486,
+      "text": "A course has many students.",
+      "slide": ""
+    },
+    {
+      "start": 11.486,
+      "end": 14.819,
+      "text": "You cannot put course_id on students.",
+      "slide": ""
+    },
+    {
+      "start": 14.819,
+      "end": 16.888,
+      "text": "That allows only one course.",
+      "slide": ""
+    },
+    {
+      "start": 16.888,
+      "end": 20.222,
+      "text": "You cannot put student_id on courses.",
+      "slide": ""
+    },
+    {
+      "start": 20.222,
+      "end": 22.416,
+      "text": "That allows only one student.",
+      "slide": ""
+    },
+    {
+      "start": 22.416,
+      "end": 25.236,
+      "text": "You cannot put a list of ids in a cell.",
+      "slide": ""
+    },
+    {
+      "start": 25.236,
+      "end": 26.972,
+      "text": "You add a third table.",
+      "slide": ""
+    },
+    {
+      "start": 26.972,
+      "end": 28.277,
+      "text": "Call it enrollment.",
+      "slide": ""
+    },
+    {
+      "start": 28.277,
+      "end": 32.138,
+      "text": "It holds student_id and course_id.",
+      "slide": ""
+    },
+    {
+      "start": 32.138,
+      "end": 34.861,
+      "text": "Together they are usually the primary key.",
+      "slide": ""
+    },
+    {
+      "start": 34.861,
+      "end": 36.875,
+      "text": "Each pair is one enrollment.",
+      "slide": ""
+    },
+    {
+      "start": 36.875,
+      "end": 39.458,
+      "text": "Maya in Harbor Light is one row.",
+      "slide": ""
+    },
+    {
+      "start": 39.458,
+      "end": 42.083,
+      "text": "Maya in Quiet Fields is another.",
+      "slide": ""
+    },
+    {
+      "start": 42.083,
+      "end": 44.708,
+      "text": "Jordan in Harbor Light is a third.",
+      "slide": ""
+    },
+    {
+      "start": 44.708,
+      "end": 47.916,
+      "text": "The same two foreign keys, two parents.",
+      "slide": ""
+    },
+    {
+      "start": 47.916,
+      "end": 52.138,
+      "text": "If the relationship has a grade, the grade lives on enrollment.",
+      "slide": ""
+    },
+    {
+      "start": 52.138,
+      "end": 57.611,
+      "text": "It is a fact about the pair, not about the student alone, not about the course alone.",
+      "slide": ""
+    },
+    {
+      "start": 57.611,
+      "end": 62.263,
+      "text": "That is how you notice you needed the middle table even if you tried to avoid it.",
+      "slide": ""
+    },
+    {
+      "start": 62.263,
+      "end": 67.333,
+      "text": "Do not name the middle table student_course unless your team likes that style.",
+      "slide": ""
+    },
+    {
+      "start": 67.333,
+      "end": 72.833,
+      "text": "A real noun is clearer: enrollment, assignment, line_item.",
+      "slide": ""
+    },
+    {
+      "start": 72.833,
+      "end": 75.805,
+      "text": "Unique on the pair prevents double enrollment.",
+      "slide": ""
+    },
+    {
+      "start": 75.805,
+      "end": 79.361,
+      "text": "A surrogate enrollment_id is optional.",
+      "slide": ""
+    },
+    {
+      "start": 79.361,
+      "end": 85.0,
+      "text": "If other tables must point at an enrollment, a surrogate is easier to copy.",
+      "slide": ""
+    },
+    {
+      "start": 85.0,
+      "end": 89.5,
+      "text": "To list Maya's titles, join students to enrollment to books.",
+      "slide": ""
+    },
+    {
+      "start": 89.5,
+      "end": 90.652,
+      "text": "Two hops.",
+      "slide": ""
+    },
+    {
+      "start": 90.652,
+      "end": 91.791,
+      "text": "That is normal.",
+      "slide": ""
+    },
+    {
+      "start": 91.791,
+      "end": 95.263,
+      "text": "Hiding the middle table in a view is fine for reading.",
+      "slide": ""
+    },
+    {
+      "start": 95.263,
+      "end": 97.222,
+      "text": "Writing still goes through the pair.",
+      "slide": ""
+    },
+    {
+      "start": 97.222,
+      "end": 105.458,
+      "text": "On the diagram, two crow's feet into the middle box, or two many-to-many marks that you then explode into a box.",
+      "slide": ""
+    },
+    {
+      "start": 105.458,
+      "end": 106.527,
+      "text": "Explode them.",
+      "slide": ""
+    },
+    {
+      "start": 106.527,
+      "end": 109.458,
+      "text": "SQL has no native many-to-many column.",
+      "slide": ""
+    },
+    {
+      "start": 109.458,
+      "end": 110.722,
+      "text": "It has tables.",
+      "slide": ""
+    },
+    {
+      "start": 110.722,
+      "end": 112.833,
+      "text": "The relationship is a table.",
+      "slide": ""
+    },
+    {
+      "start": 112.833,
+      "end": 118.472,
+      "text": "Once you see it, bookstore carts, tags, and authors-of-books are the same shape.",
+      "slide": ""
+    },
+    {
+      "start": 118.472,
+      "end": 120.763,
+      "text": "Three-way relationships exist.",
+      "slide": ""
+    },
+    {
+      "start": 120.763,
+      "end": 123.68,
+      "text": "A student, a course, and a term.",
+      "slide": ""
+    },
+    {
+      "start": 123.68,
+      "end": 129.041,
+      "text": "If grade is for Maya in Harbor Light in spring, the key may be all three.",
+      "slide": ""
+    },
+    {
+      "start": 129.041,
+      "end": 131.291,
+      "text": "Do not hide term in a comment.",
+      "slide": ""
+    },
+    {
+      "start": 131.291,
+      "end": 134.597,
+      "text": "The middle table can have more than two foreign keys.",
+      "slide": ""
+    },
+    {
+      "start": 134.597,
+      "end": 135.986,
+      "text": "It is still a table.",
+      "slide": ""
+    },
+    {
+      "start": 135.986,
+      "end": 141.68,
+      "text": "Symmetric relationships, like books that are similar to books, still use a middle table.",
+      "slide": ""
+    },
+    {
+      "start": 141.68,
+      "end": 149.083,
+      "text": "Order the ids or use a CHECK so you do not store both A-B and B-A unless both are facts.",
+      "slide": ""
+    },
+    {
+      "start": 149.083,
+      "end": 151.986,
+      "text": "Tags are many-to-many with a small parent.",
+      "slide": ""
+    },
+    {
+      "start": 151.986,
+      "end": 154.472,
+      "text": "Do not comma-list tags on the book.",
+      "slide": ""
+    },
+    {
+      "start": 154.472,
+      "end": 156.583,
+      "text": "That was first normal form again.",
+      "slide": ""
+    },
+    {
+      "start": 156.583,
+      "end": 159.305,
+      "text": "The middle table is book_tag.",
+      "slide": ""
+    },
+    {
+      "start": 159.305,
+      "end": 163.819,
+      "text": "When the pair has no extra attributes, people call it a pure junction.",
+      "slide": ""
+    },
+    {
+      "start": 163.819,
+      "end": 166.041,
+      "text": "It is still an entity in SQL.",
+      "slide": ""
+    },
+    {
+      "start": 166.041,
+      "end": 167.111,
+      "text": "Give it a name.",
+      "slide": ""
+    },
+    {
+      "start": 167.111,
+      "end": 172.513,
+      "text": "Permissions of users to projects are many-to-many with a role attribute on the pair.",
+      "slide": ""
+    },
+    {
+      "start": 172.513,
+      "end": 174.875,
+      "text": "The role is why the pair is not pure.",
+      "slide": ""
+    },
+    {
+      "start": 174.875,
+      "end": 176.555,
+      "text": "That attribute will grow.",
+      "slide": ""
+    },
+    {
+      "start": 176.555,
+      "end": 179.208,
+      "text": "Plan a real noun: membership.",
+      "slide": ""
+    },
+    {
+      "start": 179.208,
+      "end": 185.93,
+      "text": "Query patterns: all courses for a student, all students for a course, all pairs with grade A.",
+      "slide": ""
+    },
+    {
+      "start": 185.93,
+      "end": 190.152,
+      "text": "Each pattern is two joins or one, starting from the middle.",
+      "slide": ""
+    },
+    {
+      "start": 190.152,
+      "end": 193.625,
+      "text": "Starting from the middle is often the clearest SQL.",
+      "slide": ""
+    },
+    {
+      "start": 193.625,
+      "end": 195.166,
+      "text": "FROM enrollment JOIN ...",
+      "slide": ""
+    },
+    {
+      "start": 195.166,
+      "end": 200.444,
+      "text": "The relationship table is the FROM table when the question is about the relationship.",
+      "slide": ""
+    },
+    {
+      "start": 200.444,
+      "end": 203.402,
+      "text": "That sentence saves a lot of nested guesses.",
+      "slide": ""
+    },
+    {
+      "start": 203.402,
+      "end": 205.0,
+      "text": "Draw three boxes.",
+      "slide": ""
+    },
+    {
+      "start": 205.0,
+      "end": 207.097,
+      "text": "Put the facts on the correct one.",
+      "slide": ""
+    },
+    {
+      "start": 207.097,
+      "end": 211.416,
+      "text": "If the fact needs both parents, you already know where it sits.",
+      "slide": ""
+    },
+    {
+      "start": 211.416,
+      "end": 215.541,
+      "text": "If you are about to add a second foreign key to a parent, pause.",
+      "slide": ""
+    },
+    {
+      "start": 215.541,
+      "end": 218.43,
+      "text": "Two parents usually want a child of their own.",
+      "slide": ""
+    },
+    {
+      "start": 218.43,
+      "end": 220.041,
+      "text": "That child is the pair.",
+      "slide": ""
+    },
+    {
+      "start": 220.041,
+      "end": 221.416,
+      "text": "Give the pair a noun.",
+      "slide": ""
+    },
+    {
+      "start": 221.416,
+      "end": 222.791,
+      "text": "Give the pair a key.",
+      "slide": ""
+    },
+    {
+      "start": 222.791,
+      "end": 225.208,
+      "text": "Give the pair any extra facts.",
+      "slide": ""
+    },
+    {
+      "start": 225.208,
+      "end": 228.5,
+      "text": "Join from the pair when the question is about the pair.",
+      "slide": ""
+    },
+    {
+      "start": 228.5,
+      "end": 230.638,
+      "text": "That habit keeps SQL short.",
+      "slide": ""
+    },
+    {
+      "start": 230.638,
+      "end": 234.611,
+      "text": "Short SQL is how you know the model matches the sentence.",
+      "slide": ""
+    },
+    {
+      "start": 234.611,
+      "end": 238.708,
+      "text": "Long SQL with two lists in a cell is how you know it does not.",
+      "slide": ""
+    },
+    {
+      "start": 238.708,
+      "end": 241.263,
+      "text": "Draw three boxes until it is boring.",
+      "slide": ""
+    },
+    {
+      "start": 241.263,
+      "end": 244.444,
+      "text": "Boring three boxes beat a clever array.",
+      "slide": ""
+    },
+    {
+      "start": 244.444,
+      "end": 246.555,
+      "text": "The relationship is a table.",
+      "slide": ""
+    },
+    {
+      "start": 246.555,
+      "end": 249.888,
+      "text": "Say it until the clever array looks embarrassing.",
+      "slide": ""
+    },
+    {
+      "start": 249.888,
+      "end": 258.527,
+      "text": "Beginners connect two tables with two foreign keys pointing at each other and then wonder why a query cannot list a student's courses.",
+      "slide": ""
+    },
+    {
+      "start": 258.527,
+      "end": 260.083,
+      "text": "You need a third table.",
+      "slide": ""
+    },
+    {
+      "start": 260.083,
+      "end": 268.972,
+      "text": "Many-to-many means each instance on this side can associate with many on that side, and each on that side with many on this side.",
+      "slide": ""
+    },
+    {
+      "start": 268.972,
+      "end": 270.638,
+      "text": "Students and courses.",
+      "slide": ""
+    },
+    {
+      "start": 270.638,
+      "end": 276.861,
+      "text": "Products and orders, if an order contains many products and a product appears on many orders.",
+      "slide": ""
+    },
+    {
+      "start": 276.861,
+      "end": 280.652,
+      "text": "Authors and books, when a book can have several authors.",
+      "slide": ""
+    },
+    {
+      "start": 280.754,
+      "end": 283.62,
+      "text": "A direct foreign key cannot hold a list.",
+      "slide": ""
+    },
+    {
+      "start": 283.62,
+      "end": 288.509,
+      "text": "A comma-separated course list in a student row is not a relationship.",
+      "slide": ""
+    },
+    {
+      "start": 288.509,
+      "end": 290.565,
+      "text": "It is a string you will regret.",
+      "slide": ""
+    },
+    {
+      "start": 290.565,
+      "end": 296.912,
+      "text": "The junction table, also called an associate or bridge table, holds one row per pairing.",
+      "slide": ""
+    },
+    {
+      "start": 296.912,
+      "end": 303.759,
+      "text": "student_id and course_id together are often the primary key of enrollments.",
+      "slide": ""
+    },
+    {
+      "start": 303.759,
+      "end": 307.37,
+      "text": "Each of those columns is a foreign key to its parent.",
+      "slide": ""
+    },
+    {
+      "start": 307.37,
+      "end": 312.87,
+      "text": "A student enrolled in three courses produces three rows, not three columns.",
+      "slide": ""
+    },
+    {
+      "start": 312.87,
+      "end": 317.69,
+      "text": "A course with thirty students produces thirty rows, not a nested table.",
+      "slide": ""
+    },
+    {
+      "start": 317.69,
+      "end": 325.537,
+      "text": "Attributes of the pairing belong on the junction: enrolled_on, grade, quantity on an order line.",
+      "slide": ""
+    },
+    {
+      "start": 325.537,
+      "end": 329.995,
+      "text": "Quantity is not an attribute of product alone or order alone.",
+      "slide": ""
+    },
+    {
+      "start": 329.995,
+      "end": 332.842,
+      "text": "It is an attribute of this product on this order.",
+      "slide": ""
+    },
+    {
+      "start": 332.842,
+      "end": 336.579,
+      "text": "That is how you know the third table is real, not a hack.",
+      "slide": ""
+    },
+    {
+      "start": 336.579,
+      "end": 340.87,
+      "text": "If the pairing has no attributes, the two keys are still enough.",
+      "slide": ""
+    },
+    {
+      "start": 340.87,
+      "end": 343.412,
+      "text": "Do not skip the table because it looks empty.",
+      "slide": ""
+    },
+    {
+      "start": 343.412,
+      "end": 344.981,
+      "text": "The pair is the fact.",
+      "slide": ""
+    },
+    {
+      "start": 344.981,
+      "end": 349.106,
+      "text": "Cardinality to the junction is one-to-many from each parent.",
+      "slide": ""
+    },
+    {
+      "start": 349.106,
+      "end": 351.967,
+      "text": "Student to enrollments is one-to-many.",
+      "slide": ""
+    },
+    {
+      "start": 351.967,
+      "end": 354.551,
+      "text": "Course to enrollments is one-to-many.",
+      "slide": ""
+    },
+    {
+      "start": 354.551,
+      "end": 359.231,
+      "text": "The many-to-many is the view from the two ends, looking through the bridge.",
+      "slide": ""
+    },
+    {
+      "start": 359.231,
+      "end": 363.579,
+      "text": "Query with two joins: students to enrollments to courses.",
+      "slide": ""
+    },
+    {
+      "start": 363.579,
+      "end": 367.245,
+      "text": "Filter on the junction when the question is about the pairing.",
+      "slide": ""
+    },
+    {
+      "start": 367.245,
+      "end": 375.87,
+      "text": "Unique on (student_id, course_id) prevents double enrollment unless repeats are a business event.",
+      "slide": ""
+    },
+    {
+      "start": 375.87,
+      "end": 384.398,
+      "text": "If repeats are allowed, add a surrogate and a uniqueness rule that matches the real world, such as one open enrollment at a time.",
+      "slide": ""
+    },
+    {
+      "start": 384.398,
+      "end": 392.94,
+      "text": "Draw the diamond or the crow's feet through the junction, not as a mysterious line with many on both ends and no table.",
+      "slide": ""
+    },
+    {
+      "start": 392.94,
+      "end": 398.384,
+      "text": "A line with many and many and no box in the middle is an unfinished sentence.",
+      "slide": ""
+    },
+    {
+      "start": 398.384,
+      "end": 401.065,
+      "text": "Finish it with a table name you can CREATE.",
+      "slide": ""
+    },
+    {
+      "start": 401.065,
+      "end": 405.079,
+      "text": "Then the SQL works because the grain is one pairing per row.",
+      "slide": ""
+    }
+  ]
+}

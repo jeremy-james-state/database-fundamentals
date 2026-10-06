@@ -1,37 +1,45 @@
 ---
-description: Audio lesson player — visuals must match the current lyric; one idea per beat
-globs: audio/player/**/*
-alwaysApply: false
+description: Audio lesson player — visuals must match the current lyric; tables teach by mutating, not bullet dumps
+alwaysApply: true
 ---
 
 # Visual ↔ lyric sync
 
 The player in `audio/player/` is a lyric-synced lesson, not a slide deck.
 
-Author beats in this order (`audio/authoring/lesson-flow.js`): **learning goals → milestones → visual plan → narration last**. `visual-stage.js` `lyricMin` / `sceneIntent` must match `media/cues.json`. After scene edits, run `node audio/player/eval-visual-sync.mjs` and `node audio/authoring/assert-sync.mjs`.
+Author beats: **learning goals → milestones → visual plan → narration last**. After scene edits: `node audio/player/eval-visual-sync.mjs` and `node audio/authoring/assert-sync.mjs`.
 
+## Tables teach what is said
 
-## One idea per beat
+When narration names a column, row, value, or SQL clause, the **table highlights that part** on that lyric — pulse/glow, dim the rest. Never a static full grid, never a header-only empty grid (unless the lyric is literally “no rows”).
 
-- Show only what the current lyric is saying. Do not stack a second concept (table + “entity?”, schema + “what’s a primary key?”).
-- Do not spoil: no schema, PK glow, or punchline before those words.
-- Diagrams only when they explain the spoken point (a table when saying table; FK pairs when saying tables relate).
+- Named cell (Maya, Austin, 42.00) → that row/cell lights
+- `SELECT` → keep/emphasize those columns; others dim
+- `WHERE` → matching rows stay; others dim or leave. **Keep the table on stage.** Do not replace it with a SQL dump + result chip
+- `COUNT` / `GROUP BY` → tally / collapse animation on the same table
+- Optional SQL strip under the table, clause-lit in sync — the **table mutation is the explanation**
 
-## Questions vs syllabus vs schema
+Use `pulse-col`, `pulse-row`, `keep-cols`, `keep-rows`, `reveal-rows`, `highlight-dups`, `missing` (same language as lesson 1 Querying). Frost theme: Inter, charcoal, muted dark red — not candy.
 
-- Lyrics that ask “what is a database / why tables / primary key / RDBMS” → `sceneIntent: "questions"` (checklist, one Q at a time). **Not** numbered outline, **not** schema.
-- Numbered lesson outline only if the voice lists those headings. If it doesn’t, delete or retarget the outline scene.
-- Schema (`kind: "schema"`) only when speech is “collection of tables” / related tables — never during the question run.
+Applies to **all lessons**: `visual-stage.js` and `media/lessons/*/cues.json`.
 
-## Reveal rhythm
+## Prefer diagrams, not text
 
-- Highlights (`highlight-dups`, `missing`, `pulse-col`, legend callouts) wait for the words, then appear — same beat as “You need structure.”
-- Large frost punchlines are story turns only (max ~3–4). Not on recap, outline, vendors, or SQL clauses.
+- Prefer tables, schema, highlights, counts, row-filter choreography over bullet lists and title cards
+- `kind: bullets` and recap syllabi are last resort
+- Recap = a small visual of the idea (filtered leftover row, COUNT badge), not “What you can ask now” plus grey bullets
+- One idea per beat; no frost punchline on recap, outline, vendors, or SQL clauses
 
 ```js
-// ❌ BAD — syllabus on question lyrics
-{ fromLyric: 9, kind: "roadmap", steps: [{ lyricMin: 11, actions: ["section:rdb"] }] }
+// ❌ BAD — SQL card replaces the table
+{ kind: "sql", sql: ["SELECT … WHERE …"] }
 
-// ✅ GOOD — one spoken question, one checklist row
-{ sceneIntent: "questions", steps: [{ lyricMin: 11, actions: ["q:2"] }] }
+// ✅ GOOD — same orders table; WHERE dims non-matching rows
+{ kind: "table", steps: [{ lyricMin: 15, actions: ["keep-rows:0,1,3", "pulse-col:2"] }] }
+
+// ❌ BAD — recap as bullets
+{ kind: "bullets", title: "What you can ask now" }
+
+// ✅ GOOD — leftover filtered row is the recap
+{ kind: "table", steps: [{ lyricMin: 194, actions: ["reveal-rows", "keep-rows:0"] }] }
 ```

@@ -1,0 +1,1563 @@
+{
+  "title": "Filter and summarize",
+  "subtitle": "WHERE, GROUP BY, COUNT",
+  "audio": "narration.mp3",
+  "duration": 679.416,
+  "slides": [],
+  "scenes": [
+    {
+      "id": "orders-film",
+      "label": "Orders",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "customer",
+        "city",
+        "total"
+      ],
+      "rows": [
+        [
+          "101",
+          "Maya",
+          "Austin",
+          "42.00"
+        ],
+        [
+          "102",
+          "Jordan",
+          "Austin",
+          "18.50"
+        ],
+        [
+          "103",
+          "Sofia",
+          "Denver",
+          "61.00"
+        ],
+        [
+          "104",
+          "Maya",
+          "Austin",
+          "9.25"
+        ]
+      ],
+      "bindLeft": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "bindRight": [
+        0,
+        2
+      ],
+      "fromLyric": 0,
+      "toLyric": 217,
+      "steps": [
+        {
+          "lyricMin": 0,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows"
+          ]
+        },
+        {
+          "lyricMin": 2,
+          "actions": [
+            "pulse-col:1,2,3"
+          ],
+          "lyricMax": 2
+        },
+        {
+          "lyricMin": 3,
+          "actions": [
+            "reveal-rows"
+          ],
+          "lyricMax": 3
+        },
+        {
+          "lyricMin": 4,
+          "actions": [
+            "pulse-row:0",
+            "pulse-row:3",
+            "pulse-col:1"
+          ],
+          "lyricMax": 4
+        },
+        {
+          "lyricMin": 5,
+          "actions": [
+            "pulse-row:1",
+            "pulse-col:2"
+          ],
+          "lyricMax": 5
+        },
+        {
+          "lyricMin": 6,
+          "actions": [
+            "pulse-row:2",
+            "pulse-col:2"
+          ],
+          "lyricMax": 6
+        },
+        {
+          "lyricMin": 7,
+          "actions": [
+            "keep-cols:0,1,2,3"
+          ],
+          "lyricMax": 8
+        },
+        {
+          "lyricMin": 10,
+          "actions": [
+            "pulse-col:2,3"
+          ],
+          "lyricMax": 14
+        },
+        {
+          "lyricMin": 15,
+          "actions": [
+            "pulse-col:2",
+            "keep-cols:2",
+            "keep-rows:0,1,3",
+            "pulse-cell:0:2",
+            "pulse-cell:1:2",
+            "pulse-cell:3:2"
+          ],
+          "lyricMax": 15
+        },
+        {
+          "lyricMin": 16,
+          "actions": [
+            "pulse-col:3",
+            "keep-cols:3",
+            "pulse-cell:0:3",
+            "pulse-cell:2:3"
+          ],
+          "lyricMax": 16
+        },
+        {
+          "lyricMin": 17,
+          "actions": [
+            "pulse-col:2,3",
+            "keep-cols:2,3",
+            "cond-cols:2,3",
+            "keep-rows:0"
+          ],
+          "lyricMax": 17
+        },
+        {
+          "lyricMin": 18,
+          "actions": [
+            "keep-cols:2,3",
+            "cond-cols:2,3",
+            "keep-rows:0",
+            "pulse-row:0"
+          ],
+          "lyricMax": 18
+        },
+        {
+          "lyricMin": 19,
+          "actions": [
+            "pulse-col:2,3",
+            "cond-cols:2,3",
+            "keep-rows:0,1,2,3",
+            "pulse-cell:0:2",
+            "pulse-cell:1:2",
+            "pulse-cell:3:2",
+            "pulse-cell:0:3",
+            "pulse-cell:2:3"
+          ],
+          "lyricMax": 19
+        },
+        {
+          "lyricMin": 20,
+          "actions": [
+            "parens",
+            "cond-cols:2,3",
+            "pulse-col:2,3",
+            "keep-rows:0,1,2,3"
+          ],
+          "lyricMax": 20
+        },
+        {
+          "lyricMin": 21,
+          "actions": [
+            "split-binds",
+            "parens",
+            "cond-cols:2,3"
+          ],
+          "lyricMax": 21
+        },
+        {
+          "lyricMin": 32,
+          "actions": [
+            "tally",
+            "keep-rows:0,1,2,3"
+          ],
+          "lyricMax": 38
+        },
+        {
+          "lyricMin": 39,
+          "actions": [
+            "group-by:2",
+            "tally"
+          ],
+          "lyricMax": 46
+        },
+        {
+          "lyricMin": 47,
+          "actions": [
+            "tally",
+            "keep-rows:0,1,3"
+          ],
+          "lyricMax": 51
+        },
+        {
+          "lyricMin": 60,
+          "actions": [
+            "keep-rows:0,1,3",
+            "pulse-col:2"
+          ],
+          "lyricMax": 61
+        },
+        {
+          "lyricMin": 62,
+          "actions": [
+            "keep-rows:0"
+          ],
+          "lyricMax": 62
+        },
+        {
+          "lyricMin": 63,
+          "actions": [
+            "group-by:2",
+            "tally"
+          ],
+          "lyricMax": 64
+        },
+        {
+          "lyricMin": 65,
+          "actions": [
+            "keep-rows:0,1,3",
+            "tally"
+          ],
+          "lyricMax": 66
+        },
+        {
+          "lyricMin": 194,
+          "actions": [
+            "keep-rows:0",
+            "pulse-row:0"
+          ],
+          "lyricMax": 217
+        }
+      ]
+    }
+  ],
+  "lyrics": [
+    {
+      "start": 0.05,
+      "end": 2.875,
+      "text": "You already know how to pull columns out of a table.",
+      "slide": ""
+    },
+    {
+      "start": 2.875,
+      "end": 7.277,
+      "text": "The next skill is keeping only the rows you mean, and then counting them.",
+      "slide": ""
+    },
+    {
+      "start": 7.277,
+      "end": 12.819,
+      "text": "Picture an orders table: who bought, from which city, and how much they spent.",
+      "slide": ""
+    },
+    {
+      "start": 12.819,
+      "end": 15.125,
+      "text": "Four rows are enough to see the pattern.",
+      "slide": ""
+    },
+    {
+      "start": 15.125,
+      "end": 17.375,
+      "text": "Maya ordered twice from Austin.",
+      "slide": ""
+    },
+    {
+      "start": 17.375,
+      "end": 19.597,
+      "text": "Jordan ordered once from Austin.",
+      "slide": ""
+    },
+    {
+      "start": 19.597,
+      "end": 22.083,
+      "text": "Sofia ordered once from Denver.",
+      "slide": ""
+    },
+    {
+      "start": 22.083,
+      "end": 25.458,
+      "text": "SELECT without a filter returns every order.",
+      "slide": ""
+    },
+    {
+      "start": 25.458,
+      "end": 28.277,
+      "text": "That is fine when the table fits on a screen.",
+      "slide": ""
+    },
+    {
+      "start": 28.277,
+      "end": 32.208,
+      "text": "It falls apart when the table grows to thousands of rows.",
+      "slide": ""
+    },
+    {
+      "start": 32.208,
+      "end": 35.291,
+      "text": "WHERE keeps a row only when a condition is true.",
+      "slide": ""
+    },
+    {
+      "start": 35.291,
+      "end": 38.0,
+      "text": "Think of it as a gate on the way out of the table.",
+      "slide": ""
+    },
+    {
+      "start": 38.0,
+      "end": 40.68,
+      "text": "Equals compares a column to a value.",
+      "slide": ""
+    },
+    {
+      "start": 40.68,
+      "end": 42.944,
+      "text": "Strings sit in single quotes.",
+      "slide": ""
+    },
+    {
+      "start": 42.944,
+      "end": 44.236,
+      "text": "Numbers do not.",
+      "slide": ""
+    },
+    {
+      "start": 44.236,
+      "end": 47.208,
+      "text": "city equals Austin is a string test.",
+      "slide": ""
+    },
+    {
+      "start": 47.208,
+      "end": 50.18,
+      "text": "total greater than twenty is a number test.",
+      "slide": ""
+    },
+    {
+      "start": 50.18,
+      "end": 52.166,
+      "text": "You can ask for both at once.",
+      "slide": ""
+    },
+    {
+      "start": 52.166,
+      "end": 55.111,
+      "text": "AND requires every condition to be true.",
+      "slide": ""
+    },
+    {
+      "start": 55.111,
+      "end": 57.944,
+      "text": "OR lets a row through if any condition is true.",
+      "slide": ""
+    },
+    {
+      "start": 57.944,
+      "end": 61.194,
+      "text": "Parentheses keep the logic honest when you mix them.",
+      "slide": ""
+    },
+    {
+      "start": 61.194,
+      "end": 65.138,
+      "text": "Without parentheses, AND usually binds tighter than OR.",
+      "slide": ""
+    },
+    {
+      "start": 65.138,
+      "end": 68.527,
+      "text": "Write the grouping you mean, then read it back out loud.",
+      "slide": ""
+    },
+    {
+      "start": 68.527,
+      "end": 71.472,
+      "text": "NULL is not a value you can compare with equals.",
+      "slide": ""
+    },
+    {
+      "start": 71.472,
+      "end": 74.25,
+      "text": "Unknown compared to Austin is not true.",
+      "slide": ""
+    },
+    {
+      "start": 74.25,
+      "end": 78.208,
+      "text": "Use IS NULL when the cell is empty on purpose.",
+      "slide": ""
+    },
+    {
+      "start": 78.208,
+      "end": 81.152,
+      "text": "Use IS NOT NULL when you need a real city.",
+      "slide": ""
+    },
+    {
+      "start": 81.152,
+      "end": 84.402,
+      "text": "LIKE matches a pattern instead of an exact string.",
+      "slide": ""
+    },
+    {
+      "start": 84.402,
+      "end": 87.166,
+      "text": "Percent means any run of characters.",
+      "slide": ""
+    },
+    {
+      "start": 87.166,
+      "end": 90.319,
+      "text": "Underscore means exactly one character.",
+      "slide": ""
+    },
+    {
+      "start": 90.319,
+      "end": 92.444,
+      "text": "Patterns still live in quotes.",
+      "slide": ""
+    },
+    {
+      "start": 92.444,
+      "end": 95.277,
+      "text": "Once the rows are honest, you summarize.",
+      "slide": ""
+    },
+    {
+      "start": 95.277,
+      "end": 98.611,
+      "text": "COUNT star counts rows that survived the filter.",
+      "slide": ""
+    },
+    {
+      "start": 98.611,
+      "end": 100.361,
+      "text": "It does not count columns.",
+      "slide": ""
+    },
+    {
+      "start": 100.361,
+      "end": 102.347,
+      "text": "It counts surviving rows.",
+      "slide": ""
+    },
+    {
+      "start": 102.347,
+      "end": 105.652,
+      "text": "SUM adds a numeric column across those rows.",
+      "slide": ""
+    },
+    {
+      "start": 105.652,
+      "end": 107.486,
+      "text": "AVG takes the mean.",
+      "slide": ""
+    },
+    {
+      "start": 107.486,
+      "end": 109.791,
+      "text": "MIN and MAX find the edges.",
+      "slide": ""
+    },
+    {
+      "start": 109.791,
+      "end": 115.0,
+      "text": "Those functions collapse many rows into one number \u2014 unless you group.",
+      "slide": ""
+    },
+    {
+      "start": 115.0,
+      "end": 119.555,
+      "text": "GROUP BY collapses rows that share a value into one result row.",
+      "slide": ""
+    },
+    {
+      "start": 119.555,
+      "end": 122.916,
+      "text": "Group by city, and Austin becomes one row.",
+      "slide": ""
+    },
+    {
+      "start": 122.916,
+      "end": 124.583,
+      "text": "Denver becomes another.",
+      "slide": ""
+    },
+    {
+      "start": 124.583,
+      "end": 128.111,
+      "text": "Then COUNT tells you how many orders that city produced.",
+      "slide": ""
+    },
+    {
+      "start": 128.111,
+      "end": 130.972,
+      "text": "SUM tells you how much money that city produced.",
+      "slide": ""
+    },
+    {
+      "start": 130.972,
+      "end": 135.402,
+      "text": "The select list may only keep the grouped column and the summaries.",
+      "slide": ""
+    },
+    {
+      "start": 135.402,
+      "end": 139.097,
+      "text": "You cannot keep customer name unless you also group by it.",
+      "slide": ""
+    },
+    {
+      "start": 139.097,
+      "end": 142.694,
+      "text": "That rule is the engine protecting you from a fake fact.",
+      "slide": ""
+    },
+    {
+      "start": 142.694,
+      "end": 145.847,
+      "text": "HAVING filters groups after the grouping is done.",
+      "slide": ""
+    },
+    {
+      "start": 145.847,
+      "end": 148.402,
+      "text": "WHERE filters rows before the group.",
+      "slide": ""
+    },
+    {
+      "start": 148.402,
+      "end": 150.305,
+      "text": "That order is the whole trick.",
+      "slide": ""
+    },
+    {
+      "start": 150.305,
+      "end": 153.736,
+      "text": "If you filter cities after the count, you want HAVING.",
+      "slide": ""
+    },
+    {
+      "start": 153.736,
+      "end": 157.305,
+      "text": "If you filter rows before the count, you want WHERE.",
+      "slide": ""
+    },
+    {
+      "start": 157.305,
+      "end": 159.916,
+      "text": "Read a summary query as a short story.",
+      "slide": ""
+    },
+    {
+      "start": 159.916,
+      "end": 161.694,
+      "text": "Pick the columns you will show.",
+      "slide": ""
+    },
+    {
+      "start": 161.694,
+      "end": 162.902,
+      "text": "Name the table.",
+      "slide": ""
+    },
+    {
+      "start": 162.902,
+      "end": 164.722,
+      "text": "Keep the rows that belong.",
+      "slide": ""
+    },
+    {
+      "start": 164.722,
+      "end": 166.75,
+      "text": "Group the ones that share a city.",
+      "slide": ""
+    },
+    {
+      "start": 166.75,
+      "end": 168.777,
+      "text": "Keep the groups that still matter.",
+      "slide": ""
+    },
+    {
+      "start": 168.777,
+      "end": 170.791,
+      "text": "Sort if the ranking is the point.",
+      "slide": ""
+    },
+    {
+      "start": 170.791,
+      "end": 174.319,
+      "text": "Try it on the four-row table before you trust a warehouse.",
+      "slide": ""
+    },
+    {
+      "start": 174.319,
+      "end": 177.291,
+      "text": "Filter Austin, and two customers remain.",
+      "slide": ""
+    },
+    {
+      "start": 177.291,
+      "end": 179.652,
+      "text": "One of those orders is under twenty.",
+      "slide": ""
+    },
+    {
+      "start": 179.652,
+      "end": 183.402,
+      "text": "AND total greater than twenty leaves Maya's large order.",
+      "slide": ""
+    },
+    {
+      "start": 183.402,
+      "end": 187.888,
+      "text": "Group the original table by city, and Austin has three orders.",
+      "slide": ""
+    },
+    {
+      "start": 187.888,
+      "end": 189.111,
+      "text": "Denver has one.",
+      "slide": ""
+    },
+    {
+      "start": 189.111,
+      "end": 192.819,
+      "text": "HAVING COUNT star greater than two keeps only Austin.",
+      "slide": ""
+    },
+    {
+      "start": 192.819,
+      "end": 197.402,
+      "text": "If a group looks empty, the filter probably ate the rows first.",
+      "slide": ""
+    },
+    {
+      "start": 197.402,
+      "end": 202.597,
+      "text": "Write the WHERE, then count, then see if the story is still the one you meant.",
+      "slide": ""
+    },
+    {
+      "start": 202.597,
+      "end": 207.75,
+      "text": "One idea at a time, and the table answers with a short, true list.",
+      "slide": ""
+    },
+    {
+      "start": 207.75,
+      "end": 210.319,
+      "text": "A filter is a decision you can defend.",
+      "slide": ""
+    },
+    {
+      "start": 210.319,
+      "end": 215.291,
+      "text": "If you cannot say which rows should vanish, you are not ready to summarize.",
+      "slide": ""
+    },
+    {
+      "start": 215.291,
+      "end": 218.222,
+      "text": "Totals without a filter are a census.",
+      "slide": ""
+    },
+    {
+      "start": 218.222,
+      "end": 220.736,
+      "text": "Totals with a filter are an answer.",
+      "slide": ""
+    },
+    {
+      "start": 220.736,
+      "end": 222.875,
+      "text": "Watch the types in the comparison.",
+      "slide": ""
+    },
+    {
+      "start": 222.875,
+      "end": 227.5,
+      "text": "Quoted twenty is text, and it will not compare the way a number does.",
+      "slide": ""
+    },
+    {
+      "start": 227.5,
+      "end": 233.402,
+      "text": "Unquoted Austin is an identifier, and it will fail unless you have a column of that name.",
+      "slide": ""
+    },
+    {
+      "start": 233.402,
+      "end": 235.277,
+      "text": "The quotes are part of the meaning.",
+      "slide": ""
+    },
+    {
+      "start": 235.277,
+      "end": 239.361,
+      "text": "When a city list is long, IN keeps the WHERE readable.",
+      "slide": ""
+    },
+    {
+      "start": 239.361,
+      "end": 244.875,
+      "text": "When the list comes from another query, the subquery is still a filter, not a join.",
+      "slide": ""
+    },
+    {
+      "start": 244.875,
+      "end": 248.583,
+      "text": "You can filter, then join, then filter again.",
+      "slide": ""
+    },
+    {
+      "start": 248.583,
+      "end": 251.888,
+      "text": "Each WHERE is still about rows, not groups.",
+      "slide": ""
+    },
+    {
+      "start": 251.888,
+      "end": 255.097,
+      "text": "COUNT of a column ignores NULL in that column.",
+      "slide": ""
+    },
+    {
+      "start": 255.097,
+      "end": 256.5,
+      "text": "COUNT star does not.",
+      "slide": ""
+    },
+    {
+      "start": 256.5,
+      "end": 260.25,
+      "text": "That difference shows up the first time a city is missing.",
+      "slide": ""
+    },
+    {
+      "start": 260.25,
+      "end": 265.25,
+      "text": "If you need distinct customers, COUNT DISTINCT customer, not COUNT star.",
+      "slide": ""
+    },
+    {
+      "start": 265.25,
+      "end": 268.93,
+      "text": "Three Austin orders from two people are two customers.",
+      "slide": ""
+    },
+    {
+      "start": 269.066,
+      "end": 270.849,
+      "text": "Summaries want that honesty.",
+      "slide": ""
+    },
+    {
+      "start": 270.849,
+      "end": 275.502,
+      "text": "ORDER BY after a group sorts the groups, not the original rows.",
+      "slide": ""
+    },
+    {
+      "start": 275.502,
+      "end": 277.793,
+      "text": "That is usually what a ranking wants.",
+      "slide": ""
+    },
+    {
+      "start": 277.793,
+      "end": 281.224,
+      "text": "LIMIT without ORDER BY is an arbitrary handful.",
+      "slide": ""
+    },
+    {
+      "start": 281.224,
+      "end": 283.307,
+      "text": "Do not treat it as top cities.",
+      "slide": ""
+    },
+    {
+      "start": 283.307,
+      "end": 286.085,
+      "text": "Put the sort in when the ranking is the point.",
+      "slide": ""
+    },
+    {
+      "start": 286.085,
+      "end": 288.085,
+      "text": "Practice one change at a time.",
+      "slide": ""
+    },
+    {
+      "start": 288.085,
+      "end": 289.071,
+      "text": "Add WHERE.",
+      "slide": ""
+    },
+    {
+      "start": 289.071,
+      "end": 290.293,
+      "text": "See the rows.",
+      "slide": ""
+    },
+    {
+      "start": 290.293,
+      "end": 291.529,
+      "text": "Add GROUP BY.",
+      "slide": ""
+    },
+    {
+      "start": 291.529,
+      "end": 292.835,
+      "text": "See the counts.",
+      "slide": ""
+    },
+    {
+      "start": 292.835,
+      "end": 293.891,
+      "text": "Add HAVING.",
+      "slide": ""
+    },
+    {
+      "start": 293.891,
+      "end": 295.543,
+      "text": "See which groups remain.",
+      "slide": ""
+    },
+    {
+      "start": 295.543,
+      "end": 299.849,
+      "text": "Then you will not blame the engine for a story you wrote in the wrong clause.",
+      "slide": ""
+    },
+    {
+      "start": 299.849,
+      "end": 301.238,
+      "text": "The table was ready.",
+      "slide": ""
+    },
+    {
+      "start": 301.238,
+      "end": 303.002,
+      "text": "The question had to be too.",
+      "slide": ""
+    },
+    {
+      "start": 303.002,
+      "end": 306.613,
+      "text": "Start the query as a sentence you would actually ask a person.",
+      "slide": ""
+    },
+    {
+      "start": 306.613,
+      "end": 310.071,
+      "text": "Which product names sell above twenty is a sentence.",
+      "slide": ""
+    },
+    {
+      "start": 310.071,
+      "end": 316.529,
+      "text": "SELECT name FROM products WHERE price greater than twenty is that sentence with the small talk stripped out.",
+      "slide": ""
+    },
+    {
+      "start": 316.529,
+      "end": 322.682,
+      "text": "SQL is like English with almost no small talk, and almost no freedom of word choice.",
+      "slide": ""
+    },
+    {
+      "start": 322.682,
+      "end": 326.46,
+      "text": "You must use clauses, and you must put them in a legal order.",
+      "slide": ""
+    },
+    {
+      "start": 326.46,
+      "end": 328.946,
+      "text": "SELECT names the columns you want to see.",
+      "slide": ""
+    },
+    {
+      "start": 328.946,
+      "end": 331.904,
+      "text": "FROM names the table those columns live in.",
+      "slide": ""
+    },
+    {
+      "start": 331.904,
+      "end": 334.529,
+      "text": "WHERE names the test a row must pass.",
+      "slide": ""
+    },
+    {
+      "start": 334.529,
+      "end": 337.877,
+      "text": "If you skip WHERE, every row is a candidate.",
+      "slide": ""
+    },
+    {
+      "start": 337.877,
+      "end": 343.071,
+      "text": "If you skip SELECT's column list and use star, every column comes along.",
+      "slide": ""
+    },
+    {
+      "start": 343.071,
+      "end": 345.668,
+      "text": "Star is a peek, not a contract.",
+      "slide": ""
+    },
+    {
+      "start": 345.668,
+      "end": 349.654,
+      "text": "Name the columns you will use, so the result stays readable.",
+      "slide": ""
+    },
+    {
+      "start": 349.654,
+      "end": 357.682,
+      "text": "Comparison operators are the tests: equals, not equals, less, greater, and the inclusive cousins.",
+      "slide": ""
+    },
+    {
+      "start": 357.682,
+      "end": 363.391,
+      "text": "Not equals can be written two ways in many engines, and both mean the same test.",
+      "slide": ""
+    },
+    {
+      "start": 363.391,
+      "end": 365.877,
+      "text": "Strings live in single quotes.",
+      "slide": ""
+    },
+    {
+      "start": 365.877,
+      "end": 367.168,
+      "text": "Numbers do not.",
+      "slide": ""
+    },
+    {
+      "start": 367.168,
+      "end": 371.932,
+      "text": "Quoted twenty is text, and a price column will not treat it as money.",
+      "slide": ""
+    },
+    {
+      "start": 371.932,
+      "end": 376.196,
+      "text": "AND requires every test to be true for the row to survive.",
+      "slide": ""
+    },
+    {
+      "start": 376.196,
+      "end": 379.516,
+      "text": "OR lets a row through if any listed test is true.",
+      "slide": ""
+    },
+    {
+      "start": 379.516,
+      "end": 380.974,
+      "text": "NOT flips a test.",
+      "slide": ""
+    },
+    {
+      "start": 380.974,
+      "end": 385.988,
+      "text": "Parentheses show the grouping you mean when AND and OR share a WHERE.",
+      "slide": ""
+    },
+    {
+      "start": 385.988,
+      "end": 393.446,
+      "text": "Without them, AND usually binds tighter, and the sentence you said in your head may not be the sentence the engine ran.",
+      "slide": ""
+    },
+    {
+      "start": 393.446,
+      "end": 396.849,
+      "text": "BETWEEN is a closed range: the edges count.",
+      "slide": ""
+    },
+    {
+      "start": 396.849,
+      "end": 401.974,
+      "text": "IN is a list of allowed values, and it reads cleaner than a pile of ORs.",
+      "slide": ""
+    },
+    {
+      "start": 401.974,
+      "end": 404.766,
+      "text": "A subquery in IN is still a filter.",
+      "slide": ""
+    },
+    {
+      "start": 404.766,
+      "end": 406.071,
+      "text": "It is not a join.",
+      "slide": ""
+    },
+    {
+      "start": 406.071,
+      "end": 407.849,
+      "text": "LIKE compares to a pattern.",
+      "slide": ""
+    },
+    {
+      "start": 407.849,
+      "end": 411.918,
+      "text": "Percent stands for any run of characters, including none.",
+      "slide": ""
+    },
+    {
+      "start": 411.918,
+      "end": 415.307,
+      "text": "Underscore stands for exactly one character.",
+      "slide": ""
+    },
+    {
+      "start": 415.307,
+      "end": 421.96,
+      "text": "A pattern that starts with percent cannot use a normal prefix index well, and that is a later speed lesson.",
+      "slide": ""
+    },
+    {
+      "start": 421.96,
+      "end": 425.585,
+      "text": "For now, write the pattern that matches the names you mean.",
+      "slide": ""
+    },
+    {
+      "start": 425.585,
+      "end": 427.057,
+      "text": "NULL is not a value.",
+      "slide": ""
+    },
+    {
+      "start": 427.057,
+      "end": 428.154,
+      "text": "It is a hole.",
+      "slide": ""
+    },
+    {
+      "start": 428.154,
+      "end": 430.432,
+      "text": "Equals NULL is never true.",
+      "slide": ""
+    },
+    {
+      "start": 430.432,
+      "end": 432.502,
+      "text": "IS NULL is the test for the hole.",
+      "slide": ""
+    },
+    {
+      "start": 432.502,
+      "end": 435.252,
+      "text": "IS NOT NULL is the test for a real cell.",
+      "slide": ""
+    },
+    {
+      "start": 435.252,
+      "end": 437.918,
+      "text": "ORDER BY sorts the rows that survived.",
+      "slide": ""
+    },
+    {
+      "start": 437.918,
+      "end": 442.029,
+      "text": "ASC is lowest to highest, and it is the default.",
+      "slide": ""
+    },
+    {
+      "start": 442.029,
+      "end": 444.141,
+      "text": "DESC is highest to lowest.",
+      "slide": ""
+    },
+    {
+      "start": 444.141,
+      "end": 446.363,
+      "text": "You can sort by more than one column.",
+      "slide": ""
+    },
+    {
+      "start": 446.363,
+      "end": 449.835,
+      "text": "The second column only breaks ties in the first.",
+      "slide": ""
+    },
+    {
+      "start": 449.835,
+      "end": 454.682,
+      "text": "Text sorts by the collation of the column, which is why case can surprise you.",
+      "slide": ""
+    },
+    {
+      "start": 454.682,
+      "end": 459.224,
+      "text": "LIMIT without ORDER BY is an arbitrary handful, not a ranking.",
+      "slide": ""
+    },
+    {
+      "start": 459.224,
+      "end": 462.918,
+      "text": "Once the rows are honest, aggregation collapses them.",
+      "slide": ""
+    },
+    {
+      "start": 462.918,
+      "end": 465.571,
+      "text": "COUNT star counts surviving rows.",
+      "slide": ""
+    },
+    {
+      "start": 465.571,
+      "end": 468.779,
+      "text": "COUNT of a column ignores NULL in that column.",
+      "slide": ""
+    },
+    {
+      "start": 468.779,
+      "end": 475.474,
+      "text": "COUNT DISTINCT counts unique values, so three Austin orders from two people are two customers.",
+      "slide": ""
+    },
+    {
+      "start": 475.474,
+      "end": 477.529,
+      "text": "SUM adds a numeric column.",
+      "slide": ""
+    },
+    {
+      "start": 477.529,
+      "end": 480.724,
+      "text": "AVG takes the mean of the values it can see.",
+      "slide": ""
+    },
+    {
+      "start": 480.724,
+      "end": 483.029,
+      "text": "MIN and MAX find the edges.",
+      "slide": ""
+    },
+    {
+      "start": 483.029,
+      "end": 486.932,
+      "text": "ROUND is a display choice on a number you already computed.",
+      "slide": ""
+    },
+    {
+      "start": 486.932,
+      "end": 491.807,
+      "text": "AS names the result column so the heading is a word a human can read.",
+      "slide": ""
+    },
+    {
+      "start": 491.807,
+      "end": 495.627,
+      "text": "Those functions return one row \u2014 unless you GROUP BY.",
+      "slide": ""
+    },
+    {
+      "start": 495.627,
+      "end": 500.196,
+      "text": "GROUP BY makes one result row per distinct value of the grouped column.",
+      "slide": ""
+    },
+    {
+      "start": 500.196,
+      "end": 505.127,
+      "text": "Group by city, and Austin is one row even if three orders live there.",
+      "slide": ""
+    },
+    {
+      "start": 505.127,
+      "end": 509.363,
+      "text": "The select list may keep the grouped columns and the summaries.",
+      "slide": ""
+    },
+    {
+      "start": 509.363,
+      "end": 516.085,
+      "text": "A leftover customer name with no grouping is a fake fact: which customer owns the city's total?",
+      "slide": ""
+    },
+    {
+      "start": 516.085,
+      "end": 518.335,
+      "text": "The engine is right to refuse that.",
+      "slide": ""
+    },
+    {
+      "start": 518.335,
+      "end": 520.21,
+      "text": "WHERE happens before the group.",
+      "slide": ""
+    },
+    {
+      "start": 520.21,
+      "end": 521.793,
+      "text": "HAVING happens after.",
+      "slide": ""
+    },
+    {
+      "start": 521.793,
+      "end": 523.432,
+      "text": "Filter rows with WHERE.",
+      "slide": ""
+    },
+    {
+      "start": 523.432,
+      "end": 525.127,
+      "text": "Filter groups with HAVING.",
+      "slide": ""
+    },
+    {
+      "start": 525.127,
+      "end": 530.474,
+      "text": "If you want cities with more than two orders, that is HAVING COUNT star greater than two.",
+      "slide": ""
+    },
+    {
+      "start": 530.474,
+      "end": 536.029,
+      "text": "If you want to ignore Denver rows before you count, that is WHERE city is not Denver.",
+      "slide": ""
+    },
+    {
+      "start": 536.029,
+      "end": 540.71,
+      "text": "Read the query in engine order, not in the order you typed the words.",
+      "slide": ""
+    },
+    {
+      "start": 540.71,
+      "end": 542.307,
+      "text": "FROM finds the table.",
+      "slide": ""
+    },
+    {
+      "start": 542.426,
+      "end": 543.848,
+      "text": "WHERE drops rows.",
+      "slide": ""
+    },
+    {
+      "start": 543.848,
+      "end": 545.417,
+      "text": "GROUP BY collapses.",
+      "slide": ""
+    },
+    {
+      "start": 545.417,
+      "end": 547.056,
+      "text": "HAVING drops groups.",
+      "slide": ""
+    },
+    {
+      "start": 547.056,
+      "end": 549.028,
+      "text": "SELECT shapes the columns.",
+      "slide": ""
+    },
+    {
+      "start": 549.028,
+      "end": 551.028,
+      "text": "ORDER BY sorts what is left.",
+      "slide": ""
+    },
+    {
+      "start": 551.028,
+      "end": 552.681,
+      "text": "LIMIT cuts the page.",
+      "slide": ""
+    },
+    {
+      "start": 552.681,
+      "end": 555.028,
+      "text": "Practice on four rows you can see.",
+      "slide": ""
+    },
+    {
+      "start": 555.028,
+      "end": 559.056,
+      "text": "Filter Austin over twenty and watch which order remains.",
+      "slide": ""
+    },
+    {
+      "start": 559.056,
+      "end": 563.639,
+      "text": "Group the original table by city and watch Austin become three.",
+      "slide": ""
+    },
+    {
+      "start": 563.639,
+      "end": 566.112,
+      "text": "Add HAVING and watch Denver leave.",
+      "slide": ""
+    },
+    {
+      "start": 566.112,
+      "end": 567.973,
+      "text": "Change one clause at a time.",
+      "slide": ""
+    },
+    {
+      "start": 567.973,
+      "end": 571.598,
+      "text": "If the answer is wrong, the story in a clause is wrong.",
+      "slide": ""
+    },
+    {
+      "start": 571.598,
+      "end": 572.987,
+      "text": "The table was ready.",
+      "slide": ""
+    },
+    {
+      "start": 572.987,
+      "end": 577.778,
+      "text": "The question had to name the filter and the summary as two different moments.",
+      "slide": ""
+    },
+    {
+      "start": 577.778,
+      "end": 588.028,
+      "text": "Refresher complete, aggregation complete, now the combined pattern the lecture promised: which customers spend the most, how many orders last month.",
+      "slide": ""
+    },
+    {
+      "start": 588.028,
+      "end": 596.876,
+      "text": "Spending is SUM total GROUP BY customer_id ORDER BY the sum DESC, after WHERE on the month if the month is a row filter.",
+      "slide": ""
+    },
+    {
+      "start": 596.876,
+      "end": 605.264,
+      "text": "How many orders last month is COUNT star with WHERE on the month, no group if you want one number, GROUP BY day if you want a chart.",
+      "slide": ""
+    },
+    {
+      "start": 605.264,
+      "end": 607.556,
+      "text": "Same clauses, different grain.",
+      "slide": ""
+    },
+    {
+      "start": 607.556,
+      "end": 610.042,
+      "text": "Write the grain first on a sticky note.",
+      "slide": ""
+    },
+    {
+      "start": 610.042,
+      "end": 612.07,
+      "text": "Then the SQL cannot wander.",
+      "slide": ""
+    },
+    {
+      "start": 612.07,
+      "end": 618.445,
+      "text": "That is filtering and aggregation together, which is the whole video, not a five-minute taste.",
+      "slide": ""
+    },
+    {
+      "start": 618.445,
+      "end": 623.778,
+      "text": "You have the clauses, the NULL rules, the group rules, and a table you can see.",
+      "slide": ""
+    },
+    {
+      "start": 623.778,
+      "end": 626.014,
+      "text": "Ask the next question on purpose.",
+      "slide": ""
+    },
+    {
+      "start": 626.014,
+      "end": 627.82,
+      "text": "Keep only the rows you mean.",
+      "slide": ""
+    },
+    {
+      "start": 627.82,
+      "end": 629.862,
+      "text": "Count or sum what survived.",
+      "slide": ""
+    },
+    {
+      "start": 629.862,
+      "end": 631.681,
+      "text": "Do not mix those moments.",
+      "slide": ""
+    },
+    {
+      "start": 631.681,
+      "end": 635.32,
+      "text": "Close with questions, the way a careful lecture does.",
+      "slide": ""
+    },
+    {
+      "start": 635.32,
+      "end": 638.376,
+      "text": "Answer in a sentence you could defend at a keyboard.",
+      "slide": ""
+    },
+    {
+      "start": 638.376,
+      "end": 640.264,
+      "text": "SELECT FROM WHERE meaning?",
+      "slide": ""
+    },
+    {
+      "start": 640.264,
+      "end": 642.931,
+      "text": "Columns, table, row test.",
+      "slide": ""
+    },
+    {
+      "start": 642.931,
+      "end": 644.264,
+      "text": "AND versus OR?",
+      "slide": ""
+    },
+    {
+      "start": 644.264,
+      "end": 646.806,
+      "text": "All tests versus any test.",
+      "slide": ""
+    },
+    {
+      "start": 646.806,
+      "end": 647.917,
+      "text": "NULL test?",
+      "slide": ""
+    },
+    {
+      "start": 647.917,
+      "end": 650.306,
+      "text": "IS NULL, never equals NULL.",
+      "slide": ""
+    },
+    {
+      "start": 650.306,
+      "end": 651.667,
+      "text": "GROUP BY does what?",
+      "slide": ""
+    },
+    {
+      "start": 651.667,
+      "end": 654.278,
+      "text": "One result row per group value.",
+      "slide": ""
+    },
+    {
+      "start": 654.278,
+      "end": 655.709,
+      "text": "HAVING versus WHERE?",
+      "slide": ""
+    },
+    {
+      "start": 655.709,
+      "end": 658.028,
+      "text": "Groups after versus rows before.",
+      "slide": ""
+    },
+    {
+      "start": 658.028,
+      "end": 660.056,
+      "text": "COUNT star versus COUNT column?",
+      "slide": ""
+    },
+    {
+      "start": 660.056,
+      "end": 662.667,
+      "text": "Rows versus non-NULL in that column.",
+      "slide": ""
+    },
+    {
+      "start": 662.667,
+      "end": 663.889,
+      "text": "COUNT DISTINCT?",
+      "slide": ""
+    },
+    {
+      "start": 663.889,
+      "end": 665.348,
+      "text": "Unique values.",
+      "slide": ""
+    },
+    {
+      "start": 665.348,
+      "end": 667.153,
+      "text": "LIMIT without ORDER BY?",
+      "slide": ""
+    },
+    {
+      "start": 667.153,
+      "end": 668.264,
+      "text": "Not a ranking.",
+      "slide": ""
+    },
+    {
+      "start": 668.264,
+      "end": 669.931,
+      "text": "Grain of a city report?",
+      "slide": ""
+    },
+    {
+      "start": 669.931,
+      "end": 671.431,
+      "text": "One row per city.",
+      "slide": ""
+    },
+    {
+      "start": 671.431,
+      "end": 673.084,
+      "text": "Grain of an order list?",
+      "slide": ""
+    },
+    {
+      "start": 673.084,
+      "end": 674.626,
+      "text": "One row per order.",
+      "slide": ""
+    },
+    {
+      "start": 674.626,
+      "end": 679.348,
+      "text": "If an answer needed a second table, go draw it before you write more SQL.",
+      "slide": ""
+    }
+  ]
+}

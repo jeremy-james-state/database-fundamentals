@@ -1,0 +1,1189 @@
+{
+  "title": "Text types",
+  "subtitle": "CHAR, VARCHAR, TEXT",
+  "audio": "narration.mp3",
+  "duration": 450.312,
+  "slides": [],
+  "scenes": [
+    {
+      "id": "homes",
+      "label": "Values",
+      "kind": "table",
+      "headers": [
+        "name",
+        "email"
+      ],
+      "rows": [
+        [
+          "Maya",
+          "maya@shop.test"
+        ],
+        [
+          "Jordan",
+          "jordan@shop.test"
+        ]
+      ],
+      "fromLyric": 0,
+      "toLyric": 26,
+      "steps": [
+        {
+          "lyricMin": 0,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "declare",
+      "label": "Declare",
+      "kind": "sql",
+      "title": "Honest bounds",
+      "prompt": "customers",
+      "sql": [
+        "CREATE TABLE customers (",
+        "  name VARCHAR(100) NOT NULL,",
+        "  email VARCHAR(254) NOT NULL UNIQUE,",
+        "  bio TEXT",
+        ");"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 26,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 26,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 27,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 26,
+      "toLyric": 35
+    },
+    {
+      "id": "pick",
+      "label": "Values",
+      "kind": "table",
+      "headers": [
+        "name",
+        "email"
+      ],
+      "rows": [
+        [
+          "Maya",
+          "maya@shop.test"
+        ],
+        [
+          "Jordan",
+          "jordan@shop.test"
+        ]
+      ],
+      "fromLyric": 35,
+      "toLyric": 67,
+      "steps": [
+        {
+          "lyricMin": 35,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "traps",
+      "label": "Values",
+      "kind": "table",
+      "headers": [
+        "name",
+        "email"
+      ],
+      "rows": [
+        [
+          "Maya",
+          "maya@shop.test"
+        ],
+        [
+          "Jordan",
+          "jordan@shop.test"
+        ]
+      ],
+      "fromLyric": 67,
+      "toLyric": 77,
+      "steps": [
+        {
+          "lyricMin": 67,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "homes-2",
+      "label": "Values",
+      "kind": "table",
+      "headers": [
+        "name",
+        "email"
+      ],
+      "rows": [
+        [
+          "Maya",
+          "maya@shop.test"
+        ],
+        [
+          "Jordan",
+          "jordan@shop.test"
+        ]
+      ],
+      "fromLyric": 77,
+      "toLyric": 81,
+      "steps": [
+        {
+          "lyricMin": 77,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rows",
+      "label": "Values",
+      "kind": "table",
+      "headers": [
+        "name",
+        "email"
+      ],
+      "rows": [
+        [
+          "Maya",
+          "maya@shop.test"
+        ],
+        [
+          "Jordan",
+          "jordan@shop.test"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 81,
+          "actions": [
+            "enter",
+            "show-header"
+          ]
+        },
+        {
+          "lyricMin": 81,
+          "actions": [
+            "reveal-rows"
+          ]
+        }
+      ],
+      "fromLyric": 81,
+      "toLyric": 92
+    },
+    {
+      "id": "declare-2",
+      "label": "Declare",
+      "kind": "sql",
+      "title": "Honest bounds",
+      "prompt": "customers",
+      "sql": [
+        "CREATE TABLE customers (",
+        "  name VARCHAR(100) NOT NULL,",
+        "  email VARCHAR(254) NOT NULL UNIQUE,",
+        "  bio TEXT",
+        ");"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 92,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 96,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 96,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 92,
+      "toLyric": 97
+    },
+    {
+      "id": "rows-2",
+      "label": "Values",
+      "kind": "table",
+      "headers": [
+        "name",
+        "email"
+      ],
+      "rows": [
+        [
+          "Maya",
+          "maya@shop.test"
+        ],
+        [
+          "Jordan",
+          "jordan@shop.test"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 97,
+          "actions": [
+            "enter",
+            "show-header"
+          ]
+        },
+        {
+          "lyricMin": 97,
+          "actions": [
+            "reveal-rows"
+          ]
+        }
+      ],
+      "fromLyric": 97,
+      "toLyric": 103
+    },
+    {
+      "id": "homes-3",
+      "label": "Values",
+      "kind": "table",
+      "headers": [
+        "name",
+        "email"
+      ],
+      "rows": [
+        [
+          "Maya",
+          "maya@shop.test"
+        ],
+        [
+          "Jordan",
+          "jordan@shop.test"
+        ]
+      ],
+      "fromLyric": 103,
+      "toLyric": 107,
+      "steps": [
+        {
+          "lyricMin": 103,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "traps-2",
+      "label": "Values",
+      "kind": "table",
+      "headers": [
+        "name",
+        "email"
+      ],
+      "rows": [
+        [
+          "Maya",
+          "maya@shop.test"
+        ],
+        [
+          "Jordan",
+          "jordan@shop.test"
+        ]
+      ],
+      "fromLyric": 107,
+      "toLyric": 113,
+      "steps": [
+        {
+          "lyricMin": 107,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "homes-4",
+      "label": "Values",
+      "kind": "table",
+      "headers": [
+        "name",
+        "email"
+      ],
+      "rows": [
+        [
+          "Maya",
+          "maya@shop.test"
+        ],
+        [
+          "Jordan",
+          "jordan@shop.test"
+        ]
+      ],
+      "fromLyric": 113,
+      "toLyric": 119,
+      "steps": [
+        {
+          "lyricMin": 113,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "traps-3",
+      "label": "Values",
+      "kind": "table",
+      "headers": [
+        "name",
+        "email"
+      ],
+      "rows": [
+        [
+          "Maya",
+          "maya@shop.test"
+        ],
+        [
+          "Jordan",
+          "jordan@shop.test"
+        ]
+      ],
+      "fromLyric": 119,
+      "toLyric": 129,
+      "steps": [
+        {
+          "lyricMin": 119,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    }
+  ],
+  "lyrics": [
+    {
+      "start": 0.05,
+      "end": 2.986,
+      "text": "Text looks like one idea until you store it.",
+      "slide": ""
+    },
+    {
+      "start": 2.986,
+      "end": 5.333,
+      "text": "CHAR n is a fixed-width string.",
+      "slide": ""
+    },
+    {
+      "start": 5.333,
+      "end": 11.041,
+      "text": "If you declare CHAR four for a currency code, USD always occupies four.",
+      "slide": ""
+    },
+    {
+      "start": 11.041,
+      "end": 13.652,
+      "text": "Short codes like that are the rare good use.",
+      "slide": ""
+    },
+    {
+      "start": 13.652,
+      "end": 17.125,
+      "text": "VARCHAR n is a string up to n characters.",
+      "slide": ""
+    },
+    {
+      "start": 17.125,
+      "end": 21.25,
+      "text": "email VARCHAR two-fifty-four matches a real maximum.",
+      "slide": ""
+    },
+    {
+      "start": 21.25,
+      "end": 23.083,
+      "text": "The n is a contract.",
+      "slide": ""
+    },
+    {
+      "start": 23.083,
+      "end": 24.666,
+      "text": "It is not a suggestion.",
+      "slide": ""
+    },
+    {
+      "start": 24.666,
+      "end": 30.972,
+      "text": "A value that is too long is an error, or it is trimmed, depending on the engine and the mode.",
+      "slide": ""
+    },
+    {
+      "start": 30.972,
+      "end": 34.416,
+      "text": "Do not guess fifty because a form looked fifty wide.",
+      "slide": ""
+    },
+    {
+      "start": 34.416,
+      "end": 39.222,
+      "text": "TEXT is a string with a large limit, often treated as a document.",
+      "slide": ""
+    },
+    {
+      "start": 39.222,
+      "end": 45.555,
+      "text": "SQLite will store any length in TEXT and largely ignore the n in VARCHAR n.",
+      "slide": ""
+    },
+    {
+      "start": 45.555,
+      "end": 49.305,
+      "text": "That is a dialect fact, not a reason to skip thinking.",
+      "slide": ""
+    },
+    {
+      "start": 49.305,
+      "end": 55.75,
+      "text": "PostgreSQL treats CHAR as padded, VARCHAR as bounded, TEXT as unbounded.",
+      "slide": ""
+    },
+    {
+      "start": 55.75,
+      "end": 63.208,
+      "text": "MySQL historically mixed TEXT with size families: TINYTEXT, TEXT, MEDIUMTEXT.",
+      "slide": ""
+    },
+    {
+      "start": 63.208,
+      "end": 67.68,
+      "text": "Pick the dialect you are on, then pick the smallest honest bound.",
+      "slide": ""
+    },
+    {
+      "start": 67.68,
+      "end": 70.18,
+      "text": "Names are VARCHAR, not CHAR.",
+      "slide": ""
+    },
+    {
+      "start": 70.18,
+      "end": 71.972,
+      "text": "People have different lengths.",
+      "slide": ""
+    },
+    {
+      "start": 71.972,
+      "end": 75.638,
+      "text": "Padding names with spaces will haunt your equality tests.",
+      "slide": ""
+    },
+    {
+      "start": 75.638,
+      "end": 78.736,
+      "text": "Codes that are truly fixed width can be CHAR.",
+      "slide": ""
+    },
+    {
+      "start": 78.736,
+      "end": 81.083,
+      "text": "country_code CHAR two.",
+      "slide": ""
+    },
+    {
+      "start": 81.083,
+      "end": 83.763,
+      "text": "Collation decides how letters compare.",
+      "slide": ""
+    },
+    {
+      "start": 83.763,
+      "end": 88.583,
+      "text": "Case insensitive email sounds friendly and then merges two accounts.",
+      "slide": ""
+    },
+    {
+      "start": 88.583,
+      "end": 91.722,
+      "text": "Know whether A and a are the same in this column.",
+      "slide": ""
+    },
+    {
+      "start": 91.722,
+      "end": 93.833,
+      "text": "Unicode is the default you want.",
+      "slide": ""
+    },
+    {
+      "start": 93.833,
+      "end": 97.805,
+      "text": "Do not store names in a bytes encoding you cannot round-trip.",
+      "slide": ""
+    },
+    {
+      "start": 97.805,
+      "end": 99.93,
+      "text": "Empty string is not NULL.",
+      "slide": ""
+    },
+    {
+      "start": 99.93,
+      "end": 102.819,
+      "text": "NULL means unknown or inapplicable.",
+      "slide": ""
+    },
+    {
+      "start": 102.819,
+      "end": 105.583,
+      "text": "Empty string means someone typed nothing.",
+      "slide": ""
+    },
+    {
+      "start": 105.583,
+      "end": 107.236,
+      "text": "Those are different facts.",
+      "slide": ""
+    },
+    {
+      "start": 107.236,
+      "end": 111.472,
+      "text": "Indexes on huge TEXT columns are expensive or forbidden.",
+      "slide": ""
+    },
+    {
+      "start": 111.472,
+      "end": 116.25,
+      "text": "If you search inside a chapter, you want a later tool, not a primary key.",
+      "slide": ""
+    },
+    {
+      "start": 116.25,
+      "end": 120.097,
+      "text": "Trim at the edges in the application or with a constraint.",
+      "slide": ""
+    },
+    {
+      "start": 120.097,
+      "end": 124.75,
+      "text": "Leading spaces make unique emails that look identical to a human.",
+      "slide": ""
+    },
+    {
+      "start": 124.75,
+      "end": 126.722,
+      "text": "Write the type as a sentence.",
+      "slide": ""
+    },
+    {
+      "start": 126.722,
+      "end": 134.694,
+      "text": "This column holds a person's name, up to one hundred characters, Unicode, case sensitive, empty not allowed.",
+      "slide": ""
+    },
+    {
+      "start": 134.694,
+      "end": 139.041,
+      "text": "Then CHAR, VARCHAR, or TEXT is an easy choice.",
+      "slide": ""
+    },
+    {
+      "start": 139.041,
+      "end": 142.333,
+      "text": "Trim, then constrain, then index.",
+      "slide": ""
+    },
+    {
+      "start": 142.333,
+      "end": 146.986,
+      "text": "An index on untrimmed email still lets two visual twins in.",
+      "slide": ""
+    },
+    {
+      "start": 146.986,
+      "end": 151.694,
+      "text": "Some engines fold case with citext or a functional unique index.",
+      "slide": ""
+    },
+    {
+      "start": 151.694,
+      "end": 156.166,
+      "text": "Use those when email identity is case insensitive by policy.",
+      "slide": ""
+    },
+    {
+      "start": 156.166,
+      "end": 159.472,
+      "text": "Do not lowercase in some rows and not others.",
+      "slide": ""
+    },
+    {
+      "start": 159.472,
+      "end": 165.527,
+      "text": "CHAR is for true codes, not for padding names into a grid that looks neat in a terminal.",
+      "slide": ""
+    },
+    {
+      "start": 165.527,
+      "end": 166.944,
+      "text": "Neat is not a type.",
+      "slide": ""
+    },
+    {
+      "start": 166.944,
+      "end": 170.166,
+      "text": "National characters historically had NCHAR.",
+      "slide": ""
+    },
+    {
+      "start": 170.166,
+      "end": 174.208,
+      "text": "Today you want Unicode in ordinary VARCHAR or TEXT.",
+      "slide": ""
+    },
+    {
+      "start": 174.208,
+      "end": 176.402,
+      "text": "Emoji will appear in names.",
+      "slide": ""
+    },
+    {
+      "start": 176.402,
+      "end": 177.458,
+      "text": "Plan for it.",
+      "slide": ""
+    },
+    {
+      "start": 177.458,
+      "end": 180.652,
+      "text": "Length in characters is not length in bytes.",
+      "slide": ""
+    },
+    {
+      "start": 180.652,
+      "end": 184.18,
+      "text": "VARCHAR n in PostgreSQL is characters.",
+      "slide": ""
+    },
+    {
+      "start": 184.18,
+      "end": 187.819,
+      "text": "Some MySQL settings historically counted bytes.",
+      "slide": ""
+    },
+    {
+      "start": 187.819,
+      "end": 190.194,
+      "text": "Read the manual for the server you have.",
+      "slide": ""
+    },
+    {
+      "start": 190.194,
+      "end": 192.847,
+      "text": "Comments and biographies can be TEXT.",
+      "slide": ""
+    },
+    {
+      "start": 192.847,
+      "end": 195.347,
+      "text": "Search them with later tools if you must.",
+      "slide": ""
+    },
+    {
+      "start": 195.347,
+      "end": 196.944,
+      "text": "Do not primary-key them.",
+      "slide": ""
+    },
+    {
+      "start": 196.944,
+      "end": 201.18,
+      "text": "A check on length can back up a VARCHAR bound if you want a clearer error.",
+      "slide": ""
+    },
+    {
+      "start": 201.18,
+      "end": 203.791,
+      "text": "Still pick a bound that matches the world.",
+      "slide": ""
+    },
+    {
+      "start": 203.791,
+      "end": 206.597,
+      "text": "The sentence you wrote at the start is the spec.",
+      "slide": ""
+    },
+    {
+      "start": 206.597,
+      "end": 209.513,
+      "text": "Types are how the spec enters the database.",
+      "slide": ""
+    },
+    {
+      "start": 209.513,
+      "end": 210.805,
+      "text": "Keep them aligned.",
+      "slide": ""
+    },
+    {
+      "start": 210.805,
+      "end": 217.027,
+      "text": "When they drift, the form on the website will accept what the table refuses, or the other way around.",
+      "slide": ""
+    },
+    {
+      "start": 217.027,
+      "end": 220.68,
+      "text": "That drift is a bug in the contract, not in the user.",
+      "slide": ""
+    },
+    {
+      "start": 220.68,
+      "end": 222.347,
+      "text": "A type is a fence.",
+      "slide": ""
+    },
+    {
+      "start": 222.347,
+      "end": 226.611,
+      "text": "CHAR, VARCHAR, and TEXT are three fence heights.",
+      "slide": ""
+    },
+    {
+      "start": 226.611,
+      "end": 229.541,
+      "text": "Codes, names, and documents.",
+      "slide": ""
+    },
+    {
+      "start": 229.541,
+      "end": 232.888,
+      "text": "If you only remember one rule, remember padding.",
+      "slide": ""
+    },
+    {
+      "start": 232.888,
+      "end": 234.208,
+      "text": "Do not pad a name.",
+      "slide": ""
+    },
+    {
+      "start": 234.208,
+      "end": 237.611,
+      "text": "If you remember two, remember empty versus NULL.",
+      "slide": ""
+    },
+    {
+      "start": 237.611,
+      "end": 240.513,
+      "text": "If you remember three, remember collation.",
+      "slide": ""
+    },
+    {
+      "start": 240.513,
+      "end": 245.347,
+      "text": "Those three surprises cause more support tickets than exotic encodings.",
+      "slide": ""
+    },
+    {
+      "start": 245.347,
+      "end": 250.194,
+      "text": "Fence the column, then test equality with the strings you actually receive.",
+      "slide": ""
+    },
+    {
+      "start": 250.194,
+      "end": 254.958,
+      "text": "Including emoji, including spaces, including mixed case.",
+      "slide": ""
+    },
+    {
+      "start": 254.958,
+      "end": 256.597,
+      "text": "The test is the spec.",
+      "slide": ""
+    },
+    {
+      "start": 256.597,
+      "end": 258.361,
+      "text": "Ship the spec in the type.",
+      "slide": ""
+    },
+    {
+      "start": 258.361,
+      "end": 263.444,
+      "text": "Type selection happens after entities, attributes, and keys exist.",
+      "slide": ""
+    },
+    {
+      "start": 263.444,
+      "end": 268.972,
+      "text": "A string column still needs a fence: how long, how fixed, how empty.",
+      "slide": ""
+    },
+    {
+      "start": 268.972,
+      "end": 274.0,
+      "text": "CHAR, VARCHAR, and TEXT are the three fences you will actually choose among.",
+      "slide": ""
+    },
+    {
+      "start": 274.0,
+      "end": 275.472,
+      "text": "CHAR is fixed length.",
+      "slide": ""
+    },
+    {
+      "start": 275.472,
+      "end": 281.194,
+      "text": "CHAR two for a US state code occupies two characters even if you tried to store one.",
+      "slide": ""
+    },
+    {
+      "start": 281.194,
+      "end": 287.902,
+      "text": "Short codes, padded, compared as padded, belong in CHAR when the length is truly fixed.",
+      "slide": ""
+    },
+    {
+      "start": 288.026,
+      "end": 289.323,
+      "text": "Do not CHAR a name.",
+      "slide": ""
+    },
+    {
+      "start": 289.323,
+      "end": 295.489,
+      "text": "Padding turns Maya into Maya plus spaces, and equality becomes a costume party.",
+      "slide": ""
+    },
+    {
+      "start": 295.489,
+      "end": 298.976,
+      "text": "VARCHAR is variable length with a declared maximum.",
+      "slide": ""
+    },
+    {
+      "start": 298.976,
+      "end": 303.087,
+      "text": "VARCHAR 255 became a habit, not a measurement.",
+      "slide": ""
+    },
+    {
+      "start": 303.087,
+      "end": 309.559,
+      "text": "Measure: how long is a legal username, an email, a product name in this business.",
+      "slide": ""
+    },
+    {
+      "start": 309.559,
+      "end": 313.642,
+      "text": "Set the max to the business rule, not to a folklore number.",
+      "slide": ""
+    },
+    {
+      "start": 313.642,
+      "end": 317.809,
+      "text": "Too small, and a real value is cut off or refused.",
+      "slide": ""
+    },
+    {
+      "start": 317.809,
+      "end": 323.476,
+      "text": "Too large, and you waste space and sometimes memory for sorts, depending on the engine.",
+      "slide": ""
+    },
+    {
+      "start": 323.476,
+      "end": 330.295,
+      "text": "TEXT is for strings whose length you cannot honestly cap: descriptions, bodies, comments.",
+      "slide": ""
+    },
+    {
+      "start": 330.295,
+      "end": 334.101,
+      "text": "Some engines treat long VARCHAR and TEXT similarly.",
+      "slide": ""
+    },
+    {
+      "start": 334.101,
+      "end": 338.031,
+      "text": "Some do not index TEXT the same way they index VARCHAR.",
+      "slide": ""
+    },
+    {
+      "start": 338.031,
+      "end": 341.892,
+      "text": "Know your engine before you put a TEXT column in a WHERE equals.",
+      "slide": ""
+    },
+    {
+      "start": 341.892,
+      "end": 344.017,
+      "text": "Empty string is not NULL.",
+      "slide": ""
+    },
+    {
+      "start": 344.017,
+      "end": 347.059,
+      "text": "NULL means unknown or not applicable.",
+      "slide": ""
+    },
+    {
+      "start": 347.059,
+      "end": 349.448,
+      "text": "Empty means present and blank.",
+      "slide": ""
+    },
+    {
+      "start": 349.448,
+      "end": 356.767,
+      "text": "Decide which one a missing middle name is, and put that decision in the column, not in five application layers.",
+      "slide": ""
+    },
+    {
+      "start": 356.767,
+      "end": 361.962,
+      "text": "Collation decides whether a and A are equal, and where \u00df sorts.",
+      "slide": ""
+    },
+    {
+      "start": 361.962,
+      "end": 368.656,
+      "text": "A unique email with a case-insensitive collation treats Maya@ and maya@ as a collision.",
+      "slide": ""
+    },
+    {
+      "start": 368.656,
+      "end": 370.212,
+      "text": "That might be what you want.",
+      "slide": ""
+    },
+    {
+      "start": 370.212,
+      "end": 371.198,
+      "text": "Say so.",
+      "slide": ""
+    },
+    {
+      "start": 371.198,
+      "end": 374.517,
+      "text": "Unicode is not optional if people type names.",
+      "slide": ""
+    },
+    {
+      "start": 374.517,
+      "end": 383.267,
+      "text": "Use the character set that can hold the letters you will actually receive, including accented letters and emoji if your product allows them.",
+      "slide": ""
+    },
+    {
+      "start": 383.267,
+      "end": 386.045,
+      "text": "Codes, names, documents.",
+      "slide": ""
+    },
+    {
+      "start": 386.045,
+      "end": 388.087,
+      "text": "CHAR for codes of known width.",
+      "slide": ""
+    },
+    {
+      "start": 388.087,
+      "end": 391.059,
+      "text": "VARCHAR for names and labels with a max.",
+      "slide": ""
+    },
+    {
+      "start": 391.059,
+      "end": 392.698,
+      "text": "TEXT for documents.",
+      "slide": ""
+    },
+    {
+      "start": 392.698,
+      "end": 396.226,
+      "text": "If you only remember one surprise, remember padding.",
+      "slide": ""
+    },
+    {
+      "start": 396.226,
+      "end": 399.628,
+      "text": "If you remember two, remember empty versus NULL.",
+      "slide": ""
+    },
+    {
+      "start": 399.628,
+      "end": 402.531,
+      "text": "If you remember three, remember collation.",
+      "slide": ""
+    },
+    {
+      "start": 402.531,
+      "end": 409.281,
+      "text": "Test equality with the strings you actually receive, then ship that test as the type and the collation.",
+      "slide": ""
+    },
+    {
+      "start": 409.281,
+      "end": 412.92,
+      "text": "Close with questions, the way a careful lecture does.",
+      "slide": ""
+    },
+    {
+      "start": 412.92,
+      "end": 415.976,
+      "text": "Answer in a sentence you could defend at a keyboard.",
+      "slide": ""
+    },
+    {
+      "start": 415.976,
+      "end": 416.989,
+      "text": "CHAR for?",
+      "slide": ""
+    },
+    {
+      "start": 416.989,
+      "end": 418.489,
+      "text": "Fixed width codes.",
+      "slide": ""
+    },
+    {
+      "start": 418.489,
+      "end": 419.656,
+      "text": "VARCHAR for?",
+      "slide": ""
+    },
+    {
+      "start": 419.656,
+      "end": 422.351,
+      "text": "Variable labels with a measured max.",
+      "slide": ""
+    },
+    {
+      "start": 422.351,
+      "end": 423.378,
+      "text": "TEXT for?",
+      "slide": ""
+    },
+    {
+      "start": 423.378,
+      "end": 425.559,
+      "text": "Bodies you cannot honestly cap.",
+      "slide": ""
+    },
+    {
+      "start": 425.559,
+      "end": 426.92,
+      "text": "Padding surprise?",
+      "slide": ""
+    },
+    {
+      "start": 426.92,
+      "end": 429.823,
+      "text": "CHAR names equal only with spaces.",
+      "slide": ""
+    },
+    {
+      "start": 429.823,
+      "end": 431.351,
+      "text": "Empty versus NULL?",
+      "slide": ""
+    },
+    {
+      "start": 431.351,
+      "end": 433.67,
+      "text": "Blank present versus unknown.",
+      "slide": ""
+    },
+    {
+      "start": 433.67,
+      "end": 434.614,
+      "text": "Collation?",
+      "slide": ""
+    },
+    {
+      "start": 434.614,
+      "end": 438.017,
+      "text": "Whether a and A collide, and how they sort.",
+      "slide": ""
+    },
+    {
+      "start": 438.017,
+      "end": 440.226,
+      "text": "VARCHAR 255?",
+      "slide": ""
+    },
+    {
+      "start": 440.226,
+      "end": 442.253,
+      "text": "A habit, not a measurement.",
+      "slide": ""
+    },
+    {
+      "start": 442.253,
+      "end": 443.239,
+      "text": "Unicode?",
+      "slide": ""
+    },
+    {
+      "start": 443.239,
+      "end": 445.531,
+      "text": "Required if people type names.",
+      "slide": ""
+    },
+    {
+      "start": 445.531,
+      "end": 450.253,
+      "text": "If an answer needed a second table, go draw it before you write more SQL.",
+      "slide": ""
+    }
+  ]
+}

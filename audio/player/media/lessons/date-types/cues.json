@@ -1,0 +1,917 @@
+{
+  "title": "Date and time types",
+  "subtitle": "DATE, TIME, TIMESTAMP",
+  "audio": "narration.mp3",
+  "duration": 349.872,
+  "slides": [],
+  "scenes": [
+    {
+      "id": "when",
+      "label": "When",
+      "kind": "table",
+      "headers": [
+        "kind",
+        "example"
+      ],
+      "rows": [
+        [
+          "DATE",
+          "2024-03-15"
+        ],
+        [
+          "TIME",
+          "14:30:00"
+        ],
+        [
+          "TIMESTAMP",
+          "2024-03-15 14:30:00"
+        ]
+      ],
+      "fromLyric": 0,
+      "toLyric": 15,
+      "steps": [
+        {
+          "lyricMin": 0,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zones",
+      "label": "Zones",
+      "kind": "table",
+      "headers": [
+        "kind",
+        "example"
+      ],
+      "rows": [
+        [
+          "DATE",
+          "2024-03-15"
+        ],
+        [
+          "TIME",
+          "14:30:00"
+        ],
+        [
+          "TIMESTAMP",
+          "2024-03-15 14:30:00"
+        ]
+      ],
+      "fromLyric": 15,
+      "toLyric": 24,
+      "steps": [
+        {
+          "lyricMin": 15,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "traps",
+      "label": "Traps",
+      "kind": "table",
+      "headers": [
+        "kind",
+        "example"
+      ],
+      "rows": [
+        [
+          "DATE",
+          "2024-03-15"
+        ],
+        [
+          "TIME",
+          "14:30:00"
+        ],
+        [
+          "TIMESTAMP",
+          "2024-03-15 14:30:00"
+        ]
+      ],
+      "fromLyric": 24,
+      "toLyric": 48,
+      "steps": [
+        {
+          "lyricMin": 24,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zones-2",
+      "label": "Zones",
+      "kind": "table",
+      "headers": [
+        "kind",
+        "example"
+      ],
+      "rows": [
+        [
+          "DATE",
+          "2024-03-15"
+        ],
+        [
+          "TIME",
+          "14:30:00"
+        ],
+        [
+          "TIMESTAMP",
+          "2024-03-15 14:30:00"
+        ]
+      ],
+      "fromLyric": 48,
+      "toLyric": 51,
+      "steps": [
+        {
+          "lyricMin": 48,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "traps-2",
+      "label": "Traps",
+      "kind": "table",
+      "headers": [
+        "kind",
+        "example"
+      ],
+      "rows": [
+        [
+          "DATE",
+          "2024-03-15"
+        ],
+        [
+          "TIME",
+          "14:30:00"
+        ],
+        [
+          "TIMESTAMP",
+          "2024-03-15 14:30:00"
+        ]
+      ],
+      "fromLyric": 51,
+      "toLyric": 54,
+      "steps": [
+        {
+          "lyricMin": 51,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zones-3",
+      "label": "Zones",
+      "kind": "table",
+      "headers": [
+        "kind",
+        "example"
+      ],
+      "rows": [
+        [
+          "DATE",
+          "2024-03-15"
+        ],
+        [
+          "TIME",
+          "14:30:00"
+        ],
+        [
+          "TIMESTAMP",
+          "2024-03-15 14:30:00"
+        ]
+      ],
+      "fromLyric": 54,
+      "toLyric": 59,
+      "steps": [
+        {
+          "lyricMin": 54,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "when-2",
+      "label": "When",
+      "kind": "table",
+      "headers": [
+        "kind",
+        "example"
+      ],
+      "rows": [
+        [
+          "DATE",
+          "2024-03-15"
+        ],
+        [
+          "TIME",
+          "14:30:00"
+        ],
+        [
+          "TIMESTAMP",
+          "2024-03-15 14:30:00"
+        ]
+      ],
+      "fromLyric": 59,
+      "toLyric": 66,
+      "steps": [
+        {
+          "lyricMin": 59,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "declare",
+      "label": "Declare",
+      "kind": "sql",
+      "title": "Events versus birthdays",
+      "prompt": "orders",
+      "sql": [
+        "CREATE TABLE orders (",
+        "  order_id INTEGER PRIMARY KEY,",
+        "  placed_at TIMESTAMP NOT NULL,",
+        "  ship_on DATE",
+        ");"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 66,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 66,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 67,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 66,
+      "toLyric": 74
+    },
+    {
+      "id": "when-3",
+      "label": "When",
+      "kind": "table",
+      "headers": [
+        "kind",
+        "example"
+      ],
+      "rows": [
+        [
+          "DATE",
+          "2024-03-15"
+        ],
+        [
+          "TIME",
+          "14:30:00"
+        ],
+        [
+          "TIMESTAMP",
+          "2024-03-15 14:30:00"
+        ]
+      ],
+      "fromLyric": 74,
+      "toLyric": 98,
+      "steps": [
+        {
+          "lyricMin": 74,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows"
+          ]
+        }
+      ]
+    }
+  ],
+  "lyrics": [
+    {
+      "start": 0.05,
+      "end": 4.5,
+      "text": "Time in a table is three different ideas that people mash together.",
+      "slide": ""
+    },
+    {
+      "start": 4.5,
+      "end": 6.388,
+      "text": "A date is a calendar day.",
+      "slide": ""
+    },
+    {
+      "start": 6.388,
+      "end": 8.444,
+      "text": "born_on is a date.",
+      "slide": ""
+    },
+    {
+      "start": 8.444,
+      "end": 11.138,
+      "text": "A time is a clock reading without a day.",
+      "slide": ""
+    },
+    {
+      "start": 11.138,
+      "end": 14.152,
+      "text": "store_opens_at is a time.",
+      "slide": ""
+    },
+    {
+      "start": 14.152,
+      "end": 17.138,
+      "text": "A timestamp is a date and a time together.",
+      "slide": ""
+    },
+    {
+      "start": 17.138,
+      "end": 19.736,
+      "text": "placed_at is a timestamp.",
+      "slide": ""
+    },
+    {
+      "start": 19.736,
+      "end": 25.055,
+      "text": "If you store placed_at as text, you will sort December before February.",
+      "slide": ""
+    },
+    {
+      "start": 25.055,
+      "end": 27.055,
+      "text": "Use a real temporal type.",
+      "slide": ""
+    },
+    {
+      "start": 27.055,
+      "end": 28.861,
+      "text": "Time zones are the hard part.",
+      "slide": ""
+    },
+    {
+      "start": 28.861,
+      "end": 32.527,
+      "text": "TIMESTAMP WITHOUT TIME ZONE is a local wall clock.",
+      "slide": ""
+    },
+    {
+      "start": 32.527,
+      "end": 39.069,
+      "text": "TIMESTAMP WITH TIME ZONE, in PostgreSQL, stores an instant and displays in a zone.",
+      "slide": ""
+    },
+    {
+      "start": 39.069,
+      "end": 40.833,
+      "text": "Those are not the same column.",
+      "slide": ""
+    },
+    {
+      "start": 40.833,
+      "end": 43.166,
+      "text": "Pick instants for events that happened.",
+      "slide": ""
+    },
+    {
+      "start": 43.166,
+      "end": 46.138,
+      "text": "An order was placed at one instant for everyone.",
+      "slide": ""
+    },
+    {
+      "start": 46.138,
+      "end": 49.347,
+      "text": "Pick wall clocks for civil times that should not shift.",
+      "slide": ""
+    },
+    {
+      "start": 49.347,
+      "end": 53.416,
+      "text": "A class that meets at nine in Austin stays nine when you fly.",
+      "slide": ""
+    },
+    {
+      "start": 53.416,
+      "end": 59.097,
+      "text": "SQLite stores dates as text, real, or integer, by convention.",
+      "slide": ""
+    },
+    {
+      "start": 59.097,
+      "end": 63.694,
+      "text": "ISO text is the least painful convention: year-month-day.",
+      "slide": ""
+    },
+    {
+      "start": 63.694,
+      "end": 66.458,
+      "text": "Do not invent month-day-year in a column.",
+      "slide": ""
+    },
+    {
+      "start": 66.458,
+      "end": 68.777,
+      "text": "NOW is a function, not a type.",
+      "slide": ""
+    },
+    {
+      "start": 68.777,
+      "end": 74.611,
+      "text": "DEFAULT CURRENT_TIMESTAMP stamps an insert with the server's idea of now.",
+      "slide": ""
+    },
+    {
+      "start": 74.611,
+      "end": 77.152,
+      "text": "That is useful for created_at.",
+      "slide": ""
+    },
+    {
+      "start": 77.152,
+      "end": 78.68,
+      "text": "It is a poor birthday.",
+      "slide": ""
+    },
+    {
+      "start": 78.68,
+      "end": 82.152,
+      "text": "Do not split a timestamp into six integer columns.",
+      "slide": ""
+    },
+    {
+      "start": 82.152,
+      "end": 83.916,
+      "text": "You will forget leap days.",
+      "slide": ""
+    },
+    {
+      "start": 83.916,
+      "end": 86.666,
+      "text": "Intervals measure a length, not a point.",
+      "slide": ""
+    },
+    {
+      "start": 86.666,
+      "end": 90.916,
+      "text": "subscription_length is an interval in dialects that have it.",
+      "slide": ""
+    },
+    {
+      "start": 90.916,
+      "end": 94.472,
+      "text": "In SQLite you compute lengths with functions.",
+      "slide": ""
+    },
+    {
+      "start": 94.472,
+      "end": 97.388,
+      "text": "Comparisons work when the type is temporal.",
+      "slide": ""
+    },
+    {
+      "start": 97.388,
+      "end": 101.277,
+      "text": "placed_at greater than a date is a real question.",
+      "slide": ""
+    },
+    {
+      "start": 101.277,
+      "end": 105.152,
+      "text": "placed_at LIKE 2024 is a text trick.",
+      "slide": ""
+    },
+    {
+      "start": 105.152,
+      "end": 106.527,
+      "text": "Write the sentence.",
+      "slide": ""
+    },
+    {
+      "start": 106.527,
+      "end": 111.18,
+      "text": "This is a birthday, a calendar day, no clock, no zone.",
+      "slide": ""
+    },
+    {
+      "start": 111.18,
+      "end": 116.166,
+      "text": "This is an order instant, one moment in history, store UTC.",
+      "slide": ""
+    },
+    {
+      "start": 116.166,
+      "end": 120.541,
+      "text": "Then DATE, TIME, or TIMESTAMP is an easy choice.",
+      "slide": ""
+    },
+    {
+      "start": 120.541,
+      "end": 123.833,
+      "text": "Unix integers as seconds are a physical trick.",
+      "slide": ""
+    },
+    {
+      "start": 123.833,
+      "end": 128.68,
+      "text": "They sort, they are instants, and they are hostile to calendar questions.",
+      "slide": ""
+    },
+    {
+      "start": 128.68,
+      "end": 134.027,
+      "text": "Prefer a timestamp type, convert at the edge if you must speak Unix to a client.",
+      "slide": ""
+    },
+    {
+      "start": 134.027,
+      "end": 137.416,
+      "text": "Calendar arithmetic is not integer arithmetic.",
+      "slide": ""
+    },
+    {
+      "start": 137.416,
+      "end": 139.902,
+      "text": "Plus one month is a civil question.",
+      "slide": ""
+    },
+    {
+      "start": 139.902,
+      "end": 142.055,
+      "text": "Use the engine's date functions.",
+      "slide": ""
+    },
+    {
+      "start": 142.055,
+      "end": 144.694,
+      "text": "Do not add 30 days and call it a month.",
+      "slide": ""
+    },
+    {
+      "start": 144.694,
+      "end": 149.152,
+      "text": "DST will bite wall clocks that pretended to be instants.",
+      "slide": ""
+    },
+    {
+      "start": 149.152,
+      "end": 153.513,
+      "text": "Store the instant, display the wall clock in the user's zone.",
+      "slide": ""
+    },
+    {
+      "start": 153.513,
+      "end": 157.652,
+      "text": "Or store the civil date if the business is a date, like a due day.",
+      "slide": ""
+    },
+    {
+      "start": 157.652,
+      "end": 162.152,
+      "text": "Birthdays should not shift when a server moves from one coast to another.",
+      "slide": ""
+    },
+    {
+      "start": 162.152,
+      "end": 165.013,
+      "text": "That is why they are DATE, not TIMESTAMP.",
+      "slide": ""
+    },
+    {
+      "start": 165.013,
+      "end": 170.763,
+      "text": "Recurring weekly meetings are civil times plus a zone rule, which is more than a column.",
+      "slide": ""
+    },
+    {
+      "start": 170.763,
+      "end": 173.763,
+      "text": "Do not pretend a TIME column solved recurrence.",
+      "slide": ""
+    },
+    {
+      "start": 173.763,
+      "end": 176.805,
+      "text": "NULL means unknown or not applicable.",
+      "slide": ""
+    },
+    {
+      "start": 176.805,
+      "end": 184.361,
+      "text": "A zero date like 0000-00-00 is a MySQL antique.",
+      "slide": ""
+    },
+    {
+      "start": 184.361,
+      "end": 185.833,
+      "text": "Do not resurrect it.",
+      "slide": ""
+    },
+    {
+      "start": 185.833,
+      "end": 187.291,
+      "text": "Validate at the door.",
+      "slide": ""
+    },
+    {
+      "start": 187.291,
+      "end": 192.416,
+      "text": "ISO 8601 in text if you must use SQLite text.",
+      "slide": ""
+    },
+    {
+      "start": 192.416,
+      "end": 194.236,
+      "text": "Always four-digit years.",
+      "slide": ""
+    },
+    {
+      "start": 194.236,
+      "end": 195.611,
+      "text": "Always hyphens.",
+      "slide": ""
+    },
+    {
+      "start": 195.611,
+      "end": 199.263,
+      "text": "Then lexicographic sort matches chronological sort.",
+      "slide": ""
+    },
+    {
+      "start": 199.263,
+      "end": 200.986,
+      "text": "That is the whole convention.",
+      "slide": ""
+    },
+    {
+      "start": 200.986,
+      "end": 203.541,
+      "text": "Three clocks, one sentence each.",
+      "slide": ""
+    },
+    {
+      "start": 203.541,
+      "end": 205.486,
+      "text": "Day, clock, instant.",
+      "slide": ""
+    },
+    {
+      "start": 205.486,
+      "end": 208.444,
+      "text": "Pick, and refuse the other two in that column.",
+      "slide": ""
+    },
+    {
+      "start": 208.444,
+      "end": 212.583,
+      "text": "Ask whether the value would still be true if the server moved city.",
+      "slide": ""
+    },
+    {
+      "start": 212.583,
+      "end": 216.333,
+      "text": "If yes, it was an instant, or a date with no clock.",
+      "slide": ""
+    },
+    {
+      "start": 216.333,
+      "end": 219.861,
+      "text": "If no, it was a wall clock with a zone you forgot.",
+      "slide": ""
+    },
+    {
+      "start": 219.861,
+      "end": 223.111,
+      "text": "That question prevents most timestamp bugs.",
+      "slide": ""
+    },
+    {
+      "start": 223.111,
+      "end": 227.375,
+      "text": "Ask it at CREATE TABLE, not after the first DST weekend.",
+      "slide": ""
+    },
+    {
+      "start": 227.375,
+      "end": 229.347,
+      "text": "Store what the question answers.",
+      "slide": ""
+    },
+    {
+      "start": 229.347,
+      "end": 231.763,
+      "text": "Display the other thing in the application.",
+      "slide": ""
+    },
+    {
+      "start": 231.763,
+      "end": 233.416,
+      "text": "Do not store the display.",
+      "slide": ""
+    },
+    {
+      "start": 233.416,
+      "end": 234.944,
+      "text": "Display changes.",
+      "slide": ""
+    },
+    {
+      "start": 234.944,
+      "end": 238.611,
+      "text": "Instants and dates do not, if you named them honestly.",
+      "slide": ""
+    },
+    {
+      "start": 238.611,
+      "end": 240.347,
+      "text": "Honesty is the type.",
+      "slide": ""
+    },
+    {
+      "start": 240.347,
+      "end": 245.25,
+      "text": "Pick DATE, TIME, or TIMESTAMP, and then leave the column alone.",
+      "slide": ""
+    },
+    {
+      "start": 245.25,
+      "end": 250.277,
+      "text": "DATE is a calendar day: year, month, day, no clock.",
+      "slide": ""
+    },
+    {
+      "start": 250.277,
+      "end": 256.444,
+      "text": "Use it for birth dates, due dates, and library return days when the hour does not matter.",
+      "slide": ""
+    },
+    {
+      "start": 256.444,
+      "end": 262.736,
+      "text": "TIME is a clock with no day: a class that starts at nine, a reminder at fourteen thirty.",
+      "slide": ""
+    },
+    {
+      "start": 262.736,
+      "end": 270.277,
+      "text": "DATETIME, in engines that have it, is a date and a time of day in a local sense unless you document otherwise.",
+      "slide": ""
+    },
+    {
+      "start": 270.277,
+      "end": 277.597,
+      "text": "TIMESTAMP is an instant, often stored relative to UTC, and it moves when you display it in a zone.",
+      "slide": ""
+    },
+    {
+      "start": 277.597,
+      "end": 280.694,
+      "text": "Those two words get swapped in casual speech.",
+      "slide": ""
+    },
+    {
+      "start": 280.694,
+      "end": 282.5,
+      "text": "Do not swap them in a column.",
+      "slide": ""
+    },
+    {
+      "start": 282.5,
+      "end": 286.638,
+      "text": "Ask whether the value would still be true if the server moved city.",
+      "slide": ""
+    },
+    {
+      "start": 286.754,
+      "end": 294.342,
+      "text": "A meeting at 09:00 in Chicago is a local wall time with a zone attached in the application or in a zone column.",
+      "slide": ""
+    },
+    {
+      "start": 294.342,
+      "end": 297.384,
+      "text": "The instant a payment cleared is a timestamp.",
+      "slide": ""
+    },
+    {
+      "start": 297.384,
+      "end": 299.19,
+      "text": "A birthday is a date.",
+      "slide": ""
+    },
+    {
+      "start": 299.19,
+      "end": 302.717,
+      "text": "Mixing them is how airlines and calendars disagree.",
+      "slide": ""
+    },
+    {
+      "start": 302.717,
+      "end": 307.815,
+      "text": "Do not store display strings like March fifth in a text column and hope to sort them.",
+      "slide": ""
+    },
+    {
+      "start": 307.815,
+      "end": 309.454,
+      "text": "Store the typed value.",
+      "slide": ""
+    },
+    {
+      "start": 309.454,
+      "end": 311.384,
+      "text": "Format in the application.",
+      "slide": ""
+    },
+    {
+      "start": 311.384,
+      "end": 316.412,
+      "text": "Know whether your engine stores TIMESTAMP in UTC and converts on the way out.",
+      "slide": ""
+    },
+    {
+      "start": 316.412,
+      "end": 319.356,
+      "text": "Know what happens at daylight saving boundaries.",
+      "slide": ""
+    },
+    {
+      "start": 319.356,
+      "end": 324.44,
+      "text": "A local 02:30 that happens twice is a zone problem, not a DATE problem.",
+      "slide": ""
+    },
+    {
+      "start": 324.44,
+      "end": 329.717,
+      "text": "If you only need a day, do not add a time of midnight and then compare across zones.",
+      "slide": ""
+    },
+    {
+      "start": 329.717,
+      "end": 333.606,
+      "text": "Midnight in UTC is still yesterday in Chicago.",
+      "slide": ""
+    },
+    {
+      "start": 333.606,
+      "end": 334.856,
+      "text": "THAT is the bug.",
+      "slide": ""
+    },
+    {
+      "start": 334.856,
+      "end": 344.148,
+      "text": "Name columns after the meaning: created_at for an instant, birth_date for a date, start_time for a clock.",
+      "slide": ""
+    },
+    {
+      "start": 344.148,
+      "end": 346.704,
+      "text": "The name should tell you which type is legal.",
+      "slide": ""
+    },
+    {
+      "start": 346.704,
+      "end": 349.815,
+      "text": "If the name cannot, the type is probably wrong.",
+      "slide": ""
+    }
+  ]
+}

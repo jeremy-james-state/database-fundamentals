@@ -1,0 +1,219 @@
+A foreign key does not only check new child rows.
+
+It also decides what happens when the parent moves or leaves.
+
+ON DELETE RESTRICT or NO ACTION refuses to delete a parent that still has children.
+
+That is the safe default in spirit, even when the dialect wording differs.
+
+Maya still has orders, so Maya stays.
+
+ON DELETE CASCADE deletes the children too.
+
+Delete the order, and the order lines go with it.
+
+That matches a weak entity.
+
+It is violent on a customer.
+
+Do not cascade a customer delete unless you truly mean to erase history.
+
+ON DELETE SET NULL clears the pointer and keeps the child.
+
+The order remains, with no customer.
+
+The column must allow NULL.
+
+ON DELETE SET DEFAULT writes the default value instead.
+
+Useful when a placeholder parent exists, rare otherwise.
+
+ON UPDATE CASCADE copies a changed parent key into the children.
+
+If you never change primary keys, you barely need it.
+
+That is one more reason to prefer dull surrogates.
+
+Write the action next to the foreign key, not in a wiki.
+
+The engine will not read the wiki.
+
+Different relationships deserve different actions.
+
+order_lines cascade from orders.
+
+orders restrict from customers.
+
+credentials cascade from customers if you treat them as a part.
+
+Think in sentences.
+
+When an order disappears, its lines were never independent.
+
+When a customer disappears, the orders are history, so refuse, or archive, or soft-delete instead.
+
+Soft-delete is an application pattern: a deleted_at column.
+
+It is not an ON DELETE action.
+
+Do not mix them without a plan.
+
+Test the action with two rows.
+
+Delete the parent.
+
+See whether the child vanished, blocked, or went null.
+
+Then keep that behavior.
+
+ON DELETE CASCADE on a tall tree can remove more than you see.
+
+A customer cascade that also cascades orders that cascade lines that cascade shipments is a cliff.
+
+Draw the cliff before you enable it.
+
+RESTRICT two levels up even if the bottom cascades.
+
+NO ACTION and RESTRICT are close.
+
+The difference is when the check runs, especially with deferred constraints.
+
+In classroom SQL they feel the same.
+
+In a long transaction they might not.
+
+SET NULL can surprise a NOT NULL you forgot.
+
+The ALTER will fail, or the delete will fail later.
+
+Pair them on purpose.
+
+Some teams never cascade from an application user.
+
+They delete children in a script, then delete the parent, all inside one transaction.
+
+The foreign key still RESTRICT, which catches a missed child table.
+
+That is a valid policy.
+
+The engine is the last reviewer.
+
+Triggers that delete children are a homemade cascade.
+
+Prefer the declared action unless you need extra logging.
+
+Logging can live in a trigger that does not replace the action.
+
+Document the cliff.
+
+Test it on a copy.
+
+Then the production delete is boring.
+
+Boring deletes are the goal.
+
+Actions are how you choose the boredom: refuse, take the children, or drop the pointer.
+
+Pick per arrow.
+
+Write it in the constraint.
+
+Sleep.
+
+An action is a story about grief.
+
+The parent is gone.
+
+Do the children vanish, stay unnamed, or block the funeral?
+
+Pick the story per arrow.
+
+Do not inherit CASCADE from a snippet.
+
+Snippets do not know your history table.
+
+Restrict history.
+
+Cascade parts.
+
+Null only when unnamed is a real state.
+
+Test with two rows, not with production.
+
+Read the row counts after the delete.
+
+Keep the story that matches those counts.
+
+Write the story in the constraint.
+
+Then a new engineer will not guess.
+
+Guessing is how cliffs get steeper.
+
+Declared actions are the railing.
+
+A foreign key is a link: one or more columns in a child that reference a parent's key.
+
+A review points at a product and may also point at a user.
+
+Two foreign keys on one child is normal.
+
+Name each constraint.
+
+CONSTRAINT reviews_product_fk FOREIGN KEY (product_id) REFERENCES products (product_id) is a sentence the engine can run.
+
+The default referential action is NO ACTION or RESTRICT, depending on dialect: refuse the parent change if children exist.
+
+That default is how you do not evaporate history by deleting a product someone reviewed.
+
+ON DELETE CASCADE deletes matching children when the parent goes.
+
+Use it when the child cannot exist without the parent and you mean to destroy the whole bundle: order lines when an unfinished order is discarded.
+
+Do not cascade a product into a year of invoices.
+
+ON DELETE SET NULL clears the child's pointer and keeps the child row.
+
+Reviews might remain as anonymous text if a user is removed and the business allows it.
+
+The column must allow NULL.
+
+ON DELETE SET DEFAULT points the child at a declared default parent, such as a placeholder user.
+
+ON UPDATE CASCADE rewrites the copied key if the parent's key changes.
+
+If your primary keys are dull and never edited, you will barely need ON UPDATE.
+
+That is a reason dull keys are kind.
+
+If you used a natural key people edit, ON UPDATE CASCADE is a moving truck for every child.
+
+Prefer not to move the house numbers.
+
+Prefer a surrogate that never changes.
+
+Match the action to the sentence in requirements: when a parent leaves, children vanish, children stay with a hole, or the parent is not allowed to leave.
+
+Write that sentence in the constraint.
+
+Test it: insert parent, insert child, delete parent, SELECT the child.
+
+If the child is gone and you wanted a hole, you cascaded by mistake.
+
+If the delete errors and you wanted a bundle gone, you restricted by mistake.
+
+Multiple children mean multiple policies.
+
+Payments might restrict.
+
+Draft lines might cascade.
+
+Do not pick one action for the whole database out of fashion.
+
+Pick per relationship.
+
+SQLite still needs foreign keys enabled or none of the actions run.
+
+Turn them on in every connection that should obey the design.
+
+Then delete and update are part of the schema, not a scavenger hunt in application code.

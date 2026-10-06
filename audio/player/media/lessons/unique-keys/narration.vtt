@@ -1,0 +1,648 @@
+1
+00:00:00,050 --> 00:00:05,152
+A primary key is unique and not null, and there is only one per table.
+
+2
+00:00:05,152 --> 00:00:10,277
+A UNIQUE constraint is unique, and it may allow nulls depending on the engine.
+
+3
+00:00:10,277 --> 00:00:14,319
+You use UNIQUE for the candidate keys you did not promote.
+
+4
+00:00:14,319 --> 00:00:16,444
+email UNIQUE on customers.
+
+5
+00:00:16,444 --> 00:00:18,736
+ISBN UNIQUE on books.
+
+6
+00:00:18,736 --> 00:00:23,722
+The primary key is still customer_id or book_id.
+
+7
+00:00:23,722 --> 00:00:27,763
+Queries and foreign keys prefer the dull primary key.
+
+8
+00:00:27,763 --> 00:00:31,027
+Humans still need the natural one to stay unique.
+
+9
+00:00:31,027 --> 00:00:35,444
+SQLite treats NULLs in UNIQUE as distinct from each other.
+
+10
+00:00:35,444 --> 00:00:40,611
+You can insert two rows with NULL email if email is unique and nullable.
+
+11
+00:00:40,611 --> 00:00:46,152
+PostgreSQL's UNIQUE behaves the same with NULL: NULL does not equal NULL.
+
+12
+00:00:46,152 --> 00:00:51,833
+If you meant at most one empty email, you wanted a partial unique index or a NOT NULL.
+
+13
+00:00:51,833 --> 00:00:54,708
+Composite unique constraints are common.
+
+14
+00:00:54,708 --> 00:00:59,680
+UNIQUE student_id, course_id on enrollment.
+
+15
+00:00:59,680 --> 00:01:02,833
+That is the pair lock from the many-to-many lesson.
+
+16
+00:01:02,833 --> 00:01:06,430
+A unique constraint is an index in most engines.
+
+17
+00:01:06,430 --> 00:01:08,625
+You get a lookup as a side effect.
+
+18
+00:01:08,625 --> 00:01:11,694
+Do not skip UNIQUE because you plan to be careful.
+
+19
+00:01:11,694 --> 00:01:14,138
+The second clerk will not be careful.
+
+20
+00:01:14,138 --> 00:01:17,361
+Naming the constraint makes errors readable.
+
+21
+00:01:17,361 --> 00:01:23,208
+customers_email_key is a better message than a generic unique violation.
+
+22
+00:01:23,208 --> 00:01:27,375
+Primary key versus unique is also about foreign keys.
+
+23
+00:01:27,375 --> 00:01:32,986
+A foreign key must point at a unique set of columns, usually the primary key.
+
+24
+00:01:32,986 --> 00:01:37,305
+Pointing at a UNIQUE natural key is allowed in many engines.
+
+25
+00:01:37,305 --> 00:01:39,861
+It makes later key changes painful.
+
+26
+00:01:39,861 --> 00:01:41,902
+Prefer pointing at the surrogate.
+
+27
+00:01:41,902 --> 00:01:45,500
+Keep the natural unique for humans and imports.
+
+28
+00:01:45,500 --> 00:01:53,694
+When an import must match on ISBN, look up book_id, then store book_id on the child.
+
+29
+00:01:53,694 --> 00:01:59,888
+Do not copy ISBN onto every order line unless you are denormalizing on purpose.
+
+30
+00:01:59,888 --> 00:02:01,486
+One primary key.
+
+31
+00:02:01,486 --> 00:02:05,805
+As many UNIQUE constraints as you have real candidate keys.
+
+32
+00:02:05,805 --> 00:02:07,541
+Nulls called out in public.
+
+33
+00:02:07,541 --> 00:02:09,180
+That is the whole policy.
+
+34
+00:02:09,180 --> 00:02:16,402
+Partial unique indexes in PostgreSQL let you say email is unique among rows that are not deleted.
+
+35
+00:02:16,402 --> 00:02:19,055
+WHERE deleted_at IS NULL.
+
+36
+00:02:19,055 --> 00:02:22,597
+That is how soft-delete and uniqueness coexist.
+
+37
+00:02:22,597 --> 00:02:29,611
+Without it, a retired email blocks a new customer forever, or you reuse emails in a mess.
+
+38
+00:02:29,611 --> 00:02:34,222
+MySQL and SQLite have their own partial-index stories.
+
+39
+00:02:34,222 --> 00:02:36,708
+Read them before you promise the policy.
+
+40
+00:02:36,708 --> 00:02:40,013
+Case folding belongs with uniqueness for emails.
+
+41
+00:02:40,013 --> 00:02:46,527
+A unique index on lower(email) is a functional unique index in PostgreSQL.
+
+42
+00:02:46,527 --> 00:02:49,833
+Without it, Maya@ and maya@ both get in.
+
+43
+00:02:49,833 --> 00:02:52,347
+Include that in the candidate-key meeting.
+
+44
+00:02:52,347 --> 00:02:54,652
+Uniqueness is a business rule.
+
+45
+00:02:54,652 --> 00:02:58,152
+The constraint is how the rule survives a busy hour.
+
+46
+00:02:58,152 --> 00:03:03,069
+When an import fails on UNIQUE, the failure is data, not drama.
+
+47
+00:03:03,069 --> 00:03:04,430
+Show the duplicate.
+
+48
+00:03:04,430 --> 00:03:06,236
+Merge or reject.
+
+49
+00:03:06,236 --> 00:03:09,236
+Do not DROP INDEX to make the import finish.
+
+50
+00:03:09,236 --> 00:03:11,013
+That is how you buy a weekend.
+
+51
+00:03:11,013 --> 00:03:13,750
+Primary key names are often implicit.
+
+52
+00:03:13,750 --> 00:03:15,694
+UNIQUE names should not be.
+
+53
+00:03:15,694 --> 00:03:17,500
+You will read them in logs.
+
+54
+00:03:17,500 --> 00:03:19,013
+Treat them as prose.
+
+55
+00:03:19,013 --> 00:03:24,652
+One primary, many UNIQUE, nulls explicit, pointers at the surrogate.
+
+56
+00:03:24,652 --> 00:03:26,805
+You can run a store on that sentence.
+
+57
+00:03:26,805 --> 00:03:31,361
+Most uniqueness bugs are a missing sentence, not a missing feature.
+
+58
+00:03:31,361 --> 00:03:33,486
+Write it, then type UNIQUE.
+
+59
+00:03:33,486 --> 00:03:36,041
+Uniqueness is a product promise.
+
+60
+00:03:36,041 --> 00:03:38,791
+The database is the enforcer you hired.
+
+61
+00:03:38,791 --> 00:03:43,069
+If you fire the enforcer for an import, you own the duplicates.
+
+62
+00:03:43,069 --> 00:03:44,458
+Keep the enforcer.
+
+63
+00:03:44,458 --> 00:03:45,958
+Stage the import.
+
+64
+00:03:45,958 --> 00:03:47,388
+Merge in daylight.
+
+65
+00:03:47,388 --> 00:03:48,902
+UNIQUE is daylight.
+
+66
+00:03:48,902 --> 00:03:51,486
+Null policy is part of the promise.
+
+67
+00:03:51,486 --> 00:03:54,652
+Say whether unknown emails are allowed twice.
+
+68
+00:03:54,652 --> 00:03:56,069
+If no, NOT NULL.
+
+69
+00:03:56,069 --> 00:04:00,305
+If yes among retired rows, a partial unique index.
+
+70
+00:04:00,305 --> 00:04:03,597
+Write that in the same comment as the constraint name.
+
+71
+00:04:03,597 --> 00:04:06,805
+Future incidents will open that comment first.
+
+72
+00:04:06,805 --> 00:04:08,180
+Make it worth opening.
+
+73
+00:04:08,180 --> 00:04:12,416
+One primary, many UNIQUE, pointers at the dull key.
+
+74
+00:04:12,416 --> 00:04:13,569
+Keep saying it.
+
+75
+00:04:13,569 --> 00:04:17,916
+Constraints are rules the engine enforces so rows stay honest.
+
+76
+00:04:17,916 --> 00:04:23,097
+Think of them as traffic rules: not suggestions, not application hope.
+
+77
+00:04:23,097 --> 00:04:26,861
+PRIMARY KEY and UNIQUE both refuse duplicates.
+
+78
+00:04:26,861 --> 00:04:28,500
+They are not the same tool.
+
+79
+00:04:28,500 --> 00:04:34,861
+A primary key identifies the row, is unique, and in SQL is also NOT NULL.
+
+80
+00:04:34,861 --> 00:04:37,277
+A table has one primary key.
+
+81
+00:04:37,277 --> 00:04:43,680
+Foreign keys point at it, or at a unique column you explicitly allow, depending on the engine.
+
+82
+00:04:43,680 --> 00:04:49,680
+UNIQUE can sit on email, username, or phone while the primary key is a dull id.
+
+83
+00:04:49,802 --> 00:04:57,988
+UNIQUE may allow NULL in many engines, and NULLs do not collide with each other the way values do, depending on the dialect.
+
+84
+00:04:57,988 --> 00:05:06,168
+Two users with NULL email can both exist under UNIQUE(email) in engines that treat NULL as distinct.
+
+85
+00:05:06,168 --> 00:05:14,696
+If email must be present and unique, you want UNIQUE and NOT NULL, or a primary key on email, which carries NOT NULL.
+
+86
+00:05:14,696 --> 00:05:18,849
+Do not make email the primary key because it is unique today.
+
+87
+00:05:18,849 --> 00:05:20,321
+People change email.
+
+88
+00:05:20,321 --> 00:05:24,460
+Children that pointed at the old email become a migration.
+
+89
+00:05:24,460 --> 00:05:30,654
+Dull id as primary key, UNIQUE on email, is the usual adult design.
+
+90
+00:05:30,654 --> 00:05:37,252
+The extra thing a primary key does is say: this is the identity other tables should copy.
+
+91
+00:05:37,252 --> 00:05:43,988
+UNIQUE says: this value may not repeat, but it is not necessarily the identity of the row.
+
+92
+00:05:43,988 --> 00:05:50,029
+Choosing UNIQUE when you meant primary key leaves you without a natural parent for foreign keys.
+
+93
+00:05:50,029 --> 00:05:54,502
+Choosing primary key on a value you will edit breaks references.
+
+94
+00:05:54,502 --> 00:05:57,071
+You can have several UNIQUE constraints.
+
+95
+00:05:57,071 --> 00:05:59,627
+You cannot have several primary keys.
+
+96
+00:05:59,627 --> 00:06:07,543
+Composite UNIQUE (store_id, sku) means the pair is unique, not each column alone.
+
+97
+00:06:07,543 --> 00:06:09,835
+Two stores may sell the same sku.
+
+98
+00:06:09,835 --> 00:06:13,029
+Name the constraints so errors are readable.
+
+99
+00:06:13,029 --> 00:06:22,293
+When implementing, write PRIMARY KEY on the identity, UNIQUE on natural handles people search, FOREIGN KEY on the copies.
+
+100
+00:06:22,293 --> 00:06:26,502
+Then duplicates fail at the door instead of in a nightly cleanup.
+
+101
+00:06:26,502 --> 00:06:28,377
+That failure is the feature.
+
+102
+00:06:28,377 --> 00:06:34,377
+If an application needs to tell a user that username is taken, catch the unique violation.
+
+103
+00:06:34,377 --> 00:06:38,390
+Do not SELECT then INSERT and hope nobody else grabbed the name.
+
+104
+00:06:38,390 --> 00:06:40,877
+The constraint is the race-proof rule.
+
+105
+00:06:40,877 --> 00:06:46,724
+Primary versus unique is the difference between who you are and what else must not collide.
+
+106
+00:06:46,724 --> 00:06:48,946
+Keep who you are dull and stable.
+
+107
+00:06:48,946 --> 00:06:51,960
+Keep collisions on the columns humans care about.
+
+108
+00:06:51,960 --> 00:07:01,877
+Recommended practice: surrogate primary key, unique natural handles, foreign keys to the surrogate, not null on handles that login needs.
+
+109
+00:07:01,877 --> 00:07:08,224
+Anti-pattern: unique without not null on email, then three accounts with empty email.
+
+110
+00:07:08,224 --> 00:07:15,877
+Anti-pattern: primary key on phone, then a user changes phone and every child row needs a cascade.
+
+111
+00:07:15,877 --> 00:07:25,932
+Anti-pattern: no unique on username, primary key on id, application checks uniqueness with SELECT, two signups collide.
+
+112
+00:07:25,932 --> 00:07:28,224
+The constraint was the missing piece.
+
+113
+00:07:28,224 --> 00:07:34,404
+Primary versus unique is those practices, not a trivia difference in nullability only.
+
+114
+00:07:34,404 --> 00:07:36,738
+Nullability is one difference.
+
+115
+00:07:36,738 --> 00:07:39,279
+Count of keys per table is another.
+
+116
+00:07:39,279 --> 00:07:42,835
+Who children point at is the one that breaks designs.
+
+117
+00:07:42,835 --> 00:07:44,238
+Point at identity.
+
+118
+00:07:44,238 --> 00:07:46,377
+Uniquely constrain the rest.
+
+119
+00:07:46,377 --> 00:07:50,015
+Close with questions, the way a careful lecture does.
+
+120
+00:07:50,015 --> 00:07:53,071
+Answer in a sentence you could defend at a keyboard.
+
+121
+00:07:53,071 --> 00:07:54,502
+What is a constraint?
+
+122
+00:07:54,502 --> 00:07:58,196
+A rule the engine enforces, not application hope.
+
+123
+00:07:58,196 --> 00:08:01,127
+What do PRIMARY KEY and UNIQUE share?
+
+124
+00:08:01,127 --> 00:08:03,404
+They refuse duplicate values.
+
+125
+00:08:03,404 --> 00:08:05,765
+How many primary keys per table?
+
+126
+00:08:05,765 --> 00:08:06,557
+One.
+
+127
+00:08:06,557 --> 00:08:08,710
+How many UNIQUE constraints?
+
+128
+00:08:08,710 --> 00:08:11,071
+As many as you have honest handles.
+
+129
+00:08:11,071 --> 00:08:13,432
+Does PRIMARY KEY allow NULL?
+
+130
+00:08:13,432 --> 00:08:14,196
+No.
+
+131
+00:08:14,196 --> 00:08:15,946
+Does UNIQUE allow NULL?
+
+132
+00:08:15,946 --> 00:08:20,571
+Often yes, and NULLs may not collide, depending on dialect.
+
+133
+00:08:20,571 --> 00:08:22,279
+What should children point at?
+
+134
+00:08:22,279 --> 00:08:25,585
+The identity, usually a dull primary key.
+
+135
+00:08:25,585 --> 00:08:27,724
+Why not primary key on email?
+
+136
+00:08:27,724 --> 00:08:30,918
+People change email; children would have to move.
+
+137
+00:08:30,918 --> 00:08:33,085
+Why UNIQUE on email anyway?
+
+138
+00:08:33,085 --> 00:08:35,293
+Login still cannot share an email.
+
+139
+00:08:35,293 --> 00:08:37,071
+Composite UNIQUE meaning?
+
+140
+00:08:37,071 --> 00:08:40,210
+The pair is unique, not each column alone.
+
+141
+00:08:40,210 --> 00:08:42,557
+SELECT then INSERT for uniqueness?
+
+142
+00:08:42,557 --> 00:08:43,613
+A race.
+
+143
+00:08:43,613 --> 00:08:45,085
+Use the constraint.
+
+144
+00:08:45,085 --> 00:08:46,446
+Traffic metaphor?
+
+145
+00:08:46,446 --> 00:08:50,335
+Unique is a parking rule; primary key is the VIN.
+
+146
+00:08:50,335 --> 00:08:53,571
+Can UNIQUE replace a primary key for identity?
+
+147
+00:08:53,571 --> 00:08:56,668
+It can be unique without being the pointer you want.
+
+148
+00:08:56,668 --> 00:08:58,127
+Named constraints?
+
+149
+00:08:58,127 --> 00:09:00,877
+Yes, so errors read as English.
+
+150
+00:09:00,877 --> 00:09:02,182
+Username taken?
+
+151
+00:09:02,182 --> 00:09:04,182
+Catch the unique violation.
+
+152
+00:09:04,182 --> 00:09:06,057
+Phone UNIQUE NULL allowed?
+
+153
+00:09:06,057 --> 00:09:08,113
+Two NULLs may both exist.
+
+154
+00:09:08,113 --> 00:09:10,029
+Email UNIQUE NOT NULL?
+
+155
+00:09:10,029 --> 00:09:14,377
+Present and unique, still not necessarily the primary key.
+
+156
+00:09:14,377 --> 00:09:16,599
+store_id plus sku?
+
+157
+00:09:16,599 --> 00:09:20,432
+Composite unique so two stores share sku text.
+
+158
+00:09:20,432 --> 00:09:22,960
+Who are you versus what must not collide?
+
+159
+00:09:22,960 --> 00:09:24,918
+Primary versus unique.
+
+160
+00:09:24,918 --> 00:09:26,321
+Recommended pattern?
+
+161
+00:09:26,321 --> 00:09:32,321
+Surrogate primary key, unique natural handles, foreign keys to the surrogate.
+
+162
+00:09:32,321 --> 00:09:37,043
+If an answer needed a second table, go draw it before you write more SQL.
+

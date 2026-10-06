@@ -1,0 +1,291 @@
+First normal form is the agreement that a table is a table.
+
+Each cell holds one value, not a list.
+
+Each row is one thing, identified by a primary key.
+
+Each column has a single meaning.
+
+Look at a cell that says Harbor Light, Quiet Fields.
+
+That is two titles pretending to be one attribute.
+
+You cannot sort by title.
+
+You cannot foreign-key to books.
+
+You cannot count how many titles Maya bought without splitting the string.
+
+Split into rows instead.
+
+One order line per book.
+
+Now each title is atomic.
+
+Repeating groups are the same sin with extra columns: title1, title2, title3.
+
+title3 is empty for most rows, and a fourth book has nowhere to go.
+
+Rows scale; numbered columns do not.
+
+A primary key is part of the form.
+
+Without a key, two identical rows are not two facts.
+
+They are a smudge.
+
+Atomic does not mean short.
+
+A biography in TEXT can still be one value.
+
+Atomic means you are not smuggling a second table into a cell.
+
+JSON in a column can be a document, or it can be a hidden table.
+
+If you query inside it as if it had rows, you wanted rows.
+
+Names with a middle initial are still one name if that is how you treat them.
+
+If you sort by last name, you wanted last_name as its own column.
+
+The test is use, not philosophy.
+
+Start with a messy grid from a spreadsheet.
+
+Circle every cell with a comma.
+
+Circle every title1 column.
+
+Those circles are the work.
+
+Make a child table.
+
+Give it a key.
+
+Point at the parent.
+
+That is first normal form in practice.
+
+Higher normal forms assume this one.
+
+If you skip it, later rules have nothing honest to stand on.
+
+One cell, one value.
+
+One row, one thing.
+
+A key that finds the row.
+
+Then you can talk about dependence.
+
+Repeating groups sometimes wear JSON or arrays in modern engines.
+
+An array of titles is still a list in a cell.
+
+If you query unnest, you wanted a child table for operational data.
+
+Document-looking payloads can stay documents if you always fetch them whole.
+
+The moment you join to a title inside, you wanted rows.
+
+CSV imports are the usual first-normal-form crime scene.
+
+Someone exported a spreadsheet with a list column.
+
+Split before you INSERT.
+
+Or insert into a staging table and normalize in SQL.
+
+Multivalued dependencies are a later theory word.
+
+In practice you already felt them when two lists in one row multiplied into a mess.
+
+Keep lists out, and you will not need the word yet.
+
+Primary keys that are hashes of the whole row are a last resort.
+
+They say we could not find identity.
+
+Find identity.
+
+A line number plus parent id is identity.
+
+A random uuid is identity if you assign it at birth.
+
+A pile of titles is not.
+
+Walk a report you care about.
+
+If it needs COUNT of books, you need rows of books.
+
+If it needs a poster of the whole cart as one blob, you might keep a document copy, on purpose, later.
+
+First normal form is for the tables you query as tables.
+
+Keep them atomic.
+
+Give them keys.
+
+Then the later forms have a floor.
+
+If a report needs to count it, it needed its own row.
+
+If a join needs to match it, it needed its own row.
+
+If a key needs to point at it, it needed its own row.
+
+Lists in cells fail all three.
+
+Spreadsheets do not care.
+
+Engines do.
+
+Split, key, point.
+
+That is the repair.
+
+Do it before you load a million rows.
+
+Splitting a million lists is a worse afternoon than splitting twenty.
+
+Atomic now, dependence later.
+
+The floor has to exist.
+
+You are laying the floor.
+
+Normalization is putting each fact in one proper place so you can find it, change it once, and avoid anomalies.
+
+You start when you have a first ER draft: entities, attributes, relationships.
+
+Normal forms are nested rules.
+
+You cannot skip to third if first is still broken.
+
+First normal form asks for a primary key, a type on each column, and atomic cells.
+
+Atomic means one value per intersection of row and column, not a list hiding in the cell.
+
+A phone column with 555-0100, 555-0199 is two facts in one seat.
+
+Queries cannot LIKE their way into integrity.
+
+Split to a phones table, one number per row, with a type of mobile or desk if you need it.
+
+A column of product ids separated by commas is the same crime.
+
+Repeating groups as extra columns — skill1, skill2, skill3 — are lists wearing hats.
+
+The fourth skill has nowhere to go.
+
+The third skill is NULL for most people, forever.
+
+Make a skill assignment table instead.
+
+Without a primary key, you cannot say which row you meant to update.
+
+Two identical rows are not two facts.
+
+They are a dare.
+
+Give every table a key before you talk about anything fancier.
+
+Types belong in first normal form because an untyped column is a junk drawer.
+
+The form is boring on purpose.
+
+Boring is what lets GROUP BY and foreign keys mean something.
+
+Fixing first normal form is splitting lists into rows, giving keys, and typing columns.
+
+It is not renaming tables for style.
+
+After first, you may still have redundancy across columns that depend on only part of a key.
+
+That is second normal form's job.
+
+Do not drag those problems into a first-normal-form discussion.
+
+One idea: one value, one type, one way to find the row.
+
+If a cell needs a comma to be honest, the table is not in first normal form.
+
+If two rows cannot be told apart, the table is not in first normal form.
+
+Repair those, then stop and look at the key's parts.
+
+Start with a spreadsheet of orders: one row, a customer, a cell of product names comma separated, a cell of quantities comma separated.
+
+That sheet is not a table in first normal form.
+
+Split products into order_lines, one product per row, one quantity per row.
+
+Give orders an order_id.
+
+Give lines a key of order_id plus line_no.
+
+Type quantity as integer, name as text, price as decimal.
+
+No repeating product1 product2 columns.
+
+Now GROUP BY and JOIN have a grain.
+
+Normalization started as library shelves: each book, one place.
+
+First normal form is the shelf labels and the rule against stuffing two books in one slot.
+
+Higher forms are about not writing the same title on two shelves.
+
+Do not skip the slot rule.
+
+Lists in cells make every later form meaningless.
+
+Practice: find a column that needs a split, write the child table, migrate the values to rows, drop the list column.
+
+That migration is first normal form as a verb.
+
+Close with questions, the way a careful lecture does.
+
+Answer in a sentence you could defend at a keyboard.
+
+What does first require?
+
+A key, types, atomic cells.
+
+Lists in a cell?
+
+Not first. Split to rows.
+
+Repeating group columns?
+
+Also a list. Split.
+
+No primary key?
+
+Not first.
+
+Why start here?
+
+Later forms need a grain.
+
+Comma separated product ids?
+
+A list. Child table.
+
+Is renaming tables first?
+
+No.
+
+What is the library metaphor?
+
+One book, one slot, labels on shelves.
+
+After first?
+
+Redundancy across key parts is second's job.
+
+Migration as a verb?
+
+Split the list, load rows, drop the list column.
+
+If an answer needed a second table, go draw it before you write more SQL.

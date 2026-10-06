@@ -1,0 +1,1650 @@
+{
+  "title": "Entities and attributes",
+  "subtitle": "What becomes a table",
+  "audio": "narration.mp3",
+  "duration": 432.6,
+  "slides": [],
+  "scenes": [
+    {
+      "id": "promote",
+      "label": "Promote",
+      "kind": "schema",
+      "title": "When a value grows facts",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "city_id"
+          ],
+          "pk": "customer_id"
+        },
+        {
+          "id": "cities",
+          "label": "cities",
+          "cols": [
+            "city_id",
+            "name",
+            "state"
+          ],
+          "pk": "city_id",
+          "hub": true
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 0,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 1,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 0,
+      "toLyric": 2
+    },
+    {
+      "id": "entity",
+      "label": "Attributes",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "name",
+        "city"
+      ],
+      "rows": [
+        [
+          "1",
+          "Maya",
+          "Austin"
+        ],
+        [
+          "2",
+          "Jordan",
+          "Austin"
+        ],
+        [
+          "3",
+          "Sofia",
+          "Denver"
+        ]
+      ],
+      "fromLyric": 2,
+      "toLyric": 4,
+      "steps": [
+        {
+          "lyricMin": 2,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "promote-2",
+      "label": "Promote",
+      "kind": "schema",
+      "title": "When a value grows facts",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "city_id"
+          ],
+          "pk": "customer_id"
+        },
+        {
+          "id": "cities",
+          "label": "cities",
+          "cols": [
+            "city_id",
+            "name",
+            "state"
+          ],
+          "pk": "city_id",
+          "hub": true
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 4,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 4,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 4,
+      "toLyric": 5
+    },
+    {
+      "id": "attr-table",
+      "label": "Attributes",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "name",
+        "city"
+      ],
+      "rows": [
+        [
+          "1",
+          "Maya",
+          "Austin"
+        ],
+        [
+          "2",
+          "Jordan",
+          "Austin"
+        ],
+        [
+          "3",
+          "Sofia",
+          "Denver"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 5,
+          "actions": [
+            "enter",
+            "show-header"
+          ]
+        },
+        {
+          "lyricMin": 5,
+          "actions": [
+            "reveal-rows"
+          ]
+        }
+      ],
+      "fromLyric": 5,
+      "toLyric": 6
+    },
+    {
+      "id": "entity-2",
+      "label": "Attributes",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "name",
+        "city"
+      ],
+      "rows": [
+        [
+          "1",
+          "Maya",
+          "Austin"
+        ],
+        [
+          "2",
+          "Jordan",
+          "Austin"
+        ],
+        [
+          "3",
+          "Sofia",
+          "Denver"
+        ]
+      ],
+      "fromLyric": 6,
+      "toLyric": 7,
+      "steps": [
+        {
+          "lyricMin": 6,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "promote-3",
+      "label": "Promote",
+      "kind": "schema",
+      "title": "When a value grows facts",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "city_id"
+          ],
+          "pk": "customer_id"
+        },
+        {
+          "id": "cities",
+          "label": "cities",
+          "cols": [
+            "city_id",
+            "name",
+            "state"
+          ],
+          "pk": "city_id",
+          "hub": true
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 7,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 7,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 7,
+      "toLyric": 8
+    },
+    {
+      "id": "attr-table-2",
+      "label": "Attributes",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "name",
+        "city"
+      ],
+      "rows": [
+        [
+          "1",
+          "Maya",
+          "Austin"
+        ],
+        [
+          "2",
+          "Jordan",
+          "Austin"
+        ],
+        [
+          "3",
+          "Sofia",
+          "Denver"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 8,
+          "actions": [
+            "enter",
+            "show-header"
+          ]
+        },
+        {
+          "lyricMin": 9,
+          "actions": [
+            "reveal-rows"
+          ]
+        }
+      ],
+      "fromLyric": 8,
+      "toLyric": 10
+    },
+    {
+      "id": "entity-3",
+      "label": "Attributes",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "name",
+        "city"
+      ],
+      "rows": [
+        [
+          "1",
+          "Maya",
+          "Austin"
+        ],
+        [
+          "2",
+          "Jordan",
+          "Austin"
+        ],
+        [
+          "3",
+          "Sofia",
+          "Denver"
+        ]
+      ],
+      "fromLyric": 10,
+      "toLyric": 14,
+      "steps": [
+        {
+          "lyricMin": 10,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mix",
+      "label": "Attributes",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "name",
+        "city"
+      ],
+      "rows": [
+        [
+          "1",
+          "Maya",
+          "Austin"
+        ],
+        [
+          "2",
+          "Jordan",
+          "Austin"
+        ],
+        [
+          "3",
+          "Sofia",
+          "Denver"
+        ]
+      ],
+      "fromLyric": 14,
+      "toLyric": 16,
+      "steps": [
+        {
+          "lyricMin": 14,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "entity-4",
+      "label": "Attributes",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "name",
+        "city"
+      ],
+      "rows": [
+        [
+          "1",
+          "Maya",
+          "Austin"
+        ],
+        [
+          "2",
+          "Jordan",
+          "Austin"
+        ],
+        [
+          "3",
+          "Sofia",
+          "Denver"
+        ]
+      ],
+      "fromLyric": 16,
+      "toLyric": 22,
+      "steps": [
+        {
+          "lyricMin": 16,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "attr-table-3",
+      "label": "Attributes",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "name",
+        "city"
+      ],
+      "rows": [
+        [
+          "1",
+          "Maya",
+          "Austin"
+        ],
+        [
+          "2",
+          "Jordan",
+          "Austin"
+        ],
+        [
+          "3",
+          "Sofia",
+          "Denver"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 22,
+          "actions": [
+            "enter",
+            "show-header"
+          ]
+        },
+        {
+          "lyricMin": 22,
+          "actions": [
+            "reveal-rows"
+          ]
+        }
+      ],
+      "fromLyric": 22,
+      "toLyric": 26
+    },
+    {
+      "id": "promote-4",
+      "label": "Promote",
+      "kind": "schema",
+      "title": "When a value grows facts",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "city_id"
+          ],
+          "pk": "customer_id"
+        },
+        {
+          "id": "cities",
+          "label": "cities",
+          "cols": [
+            "city_id",
+            "name",
+            "state"
+          ],
+          "pk": "city_id",
+          "hub": true
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 26,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 27,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 26,
+      "toLyric": 31
+    },
+    {
+      "id": "mix-2",
+      "label": "Attributes",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "name",
+        "city"
+      ],
+      "rows": [
+        [
+          "1",
+          "Maya",
+          "Austin"
+        ],
+        [
+          "2",
+          "Jordan",
+          "Austin"
+        ],
+        [
+          "3",
+          "Sofia",
+          "Denver"
+        ]
+      ],
+      "fromLyric": 31,
+      "toLyric": 37,
+      "steps": [
+        {
+          "lyricMin": 31,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "entity-5",
+      "label": "Attributes",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "name",
+        "city"
+      ],
+      "rows": [
+        [
+          "1",
+          "Maya",
+          "Austin"
+        ],
+        [
+          "2",
+          "Jordan",
+          "Austin"
+        ],
+        [
+          "3",
+          "Sofia",
+          "Denver"
+        ]
+      ],
+      "fromLyric": 37,
+      "toLyric": 39,
+      "steps": [
+        {
+          "lyricMin": 37,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "attr-table-4",
+      "label": "Attributes",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "name",
+        "city"
+      ],
+      "rows": [
+        [
+          "1",
+          "Maya",
+          "Austin"
+        ],
+        [
+          "2",
+          "Jordan",
+          "Austin"
+        ],
+        [
+          "3",
+          "Sofia",
+          "Denver"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 39,
+          "actions": [
+            "enter",
+            "show-header"
+          ]
+        },
+        {
+          "lyricMin": 39,
+          "actions": [
+            "reveal-rows"
+          ]
+        }
+      ],
+      "fromLyric": 39,
+      "toLyric": 40
+    },
+    {
+      "id": "notes",
+      "label": "Attributes",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "name",
+        "city"
+      ],
+      "rows": [
+        [
+          "1",
+          "Maya",
+          "Austin"
+        ],
+        [
+          "2",
+          "Jordan",
+          "Austin"
+        ],
+        [
+          "3",
+          "Sofia",
+          "Denver"
+        ]
+      ],
+      "fromLyric": 40,
+      "toLyric": 47,
+      "steps": [
+        {
+          "lyricMin": 40,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "entity-6",
+      "label": "Attributes",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "name",
+        "city"
+      ],
+      "rows": [
+        [
+          "1",
+          "Maya",
+          "Austin"
+        ],
+        [
+          "2",
+          "Jordan",
+          "Austin"
+        ],
+        [
+          "3",
+          "Sofia",
+          "Denver"
+        ]
+      ],
+      "fromLyric": 47,
+      "toLyric": 79,
+      "steps": [
+        {
+          "lyricMin": 47,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "promote-5",
+      "label": "Promote",
+      "kind": "schema",
+      "title": "When a value grows facts",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "city_id"
+          ],
+          "pk": "customer_id"
+        },
+        {
+          "id": "cities",
+          "label": "cities",
+          "cols": [
+            "city_id",
+            "name",
+            "state"
+          ],
+          "pk": "city_id",
+          "hub": true
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 79,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 80,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 79,
+      "toLyric": 96
+    },
+    {
+      "id": "mix-3",
+      "label": "Attributes",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "name",
+        "city"
+      ],
+      "rows": [
+        [
+          "1",
+          "Maya",
+          "Austin"
+        ],
+        [
+          "2",
+          "Jordan",
+          "Austin"
+        ],
+        [
+          "3",
+          "Sofia",
+          "Denver"
+        ]
+      ],
+      "fromLyric": 96,
+      "toLyric": 97,
+      "steps": [
+        {
+          "lyricMin": 96,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "entity-7",
+      "label": "Attributes",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "name",
+        "city"
+      ],
+      "rows": [
+        [
+          "1",
+          "Maya",
+          "Austin"
+        ],
+        [
+          "2",
+          "Jordan",
+          "Austin"
+        ],
+        [
+          "3",
+          "Sofia",
+          "Denver"
+        ]
+      ],
+      "fromLyric": 97,
+      "toLyric": 101,
+      "steps": [
+        {
+          "lyricMin": 97,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "promote-6",
+      "label": "Promote",
+      "kind": "schema",
+      "title": "When a value grows facts",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "city_id"
+          ],
+          "pk": "customer_id"
+        },
+        {
+          "id": "cities",
+          "label": "cities",
+          "cols": [
+            "city_id",
+            "name",
+            "state"
+          ],
+          "pk": "city_id",
+          "hub": true
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 101,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 102,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 101,
+      "toLyric": 109
+    },
+    {
+      "id": "attr-table-5",
+      "label": "Attributes",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "name",
+        "city"
+      ],
+      "rows": [
+        [
+          "1",
+          "Maya",
+          "Austin"
+        ],
+        [
+          "2",
+          "Jordan",
+          "Austin"
+        ],
+        [
+          "3",
+          "Sofia",
+          "Denver"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 109,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows"
+          ]
+        },
+        {
+          "lyricMin": 114,
+          "actions": [
+            "reveal-rows"
+          ]
+        }
+      ],
+      "fromLyric": 109,
+      "toLyric": 118
+    }
+  ],
+  "lyrics": [
+    {
+      "start": 0.05,
+      "end": 5.541,
+      "text": "An entity is a thing you can describe and tell apart from other things of the same kind.",
+      "slide": ""
+    },
+    {
+      "start": 5.541,
+      "end": 7.375,
+      "text": "A customer is an entity.",
+      "slide": ""
+    },
+    {
+      "start": 7.375,
+      "end": 8.958,
+      "text": "An order is an entity.",
+      "slide": ""
+    },
+    {
+      "start": 8.958,
+      "end": 10.541,
+      "text": "A book is an entity.",
+      "slide": ""
+    },
+    {
+      "start": 10.541,
+      "end": 13.625,
+      "text": "Austin is usually not an entity on day one.",
+      "slide": ""
+    },
+    {
+      "start": 13.625,
+      "end": 17.166,
+      "text": "It is a value of city, an attribute of customer.",
+      "slide": ""
+    },
+    {
+      "start": 17.166,
+      "end": 19.972,
+      "text": "Attributes are facts about one entity.",
+      "slide": ""
+    },
+    {
+      "start": 19.972,
+      "end": 22.708,
+      "text": "name, city, joined_on.",
+      "slide": ""
+    },
+    {
+      "start": 22.708,
+      "end": 26.43,
+      "text": "If a fact has its own facts, it wanted to be an entity.",
+      "slide": ""
+    },
+    {
+      "start": 26.43,
+      "end": 30.444,
+      "text": "city might grow a population, a state, a mayor.",
+      "slide": ""
+    },
+    {
+      "start": 30.444,
+      "end": 35.041,
+      "text": "Then city becomes a table, and customers hold city_id.",
+      "slide": ""
+    },
+    {
+      "start": 35.041,
+      "end": 36.791,
+      "text": "That promotion is normal.",
+      "slide": ""
+    },
+    {
+      "start": 36.791,
+      "end": 39.361,
+      "text": "It is not a mistake in the first sketch.",
+      "slide": ""
+    },
+    {
+      "start": 39.361,
+      "end": 42.555,
+      "text": "List nouns from the sentences people actually say.",
+      "slide": ""
+    },
+    {
+      "start": 42.555,
+      "end": 45.097,
+      "text": "A customer places an order for a book.",
+      "slide": ""
+    },
+    {
+      "start": 45.097,
+      "end": 46.277,
+      "text": "Three nouns.",
+      "slide": ""
+    },
+    {
+      "start": 46.277,
+      "end": 48.583,
+      "text": "Then list facts about each noun.",
+      "slide": ""
+    },
+    {
+      "start": 48.583,
+      "end": 51.805,
+      "text": "Customer: name, city, email.",
+      "slide": ""
+    },
+    {
+      "start": 51.805,
+      "end": 54.763,
+      "text": "Order: placed_on, total.",
+      "slide": ""
+    },
+    {
+      "start": 54.763,
+      "end": 56.527,
+      "text": "Book: title, year.",
+      "slide": ""
+    },
+    {
+      "start": 56.527,
+      "end": 58.305,
+      "text": "Check one row in your head.",
+      "slide": ""
+    },
+    {
+      "start": 58.305,
+      "end": 60.027,
+      "text": "Does it describe one thing?",
+      "slide": ""
+    },
+    {
+      "start": 60.027,
+      "end": 66.402,
+      "text": "If a row describes Maya and also Harbor Light and also a shipping box, you mixed entities.",
+      "slide": ""
+    },
+    {
+      "start": 66.402,
+      "end": 68.902,
+      "text": "Split until a row is one noun.",
+      "slide": ""
+    },
+    {
+      "start": 68.902,
+      "end": 71.5,
+      "text": "Relationships are not attributes.",
+      "slide": ""
+    },
+    {
+      "start": 71.5,
+      "end": 77.68,
+      "text": "customer_id on orders is not a fact about an order in the same way total is.",
+      "slide": ""
+    },
+    {
+      "start": 77.68,
+      "end": 79.888,
+      "text": "It is a pointer to another entity.",
+      "slide": ""
+    },
+    {
+      "start": 79.888,
+      "end": 81.652,
+      "text": "Keep that difference visible.",
+      "slide": ""
+    },
+    {
+      "start": 81.652,
+      "end": 86.625,
+      "text": "Attributes should be atomic for first normal form, which is a later lesson.",
+      "slide": ""
+    },
+    {
+      "start": 86.625,
+      "end": 89.652,
+      "text": "For now: one cell, one value.",
+      "slide": ""
+    },
+    {
+      "start": 89.652,
+      "end": 92.444,
+      "text": "Not a comma-separated pile of authors.",
+      "slide": ""
+    },
+    {
+      "start": 92.444,
+      "end": 96.013,
+      "text": "Derived facts are not attributes you must store.",
+      "slide": ""
+    },
+    {
+      "start": 96.013,
+      "end": 98.861,
+      "text": "age can be computed from birth_date.",
+      "slide": ""
+    },
+    {
+      "start": 98.861,
+      "end": 101.569,
+      "text": "Storing both is a chance to disagree.",
+      "slide": ""
+    },
+    {
+      "start": 101.569,
+      "end": 103.222,
+      "text": "Prefer the source fact.",
+      "slide": ""
+    },
+    {
+      "start": 103.222,
+      "end": 106.597,
+      "text": "Names are attributes; identity is a key.",
+      "slide": ""
+    },
+    {
+      "start": 106.597,
+      "end": 109.388,
+      "text": "Do not use name as if it were a customer.",
+      "slide": ""
+    },
+    {
+      "start": 109.388,
+      "end": 111.013,
+      "text": "Two Mayas exist.",
+      "slide": ""
+    },
+    {
+      "start": 111.013,
+      "end": 114.041,
+      "text": "Walk a new domain with sticky notes if you want.",
+      "slide": ""
+    },
+    {
+      "start": 114.041,
+      "end": 115.527,
+      "text": "One note per entity.",
+      "slide": ""
+    },
+    {
+      "start": 115.527,
+      "end": 116.819,
+      "text": "Facts on the note.",
+      "slide": ""
+    },
+    {
+      "start": 116.819,
+      "end": 118.513,
+      "text": "Arrows between notes.",
+      "slide": ""
+    },
+    {
+      "start": 118.513,
+      "end": 120.361,
+      "text": "The notes become tables.",
+      "slide": ""
+    },
+    {
+      "start": 120.361,
+      "end": 122.277,
+      "text": "The facts become columns.",
+      "slide": ""
+    },
+    {
+      "start": 122.277,
+      "end": 124.236,
+      "text": "The arrows become keys.",
+      "slide": ""
+    },
+    {
+      "start": 124.236,
+      "end": 125.916,
+      "text": "Events can be entities.",
+      "slide": ""
+    },
+    {
+      "start": 125.916,
+      "end": 128.013,
+      "text": "A login is a thing that happened.",
+      "slide": ""
+    },
+    {
+      "start": 128.013,
+      "end": 130.986,
+      "text": "It has a time and a customer_id.",
+      "slide": ""
+    },
+    {
+      "start": 130.986,
+      "end": 136.958,
+      "text": "It is not an attribute of customer unless you only store last_login_at.",
+      "slide": ""
+    },
+    {
+      "start": 136.958,
+      "end": 141.805,
+      "text": "last_login_at is a derived cache of the latest event.",
+      "slide": ""
+    },
+    {
+      "start": 141.805,
+      "end": 143.236,
+      "text": "Know which you are building.",
+      "slide": ""
+    },
+    {
+      "start": 143.236,
+      "end": 146.0,
+      "text": "Roles can be entities when they have facts.",
+      "slide": ""
+    },
+    {
+      "start": 146.0,
+      "end": 150.208,
+      "text": "admin is a flag until admins have offices and rotations.",
+      "slide": ""
+    },
+    {
+      "start": 150.208,
+      "end": 152.027,
+      "text": "Then role is a table.",
+      "slide": ""
+    },
+    {
+      "start": 152.027,
+      "end": 158.513,
+      "text": "Status values start as text and become entities when they grow labels in three languages.",
+      "slide": ""
+    },
+    {
+      "start": 158.513,
+      "end": 161.972,
+      "text": "Promote them when the facts appear, not before.",
+      "slide": ""
+    },
+    {
+      "start": 161.972,
+      "end": 166.083,
+      "text": "A good attribute name is a noun or a short noun phrase.",
+      "slide": ""
+    },
+    {
+      "start": 166.083,
+      "end": 169.722,
+      "text": "total, placed_at, is_active.",
+      "slide": ""
+    },
+    {
+      "start": 169.722,
+      "end": 172.513,
+      "text": "Avoid mystery flags named flag1.",
+      "slide": ""
+    },
+    {
+      "start": 172.513,
+      "end": 177.583,
+      "text": "Units belong in the name or in a separate unit column, not in the value.",
+      "slide": ""
+    },
+    {
+      "start": 177.583,
+      "end": 182.388,
+      "text": "total_cents versus total dollars as text with a dollar sign.",
+      "slide": ""
+    },
+    {
+      "start": 182.388,
+      "end": 184.291,
+      "text": "The first is an attribute.",
+      "slide": ""
+    },
+    {
+      "start": 184.291,
+      "end": 186.027,
+      "text": "The second is a poster.",
+      "slide": ""
+    },
+    {
+      "start": 186.027,
+      "end": 188.527,
+      "text": "Walk an example row with a skeptic.",
+      "slide": ""
+    },
+    {
+      "start": 188.527,
+      "end": 191.458,
+      "text": "If they ask whose city, you mixed entities.",
+      "slide": ""
+    },
+    {
+      "start": 191.458,
+      "end": 194.819,
+      "text": "If they ask which of the two titles, you mixed rows.",
+      "slide": ""
+    },
+    {
+      "start": 194.819,
+      "end": 198.291,
+      "text": "If they ask what the number means, you mixed attributes.",
+      "slide": ""
+    },
+    {
+      "start": 198.291,
+      "end": 200.68,
+      "text": "Fix the mix before you write CREATE.",
+      "slide": ""
+    },
+    {
+      "start": 200.68,
+      "end": 203.069,
+      "text": "The sticky notes are cheaper than ALTER.",
+      "slide": ""
+    },
+    {
+      "start": 203.069,
+      "end": 205.958,
+      "text": "The nouns were in the sentences all along.",
+      "slide": ""
+    },
+    {
+      "start": 205.958,
+      "end": 207.569,
+      "text": "Your job is to hear them.",
+      "slide": ""
+    },
+    {
+      "start": 207.569,
+      "end": 209.791,
+      "text": "Design does not start with tables.",
+      "slide": ""
+    },
+    {
+      "start": 209.791,
+      "end": 218.319,
+      "text": "It starts with messy speech: we have users, they have payment methods, orders go out, products come back as returns.",
+      "slide": ""
+    },
+    {
+      "start": 218.319,
+      "end": 225.25,
+      "text": "Your job is to sort subjects from characteristics, then decide which subjects are entities worth a table.",
+      "slide": ""
+    },
+    {
+      "start": 225.25,
+      "end": 232.263,
+      "text": "A subject is a thing you can talk about with a verb: a user has an email, an order contains lines.",
+      "slide": ""
+    },
+    {
+      "start": 232.263,
+      "end": 238.43,
+      "text": "A characteristic belongs to a subject: email belongs to user, not to the whole store.",
+      "slide": ""
+    },
+    {
+      "start": 238.43,
+      "end": 241.152,
+      "text": "Interview transcripts are full of both.",
+      "slide": ""
+    },
+    {
+      "start": 241.152,
+      "end": 247.333,
+      "text": "Highlight nouns that can be the subject of has, contains, places, or belongs to.",
+      "slide": ""
+    },
+    {
+      "start": 247.333,
+      "end": 255.43,
+      "text": "Those candidates become entities if they have more than one fact of their own, a lifecycle, and a reason to be found later.",
+      "slide": ""
+    },
+    {
+      "start": 255.43,
+      "end": 263.833,
+      "text": "Color might be a characteristic of product, not an entity, until you discover colors have codes, suppliers, and photos.",
+      "slide": ""
+    },
+    {
+      "start": 263.833,
+      "end": 266.125,
+      "text": "Then color grew up into an entity.",
+      "slide": ""
+    },
+    {
+      "start": 266.125,
+      "end": 268.43,
+      "text": "The test is not the English noun.",
+      "slide": ""
+    },
+    {
+      "start": 268.43,
+      "end": 271.861,
+      "text": "The test is whether it has attributes and identity.",
+      "slide": ""
+    },
+    {
+      "start": 271.861,
+      "end": 273.916,
+      "text": "Attributes become columns.",
+      "slide": ""
+    },
+    {
+      "start": 273.916,
+      "end": 280.972,
+      "text": "Each attribute should be one meaning: email, not contact which mixes phone and email.",
+      "slide": ""
+    },
+    {
+      "start": 280.972,
+      "end": 289.152,
+      "text": "If a characteristic repeats as a list in speech \u2014 a user has several payment methods \u2014 it is not a column on users.",
+      "slide": ""
+    },
+    {
+      "start": 289.274,
+      "end": 292.168,
+      "text": "It is a second entity related to users.",
+      "slide": ""
+    },
+    {
+      "start": 292.168,
+      "end": 299.71,
+      "text": "Ignore noise: adverbs, one-off anecdotes, and attributes nobody will query or constrain.",
+      "slide": ""
+    },
+    {
+      "start": 299.71,
+      "end": 304.654,
+      "text": "You can store a note, but you should not invent a table for a sentence said once.",
+      "slide": ""
+    },
+    {
+      "start": 304.654,
+      "end": 311.71,
+      "text": "Name entities in the language of the business, then spell them in snake_case when they become tables.",
+      "slide": ""
+    },
+    {
+      "start": 311.71,
+      "end": 313.196,
+      "text": "user is an entity.",
+      "slide": ""
+    },
+    {
+      "start": 313.196,
+      "end": 316.418,
+      "text": "users is a table if you chose plural tables.",
+      "slide": ""
+    },
+    {
+      "start": 316.418,
+      "end": 319.89,
+      "text": "Do not let the sketch and the SQL drift in names.",
+      "slide": ""
+    },
+    {
+      "start": 319.89,
+      "end": 324.279,
+      "text": "After you have entities and attributes, you still do not have keys.",
+      "slide": ""
+    },
+    {
+      "start": 324.279,
+      "end": 325.904,
+      "text": "Keys are the next lesson.",
+      "slide": ""
+    },
+    {
+      "start": 325.904,
+      "end": 335.376,
+      "text": "Here the win is a clean inventory: these are the things, these are the facts about each thing, these lists of facts are actually more things.",
+      "slide": ""
+    },
+    {
+      "start": 335.376,
+      "end": 341.724,
+      "text": "If two subjects share a pile of attributes, ask whether they are the same entity in costume.",
+      "slide": ""
+    },
+    {
+      "start": 341.724,
+      "end": 348.599,
+      "text": "Customer and user might be one table or two, depending on whether a user can exist without ever buying.",
+      "slide": ""
+    },
+    {
+      "start": 348.599,
+      "end": 352.307,
+      "text": "That question is a requirement, not a taste in naming.",
+      "slide": ""
+    },
+    {
+      "start": 352.307,
+      "end": 354.321,
+      "text": "Write the entities on boxes.",
+      "slide": ""
+    },
+    {
+      "start": 354.321,
+      "end": 356.154,
+      "text": "Write attributes inside.",
+      "slide": ""
+    },
+    {
+      "start": 356.154,
+      "end": 358.876,
+      "text": "Leave the lines for the relationship lesson.",
+      "slide": ""
+    },
+    {
+      "start": 358.876,
+      "end": 365.126,
+      "text": "A box with twenty attributes is a warning that several subjects are hiding in one list.",
+      "slide": ""
+    },
+    {
+      "start": 365.126,
+      "end": 367.96,
+      "text": "Split the box before you draw the first key.",
+      "slide": ""
+    },
+    {
+      "start": 367.96,
+      "end": 374.599,
+      "text": "Parse one interview sentence: a user has an account, payment methods, and a cart of products.",
+      "slide": ""
+    },
+    {
+      "start": 374.599,
+      "end": 380.085,
+      "text": "Subjects: user, account, payment method, cart, product.",
+      "slide": ""
+    },
+    {
+      "start": 380.085,
+      "end": 388.001,
+      "text": "Characteristics: whatever facts they mentioned \u2014 email on user, last four on payment method, quantity in the cart.",
+      "slide": ""
+    },
+    {
+      "start": 388.001,
+      "end": 392.932,
+      "text": "Account might be the same as user if login is one-to-one with the person.",
+      "slide": ""
+    },
+    {
+      "start": 392.932,
+      "end": 393.765,
+      "text": "Ask.",
+      "slide": ""
+    },
+    {
+      "start": 393.765,
+      "end": 398.099,
+      "text": "Cart might be a table of lines, not a column of product names.",
+      "slide": ""
+    },
+    {
+      "start": 398.099,
+      "end": 403.154,
+      "text": "Payment methods are many, so not columns card1 card2 on users.",
+      "slide": ""
+    },
+    {
+      "start": 403.154,
+      "end": 408.46,
+      "text": "Product is its own entity because it has name, price, manufacturer.",
+      "slide": ""
+    },
+    {
+      "start": 408.46,
+      "end": 414.543,
+      "text": "Manufacturer might be text on product until you have manufacturer addresses and contacts.",
+      "slide": ""
+    },
+    {
+      "start": 414.543,
+      "end": 416.029,
+      "text": "Then it graduates.",
+      "slide": ""
+    },
+    {
+      "start": 416.029,
+      "end": 420.432,
+      "text": "Throw away the word quickly from the interview; it is not an attribute.",
+      "slide": ""
+    },
+    {
+      "start": 420.432,
+      "end": 424.321,
+      "text": "Keep email, because uniqueness and login will need it.",
+      "slide": ""
+    },
+    {
+      "start": 424.321,
+      "end": 429.196,
+      "text": "This noun work is the whole conversion from real-world ideas to tables.",
+      "slide": ""
+    },
+    {
+      "start": 429.196,
+      "end": 432.529,
+      "text": "Tables come after the inventory is honest.",
+      "slide": ""
+    }
+  ]
+}

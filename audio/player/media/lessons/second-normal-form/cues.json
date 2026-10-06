@@ -1,0 +1,1725 @@
+{
+  "title": "Second normal form",
+  "subtitle": "No partial dependence",
+  "audio": "narration.mp3",
+  "duration": 595.44,
+  "slides": [],
+  "scenes": [
+    {
+      "id": "partial",
+      "label": "Partial",
+      "kind": "table",
+      "headers": [
+        "student_id",
+        "course_id",
+        "grade",
+        "student_name"
+      ],
+      "rows": [
+        [
+          "1",
+          "11",
+          "A",
+          "Maya"
+        ],
+        [
+          "1",
+          "12",
+          "B",
+          "Maya"
+        ],
+        [
+          "2",
+          "11",
+          "A",
+          "Jordan"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 0,
+          "actions": [
+            "enter",
+            "show-header"
+          ]
+        },
+        {
+          "lyricMin": 0,
+          "actions": [
+            "reveal-rows"
+          ]
+        }
+      ],
+      "fromLyric": 0,
+      "toLyric": 15
+    },
+    {
+      "id": "smell",
+      "label": "Partial",
+      "kind": "table",
+      "headers": [
+        "student_id",
+        "course_id",
+        "grade",
+        "student_name"
+      ],
+      "rows": [
+        [
+          "1",
+          "11",
+          "A",
+          "Maya"
+        ],
+        [
+          "1",
+          "12",
+          "B",
+          "Maya"
+        ],
+        [
+          "2",
+          "11",
+          "A",
+          "Jordan"
+        ]
+      ],
+      "fromLyric": 15,
+      "toLyric": 54,
+      "steps": [
+        {
+          "lyricMin": 15,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "split",
+      "label": "Split",
+      "kind": "schema",
+      "title": "Name with the student",
+      "tables": [
+        {
+          "id": "students",
+          "label": "students",
+          "cols": [
+            "student_id",
+            "name"
+          ],
+          "pk": "student_id",
+          "hub": true
+        },
+        {
+          "id": "enroll",
+          "label": "enrollment",
+          "cols": [
+            "student_id",
+            "course_id",
+            "grade"
+          ],
+          "pk": "student_id",
+          "fks": {
+            "student_id": "students.student_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 54,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 55,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 54,
+      "toLyric": 59
+    },
+    {
+      "id": "smell-2",
+      "label": "Partial",
+      "kind": "table",
+      "headers": [
+        "student_id",
+        "course_id",
+        "grade",
+        "student_name"
+      ],
+      "rows": [
+        [
+          "1",
+          "11",
+          "A",
+          "Maya"
+        ],
+        [
+          "1",
+          "12",
+          "B",
+          "Maya"
+        ],
+        [
+          "2",
+          "11",
+          "A",
+          "Jordan"
+        ]
+      ],
+      "fromLyric": 59,
+      "toLyric": 77,
+      "steps": [
+        {
+          "lyricMin": 59,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "label": "Partial",
+      "kind": "table",
+      "headers": [
+        "student_id",
+        "course_id",
+        "grade",
+        "student_name"
+      ],
+      "rows": [
+        [
+          "1",
+          "11",
+          "A",
+          "Maya"
+        ],
+        [
+          "1",
+          "12",
+          "B",
+          "Maya"
+        ],
+        [
+          "2",
+          "11",
+          "A",
+          "Jordan"
+        ]
+      ],
+      "fromLyric": 77,
+      "toLyric": 89,
+      "steps": [
+        {
+          "lyricMin": 77,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "smell-3",
+      "label": "Partial",
+      "kind": "table",
+      "headers": [
+        "student_id",
+        "course_id",
+        "grade",
+        "student_name"
+      ],
+      "rows": [
+        [
+          "1",
+          "11",
+          "A",
+          "Maya"
+        ],
+        [
+          "1",
+          "12",
+          "B",
+          "Maya"
+        ],
+        [
+          "2",
+          "11",
+          "A",
+          "Jordan"
+        ]
+      ],
+      "fromLyric": 89,
+      "toLyric": 101,
+      "steps": [
+        {
+          "lyricMin": 89,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "split-2",
+      "label": "Split",
+      "kind": "schema",
+      "title": "Name with the student",
+      "tables": [
+        {
+          "id": "students",
+          "label": "students",
+          "cols": [
+            "student_id",
+            "name"
+          ],
+          "pk": "student_id",
+          "hub": true
+        },
+        {
+          "id": "enroll",
+          "label": "enrollment",
+          "cols": [
+            "student_id",
+            "course_id",
+            "grade"
+          ],
+          "pk": "student_id",
+          "fks": {
+            "student_id": "students.student_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 101,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 102,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 101,
+      "toLyric": 103
+    },
+    {
+      "id": "partial-2",
+      "label": "Partial",
+      "kind": "table",
+      "headers": [
+        "student_id",
+        "course_id",
+        "grade",
+        "student_name"
+      ],
+      "rows": [
+        [
+          "1",
+          "11",
+          "A",
+          "Maya"
+        ],
+        [
+          "1",
+          "12",
+          "B",
+          "Maya"
+        ],
+        [
+          "2",
+          "11",
+          "A",
+          "Jordan"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 103,
+          "actions": [
+            "enter",
+            "show-header"
+          ]
+        },
+        {
+          "lyricMin": 104,
+          "actions": [
+            "reveal-rows"
+          ]
+        }
+      ],
+      "fromLyric": 103,
+      "toLyric": 107
+    },
+    {
+      "id": "split-3",
+      "label": "Split",
+      "kind": "schema",
+      "title": "Name with the student",
+      "tables": [
+        {
+          "id": "students",
+          "label": "students",
+          "cols": [
+            "student_id",
+            "name"
+          ],
+          "pk": "student_id",
+          "hub": true
+        },
+        {
+          "id": "enroll",
+          "label": "enrollment",
+          "cols": [
+            "student_id",
+            "course_id",
+            "grade"
+          ],
+          "pk": "student_id",
+          "fks": {
+            "student_id": "students.student_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 107,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 108,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 107,
+      "toLyric": 111
+    },
+    {
+      "id": "partial-3",
+      "label": "Partial",
+      "kind": "table",
+      "headers": [
+        "student_id",
+        "course_id",
+        "grade",
+        "student_name"
+      ],
+      "rows": [
+        [
+          "1",
+          "11",
+          "A",
+          "Maya"
+        ],
+        [
+          "1",
+          "12",
+          "B",
+          "Maya"
+        ],
+        [
+          "2",
+          "11",
+          "A",
+          "Jordan"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 111,
+          "actions": [
+            "enter",
+            "show-header"
+          ]
+        },
+        {
+          "lyricMin": 114,
+          "actions": [
+            "reveal-rows"
+          ]
+        }
+      ],
+      "fromLyric": 111,
+      "toLyric": 116
+    },
+    {
+      "id": "test-2",
+      "label": "Partial",
+      "kind": "table",
+      "headers": [
+        "student_id",
+        "course_id",
+        "grade",
+        "student_name"
+      ],
+      "rows": [
+        [
+          "1",
+          "11",
+          "A",
+          "Maya"
+        ],
+        [
+          "1",
+          "12",
+          "B",
+          "Maya"
+        ],
+        [
+          "2",
+          "11",
+          "A",
+          "Jordan"
+        ]
+      ],
+      "fromLyric": 116,
+      "toLyric": 129,
+      "steps": [
+        {
+          "lyricMin": 116,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "smell-4",
+      "label": "Partial",
+      "kind": "table",
+      "headers": [
+        "student_id",
+        "course_id",
+        "grade",
+        "student_name"
+      ],
+      "rows": [
+        [
+          "1",
+          "11",
+          "A",
+          "Maya"
+        ],
+        [
+          "1",
+          "12",
+          "B",
+          "Maya"
+        ],
+        [
+          "2",
+          "11",
+          "A",
+          "Jordan"
+        ]
+      ],
+      "fromLyric": 129,
+      "toLyric": 134,
+      "steps": [
+        {
+          "lyricMin": 129,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "split-4",
+      "label": "Split",
+      "kind": "schema",
+      "title": "Name with the student",
+      "tables": [
+        {
+          "id": "students",
+          "label": "students",
+          "cols": [
+            "student_id",
+            "name"
+          ],
+          "pk": "student_id",
+          "hub": true
+        },
+        {
+          "id": "enroll",
+          "label": "enrollment",
+          "cols": [
+            "student_id",
+            "course_id",
+            "grade"
+          ],
+          "pk": "student_id",
+          "fks": {
+            "student_id": "students.student_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 134,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 135,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 134,
+      "toLyric": 141
+    },
+    {
+      "id": "test-3",
+      "label": "Partial",
+      "kind": "table",
+      "headers": [
+        "student_id",
+        "course_id",
+        "grade",
+        "student_name"
+      ],
+      "rows": [
+        [
+          "1",
+          "11",
+          "A",
+          "Maya"
+        ],
+        [
+          "1",
+          "12",
+          "B",
+          "Maya"
+        ],
+        [
+          "2",
+          "11",
+          "A",
+          "Jordan"
+        ]
+      ],
+      "fromLyric": 141,
+      "toLyric": 144,
+      "steps": [
+        {
+          "lyricMin": 141,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "split-5",
+      "label": "Split",
+      "kind": "schema",
+      "title": "Name with the student",
+      "tables": [
+        {
+          "id": "students",
+          "label": "students",
+          "cols": [
+            "student_id",
+            "name"
+          ],
+          "pk": "student_id",
+          "hub": true
+        },
+        {
+          "id": "enroll",
+          "label": "enrollment",
+          "cols": [
+            "student_id",
+            "course_id",
+            "grade"
+          ],
+          "pk": "student_id",
+          "fks": {
+            "student_id": "students.student_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 144,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 145,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 144,
+      "toLyric": 159
+    },
+    {
+      "id": "smell-5",
+      "label": "Partial",
+      "kind": "table",
+      "headers": [
+        "student_id",
+        "course_id",
+        "grade",
+        "student_name"
+      ],
+      "rows": [
+        [
+          "1",
+          "11",
+          "A",
+          "Maya"
+        ],
+        [
+          "1",
+          "12",
+          "B",
+          "Maya"
+        ],
+        [
+          "2",
+          "11",
+          "A",
+          "Jordan"
+        ]
+      ],
+      "fromLyric": 159,
+      "toLyric": 163,
+      "steps": [
+        {
+          "lyricMin": 159,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    }
+  ],
+  "lyrics": [
+    {
+      "start": 0.05,
+      "end": 4.93,
+      "text": "Second normal form starts from first, then asks a narrower question.",
+      "slide": ""
+    },
+    {
+      "start": 4.93,
+      "end": 11.222,
+      "text": "If the primary key has more than one column, every non-key fact must depend on the whole key.",
+      "slide": ""
+    },
+    {
+      "start": 11.222,
+      "end": 12.569,
+      "text": "Not on a piece of it.",
+      "slide": ""
+    },
+    {
+      "start": 12.569,
+      "end": 17.833,
+      "text": "Enrollment has student_id and course_id as the key.",
+      "slide": ""
+    },
+    {
+      "start": 17.833,
+      "end": 19.472,
+      "text": "grade depends on both.",
+      "slide": ""
+    },
+    {
+      "start": 19.472,
+      "end": 25.93,
+      "text": "Maya's A in Harbor Light is not Maya's grade in general, and not the course's grade in general.",
+      "slide": ""
+    },
+    {
+      "start": 25.93,
+      "end": 30.0,
+      "text": "student_name depends only on student_id.",
+      "slide": ""
+    },
+    {
+      "start": 30.0,
+      "end": 31.861,
+      "text": "That is a partial dependence.",
+      "slide": ""
+    },
+    {
+      "start": 31.861,
+      "end": 34.944,
+      "text": "The name will repeat on every enrollment row.",
+      "slide": ""
+    },
+    {
+      "start": 34.944,
+      "end": 38.944,
+      "text": "If Maya changes her name, you hunt every course she took.",
+      "slide": ""
+    },
+    {
+      "start": 38.944,
+      "end": 41.861,
+      "text": "Move student_name to students.",
+      "slide": ""
+    },
+    {
+      "start": 41.861,
+      "end": 43.666,
+      "text": "Leave grade on enrollment.",
+      "slide": ""
+    },
+    {
+      "start": 43.666,
+      "end": 47.527,
+      "text": "course_title depends only on course_id.",
+      "slide": ""
+    },
+    {
+      "start": 47.527,
+      "end": 48.958,
+      "text": "Move it to courses.",
+      "slide": ""
+    },
+    {
+      "start": 48.958,
+      "end": 50.722,
+      "text": "The test is a sentence.",
+      "slide": ""
+    },
+    {
+      "start": 50.722,
+      "end": 54.805,
+      "text": "Does this fact describe the pair, or only one of the partners?",
+      "slide": ""
+    },
+    {
+      "start": 54.805,
+      "end": 58.43,
+      "text": "Facts about one partner belong on that partner's table.",
+      "slide": ""
+    },
+    {
+      "start": 58.43,
+      "end": 63.472,
+      "text": "If the primary key is a single column, partial dependence cannot happen.",
+      "slide": ""
+    },
+    {
+      "start": 63.472,
+      "end": 66.43,
+      "text": "A single-column key is already whole.",
+      "slide": ""
+    },
+    {
+      "start": 66.43,
+      "end": 70.944,
+      "text": "That is why people say second normal form is about composite keys.",
+      "slide": ""
+    },
+    {
+      "start": 70.944,
+      "end": 72.25,
+      "text": "They are right enough.",
+      "slide": ""
+    },
+    {
+      "start": 72.25,
+      "end": 74.708,
+      "text": "You still want first normal form either way.",
+      "slide": ""
+    },
+    {
+      "start": 74.708,
+      "end": 80.444,
+      "text": "A surrogate key on enrollment does not excuse stuffing student_name beside it.",
+      "slide": ""
+    },
+    {
+      "start": 80.444,
+      "end": 84.222,
+      "text": "The real identifier of the fact might still be the pair.",
+      "slide": ""
+    },
+    {
+      "start": 84.222,
+      "end": 87.611,
+      "text": "Look at the meaning, not only the columns you numbered.",
+      "slide": ""
+    },
+    {
+      "start": 87.611,
+      "end": 89.888,
+      "text": "Repeating a name is the smell.",
+      "slide": ""
+    },
+    {
+      "start": 89.888,
+      "end": 93.388,
+      "text": "Updating a name in three places is the fire.",
+      "slide": ""
+    },
+    {
+      "start": 93.388,
+      "end": 95.236,
+      "text": "Fix by splitting the table.",
+      "slide": ""
+    },
+    {
+      "start": 95.236,
+      "end": 98.125,
+      "text": "Do not fix by asking people to be careful.",
+      "slide": ""
+    },
+    {
+      "start": 98.125,
+      "end": 100.763,
+      "text": "Careful does not survive a second clerk.",
+      "slide": ""
+    },
+    {
+      "start": 100.763,
+      "end": 102.444,
+      "text": "Draw the composite key.",
+      "slide": ""
+    },
+    {
+      "start": 102.444,
+      "end": 104.013,
+      "text": "List the other columns.",
+      "slide": ""
+    },
+    {
+      "start": 104.013,
+      "end": 108.527,
+      "text": "Arrow each one to the smallest set of key columns it describes.",
+      "slide": ""
+    },
+    {
+      "start": 108.527,
+      "end": 111.944,
+      "text": "Arrows that stop short of the full key are the work.",
+      "slide": ""
+    },
+    {
+      "start": 111.944,
+      "end": 114.444,
+      "text": "That drawing is second normal form.",
+      "slide": ""
+    },
+    {
+      "start": 114.444,
+      "end": 117.291,
+      "text": "Partial dependence hides in shipping dumps.",
+      "slide": ""
+    },
+    {
+      "start": 117.291,
+      "end": 121.972,
+      "text": "A file of lines includes customer email because the warehouse wanted it.",
+      "slide": ""
+    },
+    {
+      "start": 121.972,
+      "end": 124.861,
+      "text": "Email depends on customer, not on the line.",
+      "slide": ""
+    },
+    {
+      "start": 124.861,
+      "end": 127.402,
+      "text": "Put it back on customers, and join.",
+      "slide": ""
+    },
+    {
+      "start": 127.402,
+      "end": 133.208,
+      "text": "If the dump is a snapshot for a truck that already left, that email might be history.",
+      "slide": ""
+    },
+    {
+      "start": 133.208,
+      "end": 138.138,
+      "text": "Then it is denormalization with an owner, not second normal form failure.",
+      "slide": ""
+    },
+    {
+      "start": 138.138,
+      "end": 139.194,
+      "text": "Say which.",
+      "slide": ""
+    },
+    {
+      "start": 139.194,
+      "end": 144.402,
+      "text": "Wide composite keys collect extra columns the way pockets collect coins.",
+      "slide": ""
+    },
+    {
+      "start": 144.402,
+      "end": 148.486,
+      "text": "Each coin gets the sentence: does this describe the whole key?",
+      "slide": ""
+    },
+    {
+      "start": 148.486,
+      "end": 152.277,
+      "text": "If you cannot answer, you do not understand the column yet.",
+      "slide": ""
+    },
+    {
+      "start": 152.277,
+      "end": 154.013,
+      "text": "Do not keep it until you do.",
+      "slide": ""
+    },
+    {
+      "start": 154.013,
+      "end": 159.777,
+      "text": "Star schemas in warehouses sometimes sit in a different normal-form conversation.",
+      "slide": ""
+    },
+    {
+      "start": 159.777,
+      "end": 162.18,
+      "text": "Dimensions repeat on purpose.",
+      "slide": ""
+    },
+    {
+      "start": 162.18,
+      "end": 166.416,
+      "text": "This lesson is about operational tables you update all day.",
+      "slide": ""
+    },
+    {
+      "start": 166.416,
+      "end": 171.319,
+      "text": "Do not copy a warehouse shape into checkout because a talk mentioned stars.",
+      "slide": ""
+    },
+    {
+      "start": 171.319,
+      "end": 173.583,
+      "text": "Checkout wants second normal form.",
+      "slide": ""
+    },
+    {
+      "start": 173.583,
+      "end": 175.152,
+      "text": "The warehouse can wait.",
+      "slide": ""
+    },
+    {
+      "start": 175.152,
+      "end": 181.986,
+      "text": "When a composite key is only there because you refused a surrogate, you can add the surrogate and UNIQUE the pair.",
+      "slide": ""
+    },
+    {
+      "start": 181.986,
+      "end": 185.222,
+      "text": "Partial dependence is still about the pair's meaning.",
+      "slide": ""
+    },
+    {
+      "start": 185.222,
+      "end": 191.875,
+      "text": "student_name still does not belong beside enrollment_id if it describes the student.",
+      "slide": ""
+    },
+    {
+      "start": 191.875,
+      "end": 193.847,
+      "text": "Meaning, then columns.",
+      "slide": ""
+    },
+    {
+      "start": 193.847,
+      "end": 198.652,
+      "text": "The drawing of arrows from facts to the smallest key is the whole skill.",
+      "slide": ""
+    },
+    {
+      "start": 198.652,
+      "end": 201.291,
+      "text": "Practice it on one ugly spreadsheet.",
+      "slide": ""
+    },
+    {
+      "start": 201.291,
+      "end": 204.513,
+      "text": "The ugly ones teach more than the tidy bookstore.",
+      "slide": ""
+    },
+    {
+      "start": 204.513,
+      "end": 208.152,
+      "text": "Ask of every extra column: whose fact is this?",
+      "slide": ""
+    },
+    {
+      "start": 208.152,
+      "end": 211.93,
+      "text": "If the answer is only one partner of a pair, move it.",
+      "slide": ""
+    },
+    {
+      "start": 211.93,
+      "end": 214.361,
+      "text": "If the answer is the pair, keep it.",
+      "slide": ""
+    },
+    {
+      "start": 214.361,
+      "end": 217.68,
+      "text": "If the answer is I do not know, do not load it yet.",
+      "slide": ""
+    },
+    {
+      "start": 217.68,
+      "end": 221.375,
+      "text": "Unknown ownership is how email lands on a line item.",
+      "slide": ""
+    },
+    {
+      "start": 221.375,
+      "end": 223.944,
+      "text": "Known ownership is a two-table join.",
+      "slide": ""
+    },
+    {
+      "start": 223.944,
+      "end": 225.194,
+      "text": "Prefer the join.",
+      "slide": ""
+    },
+    {
+      "start": 225.194,
+      "end": 228.0,
+      "text": "The repeating name is not decoration.",
+      "slide": ""
+    },
+    {
+      "start": 228.0,
+      "end": 230.277,
+      "text": "It is a pointer you refused to draw.",
+      "slide": ""
+    },
+    {
+      "start": 230.277,
+      "end": 231.125,
+      "text": "Draw it.",
+      "slide": ""
+    },
+    {
+      "start": 231.125,
+      "end": 235.291,
+      "text": "Second normal form is that drawing, with less vocabulary.",
+      "slide": ""
+    },
+    {
+      "start": 235.291,
+      "end": 237.458,
+      "text": "Use the vocabulary if you like.",
+      "slide": ""
+    },
+    {
+      "start": 237.458,
+      "end": 239.18,
+      "text": "Use the drawing either way.",
+      "slide": ""
+    },
+    {
+      "start": 239.18,
+      "end": 244.222,
+      "text": "A table can have a key, types, and atomic cells, and still be wrong.",
+      "slide": ""
+    },
+    {
+      "start": 244.222,
+      "end": 247.958,
+      "text": "Second normal form starts only after first is true.",
+      "slide": ""
+    },
+    {
+      "start": 247.958,
+      "end": 254.583,
+      "text": "The simplified rule: every non-key column depends on the whole primary key, not a piece of it.",
+      "slide": ""
+    },
+    {
+      "start": 254.583,
+      "end": 257.666,
+      "text": "Partial dependency is the name of the crime.",
+      "slide": ""
+    },
+    {
+      "start": 257.666,
+      "end": 261.055,
+      "text": "It shows up when the primary key is composite.",
+      "slide": ""
+    },
+    {
+      "start": 261.055,
+      "end": 269.541,
+      "text": "If the key is order_id plus product_id, product_name depends only on product_id.",
+      "slide": ""
+    },
+    {
+      "start": 269.541,
+      "end": 271.847,
+      "text": "It does not need the order to be true.",
+      "slide": ""
+    },
+    {
+      "start": 271.847,
+      "end": 277.736,
+      "text": "So product_name on that table will repeat on every order that sells the product.",
+      "slide": ""
+    },
+    {
+      "start": 277.85,
+      "end": 283.994,
+      "text": "Update the name on one line, miss the others, and the catalog disagrees with itself.",
+      "slide": ""
+    },
+    {
+      "start": 283.994,
+      "end": 289.772,
+      "text": "Insert a product you have not sold yet, and you cannot store the name without faking an order.",
+      "slide": ""
+    },
+    {
+      "start": 289.772,
+      "end": 295.244,
+      "text": "Delete the last order line for a product, and you may lose the only copy of the name.",
+      "slide": ""
+    },
+    {
+      "start": 295.244,
+      "end": 300.383,
+      "text": "Those are insert, update, and delete anomalies from a partial dependency.",
+      "slide": ""
+    },
+    {
+      "start": 300.383,
+      "end": 306.494,
+      "text": "The fix is a product table with product_id as key and name as a column there.",
+      "slide": ""
+    },
+    {
+      "start": 306.494,
+      "end": 314.355,
+      "text": "The order line keeps order_id, product_id, and quantity, which really does depend on both.",
+      "slide": ""
+    },
+    {
+      "start": 314.355,
+      "end": 317.175,
+      "text": "Quantity is about this product on this order.",
+      "slide": ""
+    },
+    {
+      "start": 317.175,
+      "end": 318.869,
+      "text": "Name is about the product.",
+      "slide": ""
+    },
+    {
+      "start": 318.869,
+      "end": 323.036,
+      "text": "A non-key column is any column not in the primary key.",
+      "slide": ""
+    },
+    {
+      "start": 323.036,
+      "end": 330.897,
+      "text": "If the key is a single column, partial dependency cannot happen, and second normal form is free once first is done.",
+      "slide": ""
+    },
+    {
+      "start": 330.897,
+      "end": 336.897,
+      "text": "That is why surrogate keys make second look easy, and why composite keys make it visible.",
+      "slide": ""
+    },
+    {
+      "start": 336.897,
+      "end": 339.369,
+      "text": "Easy is not the same as understood.",
+      "slide": ""
+    },
+    {
+      "start": 339.369,
+      "end": 343.688,
+      "text": "Functional dependency means: if I know this, I know that.",
+      "slide": ""
+    },
+    {
+      "start": 343.688,
+      "end": 347.813,
+      "text": "If I know product_id, I know product_name.",
+      "slide": ""
+    },
+    {
+      "start": 347.813,
+      "end": 352.619,
+      "text": "If I know only order_id, I do not know product_name.",
+      "slide": ""
+    },
+    {
+      "start": 352.619,
+      "end": 356.73,
+      "text": "Draw those arrows on a scrap of paper when the table feels off.",
+      "slide": ""
+    },
+    {
+      "start": 356.73,
+      "end": 362.911,
+      "text": "Any arrow that starts from part of the key and lands on a non-key column is a split you still owe.",
+      "slide": ""
+    },
+    {
+      "start": 362.911,
+      "end": 369.466,
+      "text": "The full definition talks about every candidate key, not only the primary key you happened to pick.",
+      "slide": ""
+    },
+    {
+      "start": 369.466,
+      "end": 375.425,
+      "text": "If a leftover unique pair still has partial dependents, the table is not in second.",
+      "slide": ""
+    },
+    {
+      "start": 375.425,
+      "end": 382.147,
+      "text": "For this lesson, hunt composite keys and leftover attributes of one parent hiding on the child.",
+      "slide": ""
+    },
+    {
+      "start": 382.147,
+      "end": 384.591,
+      "text": "Move those attributes to the parent.",
+      "slide": ""
+    },
+    {
+      "start": 384.591,
+      "end": 386.688,
+      "text": "Keep the attributes of the pairing.",
+      "slide": ""
+    },
+    {
+      "start": 386.688,
+      "end": 393.202,
+      "text": "Then first still holds, and second holds, and third can talk about chains of non-key columns.",
+      "slide": ""
+    },
+    {
+      "start": 393.202,
+      "end": 404.758,
+      "text": "Another composite: classroom assignment with key (student_id, course_id), columns student_name, course_title, term, grade.",
+      "slide": ""
+    },
+    {
+      "start": 404.758,
+      "end": 408.688,
+      "text": "student_name depends on student_id only.",
+      "slide": ""
+    },
+    {
+      "start": 408.688,
+      "end": 412.341,
+      "text": "course_title depends on course_id only.",
+      "slide": ""
+    },
+    {
+      "start": 412.341,
+      "end": 416.147,
+      "text": "term and grade depend on both if a student can retake.",
+      "slide": ""
+    },
+    {
+      "start": 416.147,
+      "end": 418.161,
+      "text": "Split students and courses.",
+      "slide": ""
+    },
+    {
+      "start": 418.161,
+      "end": 421.55,
+      "text": "Keep enrollments as the pairing with term and grade.",
+      "slide": ""
+    },
+    {
+      "start": 421.55,
+      "end": 425.091,
+      "text": "You just turned a first-normal-form sheet into second.",
+      "slide": ""
+    },
+    {
+      "start": 425.091,
+      "end": 429.008,
+      "text": "The full version of second talks about every candidate key.",
+      "slide": ""
+    },
+    {
+      "start": 429.008,
+      "end": 438.105,
+      "text": "If UNIQUE (student_id, course_id, term) is the real identity, check dependents against that whole triple.",
+      "slide": ""
+    },
+    {
+      "start": 438.105,
+      "end": 442.063,
+      "text": "Simplified second is the whole primary key you declared.",
+      "slide": ""
+    },
+    {
+      "start": 442.063,
+      "end": 449.772,
+      "text": "Use simplified to learn, then glance at other uniques so you do not hide a partial dependency behind a surrogate.",
+      "slide": ""
+    },
+    {
+      "start": 449.772,
+      "end": 459.744,
+      "text": "A surrogate enrollment_id as primary key can hide that course_title still depends only on course_id sitting on the same row.",
+      "slide": ""
+    },
+    {
+      "start": 459.744,
+      "end": 462.063,
+      "text": "The surrogate did not grant second.",
+      "slide": ""
+    },
+    {
+      "start": 462.063,
+      "end": 466.161,
+      "text": "The leftover course_title still fails the spirit.",
+      "slide": ""
+    },
+    {
+      "start": 466.161,
+      "end": 467.341,
+      "text": "Move it anyway.",
+      "slide": ""
+    },
+    {
+      "start": 467.341,
+      "end": 470.98,
+      "text": "Close with questions, the way a careful lecture does.",
+      "slide": ""
+    },
+    {
+      "start": 470.98,
+      "end": 474.036,
+      "text": "Answer in a sentence you could defend at a keyboard.",
+      "slide": ""
+    },
+    {
+      "start": 474.036,
+      "end": 475.591,
+      "text": "When does second apply?",
+      "slide": ""
+    },
+    {
+      "start": 475.591,
+      "end": 478.952,
+      "text": "After first, especially on composite keys.",
+      "slide": ""
+    },
+    {
+      "start": 478.952,
+      "end": 480.758,
+      "text": "What is partial dependency?",
+      "slide": ""
+    },
+    {
+      "start": 480.758,
+      "end": 484.563,
+      "text": "A non-key column that depends on only part of the key.",
+      "slide": ""
+    },
+    {
+      "start": 484.563,
+      "end": 488.23,
+      "text": "Where does product_name belong on an order line?",
+      "slide": ""
+    },
+    {
+      "start": 488.23,
+      "end": 492.452,
+      "text": "On products, not on the line, if it is the catalog name.",
+      "slide": ""
+    },
+    {
+      "start": 492.452,
+      "end": 493.897,
+      "text": "What stays on the line?",
+      "slide": ""
+    },
+    {
+      "start": 493.897,
+      "end": 498.23,
+      "text": "Facts of the pairing: quantity, maybe sold price as history.",
+      "slide": ""
+    },
+    {
+      "start": 498.23,
+      "end": 499.619,
+      "text": "Three anomalies?",
+      "slide": ""
+    },
+    {
+      "start": 499.619,
+      "end": 504.772,
+      "text": "Insert, update, delete, from the leftover parent attributes.",
+      "slide": ""
+    },
+    {
+      "start": 504.772,
+      "end": 506.772,
+      "text": "Single-column primary key?",
+      "slide": ""
+    },
+    {
+      "start": 506.772,
+      "end": 511.772,
+      "text": "Partial dependency cannot happen; second is free once first holds.",
+      "slide": ""
+    },
+    {
+      "start": 511.772,
+      "end": 514.494,
+      "text": "Does a surrogate automatically grant second?",
+      "slide": ""
+    },
+    {
+      "start": 514.494,
+      "end": 515.258,
+      "text": "No.",
+      "slide": ""
+    },
+    {
+      "start": 515.258,
+      "end": 519.063,
+      "text": "Leftover parent attributes still fail the spirit.",
+      "slide": ""
+    },
+    {
+      "start": 519.063,
+      "end": 521.091,
+      "text": "What is a functional dependency?",
+      "slide": ""
+    },
+    {
+      "start": 521.091,
+      "end": 523.119,
+      "text": "If I know this, I know that.",
+      "slide": ""
+    },
+    {
+      "start": 523.119,
+      "end": 525.494,
+      "text": "Whole-key rule in one line?",
+      "slide": ""
+    },
+    {
+      "start": 525.494,
+      "end": 528.8,
+      "text": "Non-key columns depend on the whole primary key.",
+      "slide": ""
+    },
+    {
+      "start": 528.8,
+      "end": 530.161,
+      "text": "Candidate keys?",
+      "slide": ""
+    },
+    {
+      "start": 530.161,
+      "end": 535.286,
+      "text": "The full definition checks every candidate, not only the primary you picked.",
+      "slide": ""
+    },
+    {
+      "start": 535.286,
+      "end": 538.55,
+      "text": "Classroom assignment leftover student_name?",
+      "slide": ""
+    },
+    {
+      "start": 538.55,
+      "end": 542.147,
+      "text": "Depends only on student_id; move it.",
+      "slide": ""
+    },
+    {
+      "start": 542.147,
+      "end": 543.369,
+      "text": "grade on the pairing?",
+      "slide": ""
+    },
+    {
+      "start": 543.369,
+      "end": 547.091,
+      "text": "Depends on the whole enrollment key if retakes exist.",
+      "slide": ""
+    },
+    {
+      "start": 547.091,
+      "end": 548.147,
+      "text": "How do you hunt?",
+      "slide": ""
+    },
+    {
+      "start": 548.147,
+      "end": 552.452,
+      "text": "Composite keys and leftover parent attributes on the child.",
+      "slide": ""
+    },
+    {
+      "start": 552.452,
+      "end": 553.327,
+      "text": "Fix?",
+      "slide": ""
+    },
+    {
+      "start": 553.327,
+      "end": 558.175,
+      "text": "Parent table for the partial attributes, child keeps pairing facts.",
+      "slide": ""
+    },
+    {
+      "start": 558.175,
+      "end": 560.258,
+      "text": "Why composites make it visible?",
+      "slide": ""
+    },
+    {
+      "start": 560.258,
+      "end": 563.758,
+      "text": "You can see a key part that already determines a column.",
+      "slide": ""
+    },
+    {
+      "start": 563.758,
+      "end": 565.258,
+      "text": "Why surrogates hide it?",
+      "slide": ""
+    },
+    {
+      "start": 565.37,
+      "end": 569.597,
+      "text": "The key looks atomic while extra columns still describe a parent.",
+      "slide": ""
+    },
+    {
+      "start": 569.597,
+      "end": 570.861,
+      "text": "Must first hold?",
+      "slide": ""
+    },
+    {
+      "start": 570.861,
+      "end": 571.764,
+      "text": "Yes.",
+      "slide": ""
+    },
+    {
+      "start": 571.764,
+      "end": 572.986,
+      "text": "Nested dolls.",
+      "slide": ""
+    },
+    {
+      "start": 572.986,
+      "end": 575.292,
+      "text": "Is line_total a partial?",
+      "slide": ""
+    },
+    {
+      "start": 575.292,
+      "end": 578.903,
+      "text": "No if it needs both quantity and this line's price.",
+      "slide": ""
+    },
+    {
+      "start": 578.903,
+      "end": 581.472,
+      "text": "Sold price versus catalog price?",
+      "slide": ""
+    },
+    {
+      "start": 581.472,
+      "end": 585.625,
+      "text": "Catalog moves; sold price may be a freeze on the pairing.",
+      "slide": ""
+    },
+    {
+      "start": 585.625,
+      "end": 587.0,
+      "text": "When is second done?",
+      "slide": ""
+    },
+    {
+      "start": 587.0,
+      "end": 590.667,
+      "text": "No arrows from a key part to a non-key leftover.",
+      "slide": ""
+    },
+    {
+      "start": 590.667,
+      "end": 595.389,
+      "text": "If an answer needed a second table, go draw it before you write more SQL.",
+      "slide": ""
+    }
+  ]
+}

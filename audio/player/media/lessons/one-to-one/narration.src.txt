@@ -1,0 +1,333 @@
+One-to-one means each row on the left partners with at most one row on the right, and the other way too.
+
+A customer has one credentials row.
+
+A credentials row belongs to one customer.
+
+You could put password_hash on customers.
+
+You split it because the facts have a different audience.
+
+Names are widely read.
+
+Hashes are not.
+
+The split is a privacy and permission move as much as a modeling move.
+
+The primary key of credentials is often the same customer_id.
+
+That shared primary key enforces the one.
+
+You cannot insert two hashes for Maya.
+
+The second insert collides on the key.
+
+A unique foreign key also works if the child has its own id.
+
+UNIQUE on customer_id in the child is the one-to-one lock.
+
+Without UNIQUE, you accidentally built one-to-many.
+
+Optional one-to-one uses a nullable unique foreign key, or simply no child row.
+
+A customer without credentials has not signed in yet.
+
+Left join to find them.
+
+Do not fake one-to-one with an application check and a plain foreign key.
+
+Two sessions will insert two children.
+
+Let the unique key refuse the second.
+
+When both sides are required, you have a packaging question.
+
+Maybe it should have been one table.
+
+Split anyway if the columns are wide, secret, or rarely read together.
+
+A shipping profile that every customer must have can still be a second table if the warehouse owns it.
+
+Joins for one-to-one stay simple.
+
+ON credentials.customer_id equals customers.customer_id.
+
+You do not expect a fan-out of rows.
+
+If the result duplicates a customer, your unique constraint is missing.
+
+Name the pair in the diagram as a single bar on both ends.
+
+Say the sentence.
+
+Each customer has at most one credentials row.
+
+Each credentials row belongs to exactly one customer.
+
+If either sentence is wrong, pick a different cardinality.
+
+Vertical split of a wide row is a physical one-to-one.
+
+You still share the key.
+
+Do it when some columns are huge and rarely read.
+
+A biography TEXT might live next door.
+
+Do not split a row because a form had two tabs.
+
+Tabs are not cardinality.
+
+Extension tables that may never exist are optional one-to-one.
+
+A tax-exempt certificate for a few customers.
+
+Do not put nullable certificate columns on every customer if the facts are a bundle.
+
+The bundle is the child table.
+
+Shared primary key makes a join look like an extension of the row.
+
+ORM tools sometimes call this a composed class.
+
+The database still sees two tables.
+
+Keep the foreign key, even if the primary key is shared, so the engine refuses a child with no parent.
+
+A shared key without a foreign key is a rumor.
+
+When both tables grow independently, revisit whether you still mean one-to-one.
+
+If a customer can grow two certificates, the cardinality changed.
+
+Do not ignore the second insert.
+
+UNIQUE will scream if you still claimed one.
+
+Listen.
+
+Change the diagram to one-to-many, or refuse the second certificate in the product.
+
+Either is a decision.
+
+A silent duplicate is not.
+
+Bars on both ends, or a change of shape.
+
+Say it, then lock it with a key.
+
+If you are splitting because a slide had two boxes, stop.
+
+If you are splitting because two audiences exist, continue.
+
+If you are splitting because a column is huge and cold, continue.
+
+If you are splitting and forgetting UNIQUE, you built many.
+
+The last case is the silent one.
+
+Add the unique key the same day as the table.
+
+Join once and count.
+
+The count of customers should match the count of pairs, plus the unmatched optionals.
+
+If it does not, cardinality already drifted.
+
+Fix the constraint before you fix the report.
+
+Reports lie to be helpful.
+
+Constraints refuse.
+
+Prefer refuse.
+
+Cardinality is how many instances of one entity associate with one instance of another.
+
+An entity is the idea; a table is the implementation.
+
+An instance is the idea of one thing; a row is the implementation.
+
+Every relationship has two directions, and each direction gets its own sentence.
+
+A user has zero, one, or more accounts is one direction.
+
+An account belongs to one user is the other.
+
+The subject of the sentence is where the arrow starts.
+
+The object is where the marks sit in crow's foot: near the entity whose count you are stating.
+
+A circle is zero, a bar is one, a crow's foot is many.
+
+Min and max travel as a pair.
+
+One-to-one means each instance on this side matches at most one on that side, and vice versa.
+
+A person and a current passport, if your rules say one live passport per person, can be one-to-one.
+
+A person and a user profile that must not be shared is one-to-one.
+
+Optional one-to-one still uses zero on the min: a user may have no profile yet.
+
+Mandatory one-to-one uses one as the min on both sides, and that is rare because inserts have to create both rows together.
+
+In tables, one-to-one is usually a shared primary key, or a unique foreign key.
+
+If profiles.user_id is UNIQUE and points at users, a user cannot own two profiles.
+
+If you forget UNIQUE, your one-to-one is a one-to-many in costume.
+
+Split a table into one-to-one when some attributes are bulky, secret, or rare.
+
+Addresses, credentials, or medical details might live in a satellite table so the main row stays lean.
+
+Do not split because a screen has two tabs.
+
+Screens are not schemas.
+
+Do not force one-to-one on things the business already treats as many: a customer and their orders is not one-to-one because a second order exists in the English.
+
+Listen for at most one, exactly one, optional extra sheet of facts.
+
+Those phrases are the lesson.
+
+Draw both sentences.
+
+If either sentence says many, you are in a different cardinality.
+
+If both say at most one, put a unique foreign key on one side and stop.
+
+The unique is the enforcement.
+
+The line on the diagram is only a claim until the unique exists.
+
+Q and A for this idea is short on purpose: can this side have two, and can that side have two.
+
+If both answers are no, you have one-to-one.
+
+If you hesitated, you do not have it yet.
+
+Go back to the requirement, not to a prettier diagram.
+
+Implementation patterns: shared primary key, unique foreign key on either side, or a single table if the satellite is always present and tiny.
+
+Single table is allowed.
+
+One-to-one does not require two tables.
+
+Two tables are for optional, bulky, or secret satellites.
+
+If every user has exactly one profile of three columns, keep them on users.
+
+The cardinality can still be described as one-to-one with a person entity if you later split.
+
+Do not split early for purity.
+
+Do split when NULL piles or security says so.
+
+Real-world examples: country and capital, if you model current capital only; person and medical record number issued one-for-one; order and shipment if your shop ships once.
+
+If you ship twice, shipment became many.
+
+Listen for once.
+
+Once is the word that makes this lesson fifteen minutes instead of a definition.
+
+Ask once, at most one, exactly one, optional.
+
+Put the answers on both ends.
+
+Then draw.
+
+Then UNIQUE.
+
+Then join and expect one row.
+
+That sequence is the film.
+
+Close with questions, the way a careful lecture does.
+
+Answer in a sentence you could defend at a keyboard.
+
+What is cardinality?
+
+How many instances associate with one instance of the other.
+
+Why two sentences?
+
+Every relationship has two directions.
+
+What marks mean zero, one, many?
+
+Circle, bar, crow's foot.
+
+What is one-to-one?
+
+At most one on both maxima.
+
+Optional one-to-one?
+
+Min zero on one side, max still one.
+
+How do you enforce it in SQL?
+
+UNIQUE on the foreign key, or a shared primary key.
+
+What if you forget UNIQUE?
+
+It becomes one-to-many.
+
+When do you split a satellite table?
+
+Bulky, secret, or rare facts, not because a screen has tabs.
+
+When do you keep one table?
+
+Tiny attributes always present.
+
+Person and current passport?
+
+One-to-one if the rule is one live passport.
+
+Person and passport history?
+
+One-to-many of events.
+
+Does one-to-one require two tables?
+
+No.
+
+What grain of time?
+
+Current versus history changes the cardinality.
+
+What join fan-out means?
+
+Your unique is missing.
+
+Country and current capital?
+
+Often one-to-one.
+
+Order and shipment if you ship twice?
+
+Many, not one.
+
+What word should you listen for?
+
+Once, at most one, exactly one, optional.
+
+Chen versus crow's foot?
+
+Pick one notation and stay.
+
+Can both mins be one?
+
+Yes, but inserts must create both rows together.
+
+If you hesitate on can this side have two?
+
+You do not have one-to-one yet.
+
+If an answer needed a second table, go draw it before you write more SQL.

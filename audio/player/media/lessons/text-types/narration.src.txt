@@ -1,0 +1,257 @@
+Text looks like one idea until you store it.
+
+CHAR n is a fixed-width string.
+
+If you declare CHAR four for a currency code, USD always occupies four.
+
+Short codes like that are the rare good use.
+
+VARCHAR n is a string up to n characters.
+
+email VARCHAR two-fifty-four matches a real maximum.
+
+The n is a contract.
+
+It is not a suggestion.
+
+A value that is too long is an error, or it is trimmed, depending on the engine and the mode.
+
+Do not guess fifty because a form looked fifty wide.
+
+TEXT is a string with a large limit, often treated as a document.
+
+SQLite will store any length in TEXT and largely ignore the n in VARCHAR n.
+
+That is a dialect fact, not a reason to skip thinking.
+
+PostgreSQL treats CHAR as padded, VARCHAR as bounded, TEXT as unbounded.
+
+MySQL historically mixed TEXT with size families: TINYTEXT, TEXT, MEDIUMTEXT.
+
+Pick the dialect you are on, then pick the smallest honest bound.
+
+Names are VARCHAR, not CHAR.
+
+People have different lengths.
+
+Padding names with spaces will haunt your equality tests.
+
+Codes that are truly fixed width can be CHAR.
+
+country_code CHAR two.
+
+Collation decides how letters compare.
+
+Case insensitive email sounds friendly and then merges two accounts.
+
+Know whether A and a are the same in this column.
+
+Unicode is the default you want.
+
+Do not store names in a bytes encoding you cannot round-trip.
+
+Empty string is not NULL.
+
+NULL means unknown or inapplicable.
+
+Empty string means someone typed nothing.
+
+Those are different facts.
+
+Indexes on huge TEXT columns are expensive or forbidden.
+
+If you search inside a chapter, you want a later tool, not a primary key.
+
+Trim at the edges in the application or with a constraint.
+
+Leading spaces make unique emails that look identical to a human.
+
+Write the type as a sentence.
+
+This column holds a person's name, up to one hundred characters, Unicode, case sensitive, empty not allowed.
+
+Then CHAR, VARCHAR, or TEXT is an easy choice.
+
+Trim, then constrain, then index.
+
+An index on untrimmed email still lets two visual twins in.
+
+Some engines fold case with citext or a functional unique index.
+
+Use those when email identity is case insensitive by policy.
+
+Do not lowercase in some rows and not others.
+
+CHAR is for true codes, not for padding names into a grid that looks neat in a terminal.
+
+Neat is not a type.
+
+National characters historically had NCHAR.
+
+Today you want Unicode in ordinary VARCHAR or TEXT.
+
+Emoji will appear in names.
+
+Plan for it.
+
+Length in characters is not length in bytes.
+
+VARCHAR n in PostgreSQL is characters.
+
+Some MySQL settings historically counted bytes.
+
+Read the manual for the server you have.
+
+Comments and biographies can be TEXT.
+
+Search them with later tools if you must.
+
+Do not primary-key them.
+
+A check on length can back up a VARCHAR bound if you want a clearer error.
+
+Still pick a bound that matches the world.
+
+The sentence you wrote at the start is the spec.
+
+Types are how the spec enters the database.
+
+Keep them aligned.
+
+When they drift, the form on the website will accept what the table refuses, or the other way around.
+
+That drift is a bug in the contract, not in the user.
+
+A type is a fence.
+
+CHAR, VARCHAR, and TEXT are three fence heights.
+
+Codes, names, and documents.
+
+If you only remember one rule, remember padding.
+
+Do not pad a name.
+
+If you remember two, remember empty versus NULL.
+
+If you remember three, remember collation.
+
+Those three surprises cause more support tickets than exotic encodings.
+
+Fence the column, then test equality with the strings you actually receive.
+
+Including emoji, including spaces, including mixed case.
+
+The test is the spec.
+
+Ship the spec in the type.
+
+Type selection happens after entities, attributes, and keys exist.
+
+A string column still needs a fence: how long, how fixed, how empty.
+
+CHAR, VARCHAR, and TEXT are the three fences you will actually choose among.
+
+CHAR is fixed length.
+
+CHAR two for a US state code occupies two characters even if you tried to store one.
+
+Short codes, padded, compared as padded, belong in CHAR when the length is truly fixed.
+
+Do not CHAR a name.
+
+Padding turns Maya into Maya plus spaces, and equality becomes a costume party.
+
+VARCHAR is variable length with a declared maximum.
+
+VARCHAR 255 became a habit, not a measurement.
+
+Measure: how long is a legal username, an email, a product name in this business.
+
+Set the max to the business rule, not to a folklore number.
+
+Too small, and a real value is cut off or refused.
+
+Too large, and you waste space and sometimes memory for sorts, depending on the engine.
+
+TEXT is for strings whose length you cannot honestly cap: descriptions, bodies, comments.
+
+Some engines treat long VARCHAR and TEXT similarly.
+
+Some do not index TEXT the same way they index VARCHAR.
+
+Know your engine before you put a TEXT column in a WHERE equals.
+
+Empty string is not NULL.
+
+NULL means unknown or not applicable.
+
+Empty means present and blank.
+
+Decide which one a missing middle name is, and put that decision in the column, not in five application layers.
+
+Collation decides whether a and A are equal, and where ß sorts.
+
+A unique email with a case-insensitive collation treats Maya@ and maya@ as a collision.
+
+That might be what you want.
+
+Say so.
+
+Unicode is not optional if people type names.
+
+Use the character set that can hold the letters you will actually receive, including accented letters and emoji if your product allows them.
+
+Codes, names, documents.
+
+CHAR for codes of known width.
+
+VARCHAR for names and labels with a max.
+
+TEXT for documents.
+
+If you only remember one surprise, remember padding.
+
+If you remember two, remember empty versus NULL.
+
+If you remember three, remember collation.
+
+Test equality with the strings you actually receive, then ship that test as the type and the collation.
+
+Close with questions, the way a careful lecture does.
+
+Answer in a sentence you could defend at a keyboard.
+
+CHAR for?
+
+Fixed width codes.
+
+VARCHAR for?
+
+Variable labels with a measured max.
+
+TEXT for?
+
+Bodies you cannot honestly cap.
+
+Padding surprise?
+
+CHAR names equal only with spaces.
+
+Empty versus NULL?
+
+Blank present versus unknown.
+
+Collation?
+
+Whether a and A collide, and how they sort.
+
+VARCHAR 255?
+
+A habit, not a measurement.
+
+Unicode?
+
+Required if people type names.
+
+If an answer needed a second table, go draw it before you write more SQL.

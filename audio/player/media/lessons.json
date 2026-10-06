@@ -1,0 +1,201 @@
+{
+  "title": "Database fundamentals",
+  "lessons": [
+    {
+      "id": "relational-databases",
+      "title": "Querying",
+      "duration": "7:15",
+      "cues": "media/cues.json",
+      "audio": "media/narration.mp3"
+    },
+    {
+      "id": "filter-and-summarize",
+      "title": "Filter and summarize",
+      "duration": "11:19",
+      "cues": "media/lessons/filter-and-summarize/cues.json",
+      "audio": "media/lessons/filter-and-summarize/narration.mp3"
+    },
+    {
+      "id": "change-a-table",
+      "title": "Change a table",
+      "duration": "8:30",
+      "cues": "media/lessons/change-a-table/cues.json",
+      "audio": "media/lessons/change-a-table/narration.mp3"
+    },
+    {
+      "id": "foreign-keys",
+      "title": "Foreign keys",
+      "duration": "10:24",
+      "cues": "media/lessons/foreign-keys/cues.json",
+      "audio": "media/lessons/foreign-keys/narration.mp3"
+    },
+    {
+      "id": "joins",
+      "title": "Joins",
+      "duration": "10:32",
+      "cues": "media/lessons/joins/cues.json",
+      "audio": "media/lessons/joins/narration.mp3"
+    },
+    {
+      "id": "read-sql",
+      "title": "Read SQL carefully",
+      "duration": "9:21",
+      "cues": "media/lessons/read-sql/cues.json",
+      "audio": "media/lessons/read-sql/narration.mp3"
+    },
+    {
+      "id": "strong-and-weak-entities",
+      "title": "Strong and weak entities",
+      "duration": "8:57",
+      "cues": "media/lessons/strong-and-weak-entities/cues.json",
+      "audio": "media/lessons/strong-and-weak-entities/narration.mp3"
+    },
+    {
+      "id": "design-goals",
+      "title": "Design goals",
+      "duration": "8:00",
+      "cues": "media/lessons/design-goals/cues.json",
+      "audio": "media/lessons/design-goals/narration.mp3"
+    },
+    {
+      "id": "design-lifecycle",
+      "title": "Design lifecycle",
+      "duration": "8:02",
+      "cues": "media/lessons/design-lifecycle/cues.json",
+      "audio": "media/lessons/design-lifecycle/narration.mp3"
+    },
+    {
+      "id": "entities-and-attributes",
+      "title": "Entities and attributes",
+      "duration": "7:13",
+      "cues": "media/lessons/entities-and-attributes/cues.json",
+      "audio": "media/lessons/entities-and-attributes/narration.mp3"
+    },
+    {
+      "id": "choose-a-key",
+      "title": "Choose a key",
+      "duration": "9:26",
+      "cues": "media/lessons/choose-a-key/cues.json",
+      "audio": "media/lessons/choose-a-key/narration.mp3"
+    },
+    {
+      "id": "text-types",
+      "title": "Text types",
+      "duration": "7:30",
+      "cues": "media/lessons/text-types/cues.json",
+      "audio": "media/lessons/text-types/narration.mp3"
+    },
+    {
+      "id": "number-types",
+      "title": "Number types",
+      "duration": "7:04",
+      "cues": "media/lessons/number-types/cues.json",
+      "audio": "media/lessons/number-types/narration.mp3"
+    },
+    {
+      "id": "date-types",
+      "title": "Date and time types",
+      "duration": "5:50",
+      "cues": "media/lessons/date-types/cues.json",
+      "audio": "media/lessons/date-types/narration.mp3"
+    },
+    {
+      "id": "er-diagrams",
+      "title": "Entity-relationship diagrams",
+      "duration": "6:05",
+      "cues": "media/lessons/er-diagrams/cues.json",
+      "audio": "media/lessons/er-diagrams/narration.mp3"
+    },
+    {
+      "id": "one-to-one",
+      "title": "One-to-one",
+      "duration": "9:55",
+      "cues": "media/lessons/one-to-one/cues.json",
+      "audio": "media/lessons/one-to-one/narration.mp3"
+    },
+    {
+      "id": "one-to-many",
+      "title": "One-to-many",
+      "duration": "7:17",
+      "cues": "media/lessons/one-to-many/cues.json",
+      "audio": "media/lessons/one-to-many/narration.mp3"
+    },
+    {
+      "id": "many-to-many",
+      "title": "Many-to-many",
+      "duration": "6:45",
+      "cues": "media/lessons/many-to-many/cues.json",
+      "audio": "media/lessons/many-to-many/narration.mp3"
+    },
+    {
+      "id": "first-normal-form",
+      "title": "First normal form",
+      "duration": "8:13",
+      "cues": "media/lessons/first-normal-form/cues.json",
+      "audio": "media/lessons/first-normal-form/narration.mp3"
+    },
+    {
+      "id": "second-normal-form",
+      "title": "Second normal form",
+      "duration": "9:55",
+      "cues": "media/lessons/second-normal-form/cues.json",
+      "audio": "media/lessons/second-normal-form/narration.mp3"
+    },
+    {
+      "id": "third-normal-form",
+      "title": "Third normal form",
+      "duration": "9:31",
+      "cues": "media/lessons/third-normal-form/cues.json",
+      "audio": "media/lessons/third-normal-form/narration.mp3"
+    },
+    {
+      "id": "boyce-codd",
+      "title": "Boyce\u2013Codd normal form",
+      "duration": "6:30",
+      "cues": "media/lessons/boyce-codd/cues.json",
+      "audio": "media/lessons/boyce-codd/narration.mp3"
+    },
+    {
+      "id": "unique-keys",
+      "title": "Unique keys",
+      "duration": "9:37",
+      "cues": "media/lessons/unique-keys/cues.json",
+      "audio": "media/lessons/unique-keys/narration.mp3"
+    },
+    {
+      "id": "foreign-key-actions",
+      "title": "Foreign key actions",
+      "duration": "6:36",
+      "cues": "media/lessons/foreign-key-actions/cues.json",
+      "audio": "media/lessons/foreign-key-actions/narration.mp3"
+    },
+    {
+      "id": "column-constraints",
+      "title": "Column constraints",
+      "duration": "14:09",
+      "cues": "media/lessons/column-constraints/cues.json",
+      "audio": "media/lessons/column-constraints/narration.mp3"
+    },
+    {
+      "id": "access-control",
+      "title": "Access control",
+      "duration": "14:10",
+      "cues": "media/lessons/access-control/cues.json",
+      "audio": "media/lessons/access-control/narration.mp3"
+    },
+    {
+      "id": "indexes",
+      "title": "Indexes",
+      "duration": "8:45",
+      "cues": "media/lessons/indexes/cues.json",
+      "audio": "media/lessons/indexes/narration.mp3"
+    },
+    {
+      "id": "denormalization",
+      "title": "Denormalization",
+      "duration": "9:02",
+      "cues": "media/lessons/denormalization/cues.json",
+      "audio": "media/lessons/denormalization/narration.mp3"
+    }
+  ]
+}

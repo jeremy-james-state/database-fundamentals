@@ -1,0 +1,321 @@
+Second normal form starts from first, then asks a narrower question.
+
+If the primary key has more than one column, every non-key fact must depend on the whole key.
+
+Not on a piece of it.
+
+Enrollment has student_id and course_id as the key.
+
+grade depends on both.
+
+Maya's A in Harbor Light is not Maya's grade in general, and not the course's grade in general.
+
+student_name depends only on student_id.
+
+That is a partial dependence.
+
+The name will repeat on every enrollment row.
+
+If Maya changes her name, you hunt every course she took.
+
+Move student_name to students.
+
+Leave grade on enrollment.
+
+course_title depends only on course_id.
+
+Move it to courses.
+
+The test is a sentence.
+
+Does this fact describe the pair, or only one of the partners?
+
+Facts about one partner belong on that partner's table.
+
+If the primary key is a single column, partial dependence cannot happen.
+
+A single-column key is already whole.
+
+That is why people say second normal form is about composite keys.
+
+They are right enough.
+
+You still want first normal form either way.
+
+A surrogate key on enrollment does not excuse stuffing student_name beside it.
+
+The real identifier of the fact might still be the pair.
+
+Look at the meaning, not only the columns you numbered.
+
+Repeating a name is the smell.
+
+Updating a name in three places is the fire.
+
+Fix by splitting the table.
+
+Do not fix by asking people to be careful.
+
+Careful does not survive a second clerk.
+
+Draw the composite key.
+
+List the other columns.
+
+Arrow each one to the smallest set of key columns it describes.
+
+Arrows that stop short of the full key are the work.
+
+That drawing is second normal form.
+
+Partial dependence hides in shipping dumps.
+
+A file of lines includes customer email because the warehouse wanted it.
+
+Email depends on customer, not on the line.
+
+Put it back on customers, and join.
+
+If the dump is a snapshot for a truck that already left, that email might be history.
+
+Then it is denormalization with an owner, not second normal form failure.
+
+Say which.
+
+Wide composite keys collect extra columns the way pockets collect coins.
+
+Each coin gets the sentence: does this describe the whole key?
+
+If you cannot answer, you do not understand the column yet.
+
+Do not keep it until you do.
+
+Star schemas in warehouses sometimes sit in a different normal-form conversation.
+
+Dimensions repeat on purpose.
+
+This lesson is about operational tables you update all day.
+
+Do not copy a warehouse shape into checkout because a talk mentioned stars.
+
+Checkout wants second normal form.
+
+The warehouse can wait.
+
+When a composite key is only there because you refused a surrogate, you can add the surrogate and UNIQUE the pair.
+
+Partial dependence is still about the pair's meaning.
+
+student_name still does not belong beside enrollment_id if it describes the student.
+
+Meaning, then columns.
+
+The drawing of arrows from facts to the smallest key is the whole skill.
+
+Practice it on one ugly spreadsheet.
+
+The ugly ones teach more than the tidy bookstore.
+
+Ask of every extra column: whose fact is this?
+
+If the answer is only one partner of a pair, move it.
+
+If the answer is the pair, keep it.
+
+If the answer is I do not know, do not load it yet.
+
+Unknown ownership is how email lands on a line item.
+
+Known ownership is a two-table join.
+
+Prefer the join.
+
+The repeating name is not decoration.
+
+It is a pointer you refused to draw.
+
+Draw it.
+
+Second normal form is that drawing, with less vocabulary.
+
+Use the vocabulary if you like.
+
+Use the drawing either way.
+
+A table can have a key, types, and atomic cells, and still be wrong.
+
+Second normal form starts only after first is true.
+
+The simplified rule: every non-key column depends on the whole primary key, not a piece of it.
+
+Partial dependency is the name of the crime.
+
+It shows up when the primary key is composite.
+
+If the key is order_id plus product_id, product_name depends only on product_id.
+
+It does not need the order to be true.
+
+So product_name on that table will repeat on every order that sells the product.
+
+Update the name on one line, miss the others, and the catalog disagrees with itself.
+
+Insert a product you have not sold yet, and you cannot store the name without faking an order.
+
+Delete the last order line for a product, and you may lose the only copy of the name.
+
+Those are insert, update, and delete anomalies from a partial dependency.
+
+The fix is a product table with product_id as key and name as a column there.
+
+The order line keeps order_id, product_id, and quantity, which really does depend on both.
+
+Quantity is about this product on this order.
+
+Name is about the product.
+
+A non-key column is any column not in the primary key.
+
+If the key is a single column, partial dependency cannot happen, and second normal form is free once first is done.
+
+That is why surrogate keys make second look easy, and why composite keys make it visible.
+
+Easy is not the same as understood.
+
+Functional dependency means: if I know this, I know that.
+
+If I know product_id, I know product_name.
+
+If I know only order_id, I do not know product_name.
+
+Draw those arrows on a scrap of paper when the table feels off.
+
+Any arrow that starts from part of the key and lands on a non-key column is a split you still owe.
+
+The full definition talks about every candidate key, not only the primary key you happened to pick.
+
+If a leftover unique pair still has partial dependents, the table is not in second.
+
+For this lesson, hunt composite keys and leftover attributes of one parent hiding on the child.
+
+Move those attributes to the parent.
+
+Keep the attributes of the pairing.
+
+Then first still holds, and second holds, and third can talk about chains of non-key columns.
+
+Another composite: classroom assignment with key (student_id, course_id), columns student_name, course_title, term, grade.
+
+student_name depends on student_id only.
+
+course_title depends on course_id only.
+
+term and grade depend on both if a student can retake.
+
+Split students and courses.
+
+Keep enrollments as the pairing with term and grade.
+
+You just turned a first-normal-form sheet into second.
+
+The full version of second talks about every candidate key.
+
+If UNIQUE (student_id, course_id, term) is the real identity, check dependents against that whole triple.
+
+Simplified second is the whole primary key you declared.
+
+Use simplified to learn, then glance at other uniques so you do not hide a partial dependency behind a surrogate.
+
+A surrogate enrollment_id as primary key can hide that course_title still depends only on course_id sitting on the same row.
+
+The surrogate did not grant second.
+
+The leftover course_title still fails the spirit.
+
+Move it anyway.
+
+Close with questions, the way a careful lecture does.
+
+Answer in a sentence you could defend at a keyboard.
+
+When does second apply?
+
+After first, especially on composite keys.
+
+What is partial dependency?
+
+A non-key column that depends on only part of the key.
+
+Where does product_name belong on an order line?
+
+On products, not on the line, if it is the catalog name.
+
+What stays on the line?
+
+Facts of the pairing: quantity, maybe sold price as history.
+
+Three anomalies?
+
+Insert, update, delete, from the leftover parent attributes.
+
+Single-column primary key?
+
+Partial dependency cannot happen; second is free once first holds.
+
+Does a surrogate automatically grant second?
+
+No. Leftover parent attributes still fail the spirit.
+
+What is a functional dependency?
+
+If I know this, I know that.
+
+Whole-key rule in one line?
+
+Non-key columns depend on the whole primary key.
+
+Candidate keys?
+
+The full definition checks every candidate, not only the primary you picked.
+
+Classroom assignment leftover student_name?
+
+Depends only on student_id; move it.
+
+grade on the pairing?
+
+Depends on the whole enrollment key if retakes exist.
+
+How do you hunt?
+
+Composite keys and leftover parent attributes on the child.
+
+Fix?
+
+Parent table for the partial attributes, child keeps pairing facts.
+
+Why composites make it visible?
+
+You can see a key part that already determines a column.
+
+Why surrogates hide it?
+
+The key looks atomic while extra columns still describe a parent.
+
+Must first hold?
+
+Yes. Nested dolls.
+
+Is line_total a partial?
+
+No if it needs both quantity and this line's price.
+
+Sold price versus catalog price?
+
+Catalog moves; sold price may be a freeze on the pairing.
+
+When is second done?
+
+No arrows from a key part to a non-key leftover.
+
+If an answer needed a second table, go draw it before you write more SQL.

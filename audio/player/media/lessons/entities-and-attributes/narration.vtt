@@ -1,0 +1,472 @@
+1
+00:00:00,050 --> 00:00:05,541
+An entity is a thing you can describe and tell apart from other things of the same kind.
+
+2
+00:00:05,541 --> 00:00:07,375
+A customer is an entity.
+
+3
+00:00:07,375 --> 00:00:08,958
+An order is an entity.
+
+4
+00:00:08,958 --> 00:00:10,541
+A book is an entity.
+
+5
+00:00:10,541 --> 00:00:13,625
+Austin is usually not an entity on day one.
+
+6
+00:00:13,625 --> 00:00:17,166
+It is a value of city, an attribute of customer.
+
+7
+00:00:17,166 --> 00:00:19,972
+Attributes are facts about one entity.
+
+8
+00:00:19,972 --> 00:00:22,708
+name, city, joined_on.
+
+9
+00:00:22,708 --> 00:00:26,430
+If a fact has its own facts, it wanted to be an entity.
+
+10
+00:00:26,430 --> 00:00:30,444
+city might grow a population, a state, a mayor.
+
+11
+00:00:30,444 --> 00:00:35,041
+Then city becomes a table, and customers hold city_id.
+
+12
+00:00:35,041 --> 00:00:36,791
+That promotion is normal.
+
+13
+00:00:36,791 --> 00:00:39,361
+It is not a mistake in the first sketch.
+
+14
+00:00:39,361 --> 00:00:42,555
+List nouns from the sentences people actually say.
+
+15
+00:00:42,555 --> 00:00:45,097
+A customer places an order for a book.
+
+16
+00:00:45,097 --> 00:00:46,277
+Three nouns.
+
+17
+00:00:46,277 --> 00:00:48,583
+Then list facts about each noun.
+
+18
+00:00:48,583 --> 00:00:51,805
+Customer: name, city, email.
+
+19
+00:00:51,805 --> 00:00:54,763
+Order: placed_on, total.
+
+20
+00:00:54,763 --> 00:00:56,527
+Book: title, year.
+
+21
+00:00:56,527 --> 00:00:58,305
+Check one row in your head.
+
+22
+00:00:58,305 --> 00:01:00,027
+Does it describe one thing?
+
+23
+00:01:00,027 --> 00:01:06,402
+If a row describes Maya and also Harbor Light and also a shipping box, you mixed entities.
+
+24
+00:01:06,402 --> 00:01:08,902
+Split until a row is one noun.
+
+25
+00:01:08,902 --> 00:01:11,500
+Relationships are not attributes.
+
+26
+00:01:11,500 --> 00:01:17,680
+customer_id on orders is not a fact about an order in the same way total is.
+
+27
+00:01:17,680 --> 00:01:19,888
+It is a pointer to another entity.
+
+28
+00:01:19,888 --> 00:01:21,652
+Keep that difference visible.
+
+29
+00:01:21,652 --> 00:01:26,625
+Attributes should be atomic for first normal form, which is a later lesson.
+
+30
+00:01:26,625 --> 00:01:29,652
+For now: one cell, one value.
+
+31
+00:01:29,652 --> 00:01:32,444
+Not a comma-separated pile of authors.
+
+32
+00:01:32,444 --> 00:01:36,013
+Derived facts are not attributes you must store.
+
+33
+00:01:36,013 --> 00:01:38,861
+age can be computed from birth_date.
+
+34
+00:01:38,861 --> 00:01:41,569
+Storing both is a chance to disagree.
+
+35
+00:01:41,569 --> 00:01:43,222
+Prefer the source fact.
+
+36
+00:01:43,222 --> 00:01:46,597
+Names are attributes; identity is a key.
+
+37
+00:01:46,597 --> 00:01:49,388
+Do not use name as if it were a customer.
+
+38
+00:01:49,388 --> 00:01:51,013
+Two Mayas exist.
+
+39
+00:01:51,013 --> 00:01:54,041
+Walk a new domain with sticky notes if you want.
+
+40
+00:01:54,041 --> 00:01:55,527
+One note per entity.
+
+41
+00:01:55,527 --> 00:01:56,819
+Facts on the note.
+
+42
+00:01:56,819 --> 00:01:58,513
+Arrows between notes.
+
+43
+00:01:58,513 --> 00:02:00,361
+The notes become tables.
+
+44
+00:02:00,361 --> 00:02:02,277
+The facts become columns.
+
+45
+00:02:02,277 --> 00:02:04,236
+The arrows become keys.
+
+46
+00:02:04,236 --> 00:02:05,916
+Events can be entities.
+
+47
+00:02:05,916 --> 00:02:08,013
+A login is a thing that happened.
+
+48
+00:02:08,013 --> 00:02:10,986
+It has a time and a customer_id.
+
+49
+00:02:10,986 --> 00:02:16,958
+It is not an attribute of customer unless you only store last_login_at.
+
+50
+00:02:16,958 --> 00:02:21,805
+last_login_at is a derived cache of the latest event.
+
+51
+00:02:21,805 --> 00:02:23,236
+Know which you are building.
+
+52
+00:02:23,236 --> 00:02:26,000
+Roles can be entities when they have facts.
+
+53
+00:02:26,000 --> 00:02:30,208
+admin is a flag until admins have offices and rotations.
+
+54
+00:02:30,208 --> 00:02:32,027
+Then role is a table.
+
+55
+00:02:32,027 --> 00:02:38,513
+Status values start as text and become entities when they grow labels in three languages.
+
+56
+00:02:38,513 --> 00:02:41,972
+Promote them when the facts appear, not before.
+
+57
+00:02:41,972 --> 00:02:46,083
+A good attribute name is a noun or a short noun phrase.
+
+58
+00:02:46,083 --> 00:02:49,722
+total, placed_at, is_active.
+
+59
+00:02:49,722 --> 00:02:52,513
+Avoid mystery flags named flag1.
+
+60
+00:02:52,513 --> 00:02:57,583
+Units belong in the name or in a separate unit column, not in the value.
+
+61
+00:02:57,583 --> 00:03:02,388
+total_cents versus total dollars as text with a dollar sign.
+
+62
+00:03:02,388 --> 00:03:04,291
+The first is an attribute.
+
+63
+00:03:04,291 --> 00:03:06,027
+The second is a poster.
+
+64
+00:03:06,027 --> 00:03:08,527
+Walk an example row with a skeptic.
+
+65
+00:03:08,527 --> 00:03:11,458
+If they ask whose city, you mixed entities.
+
+66
+00:03:11,458 --> 00:03:14,819
+If they ask which of the two titles, you mixed rows.
+
+67
+00:03:14,819 --> 00:03:18,291
+If they ask what the number means, you mixed attributes.
+
+68
+00:03:18,291 --> 00:03:20,680
+Fix the mix before you write CREATE.
+
+69
+00:03:20,680 --> 00:03:23,069
+The sticky notes are cheaper than ALTER.
+
+70
+00:03:23,069 --> 00:03:25,958
+The nouns were in the sentences all along.
+
+71
+00:03:25,958 --> 00:03:27,569
+Your job is to hear them.
+
+72
+00:03:27,569 --> 00:03:29,791
+Design does not start with tables.
+
+73
+00:03:29,791 --> 00:03:38,319
+It starts with messy speech: we have users, they have payment methods, orders go out, products come back as returns.
+
+74
+00:03:38,319 --> 00:03:45,250
+Your job is to sort subjects from characteristics, then decide which subjects are entities worth a table.
+
+75
+00:03:45,250 --> 00:03:52,263
+A subject is a thing you can talk about with a verb: a user has an email, an order contains lines.
+
+76
+00:03:52,263 --> 00:03:58,430
+A characteristic belongs to a subject: email belongs to user, not to the whole store.
+
+77
+00:03:58,430 --> 00:04:01,152
+Interview transcripts are full of both.
+
+78
+00:04:01,152 --> 00:04:07,333
+Highlight nouns that can be the subject of has, contains, places, or belongs to.
+
+79
+00:04:07,333 --> 00:04:15,430
+Those candidates become entities if they have more than one fact of their own, a lifecycle, and a reason to be found later.
+
+80
+00:04:15,430 --> 00:04:23,833
+Color might be a characteristic of product, not an entity, until you discover colors have codes, suppliers, and photos.
+
+81
+00:04:23,833 --> 00:04:26,125
+Then color grew up into an entity.
+
+82
+00:04:26,125 --> 00:04:28,430
+The test is not the English noun.
+
+83
+00:04:28,430 --> 00:04:31,861
+The test is whether it has attributes and identity.
+
+84
+00:04:31,861 --> 00:04:33,916
+Attributes become columns.
+
+85
+00:04:33,916 --> 00:04:40,972
+Each attribute should be one meaning: email, not contact which mixes phone and email.
+
+86
+00:04:40,972 --> 00:04:49,152
+If a characteristic repeats as a list in speech — a user has several payment methods — it is not a column on users.
+
+87
+00:04:49,274 --> 00:04:52,168
+It is a second entity related to users.
+
+88
+00:04:52,168 --> 00:04:59,710
+Ignore noise: adverbs, one-off anecdotes, and attributes nobody will query or constrain.
+
+89
+00:04:59,710 --> 00:05:04,654
+You can store a note, but you should not invent a table for a sentence said once.
+
+90
+00:05:04,654 --> 00:05:11,710
+Name entities in the language of the business, then spell them in snake_case when they become tables.
+
+91
+00:05:11,710 --> 00:05:13,196
+user is an entity.
+
+92
+00:05:13,196 --> 00:05:16,418
+users is a table if you chose plural tables.
+
+93
+00:05:16,418 --> 00:05:19,890
+Do not let the sketch and the SQL drift in names.
+
+94
+00:05:19,890 --> 00:05:24,279
+After you have entities and attributes, you still do not have keys.
+
+95
+00:05:24,279 --> 00:05:25,904
+Keys are the next lesson.
+
+96
+00:05:25,904 --> 00:05:35,376
+Here the win is a clean inventory: these are the things, these are the facts about each thing, these lists of facts are actually more things.
+
+97
+00:05:35,376 --> 00:05:41,724
+If two subjects share a pile of attributes, ask whether they are the same entity in costume.
+
+98
+00:05:41,724 --> 00:05:48,599
+Customer and user might be one table or two, depending on whether a user can exist without ever buying.
+
+99
+00:05:48,599 --> 00:05:52,307
+That question is a requirement, not a taste in naming.
+
+100
+00:05:52,307 --> 00:05:54,321
+Write the entities on boxes.
+
+101
+00:05:54,321 --> 00:05:56,154
+Write attributes inside.
+
+102
+00:05:56,154 --> 00:05:58,876
+Leave the lines for the relationship lesson.
+
+103
+00:05:58,876 --> 00:06:05,126
+A box with twenty attributes is a warning that several subjects are hiding in one list.
+
+104
+00:06:05,126 --> 00:06:07,960
+Split the box before you draw the first key.
+
+105
+00:06:07,960 --> 00:06:14,599
+Parse one interview sentence: a user has an account, payment methods, and a cart of products.
+
+106
+00:06:14,599 --> 00:06:20,085
+Subjects: user, account, payment method, cart, product.
+
+107
+00:06:20,085 --> 00:06:28,001
+Characteristics: whatever facts they mentioned — email on user, last four on payment method, quantity in the cart.
+
+108
+00:06:28,001 --> 00:06:32,932
+Account might be the same as user if login is one-to-one with the person.
+
+109
+00:06:32,932 --> 00:06:33,765
+Ask.
+
+110
+00:06:33,765 --> 00:06:38,099
+Cart might be a table of lines, not a column of product names.
+
+111
+00:06:38,099 --> 00:06:43,154
+Payment methods are many, so not columns card1 card2 on users.
+
+112
+00:06:43,154 --> 00:06:48,460
+Product is its own entity because it has name, price, manufacturer.
+
+113
+00:06:48,460 --> 00:06:54,543
+Manufacturer might be text on product until you have manufacturer addresses and contacts.
+
+114
+00:06:54,543 --> 00:06:56,029
+Then it graduates.
+
+115
+00:06:56,029 --> 00:07:00,432
+Throw away the word quickly from the interview; it is not an attribute.
+
+116
+00:07:00,432 --> 00:07:04,321
+Keep email, because uniqueness and login will need it.
+
+117
+00:07:04,321 --> 00:07:09,196
+This noun work is the whole conversion from real-world ideas to tables.
+
+118
+00:07:09,196 --> 00:07:12,529
+Tables come after the inventory is honest.
+

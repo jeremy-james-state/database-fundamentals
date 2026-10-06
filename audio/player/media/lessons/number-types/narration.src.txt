@@ -1,0 +1,251 @@
+Numbers in tables are not one type.
+
+Integers count.
+
+Decimals measure money and other exact fractions.
+
+Floats approximate scientific values.
+
+If you mix them, you will round a dollar.
+
+INTEGER, INT, BIGINT are whole numbers of different ranges.
+
+customer_id is an integer.
+
+quantity is an integer if you sell whole books.
+
+Do not use a float for a count.
+
+DECIMAL p comma s stores exact decimal digits.
+
+p is total digits.
+
+s is digits after the point.
+
+DECIMAL ten comma two is a common money shape.
+
+Forty-two dollars and fifteen cents is exact.
+
+NUMERIC is often the same family as DECIMAL.
+
+REAL and DOUBLE PRECISION are binary floating point.
+
+They are fast, and they cannot represent one tenth exactly.
+
+Summing a column of floats can drift.
+
+That drift is unacceptable for money.
+
+It may be fine for a sensor reading.
+
+SQLite has a softer type system.
+
+A column declared INTEGER can still hold text unless you constrain it.
+
+Affinity is not a CHECK.
+
+If you need integer only, say so with a constraint or a stricter engine.
+
+Auto incrementing integers make convenient surrogates.
+
+They are not magic.
+
+Gaps appear after a rolled-back insert.
+
+Do not treat them as row counts.
+
+BOOLEAN is a number in some dialects and a real type in others.
+
+Store it as a real boolean when you can.
+
+Or as a constrained integer zero or one.
+
+Do not store yes as text if you mean a flag.
+
+Overflow is a real error.
+
+TINYINT cannot hold a million.
+
+Pick a range with room, not a range that matches today's sample.
+
+Write the sentence.
+
+This column is a count of books, whole, never negative, fits in a normal integer.
+
+This column is a price in dollars, exact cents, never a float.
+
+Then the type is obvious.
+
+Money in integer cents is a valid design.
+
+total_cents INTEGER, and you format dollars at the edge.
+
+DECIMAL is the other valid design.
+
+Mixing them in one table is a third, invalid design.
+
+Pick one and convert at the boundary.
+
+Percentages can be DECIMAL too.
+
+A float percent will surprise you in a tax calculation.
+
+Scientific measurements can stay FLOAT if the instrument was already approximate.
+
+Do not fake precision the sensor never had.
+
+SERIAL and IDENTITY are integer generators.
+
+They are not a type of quantity.
+
+Do not use them on total.
+
+Unsigned integers exist in some engines.
+
+They forbid negatives, which a CHECK can also do more clearly.
+
+Prefer a signed integer plus CHECK if you want portable SQL.
+
+Division in integer types truncates.
+
+quantity divided by two may be a whole number you did not mean.
+
+If you need a rate, use DECIMAL and say how many places.
+
+NaN and infinity can appear in floats.
+
+They should never appear in money.
+
+The family you chose at the start forbids them, or should.
+
+Write examples in the comment: quantity 2, total 42.00, tax_rate 0.08.
+
+If an example needs a float, you picked the float family on purpose.
+
+Counts, money, science.
+
+Three homes.
+
+Put each column in one.
+
+If a spreadsheet formatted it as currency, it is not a float.
+
+If a sensor emitted it, it might be.
+
+If a person counted it, it is an integer.
+
+Say those three sentences when a column is born.
+
+Then DECIMAL, FLOAT, or INTEGER is not a debate.
+
+It is a classification.
+
+Misclassification is how pennies vanish.
+
+Pennies vanishing is how finance stops trusting the database.
+
+Keep their trust with exact types.
+
+Keep science honest with approximate types that admit they are approximate.
+
+Keep counts whole.
+
+The rest is dialect spelling.
+
+Whole numbers, approximate fractions, and exact decimals are three different jobs.
+
+Integers count things: quantities, ids you generated, flags stored as zero and one if you must.
+
+Signed integers allow negatives.
+
+Unsigned, where the engine has them, do not.
+
+TINYINT through BIGINT are range costumes around the same idea.
+
+Do not memorize the ranges.
+
+Look them up when a column is born, and pick the smallest range that cannot overflow in real life.
+
+Overflow is a silent disaster if the engine wraps, or a loud one if it errors.
+
+Prefer loud.
+
+FLOAT and DOUBLE are binary approximations.
+
+They are correct for scientific measurements where 0.1 repeating is a known compromise.
+
+They are wrong for money.
+
+The Vancouver stock index story is the parable: tiny errors, added every trade, became a crash in trust.
+
+If you add a price to a price in FLOAT, you can get a value that is not any real cent.
+
+DECIMAL, also called NUMERIC, stores exact base-ten values with a declared precision and scale.
+
+DECIMAL eight comma two means eight digits total, two after the point: a money column with room to breathe.
+
+Money, interest rates you must audit, and anything a receipt will print belong in DECIMAL.
+
+Percentages you will multiply back into money belong in DECIMAL too.
+
+Sensor readings, graphics, and statistics that already live in floating point may honestly be FLOAT.
+
+Say approximate in the comment if you do.
+
+Do not use FLOAT because it felt like the default number.
+
+There is no default number.
+
+There is a classification: counted, exact fraction, approximate fraction.
+
+If a spreadsheet formatted it as currency, it is not a float.
+
+If a person counted it, it is an integer.
+
+If a lab instrument emitted it, it might be a float.
+
+Misclassification is how pennies vanish.
+
+Pennies vanishing is how finance stops trusting the database.
+
+Keep their trust with exact types.
+
+Keep science honest with types that admit they are approximate.
+
+Keep counts whole.
+
+The rest is spelling in your dialect: INT versus INTEGER, DECIMAL versus NUMERIC.
+
+Spelling is easy.
+
+Classification is the lesson.
+
+Close with questions, the way a careful lecture does.
+
+Answer in a sentence you could defend at a keyboard.
+
+Integers for?
+
+Counts and whole ids.
+
+DECIMAL for?
+
+Money and exact fractions.
+
+FLOAT for?
+
+Approximate measurements that admit error.
+
+Why not FLOAT money?
+
+Binary error accumulates.
+
+Stock index parable?
+
+Tiny errors, lost trust.
+
+Classification sentences?
+
+Counted, exact, approximate.
+
+If an answer needed a second table, go draw it before you write more SQL.

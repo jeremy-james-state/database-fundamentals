@@ -1,0 +1,516 @@
+1
+00:00:00,050 --> 00:00:02,986
+Text looks like one idea until you store it.
+
+2
+00:00:02,986 --> 00:00:05,333
+CHAR n is a fixed-width string.
+
+3
+00:00:05,333 --> 00:00:11,041
+If you declare CHAR four for a currency code, USD always occupies four.
+
+4
+00:00:11,041 --> 00:00:13,652
+Short codes like that are the rare good use.
+
+5
+00:00:13,652 --> 00:00:17,125
+VARCHAR n is a string up to n characters.
+
+6
+00:00:17,125 --> 00:00:21,250
+email VARCHAR two-fifty-four matches a real maximum.
+
+7
+00:00:21,250 --> 00:00:23,083
+The n is a contract.
+
+8
+00:00:23,083 --> 00:00:24,666
+It is not a suggestion.
+
+9
+00:00:24,666 --> 00:00:30,972
+A value that is too long is an error, or it is trimmed, depending on the engine and the mode.
+
+10
+00:00:30,972 --> 00:00:34,416
+Do not guess fifty because a form looked fifty wide.
+
+11
+00:00:34,416 --> 00:00:39,222
+TEXT is a string with a large limit, often treated as a document.
+
+12
+00:00:39,222 --> 00:00:45,555
+SQLite will store any length in TEXT and largely ignore the n in VARCHAR n.
+
+13
+00:00:45,555 --> 00:00:49,305
+That is a dialect fact, not a reason to skip thinking.
+
+14
+00:00:49,305 --> 00:00:55,750
+PostgreSQL treats CHAR as padded, VARCHAR as bounded, TEXT as unbounded.
+
+15
+00:00:55,750 --> 00:01:03,208
+MySQL historically mixed TEXT with size families: TINYTEXT, TEXT, MEDIUMTEXT.
+
+16
+00:01:03,208 --> 00:01:07,680
+Pick the dialect you are on, then pick the smallest honest bound.
+
+17
+00:01:07,680 --> 00:01:10,180
+Names are VARCHAR, not CHAR.
+
+18
+00:01:10,180 --> 00:01:11,972
+People have different lengths.
+
+19
+00:01:11,972 --> 00:01:15,638
+Padding names with spaces will haunt your equality tests.
+
+20
+00:01:15,638 --> 00:01:18,736
+Codes that are truly fixed width can be CHAR.
+
+21
+00:01:18,736 --> 00:01:21,083
+country_code CHAR two.
+
+22
+00:01:21,083 --> 00:01:23,763
+Collation decides how letters compare.
+
+23
+00:01:23,763 --> 00:01:28,583
+Case insensitive email sounds friendly and then merges two accounts.
+
+24
+00:01:28,583 --> 00:01:31,722
+Know whether A and a are the same in this column.
+
+25
+00:01:31,722 --> 00:01:33,833
+Unicode is the default you want.
+
+26
+00:01:33,833 --> 00:01:37,805
+Do not store names in a bytes encoding you cannot round-trip.
+
+27
+00:01:37,805 --> 00:01:39,930
+Empty string is not NULL.
+
+28
+00:01:39,930 --> 00:01:42,819
+NULL means unknown or inapplicable.
+
+29
+00:01:42,819 --> 00:01:45,583
+Empty string means someone typed nothing.
+
+30
+00:01:45,583 --> 00:01:47,236
+Those are different facts.
+
+31
+00:01:47,236 --> 00:01:51,472
+Indexes on huge TEXT columns are expensive or forbidden.
+
+32
+00:01:51,472 --> 00:01:56,250
+If you search inside a chapter, you want a later tool, not a primary key.
+
+33
+00:01:56,250 --> 00:02:00,097
+Trim at the edges in the application or with a constraint.
+
+34
+00:02:00,097 --> 00:02:04,750
+Leading spaces make unique emails that look identical to a human.
+
+35
+00:02:04,750 --> 00:02:06,722
+Write the type as a sentence.
+
+36
+00:02:06,722 --> 00:02:14,694
+This column holds a person's name, up to one hundred characters, Unicode, case sensitive, empty not allowed.
+
+37
+00:02:14,694 --> 00:02:19,041
+Then CHAR, VARCHAR, or TEXT is an easy choice.
+
+38
+00:02:19,041 --> 00:02:22,333
+Trim, then constrain, then index.
+
+39
+00:02:22,333 --> 00:02:26,986
+An index on untrimmed email still lets two visual twins in.
+
+40
+00:02:26,986 --> 00:02:31,694
+Some engines fold case with citext or a functional unique index.
+
+41
+00:02:31,694 --> 00:02:36,166
+Use those when email identity is case insensitive by policy.
+
+42
+00:02:36,166 --> 00:02:39,472
+Do not lowercase in some rows and not others.
+
+43
+00:02:39,472 --> 00:02:45,527
+CHAR is for true codes, not for padding names into a grid that looks neat in a terminal.
+
+44
+00:02:45,527 --> 00:02:46,944
+Neat is not a type.
+
+45
+00:02:46,944 --> 00:02:50,166
+National characters historically had NCHAR.
+
+46
+00:02:50,166 --> 00:02:54,208
+Today you want Unicode in ordinary VARCHAR or TEXT.
+
+47
+00:02:54,208 --> 00:02:56,402
+Emoji will appear in names.
+
+48
+00:02:56,402 --> 00:02:57,458
+Plan for it.
+
+49
+00:02:57,458 --> 00:03:00,652
+Length in characters is not length in bytes.
+
+50
+00:03:00,652 --> 00:03:04,180
+VARCHAR n in PostgreSQL is characters.
+
+51
+00:03:04,180 --> 00:03:07,819
+Some MySQL settings historically counted bytes.
+
+52
+00:03:07,819 --> 00:03:10,194
+Read the manual for the server you have.
+
+53
+00:03:10,194 --> 00:03:12,847
+Comments and biographies can be TEXT.
+
+54
+00:03:12,847 --> 00:03:15,347
+Search them with later tools if you must.
+
+55
+00:03:15,347 --> 00:03:16,944
+Do not primary-key them.
+
+56
+00:03:16,944 --> 00:03:21,180
+A check on length can back up a VARCHAR bound if you want a clearer error.
+
+57
+00:03:21,180 --> 00:03:23,791
+Still pick a bound that matches the world.
+
+58
+00:03:23,791 --> 00:03:26,597
+The sentence you wrote at the start is the spec.
+
+59
+00:03:26,597 --> 00:03:29,513
+Types are how the spec enters the database.
+
+60
+00:03:29,513 --> 00:03:30,805
+Keep them aligned.
+
+61
+00:03:30,805 --> 00:03:37,027
+When they drift, the form on the website will accept what the table refuses, or the other way around.
+
+62
+00:03:37,027 --> 00:03:40,680
+That drift is a bug in the contract, not in the user.
+
+63
+00:03:40,680 --> 00:03:42,347
+A type is a fence.
+
+64
+00:03:42,347 --> 00:03:46,611
+CHAR, VARCHAR, and TEXT are three fence heights.
+
+65
+00:03:46,611 --> 00:03:49,541
+Codes, names, and documents.
+
+66
+00:03:49,541 --> 00:03:52,888
+If you only remember one rule, remember padding.
+
+67
+00:03:52,888 --> 00:03:54,208
+Do not pad a name.
+
+68
+00:03:54,208 --> 00:03:57,611
+If you remember two, remember empty versus NULL.
+
+69
+00:03:57,611 --> 00:04:00,513
+If you remember three, remember collation.
+
+70
+00:04:00,513 --> 00:04:05,347
+Those three surprises cause more support tickets than exotic encodings.
+
+71
+00:04:05,347 --> 00:04:10,194
+Fence the column, then test equality with the strings you actually receive.
+
+72
+00:04:10,194 --> 00:04:14,958
+Including emoji, including spaces, including mixed case.
+
+73
+00:04:14,958 --> 00:04:16,597
+The test is the spec.
+
+74
+00:04:16,597 --> 00:04:18,361
+Ship the spec in the type.
+
+75
+00:04:18,361 --> 00:04:23,444
+Type selection happens after entities, attributes, and keys exist.
+
+76
+00:04:23,444 --> 00:04:28,972
+A string column still needs a fence: how long, how fixed, how empty.
+
+77
+00:04:28,972 --> 00:04:34,000
+CHAR, VARCHAR, and TEXT are the three fences you will actually choose among.
+
+78
+00:04:34,000 --> 00:04:35,472
+CHAR is fixed length.
+
+79
+00:04:35,472 --> 00:04:41,194
+CHAR two for a US state code occupies two characters even if you tried to store one.
+
+80
+00:04:41,194 --> 00:04:47,902
+Short codes, padded, compared as padded, belong in CHAR when the length is truly fixed.
+
+81
+00:04:48,026 --> 00:04:49,323
+Do not CHAR a name.
+
+82
+00:04:49,323 --> 00:04:55,489
+Padding turns Maya into Maya plus spaces, and equality becomes a costume party.
+
+83
+00:04:55,489 --> 00:04:58,976
+VARCHAR is variable length with a declared maximum.
+
+84
+00:04:58,976 --> 00:05:03,087
+VARCHAR 255 became a habit, not a measurement.
+
+85
+00:05:03,087 --> 00:05:09,559
+Measure: how long is a legal username, an email, a product name in this business.
+
+86
+00:05:09,559 --> 00:05:13,642
+Set the max to the business rule, not to a folklore number.
+
+87
+00:05:13,642 --> 00:05:17,809
+Too small, and a real value is cut off or refused.
+
+88
+00:05:17,809 --> 00:05:23,476
+Too large, and you waste space and sometimes memory for sorts, depending on the engine.
+
+89
+00:05:23,476 --> 00:05:30,295
+TEXT is for strings whose length you cannot honestly cap: descriptions, bodies, comments.
+
+90
+00:05:30,295 --> 00:05:34,101
+Some engines treat long VARCHAR and TEXT similarly.
+
+91
+00:05:34,101 --> 00:05:38,031
+Some do not index TEXT the same way they index VARCHAR.
+
+92
+00:05:38,031 --> 00:05:41,892
+Know your engine before you put a TEXT column in a WHERE equals.
+
+93
+00:05:41,892 --> 00:05:44,017
+Empty string is not NULL.
+
+94
+00:05:44,017 --> 00:05:47,059
+NULL means unknown or not applicable.
+
+95
+00:05:47,059 --> 00:05:49,448
+Empty means present and blank.
+
+96
+00:05:49,448 --> 00:05:56,767
+Decide which one a missing middle name is, and put that decision in the column, not in five application layers.
+
+97
+00:05:56,767 --> 00:06:01,962
+Collation decides whether a and A are equal, and where ß sorts.
+
+98
+00:06:01,962 --> 00:06:08,656
+A unique email with a case-insensitive collation treats Maya@ and maya@ as a collision.
+
+99
+00:06:08,656 --> 00:06:10,212
+That might be what you want.
+
+100
+00:06:10,212 --> 00:06:11,198
+Say so.
+
+101
+00:06:11,198 --> 00:06:14,517
+Unicode is not optional if people type names.
+
+102
+00:06:14,517 --> 00:06:23,267
+Use the character set that can hold the letters you will actually receive, including accented letters and emoji if your product allows them.
+
+103
+00:06:23,267 --> 00:06:26,045
+Codes, names, documents.
+
+104
+00:06:26,045 --> 00:06:28,087
+CHAR for codes of known width.
+
+105
+00:06:28,087 --> 00:06:31,059
+VARCHAR for names and labels with a max.
+
+106
+00:06:31,059 --> 00:06:32,698
+TEXT for documents.
+
+107
+00:06:32,698 --> 00:06:36,226
+If you only remember one surprise, remember padding.
+
+108
+00:06:36,226 --> 00:06:39,628
+If you remember two, remember empty versus NULL.
+
+109
+00:06:39,628 --> 00:06:42,531
+If you remember three, remember collation.
+
+110
+00:06:42,531 --> 00:06:49,281
+Test equality with the strings you actually receive, then ship that test as the type and the collation.
+
+111
+00:06:49,281 --> 00:06:52,920
+Close with questions, the way a careful lecture does.
+
+112
+00:06:52,920 --> 00:06:55,976
+Answer in a sentence you could defend at a keyboard.
+
+113
+00:06:55,976 --> 00:06:56,989
+CHAR for?
+
+114
+00:06:56,989 --> 00:06:58,489
+Fixed width codes.
+
+115
+00:06:58,489 --> 00:06:59,656
+VARCHAR for?
+
+116
+00:06:59,656 --> 00:07:02,351
+Variable labels with a measured max.
+
+117
+00:07:02,351 --> 00:07:03,378
+TEXT for?
+
+118
+00:07:03,378 --> 00:07:05,559
+Bodies you cannot honestly cap.
+
+119
+00:07:05,559 --> 00:07:06,920
+Padding surprise?
+
+120
+00:07:06,920 --> 00:07:09,823
+CHAR names equal only with spaces.
+
+121
+00:07:09,823 --> 00:07:11,351
+Empty versus NULL?
+
+122
+00:07:11,351 --> 00:07:13,670
+Blank present versus unknown.
+
+123
+00:07:13,670 --> 00:07:14,614
+Collation?
+
+124
+00:07:14,614 --> 00:07:18,017
+Whether a and A collide, and how they sort.
+
+125
+00:07:18,017 --> 00:07:20,226
+VARCHAR 255?
+
+126
+00:07:20,226 --> 00:07:22,253
+A habit, not a measurement.
+
+127
+00:07:22,253 --> 00:07:23,239
+Unicode?
+
+128
+00:07:23,239 --> 00:07:25,531
+Required if people type names.
+
+129
+00:07:25,531 --> 00:07:30,253
+If an answer needed a second table, go draw it before you write more SQL.
+

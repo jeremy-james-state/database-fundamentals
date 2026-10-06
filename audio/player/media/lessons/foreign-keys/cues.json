@@ -1,0 +1,1761 @@
+{
+  "title": "Foreign keys",
+  "subtitle": "A column that points at another table",
+  "audio": "narration.mp3",
+  "duration": 624.144,
+  "slides": [],
+  "scenes": [
+    {
+      "id": "two-tables",
+      "label": "Tables",
+      "kind": "schema",
+      "title": "Customer and orders",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "name"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id",
+            "total"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 0,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 1,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 0,
+      "toLyric": 13
+    },
+    {
+      "id": "direction",
+      "label": "Child",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "customer",
+        "city",
+        "total"
+      ],
+      "rows": [
+        [
+          "101",
+          "Maya",
+          "Austin",
+          "42.00"
+        ],
+        [
+          "102",
+          "Jordan",
+          "Austin",
+          "18.50"
+        ],
+        [
+          "103",
+          "Sofia",
+          "Denver",
+          "61.00"
+        ],
+        [
+          "104",
+          "Maya",
+          "Austin",
+          "9.25"
+        ]
+      ],
+      "fromLyric": 13,
+      "toLyric": 16,
+      "steps": [
+        {
+          "lyricMin": 13,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "child",
+      "label": "Child",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "customer",
+        "city",
+        "total"
+      ],
+      "rows": [
+        [
+          "101",
+          "Maya",
+          "Austin",
+          "42.00"
+        ],
+        [
+          "102",
+          "Jordan",
+          "Austin",
+          "18.50"
+        ],
+        [
+          "103",
+          "Sofia",
+          "Denver",
+          "61.00"
+        ],
+        [
+          "104",
+          "Maya",
+          "Austin",
+          "9.25"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 16,
+          "actions": [
+            "enter",
+            "show-header"
+          ]
+        },
+        {
+          "lyricMin": 18,
+          "actions": [
+            "reveal-rows"
+          ]
+        }
+      ],
+      "fromLyric": 16,
+      "toLyric": 19
+    },
+    {
+      "id": "two-tables-2",
+      "label": "Tables",
+      "kind": "schema",
+      "title": "Customer and orders",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "name"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id",
+            "total"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 19,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 20,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 19,
+      "toLyric": 25
+    },
+    {
+      "id": "child-2",
+      "label": "Child",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "customer",
+        "city",
+        "total"
+      ],
+      "rows": [
+        [
+          "101",
+          "Maya",
+          "Austin",
+          "42.00"
+        ],
+        [
+          "102",
+          "Jordan",
+          "Austin",
+          "18.50"
+        ],
+        [
+          "103",
+          "Sofia",
+          "Denver",
+          "61.00"
+        ],
+        [
+          "104",
+          "Maya",
+          "Austin",
+          "9.25"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 25,
+          "actions": [
+            "enter",
+            "show-header"
+          ]
+        },
+        {
+          "lyricMin": 26,
+          "actions": [
+            "reveal-rows"
+          ]
+        }
+      ],
+      "fromLyric": 25,
+      "toLyric": 27
+    },
+    {
+      "id": "rule",
+      "label": "Child",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "customer",
+        "city",
+        "total"
+      ],
+      "rows": [
+        [
+          "101",
+          "Maya",
+          "Austin",
+          "42.00"
+        ],
+        [
+          "102",
+          "Jordan",
+          "Austin",
+          "18.50"
+        ],
+        [
+          "103",
+          "Sofia",
+          "Denver",
+          "61.00"
+        ],
+        [
+          "104",
+          "Maya",
+          "Austin",
+          "9.25"
+        ]
+      ],
+      "fromLyric": 27,
+      "toLyric": 33,
+      "steps": [
+        {
+          "lyricMin": 27,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "two-tables-3",
+      "label": "Tables",
+      "kind": "schema",
+      "title": "Customer and orders",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "name"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id",
+            "total"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 33,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 34,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 33,
+      "toLyric": 104
+    },
+    {
+      "id": "rule-2",
+      "label": "Child",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "customer",
+        "city",
+        "total"
+      ],
+      "rows": [
+        [
+          "101",
+          "Maya",
+          "Austin",
+          "42.00"
+        ],
+        [
+          "102",
+          "Jordan",
+          "Austin",
+          "18.50"
+        ],
+        [
+          "103",
+          "Sofia",
+          "Denver",
+          "61.00"
+        ],
+        [
+          "104",
+          "Maya",
+          "Austin",
+          "9.25"
+        ]
+      ],
+      "fromLyric": 104,
+      "toLyric": 108,
+      "steps": [
+        {
+          "lyricMin": 104,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "two-tables-4",
+      "label": "Tables",
+      "kind": "schema",
+      "title": "Customer and orders",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "name"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id",
+            "total"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 108,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 109,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 108,
+      "toLyric": 111
+    },
+    {
+      "id": "rule-3",
+      "label": "Child",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "customer",
+        "city",
+        "total"
+      ],
+      "rows": [
+        [
+          "101",
+          "Maya",
+          "Austin",
+          "42.00"
+        ],
+        [
+          "102",
+          "Jordan",
+          "Austin",
+          "18.50"
+        ],
+        [
+          "103",
+          "Sofia",
+          "Denver",
+          "61.00"
+        ],
+        [
+          "104",
+          "Maya",
+          "Austin",
+          "9.25"
+        ]
+      ],
+      "fromLyric": 111,
+      "toLyric": 118,
+      "steps": [
+        {
+          "lyricMin": 111,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "two-tables-5",
+      "label": "Tables",
+      "kind": "schema",
+      "title": "Customer and orders",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "name"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id",
+            "total"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 118,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 119,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 118,
+      "toLyric": 151
+    },
+    {
+      "id": "rule-4",
+      "label": "Child",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "customer",
+        "city",
+        "total"
+      ],
+      "rows": [
+        [
+          "101",
+          "Maya",
+          "Austin",
+          "42.00"
+        ],
+        [
+          "102",
+          "Jordan",
+          "Austin",
+          "18.50"
+        ],
+        [
+          "103",
+          "Sofia",
+          "Denver",
+          "61.00"
+        ],
+        [
+          "104",
+          "Maya",
+          "Austin",
+          "9.25"
+        ]
+      ],
+      "fromLyric": 151,
+      "toLyric": 170,
+      "steps": [
+        {
+          "lyricMin": 151,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "two-tables-6",
+      "label": "Tables",
+      "kind": "schema",
+      "title": "Customer and orders",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "name"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id",
+            "total"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 170,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 171,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 170,
+      "toLyric": 184
+    }
+  ],
+  "lyrics": [
+    {
+      "start": 0.05,
+      "end": 5.194,
+      "text": "A foreign key is a column that says: this value already exists over there.",
+      "slide": ""
+    },
+    {
+      "start": 5.194,
+      "end": 9.25,
+      "text": "orders.customer_id is not a random number.",
+      "slide": ""
+    },
+    {
+      "start": 9.25,
+      "end": 13.125,
+      "text": "It is a promise that customers has that customer_id.",
+      "slide": ""
+    },
+    {
+      "start": 13.125,
+      "end": 17.472,
+      "text": "Without the promise, you can insert an order for customer ninety-nine.",
+      "slide": ""
+    },
+    {
+      "start": 17.472,
+      "end": 20.847,
+      "text": "Nobody named ninety-nine lives in customers.",
+      "slide": ""
+    },
+    {
+      "start": 20.847,
+      "end": 22.375,
+      "text": "The order is an orphan.",
+      "slide": ""
+    },
+    {
+      "start": 22.375,
+      "end": 27.055,
+      "text": "Reports that join the two tables will drop it, or invent a blank name.",
+      "slide": ""
+    },
+    {
+      "start": 27.055,
+      "end": 30.0,
+      "text": "The foreign key stops the orphan at the door.",
+      "slide": ""
+    },
+    {
+      "start": 30.0,
+      "end": 31.472,
+      "text": "Draw two boxes.",
+      "slide": ""
+    },
+    {
+      "start": 31.472,
+      "end": 34.013,
+      "text": "customers holds one row per person.",
+      "slide": ""
+    },
+    {
+      "start": 34.013,
+      "end": 36.5,
+      "text": "orders holds one row per purchase.",
+      "slide": ""
+    },
+    {
+      "start": 36.5,
+      "end": 38.444,
+      "text": "The arrow starts on orders.",
+      "slide": ""
+    },
+    {
+      "start": 38.444,
+      "end": 42.0,
+      "text": "It lands on customers.customer_id.",
+      "slide": ""
+    },
+    {
+      "start": 42.0,
+      "end": 44.861,
+      "text": "The many side holds the copy of the key.",
+      "slide": ""
+    },
+    {
+      "start": 44.861,
+      "end": 47.138,
+      "text": "The one side holds the original.",
+      "slide": ""
+    },
+    {
+      "start": 47.138,
+      "end": 50.25,
+      "text": "That direction is easy to get backwards.",
+      "slide": ""
+    },
+    {
+      "start": 50.25,
+      "end": 53.666,
+      "text": "You do not put order_id on customers.",
+      "slide": ""
+    },
+    {
+      "start": 53.666,
+      "end": 57.013,
+      "text": "One customer would then have room for only one order.",
+      "slide": ""
+    },
+    {
+      "start": 57.013,
+      "end": 62.652,
+      "text": "You put customer_id on orders, as many times as that person buys.",
+      "slide": ""
+    },
+    {
+      "start": 62.652,
+      "end": 66.625,
+      "text": "The parent table is the one whose primary key is copied.",
+      "slide": ""
+    },
+    {
+      "start": 66.625,
+      "end": 69.625,
+      "text": "The child table is the one that stores the copy.",
+      "slide": ""
+    },
+    {
+      "start": 69.625,
+      "end": 74.625,
+      "text": "Declare the foreign key when you create the child, or add it later with ALTER.",
+      "slide": ""
+    },
+    {
+      "start": 74.625,
+      "end": 78.847,
+      "text": "The engine then checks every INSERT and UPDATE on the child.",
+      "slide": ""
+    },
+    {
+      "start": 78.847,
+      "end": 81.958,
+      "text": "It also checks DELETE and UPDATE on the parent.",
+      "slide": ""
+    },
+    {
+      "start": 81.958,
+      "end": 87.722,
+      "text": "You cannot delete Maya while her orders still point at her \u2014 unless you said so on purpose.",
+      "slide": ""
+    },
+    {
+      "start": 87.722,
+      "end": 90.569,
+      "text": "That next lesson is foreign key actions.",
+      "slide": ""
+    },
+    {
+      "start": 90.569,
+      "end": 95.527,
+      "text": "For now, the default is: refuse the change that would orphan a row.",
+      "slide": ""
+    },
+    {
+      "start": 95.527,
+      "end": 96.958,
+      "text": "Types must match.",
+      "slide": ""
+    },
+    {
+      "start": 96.958,
+      "end": 98.5,
+      "text": "Integer to integer.",
+      "slide": ""
+    },
+    {
+      "start": 98.5,
+      "end": 99.819,
+      "text": "Text to text.",
+      "slide": ""
+    },
+    {
+      "start": 99.819,
+      "end": 104.097,
+      "text": "A value that is allowed to be NULL is a child with no parent yet.",
+      "slide": ""
+    },
+    {
+      "start": 104.097,
+      "end": 106.638,
+      "text": "That is a choice, not an accident.",
+      "slide": ""
+    },
+    {
+      "start": 106.638,
+      "end": 112.916,
+      "text": "If every order must belong to someone, mark customer_id NOT NULL as well.",
+      "slide": ""
+    },
+    {
+      "start": 112.916,
+      "end": 116.777,
+      "text": "The foreign key and NOT NULL are two different promises.",
+      "slide": ""
+    },
+    {
+      "start": 116.777,
+      "end": 121.083,
+      "text": "One says: if a value is present, it is a real parent.",
+      "slide": ""
+    },
+    {
+      "start": 121.083,
+      "end": 124.152,
+      "text": "The other says: a value must be present.",
+      "slide": ""
+    },
+    {
+      "start": 124.152,
+      "end": 128.138,
+      "text": "Name the constraint so error messages read like English.",
+      "slide": ""
+    },
+    {
+      "start": 128.138,
+      "end": 133.25,
+      "text": "orders_customer_id_fk tells you which door failed.",
+      "slide": ""
+    },
+    {
+      "start": 133.25,
+      "end": 136.069,
+      "text": "A table may have more than one foreign key.",
+      "slide": ""
+    },
+    {
+      "start": 136.069,
+      "end": 139.333,
+      "text": "An order might point at a customer and at a store.",
+      "slide": ""
+    },
+    {
+      "start": 139.333,
+      "end": 141.18,
+      "text": "Each arrow is its own rule.",
+      "slide": ""
+    },
+    {
+      "start": 141.18,
+      "end": 145.347,
+      "text": "Do not store the customer's name on the order just to avoid the key.",
+      "slide": ""
+    },
+    {
+      "start": 145.347,
+      "end": 147.069,
+      "text": "That copy will drift.",
+      "slide": ""
+    },
+    {
+      "start": 147.069,
+      "end": 149.569,
+      "text": "Let the key find the name when you join.",
+      "slide": ""
+    },
+    {
+      "start": 149.569,
+      "end": 153.833,
+      "text": "If you cannot name the parent table, you do not have a foreign key yet.",
+      "slide": ""
+    },
+    {
+      "start": 153.833,
+      "end": 155.611,
+      "text": "You have a lonely integer.",
+      "slide": ""
+    },
+    {
+      "start": 155.611,
+      "end": 159.416,
+      "text": "Draw the boxes and the arrow before you write the constraint.",
+      "slide": ""
+    },
+    {
+      "start": 159.416,
+      "end": 162.069,
+      "text": "The arrow always starts on the many side.",
+      "slide": ""
+    },
+    {
+      "start": 162.069,
+      "end": 165.097,
+      "text": "Then the two tables stay related on purpose.",
+      "slide": ""
+    },
+    {
+      "start": 165.097,
+      "end": 168.708,
+      "text": "Enable foreign keys in SQLite explicitly.",
+      "slide": ""
+    },
+    {
+      "start": 168.708,
+      "end": 171.708,
+      "text": "PRAGMA foreign_keys equals ON.",
+      "slide": ""
+    },
+    {
+      "start": 171.708,
+      "end": 174.222,
+      "text": "Otherwise the constraint is jewelry.",
+      "slide": ""
+    },
+    {
+      "start": 174.222,
+      "end": 183.486,
+      "text": "PostgreSQL and MySQL enforce them when the engine is asked to, with engine-specific caveats on MySQL's older types.",
+      "slide": ""
+    },
+    {
+      "start": 183.486,
+      "end": 185.041,
+      "text": "Know whether yours is on.",
+      "slide": ""
+    },
+    {
+      "start": 185.041,
+      "end": 188.527,
+      "text": "A composite foreign key copies more than one column.",
+      "slide": ""
+    },
+    {
+      "start": 188.527,
+      "end": 192.541,
+      "text": "Both columns together must match a unique pair on the parent.",
+      "slide": ""
+    },
+    {
+      "start": 192.541,
+      "end": 194.958,
+      "text": "Partial copies are not a foreign key.",
+      "slide": ""
+    },
+    {
+      "start": 194.958,
+      "end": 196.972,
+      "text": "Self-references are allowed.",
+      "slide": ""
+    },
+    {
+      "start": 196.972,
+      "end": 202.208,
+      "text": "employee.manager_id points at employee.employee_id.",
+      "slide": ""
+    },
+    {
+      "start": 202.208,
+      "end": 206.68,
+      "text": "The top manager is NULL, or points at themselves, by policy.",
+      "slide": ""
+    },
+    {
+      "start": 206.68,
+      "end": 209.263,
+      "text": "Cycles in deletes then need a plan.",
+      "slide": ""
+    },
+    {
+      "start": 209.263,
+      "end": 214.291,
+      "text": "Deferring a check until the end of a transaction is a PostgreSQL tool.",
+      "slide": ""
+    },
+    {
+      "start": 214.291,
+      "end": 219.402,
+      "text": "It lets you insert parent and child in an awkward order inside one BEGIN.",
+      "slide": ""
+    },
+    {
+      "start": 219.402,
+      "end": 221.111,
+      "text": "Do not need it on day one.",
+      "slide": ""
+    },
+    {
+      "start": 221.111,
+      "end": 224.083,
+      "text": "Know it exists when a loader fails in the middle.",
+      "slide": ""
+    },
+    {
+      "start": 224.083,
+      "end": 228.194,
+      "text": "Orphan rows that already exist will block adding the constraint.",
+      "slide": ""
+    },
+    {
+      "start": 228.194,
+      "end": 232.208,
+      "text": "Clean them, or map them to a real parent, then ALTER.",
+      "slide": ""
+    },
+    {
+      "start": 232.208,
+      "end": 233.791,
+      "text": "The error is a gift.",
+      "slide": ""
+    },
+    {
+      "start": 233.791,
+      "end": 235.722,
+      "text": "It named the lie in the data.",
+      "slide": ""
+    },
+    {
+      "start": 235.722,
+      "end": 240.027,
+      "text": "Indexes on the child column make the check and the join cheaper.",
+      "slide": ""
+    },
+    {
+      "start": 240.027,
+      "end": 242.333,
+      "text": "Add them when the table is not tiny.",
+      "slide": ""
+    },
+    {
+      "start": 242.333,
+      "end": 245.944,
+      "text": "A foreign key is documentation the engine reads.",
+      "slide": ""
+    },
+    {
+      "start": 245.944,
+      "end": 249.375,
+      "text": "Comments in SQL are documentation it does not.",
+      "slide": ""
+    },
+    {
+      "start": 249.375,
+      "end": 252.069,
+      "text": "Prefer the one that refuses a bad row.",
+      "slide": ""
+    },
+    {
+      "start": 252.069,
+      "end": 256.611,
+      "text": "When two teams share a database, the constraint is the contract.",
+      "slide": ""
+    },
+    {
+      "start": 256.611,
+      "end": 258.916,
+      "text": "Meetings do not survive a deploy.",
+      "slide": ""
+    },
+    {
+      "start": 258.916,
+      "end": 260.277,
+      "text": "The arrow does.",
+      "slide": ""
+    },
+    {
+      "start": 260.277,
+      "end": 264.125,
+      "text": "Draw it, name it, turn it on, and leave it on.",
+      "slide": ""
+    },
+    {
+      "start": 264.125,
+      "end": 266.611,
+      "text": "Then joins have something true to match.",
+      "slide": ""
+    },
+    {
+      "start": 266.611,
+      "end": 273.25,
+      "text": "Related tables are tables that share a column on purpose, so a row over here can point at a row over there.",
+      "slide": ""
+    },
+    {
+      "start": 273.25,
+      "end": 276.625,
+      "text": "The shared column is not a coincidence of names.",
+      "slide": ""
+    },
+    {
+      "start": 276.625,
+      "end": 280.236,
+      "text": "It is a meaning: this review is about that product.",
+      "slide": ""
+    },
+    {
+      "start": 280.346,
+      "end": 284.129,
+      "text": "In the parent table, that column is the primary key.",
+      "slide": ""
+    },
+    {
+      "start": 284.129,
+      "end": 287.559,
+      "text": "In the child table, the copy is the foreign key.",
+      "slide": ""
+    },
+    {
+      "start": 287.559,
+      "end": 290.032,
+      "text": "products holds one row per product.",
+      "slide": ""
+    },
+    {
+      "start": 290.032,
+      "end": 292.559,
+      "text": "reviews holds one row per review.",
+      "slide": ""
+    },
+    {
+      "start": 292.559,
+      "end": 297.532,
+      "text": "reviews.product_id stores which product the review is about.",
+      "slide": ""
+    },
+    {
+      "start": 297.532,
+      "end": 303.254,
+      "text": "When both rows show product_id three, the review belongs to that product.",
+      "slide": ""
+    },
+    {
+      "start": 303.254,
+      "end": 311.323,
+      "text": "That is the whole trick of related tables: the same identifier in two places, with one place owning the original.",
+      "slide": ""
+    },
+    {
+      "start": 311.323,
+      "end": 315.712,
+      "text": "You do not store the product name on every review to save a lookup.",
+      "slide": ""
+    },
+    {
+      "start": 315.712,
+      "end": 319.573,
+      "text": "The name would drift the first time marketing renamed the product.",
+      "slide": ""
+    },
+    {
+      "start": 319.573,
+      "end": 323.073,
+      "text": "You store the key, and you look the name up when you need it.",
+      "slide": ""
+    },
+    {
+      "start": 323.073,
+      "end": 325.657,
+      "text": "The many side holds the foreign key.",
+      "slide": ""
+    },
+    {
+      "start": 325.657,
+      "end": 328.365,
+      "text": "The one side holds the primary key.",
+      "slide": ""
+    },
+    {
+      "start": 328.365,
+      "end": 334.282,
+      "text": "If you put review_id on products, a product could remember only one review.",
+      "slide": ""
+    },
+    {
+      "start": 334.282,
+      "end": 339.573,
+      "text": "That is the backwards arrow, and it shows up as soon as a second review arrives.",
+      "slide": ""
+    },
+    {
+      "start": 339.573,
+      "end": 344.49,
+      "text": "Declare the foreign key in CREATE TABLE, or add it later with ALTER.",
+      "slide": ""
+    },
+    {
+      "start": 344.49,
+      "end": 351.323,
+      "text": "Name the constraint so the error reads like English: reviews_product_id_fk.",
+      "slide": ""
+    },
+    {
+      "start": 351.323,
+      "end": 354.948,
+      "text": "The engine then checks INSERT and UPDATE on the child.",
+      "slide": ""
+    },
+    {
+      "start": 354.948,
+      "end": 360.393,
+      "text": "You cannot insert a review for product ninety-nine if products has no ninety-nine.",
+      "slide": ""
+    },
+    {
+      "start": 360.393,
+      "end": 363.921,
+      "text": "That refused insert is an orphan you did not create.",
+      "slide": ""
+    },
+    {
+      "start": 363.921,
+      "end": 367.671,
+      "text": "The engine also checks DELETE and UPDATE on the parent.",
+      "slide": ""
+    },
+    {
+      "start": 367.671,
+      "end": 374.421,
+      "text": "You cannot delete a product while reviews still point at it, unless you declared an action that says otherwise.",
+      "slide": ""
+    },
+    {
+      "start": 374.421,
+      "end": 378.99,
+      "text": "The default is: refuse the change that would leave a dangling pointer.",
+      "slide": ""
+    },
+    {
+      "start": 378.99,
+      "end": 383.671,
+      "text": "Types must match: integer to integer, text to text.",
+      "slide": ""
+    },
+    {
+      "start": 383.671,
+      "end": 387.087,
+      "text": "A NULL foreign key is a child with no parent yet.",
+      "slide": ""
+    },
+    {
+      "start": 387.087,
+      "end": 390.393,
+      "text": "That is allowed only if you did not also say NOT NULL.",
+      "slide": ""
+    },
+    {
+      "start": 390.393,
+      "end": 396.532,
+      "text": "Two promises: if a value is present it is a real parent, and a value must be present.",
+      "slide": ""
+    },
+    {
+      "start": 396.532,
+      "end": 399.504,
+      "text": "A table may hold more than one foreign key.",
+      "slide": ""
+    },
+    {
+      "start": 399.504,
+      "end": 403.004,
+      "text": "A review may point at a product and at a user.",
+      "slide": ""
+    },
+    {
+      "start": 403.004,
+      "end": 405.809,
+      "text": "Each arrow is its own named constraint.",
+      "slide": ""
+    },
+    {
+      "start": 405.809,
+      "end": 408.629,
+      "text": "Insert parents first, then children.",
+      "slide": ""
+    },
+    {
+      "start": 408.629,
+      "end": 414.643,
+      "text": "Delete children first, then parents \u2014 unless an ON DELETE action does that work for you.",
+      "slide": ""
+    },
+    {
+      "start": 414.643,
+      "end": 418.754,
+      "text": "In SQLite, foreign keys are off until you turn them on.",
+      "slide": ""
+    },
+    {
+      "start": 418.754,
+      "end": 421.754,
+      "text": "PRAGMA foreign_keys equals ON.",
+      "slide": ""
+    },
+    {
+      "start": 421.754,
+      "end": 424.365,
+      "text": "Without it, the constraint is jewelry.",
+      "slide": ""
+    },
+    {
+      "start": 424.365,
+      "end": 431.032,
+      "text": "A composite foreign key copies more than one column, and the parent must have a matching composite key.",
+      "slide": ""
+    },
+    {
+      "start": 431.032,
+      "end": 434.129,
+      "text": "Do not invent a shared column that is not a key.",
+      "slide": ""
+    },
+    {
+      "start": 434.129,
+      "end": 437.809,
+      "text": "A city name in two tables is not a relationship.",
+      "slide": ""
+    },
+    {
+      "start": 437.809,
+      "end": 440.907,
+      "text": "It is a duplicated fact waiting to disagree.",
+      "slide": ""
+    },
+    {
+      "start": 440.907,
+      "end": 445.004,
+      "text": "If you cannot name the parent table, you do not have a foreign key.",
+      "slide": ""
+    },
+    {
+      "start": 445.004,
+      "end": 446.782,
+      "text": "You have a lonely integer.",
+      "slide": ""
+    },
+    {
+      "start": 446.782,
+      "end": 450.476,
+      "text": "Give it a parent, or stop pretending the tables are related.",
+      "slide": ""
+    },
+    {
+      "start": 450.476,
+      "end": 456.212,
+      "text": "Related tables formally: tables connected by one or more common key columns.",
+      "slide": ""
+    },
+    {
+      "start": 456.212,
+      "end": 458.698,
+      "text": "Not common names, key columns.",
+      "slide": ""
+    },
+    {
+      "start": 458.698,
+      "end": 463.768,
+      "text": "Product_id is a key on products and a foreign key on reviews.",
+      "slide": ""
+    },
+    {
+      "start": 463.768,
+      "end": 468.226,
+      "text": "Manufacturer as text on two tables is not relatedness.",
+      "slide": ""
+    },
+    {
+      "start": 468.226,
+      "end": 472.059,
+      "text": "Manage data in related tables by respecting the parent.",
+      "slide": ""
+    },
+    {
+      "start": 472.059,
+      "end": 481.254,
+      "text": "You cannot load reviews.csv first if products is empty, unless you defer constraints, which you should not do as a beginner habit.",
+      "slide": ""
+    },
+    {
+      "start": 481.254,
+      "end": 483.532,
+      "text": "Load parents, then children.",
+      "slide": ""
+    },
+    {
+      "start": 483.532,
+      "end": 490.504,
+      "text": "Or load into staging tables without foreign keys, clean orphans, then INSERT into the real child.",
+      "slide": ""
+    },
+    {
+      "start": 490.504,
+      "end": 497.101,
+      "text": "That staging pattern is still the same idea: the parent must exist before the pointer is honest.",
+      "slide": ""
+    },
+    {
+      "start": 497.101,
+      "end": 503.018,
+      "text": "When two tables share a column that is not a key, fix the design before you write the join.",
+      "slide": ""
+    },
+    {
+      "start": 503.018,
+      "end": 504.323,
+      "text": "The join will run.",
+      "slide": ""
+    },
+    {
+      "start": 504.323,
+      "end": 505.726,
+      "text": "The meaning will not.",
+      "slide": ""
+    },
+    {
+      "start": 505.726,
+      "end": 509.365,
+      "text": "Close with questions, the way a careful lecture does.",
+      "slide": ""
+    },
+    {
+      "start": 509.365,
+      "end": 512.421,
+      "text": "Answer in a sentence you could defend at a keyboard.",
+      "slide": ""
+    },
+    {
+      "start": 512.421,
+      "end": 514.504,
+      "text": "What makes two tables related?",
+      "slide": ""
+    },
+    {
+      "start": 514.504,
+      "end": 519.712,
+      "text": "A key column copied on purpose, parent as primary, child as foreign.",
+      "slide": ""
+    },
+    {
+      "start": 519.712,
+      "end": 521.573,
+      "text": "Where does the foreign key live?",
+      "slide": ""
+    },
+    {
+      "start": 521.573,
+      "end": 523.796,
+      "text": "On the many side, the child.",
+      "slide": ""
+    },
+    {
+      "start": 523.796,
+      "end": 527.323,
+      "text": "What happens if you insert a child with a fake parent id?",
+      "slide": ""
+    },
+    {
+      "start": 527.323,
+      "end": 530.476,
+      "text": "The engine refuses, if the constraint is on.",
+      "slide": ""
+    },
+    {
+      "start": 530.476,
+      "end": 534.365,
+      "text": "What happens if you delete a parent with children and no action?",
+      "slide": ""
+    },
+    {
+      "start": 534.365,
+      "end": 536.615,
+      "text": "The engine refuses the delete.",
+      "slide": ""
+    },
+    {
+      "start": 536.615,
+      "end": 539.24,
+      "text": "Is a shared city name a relationship?",
+      "slide": ""
+    },
+    {
+      "start": 539.24,
+      "end": 540.004,
+      "text": "No.",
+      "slide": ""
+    },
+    {
+      "start": 540.004,
+      "end": 541.976,
+      "text": "It is a duplicated fact.",
+      "slide": ""
+    },
+    {
+      "start": 541.976,
+      "end": 544.434,
+      "text": "Can one child have two foreign keys?",
+      "slide": ""
+    },
+    {
+      "start": 544.434,
+      "end": 545.337,
+      "text": "Yes.",
+      "slide": ""
+    },
+    {
+      "start": 545.337,
+      "end": 548.434,
+      "text": "A review can point at a product and a user.",
+      "slide": ""
+    },
+    {
+      "start": 548.434,
+      "end": 549.823,
+      "text": "Must types match?",
+      "slide": ""
+    },
+    {
+      "start": 549.823,
+      "end": 550.726,
+      "text": "Yes.",
+      "slide": ""
+    },
+    {
+      "start": 550.726,
+      "end": 553.559,
+      "text": "Integer to integer, text to text.",
+      "slide": ""
+    },
+    {
+      "start": 553.559,
+      "end": 555.657,
+      "text": "What does a NULL foreign key mean?",
+      "slide": ""
+    },
+    {
+      "start": 555.657,
+      "end": 560.421,
+      "text": "A child with no parent yet, only legal if NOT NULL is absent.",
+      "slide": ""
+    },
+    {
+      "start": 560.546,
+      "end": 562.426,
+      "text": "Which insert order is safe?",
+      "slide": ""
+    },
+    {
+      "start": 562.426,
+      "end": 564.732,
+      "text": "Parents first, then children.",
+      "slide": ""
+    },
+    {
+      "start": 564.732,
+      "end": 568.065,
+      "text": "Which delete order is safe under the default action?",
+      "slide": ""
+    },
+    {
+      "start": 568.065,
+      "end": 570.537,
+      "text": "Children first, then parents.",
+      "slide": ""
+    },
+    {
+      "start": 570.537,
+      "end": 572.093,
+      "text": "Why name the constraint?",
+      "slide": ""
+    },
+    {
+      "start": 572.093,
+      "end": 574.579,
+      "text": "So the error names the door that failed.",
+      "slide": ""
+    },
+    {
+      "start": 574.579,
+      "end": 578.121,
+      "text": "Does SQLite enforce foreign keys by default?",
+      "slide": ""
+    },
+    {
+      "start": 578.121,
+      "end": 578.884,
+      "text": "No.",
+      "slide": ""
+    },
+    {
+      "start": 578.884,
+      "end": 579.912,
+      "text": "Turn them on.",
+      "slide": ""
+    },
+    {
+      "start": 579.912,
+      "end": 583.148,
+      "text": "Is product name on the review a substitute for a key?",
+      "slide": ""
+    },
+    {
+      "start": 583.148,
+      "end": 583.912,
+      "text": "No.",
+      "slide": ""
+    },
+    {
+      "start": 583.912,
+      "end": 585.412,
+      "text": "The name will drift.",
+      "slide": ""
+    },
+    {
+      "start": 585.412,
+      "end": 586.621,
+      "text": "What is an orphan?",
+      "slide": ""
+    },
+    {
+      "start": 586.621,
+      "end": 588.968,
+      "text": "A child pointer with no parent row.",
+      "slide": ""
+    },
+    {
+      "start": 588.968,
+      "end": 590.496,
+      "text": "What is the parent table?",
+      "slide": ""
+    },
+    {
+      "start": 590.496,
+      "end": 593.44,
+      "text": "The table whose primary key is copied.",
+      "slide": ""
+    },
+    {
+      "start": 593.44,
+      "end": 595.259,
+      "text": "When do you add the foreign key?",
+      "slide": ""
+    },
+    {
+      "start": 595.259,
+      "end": 598.44,
+      "text": "At CREATE of the child, or later with ALTER.",
+      "slide": ""
+    },
+    {
+      "start": 598.44,
+      "end": 600.634,
+      "text": "Can a foreign key be composite?",
+      "slide": ""
+    },
+    {
+      "start": 600.634,
+      "end": 603.926,
+      "text": "Yes, if the parent key is composite too.",
+      "slide": ""
+    },
+    {
+      "start": 603.926,
+      "end": 606.634,
+      "text": "Should application code be the only check?",
+      "slide": ""
+    },
+    {
+      "start": 606.634,
+      "end": 607.398,
+      "text": "No.",
+      "slide": ""
+    },
+    {
+      "start": 607.398,
+      "end": 609.621,
+      "text": "A second writer will skip your code.",
+      "slide": ""
+    },
+    {
+      "start": 609.621,
+      "end": 611.926,
+      "text": "What is the default action in words?",
+      "slide": ""
+    },
+    {
+      "start": 611.926,
+      "end": 614.551,
+      "text": "Refuse the change that would orphan a row.",
+      "slide": ""
+    },
+    {
+      "start": 614.551,
+      "end": 615.843,
+      "text": "How do you verify?",
+      "slide": ""
+    },
+    {
+      "start": 615.843,
+      "end": 619.357,
+      "text": "Insert a fake parent id and watch the refusal.",
+      "slide": ""
+    },
+    {
+      "start": 619.357,
+      "end": 624.079,
+      "text": "If an answer needed a second table, go draw it before you write more SQL.",
+      "slide": ""
+    }
+  ]
+}

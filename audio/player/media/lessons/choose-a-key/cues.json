@@ -1,0 +1,1377 @@
+{
+  "title": "Choose a key",
+  "subtitle": "Super key, candidate key, primary key",
+  "audio": "narration.mp3",
+  "duration": 566.448,
+  "slides": [],
+  "scenes": [
+    {
+      "id": "kinds",
+      "label": "Candidates",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "email",
+        "name"
+      ],
+      "rows": [
+        [
+          "1",
+          "maya@shop.test",
+          "Maya"
+        ],
+        [
+          "2",
+          "jordan@shop.test",
+          "Jordan"
+        ]
+      ],
+      "fromLyric": 0,
+      "toLyric": 8,
+      "steps": [
+        {
+          "lyricMin": 0,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pk",
+      "label": "PRIMARY KEY",
+      "kind": "sql",
+      "title": "Dull and stable",
+      "prompt": "customer_id",
+      "sql": [
+        "CREATE TABLE customers (",
+        "  customer_id INTEGER PRIMARY KEY,",
+        "  email TEXT NOT NULL UNIQUE,",
+        "  name TEXT NOT NULL",
+        ");"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 8,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 8,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 8,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 8,
+      "toLyric": 9
+    },
+    {
+      "id": "kinds-2",
+      "label": "Candidates",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "email",
+        "name"
+      ],
+      "rows": [
+        [
+          "1",
+          "maya@shop.test",
+          "Maya"
+        ],
+        [
+          "2",
+          "jordan@shop.test",
+          "Jordan"
+        ]
+      ],
+      "fromLyric": 9,
+      "toLyric": 11,
+      "steps": [
+        {
+          "lyricMin": 9,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "natural",
+      "label": "Candidates",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "email",
+        "name"
+      ],
+      "rows": [
+        [
+          "1",
+          "maya@shop.test",
+          "Maya"
+        ],
+        [
+          "2",
+          "jordan@shop.test",
+          "Jordan"
+        ]
+      ],
+      "fromLyric": 11,
+      "toLyric": 64,
+      "steps": [
+        {
+          "lyricMin": 11,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "candidates",
+      "label": "Candidates",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "email",
+        "name"
+      ],
+      "rows": [
+        [
+          "1",
+          "maya@shop.test",
+          "Maya"
+        ],
+        [
+          "2",
+          "jordan@shop.test",
+          "Jordan"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 64,
+          "actions": [
+            "enter",
+            "show-header"
+          ]
+        },
+        {
+          "lyricMin": 64,
+          "actions": [
+            "reveal-rows"
+          ]
+        }
+      ],
+      "fromLyric": 64,
+      "toLyric": 67
+    },
+    {
+      "id": "natural-2",
+      "label": "Candidates",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "email",
+        "name"
+      ],
+      "rows": [
+        [
+          "1",
+          "maya@shop.test",
+          "Maya"
+        ],
+        [
+          "2",
+          "jordan@shop.test",
+          "Jordan"
+        ]
+      ],
+      "fromLyric": 67,
+      "toLyric": 80,
+      "steps": [
+        {
+          "lyricMin": 67,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kinds-3",
+      "label": "Candidates",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "email",
+        "name"
+      ],
+      "rows": [
+        [
+          "1",
+          "maya@shop.test",
+          "Maya"
+        ],
+        [
+          "2",
+          "jordan@shop.test",
+          "Jordan"
+        ]
+      ],
+      "fromLyric": 80,
+      "toLyric": 88,
+      "steps": [
+        {
+          "lyricMin": 80,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "natural-3",
+      "label": "Candidates",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "email",
+        "name"
+      ],
+      "rows": [
+        [
+          "1",
+          "maya@shop.test",
+          "Maya"
+        ],
+        [
+          "2",
+          "jordan@shop.test",
+          "Jordan"
+        ]
+      ],
+      "fromLyric": 88,
+      "toLyric": 93,
+      "steps": [
+        {
+          "lyricMin": 88,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "candidates-2",
+      "label": "Candidates",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "email",
+        "name"
+      ],
+      "rows": [
+        [
+          "1",
+          "maya@shop.test",
+          "Maya"
+        ],
+        [
+          "2",
+          "jordan@shop.test",
+          "Jordan"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 93,
+          "actions": [
+            "enter",
+            "show-header"
+          ]
+        },
+        {
+          "lyricMin": 93,
+          "actions": [
+            "reveal-rows"
+          ]
+        }
+      ],
+      "fromLyric": 93,
+      "toLyric": 101
+    },
+    {
+      "id": "natural-4",
+      "label": "Candidates",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "email",
+        "name"
+      ],
+      "rows": [
+        [
+          "1",
+          "maya@shop.test",
+          "Maya"
+        ],
+        [
+          "2",
+          "jordan@shop.test",
+          "Jordan"
+        ]
+      ],
+      "fromLyric": 101,
+      "toLyric": 111,
+      "steps": [
+        {
+          "lyricMin": 101,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kinds-4",
+      "label": "Candidates",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "email",
+        "name"
+      ],
+      "rows": [
+        [
+          "1",
+          "maya@shop.test",
+          "Maya"
+        ],
+        [
+          "2",
+          "jordan@shop.test",
+          "Jordan"
+        ]
+      ],
+      "fromLyric": 111,
+      "toLyric": 117,
+      "steps": [
+        {
+          "lyricMin": 111,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "natural-5",
+      "label": "Candidates",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "email",
+        "name"
+      ],
+      "rows": [
+        [
+          "1",
+          "maya@shop.test",
+          "Maya"
+        ],
+        [
+          "2",
+          "jordan@shop.test",
+          "Jordan"
+        ]
+      ],
+      "fromLyric": 117,
+      "toLyric": 123,
+      "steps": [
+        {
+          "lyricMin": 117,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kinds-5",
+      "label": "Candidates",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "email",
+        "name"
+      ],
+      "rows": [
+        [
+          "1",
+          "maya@shop.test",
+          "Maya"
+        ],
+        [
+          "2",
+          "jordan@shop.test",
+          "Jordan"
+        ]
+      ],
+      "fromLyric": 123,
+      "toLyric": 150,
+      "steps": [
+        {
+          "lyricMin": 123,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    }
+  ],
+  "lyrics": [
+    {
+      "start": 0.05,
+      "end": 3.93,
+      "text": "A key is how you tell rows apart and how you point at them later.",
+      "slide": ""
+    },
+    {
+      "start": 3.93,
+      "end": 9.305,
+      "text": "Start with a super key: any set of columns that is unique for every row.",
+      "slide": ""
+    },
+    {
+      "start": 9.305,
+      "end": 13.527,
+      "text": "The whole row is a super key if no two rows are identical.",
+      "slide": ""
+    },
+    {
+      "start": 13.527,
+      "end": 15.222,
+      "text": "That is a weak compliment.",
+      "slide": ""
+    },
+    {
+      "start": 15.222,
+      "end": 16.777,
+      "text": "You want a smaller set.",
+      "slide": ""
+    },
+    {
+      "start": 16.777,
+      "end": 23.222,
+      "text": "A candidate key is a super key with no leftover column you could drop and still be unique.",
+      "slide": ""
+    },
+    {
+      "start": 23.222,
+      "end": 27.083,
+      "text": "email might be a candidate if you truly never repeat it.",
+      "slide": ""
+    },
+    {
+      "start": 27.083,
+      "end": 30.361,
+      "text": "customer_id might be another candidate.",
+      "slide": ""
+    },
+    {
+      "start": 30.361,
+      "end": 33.388,
+      "text": "You pick one candidate to be the primary key.",
+      "slide": ""
+    },
+    {
+      "start": 33.388,
+      "end": 35.208,
+      "text": "The others can stay UNIQUE.",
+      "slide": ""
+    },
+    {
+      "start": 35.208,
+      "end": 40.111,
+      "text": "A good primary key is unique, always present, and stable.",
+      "slide": ""
+    },
+    {
+      "start": 40.111,
+      "end": 44.763,
+      "text": "Stable means it does not change because marketing renamed a product code.",
+      "slide": ""
+    },
+    {
+      "start": 44.763,
+      "end": 50.263,
+      "text": "Natural keys come from the world: ISBN, email, government id.",
+      "slide": ""
+    },
+    {
+      "start": 50.263,
+      "end": 54.041,
+      "text": "They are meaningful, and they change when the world changes.",
+      "slide": ""
+    },
+    {
+      "start": 54.041,
+      "end": 58.791,
+      "text": "Surrogate keys are invented: an integer the database assigns.",
+      "slide": ""
+    },
+    {
+      "start": 58.791,
+      "end": 61.222,
+      "text": "They are dull, and that is the point.",
+      "slide": ""
+    },
+    {
+      "start": 61.222,
+      "end": 63.625,
+      "text": "They do not encode the customer's city.",
+      "slide": ""
+    },
+    {
+      "start": 63.625,
+      "end": 66.416,
+      "text": "They do not change when the email changes.",
+      "slide": ""
+    },
+    {
+      "start": 66.416,
+      "end": 70.736,
+      "text": "Prefer a surrogate for the primary key when the natural ones wiggle.",
+      "slide": ""
+    },
+    {
+      "start": 70.736,
+      "end": 74.458,
+      "text": "Still put UNIQUE on the natural candidates you care about.",
+      "slide": ""
+    },
+    {
+      "start": 74.458,
+      "end": 79.833,
+      "text": "ISBN should stay unique even if book_id is the primary key.",
+      "slide": ""
+    },
+    {
+      "start": 79.833,
+      "end": 81.833,
+      "text": "Composite keys are allowed.",
+      "slide": ""
+    },
+    {
+      "start": 81.833,
+      "end": 85.444,
+      "text": "order_id and line_no together.",
+      "slide": ""
+    },
+    {
+      "start": 85.444,
+      "end": 87.625,
+      "text": "They are honest for weak entities.",
+      "slide": ""
+    },
+    {
+      "start": 87.625,
+      "end": 92.013,
+      "text": "They are clumsy as foreign keys in every child of the child.",
+      "slide": ""
+    },
+    {
+      "start": 92.013,
+      "end": 96.277,
+      "text": "Sometimes a surrogate on the line table is worth the extra column.",
+      "slide": ""
+    },
+    {
+      "start": 96.277,
+      "end": 98.944,
+      "text": "Never use a name as a primary key.",
+      "slide": ""
+    },
+    {
+      "start": 98.944,
+      "end": 101.194,
+      "text": "Never use a mutable status.",
+      "slide": ""
+    },
+    {
+      "start": 101.194,
+      "end": 106.125,
+      "text": "Never use something you would be embarrassed to print on an invoice ten years later.",
+      "slide": ""
+    },
+    {
+      "start": 106.125,
+      "end": 108.25,
+      "text": "Write down every candidate.",
+      "slide": ""
+    },
+    {
+      "start": 108.25,
+      "end": 110.333,
+      "text": "Strike the ones that can be null.",
+      "slide": ""
+    },
+    {
+      "start": 110.333,
+      "end": 112.361,
+      "text": "Strike the ones that change.",
+      "slide": ""
+    },
+    {
+      "start": 112.361,
+      "end": 116.125,
+      "text": "Strike the ones that are too wide to copy into children.",
+      "slide": ""
+    },
+    {
+      "start": 116.125,
+      "end": 117.888,
+      "text": "Pick the dullest remaining.",
+      "slide": ""
+    },
+    {
+      "start": 117.888,
+      "end": 122.708,
+      "text": "That dull integer is how orders will find customers for the rest of the sketch.",
+      "slide": ""
+    },
+    {
+      "start": 122.708,
+      "end": 124.958,
+      "text": "UUIDs are surrogates too.",
+      "slide": ""
+    },
+    {
+      "start": 124.958,
+      "end": 128.458,
+      "text": "They spread better across shards, and they are wide.",
+      "slide": ""
+    },
+    {
+      "start": 128.458,
+      "end": 131.222,
+      "text": "Integers are easier to type while you learn.",
+      "slide": ""
+    },
+    {
+      "start": 131.222,
+      "end": 134.652,
+      "text": "Either is dull enough if you do not encode meaning in them.",
+      "slide": ""
+    },
+    {
+      "start": 134.652,
+      "end": 137.013,
+      "text": "Do not put the year into the id.",
+      "slide": ""
+    },
+    {
+      "start": 137.013,
+      "end": 139.694,
+      "text": "Do not put the table name into the id.",
+      "slide": ""
+    },
+    {
+      "start": 139.694,
+      "end": 141.902,
+      "text": "Those facts belong in columns.",
+      "slide": ""
+    },
+    {
+      "start": 141.902,
+      "end": 145.708,
+      "text": "Natural keys that look unique globally often are not.",
+      "slide": ""
+    },
+    {
+      "start": 145.708,
+      "end": 147.18,
+      "text": "Email changes.",
+      "slide": ""
+    },
+    {
+      "start": 147.18,
+      "end": 149.041,
+      "text": "Phone numbers are reused.",
+      "slide": ""
+    },
+    {
+      "start": 149.041,
+      "end": 152.847,
+      "text": "National ids are sensitive and not always present.",
+      "slide": ""
+    },
+    {
+      "start": 152.847,
+      "end": 162.375,
+      "text": "ISBN is one of the better natural keys, and still needs UNIQUE beside a surrogate if you also sell used copies as inventory rows.",
+      "slide": ""
+    },
+    {
+      "start": 162.375,
+      "end": 165.388,
+      "text": "Inventory is a different entity from title.",
+      "slide": ""
+    },
+    {
+      "start": 165.388,
+      "end": 168.347,
+      "text": "The key conversation will catch that if you let it.",
+      "slide": ""
+    },
+    {
+      "start": 168.347,
+      "end": 172.361,
+      "text": "Composite primary keys make ORM tools grumpy.",
+      "slide": ""
+    },
+    {
+      "start": 172.361,
+      "end": 176.194,
+      "text": "That is not a modeling reason, but it is a project reason.",
+      "slide": ""
+    },
+    {
+      "start": 176.194,
+      "end": 180.597,
+      "text": "If you add a surrogate to please a tool, keep the composite UNIQUE.",
+      "slide": ""
+    },
+    {
+      "start": 180.597,
+      "end": 183.208,
+      "text": "The tool should not erase the candidate.",
+      "slide": ""
+    },
+    {
+      "start": 183.208,
+      "end": 185.694,
+      "text": "Document why the primary key won.",
+      "slide": ""
+    },
+    {
+      "start": 185.694,
+      "end": 189.069,
+      "text": "A one-line comment in the schema file is enough.",
+      "slide": ""
+    },
+    {
+      "start": 189.069,
+      "end": 193.777,
+      "text": "Future you will thank present you when someone wants to key on email again.",
+      "slide": ""
+    },
+    {
+      "start": 193.777,
+      "end": 196.972,
+      "text": "Dull, present, stable, unique.",
+      "slide": ""
+    },
+    {
+      "start": 196.972,
+      "end": 199.402,
+      "text": "Write those four words above the column.",
+      "slide": ""
+    },
+    {
+      "start": 199.402,
+      "end": 200.416,
+      "text": "Then pick.",
+      "slide": ""
+    },
+    {
+      "start": 200.416,
+      "end": 204.444,
+      "text": "A key you are proud of is often a key that encodes a story.",
+      "slide": ""
+    },
+    {
+      "start": 204.444,
+      "end": 205.902,
+      "text": "Stories change.",
+      "slide": ""
+    },
+    {
+      "start": 205.902,
+      "end": 207.333,
+      "text": "Dull keys do not.",
+      "slide": ""
+    },
+    {
+      "start": 207.333,
+      "end": 211.819,
+      "text": "If you can say the key out loud as a sentence about the business, look again.",
+      "slide": ""
+    },
+    {
+      "start": 211.819,
+      "end": 215.944,
+      "text": "customer_id 104 is not a sentence.",
+      "slide": ""
+    },
+    {
+      "start": 215.944,
+      "end": 221.5,
+      "text": "AUSTIN-MAYA-2024 is a sentence, and a trap.",
+      "slide": ""
+    },
+    {
+      "start": 221.5,
+      "end": 223.486,
+      "text": "Keep the story in columns.",
+      "slide": ""
+    },
+    {
+      "start": 223.486,
+      "end": 225.555,
+      "text": "Keep the key empty of plot.",
+      "slide": ""
+    },
+    {
+      "start": 225.555,
+      "end": 228.347,
+      "text": "UNIQUE the story if it must stay unique.",
+      "slide": ""
+    },
+    {
+      "start": 228.347,
+      "end": 230.208,
+      "text": "Point children at the dull one.",
+      "slide": ""
+    },
+    {
+      "start": 230.208,
+      "end": 233.277,
+      "text": "That split will still look wise in five years.",
+      "slide": ""
+    },
+    {
+      "start": 233.277,
+      "end": 238.027,
+      "text": "Write it into the schema comments so nobody 'improves' the id later.",
+      "slide": ""
+    },
+    {
+      "start": 238.027,
+      "end": 241.194,
+      "text": "Improvement is how encoded keys are born.",
+      "slide": ""
+    },
+    {
+      "start": 241.194,
+      "end": 242.875,
+      "text": "Refuse the improvement.",
+      "slide": ""
+    },
+    {
+      "start": 242.875,
+      "end": 244.402,
+      "text": "Pick dull, and stop.",
+      "slide": ""
+    },
+    {
+      "start": 244.402,
+      "end": 246.027,
+      "text": "People change names.",
+      "slide": ""
+    },
+    {
+      "start": 246.027,
+      "end": 247.513,
+      "text": "They share birthdays.",
+      "slide": ""
+    },
+    {
+      "start": 247.513,
+      "end": 254.361,
+      "text": "Systems that treated name plus date of birth as identity have merged two humans into one record.",
+      "slide": ""
+    },
+    {
+      "start": 254.361,
+      "end": 263.333,
+      "text": "A primary key is one or more attributes that identify a row, unique, and never a second meaning hiding in the same columns.",
+      "slide": ""
+    },
+    {
+      "start": 263.333,
+      "end": 266.444,
+      "text": "A table has exactly one primary key.",
+      "slide": ""
+    },
+    {
+      "start": 266.444,
+      "end": 272.736,
+      "text": "A super key is any set of columns that is still unique, including extras you do not need.",
+      "slide": ""
+    },
+    {
+      "start": 272.736,
+      "end": 277.236,
+      "text": "email plus city might still be unique because email already was.",
+      "slide": ""
+    },
+    {
+      "start": 277.236,
+      "end": 279.0,
+      "text": "The city is surplus.",
+      "slide": ""
+    },
+    {
+      "start": 279.122,
+      "end": 286.127,
+      "text": "A candidate key is a super key with no surplus: take anything away and uniqueness dies.",
+      "slide": ""
+    },
+    {
+      "start": 286.127,
+      "end": 288.099,
+      "text": "email might be a candidate.",
+      "slide": ""
+    },
+    {
+      "start": 288.099,
+      "end": 289.863,
+      "text": "username might be another.",
+      "slide": ""
+    },
+    {
+      "start": 289.863,
+      "end": 292.891,
+      "text": "You pick one candidate to be the primary key.",
+      "slide": ""
+    },
+    {
+      "start": 292.891,
+      "end": 295.335,
+      "text": "The others can be UNIQUE constraints.",
+      "slide": ""
+    },
+    {
+      "start": 295.335,
+      "end": 305.002,
+      "text": "The process is: list candidates from real data, pick the stable dull one, or invent a surrogate if none of the candidates will stay still.",
+      "slide": ""
+    },
+    {
+      "start": 305.002,
+      "end": 310.849,
+      "text": "Natural keys come from the world: ISBN, national identifiers, email.",
+      "slide": ""
+    },
+    {
+      "start": 310.849,
+      "end": 313.474,
+      "text": "They are tempting because they look meaningful.",
+      "slide": ""
+    },
+    {
+      "start": 313.474,
+      "end": 319.572,
+      "text": "They are dangerous when the world reissues them, recycles them, or lets people change them.",
+      "slide": ""
+    },
+    {
+      "start": 319.572,
+      "end": 326.363,
+      "text": "A surrogate is an attribute you create, often an integer, that means only: this row.",
+      "slide": ""
+    },
+    {
+      "start": 326.363,
+      "end": 331.238,
+      "text": "customer_id one hundred four is not a sentence about the business.",
+      "slide": ""
+    },
+    {
+      "start": 331.238,
+      "end": 342.044,
+      "text": "AUSTIN-MAYA-2024 is a sentence, and a trap, because Austin, Maya, and 2024 can all change their jobs in that code.",
+      "slide": ""
+    },
+    {
+      "start": 342.044,
+      "end": 343.863,
+      "text": "Keep story in columns.",
+      "slide": ""
+    },
+    {
+      "start": 343.863,
+      "end": 346.599,
+      "text": "Keep the primary key empty of plot.",
+      "slide": ""
+    },
+    {
+      "start": 346.599,
+      "end": 354.78,
+      "text": "Composite keys are honest when identity is honestly several parts: order_id plus line_number.",
+      "slide": ""
+    },
+    {
+      "start": 354.78,
+      "end": 359.808,
+      "text": "They are painful as parents, because every child must copy every part.",
+      "slide": ""
+    },
+    {
+      "start": 359.808,
+      "end": 364.002,
+      "text": "If many tables will point here, a small surrogate is kinder.",
+      "slide": ""
+    },
+    {
+      "start": 364.002,
+      "end": 372.947,
+      "text": "Never use a value people type from memory as the only identity if a typo would attach medical or money rows to the wrong person.",
+      "slide": ""
+    },
+    {
+      "start": 372.947,
+      "end": 375.127,
+      "text": "Never pick a key you will want to edit.",
+      "slide": ""
+    },
+    {
+      "start": 375.127,
+      "end": 377.294,
+      "text": "Primary keys are referenced.",
+      "slide": ""
+    },
+    {
+      "start": 377.294,
+      "end": 381.405,
+      "text": "Edits cascade into every child or they are refused.",
+      "slide": ""
+    },
+    {
+      "start": 381.405,
+      "end": 388.599,
+      "text": "If you must expose a public code, make it UNIQUE and still keep a dull internal id as the primary key.",
+      "slide": ""
+    },
+    {
+      "start": 388.599,
+      "end": 390.599,
+      "text": "Children point at the dull one.",
+      "slide": ""
+    },
+    {
+      "start": 390.599,
+      "end": 392.738,
+      "text": "Humans search on the public one.",
+      "slide": ""
+    },
+    {
+      "start": 392.738,
+      "end": 395.974,
+      "text": "Look at sample data before you declare uniqueness.",
+      "slide": ""
+    },
+    {
+      "start": 395.974,
+      "end": 401.294,
+      "text": "Two rows that look unique in a spreadsheet of twenty can collide at twenty thousand.",
+      "slide": ""
+    },
+    {
+      "start": 401.294,
+      "end": 408.03,
+      "text": "If no candidate survives contact with growth, create the new attribute and make it the primary key.",
+      "slide": ""
+    },
+    {
+      "start": 408.03,
+      "end": 410.155,
+      "text": "That is not a failure of modeling.",
+      "slide": ""
+    },
+    {
+      "start": 410.155,
+      "end": 414.752,
+      "text": "That is how most operational tables stay identifyable for a decade.",
+      "slide": ""
+    },
+    {
+      "start": 414.752,
+      "end": 423.488,
+      "text": "Write the choice down: this is the primary key, these are the unique candidates, this is why the meaningful code is not the pointer.",
+      "slide": ""
+    },
+    {
+      "start": 423.488,
+      "end": 428.21,
+      "text": "Then refuse the later improvement that encodes a city into the id.",
+      "slide": ""
+    },
+    {
+      "start": 428.21,
+      "end": 431.377,
+      "text": "Improvement is how encoded keys are born.",
+      "slide": ""
+    },
+    {
+      "start": 431.377,
+      "end": 434.21,
+      "text": "Pick keys for five store tables in order.",
+      "slide": ""
+    },
+    {
+      "start": 434.21,
+      "end": 440.28,
+      "text": "users: candidate email, candidate username, surrogate user_id.",
+      "slide": ""
+    },
+    {
+      "start": 440.28,
+      "end": 448.919,
+      "text": "Email changes, username might be recycled, so user_id primary, UNIQUE email, UNIQUE username.",
+      "slide": ""
+    },
+    {
+      "start": 448.919,
+      "end": 456.974,
+      "text": "products: SKU looks natural and is reused by vendors, so product_id surrogate, UNIQUE sku.",
+      "slide": ""
+    },
+    {
+      "start": 456.974,
+      "end": 461.544,
+      "text": "orders: order_id surrogate, not a date stamp code.",
+      "slide": ""
+    },
+    {
+      "start": 461.544,
+      "end": 474.058,
+      "text": "reviews: review_id surrogate, because the same user can review twice if the business allows, or UNIQUE (user_id, product_id) if it does not.",
+      "slide": ""
+    },
+    {
+      "start": 474.058,
+      "end": 485.016,
+      "text": "order_lines: composite (order_id, line_no) is honest, or line_id surrogate if fulfillment talks in global ids.",
+      "slide": ""
+    },
+    {
+      "start": 485.016,
+      "end": 491.516,
+      "text": "Super keys would include user_id plus email; that extra email is surplus.",
+      "slide": ""
+    },
+    {
+      "start": 491.516,
+      "end": 494.919,
+      "text": "Candidate keys are the minimal unique sets.",
+      "slide": ""
+    },
+    {
+      "start": 494.919,
+      "end": 497.391,
+      "text": "Primary is the candidate you point at.",
+      "slide": ""
+    },
+    {
+      "start": 497.391,
+      "end": 502.155,
+      "text": "The hospital parable stays in your ear: do not pick name plus birth date.",
+      "slide": ""
+    },
+    {
+      "start": 502.155,
+      "end": 504.433,
+      "text": "Look at sample rows that collide.",
+      "slide": ""
+    },
+    {
+      "start": 504.433,
+      "end": 505.585,
+      "text": "Then pick dull.",
+      "slide": ""
+    },
+    {
+      "start": 505.585,
+      "end": 509.224,
+      "text": "Close with questions, the way a careful lecture does.",
+      "slide": ""
+    },
+    {
+      "start": 509.224,
+      "end": 512.28,
+      "text": "Answer in a sentence you could defend at a keyboard.",
+      "slide": ""
+    },
+    {
+      "start": 512.28,
+      "end": 513.947,
+      "text": "What is a primary key?",
+      "slide": ""
+    },
+    {
+      "start": 513.947,
+      "end": 519.127,
+      "text": "The candidate you pick to identify the row, unique, one per table.",
+      "slide": ""
+    },
+    {
+      "start": 519.127,
+      "end": 520.183,
+      "text": "Super key?",
+      "slide": ""
+    },
+    {
+      "start": 520.183,
+      "end": 523.794,
+      "text": "Any unique set, including surplus columns.",
+      "slide": ""
+    },
+    {
+      "start": 523.794,
+      "end": 524.988,
+      "text": "Candidate key?",
+      "slide": ""
+    },
+    {
+      "start": 524.988,
+      "end": 526.724,
+      "text": "A minimal unique set.",
+      "slide": ""
+    },
+    {
+      "start": 526.724,
+      "end": 528.474,
+      "text": "Natural versus surrogate?",
+      "slide": ""
+    },
+    {
+      "start": 528.474,
+      "end": 531.655,
+      "text": "From the world versus invented as this-row.",
+      "slide": ""
+    },
+    {
+      "start": 531.655,
+      "end": 533.085,
+      "text": "Why dull ids?",
+      "slide": ""
+    },
+    {
+      "start": 533.085,
+      "end": 535.877,
+      "text": "They do not encode a story that will change.",
+      "slide": ""
+    },
+    {
+      "start": 535.877,
+      "end": 537.363,
+      "text": "Name plus birth date?",
+      "slide": ""
+    },
+    {
+      "start": 537.363,
+      "end": 539.766,
+      "text": "A merging disaster waiting to happen.",
+      "slide": ""
+    },
+    {
+      "start": 539.766,
+      "end": 541.627,
+      "text": "Email as primary key?",
+      "slide": ""
+    },
+    {
+      "start": 541.627,
+      "end": 544.724,
+      "text": "Usually a unique handle, not the pointer.",
+      "slide": ""
+    },
+    {
+      "start": 544.724,
+      "end": 546.322,
+      "text": "Composite as parent?",
+      "slide": ""
+    },
+    {
+      "start": 546.322,
+      "end": 550.974,
+      "text": "Every child copies every part; often a surrogate is kinder.",
+      "slide": ""
+    },
+    {
+      "start": 550.974,
+      "end": 552.391,
+      "text": "Look at sample data?",
+      "slide": ""
+    },
+    {
+      "start": 552.391,
+      "end": 555.919,
+      "text": "Collisions appear at scale, not at twenty rows.",
+      "slide": ""
+    },
+    {
+      "start": 555.919,
+      "end": 558.377,
+      "text": "Public code plus internal id?",
+      "slide": ""
+    },
+    {
+      "start": 558.377,
+      "end": 561.669,
+      "text": "UNIQUE the code, point children at the id.",
+      "slide": ""
+    },
+    {
+      "start": 561.669,
+      "end": 566.391,
+      "text": "If an answer needed a second table, go draw it before you write more SQL.",
+      "slide": ""
+    }
+  ]
+}

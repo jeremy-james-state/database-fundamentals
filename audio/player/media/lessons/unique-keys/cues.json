@@ -1,0 +1,1529 @@
+{
+  "title": "Unique keys",
+  "subtitle": "Primary versus UNIQUE",
+  "audio": "narration.mp3",
+  "duration": 577.104,
+  "slides": [],
+  "scenes": [
+    {
+      "id": "both",
+      "label": "Both",
+      "kind": "sql",
+      "title": "Surrogate plus natural",
+      "prompt": "customers",
+      "sql": [
+        "CREATE TABLE customers (",
+        "  customer_id INTEGER PRIMARY KEY,",
+        "  email TEXT NOT NULL UNIQUE,",
+        "  name TEXT NOT NULL",
+        ");"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 0,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 0,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 1,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 0,
+      "toLyric": 9
+    },
+    {
+      "id": "nulls",
+      "label": "Emails",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "email"
+      ],
+      "rows": [
+        [
+          "1",
+          "maya@shop.test"
+        ],
+        [
+          "2",
+          "jordan@shop.test"
+        ]
+      ],
+      "fromLyric": 9,
+      "toLyric": 16,
+      "steps": [
+        {
+          "lyricMin": 9,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "policy",
+      "label": "Emails",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "email"
+      ],
+      "rows": [
+        [
+          "1",
+          "maya@shop.test"
+        ],
+        [
+          "2",
+          "jordan@shop.test"
+        ]
+      ],
+      "fromLyric": 16,
+      "toLyric": 20,
+      "steps": [
+        {
+          "lyricMin": 16,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "both-2",
+      "label": "Both",
+      "kind": "sql",
+      "title": "Surrogate plus natural",
+      "prompt": "customers",
+      "sql": [
+        "CREATE TABLE customers (",
+        "  customer_id INTEGER PRIMARY KEY,",
+        "  email TEXT NOT NULL UNIQUE,",
+        "  name TEXT NOT NULL",
+        ");"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 20,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 20,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 21,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 20,
+      "toLyric": 27
+    },
+    {
+      "id": "fk",
+      "label": "Emails",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "email"
+      ],
+      "rows": [
+        [
+          "1",
+          "maya@shop.test"
+        ],
+        [
+          "2",
+          "jordan@shop.test"
+        ]
+      ],
+      "fromLyric": 27,
+      "toLyric": 33,
+      "steps": [
+        {
+          "lyricMin": 27,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "emails",
+      "label": "Emails",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "email"
+      ],
+      "rows": [
+        [
+          "1",
+          "maya@shop.test"
+        ],
+        [
+          "2",
+          "jordan@shop.test"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 33,
+          "actions": [
+            "enter",
+            "show-header"
+          ]
+        },
+        {
+          "lyricMin": 33,
+          "actions": [
+            "reveal-rows"
+          ]
+        }
+      ],
+      "fromLyric": 33,
+      "toLyric": 54
+    },
+    {
+      "id": "policy-2",
+      "label": "Emails",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "email"
+      ],
+      "rows": [
+        [
+          "1",
+          "maya@shop.test"
+        ],
+        [
+          "2",
+          "jordan@shop.test"
+        ]
+      ],
+      "fromLyric": 54,
+      "toLyric": 68,
+      "steps": [
+        {
+          "lyricMin": 54,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nulls-2",
+      "label": "Emails",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "email"
+      ],
+      "rows": [
+        [
+          "1",
+          "maya@shop.test"
+        ],
+        [
+          "2",
+          "jordan@shop.test"
+        ]
+      ],
+      "fromLyric": 68,
+      "toLyric": 72,
+      "steps": [
+        {
+          "lyricMin": 68,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "policy-3",
+      "label": "Emails",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "email"
+      ],
+      "rows": [
+        [
+          "1",
+          "maya@shop.test"
+        ],
+        [
+          "2",
+          "jordan@shop.test"
+        ]
+      ],
+      "fromLyric": 72,
+      "toLyric": 78,
+      "steps": [
+        {
+          "lyricMin": 72,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "both-3",
+      "label": "Both",
+      "kind": "sql",
+      "title": "Surrogate plus natural",
+      "prompt": "customers",
+      "sql": [
+        "CREATE TABLE customers (",
+        "  customer_id INTEGER PRIMARY KEY,",
+        "  email TEXT NOT NULL UNIQUE,",
+        "  name TEXT NOT NULL",
+        ");"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 78,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 78,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 79,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 78,
+      "toLyric": 91
+    },
+    {
+      "id": "fk-2",
+      "label": "Emails",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "email"
+      ],
+      "rows": [
+        [
+          "1",
+          "maya@shop.test"
+        ],
+        [
+          "2",
+          "jordan@shop.test"
+        ]
+      ],
+      "fromLyric": 91,
+      "toLyric": 97,
+      "steps": [
+        {
+          "lyricMin": 91,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "policy-4",
+      "label": "Emails",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "email"
+      ],
+      "rows": [
+        [
+          "1",
+          "maya@shop.test"
+        ],
+        [
+          "2",
+          "jordan@shop.test"
+        ]
+      ],
+      "fromLyric": 97,
+      "toLyric": 101,
+      "steps": [
+        {
+          "lyricMin": 97,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fk-3",
+      "label": "Emails",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "email"
+      ],
+      "rows": [
+        [
+          "1",
+          "maya@shop.test"
+        ],
+        [
+          "2",
+          "jordan@shop.test"
+        ]
+      ],
+      "fromLyric": 101,
+      "toLyric": 108,
+      "steps": [
+        {
+          "lyricMin": 101,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "both-4",
+      "label": "Both",
+      "kind": "sql",
+      "title": "Surrogate plus natural",
+      "prompt": "customers",
+      "sql": [
+        "CREATE TABLE customers (",
+        "  customer_id INTEGER PRIMARY KEY,",
+        "  email TEXT NOT NULL UNIQUE,",
+        "  name TEXT NOT NULL",
+        ");"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 108,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 110,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 111,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 108,
+      "toLyric": 112
+    },
+    {
+      "id": "nulls-3",
+      "label": "Emails",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "email"
+      ],
+      "rows": [
+        [
+          "1",
+          "maya@shop.test"
+        ],
+        [
+          "2",
+          "jordan@shop.test"
+        ]
+      ],
+      "fromLyric": 112,
+      "toLyric": 153,
+      "steps": [
+        {
+          "lyricMin": 112,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "both-5",
+      "label": "Both",
+      "kind": "sql",
+      "title": "Surrogate plus natural",
+      "prompt": "customers",
+      "sql": [
+        "CREATE TABLE customers (",
+        "  customer_id INTEGER PRIMARY KEY,",
+        "  email TEXT NOT NULL UNIQUE,",
+        "  name TEXT NOT NULL",
+        ");"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 153,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 153,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 154,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 153,
+      "toLyric": 162
+    }
+  ],
+  "lyrics": [
+    {
+      "start": 0.05,
+      "end": 5.152,
+      "text": "A primary key is unique and not null, and there is only one per table.",
+      "slide": ""
+    },
+    {
+      "start": 5.152,
+      "end": 10.277,
+      "text": "A UNIQUE constraint is unique, and it may allow nulls depending on the engine.",
+      "slide": ""
+    },
+    {
+      "start": 10.277,
+      "end": 14.319,
+      "text": "You use UNIQUE for the candidate keys you did not promote.",
+      "slide": ""
+    },
+    {
+      "start": 14.319,
+      "end": 16.444,
+      "text": "email UNIQUE on customers.",
+      "slide": ""
+    },
+    {
+      "start": 16.444,
+      "end": 18.736,
+      "text": "ISBN UNIQUE on books.",
+      "slide": ""
+    },
+    {
+      "start": 18.736,
+      "end": 23.722,
+      "text": "The primary key is still customer_id or book_id.",
+      "slide": ""
+    },
+    {
+      "start": 23.722,
+      "end": 27.763,
+      "text": "Queries and foreign keys prefer the dull primary key.",
+      "slide": ""
+    },
+    {
+      "start": 27.763,
+      "end": 31.027,
+      "text": "Humans still need the natural one to stay unique.",
+      "slide": ""
+    },
+    {
+      "start": 31.027,
+      "end": 35.444,
+      "text": "SQLite treats NULLs in UNIQUE as distinct from each other.",
+      "slide": ""
+    },
+    {
+      "start": 35.444,
+      "end": 40.611,
+      "text": "You can insert two rows with NULL email if email is unique and nullable.",
+      "slide": ""
+    },
+    {
+      "start": 40.611,
+      "end": 46.152,
+      "text": "PostgreSQL's UNIQUE behaves the same with NULL: NULL does not equal NULL.",
+      "slide": ""
+    },
+    {
+      "start": 46.152,
+      "end": 51.833,
+      "text": "If you meant at most one empty email, you wanted a partial unique index or a NOT NULL.",
+      "slide": ""
+    },
+    {
+      "start": 51.833,
+      "end": 54.708,
+      "text": "Composite unique constraints are common.",
+      "slide": ""
+    },
+    {
+      "start": 54.708,
+      "end": 59.68,
+      "text": "UNIQUE student_id, course_id on enrollment.",
+      "slide": ""
+    },
+    {
+      "start": 59.68,
+      "end": 62.833,
+      "text": "That is the pair lock from the many-to-many lesson.",
+      "slide": ""
+    },
+    {
+      "start": 62.833,
+      "end": 66.43,
+      "text": "A unique constraint is an index in most engines.",
+      "slide": ""
+    },
+    {
+      "start": 66.43,
+      "end": 68.625,
+      "text": "You get a lookup as a side effect.",
+      "slide": ""
+    },
+    {
+      "start": 68.625,
+      "end": 71.694,
+      "text": "Do not skip UNIQUE because you plan to be careful.",
+      "slide": ""
+    },
+    {
+      "start": 71.694,
+      "end": 74.138,
+      "text": "The second clerk will not be careful.",
+      "slide": ""
+    },
+    {
+      "start": 74.138,
+      "end": 77.361,
+      "text": "Naming the constraint makes errors readable.",
+      "slide": ""
+    },
+    {
+      "start": 77.361,
+      "end": 83.208,
+      "text": "customers_email_key is a better message than a generic unique violation.",
+      "slide": ""
+    },
+    {
+      "start": 83.208,
+      "end": 87.375,
+      "text": "Primary key versus unique is also about foreign keys.",
+      "slide": ""
+    },
+    {
+      "start": 87.375,
+      "end": 92.986,
+      "text": "A foreign key must point at a unique set of columns, usually the primary key.",
+      "slide": ""
+    },
+    {
+      "start": 92.986,
+      "end": 97.305,
+      "text": "Pointing at a UNIQUE natural key is allowed in many engines.",
+      "slide": ""
+    },
+    {
+      "start": 97.305,
+      "end": 99.861,
+      "text": "It makes later key changes painful.",
+      "slide": ""
+    },
+    {
+      "start": 99.861,
+      "end": 101.902,
+      "text": "Prefer pointing at the surrogate.",
+      "slide": ""
+    },
+    {
+      "start": 101.902,
+      "end": 105.5,
+      "text": "Keep the natural unique for humans and imports.",
+      "slide": ""
+    },
+    {
+      "start": 105.5,
+      "end": 113.694,
+      "text": "When an import must match on ISBN, look up book_id, then store book_id on the child.",
+      "slide": ""
+    },
+    {
+      "start": 113.694,
+      "end": 119.888,
+      "text": "Do not copy ISBN onto every order line unless you are denormalizing on purpose.",
+      "slide": ""
+    },
+    {
+      "start": 119.888,
+      "end": 121.486,
+      "text": "One primary key.",
+      "slide": ""
+    },
+    {
+      "start": 121.486,
+      "end": 125.805,
+      "text": "As many UNIQUE constraints as you have real candidate keys.",
+      "slide": ""
+    },
+    {
+      "start": 125.805,
+      "end": 127.541,
+      "text": "Nulls called out in public.",
+      "slide": ""
+    },
+    {
+      "start": 127.541,
+      "end": 129.18,
+      "text": "That is the whole policy.",
+      "slide": ""
+    },
+    {
+      "start": 129.18,
+      "end": 136.402,
+      "text": "Partial unique indexes in PostgreSQL let you say email is unique among rows that are not deleted.",
+      "slide": ""
+    },
+    {
+      "start": 136.402,
+      "end": 139.055,
+      "text": "WHERE deleted_at IS NULL.",
+      "slide": ""
+    },
+    {
+      "start": 139.055,
+      "end": 142.597,
+      "text": "That is how soft-delete and uniqueness coexist.",
+      "slide": ""
+    },
+    {
+      "start": 142.597,
+      "end": 149.611,
+      "text": "Without it, a retired email blocks a new customer forever, or you reuse emails in a mess.",
+      "slide": ""
+    },
+    {
+      "start": 149.611,
+      "end": 154.222,
+      "text": "MySQL and SQLite have their own partial-index stories.",
+      "slide": ""
+    },
+    {
+      "start": 154.222,
+      "end": 156.708,
+      "text": "Read them before you promise the policy.",
+      "slide": ""
+    },
+    {
+      "start": 156.708,
+      "end": 160.013,
+      "text": "Case folding belongs with uniqueness for emails.",
+      "slide": ""
+    },
+    {
+      "start": 160.013,
+      "end": 166.527,
+      "text": "A unique index on lower(email) is a functional unique index in PostgreSQL.",
+      "slide": ""
+    },
+    {
+      "start": 166.527,
+      "end": 169.833,
+      "text": "Without it, Maya@ and maya@ both get in.",
+      "slide": ""
+    },
+    {
+      "start": 169.833,
+      "end": 172.347,
+      "text": "Include that in the candidate-key meeting.",
+      "slide": ""
+    },
+    {
+      "start": 172.347,
+      "end": 174.652,
+      "text": "Uniqueness is a business rule.",
+      "slide": ""
+    },
+    {
+      "start": 174.652,
+      "end": 178.152,
+      "text": "The constraint is how the rule survives a busy hour.",
+      "slide": ""
+    },
+    {
+      "start": 178.152,
+      "end": 183.069,
+      "text": "When an import fails on UNIQUE, the failure is data, not drama.",
+      "slide": ""
+    },
+    {
+      "start": 183.069,
+      "end": 184.43,
+      "text": "Show the duplicate.",
+      "slide": ""
+    },
+    {
+      "start": 184.43,
+      "end": 186.236,
+      "text": "Merge or reject.",
+      "slide": ""
+    },
+    {
+      "start": 186.236,
+      "end": 189.236,
+      "text": "Do not DROP INDEX to make the import finish.",
+      "slide": ""
+    },
+    {
+      "start": 189.236,
+      "end": 191.013,
+      "text": "That is how you buy a weekend.",
+      "slide": ""
+    },
+    {
+      "start": 191.013,
+      "end": 193.75,
+      "text": "Primary key names are often implicit.",
+      "slide": ""
+    },
+    {
+      "start": 193.75,
+      "end": 195.694,
+      "text": "UNIQUE names should not be.",
+      "slide": ""
+    },
+    {
+      "start": 195.694,
+      "end": 197.5,
+      "text": "You will read them in logs.",
+      "slide": ""
+    },
+    {
+      "start": 197.5,
+      "end": 199.013,
+      "text": "Treat them as prose.",
+      "slide": ""
+    },
+    {
+      "start": 199.013,
+      "end": 204.652,
+      "text": "One primary, many UNIQUE, nulls explicit, pointers at the surrogate.",
+      "slide": ""
+    },
+    {
+      "start": 204.652,
+      "end": 206.805,
+      "text": "You can run a store on that sentence.",
+      "slide": ""
+    },
+    {
+      "start": 206.805,
+      "end": 211.361,
+      "text": "Most uniqueness bugs are a missing sentence, not a missing feature.",
+      "slide": ""
+    },
+    {
+      "start": 211.361,
+      "end": 213.486,
+      "text": "Write it, then type UNIQUE.",
+      "slide": ""
+    },
+    {
+      "start": 213.486,
+      "end": 216.041,
+      "text": "Uniqueness is a product promise.",
+      "slide": ""
+    },
+    {
+      "start": 216.041,
+      "end": 218.791,
+      "text": "The database is the enforcer you hired.",
+      "slide": ""
+    },
+    {
+      "start": 218.791,
+      "end": 223.069,
+      "text": "If you fire the enforcer for an import, you own the duplicates.",
+      "slide": ""
+    },
+    {
+      "start": 223.069,
+      "end": 224.458,
+      "text": "Keep the enforcer.",
+      "slide": ""
+    },
+    {
+      "start": 224.458,
+      "end": 225.958,
+      "text": "Stage the import.",
+      "slide": ""
+    },
+    {
+      "start": 225.958,
+      "end": 227.388,
+      "text": "Merge in daylight.",
+      "slide": ""
+    },
+    {
+      "start": 227.388,
+      "end": 228.902,
+      "text": "UNIQUE is daylight.",
+      "slide": ""
+    },
+    {
+      "start": 228.902,
+      "end": 231.486,
+      "text": "Null policy is part of the promise.",
+      "slide": ""
+    },
+    {
+      "start": 231.486,
+      "end": 234.652,
+      "text": "Say whether unknown emails are allowed twice.",
+      "slide": ""
+    },
+    {
+      "start": 234.652,
+      "end": 236.069,
+      "text": "If no, NOT NULL.",
+      "slide": ""
+    },
+    {
+      "start": 236.069,
+      "end": 240.305,
+      "text": "If yes among retired rows, a partial unique index.",
+      "slide": ""
+    },
+    {
+      "start": 240.305,
+      "end": 243.597,
+      "text": "Write that in the same comment as the constraint name.",
+      "slide": ""
+    },
+    {
+      "start": 243.597,
+      "end": 246.805,
+      "text": "Future incidents will open that comment first.",
+      "slide": ""
+    },
+    {
+      "start": 246.805,
+      "end": 248.18,
+      "text": "Make it worth opening.",
+      "slide": ""
+    },
+    {
+      "start": 248.18,
+      "end": 252.416,
+      "text": "One primary, many UNIQUE, pointers at the dull key.",
+      "slide": ""
+    },
+    {
+      "start": 252.416,
+      "end": 253.569,
+      "text": "Keep saying it.",
+      "slide": ""
+    },
+    {
+      "start": 253.569,
+      "end": 257.916,
+      "text": "Constraints are rules the engine enforces so rows stay honest.",
+      "slide": ""
+    },
+    {
+      "start": 257.916,
+      "end": 263.097,
+      "text": "Think of them as traffic rules: not suggestions, not application hope.",
+      "slide": ""
+    },
+    {
+      "start": 263.097,
+      "end": 266.861,
+      "text": "PRIMARY KEY and UNIQUE both refuse duplicates.",
+      "slide": ""
+    },
+    {
+      "start": 266.861,
+      "end": 268.5,
+      "text": "They are not the same tool.",
+      "slide": ""
+    },
+    {
+      "start": 268.5,
+      "end": 274.861,
+      "text": "A primary key identifies the row, is unique, and in SQL is also NOT NULL.",
+      "slide": ""
+    },
+    {
+      "start": 274.861,
+      "end": 277.277,
+      "text": "A table has one primary key.",
+      "slide": ""
+    },
+    {
+      "start": 277.277,
+      "end": 283.68,
+      "text": "Foreign keys point at it, or at a unique column you explicitly allow, depending on the engine.",
+      "slide": ""
+    },
+    {
+      "start": 283.68,
+      "end": 289.68,
+      "text": "UNIQUE can sit on email, username, or phone while the primary key is a dull id.",
+      "slide": ""
+    },
+    {
+      "start": 289.802,
+      "end": 297.988,
+      "text": "UNIQUE may allow NULL in many engines, and NULLs do not collide with each other the way values do, depending on the dialect.",
+      "slide": ""
+    },
+    {
+      "start": 297.988,
+      "end": 306.168,
+      "text": "Two users with NULL email can both exist under UNIQUE(email) in engines that treat NULL as distinct.",
+      "slide": ""
+    },
+    {
+      "start": 306.168,
+      "end": 314.696,
+      "text": "If email must be present and unique, you want UNIQUE and NOT NULL, or a primary key on email, which carries NOT NULL.",
+      "slide": ""
+    },
+    {
+      "start": 314.696,
+      "end": 318.849,
+      "text": "Do not make email the primary key because it is unique today.",
+      "slide": ""
+    },
+    {
+      "start": 318.849,
+      "end": 320.321,
+      "text": "People change email.",
+      "slide": ""
+    },
+    {
+      "start": 320.321,
+      "end": 324.46,
+      "text": "Children that pointed at the old email become a migration.",
+      "slide": ""
+    },
+    {
+      "start": 324.46,
+      "end": 330.654,
+      "text": "Dull id as primary key, UNIQUE on email, is the usual adult design.",
+      "slide": ""
+    },
+    {
+      "start": 330.654,
+      "end": 337.252,
+      "text": "The extra thing a primary key does is say: this is the identity other tables should copy.",
+      "slide": ""
+    },
+    {
+      "start": 337.252,
+      "end": 343.988,
+      "text": "UNIQUE says: this value may not repeat, but it is not necessarily the identity of the row.",
+      "slide": ""
+    },
+    {
+      "start": 343.988,
+      "end": 350.029,
+      "text": "Choosing UNIQUE when you meant primary key leaves you without a natural parent for foreign keys.",
+      "slide": ""
+    },
+    {
+      "start": 350.029,
+      "end": 354.502,
+      "text": "Choosing primary key on a value you will edit breaks references.",
+      "slide": ""
+    },
+    {
+      "start": 354.502,
+      "end": 357.071,
+      "text": "You can have several UNIQUE constraints.",
+      "slide": ""
+    },
+    {
+      "start": 357.071,
+      "end": 359.627,
+      "text": "You cannot have several primary keys.",
+      "slide": ""
+    },
+    {
+      "start": 359.627,
+      "end": 367.543,
+      "text": "Composite UNIQUE (store_id, sku) means the pair is unique, not each column alone.",
+      "slide": ""
+    },
+    {
+      "start": 367.543,
+      "end": 369.835,
+      "text": "Two stores may sell the same sku.",
+      "slide": ""
+    },
+    {
+      "start": 369.835,
+      "end": 373.029,
+      "text": "Name the constraints so errors are readable.",
+      "slide": ""
+    },
+    {
+      "start": 373.029,
+      "end": 382.293,
+      "text": "When implementing, write PRIMARY KEY on the identity, UNIQUE on natural handles people search, FOREIGN KEY on the copies.",
+      "slide": ""
+    },
+    {
+      "start": 382.293,
+      "end": 386.502,
+      "text": "Then duplicates fail at the door instead of in a nightly cleanup.",
+      "slide": ""
+    },
+    {
+      "start": 386.502,
+      "end": 388.377,
+      "text": "That failure is the feature.",
+      "slide": ""
+    },
+    {
+      "start": 388.377,
+      "end": 394.377,
+      "text": "If an application needs to tell a user that username is taken, catch the unique violation.",
+      "slide": ""
+    },
+    {
+      "start": 394.377,
+      "end": 398.39,
+      "text": "Do not SELECT then INSERT and hope nobody else grabbed the name.",
+      "slide": ""
+    },
+    {
+      "start": 398.39,
+      "end": 400.877,
+      "text": "The constraint is the race-proof rule.",
+      "slide": ""
+    },
+    {
+      "start": 400.877,
+      "end": 406.724,
+      "text": "Primary versus unique is the difference between who you are and what else must not collide.",
+      "slide": ""
+    },
+    {
+      "start": 406.724,
+      "end": 408.946,
+      "text": "Keep who you are dull and stable.",
+      "slide": ""
+    },
+    {
+      "start": 408.946,
+      "end": 411.96,
+      "text": "Keep collisions on the columns humans care about.",
+      "slide": ""
+    },
+    {
+      "start": 411.96,
+      "end": 421.877,
+      "text": "Recommended practice: surrogate primary key, unique natural handles, foreign keys to the surrogate, not null on handles that login needs.",
+      "slide": ""
+    },
+    {
+      "start": 421.877,
+      "end": 428.224,
+      "text": "Anti-pattern: unique without not null on email, then three accounts with empty email.",
+      "slide": ""
+    },
+    {
+      "start": 428.224,
+      "end": 435.877,
+      "text": "Anti-pattern: primary key on phone, then a user changes phone and every child row needs a cascade.",
+      "slide": ""
+    },
+    {
+      "start": 435.877,
+      "end": 445.932,
+      "text": "Anti-pattern: no unique on username, primary key on id, application checks uniqueness with SELECT, two signups collide.",
+      "slide": ""
+    },
+    {
+      "start": 445.932,
+      "end": 448.224,
+      "text": "The constraint was the missing piece.",
+      "slide": ""
+    },
+    {
+      "start": 448.224,
+      "end": 454.404,
+      "text": "Primary versus unique is those practices, not a trivia difference in nullability only.",
+      "slide": ""
+    },
+    {
+      "start": 454.404,
+      "end": 456.738,
+      "text": "Nullability is one difference.",
+      "slide": ""
+    },
+    {
+      "start": 456.738,
+      "end": 459.279,
+      "text": "Count of keys per table is another.",
+      "slide": ""
+    },
+    {
+      "start": 459.279,
+      "end": 462.835,
+      "text": "Who children point at is the one that breaks designs.",
+      "slide": ""
+    },
+    {
+      "start": 462.835,
+      "end": 464.238,
+      "text": "Point at identity.",
+      "slide": ""
+    },
+    {
+      "start": 464.238,
+      "end": 466.377,
+      "text": "Uniquely constrain the rest.",
+      "slide": ""
+    },
+    {
+      "start": 466.377,
+      "end": 470.015,
+      "text": "Close with questions, the way a careful lecture does.",
+      "slide": ""
+    },
+    {
+      "start": 470.015,
+      "end": 473.071,
+      "text": "Answer in a sentence you could defend at a keyboard.",
+      "slide": ""
+    },
+    {
+      "start": 473.071,
+      "end": 474.502,
+      "text": "What is a constraint?",
+      "slide": ""
+    },
+    {
+      "start": 474.502,
+      "end": 478.196,
+      "text": "A rule the engine enforces, not application hope.",
+      "slide": ""
+    },
+    {
+      "start": 478.196,
+      "end": 481.127,
+      "text": "What do PRIMARY KEY and UNIQUE share?",
+      "slide": ""
+    },
+    {
+      "start": 481.127,
+      "end": 483.404,
+      "text": "They refuse duplicate values.",
+      "slide": ""
+    },
+    {
+      "start": 483.404,
+      "end": 485.765,
+      "text": "How many primary keys per table?",
+      "slide": ""
+    },
+    {
+      "start": 485.765,
+      "end": 486.557,
+      "text": "One.",
+      "slide": ""
+    },
+    {
+      "start": 486.557,
+      "end": 488.71,
+      "text": "How many UNIQUE constraints?",
+      "slide": ""
+    },
+    {
+      "start": 488.71,
+      "end": 491.071,
+      "text": "As many as you have honest handles.",
+      "slide": ""
+    },
+    {
+      "start": 491.071,
+      "end": 493.432,
+      "text": "Does PRIMARY KEY allow NULL?",
+      "slide": ""
+    },
+    {
+      "start": 493.432,
+      "end": 494.196,
+      "text": "No.",
+      "slide": ""
+    },
+    {
+      "start": 494.196,
+      "end": 495.946,
+      "text": "Does UNIQUE allow NULL?",
+      "slide": ""
+    },
+    {
+      "start": 495.946,
+      "end": 500.571,
+      "text": "Often yes, and NULLs may not collide, depending on dialect.",
+      "slide": ""
+    },
+    {
+      "start": 500.571,
+      "end": 502.279,
+      "text": "What should children point at?",
+      "slide": ""
+    },
+    {
+      "start": 502.279,
+      "end": 505.585,
+      "text": "The identity, usually a dull primary key.",
+      "slide": ""
+    },
+    {
+      "start": 505.585,
+      "end": 507.724,
+      "text": "Why not primary key on email?",
+      "slide": ""
+    },
+    {
+      "start": 507.724,
+      "end": 510.918,
+      "text": "People change email; children would have to move.",
+      "slide": ""
+    },
+    {
+      "start": 510.918,
+      "end": 513.085,
+      "text": "Why UNIQUE on email anyway?",
+      "slide": ""
+    },
+    {
+      "start": 513.085,
+      "end": 515.293,
+      "text": "Login still cannot share an email.",
+      "slide": ""
+    },
+    {
+      "start": 515.293,
+      "end": 517.071,
+      "text": "Composite UNIQUE meaning?",
+      "slide": ""
+    },
+    {
+      "start": 517.071,
+      "end": 520.21,
+      "text": "The pair is unique, not each column alone.",
+      "slide": ""
+    },
+    {
+      "start": 520.21,
+      "end": 522.557,
+      "text": "SELECT then INSERT for uniqueness?",
+      "slide": ""
+    },
+    {
+      "start": 522.557,
+      "end": 523.613,
+      "text": "A race.",
+      "slide": ""
+    },
+    {
+      "start": 523.613,
+      "end": 525.085,
+      "text": "Use the constraint.",
+      "slide": ""
+    },
+    {
+      "start": 525.085,
+      "end": 526.446,
+      "text": "Traffic metaphor?",
+      "slide": ""
+    },
+    {
+      "start": 526.446,
+      "end": 530.335,
+      "text": "Unique is a parking rule; primary key is the VIN.",
+      "slide": ""
+    },
+    {
+      "start": 530.335,
+      "end": 533.571,
+      "text": "Can UNIQUE replace a primary key for identity?",
+      "slide": ""
+    },
+    {
+      "start": 533.571,
+      "end": 536.668,
+      "text": "It can be unique without being the pointer you want.",
+      "slide": ""
+    },
+    {
+      "start": 536.668,
+      "end": 538.127,
+      "text": "Named constraints?",
+      "slide": ""
+    },
+    {
+      "start": 538.127,
+      "end": 540.877,
+      "text": "Yes, so errors read as English.",
+      "slide": ""
+    },
+    {
+      "start": 540.877,
+      "end": 542.182,
+      "text": "Username taken?",
+      "slide": ""
+    },
+    {
+      "start": 542.182,
+      "end": 544.182,
+      "text": "Catch the unique violation.",
+      "slide": ""
+    },
+    {
+      "start": 544.182,
+      "end": 546.057,
+      "text": "Phone UNIQUE NULL allowed?",
+      "slide": ""
+    },
+    {
+      "start": 546.057,
+      "end": 548.113,
+      "text": "Two NULLs may both exist.",
+      "slide": ""
+    },
+    {
+      "start": 548.113,
+      "end": 550.029,
+      "text": "Email UNIQUE NOT NULL?",
+      "slide": ""
+    },
+    {
+      "start": 550.029,
+      "end": 554.377,
+      "text": "Present and unique, still not necessarily the primary key.",
+      "slide": ""
+    },
+    {
+      "start": 554.377,
+      "end": 556.599,
+      "text": "store_id plus sku?",
+      "slide": ""
+    },
+    {
+      "start": 556.599,
+      "end": 560.432,
+      "text": "Composite unique so two stores share sku text.",
+      "slide": ""
+    },
+    {
+      "start": 560.432,
+      "end": 562.96,
+      "text": "Who are you versus what must not collide?",
+      "slide": ""
+    },
+    {
+      "start": 562.96,
+      "end": 564.918,
+      "text": "Primary versus unique.",
+      "slide": ""
+    },
+    {
+      "start": 564.918,
+      "end": 566.321,
+      "text": "Recommended pattern?",
+      "slide": ""
+    },
+    {
+      "start": 566.321,
+      "end": 572.321,
+      "text": "Surrogate primary key, unique natural handles, foreign keys to the surrogate.",
+      "slide": ""
+    },
+    {
+      "start": 572.321,
+      "end": 577.043,
+      "text": "If an answer needed a second table, go draw it before you write more SQL.",
+      "slide": ""
+    }
+  ]
+}

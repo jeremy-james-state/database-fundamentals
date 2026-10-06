@@ -1,0 +1,355 @@
+A foreign key is a column that says: this value already exists over there.
+
+orders.customer_id is not a random number.
+
+It is a promise that customers has that customer_id.
+
+Without the promise, you can insert an order for customer ninety-nine.
+
+Nobody named ninety-nine lives in customers.
+
+The order is an orphan.
+
+Reports that join the two tables will drop it, or invent a blank name.
+
+The foreign key stops the orphan at the door.
+
+Draw two boxes.
+
+customers holds one row per person.
+
+orders holds one row per purchase.
+
+The arrow starts on orders.
+
+It lands on customers.customer_id.
+
+The many side holds the copy of the key.
+
+The one side holds the original.
+
+That direction is easy to get backwards.
+
+You do not put order_id on customers.
+
+One customer would then have room for only one order.
+
+You put customer_id on orders, as many times as that person buys.
+
+The parent table is the one whose primary key is copied.
+
+The child table is the one that stores the copy.
+
+Declare the foreign key when you create the child, or add it later with ALTER.
+
+The engine then checks every INSERT and UPDATE on the child.
+
+It also checks DELETE and UPDATE on the parent.
+
+You cannot delete Maya while her orders still point at her — unless you said so on purpose.
+
+That next lesson is foreign key actions.
+
+For now, the default is: refuse the change that would orphan a row.
+
+Types must match.
+
+Integer to integer.
+
+Text to text.
+
+A value that is allowed to be NULL is a child with no parent yet.
+
+That is a choice, not an accident.
+
+If every order must belong to someone, mark customer_id NOT NULL as well.
+
+The foreign key and NOT NULL are two different promises.
+
+One says: if a value is present, it is a real parent.
+
+The other says: a value must be present.
+
+Name the constraint so error messages read like English.
+
+orders_customer_id_fk tells you which door failed.
+
+A table may have more than one foreign key.
+
+An order might point at a customer and at a store.
+
+Each arrow is its own rule.
+
+Do not store the customer's name on the order just to avoid the key.
+
+That copy will drift.
+
+Let the key find the name when you join.
+
+If you cannot name the parent table, you do not have a foreign key yet.
+
+You have a lonely integer.
+
+Draw the boxes and the arrow before you write the constraint.
+
+The arrow always starts on the many side.
+
+Then the two tables stay related on purpose.
+
+Enable foreign keys in SQLite explicitly.
+
+PRAGMA foreign_keys equals ON.
+
+Otherwise the constraint is jewelry.
+
+PostgreSQL and MySQL enforce them when the engine is asked to, with engine-specific caveats on MySQL's older types.
+
+Know whether yours is on.
+
+A composite foreign key copies more than one column.
+
+Both columns together must match a unique pair on the parent.
+
+Partial copies are not a foreign key.
+
+Self-references are allowed.
+
+employee.manager_id points at employee.employee_id.
+
+The top manager is NULL, or points at themselves, by policy.
+
+Cycles in deletes then need a plan.
+
+Deferring a check until the end of a transaction is a PostgreSQL tool.
+
+It lets you insert parent and child in an awkward order inside one BEGIN.
+
+Do not need it on day one.
+
+Know it exists when a loader fails in the middle.
+
+Orphan rows that already exist will block adding the constraint.
+
+Clean them, or map them to a real parent, then ALTER.
+
+The error is a gift.
+
+It named the lie in the data.
+
+Indexes on the child column make the check and the join cheaper.
+
+Add them when the table is not tiny.
+
+A foreign key is documentation the engine reads.
+
+Comments in SQL are documentation it does not.
+
+Prefer the one that refuses a bad row.
+
+When two teams share a database, the constraint is the contract.
+
+Meetings do not survive a deploy.
+
+The arrow does.
+
+Draw it, name it, turn it on, and leave it on.
+
+Then joins have something true to match.
+
+Related tables are tables that share a column on purpose, so a row over here can point at a row over there.
+
+The shared column is not a coincidence of names.
+
+It is a meaning: this review is about that product.
+
+In the parent table, that column is the primary key.
+
+In the child table, the copy is the foreign key.
+
+products holds one row per product.
+
+reviews holds one row per review.
+
+reviews.product_id stores which product the review is about.
+
+When both rows show product_id three, the review belongs to that product.
+
+That is the whole trick of related tables: the same identifier in two places, with one place owning the original.
+
+You do not store the product name on every review to save a lookup.
+
+The name would drift the first time marketing renamed the product.
+
+You store the key, and you look the name up when you need it.
+
+The many side holds the foreign key.
+
+The one side holds the primary key.
+
+If you put review_id on products, a product could remember only one review.
+
+That is the backwards arrow, and it shows up as soon as a second review arrives.
+
+Declare the foreign key in CREATE TABLE, or add it later with ALTER.
+
+Name the constraint so the error reads like English: reviews_product_id_fk.
+
+The engine then checks INSERT and UPDATE on the child.
+
+You cannot insert a review for product ninety-nine if products has no ninety-nine.
+
+That refused insert is an orphan you did not create.
+
+The engine also checks DELETE and UPDATE on the parent.
+
+You cannot delete a product while reviews still point at it, unless you declared an action that says otherwise.
+
+The default is: refuse the change that would leave a dangling pointer.
+
+Types must match: integer to integer, text to text.
+
+A NULL foreign key is a child with no parent yet.
+
+That is allowed only if you did not also say NOT NULL.
+
+Two promises: if a value is present it is a real parent, and a value must be present.
+
+A table may hold more than one foreign key.
+
+A review may point at a product and at a user.
+
+Each arrow is its own named constraint.
+
+Insert parents first, then children.
+
+Delete children first, then parents — unless an ON DELETE action does that work for you.
+
+In SQLite, foreign keys are off until you turn them on.
+
+PRAGMA foreign_keys equals ON.
+
+Without it, the constraint is jewelry.
+
+A composite foreign key copies more than one column, and the parent must have a matching composite key.
+
+Do not invent a shared column that is not a key.
+
+A city name in two tables is not a relationship.
+
+It is a duplicated fact waiting to disagree.
+
+If you cannot name the parent table, you do not have a foreign key.
+
+You have a lonely integer.
+
+Give it a parent, or stop pretending the tables are related.
+
+Related tables formally: tables connected by one or more common key columns.
+
+Not common names, key columns.
+
+Product_id is a key on products and a foreign key on reviews.
+
+Manufacturer as text on two tables is not relatedness.
+
+Manage data in related tables by respecting the parent.
+
+You cannot load reviews.csv first if products is empty, unless you defer constraints, which you should not do as a beginner habit.
+
+Load parents, then children.
+
+Or load into staging tables without foreign keys, clean orphans, then INSERT into the real child.
+
+That staging pattern is still the same idea: the parent must exist before the pointer is honest.
+
+When two tables share a column that is not a key, fix the design before you write the join.
+
+The join will run.
+
+The meaning will not.
+
+Close with questions, the way a careful lecture does.
+
+Answer in a sentence you could defend at a keyboard.
+
+What makes two tables related?
+
+A key column copied on purpose, parent as primary, child as foreign.
+
+Where does the foreign key live?
+
+On the many side, the child.
+
+What happens if you insert a child with a fake parent id?
+
+The engine refuses, if the constraint is on.
+
+What happens if you delete a parent with children and no action?
+
+The engine refuses the delete.
+
+Is a shared city name a relationship?
+
+No. It is a duplicated fact.
+
+Can one child have two foreign keys?
+
+Yes. A review can point at a product and a user.
+
+Must types match?
+
+Yes. Integer to integer, text to text.
+
+What does a NULL foreign key mean?
+
+A child with no parent yet, only legal if NOT NULL is absent.
+
+Which insert order is safe?
+
+Parents first, then children.
+
+Which delete order is safe under the default action?
+
+Children first, then parents.
+
+Why name the constraint?
+
+So the error names the door that failed.
+
+Does SQLite enforce foreign keys by default?
+
+No. Turn them on.
+
+Is product name on the review a substitute for a key?
+
+No. The name will drift.
+
+What is an orphan?
+
+A child pointer with no parent row.
+
+What is the parent table?
+
+The table whose primary key is copied.
+
+When do you add the foreign key?
+
+At CREATE of the child, or later with ALTER.
+
+Can a foreign key be composite?
+
+Yes, if the parent key is composite too.
+
+Should application code be the only check?
+
+No. A second writer will skip your code.
+
+What is the default action in words?
+
+Refuse the change that would orphan a row.
+
+How do you verify?
+
+Insert a fake parent id and watch the refusal.
+
+If an answer needed a second table, go draw it before you write more SQL.

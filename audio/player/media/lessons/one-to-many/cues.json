@@ -1,0 +1,1152 @@
+{
+  "title": "One-to-many",
+  "subtitle": "The usual relationship",
+  "audio": "narration.mp3",
+  "duration": 437.28,
+  "slides": [],
+  "scenes": [
+    {
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "name"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id",
+            "total"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "title": "One customer, many orders",
+      "id": "sentence",
+      "label": "One to many",
+      "kind": "schema",
+      "fromLyric": 0,
+      "toLyric": 2,
+      "steps": [
+        {
+          "lyricMin": 0,
+          "actions": [
+            "enter",
+            "show-schema",
+            "show-title"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "om",
+      "label": "One to many",
+      "kind": "schema",
+      "title": "One customer, many orders",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "name"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id",
+            "total"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 2,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 3,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 2,
+      "toLyric": 22
+    },
+    {
+      "id": "insert",
+      "label": "INSERT",
+      "kind": "sql",
+      "title": "Grow the many side",
+      "prompt": "Do not rewrite Maya",
+      "sql": [
+        "INSERT INTO orders (order_id, customer_id, total)",
+        "VALUES (105, 1, 12.00);"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 22,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 22,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 23,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 22,
+      "toLyric": 25
+    },
+    {
+      "id": "om-2",
+      "label": "One to many",
+      "kind": "schema",
+      "title": "One customer, many orders",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "name"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id",
+            "total"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 25,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 26,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 25,
+      "toLyric": 73
+    },
+    {
+      "id": "insert-2",
+      "label": "INSERT",
+      "kind": "sql",
+      "title": "Grow the many side",
+      "prompt": "Do not rewrite Maya",
+      "sql": [
+        "INSERT INTO orders (order_id, customer_id, total)",
+        "VALUES (105, 1, 12.00);"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 73,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 73,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 74,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 73,
+      "toLyric": 76
+    },
+    {
+      "id": "om-3",
+      "label": "One to many",
+      "kind": "schema",
+      "title": "One customer, many orders",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "name"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id",
+            "total"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 76,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 77,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 76,
+      "toLyric": 83
+    },
+    {
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "name"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id",
+            "total"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "title": "One customer, many orders",
+      "id": "optional",
+      "label": "One to many",
+      "kind": "schema",
+      "fromLyric": 83,
+      "toLyric": 90,
+      "steps": [
+        {
+          "lyricMin": 83,
+          "actions": [
+            "enter",
+            "show-schema",
+            "show-title"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "om-4",
+      "label": "One to many",
+      "kind": "schema",
+      "title": "One customer, many orders",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "name"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id",
+            "total"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 90,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 91,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 90,
+      "toLyric": 122
+    },
+    {
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "name"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id",
+            "total"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "title": "One customer, many orders",
+      "id": "sentence-2",
+      "label": "One to many",
+      "kind": "schema",
+      "fromLyric": 122,
+      "toLyric": 125,
+      "steps": [
+        {
+          "lyricMin": 122,
+          "actions": [
+            "enter",
+            "show-schema",
+            "show-title"
+          ]
+        }
+      ]
+    }
+  ],
+  "lyrics": [
+    {
+      "start": 0.05,
+      "end": 3.069,
+      "text": "One-to-many is the default shape in a store.",
+      "slide": ""
+    },
+    {
+      "start": 3.069,
+      "end": 5.472,
+      "text": "One customer places many orders.",
+      "slide": ""
+    },
+    {
+      "start": 5.472,
+      "end": 8.027,
+      "text": "Each order belongs to one customer.",
+      "slide": ""
+    },
+    {
+      "start": 8.027,
+      "end": 10.652,
+      "text": "The foreign key lives on the many side.",
+      "slide": ""
+    },
+    {
+      "start": 10.652,
+      "end": 13.18,
+      "text": "orders.customer_id.",
+      "slide": ""
+    },
+    {
+      "start": 13.18,
+      "end": 16.055,
+      "text": "You already met this as a foreign key lesson.",
+      "slide": ""
+    },
+    {
+      "start": 16.055,
+      "end": 17.708,
+      "text": "Here we stay with the count.",
+      "slide": ""
+    },
+    {
+      "start": 17.708,
+      "end": 22.777,
+      "text": "Many is zero, one, or more, unless you add extra rules.",
+      "slide": ""
+    },
+    {
+      "start": 22.777,
+      "end": 26.125,
+      "text": "A customer with zero orders is still a customer.",
+      "slide": ""
+    },
+    {
+      "start": 26.125,
+      "end": 27.958,
+      "text": "That is one-to-zero-or-many.",
+      "slide": ""
+    },
+    {
+      "start": 27.958,
+      "end": 34.819,
+      "text": "If every customer must have an order, you need a process or a constraint that is harder than a foreign key.",
+      "slide": ""
+    },
+    {
+      "start": 34.819,
+      "end": 36.902,
+      "text": "Usually you do not require it.",
+      "slide": ""
+    },
+    {
+      "start": 36.902,
+      "end": 39.569,
+      "text": "The one side is required more often.",
+      "slide": ""
+    },
+    {
+      "start": 39.569,
+      "end": 45.333,
+      "text": "NOT NULL on orders.customer_id means every order has a customer.",
+      "slide": ""
+    },
+    {
+      "start": 45.333,
+      "end": 48.18,
+      "text": "That is one-to-many with a mandatory parent.",
+      "slide": ""
+    },
+    {
+      "start": 48.18,
+      "end": 51.263,
+      "text": "Optional parent is a nullable foreign key.",
+      "slide": ""
+    },
+    {
+      "start": 51.263,
+      "end": 53.68,
+      "text": "Use it when an order can be anonymous.",
+      "slide": ""
+    },
+    {
+      "start": 53.68,
+      "end": 57.041,
+      "text": "Do not put a list of order ids on the customer.",
+      "slide": ""
+    },
+    {
+      "start": 57.041,
+      "end": 61.291,
+      "text": "Lists in a cell break first normal form, and they fight the count.",
+      "slide": ""
+    },
+    {
+      "start": 61.291,
+      "end": 64.986,
+      "text": "The many side can grow without rewriting the one side.",
+      "slide": ""
+    },
+    {
+      "start": 64.986,
+      "end": 66.625,
+      "text": "That is the whole payoff.",
+      "slide": ""
+    },
+    {
+      "start": 66.625,
+      "end": 68.708,
+      "text": "Maya places a third order.",
+      "slide": ""
+    },
+    {
+      "start": 68.708,
+      "end": 70.041,
+      "text": "You insert a row.",
+      "slide": ""
+    },
+    {
+      "start": 70.041,
+      "end": 71.916,
+      "text": "You do not edit Maya's row.",
+      "slide": ""
+    },
+    {
+      "start": 71.916,
+      "end": 75.0,
+      "text": "Cascading deletes are a policy on this shape.",
+      "slide": ""
+    },
+    {
+      "start": 75.0,
+      "end": 77.972,
+      "text": "If the customer leaves, do the orders leave?",
+      "slide": ""
+    },
+    {
+      "start": 77.972,
+      "end": 79.694,
+      "text": "That is the actions lesson.",
+      "slide": ""
+    },
+    {
+      "start": 79.694,
+      "end": 84.402,
+      "text": "On the diagram, crow's foot on orders, bar on customers.",
+      "slide": ""
+    },
+    {
+      "start": 84.402,
+      "end": 86.472,
+      "text": "Say the sentence both ways.",
+      "slide": ""
+    },
+    {
+      "start": 86.472,
+      "end": 89.847,
+      "text": "If both ends say many, you wanted a middle table.",
+      "slide": ""
+    },
+    {
+      "start": 89.847,
+      "end": 93.472,
+      "text": "If both ends say one, you wanted the previous lesson.",
+      "slide": ""
+    },
+    {
+      "start": 93.472,
+      "end": 97.944,
+      "text": "Join from the one to the many and expect more rows than customers.",
+      "slide": ""
+    },
+    {
+      "start": 97.944,
+      "end": 99.722,
+      "text": "That fan-out is correct.",
+      "slide": ""
+    },
+    {
+      "start": 99.722,
+      "end": 102.777,
+      "text": "Group when you want one row per customer again.",
+      "slide": ""
+    },
+    {
+      "start": 102.777,
+      "end": 105.375,
+      "text": "This shape is ordinary on purpose.",
+      "slide": ""
+    },
+    {
+      "start": 105.375,
+      "end": 110.513,
+      "text": "Most honest schemas are a handful of one-to-many arrows around a few hubs.",
+      "slide": ""
+    },
+    {
+      "start": 110.513,
+      "end": 113.18,
+      "text": "Hierarchies are one-to-many stacked.",
+      "slide": ""
+    },
+    {
+      "start": 113.18,
+      "end": 119.43,
+      "text": "A publisher has many authors, an author has many books \u2014 if that is true in your store.",
+      "slide": ""
+    },
+    {
+      "start": 119.43,
+      "end": 123.388,
+      "text": "Sometimes a book has many authors, which is many-to-many.",
+      "slide": ""
+    },
+    {
+      "start": 123.388,
+      "end": 125.763,
+      "text": "The stacked one-to-many is a tree.",
+      "slide": ""
+    },
+    {
+      "start": 125.763,
+      "end": 127.833,
+      "text": "The many-to-many is a net.",
+      "slide": ""
+    },
+    {
+      "start": 127.833,
+      "end": 131.888,
+      "text": "Do not force a net into a tree because trees are easier to draw.",
+      "slide": ""
+    },
+    {
+      "start": 131.888,
+      "end": 135.277,
+      "text": "Self one-to-many is a tree in one table.",
+      "slide": ""
+    },
+    {
+      "start": 135.277,
+      "end": 137.972,
+      "text": "parent_id on category.",
+      "slide": ""
+    },
+    {
+      "start": 137.972,
+      "end": 139.805,
+      "text": "The root has a null parent.",
+      "slide": ""
+    },
+    {
+      "start": 139.805,
+      "end": 143.694,
+      "text": "Cycles need a CHECK or a procedure if they would be nonsense.",
+      "slide": ""
+    },
+    {
+      "start": 143.694,
+      "end": 147.236,
+      "text": "Aggregates after one-to-many are the usual reports.",
+      "slide": ""
+    },
+    {
+      "start": 147.236,
+      "end": 148.93,
+      "text": "COUNT orders per customer.",
+      "slide": ""
+    },
+    {
+      "start": 148.93,
+      "end": 150.68,
+      "text": "SUM totals per customer.",
+      "slide": ""
+    },
+    {
+      "start": 150.68,
+      "end": 152.666,
+      "text": "You already have those verbs.",
+      "slide": ""
+    },
+    {
+      "start": 152.666,
+      "end": 154.944,
+      "text": "The relationship is why they work.",
+      "slide": ""
+    },
+    {
+      "start": 154.944,
+      "end": 160.305,
+      "text": "Orphan orders after a bad import are many-side rows whose parent is missing.",
+      "slide": ""
+    },
+    {
+      "start": 160.305,
+      "end": 162.402,
+      "text": "A foreign key would have stopped them.",
+      "slide": ""
+    },
+    {
+      "start": 162.402,
+      "end": 165.319,
+      "text": "If you find them, you found a missing arrow.",
+      "slide": ""
+    },
+    {
+      "start": 165.319,
+      "end": 173.611,
+      "text": "Put the arrow on, then clean, or clean, then put the arrow on, in that painful order the data requires.",
+      "slide": ""
+    },
+    {
+      "start": 173.611,
+      "end": 179.291,
+      "text": "The usual relationship is usual because commerce is one person, many events.",
+      "slide": ""
+    },
+    {
+      "start": 179.291,
+      "end": 181.222,
+      "text": "Learn to see it without thinking.",
+      "slide": ""
+    },
+    {
+      "start": 181.222,
+      "end": 183.847,
+      "text": "Then the unusual shapes will stand out.",
+      "slide": ""
+    },
+    {
+      "start": 183.847,
+      "end": 187.041,
+      "text": "One box, crow's foot, other box.",
+      "slide": ""
+    },
+    {
+      "start": 187.041,
+      "end": 189.0,
+      "text": "Key on the crow's foot side.",
+      "slide": ""
+    },
+    {
+      "start": 189.0,
+      "end": 191.875,
+      "text": "That is the whole picture, and most of a store.",
+      "slide": ""
+    },
+    {
+      "start": 191.875,
+      "end": 193.222,
+      "text": "Count the parents.",
+      "slide": ""
+    },
+    {
+      "start": 193.222,
+      "end": 194.5,
+      "text": "Count the children.",
+      "slide": ""
+    },
+    {
+      "start": 194.5,
+      "end": 199.541,
+      "text": "The children should be greater or equal, except when some parents have none.",
+      "slide": ""
+    },
+    {
+      "start": 199.541,
+      "end": 202.097,
+      "text": "That arithmetic is the relationship.",
+      "slide": ""
+    },
+    {
+      "start": 202.097,
+      "end": 206.472,
+      "text": "If children outnumber parents by thousands, you still might be right.",
+      "slide": ""
+    },
+    {
+      "start": 206.472,
+      "end": 211.694,
+      "text": "If children equal parents always, you might have one-to-one in disguise.",
+      "slide": ""
+    },
+    {
+      "start": 211.694,
+      "end": 212.444,
+      "text": "Look.",
+      "slide": ""
+    },
+    {
+      "start": 212.444,
+      "end": 216.944,
+      "text": "If children can list two parents in one row, you wanted many-to-many.",
+      "slide": ""
+    },
+    {
+      "start": 216.944,
+      "end": 217.944,
+      "text": "Look again.",
+      "slide": ""
+    },
+    {
+      "start": 217.944,
+      "end": 221.736,
+      "text": "The usual shape earns its name by surviving that look.",
+      "slide": ""
+    },
+    {
+      "start": 221.736,
+      "end": 223.569,
+      "text": "Put the key on the child.",
+      "slide": ""
+    },
+    {
+      "start": 223.569,
+      "end": 225.902,
+      "text": "Do not list children on the parent.",
+      "slide": ""
+    },
+    {
+      "start": 225.902,
+      "end": 227.069,
+      "text": "Insert to grow.",
+      "slide": ""
+    },
+    {
+      "start": 227.069,
+      "end": 229.375,
+      "text": "That is one-to-many when it is healthy.",
+      "slide": ""
+    },
+    {
+      "start": 229.375,
+      "end": 233.069,
+      "text": "One-to-many is the default shape of operational data.",
+      "slide": ""
+    },
+    {
+      "start": 233.069,
+      "end": 235.472,
+      "text": "One customer places many orders.",
+      "slide": ""
+    },
+    {
+      "start": 235.472,
+      "end": 238.138,
+      "text": "One product receives many reviews.",
+      "slide": ""
+    },
+    {
+      "start": 238.138,
+      "end": 240.666,
+      "text": "One building contains many rooms.",
+      "slide": ""
+    },
+    {
+      "start": 240.666,
+      "end": 243.25,
+      "text": "The many side holds the foreign key.",
+      "slide": ""
+    },
+    {
+      "start": 243.25,
+      "end": 246.625,
+      "text": "That sentence is worth repeating until it is muscle.",
+      "slide": ""
+    },
+    {
+      "start": 246.625,
+      "end": 252.458,
+      "text": "If you put order_id on customers, you reserved one order slot per customer.",
+      "slide": ""
+    },
+    {
+      "start": 252.458,
+      "end": 255.013,
+      "text": "The second order has nowhere to live.",
+      "slide": ""
+    },
+    {
+      "start": 255.013,
+      "end": 262.958,
+      "text": "If you put customer_id on orders, every extra purchase is another row with the same customer_id.",
+      "slide": ""
+    },
+    {
+      "start": 262.958,
+      "end": 264.722,
+      "text": "That is the implementation.",
+      "slide": ""
+    },
+    {
+      "start": 264.722,
+      "end": 267.486,
+      "text": "Cardinality still has two sentences.",
+      "slide": ""
+    },
+    {
+      "start": 267.486,
+      "end": 271.388,
+      "text": "A customer has zero, one, or more orders.",
+      "slide": ""
+    },
+    {
+      "start": 271.388,
+      "end": 278.722,
+      "text": "An order belongs to one customer, or to one if guests can check out without an account, zero or one.",
+      "slide": ""
+    },
+    {
+      "start": 278.722,
+      "end": 281.68,
+      "text": "Optional parent is a NULL foreign key.",
+      "slide": ""
+    },
+    {
+      "start": 281.786,
+      "end": 285.402,
+      "text": "Required parent is NOT NULL plus the foreign key.",
+      "slide": ""
+    },
+    {
+      "start": 285.402,
+      "end": 289.083,
+      "text": "Crow's foot: the crow's foot sits on the many entity.",
+      "slide": ""
+    },
+    {
+      "start": 289.083,
+      "end": 290.666,
+      "text": "The bar sits on the one.",
+      "slide": ""
+    },
+    {
+      "start": 290.666,
+      "end": 295.319,
+      "text": "A circle on the one side means a child may exist without a parent.",
+      "slide": ""
+    },
+    {
+      "start": 295.319,
+      "end": 298.124,
+      "text": "Read the marks as the English you already wrote.",
+      "slide": ""
+    },
+    {
+      "start": 298.124,
+      "end": 302.041,
+      "text": "If the marks and the English disagree, the marks are wrong.",
+      "slide": ""
+    },
+    {
+      "start": 302.041,
+      "end": 307.791,
+      "text": "Identifying one-to-many is when the child's key includes the parent: order lines.",
+      "slide": ""
+    },
+    {
+      "start": 307.791,
+      "end": 315.194,
+      "text": "Non-identifying is when the child has its own id and merely points: reviews with review_id.",
+      "slide": ""
+    },
+    {
+      "start": 315.194,
+      "end": 319.083,
+      "text": "Most application tables are non-identifying one-to-many.",
+      "slide": ""
+    },
+    {
+      "start": 319.083,
+      "end": 320.222,
+      "text": "That is healthy.",
+      "slide": ""
+    },
+    {
+      "start": 320.222,
+      "end": 324.208,
+      "text": "Do not draw many-to-many because both nouns feel important.",
+      "slide": ""
+    },
+    {
+      "start": 324.208,
+      "end": 328.527,
+      "text": "If one side is clearly the parent of a list, it is one-to-many.",
+      "slide": ""
+    },
+    {
+      "start": 328.527,
+      "end": 333.749,
+      "text": "Students in a section, lines on a receipt, payments on an invoice.",
+      "slide": ""
+    },
+    {
+      "start": 333.749,
+      "end": 336.569,
+      "text": "Lists with a single owner are one-to-many.",
+      "slide": ""
+    },
+    {
+      "start": 336.569,
+      "end": 345.833,
+      "text": "Implement, then query: FROM orders JOIN customers ON orders.customer_id equals customers.customer_id.",
+      "slide": ""
+    },
+    {
+      "start": 345.833,
+      "end": 349.069,
+      "text": "The join follows the key you placed on the many side.",
+      "slide": ""
+    },
+    {
+      "start": 349.069,
+      "end": 353.916,
+      "text": "If the join needs a third table already, you may have many-to-many hiding.",
+      "slide": ""
+    },
+    {
+      "start": 353.916,
+      "end": 356.874,
+      "text": "Check the English before you invent the junction.",
+      "slide": ""
+    },
+    {
+      "start": 356.874,
+      "end": 365.374,
+      "text": "Practice: write both sentences, place the foreign key, mark NOT NULL if the parent is required, name the constraint.",
+      "slide": ""
+    },
+    {
+      "start": 365.374,
+      "end": 367.374,
+      "text": "That is a complete one-to-many.",
+      "slide": ""
+    },
+    {
+      "start": 367.374,
+      "end": 370.527,
+      "text": "Pretty crow's feet without the column are theater.",
+      "slide": ""
+    },
+    {
+      "start": 370.527,
+      "end": 374.555,
+      "text": "Orders and customers, both sentences, then SQL.",
+      "slide": ""
+    },
+    {
+      "start": 374.555,
+      "end": 377.722,
+      "text": "A customer has zero one or more orders.",
+      "slide": ""
+    },
+    {
+      "start": 377.722,
+      "end": 382.888,
+      "text": "An order has one customer in this store, because guests get a guest customer row.",
+      "slide": ""
+    },
+    {
+      "start": 382.888,
+      "end": 388.194,
+      "text": "Foreign key orders.customer_id NOT NULL references customers.",
+      "slide": ""
+    },
+    {
+      "start": 388.194,
+      "end": 393.055,
+      "text": "Insert customer one, then two orders with customer_id one.",
+      "slide": ""
+    },
+    {
+      "start": 393.055,
+      "end": 398.083,
+      "text": "SELECT from orders where customer_id equals one returns two.",
+      "slide": ""
+    },
+    {
+      "start": 398.083,
+      "end": 399.319,
+      "text": "That is the many.",
+      "slide": ""
+    },
+    {
+      "start": 399.319,
+      "end": 407.374,
+      "text": "SELECT from customers join orders should not put customer columns on the many grain if you then count customers as orders.",
+      "slide": ""
+    },
+    {
+      "start": 407.374,
+      "end": 408.569,
+      "text": "Watch the grain.",
+      "slide": ""
+    },
+    {
+      "start": 408.569,
+      "end": 411.68,
+      "text": "Crow's foot on orders, bar on customers.",
+      "slide": ""
+    },
+    {
+      "start": 411.68,
+      "end": 420.374,
+      "text": "If guest checkout allows NULL customer_id, circle on customers, and the second sentence becomes zero or one.",
+      "slide": ""
+    },
+    {
+      "start": 420.374,
+      "end": 422.777,
+      "text": "The column changes with the sentence.",
+      "slide": ""
+    },
+    {
+      "start": 422.777,
+      "end": 429.611,
+      "text": "Teachers and students in a single section is one-to-many if each student has one homeroom teacher.",
+      "slide": ""
+    },
+    {
+      "start": 429.611,
+      "end": 434.944,
+      "text": "If students have many teachers, you already left this lesson for many-to-many.",
+      "slide": ""
+    },
+    {
+      "start": 434.944,
+      "end": 437.222,
+      "text": "Stay until the list has one owner.",
+      "slide": ""
+    }
+  ]
+}

@@ -1,0 +1,444 @@
+1
+00:00:00,050 --> 00:00:07,333
+Many-to-many means each left row can meet many right rows, and each right row can meet many left rows.
+
+2
+00:00:07,333 --> 00:00:09,444
+A student takes many courses.
+
+3
+00:00:09,444 --> 00:00:11,486
+A course has many students.
+
+4
+00:00:11,486 --> 00:00:14,819
+You cannot put course_id on students.
+
+5
+00:00:14,819 --> 00:00:16,888
+That allows only one course.
+
+6
+00:00:16,888 --> 00:00:20,222
+You cannot put student_id on courses.
+
+7
+00:00:20,222 --> 00:00:22,416
+That allows only one student.
+
+8
+00:00:22,416 --> 00:00:25,236
+You cannot put a list of ids in a cell.
+
+9
+00:00:25,236 --> 00:00:26,972
+You add a third table.
+
+10
+00:00:26,972 --> 00:00:28,277
+Call it enrollment.
+
+11
+00:00:28,277 --> 00:00:32,138
+It holds student_id and course_id.
+
+12
+00:00:32,138 --> 00:00:34,861
+Together they are usually the primary key.
+
+13
+00:00:34,861 --> 00:00:36,875
+Each pair is one enrollment.
+
+14
+00:00:36,875 --> 00:00:39,458
+Maya in Harbor Light is one row.
+
+15
+00:00:39,458 --> 00:00:42,083
+Maya in Quiet Fields is another.
+
+16
+00:00:42,083 --> 00:00:44,708
+Jordan in Harbor Light is a third.
+
+17
+00:00:44,708 --> 00:00:47,916
+The same two foreign keys, two parents.
+
+18
+00:00:47,916 --> 00:00:52,138
+If the relationship has a grade, the grade lives on enrollment.
+
+19
+00:00:52,138 --> 00:00:57,611
+It is a fact about the pair, not about the student alone, not about the course alone.
+
+20
+00:00:57,611 --> 00:01:02,263
+That is how you notice you needed the middle table even if you tried to avoid it.
+
+21
+00:01:02,263 --> 00:01:07,333
+Do not name the middle table student_course unless your team likes that style.
+
+22
+00:01:07,333 --> 00:01:12,833
+A real noun is clearer: enrollment, assignment, line_item.
+
+23
+00:01:12,833 --> 00:01:15,805
+Unique on the pair prevents double enrollment.
+
+24
+00:01:15,805 --> 00:01:19,361
+A surrogate enrollment_id is optional.
+
+25
+00:01:19,361 --> 00:01:25,000
+If other tables must point at an enrollment, a surrogate is easier to copy.
+
+26
+00:01:25,000 --> 00:01:29,500
+To list Maya's titles, join students to enrollment to books.
+
+27
+00:01:29,500 --> 00:01:30,652
+Two hops.
+
+28
+00:01:30,652 --> 00:01:31,791
+That is normal.
+
+29
+00:01:31,791 --> 00:01:35,263
+Hiding the middle table in a view is fine for reading.
+
+30
+00:01:35,263 --> 00:01:37,222
+Writing still goes through the pair.
+
+31
+00:01:37,222 --> 00:01:45,458
+On the diagram, two crow's feet into the middle box, or two many-to-many marks that you then explode into a box.
+
+32
+00:01:45,458 --> 00:01:46,527
+Explode them.
+
+33
+00:01:46,527 --> 00:01:49,458
+SQL has no native many-to-many column.
+
+34
+00:01:49,458 --> 00:01:50,722
+It has tables.
+
+35
+00:01:50,722 --> 00:01:52,833
+The relationship is a table.
+
+36
+00:01:52,833 --> 00:01:58,472
+Once you see it, bookstore carts, tags, and authors-of-books are the same shape.
+
+37
+00:01:58,472 --> 00:02:00,763
+Three-way relationships exist.
+
+38
+00:02:00,763 --> 00:02:03,680
+A student, a course, and a term.
+
+39
+00:02:03,680 --> 00:02:09,041
+If grade is for Maya in Harbor Light in spring, the key may be all three.
+
+40
+00:02:09,041 --> 00:02:11,291
+Do not hide term in a comment.
+
+41
+00:02:11,291 --> 00:02:14,597
+The middle table can have more than two foreign keys.
+
+42
+00:02:14,597 --> 00:02:15,986
+It is still a table.
+
+43
+00:02:15,986 --> 00:02:21,680
+Symmetric relationships, like books that are similar to books, still use a middle table.
+
+44
+00:02:21,680 --> 00:02:29,083
+Order the ids or use a CHECK so you do not store both A-B and B-A unless both are facts.
+
+45
+00:02:29,083 --> 00:02:31,986
+Tags are many-to-many with a small parent.
+
+46
+00:02:31,986 --> 00:02:34,472
+Do not comma-list tags on the book.
+
+47
+00:02:34,472 --> 00:02:36,583
+That was first normal form again.
+
+48
+00:02:36,583 --> 00:02:39,305
+The middle table is book_tag.
+
+49
+00:02:39,305 --> 00:02:43,819
+When the pair has no extra attributes, people call it a pure junction.
+
+50
+00:02:43,819 --> 00:02:46,041
+It is still an entity in SQL.
+
+51
+00:02:46,041 --> 00:02:47,111
+Give it a name.
+
+52
+00:02:47,111 --> 00:02:52,513
+Permissions of users to projects are many-to-many with a role attribute on the pair.
+
+53
+00:02:52,513 --> 00:02:54,875
+The role is why the pair is not pure.
+
+54
+00:02:54,875 --> 00:02:56,555
+That attribute will grow.
+
+55
+00:02:56,555 --> 00:02:59,208
+Plan a real noun: membership.
+
+56
+00:02:59,208 --> 00:03:05,930
+Query patterns: all courses for a student, all students for a course, all pairs with grade A.
+
+57
+00:03:05,930 --> 00:03:10,152
+Each pattern is two joins or one, starting from the middle.
+
+58
+00:03:10,152 --> 00:03:13,625
+Starting from the middle is often the clearest SQL.
+
+59
+00:03:13,625 --> 00:03:15,166
+FROM enrollment JOIN ...
+
+60
+00:03:15,166 --> 00:03:20,444
+The relationship table is the FROM table when the question is about the relationship.
+
+61
+00:03:20,444 --> 00:03:23,402
+That sentence saves a lot of nested guesses.
+
+62
+00:03:23,402 --> 00:03:25,000
+Draw three boxes.
+
+63
+00:03:25,000 --> 00:03:27,097
+Put the facts on the correct one.
+
+64
+00:03:27,097 --> 00:03:31,416
+If the fact needs both parents, you already know where it sits.
+
+65
+00:03:31,416 --> 00:03:35,541
+If you are about to add a second foreign key to a parent, pause.
+
+66
+00:03:35,541 --> 00:03:38,430
+Two parents usually want a child of their own.
+
+67
+00:03:38,430 --> 00:03:40,041
+That child is the pair.
+
+68
+00:03:40,041 --> 00:03:41,416
+Give the pair a noun.
+
+69
+00:03:41,416 --> 00:03:42,791
+Give the pair a key.
+
+70
+00:03:42,791 --> 00:03:45,208
+Give the pair any extra facts.
+
+71
+00:03:45,208 --> 00:03:48,500
+Join from the pair when the question is about the pair.
+
+72
+00:03:48,500 --> 00:03:50,638
+That habit keeps SQL short.
+
+73
+00:03:50,638 --> 00:03:54,611
+Short SQL is how you know the model matches the sentence.
+
+74
+00:03:54,611 --> 00:03:58,708
+Long SQL with two lists in a cell is how you know it does not.
+
+75
+00:03:58,708 --> 00:04:01,263
+Draw three boxes until it is boring.
+
+76
+00:04:01,263 --> 00:04:04,444
+Boring three boxes beat a clever array.
+
+77
+00:04:04,444 --> 00:04:06,555
+The relationship is a table.
+
+78
+00:04:06,555 --> 00:04:09,888
+Say it until the clever array looks embarrassing.
+
+79
+00:04:09,888 --> 00:04:18,527
+Beginners connect two tables with two foreign keys pointing at each other and then wonder why a query cannot list a student's courses.
+
+80
+00:04:18,527 --> 00:04:20,083
+You need a third table.
+
+81
+00:04:20,083 --> 00:04:28,972
+Many-to-many means each instance on this side can associate with many on that side, and each on that side with many on this side.
+
+82
+00:04:28,972 --> 00:04:30,638
+Students and courses.
+
+83
+00:04:30,638 --> 00:04:36,861
+Products and orders, if an order contains many products and a product appears on many orders.
+
+84
+00:04:36,861 --> 00:04:40,652
+Authors and books, when a book can have several authors.
+
+85
+00:04:40,754 --> 00:04:43,620
+A direct foreign key cannot hold a list.
+
+86
+00:04:43,620 --> 00:04:48,509
+A comma-separated course list in a student row is not a relationship.
+
+87
+00:04:48,509 --> 00:04:50,565
+It is a string you will regret.
+
+88
+00:04:50,565 --> 00:04:56,912
+The junction table, also called an associate or bridge table, holds one row per pairing.
+
+89
+00:04:56,912 --> 00:05:03,759
+student_id and course_id together are often the primary key of enrollments.
+
+90
+00:05:03,759 --> 00:05:07,370
+Each of those columns is a foreign key to its parent.
+
+91
+00:05:07,370 --> 00:05:12,870
+A student enrolled in three courses produces three rows, not three columns.
+
+92
+00:05:12,870 --> 00:05:17,690
+A course with thirty students produces thirty rows, not a nested table.
+
+93
+00:05:17,690 --> 00:05:25,537
+Attributes of the pairing belong on the junction: enrolled_on, grade, quantity on an order line.
+
+94
+00:05:25,537 --> 00:05:29,995
+Quantity is not an attribute of product alone or order alone.
+
+95
+00:05:29,995 --> 00:05:32,842
+It is an attribute of this product on this order.
+
+96
+00:05:32,842 --> 00:05:36,579
+That is how you know the third table is real, not a hack.
+
+97
+00:05:36,579 --> 00:05:40,870
+If the pairing has no attributes, the two keys are still enough.
+
+98
+00:05:40,870 --> 00:05:43,412
+Do not skip the table because it looks empty.
+
+99
+00:05:43,412 --> 00:05:44,981
+The pair is the fact.
+
+100
+00:05:44,981 --> 00:05:49,106
+Cardinality to the junction is one-to-many from each parent.
+
+101
+00:05:49,106 --> 00:05:51,967
+Student to enrollments is one-to-many.
+
+102
+00:05:51,967 --> 00:05:54,551
+Course to enrollments is one-to-many.
+
+103
+00:05:54,551 --> 00:05:59,231
+The many-to-many is the view from the two ends, looking through the bridge.
+
+104
+00:05:59,231 --> 00:06:03,579
+Query with two joins: students to enrollments to courses.
+
+105
+00:06:03,579 --> 00:06:07,245
+Filter on the junction when the question is about the pairing.
+
+106
+00:06:07,245 --> 00:06:15,870
+Unique on (student_id, course_id) prevents double enrollment unless repeats are a business event.
+
+107
+00:06:15,870 --> 00:06:24,398
+If repeats are allowed, add a surrogate and a uniqueness rule that matches the real world, such as one open enrollment at a time.
+
+108
+00:06:24,398 --> 00:06:32,940
+Draw the diamond or the crow's feet through the junction, not as a mysterious line with many on both ends and no table.
+
+109
+00:06:32,940 --> 00:06:38,384
+A line with many and many and no box in the middle is an unfinished sentence.
+
+110
+00:06:38,384 --> 00:06:41,065
+Finish it with a table name you can CREATE.
+
+111
+00:06:41,065 --> 00:06:45,079
+Then the SQL works because the grain is one pairing per row.
+

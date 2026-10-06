@@ -1,4 +1,4 @@
-import { sceneAtLyric, activeActions } from "./visual-stage.js?v=56";
+import { sceneAtLyric, activeActions } from "./visual-stage.js?v=91";
 
 const VENDORS = ["MySQL", "MariaDB", "PostgreSQL", "SQL Server", "SQLite"];
 
@@ -71,37 +71,63 @@ export function createVisualController(root, slideImg) {
         <p class="viz-title-sub" data-slot="subtitle"></p>
         <div class="viz-chips" data-slot="chips"></div>
       `;
+    } else if (scene.kind === "bullets") {
+      card.innerHTML = renderBullets(scene);
     }
 
     root.appendChild(card);
   }
 
-  function renderTable(scene) {
+  function tableMarkup(scene, { keep, pane } = {}) {
+    const keepSet = keep ? new Set(keep.map(String)) : null;
     const head = scene.headers
-      .map((h, i) => `<th data-col="${i}">${esc(h)}</th>`)
+      .map((h, i) => `<th data-col="${i}"><span class="viz-paren-open" aria-hidden="true">(</span>${esc(h)}<span class="viz-paren-close" aria-hidden="true">)</span></th>`)
       .join("");
     const body = scene.rows
       .map((row, r) => {
         const meta = (scene.rowMeta && scene.rowMeta[r]) || {};
-        const cls = [meta.dup ? "is-dup" : "", meta.missing ? "has-missing" : ""]
+        const dropped = keepSet && !keepSet.has(String(r));
+        const cls = [
+          meta.dup ? "is-dup" : "",
+          meta.missing ? "has-missing" : "",
+          dropped ? "is-dropped" : keepSet ? "is-kept" : "",
+        ]
           .filter(Boolean)
           .join(" ");
         const cells = row
           .map((cell, c) => {
             const missing = cell === "(missing)" ? " is-missing" : "";
-            return `<td data-col="${c}" class="${missing}">${esc(cell)}</td>`;
+            return `<td data-col="${c}" data-val="${esc(cell)}" class="${missing}">${esc(cell)}</td>`;
           })
           .join("");
         return `<tr data-row="${r}" class="${cls}">${cells}</tr>`;
       })
       .join("");
+    const paneAttr = pane != null ? ` data-pane="${esc(pane)}"` : "";
+    return `<table class="viz-table"${paneAttr}>
+          <thead class="${pane ? "" : "is-hold"}" data-slot="thead"><tr>${head}</tr></thead>
+          <tbody>${body}</tbody>
+        </table>`;
+  }
+
+  function renderTable(scene) {
+    const leftKeep = scene.bindLeft || [0, 1, 2, 3];
+    const rightKeep = scene.bindRight || [0, 2];
     return `
       <div class="viz-table-wrap is-hold" data-slot="table">
-        <table class="viz-table">
-          <thead class="is-hold" data-slot="thead"><tr>${head}</tr></thead>
-          <tbody>${body}</tbody>
-        </table>
+        ${tableMarkup(scene)}
       </div>
+      <div class="viz-bind-split is-hold" data-slot="bind-split">
+        <div class="viz-bind-pane" data-bind="default">
+          <p class="viz-bind-label">AND first</p>
+          ${tableMarkup(scene, { keep: leftKeep, pane: "default" })}
+        </div>
+        <div class="viz-bind-pane" data-bind="paren">
+          <p class="viz-bind-label">( OR ) then AND</p>
+          ${tableMarkup(scene, { keep: rightKeep, pane: "paren" })}
+        </div>
+      </div>
+      <p class="viz-tally is-hold" data-slot="tally"></p>
       <p class="viz-hint is-hold" data-slot="hint">You need structure.</p>
     `;
   }
@@ -367,6 +393,20 @@ export function createVisualController(root, slideImg) {
     `;
   }
 
+  function renderBullets(scene) {
+    const items = (scene.bullets || [])
+      .map(
+        (b, i) =>
+          `<li class="is-hold" data-q="${i}">${esc(typeof b === "string" ? b : b.text || "")}</li>`
+      )
+      .join("");
+    return `
+      <p class="viz-eyebrow is-hold">${esc(scene.eyebrow || "")}</p>
+      <h2 class="viz-heading is-hold">${esc(scene.title || "")}</h2>
+      <ul class="viz-bullets" data-slot="questions">${items}</ul>
+    `;
+  }
+
   function renderCards(scene) {
     return `
       <p class="viz-eyebrow is-hold" data-slot="eyebrow">${esc(scene.eyebrow || "")}</p>
@@ -405,20 +445,26 @@ export function createVisualController(root, slideImg) {
     `;
   }
 
+  function formatSqlProduct(p) {
+    const cells = (p || []).map((c) => String(c));
+    const last = cells[cells.length - 1] || "";
+    const money = cells.length >= 3 && /^\d+\.\d{2}$/.test(last);
+    if (money) {
+      return `
+          <div class="viz-product-row" data-price="${esc(last)}">
+            <span>${esc(cells.slice(0, -1).join(" "))}</span>
+            <span>$${esc(last)}</span>
+          </div>`;
+    }
+    return `<div class="viz-product-row"><span>${esc(cells.join(" · "))}</span></div>`;
+  }
+
   function renderSql(scene) {
     return `
       <p class="viz-eyebrow">${esc(scene.title || "")}</p>
       <p class="viz-prompt is-hold" data-slot="prompt">${esc(scene.prompt || "")}</p>
       <div class="viz-products is-hold" data-slot="products">
-        ${(scene.products || [])
-          .map(
-            (p) => `
-          <div class="viz-product-row" data-price="${p[2]}">
-            <span>${esc(p[0])} ${esc(p[1])}</span>
-            <span>$${esc(p[2])}</span>
-          </div>`
-          )
-          .join("")}
+        ${(scene.products || []).map(formatSqlProduct).join("")}
       </div>
       <pre class="viz-sql" data-slot="sql"><code>${(scene.sql || [])
         .map((line, i) => `<span class="viz-sql-line is-hold" data-sql="${i}">${esc(line)}</span>`)
@@ -444,7 +490,21 @@ export function createVisualController(root, slideImg) {
     el.classList.add("is-shown");
   }
 
-  function applyActions(scene, actions) {
+  function latestPrefix(scene, lyricIndex, prefix) {
+    let found = null;
+    for (const step of scene.steps || []) {
+      const lyricOk =
+        (step.lyricMin == null || lyricIndex >= step.lyricMin) &&
+        (step.lyricMax == null || lyricIndex <= step.lyricMax);
+      if (!lyricOk) continue;
+      for (const a of step.actions || []) {
+        if (a.startsWith(prefix)) found = a;
+      }
+    }
+    return found;
+  }
+
+  function applyActions(scene, actions, lyricIndex = 0) {
     const card = root.querySelector(".viz-card");
     if (!card) return;
 
@@ -454,10 +514,14 @@ export function createVisualController(root, slideImg) {
     if (actions.has("show-header")) {
       reveal(card.querySelector('[data-slot="table"]'));
       reveal(card.querySelector("thead"));
+      if ((scene.rows || []).length && !actions.has("hide-rows")) {
+        card.classList.add("is-rows-in");
+      }
     }
     if (actions.has("show-title")) {
       reveal(card.querySelector('[data-slot="title"]'));
       reveal(card.querySelector('[data-slot="eyebrow"]'));
+      reveal(card.querySelector(".viz-eyebrow"));
       reveal(card.querySelector(".viz-title-main"));
       reveal(card.querySelector(".viz-heading"));
       reveal(card.querySelector('[data-slot="subtitle"]'));
@@ -465,11 +529,93 @@ export function createVisualController(root, slideImg) {
 
     // Table
     if (actions.has("reveal-rows")) card.classList.add("is-rows-in");
-    const pulseCols = [...actions].filter((a) => a.startsWith("pulse-col:"));
-    const pulseCol = pulseCols.length ? pulseCols[pulseCols.length - 1].split(":")[1] : null;
-    card.querySelectorAll("[data-col]").forEach((el) => {
-      el.classList.toggle("is-pulse", pulseCol != null && el.dataset.col === pulseCol);
+    const pulseColSet = new Set();
+    for (const a of actions) {
+      if (a.startsWith("pulse-col:")) {
+        for (const n of a.slice("pulse-col:".length).split(",")) pulseColSet.add(n);
+      }
+    }
+    card.querySelectorAll(".viz-table-wrap [data-col]").forEach((el) => {
+      el.classList.toggle("is-pulse", pulseColSet.has(el.dataset.col));
     });
+    const keepCols = latestPrefix(scene, lyricIndex, "keep-cols:");
+    card.classList.toggle("is-keep-cols", Boolean(keepCols));
+    if (keepCols) {
+      const cols = new Set(keepCols.slice("keep-cols:".length).split(","));
+      card.querySelectorAll(".viz-table-wrap [data-col]").forEach((el) => {
+        const on = cols.has(el.dataset.col);
+        el.classList.toggle("is-col-keep", on);
+        el.classList.toggle("is-col-dim", !on);
+      });
+    } else {
+      card.querySelectorAll(".viz-table-wrap [data-col]").forEach((el) => {
+        el.classList.remove("is-col-keep", "is-col-dim");
+      });
+    }
+    const keepRows = latestPrefix(scene, lyricIndex, "keep-rows:");
+    card.classList.toggle("is-filter-rows", Boolean(keepRows) && !actions.has("split-binds"));
+    if (keepRows && !actions.has("split-binds")) {
+      const rows = new Set(keepRows.slice("keep-rows:".length).split(",").filter(Boolean));
+      card.querySelectorAll(".viz-table-wrap tbody tr[data-row]").forEach((el) => {
+        const on = rows.has(el.dataset.row);
+        el.classList.toggle("is-kept", on);
+        el.classList.toggle("is-dropped", !on);
+      });
+    } else if (!actions.has("split-binds")) {
+      card.querySelectorAll(".viz-table-wrap tbody tr[data-row]").forEach((el) => {
+        el.classList.remove("is-kept", "is-dropped");
+      });
+    }
+    const pulseRowSet = new Set();
+    for (const a of actions) {
+      if (a.startsWith("pulse-row:")) pulseRowSet.add(a.slice("pulse-row:".length));
+    }
+    card.querySelectorAll(".viz-table-wrap tbody tr[data-row]").forEach((el) => {
+      el.classList.toggle("is-row-pulse", pulseRowSet.has(el.dataset.row));
+    });
+    card.querySelectorAll(".viz-table-wrap td").forEach((el) => el.classList.remove("is-cell-pulse"));
+    for (const a of actions) {
+      if (!a.startsWith("pulse-cell:")) continue;
+      const [, r, c] = a.split(":");
+      card
+        .querySelector(`.viz-table-wrap tr[data-row="${r}"] td[data-col="${c}"]`)
+        ?.classList.add("is-cell-pulse");
+    }
+    const condCols = latestPrefix(scene, lyricIndex, "cond-cols:");
+    card.classList.toggle("is-cond-cols", Boolean(condCols));
+    const condSet = new Set(condCols ? condCols.slice("cond-cols:".length).split(",") : []);
+    card.querySelectorAll(".viz-table-wrap th[data-col], .viz-table-wrap td[data-col]").forEach((el) => {
+      el.classList.toggle("is-cond", condSet.has(el.dataset.col));
+    });
+    card.classList.toggle("is-parens", actions.has("parens"));
+    if (actions.has("split-binds")) {
+      card.classList.add("is-split-binds");
+      reveal(card.querySelector('[data-slot="bind-split"]'));
+      card.querySelector('[data-slot="table"]')?.classList.add("is-hold");
+    } else {
+      card.classList.remove("is-split-binds");
+      const split = card.querySelector('[data-slot="bind-split"]');
+      if (split) {
+        split.classList.add("is-hold");
+        split.classList.remove("is-shown");
+      }
+    }
+    if (actions.has("tally") || [...actions].some((a) => a.startsWith("group-by:"))) {
+      const tally = card.querySelector('[data-slot="tally"]');
+      const cityIdx = (scene.headers || []).findIndex((h) => /city/i.test(String(h)));
+      if (tally && cityIdx >= 0) {
+        const counts = {};
+        for (const row of scene.rows || []) {
+          const k = String(row[cityIdx]);
+          counts[k] = (counts[k] || 0) + 1;
+        }
+        tally.textContent = Object.entries(counts)
+          .map(([k, n]) => `${k} ${n}`)
+          .join(" · ");
+        reveal(tally);
+      }
+      card.classList.add("is-tally");
+    }
     if (actions.has("unease")) card.classList.add("is-unease");
     card.classList.toggle("is-show-dups", actions.has("highlight-dups"));
     card.classList.toggle("is-show-missing", actions.has("missing"));
@@ -709,13 +855,19 @@ export function createVisualController(root, slideImg) {
     }
     if (actions.has("results")) {
       const box = card.querySelector('[data-slot="results"]');
-      if (box && scene.products) {
-        const hits = scene.products.filter((p) => Number(p[2]) > 20).map((p) => p[1]);
-        box.innerHTML = hits.map((n) => `<div>${esc(n)}</div>`).join("");
+      if (box && scene.products && scene.products.length) {
+        box.innerHTML = scene.products
+          .map((p) => {
+            const cells = (p || []).map((c) => String(c));
+            const shown = cells[0] && /^\d+$/.test(cells[0]) ? cells.slice(1) : cells;
+            return `<div>${esc(shown.join(" · "))}</div>`;
+          })
+          .join("");
         box.classList.add("is-in");
         card.classList.add("is-filter");
         card.querySelectorAll(".viz-product-row").forEach((row) => {
           const price = Number(row.dataset.price);
+          if (!row.dataset.price) return;
           row.classList.toggle("is-dimmed", !(price > 20));
           row.classList.toggle("is-hit", price > 20);
         });
@@ -750,7 +902,7 @@ export function createVisualController(root, slideImg) {
   function sync(_time, lyricIndex) {
     const scene = sceneAtLyric(lyricIndex);
     const actions = activeActions(scene, lyricIndex, _time);
-    const signature = `${scene.id}|${[...actions].sort().join(",")}`;
+    const signature = `${scene.id}|${lyricIndex}|${[...actions].sort().join(",")}`;
 
     if (scene.id !== lastSceneId) {
       renderScene(scene);
@@ -759,12 +911,18 @@ export function createVisualController(root, slideImg) {
     }
 
     if (signature !== lastSignature) {
-      applyActions(scene, actions);
+      applyActions(scene, actions, lyricIndex);
       lastSignature = signature;
     }
   }
 
-  return { sync };
+  function reset() {
+    lastSceneId = "";
+    lastSignature = "";
+    root.innerHTML = "";
+  }
+
+  return { sync, reset };
 }
 
 function esc(s) {

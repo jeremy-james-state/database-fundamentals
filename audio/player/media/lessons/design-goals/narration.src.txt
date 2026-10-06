@@ -1,0 +1,243 @@
+Schema design is not interior decorating.
+
+It is a short list of goals you protect when someone asks for a new column.
+
+The first goal is identity.
+
+Every row should name one thing, and you should be able to find that thing again.
+
+A primary key is how you keep that promise.
+
+The second goal is one fact in one place.
+
+Maya lives in Austin.
+
+If Austin is stored on every order, a move to Denver becomes a scavenger hunt.
+
+Store the city on the customer.
+
+Let orders point at the customer.
+
+The third goal is completeness.
+
+If a fact must exist, the schema should refuse a row that lacks it.
+
+NOT NULL is a completeness tool.
+
+A foreign key is a completeness tool for relationships.
+
+The fourth goal is honesty under change.
+
+Updates should not create contradictions.
+
+Deletes should not leave orphans unless you chose that.
+
+The fifth goal is a schema people can query without folklore.
+
+If you need a five-page memo to know which total is the real total, the design is leaking.
+
+Speed is a later goal.
+
+Indexes, copies, and caches come after the facts are in the right tables.
+
+If you chase speed first, you freeze a messy shape.
+
+When a new column appears in a meeting, ask which goal it serves.
+
+If it serves none, it is probably a copy of a fact you already store.
+
+Copies want an owner.
+
+Either the original table, or a later denormalization you admit in public.
+
+Protect identity first.
+
+Then fight repetition.
+
+Then require the facts that must exist.
+
+Then worry about speed.
+
+Normalization is a method for the second goal.
+
+It is not a religion.
+
+It is a way to notice when one table is doing three jobs.
+
+A design that meets the goals can still be ugly on a whiteboard.
+
+Ugly and honest beats pretty and contradictory.
+
+Write the goals at the top of the sketch.
+
+Identity.
+
+One fact, one place.
+
+Required facts required.
+
+Change without contradiction.
+
+Queryable without folklore.
+
+Speed last.
+
+Then every new column has to pass the list.
+
+Conflicting goals will appear.
+
+Legal retention may force you to keep a fact you would rather normalize away.
+
+Write the conflict.
+
+Do not hide it in a mystery column.
+
+Audit columns — created_at, created_by — serve completeness of history, not identity of the customer.
+
+They still belong, as long as they do not duplicate the customer.
+
+Soft-delete flags serve honesty under change when a hard delete would smash history.
+
+They also complicate every query with a filter.
+
+That is a real trade, not a free goal.
+
+International addresses will test one-fact-one-place.
+
+A city name is not unique on Earth.
+
+You may need a place table sooner than the first sketch thought.
+
+That is the goal working, not failing.
+
+When product wants a dashboard tomorrow, speed shouts.
+
+Give them a query on honest tables first.
+
+If it is too slow, measure, then copy with an owner.
+
+The goal list is the agenda of that meeting.
+
+Without it, the dashboard becomes the schema.
+
+Teach the list to whoever can add a column.
+
+A schema that only the original author understands has already missed the folklore goal.
+
+Identity, one place, required facts, honest change, queryable shape, speed last.
+
+Say it until it is boring.
+
+Boring goals survive launches.
+
+A goal you cannot test is a slogan.
+
+Identity is tested by finding the same row tomorrow.
+
+One fact in one place is tested by changing it once.
+
+Required facts are tested by inserting a hole and watching the engine refuse.
+
+Honest change is tested by a delete that does not orphan, or that orphans on purpose.
+
+Queryable shape is tested by a new teammate writing a SELECT without a huddle.
+
+Speed is tested with EXPLAIN after the rest is true.
+
+Hang that test list next to the sketch.
+
+Then a column request has somewhere to land besides yes.
+
+A database that is fast and wrong is still wrong.
+
+The five goals are not slogans.
+
+They are tests you can fail on a Tuesday.
+
+Consistency means two tables do not disagree about the same fact.
+
+Integrity means the fact was allowed by the types, keys, and constraints you declared.
+
+Together they say: one meaning, stored once, checked at the door.
+
+If product price lives on products and also on every order line as a copy you never freeze on purpose, the confirmation page and the receipt can disagree.
+
+That disagreement is not a rounding bug.
+
+It is two sources of truth.
+
+Related entities belong in related tables, sharing a key, not sharing a pile of overlapping columns.
+
+Redundancy is extra copies of a fact that can drift.
+
+Insert, update, and delete anomalies are what drift feels like in practice.
+
+You change a name in one row and the old name survives in another.
+
+You cannot insert a fact until you invent a fake parent.
+
+You delete the last child and accidentally lose the only copy of a parent attribute.
+
+Normalization is one way to hunt those anomalies.
+
+Constraints are another.
+
+The second goal is maintainability and ease of use.
+
+A schema a new teammate can query without a huddle is easier to keep alive.
+
+Stable naming is part of that: snake_case, table names as plurals or singulars, but not both.
+
+customer_id everywhere, not custId in one table and customer_code in the next for the same meaning.
+
+The third goal is performance when the facts are already true.
+
+Indexes, types that fit, and joins on keys are how you buy speed.
+
+Speed as a first goal produces wide tables that cannot be updated safely.
+
+Earn integrity first, then measure the slow query.
+
+The fourth goal is security: who may read, who may write, what is stored in the clear.
+
+Access control and hashing belong here as design, not as a later patch.
+
+The fifth goal is the ability to grow: a new attribute should not require rewriting history of unrelated tables.
+
+If adding email requires copying customers into a new god table, the design was a snapshot, not a schema.
+
+Hang the tests next to the sketch.
+
+Identity: can I find the same row tomorrow?
+
+One fact: can I change it once?
+
+Required facts: does INSERT refuse a hole?
+
+Honest change: does DELETE do what I said?
+
+Queryable shape: can a new person write the SELECT?
+
+A goal you cannot test is a poster on the wall.
+
+Miss one goal and the app still ships.
+
+The regret arrives as a receipt that does not match, or a name that changes mid-trip, or a query nobody dares to touch.
+
+Design for the five, then optimize the one that is actually slow.
+
+Five goals against the store: consistency so product price and receipt match unless you froze a sold price on purpose.
+
+Maintainability so a new analyst can find orders.customer_id without folklore.
+
+Performance so the home page has indexes after the keys are right.
+
+Security so clerks are not admins.
+
+Growth so a new gift-card entity is a table, not a column dump on users.
+
+Fail one and you will meet it as a support ticket.
+
+Test them in the order you can: integrity first, then naming, then EXPLAIN, then GRANT, then ALTER for the new entity.
+
+That order is how the five stay a design method, not a slide title.

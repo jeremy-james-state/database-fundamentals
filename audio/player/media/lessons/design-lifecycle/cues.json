@@ -1,0 +1,1578 @@
+{
+  "title": "Design lifecycle",
+  "subtitle": "From idea to tables",
+  "audio": "narration.mp3",
+  "duration": 481.704,
+  "slides": [],
+  "scenes": [
+    {
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        },
+        {
+          "id": "books",
+          "label": "books",
+          "cols": [
+            "book_id"
+          ],
+          "pk": "book_id"
+        }
+      ],
+      "title": "Bookstore nouns",
+      "id": "steps",
+      "label": "Sketch",
+      "kind": "schema",
+      "fromLyric": 0,
+      "toLyric": 2,
+      "steps": [
+        {
+          "lyricMin": 0,
+          "actions": [
+            "enter",
+            "show-schema",
+            "show-title"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "logical",
+      "label": "Logical",
+      "kind": "sql",
+      "title": "Keys in SQL",
+      "prompt": "After the sketch",
+      "sql": [
+        "CREATE TABLE orders (",
+        "  order_id INTEGER PRIMARY KEY,",
+        "  customer_id INTEGER NOT NULL,",
+        "  FOREIGN KEY (customer_id) REFERENCES customers (customer_id)",
+        ");"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 2,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 2,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 3,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 2,
+      "toLyric": 4
+    },
+    {
+      "id": "sketch",
+      "label": "Sketch",
+      "kind": "schema",
+      "title": "Bookstore nouns",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        },
+        {
+          "id": "books",
+          "label": "books",
+          "cols": [
+            "book_id"
+          ],
+          "pk": "book_id"
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 4,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 5,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 4,
+      "toLyric": 9
+    },
+    {
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        },
+        {
+          "id": "books",
+          "label": "books",
+          "cols": [
+            "book_id"
+          ],
+          "pk": "book_id"
+        }
+      ],
+      "title": "Bookstore nouns",
+      "id": "steps-2",
+      "label": "Sketch",
+      "kind": "schema",
+      "fromLyric": 9,
+      "toLyric": 12,
+      "steps": [
+        {
+          "lyricMin": 9,
+          "actions": [
+            "enter",
+            "show-schema",
+            "show-title"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "logical-2",
+      "label": "Logical",
+      "kind": "sql",
+      "title": "Keys in SQL",
+      "prompt": "After the sketch",
+      "sql": [
+        "CREATE TABLE orders (",
+        "  order_id INTEGER PRIMARY KEY,",
+        "  customer_id INTEGER NOT NULL,",
+        "  FOREIGN KEY (customer_id) REFERENCES customers (customer_id)",
+        ");"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 12,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 12,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 13,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 12,
+      "toLyric": 20
+    },
+    {
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        },
+        {
+          "id": "books",
+          "label": "books",
+          "cols": [
+            "book_id"
+          ],
+          "pk": "book_id"
+        }
+      ],
+      "title": "Bookstore nouns",
+      "id": "review",
+      "label": "Sketch",
+      "kind": "schema",
+      "fromLyric": 20,
+      "toLyric": 23,
+      "steps": [
+        {
+          "lyricMin": 20,
+          "actions": [
+            "enter",
+            "show-schema",
+            "show-title"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sketch-2",
+      "label": "Sketch",
+      "kind": "schema",
+      "title": "Bookstore nouns",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        },
+        {
+          "id": "books",
+          "label": "books",
+          "cols": [
+            "book_id"
+          ],
+          "pk": "book_id"
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 23,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 24,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 23,
+      "toLyric": 27
+    },
+    {
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        },
+        {
+          "id": "books",
+          "label": "books",
+          "cols": [
+            "book_id"
+          ],
+          "pk": "book_id"
+        }
+      ],
+      "title": "Bookstore nouns",
+      "id": "change",
+      "label": "Sketch",
+      "kind": "schema",
+      "fromLyric": 27,
+      "toLyric": 42,
+      "steps": [
+        {
+          "lyricMin": 27,
+          "actions": [
+            "enter",
+            "show-schema",
+            "show-title"
+          ]
+        }
+      ]
+    },
+    {
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        },
+        {
+          "id": "books",
+          "label": "books",
+          "cols": [
+            "book_id"
+          ],
+          "pk": "book_id"
+        }
+      ],
+      "title": "Bookstore nouns",
+      "id": "review-2",
+      "label": "Sketch",
+      "kind": "schema",
+      "fromLyric": 42,
+      "toLyric": 45,
+      "steps": [
+        {
+          "lyricMin": 42,
+          "actions": [
+            "enter",
+            "show-schema",
+            "show-title"
+          ]
+        }
+      ]
+    },
+    {
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        },
+        {
+          "id": "books",
+          "label": "books",
+          "cols": [
+            "book_id"
+          ],
+          "pk": "book_id"
+        }
+      ],
+      "title": "Bookstore nouns",
+      "id": "steps-3",
+      "label": "Sketch",
+      "kind": "schema",
+      "fromLyric": 45,
+      "toLyric": 79,
+      "steps": [
+        {
+          "lyricMin": 45,
+          "actions": [
+            "enter",
+            "show-schema",
+            "show-title"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sketch-3",
+      "label": "Sketch",
+      "kind": "schema",
+      "title": "Bookstore nouns",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        },
+        {
+          "id": "books",
+          "label": "books",
+          "cols": [
+            "book_id"
+          ],
+          "pk": "book_id"
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 79,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 80,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 79,
+      "toLyric": 93
+    },
+    {
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        },
+        {
+          "id": "books",
+          "label": "books",
+          "cols": [
+            "book_id"
+          ],
+          "pk": "book_id"
+        }
+      ],
+      "title": "Bookstore nouns",
+      "id": "steps-4",
+      "label": "Sketch",
+      "kind": "schema",
+      "fromLyric": 93,
+      "toLyric": 101,
+      "steps": [
+        {
+          "lyricMin": 93,
+          "actions": [
+            "enter",
+            "show-schema",
+            "show-title"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sketch-4",
+      "label": "Sketch",
+      "kind": "schema",
+      "title": "Bookstore nouns",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        },
+        {
+          "id": "books",
+          "label": "books",
+          "cols": [
+            "book_id"
+          ],
+          "pk": "book_id"
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 101,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 102,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 101,
+      "toLyric": 107
+    },
+    {
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        },
+        {
+          "id": "books",
+          "label": "books",
+          "cols": [
+            "book_id"
+          ],
+          "pk": "book_id"
+        }
+      ],
+      "title": "Bookstore nouns",
+      "id": "review-3",
+      "label": "Sketch",
+      "kind": "schema",
+      "fromLyric": 107,
+      "toLyric": 119,
+      "steps": [
+        {
+          "lyricMin": 107,
+          "actions": [
+            "enter",
+            "show-schema",
+            "show-title"
+          ]
+        }
+      ]
+    },
+    {
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        },
+        {
+          "id": "books",
+          "label": "books",
+          "cols": [
+            "book_id"
+          ],
+          "pk": "book_id"
+        }
+      ],
+      "title": "Bookstore nouns",
+      "id": "steps-5",
+      "label": "Sketch",
+      "kind": "schema",
+      "fromLyric": 119,
+      "toLyric": 123,
+      "steps": [
+        {
+          "lyricMin": 119,
+          "actions": [
+            "enter",
+            "show-schema",
+            "show-title"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sketch-5",
+      "label": "Sketch",
+      "kind": "schema",
+      "title": "Bookstore nouns",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        },
+        {
+          "id": "books",
+          "label": "books",
+          "cols": [
+            "book_id"
+          ],
+          "pk": "book_id"
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 123,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 124,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 123,
+      "toLyric": 130
+    }
+  ],
+  "lyrics": [
+    {
+      "start": 0.05,
+      "end": 3.611,
+      "text": "A schema does not appear fully formed in CREATE TABLE.",
+      "slide": ""
+    },
+    {
+      "start": 3.611,
+      "end": 6.75,
+      "text": "It moves through three views of the same idea.",
+      "slide": ""
+    },
+    {
+      "start": 6.75,
+      "end": 10.902,
+      "text": "Conceptual design names the things and how they relate.",
+      "slide": ""
+    },
+    {
+      "start": 10.902,
+      "end": 13.097,
+      "text": "Customer, order, book.",
+      "slide": ""
+    },
+    {
+      "start": 13.097,
+      "end": 15.486,
+      "text": "A customer places many orders.",
+      "slide": ""
+    },
+    {
+      "start": 15.486,
+      "end": 17.763,
+      "text": "An order contains many books.",
+      "slide": ""
+    },
+    {
+      "start": 17.763,
+      "end": 22.055,
+      "text": "You can sketch this with boxes and lines, or with sentences.",
+      "slide": ""
+    },
+    {
+      "start": 22.055,
+      "end": 23.277,
+      "text": "No types yet.",
+      "slide": ""
+    },
+    {
+      "start": 23.277,
+      "end": 24.666,
+      "text": "No indexes.",
+      "slide": ""
+    },
+    {
+      "start": 24.666,
+      "end": 30.138,
+      "text": "Logical design turns those things into tables, keys, and constraints.",
+      "slide": ""
+    },
+    {
+      "start": 30.138,
+      "end": 32.375,
+      "text": "Now you choose primary keys.",
+      "slide": ""
+    },
+    {
+      "start": 32.375,
+      "end": 34.069,
+      "text": "You add foreign keys.",
+      "slide": ""
+    },
+    {
+      "start": 34.069,
+      "end": 36.722,
+      "text": "You decide which attributes are NOT NULL.",
+      "slide": ""
+    },
+    {
+      "start": 36.722,
+      "end": 39.791,
+      "text": "You normalize so each table has one job.",
+      "slide": ""
+    },
+    {
+      "start": 39.791,
+      "end": 44.75,
+      "text": "Physical design is how a particular engine stores and finds the rows.",
+      "slide": ""
+    },
+    {
+      "start": 44.75,
+      "end": 46.208,
+      "text": "Types get sharper.",
+      "slide": ""
+    },
+    {
+      "start": 46.208,
+      "end": 47.638,
+      "text": "Indexes appear.",
+      "slide": ""
+    },
+    {
+      "start": 47.638,
+      "end": 51.416,
+      "text": "Partitioning, files, and memory settings live here.",
+      "slide": ""
+    },
+    {
+      "start": 51.416,
+      "end": 56.694,
+      "text": "If you start physical, you will pick VARCHAR forty because a form looked forty wide.",
+      "slide": ""
+    },
+    {
+      "start": 56.694,
+      "end": 58.694,
+      "text": "That is not a conceptual reason.",
+      "slide": ""
+    },
+    {
+      "start": 58.694,
+      "end": 62.486,
+      "text": "Keep the conceptual sketch next to the CREATE statements.",
+      "slide": ""
+    },
+    {
+      "start": 62.486,
+      "end": 66.958,
+      "text": "When they disagree, the sketch wins until you update it on purpose.",
+      "slide": ""
+    },
+    {
+      "start": 66.958,
+      "end": 68.527,
+      "text": "Requirements change.",
+      "slide": ""
+    },
+    {
+      "start": 68.527,
+      "end": 71.472,
+      "text": "A bookstore starts lending, not only selling.",
+      "slide": ""
+    },
+    {
+      "start": 71.472,
+      "end": 75.347,
+      "text": "That is a new relationship, not a new column on orders.",
+      "slide": ""
+    },
+    {
+      "start": 75.347,
+      "end": 77.208,
+      "text": "Walk the three views again.",
+      "slide": ""
+    },
+    {
+      "start": 77.208,
+      "end": 78.777,
+      "text": "Name the new entity.",
+      "slide": ""
+    },
+    {
+      "start": 78.777,
+      "end": 80.263,
+      "text": "Place it on the sketch.",
+      "slide": ""
+    },
+    {
+      "start": 80.263,
+      "end": 81.625,
+      "text": "Then give it a table.",
+      "slide": ""
+    },
+    {
+      "start": 81.625,
+      "end": 83.513,
+      "text": "Then decide how it is stored.",
+      "slide": ""
+    },
+    {
+      "start": 83.513,
+      "end": 87.125,
+      "text": "Teams skip the sketch because SQL feels like progress.",
+      "slide": ""
+    },
+    {
+      "start": 87.125,
+      "end": 91.736,
+      "text": "Progress without a sketch is a pile of columns named extra1.",
+      "slide": ""
+    },
+    {
+      "start": 91.736,
+      "end": 94.069,
+      "text": "Document the keys in the sketch.",
+      "slide": ""
+    },
+    {
+      "start": 94.069,
+      "end": 98.458,
+      "text": "Document the verbs: places, contains, borrows.",
+      "slide": ""
+    },
+    {
+      "start": 98.458,
+      "end": 102.055,
+      "text": "Then the SQL has a source of truth besides memory.",
+      "slide": ""
+    },
+    {
+      "start": 102.055,
+      "end": 104.277,
+      "text": "Review is part of the lifecycle.",
+      "slide": ""
+    },
+    {
+      "start": 104.277,
+      "end": 108.0,
+      "text": "A second person should try to query a question from the sketch.",
+      "slide": ""
+    },
+    {
+      "start": 108.0,
+      "end": 111.013,
+      "text": "If they cannot, the sketch is unfinished.",
+      "slide": ""
+    },
+    {
+      "start": 111.013,
+      "end": 114.819,
+      "text": "Migration is the lifecycle continuing after launch.",
+      "slide": ""
+    },
+    {
+      "start": 114.819,
+      "end": 117.694,
+      "text": "ALTER is not a failure of the first design.",
+      "slide": ""
+    },
+    {
+      "start": 117.694,
+      "end": 120.222,
+      "text": "It is the design meeting a new fact.",
+      "slide": ""
+    },
+    {
+      "start": 120.222,
+      "end": 122.041,
+      "text": "Still start from the sketch.",
+      "slide": ""
+    },
+    {
+      "start": 122.041,
+      "end": 125.833,
+      "text": "Physical tricks come last, after the keys are honest.",
+      "slide": ""
+    },
+    {
+      "start": 125.833,
+      "end": 127.888,
+      "text": "That order is the lifecycle.",
+      "slide": ""
+    },
+    {
+      "start": 127.888,
+      "end": 129.625,
+      "text": "Tools will try to skip a view.",
+      "slide": ""
+    },
+    {
+      "start": 129.625,
+      "end": 136.138,
+      "text": "An ORM that emits tables from classes is a logical step wearing a programming language.",
+      "slide": ""
+    },
+    {
+      "start": 136.138,
+      "end": 140.583,
+      "text": "It still needs a conceptual sketch, or the classes will be screens.",
+      "slide": ""
+    },
+    {
+      "start": 140.583,
+      "end": 142.458,
+      "text": "Screens are not entities.",
+      "slide": ""
+    },
+    {
+      "start": 142.458,
+      "end": 147.0,
+      "text": "A checkout page can show customer, cart, and tax at once.",
+      "slide": ""
+    },
+    {
+      "start": 147.0,
+      "end": 149.652,
+      "text": "That is three entities, maybe four.",
+      "slide": ""
+    },
+    {
+      "start": 149.652,
+      "end": 154.013,
+      "text": "If you start from the page, you get one wide table named checkout.",
+      "slide": ""
+    },
+    {
+      "start": 154.013,
+      "end": 155.069,
+      "text": "Resist.",
+      "slide": ""
+    },
+    {
+      "start": 155.069,
+      "end": 157.944,
+      "text": "Reverse engineering is a lifecycle too.",
+      "slide": ""
+    },
+    {
+      "start": 157.944,
+      "end": 163.305,
+      "text": "When you inherit a database, sketch what it actually is, not what you wish it were.",
+      "slide": ""
+    },
+    {
+      "start": 163.305,
+      "end": 166.013,
+      "text": "Then decide which wish is a migration.",
+      "slide": ""
+    },
+    {
+      "start": 166.013,
+      "end": 167.402,
+      "text": "Version the sketch.",
+      "slide": ""
+    },
+    {
+      "start": 167.402,
+      "end": 171.152,
+      "text": "A picture in a slide deck from last year is not versioned.",
+      "slide": ""
+    },
+    {
+      "start": 171.152,
+      "end": 173.527,
+      "text": "A file next to the migrations is.",
+      "slide": ""
+    },
+    {
+      "start": 173.527,
+      "end": 179.5,
+      "text": "Physical design includes collation, fillfactor, and tablespaces in some engines.",
+      "slide": ""
+    },
+    {
+      "start": 179.5,
+      "end": 182.194,
+      "text": "You can ignore them while the keys are wrong.",
+      "slide": ""
+    },
+    {
+      "start": 182.194,
+      "end": 185.361,
+      "text": "You cannot ignore them forever on a large cluster.",
+      "slide": ""
+    },
+    {
+      "start": 185.361,
+      "end": 186.805,
+      "text": "That is still last.",
+      "slide": ""
+    },
+    {
+      "start": 186.805,
+      "end": 188.652,
+      "text": "The lifecycle is a loop.",
+      "slide": ""
+    },
+    {
+      "start": 188.652,
+      "end": 195.083,
+      "text": "New requirement, new sketch mark, new logical change, new physical tweak if needed.",
+      "slide": ""
+    },
+    {
+      "start": 195.083,
+      "end": 198.652,
+      "text": "Skipping the first two is how extra1 is born.",
+      "slide": ""
+    },
+    {
+      "start": 198.652,
+      "end": 203.069,
+      "text": "Keep the loop boring and the tables stay dull in the best way.",
+      "slide": ""
+    },
+    {
+      "start": 203.069,
+      "end": 204.888,
+      "text": "Dull tables are queryable.",
+      "slide": ""
+    },
+    {
+      "start": 204.888,
+      "end": 207.236,
+      "text": "That was the point of walking in order.",
+      "slide": ""
+    },
+    {
+      "start": 207.236,
+      "end": 210.694,
+      "text": "A skipped conceptual hour becomes a month of ALTER.",
+      "slide": ""
+    },
+    {
+      "start": 210.694,
+      "end": 213.041,
+      "text": "That trade is almost never worth it.",
+      "slide": ""
+    },
+    {
+      "start": 213.041,
+      "end": 216.208,
+      "text": "Write three sentences before three tables.",
+      "slide": ""
+    },
+    {
+      "start": 216.208,
+      "end": 220.611,
+      "text": "What exists, how it relates, what must never duplicate.",
+      "slide": ""
+    },
+    {
+      "start": 220.611,
+      "end": 223.444,
+      "text": "Those sentences are the conceptual design.",
+      "slide": ""
+    },
+    {
+      "start": 223.444,
+      "end": 226.888,
+      "text": "Logical design is only spelling them in keys.",
+      "slide": ""
+    },
+    {
+      "start": 226.888,
+      "end": 229.708,
+      "text": "Physical design is only storing them.",
+      "slide": ""
+    },
+    {
+      "start": 229.708,
+      "end": 234.152,
+      "text": "If you cannot find the three sentences, you are not ready for CREATE.",
+      "slide": ""
+    },
+    {
+      "start": 234.152,
+      "end": 235.93,
+      "text": "Find them, then type.",
+      "slide": ""
+    },
+    {
+      "start": 235.93,
+      "end": 239.041,
+      "text": "Most failed databases were not failed SQL.",
+      "slide": ""
+    },
+    {
+      "start": 239.041,
+      "end": 241.055,
+      "text": "They were skipped conversations.",
+      "slide": ""
+    },
+    {
+      "start": 241.055,
+      "end": 252.444,
+      "text": "Professionals gather requirements, then shape a conceptual picture, then a logical schema, then a physical one, then they load data and check that the questions still work.",
+      "slide": ""
+    },
+    {
+      "start": 252.444,
+      "end": 256.916,
+      "text": "Requirement gathering is talking to the people who will live with the data.",
+      "slide": ""
+    },
+    {
+      "start": 256.916,
+      "end": 263.402,
+      "text": "Owners, staff who enter rows, people who answer customers, people who write the application.",
+      "slide": ""
+    },
+    {
+      "start": 263.402,
+      "end": 265.597,
+      "text": "Each group gets different questions.",
+      "slide": ""
+    },
+    {
+      "start": 265.597,
+      "end": 267.416,
+      "text": "What must never be lost.",
+      "slide": ""
+    },
+    {
+      "start": 267.416,
+      "end": 269.444,
+      "text": "What must never be duplicated.",
+      "slide": ""
+    },
+    {
+      "start": 269.444,
+      "end": 274.319,
+      "text": "What a day of work looks like in names of things, not in screen mockups only.",
+      "slide": ""
+    },
+    {
+      "start": 274.319,
+      "end": 276.805,
+      "text": "Study the old system if there is one.",
+      "slide": ""
+    },
+    {
+      "start": 276.938,
+      "end": 281.957,
+      "text": "Sample files, spreadsheets, and reports are requirements in disguise.",
+      "slide": ""
+    },
+    {
+      "start": 281.957,
+      "end": 286.276,
+      "text": "Write down whether you will record interviews, and get permission if you will.",
+      "slide": ""
+    },
+    {
+      "start": 286.276,
+      "end": 290.193,
+      "text": "A prompt to a language model can suggest interview questions.",
+      "slide": ""
+    },
+    {
+      "start": 290.193,
+      "end": 292.304,
+      "text": "It cannot attend the meeting for you.",
+      "slide": ""
+    },
+    {
+      "start": 292.304,
+      "end": 295.165,
+      "text": "You still have to hear the nouns they actually use.",
+      "slide": ""
+    },
+    {
+      "start": 295.165,
+      "end": 304.36,
+      "text": "Conceptual design turns those nouns into entities and relationships, often as an ER sketch, before types exist.",
+      "slide": ""
+    },
+    {
+      "start": 304.36,
+      "end": 311.235,
+      "text": "If you cannot say what exists and how it relates in three sentences, you are not ready for CREATE TABLE.",
+      "slide": ""
+    },
+    {
+      "start": 311.235,
+      "end": 317.026,
+      "text": "Logical design chooses keys, attributes, and tables that implement that sketch.",
+      "slide": ""
+    },
+    {
+      "start": 317.026,
+      "end": 322.749,
+      "text": "This is where primary keys, foreign keys, and normal forms earn their keep.",
+      "slide": ""
+    },
+    {
+      "start": 322.749,
+      "end": 328.165,
+      "text": "Physical design chooses types, indexes, and engine-specific storage.",
+      "slide": ""
+    },
+    {
+      "start": 328.165,
+      "end": 329.901,
+      "text": "It is last on purpose.",
+      "slide": ""
+    },
+    {
+      "start": 329.901,
+      "end": 334.832,
+      "text": "A beautiful index on a table that should not exist is a fast mistake.",
+      "slide": ""
+    },
+    {
+      "start": 334.832,
+      "end": 338.999,
+      "text": "Implementation is CREATE, load, and constraint.",
+      "slide": ""
+    },
+    {
+      "start": 338.999,
+      "end": 346.415,
+      "text": "Validation is: insert the ugly cases, run the questions from the interviews, and watch for anomalies.",
+      "slide": ""
+    },
+    {
+      "start": 346.415,
+      "end": 352.624,
+      "text": "If a report from week one of gathering cannot be written as SQL, the schema is not done.",
+      "slide": ""
+    },
+    {
+      "start": 352.624,
+      "end": 355.735,
+      "text": "Skipping conceptual work feels like speed.",
+      "slide": ""
+    },
+    {
+      "start": 355.735,
+      "end": 357.776,
+      "text": "It becomes a month of ALTER.",
+      "slide": ""
+    },
+    {
+      "start": 357.776,
+      "end": 360.429,
+      "text": "Skipping validation feels like shipping.",
+      "slide": ""
+    },
+    {
+      "start": 360.429,
+      "end": 363.651,
+      "text": "It becomes two sources of truth in production.",
+      "slide": ""
+    },
+    {
+      "start": 363.651,
+      "end": 366.888,
+      "text": "The lifecycle is a loop when the business changes.",
+      "slide": ""
+    },
+    {
+      "start": 366.888,
+      "end": 374.61,
+      "text": "You gather again, you sketch again, you migrate with ALTER instead of pretending the first CREATE was eternal.",
+      "slide": ""
+    },
+    {
+      "start": 374.61,
+      "end": 380.957,
+      "text": "Write three sentences: what exists, how it relates, what must never duplicate.",
+      "slide": ""
+    },
+    {
+      "start": 380.957,
+      "end": 381.915,
+      "text": "Then type.",
+      "slide": ""
+    },
+    {
+      "start": 381.915,
+      "end": 383.499,
+      "text": "Not the other way around.",
+      "slide": ""
+    },
+    {
+      "start": 383.499,
+      "end": 387.04,
+      "text": "Walk the store through the three big steps, slowly.",
+      "slide": ""
+    },
+    {
+      "start": 387.04,
+      "end": 393.013,
+      "text": "Requirements: owners say they sell products, take reviews, and refund by order.",
+      "slide": ""
+    },
+    {
+      "start": 393.013,
+      "end": 398.401,
+      "text": "Staff say they retype emails because the old spreadsheet allowed two Mayas.",
+      "slide": ""
+    },
+    {
+      "start": 398.401,
+      "end": 403.179,
+      "text": "Developers say they need a user id for login that is not the email.",
+      "slide": ""
+    },
+    {
+      "start": 403.179,
+      "end": 406.013,
+      "text": "Those are requirements, not tables yet.",
+      "slide": ""
+    },
+    {
+      "start": 406.013,
+      "end": 413.79,
+      "text": "Conceptual: product, user, order, review, refund as boxes, verbs between them.",
+      "slide": ""
+    },
+    {
+      "start": 413.79,
+      "end": 414.929,
+      "text": "No types.",
+      "slide": ""
+    },
+    {
+      "start": 414.929,
+      "end": 417.193,
+      "text": "No VARCHAR 255.",
+      "slide": ""
+    },
+    {
+      "start": 417.193,
+      "end": 423.888,
+      "text": "Logical: keys on each box, review points at product and user, refund points at order.",
+      "slide": ""
+    },
+    {
+      "start": 423.888,
+      "end": 427.707,
+      "text": "Normal forms applied until names live in one place.",
+      "slide": ""
+    },
+    {
+      "start": 427.707,
+      "end": 437.221,
+      "text": "Physical: INTEGER ids, DECIMAL prices, TIMESTAMPTZ for placed_at if the engine has it, indexes on foreign keys.",
+      "slide": ""
+    },
+    {
+      "start": 437.221,
+      "end": 441.443,
+      "text": "Implement: CREATE in dependency order, parents first.",
+      "slide": ""
+    },
+    {
+      "start": 441.443,
+      "end": 449.013,
+      "text": "Load a dozen ugly rows: two reviews on one product, a refund, a user with no orders.",
+      "slide": ""
+    },
+    {
+      "start": 449.013,
+      "end": 457.526,
+      "text": "Validate: can you list reviews for a product, refunds for an order, and refuse a review with a fake product_id.",
+      "slide": ""
+    },
+    {
+      "start": 457.526,
+      "end": 464.638,
+      "text": "If any interview question from day one cannot run, you are still in logical design, not in production.",
+      "slide": ""
+    },
+    {
+      "start": 464.638,
+      "end": 470.249,
+      "text": "Generative tools can draft interview questions and even draft CREATE statements.",
+      "slide": ""
+    },
+    {
+      "start": 470.249,
+      "end": 473.624,
+      "text": "They cannot sit with the staff who retype emails.",
+      "slide": ""
+    },
+    {
+      "start": 473.624,
+      "end": 479.165,
+      "text": "That conversation is the step that fails when teams open a SQL window first.",
+      "slide": ""
+    },
+    {
+      "start": 479.165,
+      "end": 481.638,
+      "text": "Do not open the SQL window first.",
+      "slide": ""
+    }
+  ]
+}

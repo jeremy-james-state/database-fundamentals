@@ -1,0 +1,940 @@
+{
+  "title": "Entity-relationship diagrams",
+  "subtitle": "Boxes, keys, and lines",
+  "audio": "narration.mp3",
+  "duration": 364.992,
+  "slides": [],
+  "scenes": [
+    {
+      "id": "keys",
+      "label": "Keys",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "name",
+        "city"
+      ],
+      "rows": [
+        [
+          "1",
+          "Maya",
+          "Austin"
+        ],
+        [
+          "2",
+          "Jordan",
+          "Austin"
+        ],
+        [
+          "3",
+          "Sofia",
+          "Denver"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 0,
+          "actions": [
+            "enter",
+            "show-header"
+          ]
+        },
+        {
+          "lyricMin": 1,
+          "actions": [
+            "reveal-rows"
+          ]
+        }
+      ],
+      "fromLyric": 0,
+      "toLyric": 8
+    },
+    {
+      "id": "read",
+      "label": "Keys",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "name",
+        "city"
+      ],
+      "rows": [
+        [
+          "1",
+          "Maya",
+          "Austin"
+        ],
+        [
+          "2",
+          "Jordan",
+          "Austin"
+        ],
+        [
+          "3",
+          "Sofia",
+          "Denver"
+        ]
+      ],
+      "fromLyric": 8,
+      "toLyric": 21,
+      "steps": [
+        {
+          "lyricMin": 8,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "erd",
+      "label": "ERD",
+      "kind": "schema",
+      "title": "A tiny store",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "name"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 21,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 22,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 21,
+      "toLyric": 38
+    },
+    {
+      "id": "read-2",
+      "label": "Keys",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "name",
+        "city"
+      ],
+      "rows": [
+        [
+          "1",
+          "Maya",
+          "Austin"
+        ],
+        [
+          "2",
+          "Jordan",
+          "Austin"
+        ],
+        [
+          "3",
+          "Sofia",
+          "Denver"
+        ]
+      ],
+      "fromLyric": 38,
+      "toLyric": 47,
+      "steps": [
+        {
+          "lyricMin": 38,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "erd-2",
+      "label": "ERD",
+      "kind": "schema",
+      "title": "A tiny store",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "name"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 47,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 48,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 47,
+      "toLyric": 75
+    },
+    {
+      "id": "read-3",
+      "label": "Keys",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "name",
+        "city"
+      ],
+      "rows": [
+        [
+          "1",
+          "Maya",
+          "Austin"
+        ],
+        [
+          "2",
+          "Jordan",
+          "Austin"
+        ],
+        [
+          "3",
+          "Sofia",
+          "Denver"
+        ]
+      ],
+      "fromLyric": 75,
+      "toLyric": 82,
+      "steps": [
+        {
+          "lyricMin": 75,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "erd-3",
+      "label": "ERD",
+      "kind": "schema",
+      "title": "A tiny store",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "name"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 82,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 83,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 82,
+      "toLyric": 104
+    }
+  ],
+  "lyrics": [
+    {
+      "start": 0.05,
+      "end": 6.875,
+      "text": "An entity-relationship diagram is a map of tables before they become SQL, or beside the SQL.",
+      "slide": ""
+    },
+    {
+      "start": 6.875,
+      "end": 8.611,
+      "text": "A box is an entity.",
+      "slide": ""
+    },
+    {
+      "start": 8.611,
+      "end": 11.555,
+      "text": "The name on the box is the table you expect.",
+      "slide": ""
+    },
+    {
+      "start": 11.555,
+      "end": 14.18,
+      "text": "Inside the box you list attributes.",
+      "slide": ""
+    },
+    {
+      "start": 14.18,
+      "end": 15.972,
+      "text": "You mark the primary key.",
+      "slide": ""
+    },
+    {
+      "start": 15.972,
+      "end": 20.236,
+      "text": "You mark foreign keys as copies of someone else's primary key.",
+      "slide": ""
+    },
+    {
+      "start": 20.236,
+      "end": 22.375,
+      "text": "A line is a relationship.",
+      "slide": ""
+    },
+    {
+      "start": 22.375,
+      "end": 26.722,
+      "text": "The ends of the line carry cardinality: one or many.",
+      "slide": ""
+    },
+    {
+      "start": 26.722,
+      "end": 28.569,
+      "text": "A crow's foot means many.",
+      "slide": ""
+    },
+    {
+      "start": 28.569,
+      "end": 30.375,
+      "text": "A single bar means one.",
+      "slide": ""
+    },
+    {
+      "start": 30.375,
+      "end": 32.875,
+      "text": "A circle means zero is allowed.",
+      "slide": ""
+    },
+    {
+      "start": 32.875,
+      "end": 35.444,
+      "text": "A second bar means one is required.",
+      "slide": ""
+    },
+    {
+      "start": 35.444,
+      "end": 38.347,
+      "text": "You do not need every symbol on day one.",
+      "slide": ""
+    },
+    {
+      "start": 38.347,
+      "end": 41.902,
+      "text": "You need boxes, keys, and honest lines.",
+      "slide": ""
+    },
+    {
+      "start": 41.902,
+      "end": 43.916,
+      "text": "Read a line as a sentence.",
+      "slide": ""
+    },
+    {
+      "start": 43.916,
+      "end": 46.319,
+      "text": "One customer places many orders.",
+      "slide": ""
+    },
+    {
+      "start": 46.319,
+      "end": 48.875,
+      "text": "Each order belongs to one customer.",
+      "slide": ""
+    },
+    {
+      "start": 48.875,
+      "end": 52.638,
+      "text": "If you cannot say the sentence, the line is decoration.",
+      "slide": ""
+    },
+    {
+      "start": 52.638,
+      "end": 55.847,
+      "text": "Do not draw a line labeled after a one-off demo.",
+      "slide": ""
+    },
+    {
+      "start": 55.847,
+      "end": 58.027,
+      "text": "Draw the store you are actually building.",
+      "slide": ""
+    },
+    {
+      "start": 58.027,
+      "end": 62.805,
+      "text": "Keep example names ordinary: customers, orders, books.",
+      "slide": ""
+    },
+    {
+      "start": 62.805,
+      "end": 67.555,
+      "text": "A diagram that uses joke names will be quoted as if they were tables.",
+      "slide": ""
+    },
+    {
+      "start": 67.555,
+      "end": 71.458,
+      "text": "Attributes that are only display labels stay off the line.",
+      "slide": ""
+    },
+    {
+      "start": 71.458,
+      "end": 73.666,
+      "text": "The line is not where you write total.",
+      "slide": ""
+    },
+    {
+      "start": 73.666,
+      "end": 75.486,
+      "text": "total lives in a box.",
+      "slide": ""
+    },
+    {
+      "start": 75.486,
+      "end": 79.597,
+      "text": "When a relationship has its own attributes, it wants a box.",
+      "slide": ""
+    },
+    {
+      "start": 79.597,
+      "end": 81.277,
+      "text": "Enrollment has a grade.",
+      "slide": ""
+    },
+    {
+      "start": 81.277,
+      "end": 83.5,
+      "text": "That is the many-to-many lesson.",
+      "slide": ""
+    },
+    {
+      "start": 83.5,
+      "end": 87.291,
+      "text": "On the diagram, the middle box is a real entity.",
+      "slide": ""
+    },
+    {
+      "start": 87.291,
+      "end": 88.986,
+      "text": "Layout is pedagogy.",
+      "slide": ""
+    },
+    {
+      "start": 88.986,
+      "end": 90.93,
+      "text": "Put the hub table in the middle.",
+      "slide": ""
+    },
+    {
+      "start": 90.93,
+      "end": 94.236,
+      "text": "customers in the center, orders to the side.",
+      "slide": ""
+    },
+    {
+      "start": 94.236,
+      "end": 96.597,
+      "text": "Do not cross lines if you can avoid it.",
+      "slide": ""
+    },
+    {
+      "start": 96.597,
+      "end": 99.277,
+      "text": "The drawing should match the join you will write.",
+      "slide": ""
+    },
+    {
+      "start": 99.277,
+      "end": 101.847,
+      "text": "Update the diagram when you ALTER.",
+      "slide": ""
+    },
+    {
+      "start": 101.847,
+      "end": 104.111,
+      "text": "A stale picture is worse than none.",
+      "slide": ""
+    },
+    {
+      "start": 104.111,
+      "end": 107.194,
+      "text": "The point is not software that draws cylinders.",
+      "slide": ""
+    },
+    {
+      "start": 107.194,
+      "end": 114.319,
+      "text": "The point is a shared sentence: these are the things, these are the keys, these are the allowed counts.",
+      "slide": ""
+    },
+    {
+      "start": 114.319,
+      "end": 117.083,
+      "text": "Crow's foot is not the only notation.",
+      "slide": ""
+    },
+    {
+      "start": 117.083,
+      "end": 120.486,
+      "text": "Chen diagrams use diamonds for relationships.",
+      "slide": ""
+    },
+    {
+      "start": 120.486,
+      "end": 126.152,
+      "text": "IDEF1X uses dots and crow's feet with different mandatory marks.",
+      "slide": ""
+    },
+    {
+      "start": 126.152,
+      "end": 128.25,
+      "text": "Pick one notation for a team.",
+      "slide": ""
+    },
+    {
+      "start": 128.25,
+      "end": 132.861,
+      "text": "Mixing them is how a bar gets read as optional when it meant mandatory.",
+      "slide": ""
+    },
+    {
+      "start": 132.861,
+      "end": 138.416,
+      "text": "Subtype boxes appear when a customer is either a person or an organization.",
+      "slide": ""
+    },
+    {
+      "start": 138.416,
+      "end": 140.583,
+      "text": "That is a later modeling choice.",
+      "slide": ""
+    },
+    {
+      "start": 140.583,
+      "end": 144.472,
+      "text": "Do not draw it on day one unless the facts already split.",
+      "slide": ""
+    },
+    {
+      "start": 144.472,
+      "end": 146.208,
+      "text": "Color is not notation.",
+      "slide": ""
+    },
+    {
+      "start": 146.208,
+      "end": 150.819,
+      "text": "A calm diagram in one ink beats a rainbow of departments.",
+      "slide": ""
+    },
+    {
+      "start": 150.819,
+      "end": 154.319,
+      "text": "Your player uses a dark calm stage for the same reason.",
+      "slide": ""
+    },
+    {
+      "start": 154.319,
+      "end": 158.805,
+      "text": "Print the diagram at the size a new engineer can read on one screen.",
+      "slide": ""
+    },
+    {
+      "start": 158.805,
+      "end": 162.722,
+      "text": "If you need a poster, you have too many boxes for one talk.",
+      "slide": ""
+    },
+    {
+      "start": 162.722,
+      "end": 167.722,
+      "text": "Split by bounded context: catalog, checkout, fulfillment.",
+      "slide": ""
+    },
+    {
+      "start": 167.722,
+      "end": 171.541,
+      "text": "Each picture should still use the same names for the shared keys.",
+      "slide": ""
+    },
+    {
+      "start": 171.541,
+      "end": 175.819,
+      "text": "customer_id is customer_id everywhere.",
+      "slide": ""
+    },
+    {
+      "start": 175.819,
+      "end": 179.652,
+      "text": "A glossary next to the pictures beats clever synonyms.",
+      "slide": ""
+    },
+    {
+      "start": 179.652,
+      "end": 184.819,
+      "text": "When a line has numbers, 1 and 0..* are enough.",
+      "slide": ""
+    },
+    {
+      "start": 184.819,
+      "end": 187.069,
+      "text": "Do not write a paragraph on the line.",
+      "slide": ""
+    },
+    {
+      "start": 187.069,
+      "end": 190.375,
+      "text": "Put the paragraph in a comment on the foreign key.",
+      "slide": ""
+    },
+    {
+      "start": 190.375,
+      "end": 192.263,
+      "text": "The diagram is the map.",
+      "slide": ""
+    },
+    {
+      "start": 192.263,
+      "end": 194.277,
+      "text": "The SQL is the territory.",
+      "slide": ""
+    },
+    {
+      "start": 194.277,
+      "end": 197.625,
+      "text": "Walk both, in that order, until they agree.",
+      "slide": ""
+    },
+    {
+      "start": 197.625,
+      "end": 200.666,
+      "text": "Then the next join is a line you already drew.",
+      "slide": ""
+    },
+    {
+      "start": 200.666,
+      "end": 204.736,
+      "text": "A diagram that cannot be read in two minutes is a mural.",
+      "slide": ""
+    },
+    {
+      "start": 204.736,
+      "end": 206.347,
+      "text": "Murals do not ship.",
+      "slide": ""
+    },
+    {
+      "start": 206.347,
+      "end": 210.111,
+      "text": "Cut until a new person can say the sentences on the lines.",
+      "slide": ""
+    },
+    {
+      "start": 210.111,
+      "end": 215.083,
+      "text": "If they invent a table that is not on the page, the page is incomplete.",
+      "slide": ""
+    },
+    {
+      "start": 215.083,
+      "end": 219.527,
+      "text": "If they cannot find a table that is in SQL, the page is stale.",
+      "slide": ""
+    },
+    {
+      "start": 219.527,
+      "end": 224.541,
+      "text": "Incomplete and stale are the only two diagram failures that matter.",
+      "slide": ""
+    },
+    {
+      "start": 224.541,
+      "end": 225.916,
+      "text": "Pretty is optional.",
+      "slide": ""
+    },
+    {
+      "start": 225.916,
+      "end": 227.319,
+      "text": "Agreement is not.",
+      "slide": ""
+    },
+    {
+      "start": 227.319,
+      "end": 228.569,
+      "text": "Print the keys.",
+      "slide": ""
+    },
+    {
+      "start": 228.569,
+      "end": 229.875,
+      "text": "Print the counts.",
+      "slide": ""
+    },
+    {
+      "start": 229.875,
+      "end": 231.666,
+      "text": "Sit the SQL beside it.",
+      "slide": ""
+    },
+    {
+      "start": 231.666,
+      "end": 233.916,
+      "text": "When they match, you have a map.",
+      "slide": ""
+    },
+    {
+      "start": 233.916,
+      "end": 242.861,
+      "text": "An entity-relationship diagram is a picture of what you will store and how those things connect, drawn before CREATE TABLE hardens a guess.",
+      "slide": ""
+    },
+    {
+      "start": 242.861,
+      "end": 246.763,
+      "text": "Entities are the things: customer, product, order.",
+      "slide": ""
+    },
+    {
+      "start": 246.763,
+      "end": 248.68,
+      "text": "They appear as rectangles.",
+      "slide": ""
+    },
+    {
+      "start": 248.68,
+      "end": 255.861,
+      "text": "Attributes are the facts inside the rectangle: name, email, price, with types once you know them.",
+      "slide": ""
+    },
+    {
+      "start": 255.861,
+      "end": 263.263,
+      "text": "Relationships are how entities participate: a customer places an order, an order contains products.",
+      "slide": ""
+    },
+    {
+      "start": 263.263,
+      "end": 271.944,
+      "text": "Chen notation uses diamonds for relationships, and it showed up in a 1976 paper, which is why textbooks still teach it.",
+      "slide": ""
+    },
+    {
+      "start": 271.944,
+      "end": 281.166,
+      "text": "Crow's foot notation uses lines and little marks at the ends for cardinality, and practitioners sketch it on whiteboards because it is fast.",
+      "slide": ""
+    },
+    {
+      "start": 281.166,
+      "end": 282.625,
+      "text": "Neither is more true.",
+      "slide": ""
+    },
+    {
+      "start": 282.625,
+      "end": 285.5,
+      "text": "Switching mid-diagram is what is false.",
+      "slide": ""
+    },
+    {
+      "start": 285.626,
+      "end": 294.645,
+      "text": "A complete diagram names the entities, the attributes you will actually store, the relationships, and the cardinalities once you know them.",
+      "slide": ""
+    },
+    {
+      "start": 294.645,
+      "end": 297.978,
+      "text": "It is a map, not a screenshot of the application.",
+      "slide": ""
+    },
+    {
+      "start": 297.978,
+      "end": 299.603,
+      "text": "Screens have buttons.",
+      "slide": ""
+    },
+    {
+      "start": 299.603,
+      "end": 302.506,
+      "text": "Diagrams have identity and connection.",
+      "slide": ""
+    },
+    {
+      "start": 302.506,
+      "end": 305.589,
+      "text": "Start by placing the entities you already found.",
+      "slide": ""
+    },
+    {
+      "start": 305.589,
+      "end": 311.423,
+      "text": "Then ask, for each pair that your interviews connected, whether a relationship belongs.",
+      "slide": ""
+    },
+    {
+      "start": 311.423,
+      "end": 313.353,
+      "text": "Not every pair gets a line.",
+      "slide": ""
+    },
+    {
+      "start": 313.353,
+      "end": 317.784,
+      "text": "Customers and manufacturers might only meet through products.",
+      "slide": ""
+    },
+    {
+      "start": 317.784,
+      "end": 319.298,
+      "text": "Draw the real verb.",
+      "slide": ""
+    },
+    {
+      "start": 319.298,
+      "end": 323.228,
+      "text": "places, contains, reviews, works for.",
+      "slide": ""
+    },
+    {
+      "start": 323.228,
+      "end": 327.117,
+      "text": "If you cannot name the verb, you do not have a relationship yet.",
+      "slide": ""
+    },
+    {
+      "start": 327.117,
+      "end": 329.381,
+      "text": "You have two boxes on a poster.",
+      "slide": ""
+    },
+    {
+      "start": 329.381,
+      "end": 332.52,
+      "text": "Cardinality marks wait for the next lessons.",
+      "slide": ""
+    },
+    {
+      "start": 332.52,
+      "end": 338.826,
+      "text": "Here the skill is connecting without spaghetti: every line is a sentence from requirements.",
+      "slide": ""
+    },
+    {
+      "start": 338.826,
+      "end": 341.034,
+      "text": "The benefit is forgetting less.",
+      "slide": ""
+    },
+    {
+      "start": 341.034,
+      "end": 345.492,
+      "text": "A missing line is a join you will fake with a comment in six months.",
+      "slide": ""
+    },
+    {
+      "start": 345.492,
+      "end": 349.076,
+      "text": "An extra line is a constraint you cannot explain.",
+      "slide": ""
+    },
+    {
+      "start": 349.076,
+      "end": 352.117,
+      "text": "Read the diagram out loud as sentences.",
+      "slide": ""
+    },
+    {
+      "start": 352.117,
+      "end": 356.02,
+      "text": "If a sentence was never said in gathering, erase the line.",
+      "slide": ""
+    },
+    {
+      "start": 356.02,
+      "end": 359.742,
+      "text": "If a sentence was said and there is no line, draw it.",
+      "slide": ""
+    },
+    {
+      "start": 359.742,
+      "end": 364.923,
+      "text": "Then you are ready to talk about one, many, and identifying relationships.",
+      "slide": ""
+    }
+  ]
+}

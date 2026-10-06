@@ -373,16 +373,17 @@ const CHAPTER_LABELS = {
 };
 
 /**
- * Build clickable chapters from SCENES + lyric start times.
+ * Build clickable chapters from the active scene pack + lyric start times.
  * @param {{ start: number }[]} lyrics
+ * @param {typeof SCENES} [pack]
  */
-export function buildChapters(lyrics = []) {
-  return SCENES.map((scene, i) => {
+export function buildChapters(lyrics = [], pack = currentScenes) {
+  return pack.map((scene, i) => {
     const line = lyrics[scene.fromLyric];
     return {
       id: scene.id,
       kind: scene.kind,
-      label: CHAPTER_LABELS[scene.id] || scene.title || scene.id,
+      label: scene.label || CHAPTER_LABELS[scene.id] || scene.title || scene.id,
       fromLyric: scene.fromLyric,
       toLyric: scene.toLyric,
       start: line && Number.isFinite(line.start) ? line.start : 0,
@@ -391,12 +392,23 @@ export function buildChapters(lyrics = []) {
   });
 }
 
+let currentScenes = SCENES;
+
+export function setScenes(scenes) {
+  currentScenes = Array.isArray(scenes) && scenes.length ? scenes : SCENES;
+}
+
+export function getScenes() {
+  return currentScenes;
+}
+
 export function sceneAtLyric(lyricIndex) {
   const idx = Math.max(0, lyricIndex);
-  for (const scene of SCENES) {
+  const pack = currentScenes;
+  for (const scene of pack) {
     if (idx >= scene.fromLyric && idx < scene.toLyric) return scene;
   }
-  return SCENES[SCENES.length - 1];
+  return pack[pack.length - 1];
 }
 
 export function activeActions(scene, lyricIndex, time = 0) {

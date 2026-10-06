@@ -1,0 +1,668 @@
+1
+00:00:00,050 --> 00:00:06,625
+One-to-one means each row on the left partners with at most one row on the right, and the other way too.
+
+2
+00:00:06,625 --> 00:00:09,208
+A customer has one credentials row.
+
+3
+00:00:09,208 --> 00:00:12,250
+A credentials row belongs to one customer.
+
+4
+00:00:12,250 --> 00:00:15,486
+You could put password_hash on customers.
+
+5
+00:00:15,486 --> 00:00:18,680
+You split it because the facts have a different audience.
+
+6
+00:00:18,680 --> 00:00:20,305
+Names are widely read.
+
+7
+00:00:20,305 --> 00:00:21,555
+Hashes are not.
+
+8
+00:00:21,555 --> 00:00:26,444
+The split is a privacy and permission move as much as a modeling move.
+
+9
+00:00:26,444 --> 00:00:31,694
+The primary key of credentials is often the same customer_id.
+
+10
+00:00:31,694 --> 00:00:34,875
+That shared primary key enforces the one.
+
+11
+00:00:34,875 --> 00:00:37,680
+You cannot insert two hashes for Maya.
+
+12
+00:00:37,680 --> 00:00:40,444
+The second insert collides on the key.
+
+13
+00:00:40,444 --> 00:00:44,777
+A unique foreign key also works if the child has its own id.
+
+14
+00:00:44,777 --> 00:00:49,652
+UNIQUE on customer_id in the child is the one-to-one lock.
+
+15
+00:00:49,652 --> 00:00:53,263
+Without UNIQUE, you accidentally built one-to-many.
+
+16
+00:00:53,263 --> 00:00:59,111
+Optional one-to-one uses a nullable unique foreign key, or simply no child row.
+
+17
+00:00:59,111 --> 00:01:02,375
+A customer without credentials has not signed in yet.
+
+18
+00:01:02,375 --> 00:01:03,930
+Left join to find them.
+
+19
+00:01:03,930 --> 00:01:08,513
+Do not fake one-to-one with an application check and a plain foreign key.
+
+20
+00:01:08,513 --> 00:01:11,027
+Two sessions will insert two children.
+
+21
+00:01:11,027 --> 00:01:14,125
+Let the unique key refuse the second.
+
+22
+00:01:14,125 --> 00:01:17,888
+When both sides are required, you have a packaging question.
+
+23
+00:01:17,888 --> 00:01:19,819
+Maybe it should have been one table.
+
+24
+00:01:19,819 --> 00:01:25,305
+Split anyway if the columns are wide, secret, or rarely read together.
+
+25
+00:01:25,305 --> 00:01:31,680
+A shipping profile that every customer must have can still be a second table if the warehouse owns it.
+
+26
+00:01:31,680 --> 00:01:34,083
+Joins for one-to-one stay simple.
+
+27
+00:01:34,083 --> 00:01:40,222
+ON credentials.customer_id equals customers.customer_id.
+
+28
+00:01:40,222 --> 00:01:42,694
+You do not expect a fan-out of rows.
+
+29
+00:01:42,694 --> 00:01:47,694
+If the result duplicates a customer, your unique constraint is missing.
+
+30
+00:01:47,694 --> 00:01:51,875
+Name the pair in the diagram as a single bar on both ends.
+
+31
+00:01:51,875 --> 00:01:53,222
+Say the sentence.
+
+32
+00:01:53,222 --> 00:01:56,263
+Each customer has at most one credentials row.
+
+33
+00:01:56,263 --> 00:01:59,986
+Each credentials row belongs to exactly one customer.
+
+34
+00:01:59,986 --> 00:02:03,777
+If either sentence is wrong, pick a different cardinality.
+
+35
+00:02:03,777 --> 00:02:07,763
+Vertical split of a wide row is a physical one-to-one.
+
+36
+00:02:07,763 --> 00:02:09,291
+You still share the key.
+
+37
+00:02:09,291 --> 00:02:12,597
+Do it when some columns are huge and rarely read.
+
+38
+00:02:12,597 --> 00:02:15,402
+A biography TEXT might live next door.
+
+39
+00:02:15,402 --> 00:02:18,805
+Do not split a row because a form had two tabs.
+
+40
+00:02:18,805 --> 00:02:20,750
+Tabs are not cardinality.
+
+41
+00:02:20,750 --> 00:02:25,250
+Extension tables that may never exist are optional one-to-one.
+
+42
+00:02:25,250 --> 00:02:28,555
+A tax-exempt certificate for a few customers.
+
+43
+00:02:28,555 --> 00:02:34,375
+Do not put nullable certificate columns on every customer if the facts are a bundle.
+
+44
+00:02:34,375 --> 00:02:36,513
+The bundle is the child table.
+
+45
+00:02:36,513 --> 00:02:41,013
+Shared primary key makes a join look like an extension of the row.
+
+46
+00:02:41,013 --> 00:02:44,555
+ORM tools sometimes call this a composed class.
+
+47
+00:02:44,555 --> 00:02:47,305
+The database still sees two tables.
+
+48
+00:02:47,305 --> 00:02:54,597
+Keep the foreign key, even if the primary key is shared, so the engine refuses a child with no parent.
+
+49
+00:02:54,597 --> 00:02:58,138
+A shared key without a foreign key is a rumor.
+
+50
+00:02:58,138 --> 00:03:04,000
+When both tables grow independently, revisit whether you still mean one-to-one.
+
+51
+00:03:04,000 --> 00:03:08,472
+If a customer can grow two certificates, the cardinality changed.
+
+52
+00:03:08,472 --> 00:03:10,583
+Do not ignore the second insert.
+
+53
+00:03:10,583 --> 00:03:13,166
+UNIQUE will scream if you still claimed one.
+
+54
+00:03:13,166 --> 00:03:14,013
+Listen.
+
+55
+00:03:14,013 --> 00:03:20,000
+Change the diagram to one-to-many, or refuse the second certificate in the product.
+
+56
+00:03:20,000 --> 00:03:21,458
+Either is a decision.
+
+57
+00:03:21,458 --> 00:03:23,472
+A silent duplicate is not.
+
+58
+00:03:23,472 --> 00:03:26,597
+Bars on both ends, or a change of shape.
+
+59
+00:03:26,597 --> 00:03:28,902
+Say it, then lock it with a key.
+
+60
+00:03:28,902 --> 00:03:32,875
+If you are splitting because a slide had two boxes, stop.
+
+61
+00:03:32,875 --> 00:03:36,861
+If you are splitting because two audiences exist, continue.
+
+62
+00:03:36,861 --> 00:03:41,402
+If you are splitting because a column is huge and cold, continue.
+
+63
+00:03:41,402 --> 00:03:45,166
+If you are splitting and forgetting UNIQUE, you built many.
+
+64
+00:03:45,166 --> 00:03:47,555
+The last case is the silent one.
+
+65
+00:03:47,555 --> 00:03:50,888
+Add the unique key the same day as the table.
+
+66
+00:03:50,888 --> 00:03:52,416
+Join once and count.
+
+67
+00:03:52,416 --> 00:03:58,402
+The count of customers should match the count of pairs, plus the unmatched optionals.
+
+68
+00:03:58,402 --> 00:04:01,833
+If it does not, cardinality already drifted.
+
+69
+00:04:01,833 --> 00:04:04,916
+Fix the constraint before you fix the report.
+
+70
+00:04:04,916 --> 00:04:06,708
+Reports lie to be helpful.
+
+71
+00:04:06,708 --> 00:04:08,347
+Constraints refuse.
+
+72
+00:04:08,347 --> 00:04:09,777
+Prefer refuse.
+
+73
+00:04:09,777 --> 00:04:15,958
+Cardinality is how many instances of one entity associate with one instance of another.
+
+74
+00:04:15,958 --> 00:04:20,500
+An entity is the idea; a table is the implementation.
+
+75
+00:04:20,500 --> 00:04:25,902
+An instance is the idea of one thing; a row is the implementation.
+
+76
+00:04:25,902 --> 00:04:31,541
+Every relationship has two directions, and each direction gets its own sentence.
+
+77
+00:04:31,541 --> 00:04:36,194
+A user has zero, one, or more accounts is one direction.
+
+78
+00:04:36,194 --> 00:04:39,375
+An account belongs to one user is the other.
+
+79
+00:04:39,375 --> 00:04:42,791
+The subject of the sentence is where the arrow starts.
+
+80
+00:04:42,914 --> 00:04:49,044
+The object is where the marks sit in crow's foot: near the entity whose count you are stating.
+
+81
+00:04:49,044 --> 00:04:54,100
+A circle is zero, a bar is one, a crow's foot is many.
+
+82
+00:04:54,100 --> 00:04:56,572
+Min and max travel as a pair.
+
+83
+00:04:56,572 --> 00:05:02,877
+One-to-one means each instance on this side matches at most one on that side, and vice versa.
+
+84
+00:05:02,877 --> 00:05:09,989
+A person and a current passport, if your rules say one live passport per person, can be one-to-one.
+
+85
+00:05:09,989 --> 00:05:14,766
+A person and a user profile that must not be shared is one-to-one.
+
+86
+00:05:14,766 --> 00:05:20,641
+Optional one-to-one still uses zero on the min: a user may have no profile yet.
+
+87
+00:05:20,641 --> 00:05:29,141
+Mandatory one-to-one uses one as the min on both sides, and that is rare because inserts have to create both rows together.
+
+88
+00:05:29,141 --> 00:05:35,183
+In tables, one-to-one is usually a shared primary key, or a unique foreign key.
+
+89
+00:05:35,183 --> 00:05:42,711
+If profiles.user_id is UNIQUE and points at users, a user cannot own two profiles.
+
+90
+00:05:42,711 --> 00:05:47,489
+If you forget UNIQUE, your one-to-one is a one-to-many in costume.
+
+91
+00:05:47,489 --> 00:05:53,558
+Split a table into one-to-one when some attributes are bulky, secret, or rare.
+
+92
+00:05:53,558 --> 00:06:01,141
+Addresses, credentials, or medical details might live in a satellite table so the main row stays lean.
+
+93
+00:06:01,141 --> 00:06:04,252
+Do not split because a screen has two tabs.
+
+94
+00:06:04,252 --> 00:06:05,975
+Screens are not schemas.
+
+95
+00:06:05,975 --> 00:06:16,919
+Do not force one-to-one on things the business already treats as many: a customer and their orders is not one-to-one because a second order exists in the English.
+
+96
+00:06:16,919 --> 00:06:22,391
+Listen for at most one, exactly one, optional extra sheet of facts.
+
+97
+00:06:22,391 --> 00:06:24,350
+Those phrases are the lesson.
+
+98
+00:06:24,350 --> 00:06:26,016
+Draw both sentences.
+
+99
+00:06:26,016 --> 00:06:30,502
+If either sentence says many, you are in a different cardinality.
+
+100
+00:06:30,502 --> 00:06:35,891
+If both say at most one, put a unique foreign key on one side and stop.
+
+101
+00:06:35,891 --> 00:06:37,975
+The unique is the enforcement.
+
+102
+00:06:37,975 --> 00:06:42,836
+The line on the diagram is only a claim until the unique exists.
+
+103
+00:06:42,836 --> 00:06:49,572
+Q and A for this idea is short on purpose: can this side have two, and can that side have two.
+
+104
+00:06:49,572 --> 00:06:52,655
+If both answers are no, you have one-to-one.
+
+105
+00:06:52,655 --> 00:06:55,558
+If you hesitated, you do not have it yet.
+
+106
+00:06:55,558 --> 00:06:59,183
+Go back to the requirement, not to a prettier diagram.
+
+107
+00:06:59,183 --> 00:07:10,086
+Implementation patterns: shared primary key, unique foreign key on either side, or a single table if the satellite is always present and tiny.
+
+108
+00:07:10,086 --> 00:07:12,002
+Single table is allowed.
+
+109
+00:07:12,002 --> 00:07:14,905
+One-to-one does not require two tables.
+
+110
+00:07:14,905 --> 00:07:19,502
+Two tables are for optional, bulky, or secret satellites.
+
+111
+00:07:19,502 --> 00:07:25,211
+If every user has exactly one profile of three columns, keep them on users.
+
+112
+00:07:25,211 --> 00:07:31,586
+The cardinality can still be described as one-to-one with a person entity if you later split.
+
+113
+00:07:31,586 --> 00:07:33,864
+Do not split early for purity.
+
+114
+00:07:33,864 --> 00:07:37,433
+Do split when NULL piles or security says so.
+
+115
+00:07:37,433 --> 00:07:49,919
+Real-world examples: country and capital, if you model current capital only; person and medical record number issued one-for-one; order and shipment if your shop ships once.
+
+116
+00:07:49,919 --> 00:07:52,905
+If you ship twice, shipment became many.
+
+117
+00:07:52,905 --> 00:07:54,211
+Listen for once.
+
+118
+00:07:54,211 --> 00:07:59,211
+Once is the word that makes this lesson fifteen minutes instead of a definition.
+
+119
+00:07:59,211 --> 00:08:03,655
+Ask once, at most one, exactly one, optional.
+
+120
+00:08:03,655 --> 00:08:05,850
+Put the answers on both ends.
+
+121
+00:08:05,850 --> 00:08:06,822
+Then draw.
+
+122
+00:08:06,822 --> 00:08:08,030
+Then UNIQUE.
+
+123
+00:08:08,030 --> 00:08:10,391
+Then join and expect one row.
+
+124
+00:08:10,391 --> 00:08:12,211
+That sequence is the film.
+
+125
+00:08:12,211 --> 00:08:15,850
+Close with questions, the way a careful lecture does.
+
+126
+00:08:15,850 --> 00:08:18,905
+Answer in a sentence you could defend at a keyboard.
+
+127
+00:08:18,905 --> 00:08:20,364
+What is cardinality?
+
+128
+00:08:20,364 --> 00:08:24,072
+How many instances associate with one instance of the other.
+
+129
+00:08:24,072 --> 00:08:25,627
+Why two sentences?
+
+130
+00:08:25,627 --> 00:08:28,475
+Every relationship has two directions.
+
+131
+00:08:28,475 --> 00:08:30,780
+What marks mean zero, one, many?
+
+132
+00:08:30,780 --> 00:08:33,377
+Circle, bar, crow's foot.
+
+133
+00:08:33,377 --> 00:08:34,752
+What is one-to-one?
+
+134
+00:08:34,752 --> 00:08:36,794
+At most one on both maxima.
+
+135
+00:08:36,794 --> 00:08:38,280
+Optional one-to-one?
+
+136
+00:08:38,280 --> 00:08:41,530
+Min zero on one side, max still one.
+
+137
+00:08:41,530 --> 00:08:43,516
+How do you enforce it in SQL?
+
+138
+00:08:43,516 --> 00:08:47,197
+UNIQUE on the foreign key, or a shared primary key.
+
+139
+00:08:47,197 --> 00:08:48,850
+What if you forget UNIQUE?
+
+140
+00:08:48,850 --> 00:08:50,586
+It becomes one-to-many.
+
+141
+00:08:50,586 --> 00:08:52,697
+When do you split a satellite table?
+
+142
+00:08:52,697 --> 00:08:57,808
+Bulky, secret, or rare facts, not because a screen has tabs.
+
+143
+00:08:57,808 --> 00:08:59,405
+When do you keep one table?
+
+144
+00:08:59,405 --> 00:09:02,030
+Tiny attributes always present.
+
+145
+00:09:02,030 --> 00:09:04,141
+Person and current passport?
+
+146
+00:09:04,141 --> 00:09:07,405
+One-to-one if the rule is one live passport.
+
+147
+00:09:07,405 --> 00:09:09,516
+Person and passport history?
+
+148
+00:09:09,516 --> 00:09:11,197
+One-to-many of events.
+
+149
+00:09:11,197 --> 00:09:13,919
+Does one-to-one require two tables?
+
+150
+00:09:13,919 --> 00:09:14,683
+No.
+
+151
+00:09:14,683 --> 00:09:16,058
+What grain of time?
+
+152
+00:09:16,058 --> 00:09:19,627
+Current versus history changes the cardinality.
+
+153
+00:09:19,627 --> 00:09:21,502
+What join fan-out means?
+
+154
+00:09:21,502 --> 00:09:23,169
+Your unique is missing.
+
+155
+00:09:23,169 --> 00:09:25,141
+Country and current capital?
+
+156
+00:09:25,141 --> 00:09:26,627
+Often one-to-one.
+
+157
+00:09:26,627 --> 00:09:29,030
+Order and shipment if you ship twice?
+
+158
+00:09:29,030 --> 00:09:30,239
+Many, not one.
+
+159
+00:09:30,239 --> 00:09:32,155
+What word should you listen for?
+
+160
+00:09:32,282 --> 00:09:36,343
+Once, at most one, exactly one, optional.
+
+161
+00:09:36,343 --> 00:09:38,120
+Chen versus crow's foot?
+
+162
+00:09:38,120 --> 00:09:40,315
+Pick one notation and stay.
+
+163
+00:09:40,315 --> 00:09:41,898
+Can both mins be one?
+
+164
+00:09:41,898 --> 00:09:45,857
+Yes, but inserts must create both rows together.
+
+165
+00:09:45,857 --> 00:09:48,370
+If you hesitate on can this side have two?
+
+166
+00:09:48,370 --> 00:09:50,426
+You do not have one-to-one yet.
+
+167
+00:09:50,426 --> 00:09:55,148
+If an answer needed a second table, go draw it before you write more SQL.
+

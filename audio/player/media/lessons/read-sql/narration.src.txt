@@ -1,0 +1,359 @@
+SQL looks like English until it does not.
+
+The engine does not read a statement in the order you type it.
+
+You type SELECT first because that is the custom.
+
+The engine finds FROM first.
+
+It needs a table before it can talk about columns.
+
+Then it applies WHERE.
+
+Then GROUP BY.
+
+Then HAVING.
+
+Then SELECT.
+
+Then ORDER BY.
+
+Then LIMIT.
+
+If you read in that order, surprises shrink.
+
+Start with the table.
+
+Which rows survive the filter.
+
+How they collapse.
+
+Which columns you actually show.
+
+How they sort.
+
+A nested query is a table you invented for a moment.
+
+Read the inside SELECT until it is a named result in your head.
+
+Then read the outside SELECT as if that result were real.
+
+Aliases are nicknames, not magic.
+
+If you alias a column in SELECT, WHERE cannot see it yet.
+
+WHERE ran earlier.
+
+Use the real expression in WHERE, or filter later with HAVING, or wrap a subquery.
+
+DISTINCT is not a group.
+
+It only hides duplicate result rows after SELECT.
+
+COUNT DISTINCT is a different tool.
+
+It counts unique values, not unique whole rows.
+
+AND and OR still need parentheses when they share a sentence.
+
+BETWEEN includes both ends.
+
+IN is a list of allowed values.
+
+NOT IN becomes strange when the list contains NULL.
+
+Prefer NOT EXISTS when absence is the point.
+
+A correlated subquery runs once per outer row.
+
+It can be clear, and it can be slow.
+
+If you can write a join instead, try the join and compare.
+
+SELECT star is fine at the keyboard when you are exploring.
+
+It is a poor contract in an application.
+
+Name the columns you mean.
+
+Then a new column on the table does not leak into a report.
+
+Comments in SQL start with dash dash.
+
+They are for you, not the engine.
+
+Read a statement out loud as columns, table, match, filter.
+
+If you cannot say it in that order, the query is not ready.
+
+Shrink it until the surprise goes away.
+
+Remove the ORDER BY.
+
+Remove the extra AND.
+
+Run the smallest true question.
+
+Then build back.
+
+Careful reading is a skill, not a personality.
+
+The clause order is the map.
+
+Walk it the same way every time.
+
+Punctuation is meaning.
+
+A missing comma in the SELECT list glues two names into a bizarre alias.
+
+A trailing comma is an error in standard SQL.
+
+Read commas as and, then see if the sentence still works.
+
+Indent so FROM, WHERE, and GROUP BY start a line.
+
+Your eye should find the table without hunting.
+
+Uppercase keywords are a style, not a requirement.
+
+Pick one style and keep it for a file.
+
+Comments should say why a filter exists, not what WHERE means.
+
+If a query is a report, name it after the question, not after a person.
+
+Future you will search for unpaid invoices, not a nickname.
+
+When a query is slow, read it before you index it.
+
+A cross join is not an index problem.
+
+A function wrapped around a column can disable an index, which is a later lesson, but you can still see the function while reading.
+
+CASE is a small decision tree in SELECT.
+
+Read it as if, then, else.
+
+Do not nest five of them if a table of labels would be clearer.
+
+UNION removes duplicates between two result shapes.
+
+UNION ALL keeps them.
+
+Both require the same number of columns.
+
+That is combining, not joining.
+
+If you meant a match, you wanted JOIN.
+
+If you meant two lists stacked, you wanted UNION.
+
+Read the first line of a file of SQL as the question.
+
+If the first line is SELECT star FROM a huge table with no WHERE, you are exploring.
+
+Add LIMIT while you explore.
+
+Take it off when the question is real and the filter is tight.
+
+Care is a habit of shrinking.
+
+The engine will run what you wrote.
+
+Your job is to have written the question you meant.
+
+Memorizing clause order as if it were 2010 sets you up to compete with a machine that already memorized it.
+
+You will lose that contest.
+
+Your job is to know what question you are asking, why a query answers it, and whether the tables can even hold the answer.
+
+SQL is declarative.
+
+You describe the result.
+
+You do not narrate the nested loops unless you are reading a query plan.
+
+That is why a short English question translates so well into SELECT.
+
+It is also why a vague question produces confident nonsense.
+
+If you cannot say which rows should vanish, you are not ready to filter.
+
+If you cannot name the grain of a row, you are not ready to join.
+
+Grain means: what is one row about.
+
+An orders row is about one purchase, not about a customer.
+
+A customers row is about one person, not about their purchases.
+
+Mix the grain, and totals lie.
+
+When a tool writes SQL for you, read it like a code review.
+
+Does the FROM name the table whose grain matches the question?
+
+Does every JOIN have an ON that is a real key?
+
+Is there a Cartesian risk if ON is missing?
+
+Does WHERE filter rows before grouping, and HAVING filter groups after?
+
+Are strings quoted and numbers not?
+
+Is NULL tested with IS NULL?
+
+Does the SELECT list match the GROUP BY?
+
+If any answer is no, the generated query is a draft, not a fact.
+
+Ask better questions of the tool: show only Austin orders over twenty, one row per order, columns customer and total.
+
+That prompt has a grain, a filter, and a column list.
+
+show insights about sales does not.
+
+Learn how a filter is applied: each row is kept or dropped.
+
+Learn how a join is applied: rows are matched, not stacked by honesty.
+
+Learn how a group is applied: many rows become one, and leftover columns become lies.
+
+Those three machines are the whole beginner engine.
+
+Syntax is the spelling of those machines.
+
+Spelling without the machines is karaoke in a language you do not speak.
+
+Practice by taking a result you trust and writing the English first.
+
+Then write the SQL.
+
+Then break it on purpose: drop ON, drop WHERE, group the wrong column.
+
+Watch the lie.
+
+That is how you learn to see the lie when a tool hands it to you smiling.
+
+Design tables so the questions you will ask have a place to land.
+
+A missing parent key cannot be joined later by wishing.
+
+Read SQL slowly.
+
+One clause, one idea.
+
+Then you are not competing with a generator.
+
+You are the person who knows whether the answer is true.
+
+Declarative means you can ask for Austin totals without writing a for-loop.
+
+The engine may hash or nest-loop; you still described the result.
+
+Your learning plan is: grain, keys, filters, groups, then syntax.
+
+AI is a typist for the last step.
+
+Tutorials that only show SELECT FROM WHERE JOIN forever never show a Cartesian product on purpose.
+
+Show yourself one.
+
+Then you will see it in generated SQL.
+
+Then you are learning SQL in a way that still works when the typist is faster than you.
+
+The 2010 path was reciting clauses.
+
+The current path is defending meaning.
+
+Defend it out loud.
+
+If you cannot, do not run the query.
+
+Close with questions, the way a careful lecture does.
+
+Answer in a sentence you could defend at a keyboard.
+
+Why not memorize syntax as the path?
+
+A generator already did, and meaning still fails.
+
+What does declarative mean?
+
+You describe the result, not the nested loops.
+
+What is grain?
+
+What one row is about.
+
+What is a bad prompt?
+
+Show insights, with no grain, filter, or columns.
+
+What is a good prompt?
+
+One row per city, sum of totals, last month, columns city and spent.
+
+What do you check in generated SQL first?
+
+FROM grain, JOIN ON keys, WHERE versus HAVING, types, NULL tests, GROUP BY.
+
+When do you delete a join?
+
+When the column you need is already on the FROM table.
+
+What is karaoke SQL?
+
+Syntax without knowing the three machines: filter, join, group.
+
+How do you practice?
+
+English first, SQL second, then break ON and GROUP on purpose.
+
+What must tables provide?
+
+Keys so the questions can land.
+
+Who wins if you compete on typing clauses?
+
+The generator.
+
+Who wins if you defend meaning?
+
+You.
+
+Is SQL like Java in how you specify steps?
+
+No. You do not narrate the steps.
+
+Should you trust COUNT after a bad join?
+
+No. The grain already lied.
+
+What is a Cartesian risk?
+
+ON missing or matching a non-key.
+
+WHERE versus HAVING again?
+
+Rows before the group, groups after.
+
+Quoted numbers?
+
+A type lie.
+
+LIKE on a date?
+
+Usually a type lie.
+
+When is the draft a fact?
+
+When every clause earns its keep.
+
+What do you do if you cannot explain a clause?
+
+Do not run it.
+
+If an answer needed a second table, go draw it before you write more SQL.

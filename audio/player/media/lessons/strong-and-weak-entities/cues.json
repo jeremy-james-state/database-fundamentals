@@ -1,0 +1,1555 @@
+{
+  "title": "Strong and weak entities",
+  "subtitle": "Identity of its own, or borrowed",
+  "audio": "narration.mp3",
+  "duration": 537.168,
+  "slides": [],
+  "scenes": [
+    {
+      "id": "strong",
+      "label": "Strong",
+      "kind": "schema",
+      "title": "Order stands alone",
+      "tables": [
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id"
+          ],
+          "pk": "order_id",
+          "hub": true
+        },
+        {
+          "id": "lines",
+          "label": "order_lines",
+          "cols": [
+            "order_id",
+            "line_no",
+            "book_id"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "order_id": "orders.order_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 0,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 1,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 0,
+      "toLyric": 7
+    },
+    {
+      "id": "lines",
+      "label": "Lines",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "line_no",
+        "title"
+      ],
+      "rows": [
+        [
+          "101",
+          "1",
+          "Harbor Light"
+        ],
+        [
+          "101",
+          "2",
+          "Quiet Fields"
+        ],
+        [
+          "102",
+          "1",
+          "Night Train"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 7,
+          "actions": [
+            "enter",
+            "show-header"
+          ]
+        },
+        {
+          "lyricMin": 10,
+          "actions": [
+            "reveal-rows"
+          ]
+        }
+      ],
+      "fromLyric": 7,
+      "toLyric": 14
+    },
+    {
+      "id": "strong-2",
+      "label": "Strong",
+      "kind": "schema",
+      "title": "Order stands alone",
+      "tables": [
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id"
+          ],
+          "pk": "order_id",
+          "hub": true
+        },
+        {
+          "id": "lines",
+          "label": "order_lines",
+          "cols": [
+            "order_id",
+            "line_no",
+            "book_id"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "order_id": "orders.order_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 14,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 15,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 14,
+      "toLyric": 16
+    },
+    {
+      "id": "lines-2",
+      "label": "Lines",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "line_no",
+        "title"
+      ],
+      "rows": [
+        [
+          "101",
+          "1",
+          "Harbor Light"
+        ],
+        [
+          "101",
+          "2",
+          "Quiet Fields"
+        ],
+        [
+          "102",
+          "1",
+          "Night Train"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 16,
+          "actions": [
+            "enter",
+            "show-header"
+          ]
+        },
+        {
+          "lyricMin": 16,
+          "actions": [
+            "reveal-rows"
+          ]
+        }
+      ],
+      "fromLyric": 16,
+      "toLyric": 18
+    },
+    {
+      "id": "strong-3",
+      "label": "Strong",
+      "kind": "schema",
+      "title": "Order stands alone",
+      "tables": [
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id"
+          ],
+          "pk": "order_id",
+          "hub": true
+        },
+        {
+          "id": "lines",
+          "label": "order_lines",
+          "cols": [
+            "order_id",
+            "line_no",
+            "book_id"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "order_id": "orders.order_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 18,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 19,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 18,
+      "toLyric": 27
+    },
+    {
+      "id": "lines-3",
+      "label": "Lines",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "line_no",
+        "title"
+      ],
+      "rows": [
+        [
+          "101",
+          "1",
+          "Harbor Light"
+        ],
+        [
+          "101",
+          "2",
+          "Quiet Fields"
+        ],
+        [
+          "102",
+          "1",
+          "Night Train"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 27,
+          "actions": [
+            "enter",
+            "show-header"
+          ]
+        },
+        {
+          "lyricMin": 28,
+          "actions": [
+            "reveal-rows"
+          ]
+        }
+      ],
+      "fromLyric": 27,
+      "toLyric": 29
+    },
+    {
+      "id": "strong-4",
+      "label": "Strong",
+      "kind": "schema",
+      "title": "Order stands alone",
+      "tables": [
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id"
+          ],
+          "pk": "order_id",
+          "hub": true
+        },
+        {
+          "id": "lines",
+          "label": "order_lines",
+          "cols": [
+            "order_id",
+            "line_no",
+            "book_id"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "order_id": "orders.order_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 29,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 30,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 29,
+      "toLyric": 38
+    },
+    {
+      "id": "practice",
+      "label": "Lines",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "line_no",
+        "title"
+      ],
+      "rows": [
+        [
+          "101",
+          "1",
+          "Harbor Light"
+        ],
+        [
+          "101",
+          "2",
+          "Quiet Fields"
+        ],
+        [
+          "102",
+          "1",
+          "Night Train"
+        ]
+      ],
+      "fromLyric": 38,
+      "toLyric": 45,
+      "steps": [
+        {
+          "lyricMin": 38,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "strong-5",
+      "label": "Strong",
+      "kind": "schema",
+      "title": "Order stands alone",
+      "tables": [
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id"
+          ],
+          "pk": "order_id",
+          "hub": true
+        },
+        {
+          "id": "lines",
+          "label": "order_lines",
+          "cols": [
+            "order_id",
+            "line_no",
+            "book_id"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "order_id": "orders.order_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 45,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 46,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 45,
+      "toLyric": 54
+    },
+    {
+      "id": "not-fk",
+      "label": "Lines",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "line_no",
+        "title"
+      ],
+      "rows": [
+        [
+          "101",
+          "1",
+          "Harbor Light"
+        ],
+        [
+          "101",
+          "2",
+          "Quiet Fields"
+        ],
+        [
+          "102",
+          "1",
+          "Night Train"
+        ]
+      ],
+      "fromLyric": 54,
+      "toLyric": 61,
+      "steps": [
+        {
+          "lyricMin": 54,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "strong-6",
+      "label": "Strong",
+      "kind": "schema",
+      "title": "Order stands alone",
+      "tables": [
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id"
+          ],
+          "pk": "order_id",
+          "hub": true
+        },
+        {
+          "id": "lines",
+          "label": "order_lines",
+          "cols": [
+            "order_id",
+            "line_no",
+            "book_id"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "order_id": "orders.order_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 61,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 61,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 61,
+      "toLyric": 62
+    },
+    {
+      "id": "test",
+      "label": "Lines",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "line_no",
+        "title"
+      ],
+      "rows": [
+        [
+          "101",
+          "1",
+          "Harbor Light"
+        ],
+        [
+          "101",
+          "2",
+          "Quiet Fields"
+        ],
+        [
+          "102",
+          "1",
+          "Night Train"
+        ]
+      ],
+      "fromLyric": 62,
+      "toLyric": 64,
+      "steps": [
+        {
+          "lyricMin": 62,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "strong-7",
+      "label": "Strong",
+      "kind": "schema",
+      "title": "Order stands alone",
+      "tables": [
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id"
+          ],
+          "pk": "order_id",
+          "hub": true
+        },
+        {
+          "id": "lines",
+          "label": "order_lines",
+          "cols": [
+            "order_id",
+            "line_no",
+            "book_id"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "order_id": "orders.order_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 64,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 65,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 64,
+      "toLyric": 71
+    },
+    {
+      "id": "not-fk-2",
+      "label": "Lines",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "line_no",
+        "title"
+      ],
+      "rows": [
+        [
+          "101",
+          "1",
+          "Harbor Light"
+        ],
+        [
+          "101",
+          "2",
+          "Quiet Fields"
+        ],
+        [
+          "102",
+          "1",
+          "Night Train"
+        ]
+      ],
+      "fromLyric": 71,
+      "toLyric": 73,
+      "steps": [
+        {
+          "lyricMin": 71,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "test-2",
+      "label": "Lines",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "line_no",
+        "title"
+      ],
+      "rows": [
+        [
+          "101",
+          "1",
+          "Harbor Light"
+        ],
+        [
+          "101",
+          "2",
+          "Quiet Fields"
+        ],
+        [
+          "102",
+          "1",
+          "Night Train"
+        ]
+      ],
+      "fromLyric": 73,
+      "toLyric": 79,
+      "steps": [
+        {
+          "lyricMin": 73,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "strong-8",
+      "label": "Strong",
+      "kind": "schema",
+      "title": "Order stands alone",
+      "tables": [
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id"
+          ],
+          "pk": "order_id",
+          "hub": true
+        },
+        {
+          "id": "lines",
+          "label": "order_lines",
+          "cols": [
+            "order_id",
+            "line_no",
+            "book_id"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "order_id": "orders.order_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 79,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 80,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 79,
+      "toLyric": 138
+    }
+  ],
+  "lyrics": [
+    {
+      "start": 0.05,
+      "end": 3.083,
+      "text": "Some things in the world carry their own identity.",
+      "slide": ""
+    },
+    {
+      "start": 3.083,
+      "end": 4.986,
+      "text": "A customer is one of those.",
+      "slide": ""
+    },
+    {
+      "start": 4.986,
+      "end": 8.263,
+      "text": "You can talk about Maya without mentioning an order.",
+      "slide": ""
+    },
+    {
+      "start": 8.263,
+      "end": 11.013,
+      "text": "Her customer_id is enough.",
+      "slide": ""
+    },
+    {
+      "start": 11.013,
+      "end": 12.694,
+      "text": "That is a strong entity.",
+      "slide": ""
+    },
+    {
+      "start": 12.694,
+      "end": 17.513,
+      "text": "The table has a primary key that does not need another table to make sense.",
+      "slide": ""
+    },
+    {
+      "start": 17.513,
+      "end": 21.0,
+      "text": "A weak entity cannot stand on that kind of key alone.",
+      "slide": ""
+    },
+    {
+      "start": 21.0,
+      "end": 25.861,
+      "text": "Think of an order line: line one, two copies of Harbor Light.",
+      "slide": ""
+    },
+    {
+      "start": 25.861,
+      "end": 27.5,
+      "text": "Line one on which order?",
+      "slide": ""
+    },
+    {
+      "start": 27.5,
+      "end": 29.402,
+      "text": "Every order has a line one.",
+      "slide": ""
+    },
+    {
+      "start": 29.402,
+      "end": 33.93,
+      "text": "The line number only identifies a row when you also know the order.",
+      "slide": ""
+    },
+    {
+      "start": 33.93,
+      "end": 35.847,
+      "text": "The identity is borrowed.",
+      "slide": ""
+    },
+    {
+      "start": 35.847,
+      "end": 37.902,
+      "text": "The parent order is the owner.",
+      "slide": ""
+    },
+    {
+      "start": 37.902,
+      "end": 42.486,
+      "text": "The child's key is usually the owner's key plus a discriminator.",
+      "slide": ""
+    },
+    {
+      "start": 42.486,
+      "end": 46.097,
+      "text": "order_id and line_no together.",
+      "slide": ""
+    },
+    {
+      "start": 46.097,
+      "end": 49.541,
+      "text": "That composite key is a feature, not clutter.",
+      "slide": ""
+    },
+    {
+      "start": 49.541,
+      "end": 53.388,
+      "text": "If you hide the parent, the child row stops making sense.",
+      "slide": ""
+    },
+    {
+      "start": 53.388,
+      "end": 55.152,
+      "text": "Ask that question out loud.",
+      "slide": ""
+    },
+    {
+      "start": 55.152,
+      "end": 58.902,
+      "text": "Does this row still name one thing if I erase the parent?",
+      "slide": ""
+    },
+    {
+      "start": 58.902,
+      "end": 62.083,
+      "text": "If the answer is no, you have a weak entity.",
+      "slide": ""
+    },
+    {
+      "start": 62.083,
+      "end": 64.555,
+      "text": "Rooms in a building work the same way.",
+      "slide": ""
+    },
+    {
+      "start": 64.555,
+      "end": 66.416,
+      "text": "Room 12 in which building?",
+      "slide": ""
+    },
+    {
+      "start": 66.416,
+      "end": 67.75,
+      "text": "Seats on a flight.",
+      "slide": ""
+    },
+    {
+      "start": 67.75,
+      "end": 70.458,
+      "text": "Seat 14A on which flight number?",
+      "slide": ""
+    },
+    {
+      "start": 70.458,
+      "end": 75.68,
+      "text": "Do not invent a random line_id just to pretend the child is strong.",
+      "slide": ""
+    },
+    {
+      "start": 75.68,
+      "end": 78.569,
+      "text": "You can, and applications sometimes do.",
+      "slide": ""
+    },
+    {
+      "start": 78.569,
+      "end": 85.819,
+      "text": "Then you still need a unique pair of order_id and line_no, or you will insert two line ones.",
+      "slide": ""
+    },
+    {
+      "start": 85.819,
+      "end": 88.041,
+      "text": "The surrogate hides the weakness.",
+      "slide": ""
+    },
+    {
+      "start": 88.041,
+      "end": 89.527,
+      "text": "It does not remove it.",
+      "slide": ""
+    },
+    {
+      "start": 89.527,
+      "end": 93.902,
+      "text": "On a diagram, a weak entity is often a double box.",
+      "slide": ""
+    },
+    {
+      "start": 93.902,
+      "end": 97.763,
+      "text": "The relationship to the owner is often a double diamond.",
+      "slide": ""
+    },
+    {
+      "start": 97.763,
+      "end": 100.638,
+      "text": "You do not need the symbols to use the idea.",
+      "slide": ""
+    },
+    {
+      "start": 100.638,
+      "end": 102.722,
+      "text": "You need the question about identity.",
+      "slide": ""
+    },
+    {
+      "start": 102.722,
+      "end": 107.18,
+      "text": "Foreign keys and weak entities overlap but are not the same.",
+      "slide": ""
+    },
+    {
+      "start": 107.18,
+      "end": 112.236,
+      "text": "orders.customer_id is a foreign key on a strong entity.",
+      "slide": ""
+    },
+    {
+      "start": 112.236,
+      "end": 115.722,
+      "text": "The order still has order_id of its own.",
+      "slide": ""
+    },
+    {
+      "start": 115.722,
+      "end": 120.527,
+      "text": "A weak child uses the parent's key as part of its own primary key.",
+      "slide": ""
+    },
+    {
+      "start": 120.527,
+      "end": 122.041,
+      "text": "That is a tighter bond.",
+      "slide": ""
+    },
+    {
+      "start": 122.041,
+      "end": 126.194,
+      "text": "Deleting the owner without the children is almost always wrong.",
+      "slide": ""
+    },
+    {
+      "start": 126.194,
+      "end": 129.027,
+      "text": "The children were never independent facts.",
+      "slide": ""
+    },
+    {
+      "start": 129.027,
+      "end": 131.5,
+      "text": "When you model, list the nouns.",
+      "slide": ""
+    },
+    {
+      "start": 131.5,
+      "end": 134.305,
+      "text": "Circle the ones that already have a passport.",
+      "slide": ""
+    },
+    {
+      "start": 134.305,
+      "end": 138.486,
+      "text": "Underline the ones that only make sense as a part of something else.",
+      "slide": ""
+    },
+    {
+      "start": 138.486,
+      "end": 140.569,
+      "text": "Give the parts a composite key.",
+      "slide": ""
+    },
+    {
+      "start": 140.569,
+      "end": 142.694,
+      "text": "Give the passports a simple key.",
+      "slide": ""
+    },
+    {
+      "start": 142.694,
+      "end": 146.055,
+      "text": "Then the schema tells you which rows can travel alone.",
+      "slide": ""
+    },
+    {
+      "start": 146.055,
+      "end": 149.18,
+      "text": "Ownership is not the same as a mere pointer.",
+      "slide": ""
+    },
+    {
+      "start": 149.18,
+      "end": 152.805,
+      "text": "An order points at a customer and still has its own life.",
+      "slide": ""
+    },
+    {
+      "start": 152.805,
+      "end": 154.416,
+      "text": "An order line is owned.",
+      "slide": ""
+    },
+    {
+      "start": 154.416,
+      "end": 158.611,
+      "text": "You would not archive a line in a warehouse without the order header.",
+      "slide": ""
+    },
+    {
+      "start": 158.611,
+      "end": 161.333,
+      "text": "That operational fact is the model.",
+      "slide": ""
+    },
+    {
+      "start": 161.333,
+      "end": 166.097,
+      "text": "When teams argue about line_id, ask how they pick up the phone.",
+      "slide": ""
+    },
+    {
+      "start": 166.097,
+      "end": 171.222,
+      "text": "Do they say line forty-two globally, or line two on order one-oh-one?",
+      "slide": ""
+    },
+    {
+      "start": 171.222,
+      "end": 173.125,
+      "text": "The phone script is the key.",
+      "slide": ""
+    },
+    {
+      "start": 173.125,
+      "end": 182.861,
+      "text": "History tables sometimes freeze a weak entity into a strong one by giving it a surrogate and copying the parent id as a plain foreign key.",
+      "slide": ""
+    },
+    {
+      "start": 182.861,
+      "end": 184.944,
+      "text": "That can be right for analytics.",
+      "slide": ""
+    },
+    {
+      "start": 184.944,
+      "end": 187.138,
+      "text": "It is a different job than checkout.",
+      "slide": ""
+    },
+    {
+      "start": 187.138,
+      "end": 191.347,
+      "text": "Do not let the warehouse rewrite the checkout key without a meeting.",
+      "slide": ""
+    },
+    {
+      "start": 191.347,
+      "end": 195.666,
+      "text": "Identifying relationships are the ER phrase for the weak bond.",
+      "slide": ""
+    },
+    {
+      "start": 195.666,
+      "end": 201.444,
+      "text": "Non-identifying relationships are foreign keys that are not part of the child's primary key.",
+      "slide": ""
+    },
+    {
+      "start": 201.444,
+      "end": 204.236,
+      "text": "Use the phrases if your diagram tool does.",
+      "slide": ""
+    },
+    {
+      "start": 204.236,
+      "end": 207.0,
+      "text": "Use the identity test if it does not.",
+      "slide": ""
+    },
+    {
+      "start": 207.0,
+      "end": 209.43,
+      "text": "Cascade deletes follow ownership.",
+      "slide": ""
+    },
+    {
+      "start": 209.43,
+      "end": 211.583,
+      "text": "They do not follow every arrow.",
+      "slide": ""
+    },
+    {
+      "start": 211.583,
+      "end": 214.68,
+      "text": "A weak child almost always cascades.",
+      "slide": ""
+    },
+    {
+      "start": 214.68,
+      "end": 217.833,
+      "text": "A strong child almost always restricts.",
+      "slide": ""
+    },
+    {
+      "start": 217.833,
+      "end": 219.625,
+      "text": "Write that next to the box.",
+      "slide": ""
+    },
+    {
+      "start": 219.625,
+      "end": 226.361,
+      "text": "Examples besides lines: chapters of a book if you identify them as chapter three of book eleven.",
+      "slide": ""
+    },
+    {
+      "start": 226.361,
+      "end": 230.513,
+      "text": "Comments on a review if they are numbered only inside the review.",
+      "slide": ""
+    },
+    {
+      "start": 230.513,
+      "end": 234.583,
+      "text": "If comments have public permalink ids, they became strong.",
+      "slide": ""
+    },
+    {
+      "start": 234.583,
+      "end": 236.361,
+      "text": "The world gets to decide.",
+      "slide": ""
+    },
+    {
+      "start": 236.361,
+      "end": 238.583,
+      "text": "Your schema records the decision.",
+      "slide": ""
+    },
+    {
+      "start": 238.583,
+      "end": 241.152,
+      "text": "Revisit it when permalinks appear.",
+      "slide": ""
+    },
+    {
+      "start": 241.152,
+      "end": 247.625,
+      "text": "Until then, composite keys keep the weakness visible, which is a kindness to the next designer.",
+      "slide": ""
+    },
+    {
+      "start": 247.625,
+      "end": 251.68,
+      "text": "Strong and weak are not about how important a table feels.",
+      "slide": ""
+    },
+    {
+      "start": 251.68,
+      "end": 255.444,
+      "text": "They are about whether a thing can be identified on its own.",
+      "slide": ""
+    },
+    {
+      "start": 255.444,
+      "end": 259.694,
+      "text": "Cardinality is how many: one, zero, many.",
+      "slide": ""
+    },
+    {
+      "start": 259.694,
+      "end": 262.125,
+      "text": "Weakness is how identity works.",
+      "slide": ""
+    },
+    {
+      "start": 262.125,
+      "end": 264.041,
+      "text": "Do not mix those two dials.",
+      "slide": ""
+    },
+    {
+      "start": 264.041,
+      "end": 267.569,
+      "text": "A strong entity has its own unique identifier.",
+      "slide": ""
+    },
+    {
+      "start": 267.569,
+      "end": 272.958,
+      "text": "A purchase with purchase_id is strong even if it points at a customer.",
+      "slide": ""
+    },
+    {
+      "start": 272.958,
+      "end": 276.638,
+      "text": "Depending on another table for a foreign key is normal.",
+      "slide": ""
+    },
+    {
+      "start": 276.746,
+      "end": 282.071,
+      "text": "Depending on another table to exist as an identity is the weak case.",
+      "slide": ""
+    },
+    {
+      "start": 282.071,
+      "end": 287.029,
+      "text": "A weak entity cannot identify a row with only its own attributes.",
+      "slide": ""
+    },
+    {
+      "start": 287.029,
+      "end": 291.876,
+      "text": "Its key is usually composite: the parent's key plus something local.",
+      "slide": ""
+    },
+    {
+      "start": 291.876,
+      "end": 298.126,
+      "text": "A line on an order might be identified by order_id plus line_number.",
+      "slide": ""
+    },
+    {
+      "start": 298.126,
+      "end": 301.793,
+      "text": "Line number three means nothing until you know which order.",
+      "slide": ""
+    },
+    {
+      "start": 301.793,
+      "end": 305.751,
+      "text": "That is a weak entity, or at least a dependent identity.",
+      "slide": ""
+    },
+    {
+      "start": 305.751,
+      "end": 310.265,
+      "text": "Beginners mark everything that 'belongs to' something as weak.",
+      "slide": ""
+    },
+    {
+      "start": 310.265,
+      "end": 314.293,
+      "text": "An employee has a manager, so employee must be weak.",
+      "slide": ""
+    },
+    {
+      "start": 314.293,
+      "end": 315.057,
+      "text": "No.",
+      "slide": ""
+    },
+    {
+      "start": 315.057,
+      "end": 317.904,
+      "text": "Employee still has employee_id.",
+      "slide": ""
+    },
+    {
+      "start": 317.904,
+      "end": 320.168,
+      "text": "Belonging is a relationship.",
+      "slide": ""
+    },
+    {
+      "start": 320.168,
+      "end": 322.015,
+      "text": "Identity is a key.",
+      "slide": ""
+    },
+    {
+      "start": 322.015,
+      "end": 331.001,
+      "text": "Use a weak design when the child is meaningless and unidentifiable without the parent, and you will never look it up by a surrogate of its own.",
+      "slide": ""
+    },
+    {
+      "start": 331.001,
+      "end": 336.029,
+      "text": "Room 12 in building A is not the same as room 12 in building B.",
+      "slide": ""
+    },
+    {
+      "start": 336.029,
+      "end": 343.057,
+      "text": "If the business says room numbers restart per building, the room is identified by building plus number.",
+      "slide": ""
+    },
+    {
+      "start": 343.057,
+      "end": 348.418,
+      "text": "If every room gets a global room_id, you made it strong on purpose.",
+      "slide": ""
+    },
+    {
+      "start": 348.418,
+      "end": 349.654,
+      "text": "That is allowed.",
+      "slide": ""
+    },
+    {
+      "start": 349.654,
+      "end": 354.39,
+      "text": "You are choosing an identifier, not discovering a law of nature.",
+      "slide": ""
+    },
+    {
+      "start": 354.39,
+      "end": 359.584,
+      "text": "When you do use a weak entity, the relationship to the parent is identifying.",
+      "slide": ""
+    },
+    {
+      "start": 359.584,
+      "end": 362.543,
+      "text": "The parent's key is part of the child's key.",
+      "slide": ""
+    },
+    {
+      "start": 362.543,
+      "end": 368.071,
+      "text": "Deleting the parent without a plan orphans identity itself, not just a pointer.",
+      "slide": ""
+    },
+    {
+      "start": 368.071,
+      "end": 377.89,
+      "text": "In an ER diagram, weak entities are often shown with a double rectangle, and the identifying relationship with a double diamond, in Chen style.",
+      "slide": ""
+    },
+    {
+      "start": 377.89,
+      "end": 382.946,
+      "text": "Crow's foot sketches may instead show the composite key in the table box.",
+      "slide": ""
+    },
+    {
+      "start": 382.946,
+      "end": 385.557,
+      "text": "Pick a notation and stay consistent.",
+      "slide": ""
+    },
+    {
+      "start": 385.557,
+      "end": 391.973,
+      "text": "The rare honest case is a child whose natural key is not unique until the parent is included.",
+      "slide": ""
+    },
+    {
+      "start": 391.973,
+      "end": 396.89,
+      "text": "The common dishonest case is a regular table you were afraid to give an id.",
+      "slide": ""
+    },
+    {
+      "start": 396.89,
+      "end": 402.196,
+      "text": "Give it an id if it is a thing you will query, update, and relate on its own.",
+      "slide": ""
+    },
+    {
+      "start": 402.196,
+      "end": 409.418,
+      "text": "Keep it weak if its name is always 'the third line of that order' and never a thing with a passport of its own.",
+      "slide": ""
+    },
+    {
+      "start": 409.418,
+      "end": 413.39,
+      "text": "Ask: can I find this row tomorrow without naming the parent?",
+      "slide": ""
+    },
+    {
+      "start": 413.39,
+      "end": 415.321,
+      "text": "If yes, it is strong.",
+      "slide": ""
+    },
+    {
+      "start": 415.321,
+      "end": 422.265,
+      "text": "If no, either add a surrogate and make it strong, or accept the composite and call it weak on purpose.",
+      "slide": ""
+    },
+    {
+      "start": 422.265,
+      "end": 424.293,
+      "text": "Purpose is the whole lesson.",
+      "slide": ""
+    },
+    {
+      "start": 424.293,
+      "end": 426.932,
+      "text": "Weak is a design choice with a cost.",
+      "slide": ""
+    },
+    {
+      "start": 426.932,
+      "end": 430.459,
+      "text": "Do not spend it on ordinary belongs-to relationships.",
+      "slide": ""
+    },
+    {
+      "start": 430.459,
+      "end": 431.709,
+      "text": "Walk a receipt.",
+      "slide": ""
+    },
+    {
+      "start": 431.709,
+      "end": 435.737,
+      "text": "The purchase has purchase_id, a strong entity.",
+      "slide": ""
+    },
+    {
+      "start": 435.737,
+      "end": 441.209,
+      "text": "Each line is line_number one, two, three inside that purchase.",
+      "slide": ""
+    },
+    {
+      "start": 441.209,
+      "end": 444.709,
+      "text": "Line number two in another purchase is a different thing.",
+      "slide": ""
+    },
+    {
+      "start": 444.709,
+      "end": 449.987,
+      "text": "Identity of a line is purchase_id plus line_number.",
+      "slide": ""
+    },
+    {
+      "start": 449.987,
+      "end": 453.904,
+      "text": "That is weak, or identifying dependent, on purpose.",
+      "slide": ""
+    },
+    {
+      "start": 453.904,
+      "end": 462.751,
+      "text": "Do not give the line a global line_id if the business will only ever say the third line of order 5001.",
+      "slide": ""
+    },
+    {
+      "start": 462.751,
+      "end": 471.418,
+      "text": "Do give a global id if warehouse software will move lines between orders and still talk about line 88901.",
+      "slide": ""
+    },
+    {
+      "start": 471.418,
+      "end": 474.251,
+      "text": "That second world made the line strong.",
+      "slide": ""
+    },
+    {
+      "start": 474.251,
+      "end": 485.654,
+      "text": "A dependent person on an employee benefits form is the textbook weak example: name plus employee_id, because dependents are not issued employee numbers.",
+      "slide": ""
+    },
+    {
+      "start": 485.654,
+      "end": 491.654,
+      "text": "If your company later issues every dependent a person_id, they stopped being weak.",
+      "slide": ""
+    },
+    {
+      "start": 491.654,
+      "end": 497.696,
+      "text": "The ER mark changed because the identifiers changed, not because cardinality changed.",
+      "slide": ""
+    },
+    {
+      "start": 497.696,
+      "end": 500.321,
+      "text": "One employee still has many dependents.",
+      "slide": ""
+    },
+    {
+      "start": 500.321,
+      "end": 502.112,
+      "text": "That was always one-to-many.",
+      "slide": ""
+    },
+    {
+      "start": 502.112,
+      "end": 504.348,
+      "text": "Weakness was only about the key.",
+      "slide": ""
+    },
+    {
+      "start": 504.348,
+      "end": 512.543,
+      "text": "When not to use weak: any table you will load, search, and relate without reciting the parent id every time.",
+      "slide": ""
+    },
+    {
+      "start": 512.543,
+      "end": 519.376,
+      "text": "Users, products, invoices with invoice_id, shipments with tracking numbers.",
+      "slide": ""
+    },
+    {
+      "start": 519.376,
+      "end": 520.626,
+      "text": "Those are strong.",
+      "slide": ""
+    },
+    {
+      "start": 520.626,
+      "end": 526.598,
+      "text": "Mislabeling them weak clutters the diagram with double lines that mean nothing in SQL.",
+      "slide": ""
+    },
+    {
+      "start": 526.598,
+      "end": 529.459,
+      "text": "SQL still wants a PRIMARY KEY either way.",
+      "slide": ""
+    },
+    {
+      "start": 529.459,
+      "end": 533.696,
+      "text": "The weak case just makes that key composite and identifying.",
+      "slide": ""
+    },
+    {
+      "start": 533.696,
+      "end": 537.098,
+      "text": "Choose with the find-this-tomorrow test, then draw.",
+      "slide": ""
+    }
+  ]
+}

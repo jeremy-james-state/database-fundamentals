@@ -1,0 +1,221 @@
+Many-to-many means each left row can meet many right rows, and each right row can meet many left rows.
+
+A student takes many courses.
+
+A course has many students.
+
+You cannot put course_id on students.
+
+That allows only one course.
+
+You cannot put student_id on courses.
+
+That allows only one student.
+
+You cannot put a list of ids in a cell.
+
+You add a third table.
+
+Call it enrollment.
+
+It holds student_id and course_id.
+
+Together they are usually the primary key.
+
+Each pair is one enrollment.
+
+Maya in Harbor Light is one row.
+
+Maya in Quiet Fields is another.
+
+Jordan in Harbor Light is a third.
+
+The same two foreign keys, two parents.
+
+If the relationship has a grade, the grade lives on enrollment.
+
+It is a fact about the pair, not about the student alone, not about the course alone.
+
+That is how you notice you needed the middle table even if you tried to avoid it.
+
+Do not name the middle table student_course unless your team likes that style.
+
+A real noun is clearer: enrollment, assignment, line_item.
+
+Unique on the pair prevents double enrollment.
+
+A surrogate enrollment_id is optional.
+
+If other tables must point at an enrollment, a surrogate is easier to copy.
+
+To list Maya's titles, join students to enrollment to books.
+
+Two hops.
+
+That is normal.
+
+Hiding the middle table in a view is fine for reading.
+
+Writing still goes through the pair.
+
+On the diagram, two crow's feet into the middle box, or two many-to-many marks that you then explode into a box.
+
+Explode them.
+
+SQL has no native many-to-many column.
+
+It has tables.
+
+The relationship is a table.
+
+Once you see it, bookstore carts, tags, and authors-of-books are the same shape.
+
+Three-way relationships exist.
+
+A student, a course, and a term.
+
+If grade is for Maya in Harbor Light in spring, the key may be all three.
+
+Do not hide term in a comment.
+
+The middle table can have more than two foreign keys.
+
+It is still a table.
+
+Symmetric relationships, like books that are similar to books, still use a middle table.
+
+Order the ids or use a CHECK so you do not store both A-B and B-A unless both are facts.
+
+Tags are many-to-many with a small parent.
+
+Do not comma-list tags on the book.
+
+That was first normal form again.
+
+The middle table is book_tag.
+
+When the pair has no extra attributes, people call it a pure junction.
+
+It is still an entity in SQL.
+
+Give it a name.
+
+Permissions of users to projects are many-to-many with a role attribute on the pair.
+
+The role is why the pair is not pure.
+
+That attribute will grow.
+
+Plan a real noun: membership.
+
+Query patterns: all courses for a student, all students for a course, all pairs with grade A.
+
+Each pattern is two joins or one, starting from the middle.
+
+Starting from the middle is often the clearest SQL.
+
+FROM enrollment JOIN ...
+
+The relationship table is the FROM table when the question is about the relationship.
+
+That sentence saves a lot of nested guesses.
+
+Draw three boxes.
+
+Put the facts on the correct one.
+
+If the fact needs both parents, you already know where it sits.
+
+If you are about to add a second foreign key to a parent, pause.
+
+Two parents usually want a child of their own.
+
+That child is the pair.
+
+Give the pair a noun.
+
+Give the pair a key.
+
+Give the pair any extra facts.
+
+Join from the pair when the question is about the pair.
+
+That habit keeps SQL short.
+
+Short SQL is how you know the model matches the sentence.
+
+Long SQL with two lists in a cell is how you know it does not.
+
+Draw three boxes until it is boring.
+
+Boring three boxes beat a clever array.
+
+The relationship is a table.
+
+Say it until the clever array looks embarrassing.
+
+Beginners connect two tables with two foreign keys pointing at each other and then wonder why a query cannot list a student's courses.
+
+You need a third table.
+
+Many-to-many means each instance on this side can associate with many on that side, and each on that side with many on this side.
+
+Students and courses.
+
+Products and orders, if an order contains many products and a product appears on many orders.
+
+Authors and books, when a book can have several authors.
+
+A direct foreign key cannot hold a list.
+
+A comma-separated course list in a student row is not a relationship.
+
+It is a string you will regret.
+
+The junction table, also called an associate or bridge table, holds one row per pairing.
+
+student_id and course_id together are often the primary key of enrollments.
+
+Each of those columns is a foreign key to its parent.
+
+A student enrolled in three courses produces three rows, not three columns.
+
+A course with thirty students produces thirty rows, not a nested table.
+
+Attributes of the pairing belong on the junction: enrolled_on, grade, quantity on an order line.
+
+Quantity is not an attribute of product alone or order alone.
+
+It is an attribute of this product on this order.
+
+That is how you know the third table is real, not a hack.
+
+If the pairing has no attributes, the two keys are still enough.
+
+Do not skip the table because it looks empty.
+
+The pair is the fact.
+
+Cardinality to the junction is one-to-many from each parent.
+
+Student to enrollments is one-to-many.
+
+Course to enrollments is one-to-many.
+
+The many-to-many is the view from the two ends, looking through the bridge.
+
+Query with two joins: students to enrollments to courses.
+
+Filter on the junction when the question is about the pairing.
+
+Unique on (student_id, course_id) prevents double enrollment unless repeats are a business event.
+
+If repeats are allowed, add a surrogate and a uniqueness rule that matches the real world, such as one open enrollment at a time.
+
+Draw the diamond or the crow's feet through the junction, not as a mysterious line with many on both ends and no table.
+
+A line with many and many and no box in the middle is an unfinished sentence.
+
+Finish it with a table name you can CREATE.
+
+Then the SQL works because the grain is one pairing per row.
