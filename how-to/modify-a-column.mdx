@@ -1,0 +1,51 @@
+---
+title: "Modify a column"
+description: "Change a column’s type or nullability in MySQL with ALTER TABLE … MODIFY."
+---
+
+SQLite’s [ALTER TABLE](/reference/alter-table) options are narrower. MySQL’s `MODIFY` rewrites the column definition in place.
+
+## Prerequisites
+
+- A MySQL table ([create a table in MySQL](/how-to/create-a-mysql-table))
+- A backup if the table has important data (type changes can fail or truncate)
+
+## Modify the column
+
+<Steps>
+  <Step title="Inspect the current type">
+    ```sql
+    DESCRIBE cards;
+    ```
+  </Step>
+  <Step title="MODIFY the definition">
+    ```sql
+    ALTER TABLE cards
+    MODIFY number VARCHAR(32) NOT NULL;
+    ```
+  </Step>
+  <Step title="Confirm">
+    ```sql
+    DESCRIBE cards;
+    ```
+  </Step>
+</Steps>
+
+<Warning>
+  Shrinking a type or tightening `NOT NULL` can fail if existing rows do not fit.
+</Warning>
+
+## Verify the result
+
+You succeeded when `DESCRIBE` shows the new type and constraints.
+
+## Troubleshooting
+
+- **Data truncated**: values do not fit the new type; clean rows first.
+- **SQLite habit**: SQLite has no `MODIFY`; recreate the table or use its limited `ALTER` forms.
+
+## Related pages
+
+- [Server types](/concepts/server-types)
+- [ALTER TABLE](/reference/alter-table)
+- [DESCRIBE](/reference/describe)

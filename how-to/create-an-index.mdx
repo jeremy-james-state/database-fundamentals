@@ -1,0 +1,80 @@
+---
+title: "Create an index"
+description: "Add an index so filters and joins can search instead of scan, including covering and partial indexes."
+---
+
+Build the index on the column you use in `WHERE` or `JOIN`. Primary keys are already indexed.
+
+## Prerequisites
+
+- A large enough table that a scan is noticeable ([time a query](/how-to/time-a-query))
+- [Indexes](/concepts/indexes) for scan vs covering vs partial
+
+## Add a basic index
+
+<Steps>
+  <Step title="Create the index">
+    ```sql
+    CREATE INDEX title_index
+    ON movies (title);
+    ```
+  </Step>
+  <Step title="Confirm the plan">
+    ```sql
+    EXPLAIN QUERY PLAN
+    SELECT *
+    FROM movies
+    WHERE title = 'Cars';
+    ```
+
+    Look for **SEARCH** using `title_index`, not **SCAN** `movies`.
+  </Step>
+</Steps>
+
+## Make it covering
+
+Put every column the query reads into the index list so SQLite need not open the table.
+
+```sql
+DROP INDEX IF EXISTS person_index;
+
+CREATE INDEX person_index
+ON stars (person_id, movie_id);
+```
+
+```sql
+EXPLAIN QUERY PLAN
+SELECT movie_id
+FROM stars
+WHERE person_id = 31;
+```
+
+If the plan says **covering index**, `movie_id` was answered from the index alone.
+
+## Make it partial
+
+Index only the rows you expect to query:
+
+```sql
+CREATE INDEX recents
+ON movies (title)
+WHERE year = 2023;
+```
+
+Helps `WHERE year = 2023 AND title = …`. Does not help `year = 1998`.
+
+## Verify the result
+
+You succeeded when `.schema` lists the index and `EXPLAIN QUERY PLAN` shows SEARCH (or a covering index) for your hot query.
+
+## Troubleshooting
+
+- **Still SCAN**: you filtered on a different column than the one you indexed.
+- **Writes feel slower**: expected; indexes update on every change. Drop unused indexes, then [VACUUM](/how-to/vacuum-a-database) if you need the file smaller.
+
+## Related pages
+
+- [Indexes](/concepts/indexes)
+- [CREATE INDEX](/reference/create-index)
+- [Explain a query plan](/how-to/explain-a-query-plan)
+- [B-trees](/concepts/b-trees)

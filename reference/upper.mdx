@@ -1,0 +1,33 @@
+---
+title: "upper"
+description: "Returns the string in uppercase."
+---
+
+A [scalar function](/concepts/sql#scalar-functions). Pair it with [UPDATE](/reference/update) to store the result.
+
+## Syntax
+
+```sql
+upper(column)
+```
+
+## Arguments
+
+<ParamField body="column" type="text" required>
+  The value to convert.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql Store uppercase titles
+UPDATE votes
+SET title = upper(title);
+```
+</CodeGroup>
+
+## Related references
+
+- [lower](/reference/lower)
+- [trim](/reference/trim)
+- [Update rows](/how-to/update-rows)

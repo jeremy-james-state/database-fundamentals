@@ -1,0 +1,60 @@
+---
+title: "WITH"
+description: "Starts a common table expression (CTE): a named subquery that lasts for one statement."
+---
+
+Yes — **`WITH` signifies a CTE**. It is not [CREATE VIEW](/reference/create-view). Nothing is stored in `.schema`.
+
+## Syntax
+
+```sql
+WITH cte_name AS (
+  SELECT ...
+)
+SELECT ...
+FROM cte_name;
+```
+
+More than one CTE: separate them with commas after each `)`.
+
+```sql
+WITH
+  first AS (SELECT ...),
+  second AS (SELECT ... FROM first)
+SELECT *
+FROM second;
+```
+
+## Arguments
+
+<ParamField body="cte_name" type="identifier" required>
+  Name available to the rest of this statement only.
+</ParamField>
+
+<ParamField body="AS (SELECT …)" type="query" required>
+  The subquery body. Parentheses are required.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql Average by year
+WITH average_book_ratings AS (
+  SELECT
+    books.year,
+    ROUND(AVG(ratings.stars), 2) AS rating
+  FROM ratings
+  JOIN books ON books.id = ratings.book_id
+  GROUP BY books.id, books.year
+)
+SELECT year, ROUND(AVG(rating), 2) AS rating
+FROM average_book_ratings
+GROUP BY year;
+```
+</CodeGroup>
+
+## Related references
+
+- [CREATE VIEW](/reference/create-view)
+- [Views](/concepts/views)
+- [Use a CTE](/how-to/use-a-cte)

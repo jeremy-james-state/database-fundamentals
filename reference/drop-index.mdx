@@ -1,0 +1,32 @@
+---
+title: "DROP INDEX"
+description: "Removes an index. Table data stays."
+---
+
+Space in the file may remain until you [VACUUM](/reference/vacuum).
+
+## Syntax
+
+```sql
+DROP INDEX index_name;
+```
+
+## Arguments
+
+<ParamField body="index_name" type="identifier" required>
+  The index to remove.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql Drop
+DROP INDEX title_index;
+```
+</CodeGroup>
+
+## Related references
+
+- [CREATE INDEX](/reference/create-index)
+- [VACUUM](/reference/vacuum)
+- [Vacuum a database](/how-to/vacuum-a-database)

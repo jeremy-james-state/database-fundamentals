@@ -1,0 +1,31 @@
+---
+title: "INNER JOIN"
+description: "Keeps only rows that match on both tables."
+---
+
+`JOIN` without a qualifier is `INNER JOIN` in SQLite. Unmatched rows are dropped.
+
+## Syntax
+
+```sql
+SELECT column
+FROM table1
+INNER JOIN table2
+  ON table1.column = table2.column;
+```
+
+## Examples
+
+<CodeGroup>
+```sql Explicit inner
+SELECT title, stars
+FROM books
+INNER JOIN ratings
+  ON ratings.book_id = books.book_id;
+```
+</CodeGroup>
+
+## Related references
+
+- [JOIN](/reference/join)
+- [LEFT JOIN](/reference/left-join)

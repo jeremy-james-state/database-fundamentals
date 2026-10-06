@@ -1,0 +1,71 @@
+---
+title: "FOREIGN KEY"
+description: "Requires a column’s values to match a primary key in another table."
+---
+
+A [table constraint](/concepts/constraints) on the child table. You can also write `REFERENCES` as a column constraint on the foreign-key column.
+
+## Syntax
+
+```sql
+CREATE TABLE child (
+  parent_id INTEGER,
+  FOREIGN KEY (parent_id) REFERENCES parent (id)
+);
+```
+
+## Arguments
+
+<ParamField body="parent_id" type="identifier" required>
+  The column on this table that copies the parent’s key.
+</ParamField>
+
+<ParamField body="parent (id)" type="identifier" required>
+  The table and [PRIMARY KEY](/reference/primary-key) you point at.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql Visits point at riders and stations
+CREATE TABLE visits (
+  id INTEGER,
+  rider_id INTEGER,
+  station_id INTEGER,
+  PRIMARY KEY (id),
+  FOREIGN KEY (rider_id) REFERENCES riders (id),
+  FOREIGN KEY (station_id) REFERENCES stations (id)
+);
+```
+</CodeGroup>
+
+SQLite does not enforce the match until you run:
+
+```sql
+PRAGMA foreign_keys = ON;
+```
+
+## ON DELETE
+
+When someone deletes the parent row, the child can refuse, empty, reset, or vanish:
+
+```sql
+FOREIGN KEY (artist_id) REFERENCES artists (id)
+  ON DELETE CASCADE
+```
+
+| Action | Child rows |
+| --- | --- |
+| `RESTRICT` | Delete of the parent fails while they exist |
+| `NO ACTION` | Same refusal at the end of the statement (SQLite default) |
+| `SET NULL` | Foreign key becomes `NULL` |
+| `SET DEFAULT` | Foreign key becomes the column [DEFAULT](/reference/default) |
+| `CASCADE` | Child rows are deleted too |
+
+A [join table](/concepts/keys) such as `created` between `artists` and `collections` is the child of both. Delete those rows first, or use `CASCADE`. See [delete related rows](/how-to/delete-related-rows).
+
+## Related references
+
+- [PRIMARY KEY](/reference/primary-key)
+- [Keys](/concepts/keys)
+- [Constrain a table](/how-to/constrain-a-table)

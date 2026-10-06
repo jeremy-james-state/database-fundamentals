@@ -1,0 +1,65 @@
+---
+title: "Combine result sets"
+description: "Treat two queries as sets and keep the overlap, the union, or the difference."
+---
+
+Both queries must return the same number of columns, with comparable types. `UNION` drops duplicate rows.
+
+## Prerequisites
+
+- Two tables you can `SELECT` the same shape from, for example `authors` and `translators` with a `name` column
+
+## Combine the sets
+
+<Steps>
+  <Step title="Keep names that appear in both">
+    [INTERSECT](/reference/intersect) is the overlap.
+
+    ```sql
+    SELECT name
+    FROM authors
+    INTERSECT
+    SELECT name
+    FROM translators;
+    ```
+  </Step>
+  <Step title="Keep names from either query">
+    [UNION](/reference/union) stacks the sets.
+
+    ```sql
+    SELECT name
+    FROM authors
+    UNION
+    SELECT name
+    FROM translators;
+    ```
+  </Step>
+  <Step title="Keep names in the first set only">
+    [EXCEPT](/reference/except) subtracts the second set from the first.
+
+    ```sql
+    SELECT name
+    FROM authors
+    EXCEPT
+    SELECT name
+    FROM translators;
+    ```
+  </Step>
+</Steps>
+
+You can chain more than two queries. Each extra `UNION`, `INTERSECT`, or `EXCEPT` needs the same column shape.
+
+## Verify the result
+
+You succeeded when overlap names appear only in `INTERSECT`, when `UNION` is the longer list, and when `EXCEPT` has dropped the translators who also write.
+
+## Troubleshooting
+
+- **Different number of columns**: add or drop columns so both sides match.
+- **Duplicates you wanted to keep**: `UNION` removes them. SQLite also has `UNION ALL`.
+
+## Related pages
+
+- [UNION](/reference/union)
+- [INTERSECT](/reference/intersect)
+- [EXCEPT](/reference/except)

@@ -1,0 +1,45 @@
+---
+title: "Database servers"
+description: "A database server is a DBMS that runs as its own process, accepts remote clients, and manages users and multiple databases."
+---
+
+SQLite opens a file. MySQL and PostgreSQL listen on a host and port. You log in as a user, pick a database, then run SQL.
+
+## How server DBMS products compare
+
+| | **SQLite** | **MySQL** | **PostgreSQL** |
+| --- | --- | --- | --- |
+| Shape | Embedded library + `.db` file | Server process | Server process |
+| Clients | Your app / `sqlite3` | `mysql` client, apps | `psql` client, apps |
+| Users | File permissions | Accounts + [GRANT](/reference/grant) | Accounts + privileges |
+| Identifiers | `"name"` or bare | `` `name` `` (backticks) | `"name"` or bare |
+| Types | Affinities ([storage classes](/concepts/storage-classes)) | Strict types ([server types](/concepts/server-types)) | Strict types |
+| Auto ids | `INTEGER PRIMARY KEY` | `AUTO_INCREMENT` | `SERIAL` / `GENERATED` |
+| Scaling tools | One file | Replication, sharding patterns | Replication, sharding patterns |
+
+MySQL and Postgres both support richer types, stored routines, and multi-user access. They cost more to run and operate than SQLite.
+
+## Why teams move to a server
+
+Many writers, network clients, and features such as [replication](/concepts/replication) need a server. SQLite stays excellent for local apps, tests, and modest load.
+
+## When to use which
+
+- **SQLite**: one machine, simple deploy, embedded app data
+- **MySQL or PostgreSQL**: many users, stricter types, horizontal scale
+- **Skip a server when**: a single SQLite file still meets your needs
+
+## Related ideas
+
+Connect with [open MySQL](/how-to/connect-to-mysql) or [open PostgreSQL](/how-to/connect-to-postgresql). Map types on [server types](/concepts/server-types).
+
+## Common mix-ups
+
+- **Database vs server**: one MySQL *server* can hold many *databases* (`SHOW DATABASES`, then `USE name`)
+- **SQL vs product**: `SELECT` is shared; types, quotes, and meta-commands differ
+
+## Further reading
+
+- [Scaling](/concepts/scaling)
+- [Server types](/concepts/server-types)
+- [Connect to MySQL](/how-to/connect-to-mysql)

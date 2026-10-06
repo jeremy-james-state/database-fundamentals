@@ -22,9 +22,65 @@
         "group": "Concepts",
         "expanded": true,
         "pages": [
-          "concepts/tables",
-          "concepts/databases",
-          "concepts/sql"
+          {
+            "group": "Foundations",
+            "expanded": false,
+            "pages": [
+              "concepts/tables",
+              "concepts/databases",
+              "concepts/sql"
+            ]
+          },
+          {
+            "group": "Structure",
+            "expanded": false,
+            "pages": [
+              "concepts/relationships",
+              "concepts/keys",
+              "concepts/entity-relationship-diagrams"
+            ]
+          },
+          {
+            "group": "Design",
+            "expanded": false,
+            "pages": [
+              "concepts/schemas",
+              "concepts/normalization",
+              "concepts/storage-classes",
+              "concepts/constraints"
+            ]
+          },
+          {
+            "group": "Change",
+            "expanded": false,
+            "pages": [
+              "concepts/views",
+              "concepts/triggers",
+              "concepts/soft-deletion"
+            ]
+          },
+          {
+            "group": "Speed",
+            "expanded": false,
+            "pages": [
+              "concepts/indexes",
+              "concepts/b-trees",
+              "concepts/transactions"
+            ]
+          },
+          {
+            "group": "Scale",
+            "expanded": false,
+            "pages": [
+              "concepts/scaling",
+              "concepts/database-servers",
+              "concepts/server-types",
+              "concepts/replication",
+              "concepts/sharding",
+              "concepts/stored-procedures",
+              "concepts/sql-injection"
+            ]
+          }
         ]
       },
       {
@@ -41,6 +97,96 @@
         ]
       },
       {
+        "group": "Relating",
+        "expanded": true,
+        "pages": [
+          "how-to/list-tables",
+          "how-to/nest-a-query",
+          "how-to/join-tables",
+          "how-to/combine-result-sets",
+          "how-to/group-rows",
+          "tutorials/query-related-tables"
+        ]
+      },
+      {
+        "group": "Designing",
+        "expanded": true,
+        "pages": [
+          "how-to/show-a-schema",
+          "how-to/create-a-table",
+          "how-to/constrain-a-table",
+          "how-to/alter-a-table",
+          "how-to/apply-a-schema-file",
+          "tutorials/design-tables"
+        ]
+      },
+      {
+        "group": "Writing",
+        "expanded": true,
+        "pages": [
+          "how-to/insert-rows",
+          "how-to/import-a-csv",
+          "how-to/delete-rows",
+          "how-to/delete-related-rows",
+          "how-to/update-rows",
+          "how-to/create-a-trigger",
+          "how-to/soft-delete-a-row",
+          "tutorials/write-rows"
+        ]
+      },
+      {
+        "group": "Viewing",
+        "expanded": true,
+        "pages": [
+          "how-to/create-a-view",
+          "how-to/create-a-temporary-view",
+          "how-to/use-a-cte",
+          "how-to/partition-with-views",
+          "how-to/hide-columns-in-a-view",
+          "how-to/write-through-a-view",
+          "tutorials/query-with-views"
+        ]
+      },
+      {
+        "group": "Optimizing",
+        "expanded": true,
+        "pages": [
+          "how-to/time-a-query",
+          "how-to/create-an-index",
+          "how-to/explain-a-query-plan",
+          "how-to/vacuum-a-database",
+          "how-to/run-a-transaction",
+          "tutorials/optimize-queries"
+        ]
+      },
+      {
+        "group": "Scaling",
+        "expanded": true,
+        "pages": [
+          {
+            "group": "MySQL",
+            "expanded": false,
+            "pages": [
+              "how-to/connect-to-mysql",
+              "how-to/create-a-mysql-table",
+              "how-to/describe-a-table",
+              "how-to/modify-a-column",
+              "how-to/create-a-stored-procedure"
+            ]
+          },
+          {
+            "group": "PostgreSQL",
+            "expanded": false,
+            "pages": [
+              "how-to/connect-to-postgresql"
+            ]
+          },
+          "how-to/grant-privileges",
+          "how-to/use-a-prepared-statement",
+          "tutorials/scale-with-servers"
+        ]
+      },
+      {
         "group": "Reference",
         "expanded": true,
         "pages": [
@@ -50,7 +196,8 @@
             "pages": [
               "reference/select",
               "reference/from",
-              "reference/limit"
+              "reference/limit",
+              "reference/with"
             ]
           },
           {
@@ -62,7 +209,8 @@
               "reference/and",
               "reference/or",
               "reference/null",
-              "reference/like"
+              "reference/like",
+              "reference/in"
             ]
           },
           {
@@ -85,7 +233,92 @@
               "reference/sum",
               "reference/round",
               "reference/as",
-              "reference/distinct"
+              "reference/distinct",
+              "reference/group-by",
+              "reference/having"
+            ]
+          },
+          {
+            "group": "Relate",
+            "expanded": false,
+            "pages": [
+              "reference/join",
+              "reference/inner-join",
+              "reference/left-join",
+              "reference/right-join",
+              "reference/full-join",
+              "reference/natural-join"
+            ]
+          },
+          {
+            "group": "Combine",
+            "expanded": false,
+            "pages": [
+              "reference/union",
+              "reference/intersect",
+              "reference/except"
+            ]
+          },
+          {
+            "group": "Write",
+            "expanded": false,
+            "pages": [
+              "reference/insert",
+              "reference/update",
+              "reference/delete",
+              "reference/begin",
+              "reference/commit",
+              "reference/rollback",
+              "reference/trim",
+              "reference/upper",
+              "reference/lower"
+            ]
+          },
+          {
+            "group": "Optimize",
+            "expanded": false,
+            "pages": [
+              "reference/create-index",
+              "reference/drop-index",
+              "reference/explain-query-plan",
+              "reference/vacuum"
+            ]
+          },
+          {
+            "group": "Define",
+            "expanded": false,
+            "pages": [
+              "reference/create-table",
+              "reference/drop-table",
+              "reference/alter-table",
+              "reference/create-view",
+              "reference/drop-view",
+              "reference/create-trigger",
+              "reference/create-procedure"
+            ]
+          },
+          {
+            "group": "Access",
+            "expanded": false,
+            "pages": [
+              "reference/describe",
+              "reference/call",
+              "reference/grant",
+              "reference/revoke",
+              "reference/prepare",
+              "reference/execute"
+            ]
+          },
+          {
+            "group": "Constrain",
+            "expanded": false,
+            "pages": [
+              "reference/primary-key",
+              "reference/foreign-key",
+              "reference/not-null",
+              "reference/unique",
+              "reference/default",
+              "reference/check"
             ]
           }
         ]
@@ -132,6 +365,9 @@
   },
   "styling": {
     "eyebrows": "breadcrumbs"
+  },
+  "interaction": {
+    "drilldown": false
   },
   "appearance": {
     "strict": true

@@ -1,0 +1,63 @@
+---
+title: "Create a trigger"
+description: "Run extra SQL automatically after (or before) INSERT, UPDATE, or DELETE."
+---
+
+Name the trigger so it shows up in `.schema` next to your tables.
+
+## Prerequisites
+
+- The table the trigger watches
+- A second table if you are logging rows ([insert rows](/how-to/insert-rows))
+
+## Add the trigger
+
+<Steps>
+  <Step title="Create a log table">
+    ```sql
+    CREATE TABLE transactions (
+      id INTEGER,
+      title TEXT,
+      action TEXT,
+      PRIMARY KEY (id)
+    );
+    ```
+  </Step>
+  <Step title="Create the trigger">
+    ```sql
+    CREATE TRIGGER log_insert
+    AFTER INSERT ON collections
+    FOR EACH ROW
+    BEGIN
+      INSERT INTO transactions (title, action)
+      VALUES (NEW.title, 'bought');
+    END;
+    ```
+
+    `AFTER` / `BEFORE` names when it runs. `FOR EACH ROW` runs the body once per affected row. `BEGIN` … `END` can hold more than one statement.
+  </Step>
+  <Step title="Prove it">
+    ```sql
+    INSERT INTO collections (title, accession_number, acquired)
+    VALUES ('Profusion of Flowers', '56.257', '2015-04-12');
+
+    SELECT *
+    FROM transactions;
+    ```
+  </Step>
+</Steps>
+
+## Verify the result
+
+You succeeded when the insert into `collections` also produced a `transactions` row without a second manual `INSERT`.
+
+## Troubleshooting
+
+- **Syntax error near `END`**: each statement inside `BEGIN` still needs a semicolon, including the last one before `END`.
+- **Trigger never fires**: you inserted into a different table than `ON` names.
+
+## Related pages
+
+- [Triggers](/concepts/triggers)
+- [CREATE TRIGGER](/reference/create-trigger)
+- [INSERT](/reference/insert)

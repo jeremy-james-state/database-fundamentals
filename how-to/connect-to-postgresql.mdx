@@ -1,0 +1,56 @@
+---
+title: "Connect to PostgreSQL"
+description: "Open a PostgreSQL database with psql using list and connect meta-commands."
+---
+
+PostgreSQL is a [database server](/concepts/database-servers). `psql` meta-commands start with a backslash (they are not SQL).
+
+## Prerequisites
+
+- A running PostgreSQL server
+- A user that can connect
+
+## Connect and navigate
+
+<Steps>
+  <Step title="Start psql">
+    ```bash
+    psql -U postgres -h 127.0.0.1 -p 5432
+    ```
+  </Step>
+  <Step title="List databases">
+    ```text
+    \l
+    ```
+  </Step>
+  <Step title="Connect to one">
+    ```text
+    \c transit
+    ```
+
+    Create tables with Postgres types such as `SERIAL` for auto ids:
+
+    ```sql
+    CREATE TABLE cards (
+      id SERIAL PRIMARY KEY,
+      number VARCHAR(20) NOT NULL UNIQUE,
+      issued DATE
+    );
+    ```
+  </Step>
+</Steps>
+
+## Verify the result
+
+You succeeded when `\c transit` connects and `\dt` lists tables (or your `CREATE TABLE` succeeds).
+
+## Troubleshooting
+
+- **Peer authentication failed**: use `-h 127.0.0.1` and a password if local socket auth differs.
+- **`\l` is not SQL**: meta-commands work only in `psql`, not in every GUI.
+
+## Related pages
+
+- [Database servers](/concepts/database-servers)
+- [Server types](/concepts/server-types)
+- [Connect to MySQL](/how-to/connect-to-mysql)

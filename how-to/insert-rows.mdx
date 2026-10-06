@@ -1,0 +1,79 @@
+---
+title: "Insert rows"
+description: "Add one or more rows with INSERT INTO, or run a .sql file of inserts with .read."
+---
+
+Omit the [primary key](/concepts/keys) when it is an `INTEGER PRIMARY KEY`. SQLite fills the next integer for you.
+
+## Prerequisites
+
+- A table ([create a table](/how-to/create-a-table))
+- [Constraints](/concepts/constraints) if the table has keys or `CHECK`s
+
+## Insert one row
+
+<Steps>
+  <Step title="Name the table, columns, and values">
+    Column `0` in the list gets value `0`. The [CREATE TABLE](/reference/create-table) order is the table’s layout. The `INSERT` column list is the order of *this* statement.
+
+    ```sql
+    INSERT INTO collections (title, accession_number, acquired)
+    VALUES ('Profusion of Flowers', '56.257', '2015-04-12');
+    ```
+
+    SQLite often stores dates as text `YYYY-MM-DD`.
+  </Step>
+  <Step title="Confirm">
+    ```sql
+    SELECT *
+    FROM collections;
+    ```
+  </Step>
+</Steps>
+
+## Insert several rows
+
+Commas separate value lists. One statement is faster than many single-row inserts.
+
+```sql
+INSERT INTO collections (title, accession_number, acquired)
+VALUES
+  ('Profusion of Flowers', '56.257', '2015-04-12'),
+  ('Farmers Working at Dawn', '11.6152', '2019-02-14');
+```
+
+If one row violates a [constraint](/concepts/constraints), **none** of the rows in that `INSERT` land. Fix the bad value and run the statement again.
+
+## Run inserts from a file
+
+`.read` is a SQLite command, not SQL. Put `INSERT` statements in a `.sql` file:
+
+```sql inserts.sql
+INSERT INTO collections (title, accession_number, acquired)
+VALUES ('Spring Outing', '14.76', '2014-01-09');
+```
+
+```text
+sqlite> .read inserts.sql
+```
+
+From the shell: `sqlite3 collections.db < inserts.sql`.
+
+<Tip>
+  For a CSV of existing values, [import a CSV](/how-to/import-a-csv) instead of typing `VALUES`.
+</Tip>
+
+## Verify the result
+
+You succeeded when `SELECT` shows the new titles and each row has an `id`.
+
+## Troubleshooting
+
+- **Constraint failed, zero rows added**: a `NOT NULL`, `UNIQUE`, `CHECK`, or foreign key rejected at least one row in the statement.
+- **You inserted into the wrong columns**: list columns explicitly. Do not rely on table order unless you mean to.
+
+## Related pages
+
+- [INSERT](/reference/insert)
+- [Import a CSV](/how-to/import-a-csv)
+- [Apply a schema file](/how-to/apply-a-schema-file)

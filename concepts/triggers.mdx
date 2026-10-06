@@ -1,0 +1,51 @@
+---
+title: "Triggers"
+description: "A trigger is a stored SQL statement that runs automatically before or after another statement."
+---
+
+You name it, choose **BEFORE** or **AFTER** an `INSERT`, `UPDATE`, or `DELETE`, and put the work between `BEGIN` and `END`. SQLite runs that body **FOR EACH ROW** that the original statement touches.
+
+## How a trigger works
+
+```sql
+CREATE TRIGGER log_insert
+AFTER INSERT ON collections
+FOR EACH ROW
+BEGIN
+  INSERT INTO transactions (title, action)
+  VALUES (NEW.title, 'bought');
+END;
+```
+
+`NEW` is the row after an insert or the new values on an update. `OLD` is the row before a delete or the previous values on an update (`OLD.id` is that row’s primary key when the view or table exposes `id`).
+
+On a [view](/concepts/views), use **`INSTEAD OF`** so a `DELETE` or `INSERT` on the view runs your SQL against the underlying table.
+
+The trigger is part of the [schema](/concepts/schemas). `.schema` prints it next to `CREATE TABLE`.
+
+## Why databases use triggers
+
+You want a side effect every time a row changes: a log table, a derived column, a second delete. Writing the extra statement by hand is easy to forget. The trigger does not forget.
+
+You give up a schema that is only tables. Debugging a surprise insert means reading the trigger body.
+
+## When to use a trigger
+
+- **The same follow-up every time**: log a sale, copy a title
+- **Skip it when**: you can write the second statement yourself and will remember; keep the schema smaller
+
+## Related ideas
+
+A trigger is not a [constraint](/concepts/constraints). Constraints reject a row. Triggers run extra SQL. [Soft deletion](/concepts/soft-deletion) is a pattern you can implement with `UPDATE`, with or without a trigger on a view.
+
+## Common mix-ups
+
+- **BEFORE vs AFTER vs INSTEAD OF**: BEFORE and AFTER wrap a table change. INSTEAD OF replaces a write on a view.
+- **One statement vs many**: `BEGIN` … `END` can hold more than one statement. Each still ends with a semicolon.
+
+## Further reading
+
+- [Create a trigger](/how-to/create-a-trigger)
+- [Write through a view](/how-to/write-through-a-view)
+- [CREATE TRIGGER](/reference/create-trigger)
+- [INSERT](/reference/insert)

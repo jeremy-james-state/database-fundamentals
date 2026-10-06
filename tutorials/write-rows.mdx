@@ -1,0 +1,116 @@
+---
+title: "Tutorial"
+description: "Insert and import rows, delete and update them, then log changes with a trigger and a soft-delete flag."
+---
+
+When you finish, you can add rows, remove or rewrite them, and keep a `deleted` mark instead of dropping history.
+
+## Prerequisites
+
+- SQLite ([open a SQLite database](/how-to/open-a-database))
+- [CREATE TABLE](/how-to/create-a-table) and [constraints](/concepts/constraints)
+- About 25 minutes
+
+<Info>
+Examples use SQLite. End every SQL statement with a semicolon. Use a new file such as `collections.db`.
+</Info>
+
+## Step 1: Create a table and insert
+
+```sql
+CREATE TABLE collections (
+  id INTEGER,
+  title TEXT NOT NULL,
+  accession_number TEXT NOT NULL UNIQUE,
+  acquired TEXT,
+  PRIMARY KEY (id)
+);
+
+INSERT INTO collections (title, accession_number, acquired)
+VALUES
+  ('Profusion of Flowers', '56.257', '2015-04-12'),
+  ('Farmers Working at Dawn', '11.6152', '2019-02-14');
+```
+
+You are on track when `SELECT * FROM collections;` shows two rows with generated `id` values.
+
+## Step 2: Delete, then update
+
+```sql
+DELETE FROM collections
+WHERE acquired IS NULL;
+
+UPDATE collections
+SET title = trim(title)
+WHERE id = 1;
+```
+
+## Step 3: Related rows
+
+```sql
+CREATE TABLE artists (
+  id INTEGER,
+  name TEXT,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE created (
+  artist_id INTEGER,
+  collection_id INTEGER,
+  PRIMARY KEY (artist_id, collection_id),
+  FOREIGN KEY (artist_id) REFERENCES artists (id)
+    ON DELETE CASCADE,
+  FOREIGN KEY (collection_id) REFERENCES collections (id)
+    ON DELETE CASCADE
+);
+
+PRAGMA foreign_keys = ON;
+
+INSERT INTO artists (name)
+VALUES ('Li Yin');
+
+INSERT INTO created (artist_id, collection_id)
+VALUES (1, 1);
+
+DELETE FROM artists
+WHERE id = 1;
+```
+
+`SELECT * FROM created;` should show no row for that artist. `ON DELETE CASCADE` removed the join row.
+
+## Step 4: Trigger and soft delete
+
+```sql
+CREATE TABLE transactions (
+  id INTEGER,
+  title TEXT,
+  action TEXT,
+  PRIMARY KEY (id)
+);
+
+CREATE TRIGGER log_insert
+AFTER INSERT ON collections
+FOR EACH ROW
+BEGIN
+  INSERT INTO transactions (title, action)
+  VALUES (NEW.title, 'bought');
+END;
+
+ALTER TABLE collections
+ADD COLUMN deleted INTEGER DEFAULT 0;
+
+UPDATE collections
+SET deleted = 1
+WHERE title = 'Farmers Working at Dawn';
+```
+
+`SELECT * FROM collections WHERE deleted != 1;` should hide that title. A new `INSERT` into `collections` should add a `transactions` row.
+
+## Next steps
+
+You can write rows, not only read them. Continue with:
+
+- [Insert rows](/how-to/insert-rows)
+- [Delete related rows](/how-to/delete-related-rows)
+- [Triggers](/concepts/triggers)
+- [Soft deletion](/concepts/soft-deletion)

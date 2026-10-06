@@ -1,0 +1,119 @@
+---
+title: "Tutorial"
+description: "Create views to simplify and aggregate, use a CTE, partition and hide columns, then soft-delete through a view."
+---
+
+When you finish, you can treat saved queries as tables, choose view vs temporary vs CTE, and route deletes through a view with `INSTEAD OF`.
+
+## Prerequisites
+
+- SQLite with `authors`, `authored`, `books`, and `ratings`, or a small `collections` / `rides` schema you create
+- [Join tables](/how-to/join-tables) and [soft-delete a row](/how-to/soft-delete-a-row)
+- About 25 minutes
+
+<Info>
+Examples use SQLite. End every SQL statement with a semicolon.
+</Info>
+
+## Step 1: Simplify with a view
+
+```sql
+CREATE VIEW author_titles AS
+SELECT authors.name, books.title
+FROM authors
+JOIN authored ON authored.author_id = authors.id
+JOIN books ON books.id = authored.book_id;
+
+SELECT *
+FROM author_titles
+LIMIT 5;
+```
+
+You are on track when name and title appear without writing the join again.
+
+## Step 2: Temporary view, then CTE
+
+```sql
+CREATE VIEW average_book_ratings AS
+SELECT
+  books.id AS book_id,
+  books.title,
+  books.year,
+  ROUND(AVG(ratings.stars), 2) AS rating
+FROM ratings
+JOIN books ON books.id = ratings.book_id
+GROUP BY books.id;
+
+CREATE TEMPORARY VIEW average_ratings_by_year AS
+SELECT year, ROUND(AVG(rating), 2) AS rating
+FROM average_book_ratings
+GROUP BY year;
+
+SELECT *
+FROM average_ratings_by_year;
+```
+
+Same idea as a CTE for one statement only:
+
+```sql
+WITH per_book AS (
+  SELECT
+    books.year,
+    ROUND(AVG(ratings.stars), 2) AS rating
+  FROM ratings
+  JOIN books ON books.id = ratings.book_id
+  GROUP BY books.id, books.year
+)
+SELECT year, ROUND(AVG(rating), 2) AS rating
+FROM per_book
+GROUP BY year;
+```
+
+## Step 3: Partition and hide
+
+```sql
+CREATE VIEW books_2022 AS
+SELECT id, title
+FROM books
+WHERE year = 2022;
+
+CREATE VIEW analysis AS
+SELECT
+  id,
+  origin,
+  destination,
+  'anonymous' AS rider
+FROM rides;
+```
+
+## Step 4: Write through a view
+
+```sql
+CREATE VIEW current_collections AS
+SELECT id, title, accession_number, acquired
+FROM collections
+WHERE deleted = 0;
+
+CREATE TRIGGER soft_delete_collection
+INSTEAD OF DELETE ON current_collections
+FOR EACH ROW
+BEGIN
+  UPDATE collections
+  SET deleted = 1
+  WHERE id = OLD.id;
+END;
+
+DELETE FROM current_collections
+WHERE id = 1;
+```
+
+`SELECT * FROM collections WHERE id = 1;` should show `deleted = 1`. `current_collections` should omit that row.
+
+## Next steps
+
+You can simplify, partition, and secure reads with views, and soft-delete through them. Continue with:
+
+- [Views](/concepts/views)
+- [Create a temporary view](/how-to/create-a-temporary-view)
+- [Use a CTE](/how-to/use-a-cte)
+- [Write through a view](/how-to/write-through-a-view)

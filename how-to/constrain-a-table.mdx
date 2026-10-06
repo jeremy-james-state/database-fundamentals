@@ -1,0 +1,95 @@
+---
+title: "Constrain a table"
+description: "Declare table constraints and column constraints so invalid rows fail on insert."
+---
+
+Write [table constraints](/concepts/constraints) after the columns. Write [column constraints](/concepts/constraints) on the column they govern.
+
+## Prerequisites
+
+- [Create a table](/how-to/create-a-table)
+- [Keys](/concepts/keys)
+
+## Add table constraints
+
+<Steps>
+  <Step title="Primary key">
+    Identifies each row. A composite key is two or more columns, and must be written here (not on one column). Use it only when that pair *is* the identity. Repeat visits by the same rider at the same station need a new row, so `(rider_id, station_id)` is a poor primary key on `visits`.
+
+    ```sql
+    CREATE TABLE stations (
+      id INTEGER,
+      name TEXT,
+      line TEXT,
+      PRIMARY KEY (id)
+    );
+    ```
+  </Step>
+  <Step title="Foreign keys">
+    Point at the parent table. SQLite ignores them unless you turn them on in the session.
+
+    ```sql
+    CREATE TABLE visits (
+      id INTEGER,
+      rider_id INTEGER,
+      station_id INTEGER,
+      type TEXT,
+      datetime NUMERIC,
+      duration INTEGER,
+      fare NUMERIC,
+      PRIMARY KEY (id),
+      FOREIGN KEY (rider_id) REFERENCES riders (id),
+      FOREIGN KEY (station_id) REFERENCES stations (id)
+    );
+    ```
+
+    ```sql
+    PRAGMA foreign_keys = ON;
+    ```
+  </Step>
+</Steps>
+
+## Add column constraints
+
+<Steps>
+  <Step title="NOT NULL, UNIQUE, DEFAULT, CHECK">
+    `NOT NULL` forbids missing values. `UNIQUE` forbids duplicates. `DEFAULT` fills a gap. `CHECK` limits the set.
+
+    ```sql
+    CREATE TABLE visits (
+      id INTEGER,
+      rider_id INTEGER,
+      station_id INTEGER,
+      type TEXT CHECK (type IN ('enter', 'exit')),
+      datetime NUMERIC DEFAULT CURRENT_TIMESTAMP,
+      duration INTEGER,
+      fare NUMERIC CHECK (fare != 0),
+      PRIMARY KEY (id),
+      FOREIGN KEY (rider_id) REFERENCES riders (id),
+      FOREIGN KEY (station_id) REFERENCES stations (id)
+    );
+    ```
+
+    `CURRENT_TIMESTAMP` is SQLite’s clock at insert time when you omit `datetime`. Skip `NOT NULL` on `id`: [PRIMARY KEY](/reference/primary-key) already requires a value.
+  </Step>
+</Steps>
+
+## Verify the result
+
+You succeeded when a bad `type` or a missing required column is rejected, and a valid insert is accepted.
+
+## Troubleshooting
+
+- **Foreign key insert succeeds with a fake id**: `PRAGMA foreign_keys` is off (SQLite’s default).
+- **CHECK always fails**: compare to the stored [storage class](/concepts/storage-classes). `'enter'` is not the same as a misspelled value.
+- **Composite primary key blocks a second visit**: the pair was not unique in the real world; add an `id` instead.
+
+## Related pages
+
+- [Constraints](/concepts/constraints)
+- [PRIMARY KEY](/reference/primary-key)
+- [FOREIGN KEY](/reference/foreign-key)
+- [CHECK](/reference/check)
+- [NOT NULL](/reference/not-null)
+- [UNIQUE](/reference/unique)
+- [DEFAULT](/reference/default)

@@ -1,0 +1,54 @@
+---
+title: "List tables"
+description: "See which tables are in a SQLite database."
+---
+
+`.tables` is a SQLite command, not a SQL keyword. `SELECT *` is the SQL way to peek at rows once you know a table’s name.
+
+## Prerequisites
+
+- An open SQLite session ([open a SQLite database](/how-to/open-a-database))
+
+## List the tables
+
+<Steps>
+  <Step title="Use the SQLite command">
+    At the `sqlite>` prompt:
+
+    ```text
+    sqlite> .tables
+    ```
+
+    You get names such as `authors`, `authored`, `books`, `publishers`, `ratings`.
+  </Step>
+  <Step title="Use SQL instead">
+    SQLite stores schema in `sqlite_master`. Table names live in rows where `type` is `'table'`:
+
+    ```sql
+    SELECT name
+    FROM sqlite_master
+    WHERE type = 'table';
+    ```
+  </Step>
+  <Step title="Peek at a table">
+    ```sql
+    SELECT *
+    FROM books
+    LIMIT 5;
+    ```
+  </Step>
+</Steps>
+
+## Verify the result
+
+You succeeded when you see every table name, then a few rows from `books`.
+
+## Troubleshooting
+
+- **Empty `.tables`**: you opened a new file, or the wrong path.
+- **`sqlite_master` unknown**: you are not in SQLite. Other DBMS products list tables with a different catalog.
+
+## Related pages
+
+- [Open a SQLite database](/how-to/open-a-database)
+- [Relationships](/concepts/relationships)

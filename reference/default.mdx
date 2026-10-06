@@ -1,0 +1,38 @@
+---
+title: "DEFAULT"
+description: "Fills the column when an INSERT omits it."
+---
+
+A [column constraint](/concepts/constraints). The value is stored on the new row. Later updates do not re-run `DEFAULT`.
+
+## Syntax
+
+```sql
+CREATE TABLE table_name (
+  column_name STORAGE_CLASS DEFAULT value
+);
+```
+
+## Arguments
+
+<ParamField body="value" type="literal or function" required>
+  A constant, or SQLite’s `CURRENT_TIMESTAMP` for the time of the insert.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql Timestamp when omitted
+CREATE TABLE visits (
+  id INTEGER,
+  datetime NUMERIC DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id)
+);
+```
+</CodeGroup>
+
+## Related references
+
+- [NOT NULL](/reference/not-null)
+- [CHECK](/reference/check)
+- [CREATE TABLE](/reference/create-table)

@@ -1,0 +1,54 @@
+---
+title: "Explain a query plan"
+description: "See whether SQLite will SCAN a table or SEARCH with an index before you run the query."
+---
+
+In SQLite the statement is `EXPLAIN QUERY PLAN`. Other products often say `EXPLAIN`.
+
+## Prerequisites
+
+- The query you care about
+- Optional: an [index](/how-to/create-an-index) to compare before and after
+
+## Read the plan
+
+<Steps>
+  <Step title="Explain without an index">
+    ```sql
+    EXPLAIN QUERY PLAN
+    SELECT *
+    FROM movies
+    WHERE title = 'Cars';
+    ```
+
+    **SCAN** means top to bottom through the table (or a big piece of it). That is the slow path on large data.
+  </Step>
+  <Step title="Add an index and explain again">
+    ```sql
+    CREATE INDEX title_index
+    ON movies (title);
+
+    EXPLAIN QUERY PLAN
+    SELECT *
+    FROM movies
+    WHERE title = 'Cars';
+    ```
+
+    **SEARCH … USING INDEX** means the [B-tree](/concepts/b-trees) path. **COVERING INDEX** means no table lookup for the selected columns.
+  </Step>
+</Steps>
+
+## Verify the result
+
+You succeeded when you can say, from the plan alone, whether the query will scan or use an index—before trusting `.timer`.
+
+## Troubleshooting
+
+- **Plan still SCAN after CREATE INDEX**: wrong column, or a [partial index](/concepts/indexes#partial-index) whose `WHERE` does not match this query.
+- **Primary key search**: `INTEGER PRIMARY KEY` already has an automatic index; you may see that without creating one.
+
+## Related pages
+
+- [EXPLAIN QUERY PLAN](/reference/explain-query-plan)
+- [Create an index](/how-to/create-an-index)
+- [Time a query](/how-to/time-a-query)

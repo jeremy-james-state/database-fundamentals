@@ -1,0 +1,41 @@
+---
+title: "Normalization"
+description: "Normalization splits a table so each fact lives with one kind of item, and repeating groups go away."
+---
+
+Academics name first, second, and third **normal form**. Each step makes the same data less redundant. The practical test: if you add a column, it must be about **that** table’s entity only.
+
+## How normalization works
+
+Start from one grid: rider name, station name, fare. Charlie at Kendall, Charlie at Park Street copies the name. A station rename would need every row updated.
+
+Put **riders** in one table and **stations** in another. Facts about a visit (when, how much) belong on a third table that [relates](/concepts/relationships) them with [keys](/concepts/keys).
+
+A rider may visit many stations. A station may have many riders. That many-to-many match is a visits (or swipes) table, not extra columns on riders.
+
+## Why databases use normalization
+
+Repeated text wastes space and goes stale. One `stations` row holds the name. Foreign keys point at it.
+
+You give up a single spreadsheet-shaped table. You gain updates in one place.
+
+## When to use normalization
+
+- **The same name or fare repeats** on many rows
+- **A column is about another entity**: station line does not belong on riders
+- **Skip it when**: you have one list of similar items and it will stay small; a single [table](/concepts/tables) is enough
+
+## Related ideas
+
+Draw the split on an [entity-relationship diagram](/concepts/entity-relationship-diagrams). A bar on the line means at least one; a circle means zero is allowed; a crow’s foot means many.
+
+## Common mix-ups
+
+- **More tables vs more columns**: a new kind of item is a new table. A new fact about the same item is a new column.
+- **Normal form names vs the test**: you do not need to recite 3NF. Ask whether the column is about this entity.
+
+## Further reading
+
+- [Schemas](/concepts/schemas)
+- [Relationships](/concepts/relationships)
+- [Create a table](/how-to/create-a-table)

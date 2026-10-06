@@ -1,0 +1,33 @@
+---
+title: "DESCRIBE"
+description: "Lists a MySQL table’s columns, types, and key flags."
+---
+
+Short form: `DESC table_name`.
+
+## Syntax
+
+```sql
+DESCRIBE table_name;
+```
+
+## Arguments
+
+<ParamField body="table_name" type="identifier" required>
+  Table in the current database (`USE` first).
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql MySQL
+DESCRIBE cards;
+```
+</CodeGroup>
+
+`Key` values include `PRI` (primary), `UNI` (unique), and `MUL` (indexed, often a foreign key).
+
+## Related references
+
+- [Describe a table](/how-to/describe-a-table)
+- [CREATE TABLE](/reference/create-table)

@@ -1,0 +1,36 @@
+---
+title: "DROP TABLE"
+description: "Removes a table and every row in it."
+---
+
+SQLite does not ask for confirmation. Recreate the table from [schema.sql](/how-to/apply-a-schema-file) if you still need the structure.
+
+## Syntax
+
+```sql
+DROP TABLE table_name;
+```
+
+## Arguments
+
+<ParamField body="table_name" type="identifier" required>
+  The table to remove.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql Drop visits
+DROP TABLE visits;
+```
+</CodeGroup>
+
+<Warning>
+  Data is gone. There is no undo except a backup file.
+</Warning>
+
+## Related references
+
+- [CREATE TABLE](/reference/create-table)
+- [ALTER TABLE](/reference/alter-table)
+- [Alter a table](/how-to/alter-a-table)

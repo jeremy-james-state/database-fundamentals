@@ -1,0 +1,57 @@
+---
+title: "CREATE INDEX"
+description: "Builds an index on one or more columns to speed up lookups."
+---
+
+Add `WHERE` for a [partial index](/concepts/indexes#partial-index). List multiple columns for a [covering](/concepts/indexes) index when the query needs all of them.
+
+## Syntax
+
+```sql
+CREATE INDEX index_name
+ON table_name (column, ...);
+
+CREATE INDEX index_name
+ON table_name (column)
+WHERE condition;
+```
+
+## Arguments
+
+<ParamField body="index_name" type="identifier" required>
+  Unique among indexes in this database.
+</ParamField>
+
+<ParamField body="table_name (column, …)" type="identifier" required>
+  Table and column list. Order matters for multi-column indexes.
+</ParamField>
+
+<ParamField body="WHERE condition" type="boolean expression">
+  Optional. Only matching rows enter a partial index.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql Single column
+CREATE INDEX title_index
+ON movies (title);
+```
+
+```sql Covering pair
+CREATE INDEX person_index
+ON stars (person_id, movie_id);
+```
+
+```sql Partial
+CREATE INDEX recents
+ON movies (title)
+WHERE year = 2023;
+```
+</CodeGroup>
+
+## Related references
+
+- [DROP INDEX](/reference/drop-index)
+- [EXPLAIN QUERY PLAN](/reference/explain-query-plan)
+- [Create an index](/how-to/create-an-index)

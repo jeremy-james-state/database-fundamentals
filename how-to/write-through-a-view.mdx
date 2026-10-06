@@ -1,0 +1,81 @@
+---
+title: "Write through a view"
+description: "Use INSTEAD OF triggers so DELETE or INSERT on a view updates the underlying table."
+---
+
+A view has no rows of its own. `DELETE FROM some_view` usually fails unless you define what to do **instead**.
+
+## Prerequisites
+
+- [Soft-delete a row](/how-to/soft-delete-a-row) (`deleted` column on the table)
+- [Create a trigger](/how-to/create-a-trigger)
+- [Create a view](/how-to/create-a-view)
+
+## Soft-delete via a view
+
+<Steps>
+  <Step title="View only live rows">
+    ```sql
+    CREATE VIEW current_collections AS
+    SELECT id, title, accession_number, acquired
+    FROM collections
+    WHERE deleted = 0;
+    ```
+  </Step>
+  <Step title="INSTEAD OF DELETE">
+    `OLD` is the row as seen through the view (the values you thought you were deleting).
+
+    ```sql
+    CREATE TRIGGER soft_delete_collection
+    INSTEAD OF DELETE ON current_collections
+    FOR EACH ROW
+    BEGIN
+      UPDATE collections
+      SET deleted = 1
+      WHERE id = OLD.id;
+    END;
+    ```
+  </Step>
+  <Step title="Delete from the view">
+    ```sql
+    DELETE FROM current_collections
+    WHERE title = 'Farmers Working at Dawn';
+    ```
+
+    The row stays in `collections` with `deleted = 1`. It disappears from `current_collections`.
+  </Step>
+  <Step title="Optional: INSTEAD OF INSERT to undelete">
+    ```sql
+    CREATE TRIGGER undelete_collection
+    INSTEAD OF INSERT ON current_collections
+    FOR EACH ROW
+    WHEN NEW.accession_number IN (
+      SELECT accession_number
+      FROM collections
+    )
+    BEGIN
+      UPDATE collections
+      SET deleted = 0
+      WHERE accession_number = NEW.accession_number;
+    END;
+    ```
+
+    `NEW` is the row you tried to insert into the view.
+  </Step>
+</Steps>
+
+## Verify the result
+
+You succeeded when `DELETE FROM current_collections` flips `deleted` on `collections`, and `SELECT * FROM current_collections` no longer shows that title.
+
+## Troubleshooting
+
+- **Cannot modify view**: no `INSTEAD OF` trigger covers that statement on that view.
+- **Wrong row updated**: match on `OLD.id` (or another unique key), not only on a title that might repeat.
+
+## Related pages
+
+- [Views](/concepts/views)
+- [Triggers](/concepts/triggers)
+- [Soft deletion](/concepts/soft-deletion)
+- [CREATE TRIGGER](/reference/create-trigger)

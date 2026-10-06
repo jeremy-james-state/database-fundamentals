@@ -1,0 +1,47 @@
+---
+title: "Relationships"
+description: "A relationship is how rows in one table correspond to rows in another."
+---
+
+A **relational database** stores data in more than one table and keeps those tables connected. One table for authors, one for books, one for publishers.
+
+Row order is not a relationship. You cannot assume the first author wrote the first book.
+
+## How a relationship works
+
+Count how many rows on each side can match:
+
+| Name | Meaning | Example |
+| --- | --- | --- |
+| **One-to-one** | One row here matches at most one row there | One book, one ISBN |
+| **One-to-many** | One row here matches many rows there | One publisher, many books |
+| **Many-to-many** | Many rows here match many rows there | Many authors, many books |
+
+A one-to-one arrangement breaks when one author writes a second book: you would copy the author, or leave a hole in the other table.
+
+A many-to-many match uses a third table: the [join table](/concepts/keys#join-tables).
+
+## Why databases use relationships
+
+One table that repeats the publisher on every book wastes space and goes stale when the publisher’s name changes. Split the facts. Connect them with [keys](/concepts/keys).
+
+## When to use a relationship
+
+- **Facts that belong to different items**: authors vs books vs ratings
+- **Repeating groups**: many ratings for one book
+- **Skip it when**: you still have one grid of similar items; stay on a [table](/concepts/tables)
+
+## Related ideas
+
+You draw these links on an [entity-relationship diagram](/concepts/entity-relationship-diagrams). You query them with [subqueries](/how-to/nest-a-query) or a [JOIN](/how-to/join-tables).
+
+## Common mix-ups
+
+- **Same row number vs a key**: matching by position is the honor system. A [primary key](/concepts/keys) stays with the item when rows move.
+- **One-to-many vs many-to-many**: one publisher to many books needs a foreign key on `books`. Many authors to many books need a join table.
+
+## Further reading
+
+- [Keys](/concepts/keys)
+- [Entity-relationship diagrams](/concepts/entity-relationship-diagrams)
+- [Tutorial](/tutorials/query-related-tables)

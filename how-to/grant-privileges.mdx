@@ -1,0 +1,45 @@
+---
+title: "Grant privileges"
+description: "Give or remove MySQL privileges with GRANT and REVOKE."
+---
+
+Least privilege: a reporting user may `SELECT` but not `DROP`.
+
+## Prerequisites
+
+- A MySQL admin session ([connect to MySQL](/how-to/connect-to-mysql))
+- A user account to grant to
+
+## Grant and revoke
+
+<Steps>
+  <Step title="Grant">
+    ```sql
+    GRANT SELECT, INSERT
+    ON transit.*
+    TO 'analyst'@'localhost';
+    ```
+  </Step>
+  <Step title="Revoke">
+    ```sql
+    REVOKE INSERT
+    ON transit.*
+    FROM 'analyst'@'localhost';
+    ```
+  </Step>
+</Steps>
+
+## Verify the result
+
+You succeeded when the analyst can `SELECT` and cannot run a revoked privilege.
+
+## Troubleshooting
+
+- **Access denied after GRANT**: user must reconnect; host (`'user'@'%'`) must match how they connect.
+- **Still too powerful**: grant on specific tables, not `*.*`
+
+## Related pages
+
+- [GRANT](/reference/grant)
+- [REVOKE](/reference/revoke)
+- [SQL injection](/concepts/sql-injection)

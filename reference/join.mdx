@@ -1,0 +1,42 @@
+---
+title: "JOIN"
+description: "Combines rows from two tables where ON is true."
+---
+
+In SQLite, `JOIN` is an [INNER JOIN](/reference/inner-join). The table before `JOIN` is the left table.
+
+## Syntax
+
+```sql
+SELECT column
+FROM table1
+JOIN table2
+  ON table1.column = table2.column;
+```
+
+## Arguments
+
+<ParamField body="table2" type="identifier" required>
+  The right table.
+</ParamField>
+
+<ParamField body="ON" type="boolean expression" required>
+  Usually a [foreign key](/concepts/keys) equal to a [primary key](/concepts/keys).
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql Inner join
+SELECT title, stars
+FROM books
+JOIN ratings
+  ON ratings.book_id = books.book_id;
+```
+</CodeGroup>
+
+## Related references
+
+- [INNER JOIN](/reference/inner-join)
+- [LEFT JOIN](/reference/left-join)
+- [Join tables](/how-to/join-tables)

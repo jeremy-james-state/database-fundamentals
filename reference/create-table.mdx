@@ -1,0 +1,49 @@
+---
+title: "CREATE TABLE"
+description: "Adds a table with named columns and optional constraints."
+---
+
+The statement *is* the table [schema](/concepts/schemas). You run it once per table, before inserts.
+
+## Syntax
+
+```sql
+CREATE TABLE table_name (
+  column_name STORAGE_CLASS,
+  column_name STORAGE_CLASS constraint,
+  PRIMARY KEY (column_name),
+  FOREIGN KEY (column_name) REFERENCES other_table (column_name)
+);
+```
+
+## Arguments
+
+<ParamField body="table_name" type="identifier" required>
+  The new table. Unique in the database.
+</ParamField>
+
+<ParamField body="column_name" type="identifier" required>
+  One attribute. Pair it with a [storage class](/concepts/storage-classes) affinity.
+</ParamField>
+
+<ParamField body="constraints" type="clause">
+  [Table constraints](/concepts/constraints) (`PRIMARY KEY`, `FOREIGN KEY`) after the columns. [Column constraints](/concepts/constraints) (`NOT NULL`, `UNIQUE`, `DEFAULT`, `CHECK`) on one column.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql Stations
+CREATE TABLE stations (
+  id INTEGER,
+  name TEXT,
+  line TEXT
+);
+```
+</CodeGroup>
+
+## Related references
+
+- [DROP TABLE](/reference/drop-table)
+- [ALTER TABLE](/reference/alter-table)
+- [Create a table](/how-to/create-a-table)

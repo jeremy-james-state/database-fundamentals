@@ -67,9 +67,17 @@ That result is not a `books` row. There is no `title` next to the average unless
 
 - `COUNT(*)` counts rows. `COUNT(column)` skips `NULL` in that column.
 - `MIN` and `MAX` follow sort order. For text, that is A to Z, not shortest to longest.
-- `ROUND` only changes how a number looks. It is not an aggregator. `AS` names a column. `DISTINCT` drops duplicates. Those can sit next to an aggregator, but they are not aggregators.
+- `AS` names a column. `DISTINCT` drops duplicates. Those can sit next to an aggregator, but they are not aggregators. `ROUND` is a [scalar](#scalar-functions).
 
 Practice on [summarize rows](/how-to/summarize-rows). Look up each function under Summarize in Reference, starting with [COUNT](/reference/count).
+
+## Scalar functions {#scalar-functions}
+
+A **scalar** function takes values from one row and returns one value. It does not collapse the table. [trim](/reference/trim) strips leading and trailing whitespace. [upper](/reference/upper) and [lower](/reference/lower) change case. [ROUND](/reference/round) changes how a number looks.
+
+You often `SET column = trim(column)` inside [UPDATE](/reference/update). The function result is not stored unless you write it back.
+
+Practice on [update rows](/how-to/update-rows).
 
 ## When to use SQL
 
@@ -88,3 +96,4 @@ SQL runs against a [database](/concepts/databases). Start with the [Tutorial](/t
 - **Identifier vs string value**: `title` is the column. `'title'` is the word title.
 - **`FROM` vs the file**: `FROM` names a table. The `.db` file is what you pass to `sqlite3`.
 - **Aggregator vs row list**: an aggregator returns one value for the set, not one row per item.
+- **Aggregator vs scalar**: `AVG` collapses rows. `trim` does not.

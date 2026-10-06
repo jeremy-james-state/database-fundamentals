@@ -1,0 +1,48 @@
+---
+title: "Vacuum a database"
+description: "Reclaim unused space in the SQLite file after drops with VACUUM."
+---
+
+Dropping an index or deleting rows does not always shrink the `.db` file on disk. `VACUUM` rebuilds the file and hands free pages back to the operating system.
+
+## Prerequisites
+
+- Enough disk space for a temporary copy while vacuuming
+- Indexes or data you already dropped if you are reclaiming after cleanup
+
+## Run VACUUM
+
+<Steps>
+  <Step title="Drop what you no longer need">
+    ```sql
+    DROP INDEX IF EXISTS title_index;
+    ```
+  </Step>
+  <Step title="Vacuum">
+    ```sql
+    VACUUM;
+    ```
+
+    On a large file this can take a while.
+  </Step>
+  <Step title="Check file size from the shell">
+    ```bash
+    du -h movies.db
+    ```
+  </Step>
+</Steps>
+
+## Verify the result
+
+You succeeded when the file size drops after dropping large indexes and vacuuming.
+
+## Troubleshooting
+
+- **Database is locked**: close other connections, then vacuum again.
+- **Disk full**: `VACUUM` needs room for a rebuild; free space first.
+
+## Related pages
+
+- [VACUUM](/reference/vacuum)
+- [DROP INDEX](/reference/drop-index)
+- [Indexes](/concepts/indexes)

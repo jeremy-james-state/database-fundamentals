@@ -1,0 +1,38 @@
+---
+title: "UNIQUE"
+description: "Rejects a second row with the same value in that column."
+---
+
+A [column constraint](/concepts/constraints). A [PRIMARY KEY](/reference/primary-key) is already unique. Use `UNIQUE` on another column that must not repeat, such as a station name.
+
+## Syntax
+
+```sql
+CREATE TABLE table_name (
+  column_name STORAGE_CLASS UNIQUE
+);
+```
+
+## Arguments
+
+<ParamField body="column_name" type="identifier" required>
+  Two rows may not share this value. SQLite treats each `NULL` as distinct from other `NULL`s, so two missing values can both exist unless you also use [NOT NULL](/reference/not-null).
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql Unique station name
+CREATE TABLE stations (
+  id INTEGER,
+  name TEXT NOT NULL UNIQUE,
+  PRIMARY KEY (id)
+);
+```
+</CodeGroup>
+
+## Related references
+
+- [PRIMARY KEY](/reference/primary-key)
+- [NOT NULL](/reference/not-null)
+- [CHECK](/reference/check)

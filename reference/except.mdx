@@ -1,0 +1,34 @@
+---
+title: "EXCEPT"
+description: "Returns rows from the first query that are not in the second."
+---
+
+Both queries must have the same number of columns and comparable types.
+
+## Syntax
+
+```sql
+SELECT column
+FROM table1
+EXCEPT
+SELECT column
+FROM table2;
+```
+
+## Examples
+
+<CodeGroup>
+```sql Authors who do not translate
+SELECT name
+FROM authors
+EXCEPT
+SELECT name
+FROM translators;
+```
+</CodeGroup>
+
+## Related references
+
+- [UNION](/reference/union)
+- [INTERSECT](/reference/intersect)
+- [Combine result sets](/how-to/combine-result-sets)

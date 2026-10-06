@@ -1,0 +1,32 @@
+---
+title: "ROLLBACK"
+description: "Undoes all statements in the current transaction."
+---
+
+The database returns to the state as of `BEGIN`. Nothing in that unit is kept.
+
+## Syntax
+
+```sql
+ROLLBACK;
+```
+
+## Examples
+
+<CodeGroup>
+```sql Abandon the unit
+BEGIN TRANSACTION;
+
+UPDATE accounts
+SET balance = balance + 100
+WHERE id = 2;
+
+ROLLBACK;
+```
+</CodeGroup>
+
+## Related references
+
+- [BEGIN](/reference/begin)
+- [COMMIT](/reference/commit)
+- [Transactions](/concepts/transactions)

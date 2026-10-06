@@ -3,19 +3,31 @@ title: "Database Fundamentals"
 description: "Tables, SQL, and how to query a database."
 ---
 
-You start with tables and databases. You learn how SQL is built. You then open SQLite and ask questions of a table. Look up keywords in Reference when you need the exact shape.
+You start with tables and databases. You learn how SQL is built. You then open SQLite, relate and design tables, write and view data, optimize, and scale onto server DBMS products. Look up keywords in Reference when you need the exact shape.
 
-<CardGroup cols={2}>
-  <Card title="Tables" icon="table" href="/concepts/tables">
-    Rows are items. Columns are attributes.
+<Columns cols={2}>
+  <Card title="Concepts" icon="table">
+    [Tables, SQL, keys, schemas, and types.](/concepts/tables)
   </Card>
-  <Card title="SQL" icon="code" href="/concepts/sql">
-    Keywords, identifiers, values, and aggregators.
+  <Card title="Querying" icon="code">
+    [Open SQLite, then filter, sort, and summarize.](/how-to/open-a-database)
   </Card>
-  <Card title="Tutorial" icon="graduation-cap" href="/tutorials/query-a-table">
-    Open SQLite, then filter, sort, and summarize.
+  <Card title="Relating" icon="diagram-project">
+    [Nest queries, join on keys, and group rows.](/how-to/list-tables)
   </Card>
-  <Card title="Reference" icon="book" href="/reference/select">
-    Look up SELECT, WHERE, ORDER BY, and the rest.
+  <Card title="Designing" icon="pen-ruler">
+    [Create tables, constrain them, and alter the schema.](/how-to/show-a-schema)
   </Card>
-</CardGroup>
+  <Card title="Writing" icon="pen">
+    [Insert, import, update, delete, and trigger changes.](/how-to/insert-rows)
+  </Card>
+  <Card title="Viewing" icon="eye">
+    [Save queries as views, CTEs, and soft-delete through them.](/how-to/create-a-view)
+  </Card>
+  <Card title="Optimizing" icon="gauge-high">
+    [Indexes, query plans, vacuum, and transactions.](/how-to/time-a-query)
+  </Card>
+  <Card title="Scaling" icon="server">
+    [MySQL, PostgreSQL, replication, and safe statements.](/how-to/connect-to-mysql)
+  </Card>
+</Columns>

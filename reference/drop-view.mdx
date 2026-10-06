@@ -1,0 +1,33 @@
+---
+title: "DROP VIEW"
+description: "Removes a view from the schema. Underlying tables stay."
+---
+
+Does not delete rows from base tables. Only the saved query goes away.
+
+## Syntax
+
+```sql
+DROP VIEW view_name;
+```
+
+## Arguments
+
+<ParamField body="view_name" type="identifier" required>
+  The view to remove.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql Drop a view
+DROP VIEW average_book_ratings;
+```
+</CodeGroup>
+
+## Related references
+
+- [CREATE VIEW](/reference/create-view)
+- [DROP TABLE](/reference/drop-table)
+- [Create a temporary view](/how-to/create-a-temporary-view)
+- [Use a CTE](/how-to/use-a-cte)

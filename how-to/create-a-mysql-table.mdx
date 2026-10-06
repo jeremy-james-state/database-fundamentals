@@ -1,0 +1,63 @@
+---
+title: "Create a table in MySQL"
+description: "Declare strict types, AUTO_INCREMENT keys, and constraints in MySQL CREATE TABLE."
+---
+
+Map from SQLite affinities using [server types](/concepts/server-types). MySQL rejects many bad values that SQLite would coerce.
+
+## Prerequisites
+
+- [Connect to MySQL](/how-to/connect-to-mysql) and `USE` your database
+
+## Create the table
+
+<Steps>
+  <Step title="Write CREATE TABLE with server types">
+    ```sql
+    CREATE TABLE cards (
+      id INT AUTO_INCREMENT,
+      number VARCHAR(20) NOT NULL UNIQUE,
+      issued DATE,
+      type ENUM('standard', 'senior', 'student') NOT NULL,
+      PRIMARY KEY (id)
+    );
+    ```
+
+    `AUTO_INCREMENT` invents the next integer id. `VARCHAR(20)` caps length. `ENUM` allows only listed labels.
+  </Step>
+  <Step title="Add a related table with a foreign key">
+    ```sql
+    CREATE TABLE swipes (
+      id INT AUTO_INCREMENT,
+      card_id INT NOT NULL,
+      station VARCHAR(64) NOT NULL,
+      swiped_at DATETIME NOT NULL,
+      PRIMARY KEY (id),
+      FOREIGN KEY (card_id) REFERENCES cards (id)
+    );
+    ```
+  </Step>
+  <Step title="Inspect with DESCRIBE">
+    ```sql
+    DESCRIBE cards;
+    DESCRIBE swipes;
+    ```
+
+    A foreign key often shows as a **MUL** key (indexed, non-unique) in the `Key` column.
+  </Step>
+</Steps>
+
+## Verify the result
+
+You succeeded when `DESCRIBE` lists types and keys, and a bad `ENUM` or oversized `VARCHAR` insert fails.
+
+## Troubleshooting
+
+- **Syntax error near `"`**: use backticks for identifiers, single quotes for strings.
+- **Floating money wrong**: use `DECIMAL`, not `FLOAT` / `DOUBLE`.
+
+## Related pages
+
+- [Server types](/concepts/server-types)
+- [DESCRIBE](/reference/describe)
+- [Modify a column](/how-to/modify-a-column)

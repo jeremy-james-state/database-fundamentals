@@ -1,0 +1,34 @@
+---
+title: "EXECUTE"
+description: "Runs a prepared statement with bound values."
+---
+
+## Syntax
+
+```sql
+EXECUTE statement_name USING @variable, ...;
+```
+
+## Arguments
+
+<ParamField body="statement_name" type="identifier" required>
+  Name from [PREPARE](/reference/prepare).
+</ParamField>
+
+<ParamField body="USING @variable" type="session variable">
+  One variable per `?` placeholder, in order.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql MySQL
+SET @id = 1;
+EXECUTE balance_check USING @id;
+```
+</CodeGroup>
+
+## Related references
+
+- [PREPARE](/reference/prepare)
+- [Use a prepared statement](/how-to/use-a-prepared-statement)

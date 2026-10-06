@@ -1,0 +1,63 @@
+---
+title: "Update rows"
+description: "Change stored values with UPDATE, SET, and a WHERE condition."
+---
+
+Build `WHERE` from a `SELECT` of the row you mean, the same way you do for [DELETE](/how-to/delete-rows).
+
+## Prerequisites
+
+- Rows already in the table ([insert rows](/how-to/insert-rows))
+- [Scalar functions](/concepts/sql#scalar-functions) if you are cleaning text (`trim`, `upper`, `lower`)
+
+## Change a value
+
+<Steps>
+  <Step title="Set columns">
+    ```sql
+    UPDATE collections
+    SET title = 'Farmers Working at Dawn'
+    WHERE title = 'Farmers Working';
+    ```
+  </Step>
+  <Step title="Clean whitespace and case">
+    `trim` removes leading and trailing spaces. `upper` and `lower` change case. They return a value; they do not rewrite the column until you `SET` it.
+
+    ```sql
+    UPDATE votes
+    SET title = trim(title);
+    ```
+
+    ```sql
+    UPDATE votes
+    SET title = upper(title);
+    ```
+  </Step>
+  <Step title="Confirm">
+    ```sql
+    SELECT title
+    FROM collections
+    WHERE title LIKE '%Dawn%';
+    ```
+  </Step>
+</Steps>
+
+<Warning>
+  `UPDATE collections SET title = 'Untitled';` with no `WHERE` rewrites every row.
+</Warning>
+
+## Verify the result
+
+You succeeded when only the intended rows show the new value.
+
+## Troubleshooting
+
+- **Every title changed**: add `WHERE`.
+- **`trim` did nothing**: the extra characters are not spaces (tabs, or letters in the middle). `trim` does not fix typos inside the string.
+
+## Related pages
+
+- [UPDATE](/reference/update)
+- [trim](/reference/trim)
+- [upper](/reference/upper)
+- [lower](/reference/lower)

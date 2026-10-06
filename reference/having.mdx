@@ -1,0 +1,38 @@
+---
+title: "HAVING"
+description: "Keeps groups for which a condition is true after GROUP BY."
+---
+
+`WHERE` cannot test an aggregator. `HAVING` can.
+
+## Syntax
+
+```sql
+SELECT column, aggregate(column)
+FROM table
+GROUP BY column
+HAVING condition;
+```
+
+## Arguments
+
+<ParamField body="condition" type="boolean expression" required>
+  Usually an aggregator compared to a value, for example `AVG(stars) >= 4.0`.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql Groups at or above 4
+SELECT book_id, AVG(stars) AS average_rating
+FROM ratings
+GROUP BY book_id
+HAVING AVG(stars) >= 4.0;
+```
+</CodeGroup>
+
+## Related references
+
+- [GROUP BY](/reference/group-by)
+- [WHERE](/reference/where)
+- [Group rows](/how-to/group-rows)

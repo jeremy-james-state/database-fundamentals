@@ -1,0 +1,31 @@
+---
+title: "BEGIN"
+description: "Starts a transaction: following statements are one unit until COMMIT or ROLLBACK."
+---
+
+`BEGIN TRANSACTION` and `BEGIN` are the usual forms in SQLite.
+
+## Syntax
+
+```sql
+BEGIN TRANSACTION;
+```
+
+## Examples
+
+<CodeGroup>
+```sql Start a unit
+BEGIN TRANSACTION;
+
+UPDATE accounts
+SET balance = balance + 10
+WHERE id = 2;
+```
+</CodeGroup>
+
+## Related references
+
+- [COMMIT](/reference/commit)
+- [ROLLBACK](/reference/rollback)
+- [Transactions](/concepts/transactions)
+- [Run a transaction](/how-to/run-a-transaction)

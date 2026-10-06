@@ -1,0 +1,37 @@
+---
+title: "PREPARE"
+description: "Creates a prepared statement with placeholders for bound values."
+---
+
+Stops [SQL injection](/concepts/sql-injection) by separating SQL text from data.
+
+## Syntax
+
+```sql
+PREPARE statement_name FROM 'SQL with ? placeholders';
+```
+
+## Arguments
+
+<ParamField body="statement_name" type="identifier" required>
+  Name used later with [EXECUTE](/reference/execute).
+</ParamField>
+
+<ParamField body="FROM '…'" type="string" required>
+  Statement text. Use `?` where values will bind.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql MySQL
+PREPARE balance_check FROM
+  'SELECT balance FROM accounts WHERE id = ?';
+```
+</CodeGroup>
+
+## Related references
+
+- [EXECUTE](/reference/execute)
+- [Use a prepared statement](/how-to/use-a-prepared-statement)
+- [SQL injection](/concepts/sql-injection)

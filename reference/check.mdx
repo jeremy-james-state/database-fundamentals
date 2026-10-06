@@ -1,0 +1,41 @@
+---
+title: "CHECK"
+description: "Rejects a row when the boolean expression is false."
+---
+
+A [column constraint](/concepts/constraints). Use it for a closed set of labels, or a numeric rule such as a fare that must not be zero.
+
+## Syntax
+
+```sql
+CREATE TABLE table_name (
+  column_name STORAGE_CLASS CHECK (expression)
+);
+```
+
+## Arguments
+
+<ParamField body="expression" type="boolean expression" required>
+  True for a valid row. `IN` lists allowed text. Comparisons work on numbers.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql Allowed type and nonzero fare
+CREATE TABLE visits (
+  id INTEGER,
+  type TEXT CHECK (type IN ('enter', 'exit')),
+  fare NUMERIC CHECK (fare != 0),
+  PRIMARY KEY (id)
+);
+```
+</CodeGroup>
+
+SQLite has no boolean type. Encode yes/no as `INTEGER` `0`/`1` or as `TEXT`, then `CHECK` the allowed values.
+
+## Related references
+
+- [IN](/reference/in)
+- [NOT NULL](/reference/not-null)
+- [Storage classes](/concepts/storage-classes)

@@ -1,0 +1,33 @@
+---
+title: "lower"
+description: "Returns the string in lowercase."
+---
+
+A [scalar function](/concepts/sql#scalar-functions). The counterpart of [upper](/reference/upper).
+
+## Syntax
+
+```sql
+lower(column)
+```
+
+## Arguments
+
+<ParamField body="column" type="text" required>
+  The value to convert.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql Store lowercase titles
+UPDATE votes
+SET title = lower(title);
+```
+</CodeGroup>
+
+## Related references
+
+- [upper](/reference/upper)
+- [trim](/reference/trim)
+- [Update rows](/how-to/update-rows)

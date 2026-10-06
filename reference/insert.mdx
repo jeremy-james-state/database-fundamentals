@@ -1,0 +1,56 @@
+---
+title: "INSERT"
+description: "Adds one or more rows to a table."
+---
+
+List columns explicitly. `VALUES` line up with that list, not with the original [CREATE TABLE](/reference/create-table) order unless they happen to match.
+
+## Syntax
+
+```sql
+INSERT INTO table (column, ...)
+VALUES (value, ...);
+
+INSERT INTO table (column, ...)
+VALUES
+  (value, ...),
+  (value, ...);
+```
+
+## Arguments
+
+<ParamField body="table" type="identifier" required>
+  The table that receives the row.
+</ParamField>
+
+<ParamField body="column" type="identifier" required>
+  Columns you are filling. Omit an `INTEGER PRIMARY KEY` to let SQLite assign the next id.
+</ParamField>
+
+<ParamField body="value" type="literal" required>
+  One value per listed column. Text uses single quotes. Dates are often `'YYYY-MM-DD'`.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql One row
+INSERT INTO collections (title, accession_number, acquired)
+VALUES ('Profusion of Flowers', '56.257', '2015-04-12');
+```
+
+```sql Several rows
+INSERT INTO collections (title, accession_number, acquired)
+VALUES
+  ('Profusion of Flowers', '56.257', '2015-04-12'),
+  ('Farmers Working at Dawn', '11.6152', '2019-02-14');
+```
+</CodeGroup>
+
+If any row in a multi-row `INSERT` fails a [constraint](/concepts/constraints), SQLite inserts none of them.
+
+## Related references
+
+- [Insert rows](/how-to/insert-rows)
+- [UPDATE](/reference/update)
+- [CREATE TABLE](/reference/create-table)

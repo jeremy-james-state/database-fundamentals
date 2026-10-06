@@ -1,0 +1,70 @@
+---
+title: "Create a table"
+description: "Add a table with CREATE TABLE, a name, columns, and a storage class for each column."
+---
+
+You write the [schema](/concepts/schemas) first. Inserts come after the table exists.
+
+## Prerequisites
+
+- An open SQLite session ([open a SQLite database](/how-to/open-a-database))
+- [Storage classes](/concepts/storage-classes) so you can pick a type affinity
+
+## Create the table
+
+<Steps>
+  <Step title="Name the table and columns">
+    Identifiers are usually lowercase. Types are uppercase by convention. End with a semicolon.
+
+    ```sql
+    CREATE TABLE stations (
+      id INTEGER,
+      name TEXT,
+      line TEXT
+    );
+    ```
+  </Step>
+  <Step title="Add related tables">
+    One kind of item per table. A rider is not a station.
+
+    ```sql
+    CREATE TABLE riders (
+      id INTEGER,
+      name TEXT
+    );
+
+    CREATE TABLE visits (
+      rider_id INTEGER,
+      station_id INTEGER,
+      type TEXT,
+      datetime NUMERIC,
+      duration INTEGER,
+      fare NUMERIC
+    );
+    ```
+  </Step>
+  <Step title="Confirm">
+    ```text
+    sqlite> .schema stations
+    ```
+
+    <Tip>
+      Keep a copy in a `schema.sql` file so you can [apply a schema file](/how-to/apply-a-schema-file) instead of typing `CREATE` by hand.
+    </Tip>
+  </Step>
+</Steps>
+
+## Verify the result
+
+You succeeded when `.tables` lists `stations`, `riders`, and `visits`, and `.schema stations` matches what you wrote.
+
+## Troubleshooting
+
+- **Table already exists**: pick a new name, or [drop](/reference/drop-table) the old one if you meant to replace it.
+- **Syntax error near `(`**: you omitted a comma between columns, or the last column still has a trailing comma.
+
+## Related pages
+
+- [CREATE TABLE](/reference/create-table)
+- [Constrain a table](/how-to/constrain-a-table)
+- [Normalization](/concepts/normalization)

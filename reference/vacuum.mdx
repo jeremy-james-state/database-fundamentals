@@ -1,0 +1,25 @@
+---
+title: "VACUUM"
+description: "Rebuilds the database file and reclaims unused pages on disk."
+---
+
+Run after large deletes or [DROP INDEX](/reference/drop-index) when the file should shrink.
+
+## Syntax
+
+```sql
+VACUUM;
+```
+
+## Examples
+
+<CodeGroup>
+```sql Reclaim space
+VACUUM;
+```
+</CodeGroup>
+
+## Related references
+
+- [DROP INDEX](/reference/drop-index)
+- [Vacuum a database](/how-to/vacuum-a-database)

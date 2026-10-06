@@ -1,0 +1,55 @@
+---
+title: "Create a temporary view"
+description: "Save a SELECT for this SQLite connection only with CREATE TEMPORARY VIEW."
+---
+
+A temporary view works like a [saved view](/how-to/create-a-view), but it disappears when you `.quit`. It is not written into the long-lived schema the way `CREATE VIEW` is.
+
+## Prerequisites
+
+- [Create a view](/how-to/create-a-view)
+- Optional: a permanent view such as `average_book_ratings` to build on
+
+## Create for this session
+
+<Steps>
+  <Step title="Create the temporary view">
+    ```sql
+    CREATE TEMPORARY VIEW average_ratings_by_year AS
+    SELECT year, ROUND(AVG(rating), 2) AS rating
+    FROM average_book_ratings
+    GROUP BY year;
+    ```
+
+    You can select from another [view](/concepts/views) here, permanent or temporary.
+  </Step>
+  <Step title="Query it">
+    ```sql
+    SELECT *
+    FROM average_ratings_by_year;
+    ```
+  </Step>
+  <Step title="End the connection">
+    ```text
+    sqlite> .quit
+    ```
+
+    Open the database again. The temporary view is gone. Permanent views remain.
+  </Step>
+</Steps>
+
+## Verify the result
+
+You succeeded when the temporary view returns rows in this session, and after `.quit` and reopen, `SELECT * FROM average_ratings_by_year;` fails with no such table.
+
+## Troubleshooting
+
+- **Still in `.schema` after quit**: you used `CREATE VIEW` without `TEMPORARY`.
+- **Need it for one statement only**: use a [CTE](/how-to/use-a-cte) with `WITH` instead.
+
+## Related pages
+
+- [Views](/concepts/views)
+- [Create a view](/how-to/create-a-view)
+- [Use a CTE](/how-to/use-a-cte)
+- [CREATE VIEW](/reference/create-view)

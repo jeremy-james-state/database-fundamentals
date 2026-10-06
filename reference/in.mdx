@@ -1,0 +1,49 @@
+---
+title: "IN"
+description: "Tests whether a value is a member of a list."
+---
+
+The list can be written out, or returned by a subquery. Use `IN` when that nest may return more than one row.
+
+## Syntax
+
+```sql
+SELECT column
+FROM table
+WHERE column IN (value, ...);
+
+SELECT column
+FROM table
+WHERE column IN (SELECT column FROM table2);
+```
+
+## Arguments
+
+<ParamField body="value" type="list" required>
+  One or more values of the same type as `column`.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql Literal list
+SELECT title
+FROM books
+WHERE book_id IN (1, 2, 4);
+```
+
+```sql Subquery
+SELECT title
+FROM books
+WHERE book_id IN (
+    SELECT book_id
+    FROM authored
+    WHERE author_id = 2
+);
+```
+</CodeGroup>
+
+## Related references
+
+- [WHERE](/reference/where)
+- [Nest a query](/how-to/nest-a-query)
