@@ -251,12 +251,55 @@ div[role="status"][aria-live="polite"].fixed.z-999 {
   border-top-color: rgb(255 255 255 / 0.08);
 }
 
-.local-search-nav__hit:hover {
+.local-search-nav__hit:hover,
+.local-search-nav__hit.is-active {
   background: rgb(24 24 27 / 0.04);
 }
 
-:is(.dark) .local-search-nav__hit:hover {
+:is(.dark) .local-search-nav__hit:hover,
+:is(.dark) .local-search-nav__hit.is-active {
   background: rgb(255 255 255 / 0.05);
+}
+
+.local-search-nav__meta {
+  font-size: 0.6875rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: rgb(113 113 122);
+  margin-bottom: 0.15rem;
+}
+
+:is(.dark) .local-search-nav__meta {
+  color: rgb(255 255 255 / 0.45);
+}
+
+.local-search-nav__suggest {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0 0.75rem 0.75rem;
+}
+
+.local-search-nav__chip {
+  border: 1px solid rgb(24 24 27 / 0.12);
+  background: transparent;
+  color: inherit;
+  border-radius: 999px;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+:is(.dark) .local-search-nav__chip {
+  border-color: rgb(255 255 255 / 0.14);
+}
+
+.local-search-nav__chip:hover {
+  background: rgb(24 24 27 / 0.05);
+}
+
+:is(.dark) .local-search-nav__chip:hover {
+  background: rgb(255 255 255 / 0.06);
 }
 
 .local-search-nav__title {
