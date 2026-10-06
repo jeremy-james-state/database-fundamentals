@@ -1,0 +1,47 @@
+---
+title: "Time a query"
+description: "Measure how long a statement takes with SQLite’s .timer command."
+---
+
+`.timer` is a SQLite command, not SQL. **Real** time is wall-clock time from Enter to the result.
+
+## Prerequisites
+
+- An open SQLite session ([open a SQLite database](/how-to/open-a-database))
+- A query worth comparing before and after an [index](/concepts/indexes)
+
+## Turn the timer on
+
+<Steps>
+  <Step title="Enable timing">
+    ```text
+    sqlite> .timer on
+    ```
+  </Step>
+  <Step title="Run the query">
+    ```sql
+    SELECT *
+    FROM movies
+    WHERE title = 'Cars';
+    ```
+
+    SQLite prints `Run Time: real … user … sys …`. Focus on **real**.
+  </Step>
+  <Step title="Compare after a change">
+    Create an index, run the same `SELECT` again, and compare real time.
+  </Step>
+</Steps>
+
+## Verify the result
+
+You succeeded when each statement prints a run time, and a second run after indexing is clearly lower on a large table.
+
+## Troubleshooting
+
+- **No timing line**: `.timer on` again in this session.
+- **Times jump around**: other programs use the CPU; compare order of magnitude, not tiny differences.
+
+## Related pages
+
+- [Create an index](/how-to/create-an-index)
+- [Explain a query plan](/how-to/explain-a-query-plan)

@@ -1,0 +1,76 @@
+---
+title: "Nest a query"
+description: "Put a query inside another query so you can follow a key across tables."
+---
+
+Parentheses mark the inner query. The outer query uses that result. Indent the inner `SELECT` so you can see the nest.
+
+## Prerequisites
+
+- `SELECT` and `WHERE` ([filter rows](/how-to/filter-rows))
+- Tables linked by [keys](/concepts/keys): `publishers`, `books`, `authored`, `authors`
+
+## Nest the inner SELECT
+
+<Steps>
+  <Step title="Start with the inner fact">
+    Find one publisher’s id:
+
+    ```sql
+    SELECT publisher_id
+    FROM publishers
+    WHERE name = 'Graywolf Press';
+    ```
+
+    You should get a single id.
+  </Step>
+  <Step title="Use that id in the outer query">
+    Wrap the inner statement in parentheses. Compare with `= ` when the nest returns one value:
+
+    ```sql
+    SELECT title
+    FROM books
+    WHERE publisher_id = (
+        SELECT publisher_id
+        FROM publishers
+        WHERE name = 'Graywolf Press'
+    );
+    ```
+  </Step>
+  <Step title="Match several values with IN">
+    `IN` tests membership in a list. Use it when the nest returns many ids (a [many-to-many](/concepts/relationships) walk through `authored`):
+
+    ```sql
+    SELECT title
+    FROM books
+    WHERE book_id IN (
+        SELECT book_id
+        FROM authored
+        WHERE author_id = (
+            SELECT author_id
+            FROM authors
+            WHERE name = 'Ursula K. Le Guin'
+        )
+    );
+    ```
+  </Step>
+</Steps>
+
+<Info>
+Four spaces of indent are style, not SQL. SQLite does not require them.
+</Info>
+
+## Verify the result
+
+You succeeded when the outer query returns books for that publisher or author, without typing the id by hand.
+
+## Troubleshooting
+
+- **No rows**: the inner query returned no id, or you compared a list with `=` instead of `IN`.
+- **More than one row for `=`**: the inner `SELECT` must return one value. Filter it, or switch to `IN`.
+
+## Related pages
+
+- [IN](/reference/in)
+- [JOIN](/how-to/join-tables)
+- [Keys](/concepts/keys)

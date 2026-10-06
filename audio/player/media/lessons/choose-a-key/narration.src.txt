@@ -1,0 +1,299 @@
+A key is how you tell rows apart and how you point at them later.
+
+Start with a super key: any set of columns that is unique for every row.
+
+The whole row is a super key if no two rows are identical.
+
+That is a weak compliment.
+
+You want a smaller set.
+
+A candidate key is a super key with no leftover column you could drop and still be unique.
+
+email might be a candidate if you truly never repeat it.
+
+customer_id might be another candidate.
+
+You pick one candidate to be the primary key.
+
+The others can stay UNIQUE.
+
+A good primary key is unique, always present, and stable.
+
+Stable means it does not change because marketing renamed a product code.
+
+Natural keys come from the world: ISBN, email, government id.
+
+They are meaningful, and they change when the world changes.
+
+Surrogate keys are invented: an integer the database assigns.
+
+They are dull, and that is the point.
+
+They do not encode the customer's city.
+
+They do not change when the email changes.
+
+Prefer a surrogate for the primary key when the natural ones wiggle.
+
+Still put UNIQUE on the natural candidates you care about.
+
+ISBN should stay unique even if book_id is the primary key.
+
+Composite keys are allowed.
+
+order_id and line_no together.
+
+They are honest for weak entities.
+
+They are clumsy as foreign keys in every child of the child.
+
+Sometimes a surrogate on the line table is worth the extra column.
+
+Never use a name as a primary key.
+
+Never use a mutable status.
+
+Never use something you would be embarrassed to print on an invoice ten years later.
+
+Write down every candidate.
+
+Strike the ones that can be null.
+
+Strike the ones that change.
+
+Strike the ones that are too wide to copy into children.
+
+Pick the dullest remaining.
+
+That dull integer is how orders will find customers for the rest of the sketch.
+
+UUIDs are surrogates too.
+
+They spread better across shards, and they are wide.
+
+Integers are easier to type while you learn.
+
+Either is dull enough if you do not encode meaning in them.
+
+Do not put the year into the id.
+
+Do not put the table name into the id.
+
+Those facts belong in columns.
+
+Natural keys that look unique globally often are not.
+
+Email changes.
+
+Phone numbers are reused.
+
+National ids are sensitive and not always present.
+
+ISBN is one of the better natural keys, and still needs UNIQUE beside a surrogate if you also sell used copies as inventory rows.
+
+Inventory is a different entity from title.
+
+The key conversation will catch that if you let it.
+
+Composite primary keys make ORM tools grumpy.
+
+That is not a modeling reason, but it is a project reason.
+
+If you add a surrogate to please a tool, keep the composite UNIQUE.
+
+The tool should not erase the candidate.
+
+Document why the primary key won.
+
+A one-line comment in the schema file is enough.
+
+Future you will thank present you when someone wants to key on email again.
+
+Dull, present, stable, unique.
+
+Write those four words above the column.
+
+Then pick.
+
+A key you are proud of is often a key that encodes a story.
+
+Stories change.
+
+Dull keys do not.
+
+If you can say the key out loud as a sentence about the business, look again.
+
+customer_id 104 is not a sentence.
+
+AUSTIN-MAYA-2024 is a sentence, and a trap.
+
+Keep the story in columns.
+
+Keep the key empty of plot.
+
+UNIQUE the story if it must stay unique.
+
+Point children at the dull one.
+
+That split will still look wise in five years.
+
+Write it into the schema comments so nobody 'improves' the id later.
+
+Improvement is how encoded keys are born.
+
+Refuse the improvement.
+
+Pick dull, and stop.
+
+People change names.
+
+They share birthdays.
+
+Systems that treated name plus date of birth as identity have merged two humans into one record.
+
+A primary key is one or more attributes that identify a row, unique, and never a second meaning hiding in the same columns.
+
+A table has exactly one primary key.
+
+A super key is any set of columns that is still unique, including extras you do not need.
+
+email plus city might still be unique because email already was.
+
+The city is surplus.
+
+A candidate key is a super key with no surplus: take anything away and uniqueness dies.
+
+email might be a candidate.
+
+username might be another.
+
+You pick one candidate to be the primary key.
+
+The others can be UNIQUE constraints.
+
+The process is: list candidates from real data, pick the stable dull one, or invent a surrogate if none of the candidates will stay still.
+
+Natural keys come from the world: ISBN, national identifiers, email.
+
+They are tempting because they look meaningful.
+
+They are dangerous when the world reissues them, recycles them, or lets people change them.
+
+A surrogate is an attribute you create, often an integer, that means only: this row.
+
+customer_id one hundred four is not a sentence about the business.
+
+AUSTIN-MAYA-2024 is a sentence, and a trap, because Austin, Maya, and 2024 can all change their jobs in that code.
+
+Keep story in columns.
+
+Keep the primary key empty of plot.
+
+Composite keys are honest when identity is honestly several parts: order_id plus line_number.
+
+They are painful as parents, because every child must copy every part.
+
+If many tables will point here, a small surrogate is kinder.
+
+Never use a value people type from memory as the only identity if a typo would attach medical or money rows to the wrong person.
+
+Never pick a key you will want to edit.
+
+Primary keys are referenced.
+
+Edits cascade into every child or they are refused.
+
+If you must expose a public code, make it UNIQUE and still keep a dull internal id as the primary key.
+
+Children point at the dull one.
+
+Humans search on the public one.
+
+Look at sample data before you declare uniqueness.
+
+Two rows that look unique in a spreadsheet of twenty can collide at twenty thousand.
+
+If no candidate survives contact with growth, create the new attribute and make it the primary key.
+
+That is not a failure of modeling.
+
+That is how most operational tables stay identifyable for a decade.
+
+Write the choice down: this is the primary key, these are the unique candidates, this is why the meaningful code is not the pointer.
+
+Then refuse the later improvement that encodes a city into the id.
+
+Improvement is how encoded keys are born.
+
+Pick keys for five store tables in order.
+
+users: candidate email, candidate username, surrogate user_id.
+
+Email changes, username might be recycled, so user_id primary, UNIQUE email, UNIQUE username.
+
+products: SKU looks natural and is reused by vendors, so product_id surrogate, UNIQUE sku.
+
+orders: order_id surrogate, not a date stamp code.
+
+reviews: review_id surrogate, because the same user can review twice if the business allows, or UNIQUE (user_id, product_id) if it does not.
+
+order_lines: composite (order_id, line_no) is honest, or line_id surrogate if fulfillment talks in global ids.
+
+Super keys would include user_id plus email; that extra email is surplus.
+
+Candidate keys are the minimal unique sets.
+
+Primary is the candidate you point at.
+
+The hospital parable stays in your ear: do not pick name plus birth date.
+
+Look at sample rows that collide.
+
+Then pick dull.
+
+Close with questions, the way a careful lecture does.
+
+Answer in a sentence you could defend at a keyboard.
+
+What is a primary key?
+
+The candidate you pick to identify the row, unique, one per table.
+
+Super key?
+
+Any unique set, including surplus columns.
+
+Candidate key?
+
+A minimal unique set.
+
+Natural versus surrogate?
+
+From the world versus invented as this-row.
+
+Why dull ids?
+
+They do not encode a story that will change.
+
+Name plus birth date?
+
+A merging disaster waiting to happen.
+
+Email as primary key?
+
+Usually a unique handle, not the pointer.
+
+Composite as parent?
+
+Every child copies every part; often a surrogate is kinder.
+
+Look at sample data?
+
+Collisions appear at scale, not at twenty rows.
+
+Public code plus internal id?
+
+UNIQUE the code, point children at the id.
+
+If an answer needed a second table, go draw it before you write more SQL.

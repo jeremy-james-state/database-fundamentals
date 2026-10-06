@@ -1,0 +1,317 @@
+Third normal form starts from second, then hunts a longer chain.
+
+A non-key column must depend on the key, not on another non-key column.
+
+customers has customer_id, city, state.
+
+state depends on city more than it depends on the customer.
+
+Maya lives in Austin.
+
+Austin is in Texas.
+
+If Jordan also lives in Austin, Texas repeats.
+
+If Austin is recoded into a different state in one row, the table disagrees with itself.
+
+That chain is a transitive dependence.
+
+customer_id determines city, city determines state.
+
+So customer_id determines state, but only by walking through city.
+
+Break the chain.
+
+cities holds city_id, name, state.
+
+customers holds city_id.
+
+Texas lives in one place.
+
+ZIP codes, country codes, tax rates on a region — same shape.
+
+If a fact is about the region, give the region a table.
+
+The test is again a sentence.
+
+If I know this non-key value, do I already know that other non-key value, no matter which customer I picked?
+
+Then the second value was not about the customer.
+
+Do not over-split trivia.
+
+first_name and last_name both depend on the customer, not on each other in the table sense.
+
+You do not need a names table for that.
+
+The dependence that matters is a real-world rule you would enforce.
+
+Austin is always in Texas in your data.
+
+That is a rule.
+
+Maya's last name does not determine her first name.
+
+Third normal form is often enough for operational tables.
+
+It is the usual stopping point before Boyce–Codd.
+
+You still chose keys first.
+
+Without a clear key, talking about dependence is fog.
+
+Sketch the arrows from key to facts.
+
+If an arrow lands on a fact and another arrow leaves that fact toward a third, you have work.
+
+Move the third fact with the second.
+
+Leave a key behind on the customer.
+
+Transitive chains like to hide in address blocks.
+
+city, state, country, region, tax_zone.
+
+Each step may determine the next.
+
+You do not need five tables on day one.
+
+You do need to notice when two customers in the same city disagree on the state.
+
+That disagreement is the chain telling on you.
+
+Lookups of codes are third-normal-form friends.
+
+status_id pointing at statuses, instead of a color name copied onto every order.
+
+The color is a fact about the status.
+
+Derived totals can look transitive.
+
+line_total plus tax equals invoice_total.
+
+If you store all three, they can disagree.
+
+Prefer storing the inputs, compute the output, unless you freeze a snapshot for history.
+
+Again, say which.
+
+Third normal form will not compute for you.
+
+It will stop you storing a computed fact as if it were independent.
+
+When a column is a code plus a name, the name belongs with the code.
+
+country_code and country_name on the customer is the city-state bug in a passport.
+
+countries table, then country_code on the customer.
+
+The hop is the same hop.
+
+You are done when every non-key fact answers to the key and only the key.
+
+No tour through another fact.
+
+That is the whole standard.
+
+Most clean stores stop here and get back to work.
+
+If two rows share a city and fight about the state, you stored a region fact on a person.
+
+Move the fight to a cities table, where it becomes one row and one truth.
+
+That is the entire emotional content of third normal form.
+
+The rest is arrows.
+
+Key to city, city to state.
+
+Cut the second arrow out of customers.
+
+Leave city_id.
+
+Do not leave state behind as a souvenir.
+
+Souvenirs disagree.
+
+Lookup tables are not bureaucracy.
+
+They are how a state stays still while customers move.
+
+When the non-key facts all answer to the key, stop.
+
+Go query.
+
+You update a major name on one student row and forget the other three who share that major.
+
+Reports now disagree.
+
+That is a transitive dependency: student_id determines major_id, major_id determines major_name, so student_id determines major_name through a middle column.
+
+Third normal form, simplified: no non-key column is allowed to depend on another non-key column.
+
+Non-key means not part of the primary key.
+
+You must already be in second, which already required first.
+
+The nested dolls still apply.
+
+If department_name lives on employees because department_id is also on employees, department_name depends on department_id, not on employee_id directly.
+
+Move department_name to departments.
+
+Employees keep department_id as a foreign key.
+
+The transitive chain is cut.
+
+The determinant of the moved fact becomes the key of the new table.
+
+Columns that really describe the employee stay.
+
+The shared department_id stays in both: as key in departments, as foreign key in employees.
+
+That copy of the key is allowed.
+
+That is not redundancy of a fact.
+
+It is the pointer.
+
+Redundancy is copying the name.
+
+Codd published the relational model and the early normal forms in 1970.
+
+Third was the practical target for most operational schemas.
+
+It stops the major-name problem.
+
+It does not stop every exotic key overlap.
+
+That leftover is Boyce–Codd's story.
+
+For now, hunt arrows from non-key to non-key.
+
+If city_name depends on zip, and zip is not the key of the customer table, zip and city belong in a location table, or zip determines city in a lookup.
+
+If the dependence is not always true — zip that straddles cities — do not encode a lie as third normal form.
+
+Dependencies are about what the business says must be true.
+
+Not about what a sample of twenty rows happened to show.
+
+Ask: if I change this non-key, must that other non-key change with it everywhere?
+
+If yes, they are one fact in two seats.
+
+Give the fact its own table.
+
+Leave the foreign key behind.
+
+Then a student can change major by changing an id, and the name updates because there is only one name row.
+
+Zip codes: if zip determines city in your country, city on customers is transitive through zip.
+
+If it does not, because one zip spans cities, do not split on a false dependency.
+
+Third is only as true as the dependency.
+
+Invented dependencies are how people over-normalize.
+
+Missed dependencies are how major names drift.
+
+Write the arrow, test it with an update story, then split or stay.
+
+That is using third in design, not reciting it.
+
+After the split, JOIN is how reports look the same as the old wide table, with one name to edit.
+
+If the report is slow, that is indexes or denormalization later, not a reason to put major_name back on students as truth.
+
+A cache copy would be labeled a cache.
+
+Truth stays in majors.
+
+Close with questions, the way a careful lecture does.
+
+Answer in a sentence you could defend at a keyboard.
+
+What is a transitive dependency?
+
+Key determines A, A determines B, so B lives on the row through a bridge that is not a key.
+
+Simplified third?
+
+No non-key column depends on another non-key column.
+
+major_name on students?
+
+Move to majors; keep major_id as a foreign key.
+
+Is the foreign key redundancy?
+
+No. It is the pointer. The name was the redundancy.
+
+Must first and second hold?
+
+Yes.
+
+Zip and city?
+
+Split only if zip actually determines city in your rules.
+
+False dependency?
+
+Over-normalization. Do not split on a lie.
+
+Why do reports still join?
+
+Because the name lives next door. That is success.
+
+If the join is slow?
+
+Indexes or a labeled cache later, not putting truth back on students.
+
+Who published the early forms?
+
+Codd, around 1970.
+
+What does third not catch?
+
+Some overlapping candidate-key cases; that is Boyce–Codd.
+
+advisor_office through advisor_name?
+
+Move offices with advisors.
+
+How do you test?
+
+Change the name once and see whether four rows would have needed four edits.
+
+What question to ask?
+
+If I change this non-key, must that other non-key change everywhere?
+
+If yes?
+
+One fact in two seats. Split.
+
+Nested order?
+
+Atomic cells, whole key, then no non-key chains.
+
+Is JOIN a failure of third?
+
+No.
+
+Cache copy?
+
+Label it a cache. Truth stays in the parent table.
+
+Sample of twenty rows?
+
+Not enough to invent a dependency.
+
+When is third done?
+
+No non-key to non-key arrows remain.
+
+If an answer needed a second table, go draw it before you write more SQL.

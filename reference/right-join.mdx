@@ -1,0 +1,31 @@
+---
+title: "RIGHT JOIN"
+description: "Keeps every row from the right table. Missing matches are NULL."
+---
+
+`RIGHT JOIN` is an outer join. The right table is the one named after `JOIN`. SQLite supports it from 3.39.
+
+## Syntax
+
+```sql
+SELECT column
+FROM table1
+RIGHT JOIN table2
+  ON table1.column = table2.column;
+```
+
+## Examples
+
+<CodeGroup>
+```sql Ratings without books
+SELECT title, stars
+FROM books
+RIGHT JOIN ratings
+  ON ratings.book_id = books.book_id;
+```
+</CodeGroup>
+
+## Related references
+
+- [LEFT JOIN](/reference/left-join)
+- [FULL JOIN](/reference/full-join)

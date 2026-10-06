@@ -1,0 +1,82 @@
+---
+title: "WHERE"
+description: "Keeps rows where a condition is true."
+---
+
+## Syntax
+
+```sql
+SELECT column
+FROM table
+WHERE condition;
+```
+
+## Arguments
+
+<ParamField body="condition" type="boolean expression" required>
+  Comparison, `IS NULL` / `IS NOT NULL`, `LIKE` pattern, `BETWEEN`, or a combination with `AND`, `OR`, and `NOT`. Parentheses `()` group parts.
+</ParamField>
+
+## Operators
+
+| Operator | Meaning |
+| --- | --- |
+| `=` | Equal |
+| `!=` | Not equal |
+| `<>` | Not equal (same as `!=`) |
+| `<` `>` `<=` `>=` | Ordered comparison |
+| `NOT` | Negate a condition |
+| `AND` | Both sides true |
+| `OR` | At least one side true |
+| `IS NULL` | Value is missing |
+| `IS NOT NULL` | Value is present |
+| `BETWEEN x AND y` | Inclusive range (`>= x` and `<= y`) |
+
+Strings: `'hardcover'`. Identifiers: `"title"`. Numbers: unquoted.
+
+Do not use `=` with `NULL`.
+
+## Examples
+
+<CodeGroup>
+```sql Equal
+SELECT title, author
+FROM books
+WHERE year = 2023;
+```
+
+```sql Not equal
+SELECT title, format
+FROM books
+WHERE format != 'hardcover';
+```
+
+```sql Combined
+SELECT title, format
+FROM books
+WHERE (year = 2022 OR year = 2023)
+  AND format != 'hardcover';
+```
+
+```sql Range
+SELECT title, year
+FROM books
+WHERE year BETWEEN 2019 AND 2022;
+```
+
+```sql NULL
+SELECT title, translator
+FROM books
+WHERE translator IS NULL;
+```
+</CodeGroup>
+
+## Related references
+
+- [AND](/reference/and)
+- [OR](/reference/or)
+- [NOT](/reference/not)
+- [NULL](/reference/null)
+- [LIKE](/reference/like)
+- [IN](/reference/in)
+- [Filter rows](/how-to/filter-rows)

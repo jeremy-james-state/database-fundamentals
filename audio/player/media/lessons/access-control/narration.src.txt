@@ -1,0 +1,473 @@
+A correct schema still leaks if every login can SELECT star from customers.
+
+Access control is who may read, write, change shape, or grant those powers to someone else.
+
+SQLite files are usually one user on disk.
+
+The operating system password is the lock.
+
+MySQL and PostgreSQL have users inside the server.
+
+GRANT SELECT ON orders TO analyst.
+
+REVOKE UPDATE ON orders FROM analyst.
+
+Least privilege means start with nothing, then add the verbs required.
+
+An analyst who never updates should not hold UPDATE.
+
+A checkout service needs INSERT on orders and SELECT on books.
+
+It does not need DROP TABLE.
+
+Roles group privileges.
+
+Grant to a role, then grant the role to people.
+
+When someone changes jobs, you revoke the role, not twenty tables by hand.
+
+Views can narrow columns.
+
+A view without email lets support read names without seeing mailboxes.
+
+GRANT SELECT on the view, not on the base table.
+
+That is hide-columns as a security tool, not only a convenience.
+
+Do not put the database root password in an application.
+
+The application gets a user that can do its job and nothing louder.
+
+Migrations may use a stricter user in a pipeline, not at runtime.
+
+Row-level policies exist in PostgreSQL.
+
+They filter which rows a user sees.
+
+That is a later, sharper tool.
+
+Start with GRANT and views.
+
+Audit who has what.
+
+A privilege you cannot name is a privilege you should revoke.
+
+SQL injection is not a GRANT problem.
+
+It is a query-building problem.
+
+Prepared statements keep user text out of the statement shape.
+
+You still GRANT only what the app user needs, so a stolen query does less.
+
+Defense is layered.
+
+Schema, privileges, views, prepared statements.
+
+Write the job as verbs on tables.
+
+Then GRANT those verbs.
+
+Then stop.
+
+PUBLIC is a role you should look at.
+
+Some engines grant surprising defaults to PUBLIC.
+
+REVOKE them when you mean least privilege.
+
+Table owners bypass some checks.
+
+Do not own application tables as the app user if you can avoid it.
+
+Own as a migrator, grant to the app.
+
+Column-level GRANT exists in PostgreSQL.
+
+GRANT SELECT (name, city) ON customers TO support.
+
+Views are still easier to explain to a human.
+
+Use column grants when a view is too heavy.
+
+TEMPORARY tables and TEMP are session-scoped in many engines.
+
+They do not replace privilege design.
+
+A user who can create a temp table still should not SELECT emails.
+
+Passwords in the server should be hashed, and rotation should be a calendar event.
+
+That is operations, and it still belongs next to GRANT in your head.
+
+A leaked read-only user is better than a leaked superuser.
+
+Design for leak size.
+
+Logs of GRANT changes are part of access control.
+
+If you cannot say who gave UPDATE last month, you cannot audit.
+
+Turn the logs on.
+
+The verbs were the start.
+
+The job description is the GRANT list.
+
+Keep them equal.
+
+When they drift, revoke.
+
+Then the schema's privacy matches the schema's shape.
+
+If everyone is a superuser, you do not have access control.
+
+You have a shared login and a hope.
+
+Hope is not a GRANT.
+
+Split migrator, app, analyst, support.
+
+Give each a verb list.
+
+Views for support.
+
+SELECT for analysts.
+
+INSERT where the app sells.
+
+No DROP at runtime.
+
+Revoke PUBLIC extras.
+
+Log the GRANTs.
+
+Prepare the statements.
+
+Layer those, and a stolen query is a smaller fire.
+
+Smaller fires are the design.
+
+Least privilege is the name.
+
+The job description is the implementation.
+
+Databases hold credentials, payments, and secrets.
+
+Two pillars protect them: access control for who may act, and cryptography for what a thief would see.
+
+Miss either, and a copied file or a curious intern is enough.
+
+Access control decides who can read, write, or administer.
+
+Discretionary access control is an administrator granting privileges by hand.
+
+It works on a toy.
+
+It does not scale past a handful of people who never leave.
+
+Mandatory access control assigns clearance levels to data and to people.
+
+A user may read a row only if their clearance meets the label on that data.
+
+Public, sensitive, confidential is a typical ladder in a school or hospital sketch.
+
+Student names might be public inside the institution.
+
+Grades might be sensitive.
+
+Identity documents confidential.
+
+The engine, or the surrounding system, must actually enforce the labels.
+
+A comment in a wiki is not mandatory access control.
+
+Role-based access control groups privileges into roles: analyst, clerk, admin.
+
+You grant the role, not a thousand table privileges, to each person.
+
+When someone changes jobs, you revoke the role.
+
+When a job's duties change, you edit the role once.
+
+That is why roles scale.
+
+In SQL, GRANT SELECT ON orders TO analyst is the shape.
+
+REVOKE takes it back.
+
+GRANT with GRANT OPTION lets a user pass privileges on, which is a power you should hand out rarely.
+
+Least privilege means a reporting user cannot DELETE.
+
+An application role that takes orders should not ALTER TABLE.
+
+Separate the account the app uses from the account a human uses to administer.
+
+Hashing is one-way.
+
+You store a hash of a password, not the password.
+
+When the user types it again, you hash the attempt and compare.
+
+A stolen table of hashes should not give readable passwords.
+
+Salt, a per-row random value mixed into the hash, stops a single rainbow table from cracking every user who chose the same password.
+
+Use a slow password hash designed for passwords, not a fast general hash meant for files.
+
+Encryption is two-way with a key.
+
+At rest, a disk or column can be ciphertext so a stolen file is not a stolen diary.
+
+In transit, connections use encryption so a packet sniff is not a password dump.
+
+Keys must live somewhere that is not the same stolen disk, or you encrypted with a sticky note.
+
+Hash passwords.
+
+Encrypt secrets you must later read, like a stored token the app must present.
+
+Do not encrypt passwords you only need to check.
+
+You would have to decrypt to compare, and then you are back to storing something reversible.
+
+Access control without hashing still leaks passwords if the table is SELECT-able.
+
+Hashing without access control still lets anyone run SELECT on the hashes and attack them at leisure.
+
+Together they are the two doors.
+
+This lesson stays on those doors.
+
+It is not a cloud console tour.
+
+It is GRANT, roles, labels, hashes, salts, and encryption used on purpose.
+
+Write down who may read orders, who may update them, and whether a password is ever stored in the clear.
+
+If the answer to the last is yes, stop and hash.
+
+If everyone shares one admin login, stop and make roles.
+
+Then the valuable rows have a chance of staying boring to an attacker.
+
+Hashing is not encryption, said again with the school passwords.
+
+Counselors do not decrypt a password to help a student log in.
+
+They reset, which writes a new hash.
+
+Encryption would have let them read the old password, which you never want.
+
+Access control says counselors may UPDATE password_hash and not SELECT other students' grades if that is the policy.
+
+GRANT UPDATE on that column, or on a procedure that resets, is tighter than GRANT UPDATE on the whole table.
+
+Procedures and column grants are how least privilege gets specific.
+
+If the engine lacks column grants, split confidential columns.
+
+Splitting for security is still normalization-shaped: a table whose only job is secrets.
+
+Point at it with a key from students.
+
+GRANT on the secrets table to counselors only.
+
+Now a leaked SELECT star on students is not a leaked id number.
+
+That design is the long security film, in fundamentals language.
+
+Close with questions, the way a careful lecture does.
+
+Answer in a sentence you could defend at a keyboard.
+
+Two pillars?
+
+Access control for who may act, cryptography for what a thief would see.
+
+Discretionary access?
+
+Hand-granted privileges. Fine for a toy. Does not scale.
+
+Mandatory access?
+
+Clearance labels on data and on people.
+
+Role-based access?
+
+Privileges bundled in roles you grant and revoke.
+
+GRANT shape?
+
+GRANT SELECT ON orders TO analyst.
+
+REVOKE?
+
+Takes the privilege or role back the day someone leaves.
+
+GRANT OPTION?
+
+Lets a user pass privileges on. Rare.
+
+Least privilege?
+
+The app cannot ALTER TABLE. A reporter cannot DELETE.
+
+Why split confidential columns?
+
+If you cannot GRANT by column, make a secrets table.
+
+Hash versus encrypt?
+
+Hash is one-way for passwords. Encrypt is two-way for secrets you must read back.
+
+Salt?
+
+Per-row randomness so one rainbow table cannot crack every identical password.
+
+Why not encrypt passwords?
+
+You would decrypt to compare, which means reversible storage.
+
+Why not hash tokens you must send later?
+
+You cannot recover the token from a hash.
+
+Plaintext allowed?
+
+For public facts like a course title, not for secrets.
+
+GRANT SELECT to everyone on hashes?
+
+Still a gift to attackers.
+
+Locked GRANT with plaintext passwords?
+
+A gift to a backup thief.
+
+Column comment worth writing?
+
+Hashed, encrypted, or plain, and why.
+
+Clerk versus admin?
+
+Different roles. Never one shared admin login.
+
+When do you review privileges?
+
+Hire, leave, and when a table gains a sensitive column.
+
+Is this a cloud tour?
+
+No. GRANT, roles, labels, hashes, salts, encryption.
+
+Reset password?
+
+Write a new hash. Do not decrypt an old one.
+
+Backup files?
+
+Encrypt at rest so a stolen file is not a stolen diary.
+
+Connections?
+
+Encrypt in transit.
+
+Where do keys live?
+
+Not on the same stolen disk as the ciphertext.
+
+Public students, sensitive grades, confidential ids?
+
+A clearance ladder you must actually enforce.
+
+Views that hide names?
+
+A way to GRANT analysts less.
+
+App account versus human admin?
+
+Separate.
+
+If a line in the security design is TBD?
+
+Do not load real people yet.
+
+Why is the film long?
+
+Two doors, walked, with people in the schema.
+
+What do you refuse?
+
+TEXT passwords and a login named admin shared by all.
+
+If an answer needed a second table, go draw it before you write more SQL.
+
+Walk GRANT from a blank engine user who can only connect.
+
+CREATE ROLE clerk, CREATE ROLE analyst, CREATE ROLE app, CREATE ROLE registrar.
+
+GRANT SELECT INSERT UPDATE ON students TO clerk.
+
+GRANT SELECT ON courses TO clerk.
+
+GRANT SELECT ON enrollments TO analyst.
+
+GRANT INSERT UPDATE ON enrollments TO app.
+
+GRANT ALL ON ALL TABLES to registrar is tempting and usually too wide.
+
+Registrar needs grades and ids; analyst does not need ids.
+
+If ALL TABLES is how ids leak, list tables instead.
+
+REVOKE INSERT ON students FROM clerk when clerks should not invent people.
+
+A procedure reset_password that only updates password_hash is tighter than column guesswork.
+
+GRANT EXECUTE on that procedure to helpdesk, not UPDATE on the whole users table.
+
+Mandatory labels on rows, when you have them, mean a volunteer cannot UNION their way around a role.
+
+Without row labels, two tables students_public and students_confidential are the poor person's MAC.
+
+Do not put the confidential table in the same PUBLIC synonym.
+
+Hashing parameters belong in a documented standard: algorithm, iterations, salt length.
+
+Do not invent a fast homemade hash.
+
+Encryption algorithms likewise: use what your platform already supports for columns or files, and keep keys in a vault the app reads at start.
+
+Rotating keys means decrypting with the old and encrypting with the new, which is why reversible secrets are expensive.
+
+Passwords never rotate by decryption; they rotate by user reset.
+
+Audit who has GRANT OPTION once a quarter even in a fundamentals class project, because copies of class databases become real faster than you think.
+
+A shared homework login is the admin-named-admin problem in costume.
+
+Give each human a user, then a role.
+
+Give the application a user, then a tighter role.
+
+Never reuse those.
+
+SELECT current privilege list after every GRANT until reading grants is a habit like reading WHERE.
+
+Security that you cannot list is security you imagined.
+
+List it.
+
+Then hashing.
+
+Then backups.
+
+Then you are in the same ballpark as a twenty-minute security lecture instead of a three-minute slogan.
+
+The slogan was two doors.
+
+The lecture is walking through them with GRANT, roles, labels, hashes, salts, and encryption until the design has no TBD.
+
+Close the TBD.

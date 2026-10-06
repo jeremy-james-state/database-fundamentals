@@ -1,0 +1,660 @@
+1
+00:00:00,050 --> 00:00:04,291
+Third normal form starts from second, then hunts a longer chain.
+
+2
+00:00:04,291 --> 00:00:09,138
+A non-key column must depend on the key, not on another non-key column.
+
+3
+00:00:09,138 --> 00:00:13,375
+customers has customer_id, city, state.
+
+4
+00:00:13,375 --> 00:00:16,972
+state depends on city more than it depends on the customer.
+
+5
+00:00:16,972 --> 00:00:18,583
+Maya lives in Austin.
+
+6
+00:00:18,583 --> 00:00:20,333
+Austin is in Texas.
+
+7
+00:00:20,333 --> 00:00:24,069
+If Jordan also lives in Austin, Texas repeats.
+
+8
+00:00:24,069 --> 00:00:30,708
+If Austin is recoded into a different state in one row, the table disagrees with itself.
+
+9
+00:00:30,708 --> 00:00:33,291
+That chain is a transitive dependence.
+
+10
+00:00:33,291 --> 00:00:37,847
+customer_id determines city, city determines state.
+
+11
+00:00:37,847 --> 00:00:43,041
+So customer_id determines state, but only by walking through city.
+
+12
+00:00:43,041 --> 00:00:44,180
+Break the chain.
+
+13
+00:00:44,180 --> 00:00:48,055
+cities holds city_id, name, state.
+
+14
+00:00:48,055 --> 00:00:50,583
+customers holds city_id.
+
+15
+00:00:50,583 --> 00:00:52,680
+Texas lives in one place.
+
+16
+00:00:52,680 --> 00:00:57,652
+ZIP codes, country codes, tax rates on a region — same shape.
+
+17
+00:00:57,652 --> 00:01:01,250
+If a fact is about the region, give the region a table.
+
+18
+00:01:01,250 --> 00:01:03,347
+The test is again a sentence.
+
+19
+00:01:03,347 --> 00:01:10,291
+If I know this non-key value, do I already know that other non-key value, no matter which customer I picked?
+
+20
+00:01:10,291 --> 00:01:13,250
+Then the second value was not about the customer.
+
+21
+00:01:13,250 --> 00:01:14,986
+Do not over-split trivia.
+
+22
+00:01:14,986 --> 00:01:22,319
+first_name and last_name both depend on the customer, not on each other in the table sense.
+
+23
+00:01:22,319 --> 00:01:24,583
+You do not need a names table for that.
+
+24
+00:01:24,583 --> 00:01:28,777
+The dependence that matters is a real-world rule you would enforce.
+
+25
+00:01:28,777 --> 00:01:31,625
+Austin is always in Texas in your data.
+
+26
+00:01:31,625 --> 00:01:32,791
+That is a rule.
+
+27
+00:01:32,791 --> 00:01:36,208
+Maya's last name does not determine her first name.
+
+28
+00:01:36,208 --> 00:01:40,527
+Third normal form is often enough for operational tables.
+
+29
+00:01:40,527 --> 00:01:43,944
+It is the usual stopping point before Boyce–Codd.
+
+30
+00:01:43,944 --> 00:01:45,902
+You still chose keys first.
+
+31
+00:01:45,902 --> 00:01:49,527
+Without a clear key, talking about dependence is fog.
+
+32
+00:01:49,527 --> 00:01:52,444
+Sketch the arrows from key to facts.
+
+33
+00:01:52,444 --> 00:01:58,694
+If an arrow lands on a fact and another arrow leaves that fact toward a third, you have work.
+
+34
+00:01:58,694 --> 00:02:01,125
+Move the third fact with the second.
+
+35
+00:02:01,125 --> 00:02:03,458
+Leave a key behind on the customer.
+
+36
+00:02:03,458 --> 00:02:07,041
+Transitive chains like to hide in address blocks.
+
+37
+00:02:07,041 --> 00:02:11,805
+city, state, country, region, tax_zone.
+
+38
+00:02:11,805 --> 00:02:14,305
+Each step may determine the next.
+
+39
+00:02:14,305 --> 00:02:16,861
+You do not need five tables on day one.
+
+40
+00:02:16,861 --> 00:02:21,958
+You do need to notice when two customers in the same city disagree on the state.
+
+41
+00:02:21,958 --> 00:02:25,027
+That disagreement is the chain telling on you.
+
+42
+00:02:25,027 --> 00:02:28,263
+Lookups of codes are third-normal-form friends.
+
+43
+00:02:28,263 --> 00:02:35,180
+status_id pointing at statuses, instead of a color name copied onto every order.
+
+44
+00:02:35,180 --> 00:02:37,652
+The color is a fact about the status.
+
+45
+00:02:37,652 --> 00:02:40,125
+Derived totals can look transitive.
+
+46
+00:02:40,125 --> 00:02:44,805
+line_total plus tax equals invoice_total.
+
+47
+00:02:44,805 --> 00:02:47,680
+If you store all three, they can disagree.
+
+48
+00:02:47,680 --> 00:02:53,736
+Prefer storing the inputs, compute the output, unless you freeze a snapshot for history.
+
+49
+00:02:53,736 --> 00:02:55,472
+Again, say which.
+
+50
+00:02:55,472 --> 00:02:58,125
+Third normal form will not compute for you.
+
+51
+00:02:58,125 --> 00:03:02,694
+It will stop you storing a computed fact as if it were independent.
+
+52
+00:03:02,694 --> 00:03:07,416
+When a column is a code plus a name, the name belongs with the code.
+
+53
+00:03:07,416 --> 00:03:14,013
+country_code and country_name on the customer is the city-state bug in a passport.
+
+54
+00:03:14,013 --> 00:03:18,111
+countries table, then country_code on the customer.
+
+55
+00:03:18,111 --> 00:03:19,875
+The hop is the same hop.
+
+56
+00:03:19,875 --> 00:03:25,069
+You are done when every non-key fact answers to the key and only the key.
+
+57
+00:03:25,069 --> 00:03:27,166
+No tour through another fact.
+
+58
+00:03:27,166 --> 00:03:28,736
+That is the whole standard.
+
+59
+00:03:28,736 --> 00:03:31,958
+Most clean stores stop here and get back to work.
+
+60
+00:03:31,958 --> 00:03:37,902
+If two rows share a city and fight about the state, you stored a region fact on a person.
+
+61
+00:03:37,902 --> 00:03:43,555
+Move the fight to a cities table, where it becomes one row and one truth.
+
+62
+00:03:43,555 --> 00:03:47,694
+That is the entire emotional content of third normal form.
+
+63
+00:03:47,694 --> 00:03:49,277
+The rest is arrows.
+
+64
+00:03:49,277 --> 00:03:51,680
+Key to city, city to state.
+
+65
+00:03:51,680 --> 00:03:54,222
+Cut the second arrow out of customers.
+
+66
+00:03:54,222 --> 00:03:56,236
+Leave city_id.
+
+67
+00:03:56,236 --> 00:03:59,069
+Do not leave state behind as a souvenir.
+
+68
+00:03:59,069 --> 00:04:00,694
+Souvenirs disagree.
+
+69
+00:04:00,694 --> 00:04:03,069
+Lookup tables are not bureaucracy.
+
+70
+00:04:03,069 --> 00:04:06,361
+They are how a state stays still while customers move.
+
+71
+00:04:06,361 --> 00:04:10,263
+When the non-key facts all answer to the key, stop.
+
+72
+00:04:10,263 --> 00:04:11,263
+Go query.
+
+73
+00:04:11,263 --> 00:04:17,444
+You update a major name on one student row and forget the other three who share that major.
+
+74
+00:04:17,444 --> 00:04:19,041
+Reports now disagree.
+
+75
+00:04:19,041 --> 00:04:33,569
+That is a transitive dependency: student_id determines major_id, major_id determines major_name, so student_id determines major_name through a middle column.
+
+76
+00:04:33,569 --> 00:04:40,513
+Third normal form, simplified: no non-key column is allowed to depend on another non-key column.
+
+77
+00:04:40,513 --> 00:04:43,486
+Non-key means not part of the primary key.
+
+78
+00:04:43,486 --> 00:04:47,680
+You must already be in second, which already required first.
+
+79
+00:04:47,680 --> 00:04:49,569
+The nested dolls still apply.
+
+80
+00:04:49,682 --> 00:05:03,007
+If department_name lives on employees because department_id is also on employees, department_name depends on department_id, not on employee_id directly.
+
+81
+00:05:03,007 --> 00:05:06,020
+Move department_name to departments.
+
+82
+00:05:06,020 --> 00:05:10,076
+Employees keep department_id as a foreign key.
+
+83
+00:05:10,076 --> 00:05:12,215
+The transitive chain is cut.
+
+84
+00:05:12,215 --> 00:05:16,715
+The determinant of the moved fact becomes the key of the new table.
+
+85
+00:05:16,715 --> 00:05:19,770
+Columns that really describe the employee stay.
+
+86
+00:05:19,770 --> 00:05:26,979
+The shared department_id stays in both: as key in departments, as foreign key in employees.
+
+87
+00:05:26,979 --> 00:05:29,423
+That copy of the key is allowed.
+
+88
+00:05:29,423 --> 00:05:31,798
+That is not redundancy of a fact.
+
+89
+00:05:31,798 --> 00:05:33,118
+It is the pointer.
+
+90
+00:05:33,118 --> 00:05:35,604
+Redundancy is copying the name.
+
+91
+00:05:35,604 --> 00:05:40,923
+Codd published the relational model and the early normal forms in 1970.
+
+92
+00:05:40,923 --> 00:05:44,895
+Third was the practical target for most operational schemas.
+
+93
+00:05:44,895 --> 00:05:47,104
+It stops the major-name problem.
+
+94
+00:05:47,104 --> 00:05:50,187
+It does not stop every exotic key overlap.
+
+95
+00:05:50,187 --> 00:05:53,187
+That leftover is Boyce–Codd's story.
+
+96
+00:05:53,187 --> 00:05:56,965
+For now, hunt arrows from non-key to non-key.
+
+97
+00:05:56,965 --> 00:06:08,284
+If city_name depends on zip, and zip is not the key of the customer table, zip and city belong in a location table, or zip determines city in a lookup.
+
+98
+00:06:08,284 --> 00:06:16,048
+If the dependence is not always true — zip that straddles cities — do not encode a lie as third normal form.
+
+99
+00:06:16,048 --> 00:06:19,882
+Dependencies are about what the business says must be true.
+
+100
+00:06:19,882 --> 00:06:23,229
+Not about what a sample of twenty rows happened to show.
+
+101
+00:06:23,229 --> 00:06:28,451
+Ask: if I change this non-key, must that other non-key change with it everywhere?
+
+102
+00:06:28,451 --> 00:06:31,604
+If yes, they are one fact in two seats.
+
+103
+00:06:31,604 --> 00:06:33,548
+Give the fact its own table.
+
+104
+00:06:33,548 --> 00:06:35,548
+Leave the foreign key behind.
+
+105
+00:06:35,548 --> 00:06:42,382
+Then a student can change major by changing an id, and the name updates because there is only one name row.
+
+106
+00:06:42,382 --> 00:06:49,409
+Zip codes: if zip determines city in your country, city on customers is transitive through zip.
+
+107
+00:06:49,409 --> 00:06:55,284
+If it does not, because one zip spans cities, do not split on a false dependency.
+
+108
+00:06:55,284 --> 00:06:58,395
+Third is only as true as the dependency.
+
+109
+00:06:58,395 --> 00:07:02,382
+Invented dependencies are how people over-normalize.
+
+110
+00:07:02,382 --> 00:07:05,632
+Missed dependencies are how major names drift.
+
+111
+00:07:05,632 --> 00:07:10,548
+Write the arrow, test it with an update story, then split or stay.
+
+112
+00:07:10,548 --> 00:07:14,215
+That is using third in design, not reciting it.
+
+113
+00:07:14,215 --> 00:07:21,284
+After the split, JOIN is how reports look the same as the old wide table, with one name to edit.
+
+114
+00:07:21,284 --> 00:07:30,465
+If the report is slow, that is indexes or denormalization later, not a reason to put major_name back on students as truth.
+
+115
+00:07:30,465 --> 00:07:33,020
+A cache copy would be labeled a cache.
+
+116
+00:07:33,020 --> 00:07:34,798
+Truth stays in majors.
+
+117
+00:07:34,798 --> 00:07:38,437
+Close with questions, the way a careful lecture does.
+
+118
+00:07:38,437 --> 00:07:41,493
+Answer in a sentence you could defend at a keyboard.
+
+119
+00:07:41,493 --> 00:07:43,590
+What is a transitive dependency?
+
+120
+00:07:43,590 --> 00:07:50,173
+Key determines A, A determines B, so B lives on the row through a bridge that is not a key.
+
+121
+00:07:50,173 --> 00:07:51,618
+Simplified third?
+
+122
+00:07:51,618 --> 00:07:55,187
+No non-key column depends on another non-key column.
+
+123
+00:07:55,187 --> 00:07:57,451
+major_name on students?
+
+124
+00:07:57,451 --> 00:08:02,104
+Move to majors; keep major_id as a foreign key.
+
+125
+00:08:02,104 --> 00:08:04,187
+Is the foreign key redundancy?
+
+126
+00:08:04,187 --> 00:08:04,951
+No.
+
+127
+00:08:04,951 --> 00:08:06,270
+It is the pointer.
+
+128
+00:08:06,270 --> 00:08:08,090
+The name was the redundancy.
+
+129
+00:08:08,090 --> 00:08:10,048
+Must first and second hold?
+
+130
+00:08:10,048 --> 00:08:10,951
+Yes.
+
+131
+00:08:10,951 --> 00:08:12,090
+Zip and city?
+
+132
+00:08:12,090 --> 00:08:16,118
+Split only if zip actually determines city in your rules.
+
+133
+00:08:16,118 --> 00:08:17,548
+False dependency?
+
+134
+00:08:17,548 --> 00:08:19,034
+Over-normalization.
+
+135
+00:08:19,034 --> 00:08:20,618
+Do not split on a lie.
+
+136
+00:08:20,618 --> 00:08:22,382
+Why do reports still join?
+
+137
+00:08:22,382 --> 00:08:24,562
+Because the name lives next door.
+
+138
+00:08:24,562 --> 00:08:25,923
+That is success.
+
+139
+00:08:25,923 --> 00:08:27,534
+If the join is slow?
+
+140
+00:08:27,534 --> 00:08:32,840
+Indexes or a labeled cache later, not putting truth back on students.
+
+141
+00:08:32,840 --> 00:08:34,965
+Who published the early forms?
+
+142
+00:08:34,965 --> 00:08:37,354
+Codd, around 1970.
+
+143
+00:08:37,354 --> 00:08:39,048
+What does third not catch?
+
+144
+00:08:39,048 --> 00:08:43,368
+Some overlapping candidate-key cases; that is Boyce–Codd.
+
+145
+00:08:43,368 --> 00:08:46,701
+advisor_office through advisor_name?
+
+146
+00:08:46,701 --> 00:08:48,923
+Move offices with advisors.
+
+147
+00:08:48,923 --> 00:08:50,132
+How do you test?
+
+148
+00:08:50,132 --> 00:08:54,854
+Change the name once and see whether four rows would have needed four edits.
+
+149
+00:08:54,854 --> 00:08:56,409
+What question to ask?
+
+150
+00:08:56,409 --> 00:09:00,687
+If I change this non-key, must that other non-key change everywhere?
+
+151
+00:09:00,687 --> 00:09:01,701
+If yes?
+
+152
+00:09:01,701 --> 00:09:03,618
+One fact in two seats.
+
+153
+00:09:03,618 --> 00:09:04,493
+Split.
+
+154
+00:09:04,493 --> 00:09:05,590
+Nested order?
+
+155
+00:09:05,590 --> 00:09:09,909
+Atomic cells, whole key, then no non-key chains.
+
+156
+00:09:09,909 --> 00:09:11,882
+Is JOIN a failure of third?
+
+157
+00:09:11,882 --> 00:09:12,645
+No.
+
+158
+00:09:12,645 --> 00:09:13,770
+Cache copy?
+
+159
+00:09:13,770 --> 00:09:15,173
+Label it a cache.
+
+160
+00:09:15,173 --> 00:09:17,312
+Truth stays in the parent table.
+
+161
+00:09:17,312 --> 00:09:19,173
+Sample of twenty rows?
+
+162
+00:09:19,173 --> 00:09:21,409
+Not enough to invent a dependency.
+
+163
+00:09:21,409 --> 00:09:22,743
+When is third done?
+
+164
+00:09:22,743 --> 00:09:25,812
+No non-key to non-key arrows remain.
+
+165
+00:09:25,812 --> 00:09:30,534
+If an answer needed a second table, go draw it before you write more SQL.
+

@@ -1,0 +1,195 @@
+Boyce–Codd normal form is a stricter third.
+
+Every determinant must be a candidate key.
+
+A determinant is a set of columns that determines other columns.
+
+Third normal form mostly watches non-key columns depending on other non-key columns.
+
+It can miss a case where a non-key determines part of the key.
+
+That case shows up with overlapping candidate keys.
+
+Imagine a table of rooms, times, and teachers.
+
+A room and a time determine the teacher.
+
+A teacher and a time determine the room.
+
+Both pairs are candidate keys.
+
+If you pick room plus time as the primary key, teacher is a non-key that still determines room — a piece of the key — when you also know time.
+
+The language is dry.
+
+The bug is a constraint you cannot say with primary key alone.
+
+Two teachers could be assigned to the same room at the same time if you only unique the wrong pair.
+
+BCNF says: split until every rule of the form A determines B is a key of its table.
+
+One table for room, time, teacher with a key that matches one rule.
+
+Another table if a second rule still needs a home.
+
+You will join them to reconstruct the schedule.
+
+That join is the cost of an honest constraint.
+
+Most bookstore tables never need this conversation.
+
+You meet it when two different unique pairs both seem right.
+
+Do not ignore the second pair.
+
+Put UNIQUE on it, or split until both rules are keys.
+
+If UNIQUE on both pairs is enough for your engine to refuse bad rows, you may stop.
+
+BCNF is the design version of that refusal.
+
+It wants the rule to be a key, not a footnote.
+
+When someone says a table is in third but still feels twisty, look for overlapping keys.
+
+Name both candidate keys.
+
+Ask whether a non-key is determining part of the primary key.
+
+If yes, you found the leak.
+
+Split, or add the missing unique constraint, and write down which you chose.
+
+The classic textbook example uses something like a student, a subject, and a teacher who is the only teacher of that subject.
+
+If each subject has one teacher, teacher determines subject.
+
+If the key was student plus subject, teacher is a non-key determining subject, a piece of the key.
+
+Split: one table of subject and teacher, one table of student and subject.
+
+Now each determinant is a key of its table.
+
+You join to see who teaches Maya.
+
+That split is BCNF.
+
+If the real world allows two teachers per subject, the determinant vanished and you needed a different model anyway.
+
+The form follows the rule, not the other way around.
+
+Write the rules in English before you chase the acronym.
+
+A room cannot host two classes at the same time.
+
+A teacher cannot be in two rooms at the same time.
+
+Those are two rules.
+
+Two rules often want two unique pairs or two tables.
+
+BCNF is a way to notice you only enforced one.
+
+Do not rename third normal form to Boyce–Codd on a slide to look strict.
+
+Use it when overlapping keys appear.
+
+Otherwise, third is the working stop.
+
+The acronyms are a ladder.
+
+You climb when a leak appears, not because the ladder is there.
+
+Name the leak.
+
+Name the determinant.
+
+Make it a key.
+
+That is the lesson, in one charge.
+
+Write the rules on paper before you pick a primary key.
+
+Each rule of the form this determines that wants to be a key somewhere.
+
+If two rules overlap, one table may not be able to say both with a single primary key.
+
+UNIQUE on the second pair is the small fix.
+
+A split is the large fix.
+
+Either fix is BCNF in spirit.
+
+Ignoring the second rule is how double booking appears.
+
+Double booking is not an edge case.
+
+It is the rule you did not enforce.
+
+Overlapping keys are rare in a bookstore.
+
+They are common in schedules, assignments, and seats.
+
+When you meet a schedule, remember this lesson.
+
+Name both keys.
+
+Enforce both.
+
+Join if you split.
+
+That is stricter third, in working clothes.
+
+You do not need the acronym in production.
+
+You need both rules on the table.
+
+Put them there.
+
+Then 3NF's leak is closed.
+
+You can satisfy third normal form and still have a table that breaks.
+
+Raymond Boyce found that in the 1970s, working examples where two candidate keys overlapped.
+
+Codd's third form was protecting non-key columns from bad dependencies.
+
+When a determinant was itself part of a key, third could look satisfied while a dependency still caused anomalies.
+
+Boyce–Codd normal form says: every determinant of a functional dependency must be a candidate key.
+
+Not merely: non-keys must not depend on non-keys.
+
+If room determines building in a table whose keys are (student, room) and (student, building) style overlaps, you can get a mess third did not catch cleanly.
+
+A classic shape is: a table with two overlapping candidate keys, and one attribute determining another that is also in a key.
+
+The fix is still a split: put the determining pair in its own table whose key is the real determinant.
+
+Boyce died young, and Codd named the form after both of them.
+
+The story is not trivia.
+
+It is a reminder that definitions get sharper when someone tries to break them.
+
+Most schemas that reached a clean third never meet a Boyce–Codd violation in daily work.
+
+When they do, it is usually overlapping natural keys you insisted on keeping.
+
+A surrogate primary key does not automatically grant Boyce–Codd if another unique combination still determines a column badly.
+
+Look at every uniqueness rule, not only the PRIMARY KEY line.
+
+If A determines B, A should be a candidate key of that table.
+
+If A is not, B does not belong here.
+
+That one sentence is the operational form of BCNF.
+
+Use it when third is done and a unique constraint still feels like it is smuggling a second table.
+
+Then split, and let each table have determinants that are keys, nothing less.
+
+You are not being fancy.
+
+You are finishing the job third started.

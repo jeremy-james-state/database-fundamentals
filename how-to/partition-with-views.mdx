@@ -1,0 +1,61 @@
+---
+title: "Partition with views"
+description: "Create views that each return one slice of a table, such as rows for a single year."
+---
+
+A **partition** here is a logical piece of the data: the same `WHERE` you would type every time, saved as a [view](/concepts/views).
+
+## Prerequisites
+
+- [Create a view](/how-to/create-a-view)
+- A table with a column you can filter on, such as `books.year`
+
+## Split by a WHERE clause
+
+<Steps>
+  <Step title="Find the slice">
+    ```sql
+    SELECT id, title
+    FROM books
+    WHERE year = 2022;
+    ```
+  </Step>
+  <Step title="Save each slice">
+    ```sql
+    CREATE VIEW books_2022 AS
+    SELECT id, title
+    FROM books
+    WHERE year = 2022;
+
+    CREATE VIEW books_2021 AS
+    SELECT id, title
+    FROM books
+    WHERE year = 2021;
+    ```
+
+    Prefer clear names (`books_2022`) over bare years (`2022`) so the view’s purpose is obvious in `.schema`.
+  </Step>
+  <Step title="Query one partition">
+    ```sql
+    SELECT *
+    FROM books_2022;
+    ```
+  </Step>
+</Steps>
+
+One wide view of `id`, `title`, `year` is also fine. You trade away the “always filtered” convenience and filter again with `WHERE`.
+
+## Verify the result
+
+You succeeded when each view returns only its year, and inserting a 2022 book into `books` makes it appear in `books_2022` on the next `SELECT`.
+
+## Troubleshooting
+
+- **Cannot modify view**: change `books`, not the partition view.
+- **Empty partition**: no rows match that `WHERE` yet.
+
+## Related pages
+
+- [Views](/concepts/views)
+- [Filter rows](/how-to/filter-rows)
+- [CREATE VIEW](/reference/create-view)

@@ -1,0 +1,144 @@
+---
+title: "Tutorial"
+description: "Open a SQLite database and ask questions of a books table."
+---
+
+When you finish, you can list columns, peek at a few rows, filter, sort, and compute a total.
+
+## Prerequisites
+
+- SQLite installed so the `sqlite3` command runs in a terminal
+- A database file that contains a `books` table (columns such as `title`, `author`, `year`, `rating`)
+- About 20 minutes
+
+<Info>
+Examples use SQLite. End every SQL statement with a semicolon.
+</Info>
+
+## Step 1: Open the database
+
+In a terminal, pass the file to `sqlite3`:
+
+```bash
+sqlite3 books.db
+```
+
+The prompt becomes `sqlite>`. You are inside the DBMS, not the shell. Leave later with `.quit`.
+
+You are on track when you see the `sqlite>` prompt.
+
+## Step 2: See every column
+
+`SELECT` chooses columns. `*` is the wildcard for all columns. `FROM` names the table, not the file.
+
+```sql
+SELECT *
+FROM books;
+```
+
+You get every row and every column. On a large table that is hard to read. Next you will name columns and cap the row count.
+
+## Step 3: Name columns and peek with LIMIT
+
+Ask only for `title`, then cap the result:
+
+```sql
+SELECT title
+FROM books
+LIMIT 10;
+```
+
+Add a second column with a comma (the comma is between columns, not between keywords):
+
+```sql
+SELECT title, author
+FROM books
+LIMIT 10;
+```
+
+`SELECT`, `FROM`, and `LIMIT` are keywords. You succeeded when ten titles (or fewer, if the table is small) print in the terminal.
+
+## Step 4: Keep rows that match a condition
+
+`WHERE` keeps rows where a condition is true. Numbers are unquoted. Strings use single quotes.
+
+```sql
+SELECT title, author
+FROM books
+WHERE year = 2023;
+```
+
+Exclude a string value with `!=`:
+
+```sql
+SELECT title, format
+FROM books
+WHERE format != 'hardcover';
+```
+
+You are on track when only matching rows appear.
+
+## Step 5: Match text with LIKE
+
+`LIKE` roughly matches a string. `%` is any sequence of characters. `_` is one character.
+
+```sql
+SELECT title
+FROM books
+WHERE title LIKE '%love%';
+```
+
+```sql
+SELECT title
+FROM books
+WHERE title LIKE 'P_re';
+```
+
+## Step 6: Sort and take the top rows
+
+`ORDER BY` sorts. The default is least to greatest (`ASC`). Highest first needs `DESC`. Combine with `LIMIT` for a top-n list.
+
+```sql
+SELECT title, rating
+FROM books
+ORDER BY rating DESC
+LIMIT 10;
+```
+
+Break a tie with a second column:
+
+```sql
+SELECT title, rating, votes
+FROM books
+ORDER BY rating DESC, votes DESC
+LIMIT 10;
+```
+
+`ORDER BY` works for numbers and for text (A to Z, or Z to A with `DESC`).
+
+## Step 7: Summarize with an aggregate
+
+An aggregate function turns many rows into one value. `ROUND` trims decimals. `AS` names the result column.
+
+```sql
+SELECT ROUND(AVG(rating), 2) AS average_rating
+FROM books;
+```
+
+Count distinct publishers instead of counting every row:
+
+```sql
+SELECT COUNT(DISTINCT publisher) AS publisher_count
+FROM books;
+```
+
+## Next steps
+
+Continue with:
+
+- [Select columns](/how-to/select-columns)
+- [Filter rows](/how-to/filter-rows)
+- [Match text patterns](/how-to/match-patterns)
+- [Sort rows](/how-to/sort-rows)
+- [Summarize rows](/how-to/summarize-rows)
+- [SQL](/concepts/sql)

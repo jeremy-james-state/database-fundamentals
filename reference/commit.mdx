@@ -1,0 +1,32 @@
+---
+title: "COMMIT"
+description: "Saves all statements in the current transaction permanently."
+---
+
+After `COMMIT`, other connections can see the new data. Durability is the **D** in [ACID](/concepts/transactions).
+
+## Syntax
+
+```sql
+COMMIT;
+```
+
+## Examples
+
+<CodeGroup>
+```sql Save the unit
+BEGIN TRANSACTION;
+
+UPDATE accounts
+SET balance = balance - 10
+WHERE id = 1;
+
+COMMIT;
+```
+</CodeGroup>
+
+## Related references
+
+- [BEGIN](/reference/begin)
+- [ROLLBACK](/reference/rollback)
+- [Run a transaction](/how-to/run-a-transaction)

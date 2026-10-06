@@ -1,0 +1,76 @@
+---
+title: "Transactions"
+description: "A transaction is one unit of work: a set of statements that succeed together or not at all."
+---
+
+**Concurrency** means more than one connection may run statements at once. Without care, one person can see half-finished work from another.
+
+## How a transaction works
+
+```sql
+BEGIN TRANSACTION;
+
+UPDATE accounts
+SET balance = balance + 10
+WHERE id = 2;
+
+UPDATE accounts
+SET balance = balance - 10
+WHERE id = 1;
+
+COMMIT;
+```
+
+Until `COMMIT`, other connections should not see the in-between balances. `ROLLBACK` undoes the whole unit if something is wrong.
+
+### ACID
+
+| Letter | Meaning in practice |
+| --- | --- |
+| **A**tomic | All statements in the unit apply, or none do |
+| **C**onsistent | Constraints still hold when you commit (or you roll back) |
+| **I**solated | Concurrent transactions do not step on each other’s half-done work |
+| **D**urable | After `COMMIT`, a crash should not erase what you saved |
+
+### Race conditions
+
+A **race condition** is when two transactions read and decide on the same data at the same time, and the order of their writes leaves the database wrong (for example two transfers that both think the balance is high enough).
+
+Transactions + [locks](#locks) are how the DBMS queues sensitive work so races do not win.
+
+### Locks {#locks}
+
+SQLite (and other DBMS products) use locks so readers and writers do not collide:
+
+| State | Who can work |
+| --- | --- |
+| **Unlocked** | Nobody holds the database; next connection may read or write |
+| **Shared** | One or more transactions are **reading**; others may also read |
+| **Exclusive** | One transaction is **writing**; others wait |
+
+Writers need exclusivity so nobody reads a half-updated row.
+
+## Why databases use transactions
+
+A payment is two updates. Seeing only one of them is worse than seeing neither. The unit of work makes “all at once” the default for commits.
+
+## When to use a transaction
+
+- **More than one write that must stay together**: transfer, soft-delete plus log, insert parent and child
+- **Skip it when**: a single statement already does the whole job and nothing else depends on mid-states
+
+## Related ideas
+
+[Run a transaction](/how-to/run-a-transaction). Isolation is why a second terminal may still show old balances until you `COMMIT`.
+
+## Common mix-ups
+
+- **Transaction vs statement**: one `UPDATE` is a statement. A transaction can wrap many.
+- **Shared vs exclusive**: many readers OK; a writer needs the exclusive turn.
+
+## Further reading
+
+- [Run a transaction](/how-to/run-a-transaction)
+- [BEGIN](/reference/begin)
+- [COMMIT](/reference/commit)
+- [ROLLBACK](/reference/rollback)

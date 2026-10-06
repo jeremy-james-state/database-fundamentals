@@ -1,0 +1,520 @@
+1
+00:00:00,050 --> 00:00:03,611
+A schema does not appear fully formed in CREATE TABLE.
+
+2
+00:00:03,611 --> 00:00:06,750
+It moves through three views of the same idea.
+
+3
+00:00:06,750 --> 00:00:10,902
+Conceptual design names the things and how they relate.
+
+4
+00:00:10,902 --> 00:00:13,097
+Customer, order, book.
+
+5
+00:00:13,097 --> 00:00:15,486
+A customer places many orders.
+
+6
+00:00:15,486 --> 00:00:17,763
+An order contains many books.
+
+7
+00:00:17,763 --> 00:00:22,055
+You can sketch this with boxes and lines, or with sentences.
+
+8
+00:00:22,055 --> 00:00:23,277
+No types yet.
+
+9
+00:00:23,277 --> 00:00:24,666
+No indexes.
+
+10
+00:00:24,666 --> 00:00:30,138
+Logical design turns those things into tables, keys, and constraints.
+
+11
+00:00:30,138 --> 00:00:32,375
+Now you choose primary keys.
+
+12
+00:00:32,375 --> 00:00:34,069
+You add foreign keys.
+
+13
+00:00:34,069 --> 00:00:36,722
+You decide which attributes are NOT NULL.
+
+14
+00:00:36,722 --> 00:00:39,791
+You normalize so each table has one job.
+
+15
+00:00:39,791 --> 00:00:44,750
+Physical design is how a particular engine stores and finds the rows.
+
+16
+00:00:44,750 --> 00:00:46,208
+Types get sharper.
+
+17
+00:00:46,208 --> 00:00:47,638
+Indexes appear.
+
+18
+00:00:47,638 --> 00:00:51,416
+Partitioning, files, and memory settings live here.
+
+19
+00:00:51,416 --> 00:00:56,694
+If you start physical, you will pick VARCHAR forty because a form looked forty wide.
+
+20
+00:00:56,694 --> 00:00:58,694
+That is not a conceptual reason.
+
+21
+00:00:58,694 --> 00:01:02,486
+Keep the conceptual sketch next to the CREATE statements.
+
+22
+00:01:02,486 --> 00:01:06,958
+When they disagree, the sketch wins until you update it on purpose.
+
+23
+00:01:06,958 --> 00:01:08,527
+Requirements change.
+
+24
+00:01:08,527 --> 00:01:11,472
+A bookstore starts lending, not only selling.
+
+25
+00:01:11,472 --> 00:01:15,347
+That is a new relationship, not a new column on orders.
+
+26
+00:01:15,347 --> 00:01:17,208
+Walk the three views again.
+
+27
+00:01:17,208 --> 00:01:18,777
+Name the new entity.
+
+28
+00:01:18,777 --> 00:01:20,263
+Place it on the sketch.
+
+29
+00:01:20,263 --> 00:01:21,625
+Then give it a table.
+
+30
+00:01:21,625 --> 00:01:23,513
+Then decide how it is stored.
+
+31
+00:01:23,513 --> 00:01:27,125
+Teams skip the sketch because SQL feels like progress.
+
+32
+00:01:27,125 --> 00:01:31,736
+Progress without a sketch is a pile of columns named extra1.
+
+33
+00:01:31,736 --> 00:01:34,069
+Document the keys in the sketch.
+
+34
+00:01:34,069 --> 00:01:38,458
+Document the verbs: places, contains, borrows.
+
+35
+00:01:38,458 --> 00:01:42,055
+Then the SQL has a source of truth besides memory.
+
+36
+00:01:42,055 --> 00:01:44,277
+Review is part of the lifecycle.
+
+37
+00:01:44,277 --> 00:01:48,000
+A second person should try to query a question from the sketch.
+
+38
+00:01:48,000 --> 00:01:51,013
+If they cannot, the sketch is unfinished.
+
+39
+00:01:51,013 --> 00:01:54,819
+Migration is the lifecycle continuing after launch.
+
+40
+00:01:54,819 --> 00:01:57,694
+ALTER is not a failure of the first design.
+
+41
+00:01:57,694 --> 00:02:00,222
+It is the design meeting a new fact.
+
+42
+00:02:00,222 --> 00:02:02,041
+Still start from the sketch.
+
+43
+00:02:02,041 --> 00:02:05,833
+Physical tricks come last, after the keys are honest.
+
+44
+00:02:05,833 --> 00:02:07,888
+That order is the lifecycle.
+
+45
+00:02:07,888 --> 00:02:09,625
+Tools will try to skip a view.
+
+46
+00:02:09,625 --> 00:02:16,138
+An ORM that emits tables from classes is a logical step wearing a programming language.
+
+47
+00:02:16,138 --> 00:02:20,583
+It still needs a conceptual sketch, or the classes will be screens.
+
+48
+00:02:20,583 --> 00:02:22,458
+Screens are not entities.
+
+49
+00:02:22,458 --> 00:02:27,000
+A checkout page can show customer, cart, and tax at once.
+
+50
+00:02:27,000 --> 00:02:29,652
+That is three entities, maybe four.
+
+51
+00:02:29,652 --> 00:02:34,013
+If you start from the page, you get one wide table named checkout.
+
+52
+00:02:34,013 --> 00:02:35,069
+Resist.
+
+53
+00:02:35,069 --> 00:02:37,944
+Reverse engineering is a lifecycle too.
+
+54
+00:02:37,944 --> 00:02:43,305
+When you inherit a database, sketch what it actually is, not what you wish it were.
+
+55
+00:02:43,305 --> 00:02:46,013
+Then decide which wish is a migration.
+
+56
+00:02:46,013 --> 00:02:47,402
+Version the sketch.
+
+57
+00:02:47,402 --> 00:02:51,152
+A picture in a slide deck from last year is not versioned.
+
+58
+00:02:51,152 --> 00:02:53,527
+A file next to the migrations is.
+
+59
+00:02:53,527 --> 00:02:59,500
+Physical design includes collation, fillfactor, and tablespaces in some engines.
+
+60
+00:02:59,500 --> 00:03:02,194
+You can ignore them while the keys are wrong.
+
+61
+00:03:02,194 --> 00:03:05,361
+You cannot ignore them forever on a large cluster.
+
+62
+00:03:05,361 --> 00:03:06,805
+That is still last.
+
+63
+00:03:06,805 --> 00:03:08,652
+The lifecycle is a loop.
+
+64
+00:03:08,652 --> 00:03:15,083
+New requirement, new sketch mark, new logical change, new physical tweak if needed.
+
+65
+00:03:15,083 --> 00:03:18,652
+Skipping the first two is how extra1 is born.
+
+66
+00:03:18,652 --> 00:03:23,069
+Keep the loop boring and the tables stay dull in the best way.
+
+67
+00:03:23,069 --> 00:03:24,888
+Dull tables are queryable.
+
+68
+00:03:24,888 --> 00:03:27,236
+That was the point of walking in order.
+
+69
+00:03:27,236 --> 00:03:30,694
+A skipped conceptual hour becomes a month of ALTER.
+
+70
+00:03:30,694 --> 00:03:33,041
+That trade is almost never worth it.
+
+71
+00:03:33,041 --> 00:03:36,208
+Write three sentences before three tables.
+
+72
+00:03:36,208 --> 00:03:40,611
+What exists, how it relates, what must never duplicate.
+
+73
+00:03:40,611 --> 00:03:43,444
+Those sentences are the conceptual design.
+
+74
+00:03:43,444 --> 00:03:46,888
+Logical design is only spelling them in keys.
+
+75
+00:03:46,888 --> 00:03:49,708
+Physical design is only storing them.
+
+76
+00:03:49,708 --> 00:03:54,152
+If you cannot find the three sentences, you are not ready for CREATE.
+
+77
+00:03:54,152 --> 00:03:55,930
+Find them, then type.
+
+78
+00:03:55,930 --> 00:03:59,041
+Most failed databases were not failed SQL.
+
+79
+00:03:59,041 --> 00:04:01,055
+They were skipped conversations.
+
+80
+00:04:01,055 --> 00:04:12,444
+Professionals gather requirements, then shape a conceptual picture, then a logical schema, then a physical one, then they load data and check that the questions still work.
+
+81
+00:04:12,444 --> 00:04:16,916
+Requirement gathering is talking to the people who will live with the data.
+
+82
+00:04:16,916 --> 00:04:23,402
+Owners, staff who enter rows, people who answer customers, people who write the application.
+
+83
+00:04:23,402 --> 00:04:25,597
+Each group gets different questions.
+
+84
+00:04:25,597 --> 00:04:27,416
+What must never be lost.
+
+85
+00:04:27,416 --> 00:04:29,444
+What must never be duplicated.
+
+86
+00:04:29,444 --> 00:04:34,319
+What a day of work looks like in names of things, not in screen mockups only.
+
+87
+00:04:34,319 --> 00:04:36,805
+Study the old system if there is one.
+
+88
+00:04:36,938 --> 00:04:41,957
+Sample files, spreadsheets, and reports are requirements in disguise.
+
+89
+00:04:41,957 --> 00:04:46,276
+Write down whether you will record interviews, and get permission if you will.
+
+90
+00:04:46,276 --> 00:04:50,193
+A prompt to a language model can suggest interview questions.
+
+91
+00:04:50,193 --> 00:04:52,304
+It cannot attend the meeting for you.
+
+92
+00:04:52,304 --> 00:04:55,165
+You still have to hear the nouns they actually use.
+
+93
+00:04:55,165 --> 00:05:04,360
+Conceptual design turns those nouns into entities and relationships, often as an ER sketch, before types exist.
+
+94
+00:05:04,360 --> 00:05:11,235
+If you cannot say what exists and how it relates in three sentences, you are not ready for CREATE TABLE.
+
+95
+00:05:11,235 --> 00:05:17,026
+Logical design chooses keys, attributes, and tables that implement that sketch.
+
+96
+00:05:17,026 --> 00:05:22,749
+This is where primary keys, foreign keys, and normal forms earn their keep.
+
+97
+00:05:22,749 --> 00:05:28,165
+Physical design chooses types, indexes, and engine-specific storage.
+
+98
+00:05:28,165 --> 00:05:29,901
+It is last on purpose.
+
+99
+00:05:29,901 --> 00:05:34,832
+A beautiful index on a table that should not exist is a fast mistake.
+
+100
+00:05:34,832 --> 00:05:38,999
+Implementation is CREATE, load, and constraint.
+
+101
+00:05:38,999 --> 00:05:46,415
+Validation is: insert the ugly cases, run the questions from the interviews, and watch for anomalies.
+
+102
+00:05:46,415 --> 00:05:52,624
+If a report from week one of gathering cannot be written as SQL, the schema is not done.
+
+103
+00:05:52,624 --> 00:05:55,735
+Skipping conceptual work feels like speed.
+
+104
+00:05:55,735 --> 00:05:57,776
+It becomes a month of ALTER.
+
+105
+00:05:57,776 --> 00:06:00,429
+Skipping validation feels like shipping.
+
+106
+00:06:00,429 --> 00:06:03,651
+It becomes two sources of truth in production.
+
+107
+00:06:03,651 --> 00:06:06,888
+The lifecycle is a loop when the business changes.
+
+108
+00:06:06,888 --> 00:06:14,610
+You gather again, you sketch again, you migrate with ALTER instead of pretending the first CREATE was eternal.
+
+109
+00:06:14,610 --> 00:06:20,957
+Write three sentences: what exists, how it relates, what must never duplicate.
+
+110
+00:06:20,957 --> 00:06:21,915
+Then type.
+
+111
+00:06:21,915 --> 00:06:23,499
+Not the other way around.
+
+112
+00:06:23,499 --> 00:06:27,040
+Walk the store through the three big steps, slowly.
+
+113
+00:06:27,040 --> 00:06:33,013
+Requirements: owners say they sell products, take reviews, and refund by order.
+
+114
+00:06:33,013 --> 00:06:38,401
+Staff say they retype emails because the old spreadsheet allowed two Mayas.
+
+115
+00:06:38,401 --> 00:06:43,179
+Developers say they need a user id for login that is not the email.
+
+116
+00:06:43,179 --> 00:06:46,013
+Those are requirements, not tables yet.
+
+117
+00:06:46,013 --> 00:06:53,790
+Conceptual: product, user, order, review, refund as boxes, verbs between them.
+
+118
+00:06:53,790 --> 00:06:54,929
+No types.
+
+119
+00:06:54,929 --> 00:06:57,193
+No VARCHAR 255.
+
+120
+00:06:57,193 --> 00:07:03,888
+Logical: keys on each box, review points at product and user, refund points at order.
+
+121
+00:07:03,888 --> 00:07:07,707
+Normal forms applied until names live in one place.
+
+122
+00:07:07,707 --> 00:07:17,221
+Physical: INTEGER ids, DECIMAL prices, TIMESTAMPTZ for placed_at if the engine has it, indexes on foreign keys.
+
+123
+00:07:17,221 --> 00:07:21,443
+Implement: CREATE in dependency order, parents first.
+
+124
+00:07:21,443 --> 00:07:29,013
+Load a dozen ugly rows: two reviews on one product, a refund, a user with no orders.
+
+125
+00:07:29,013 --> 00:07:37,526
+Validate: can you list reviews for a product, refunds for an order, and refuse a review with a fake product_id.
+
+126
+00:07:37,526 --> 00:07:44,638
+If any interview question from day one cannot run, you are still in logical design, not in production.
+
+127
+00:07:44,638 --> 00:07:50,249
+Generative tools can draft interview questions and even draft CREATE statements.
+
+128
+00:07:50,249 --> 00:07:53,624
+They cannot sit with the staff who retype emails.
+
+129
+00:07:53,624 --> 00:07:59,165
+That conversation is the step that fails when teams open a SQL window first.
+
+130
+00:07:59,165 --> 00:08:01,638
+Do not open the SQL window first.
+

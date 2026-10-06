@@ -1,0 +1,47 @@
+---
+title: "DELETE"
+description: "Removes rows that match WHERE. Omitting WHERE removes every row."
+---
+
+The table stays. Only matching rows disappear. For a mark-instead-of-remove pattern, see [soft deletion](/concepts/soft-deletion).
+
+## Syntax
+
+```sql
+DELETE FROM table
+WHERE condition;
+```
+
+## Arguments
+
+<ParamField body="table" type="identifier" required>
+  The table to delete from.
+</ParamField>
+
+<ParamField body="WHERE" type="boolean expression">
+  Same tests as [SELECT](/reference/select), including [IS NULL](/reference/null).
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql By title
+DELETE FROM collections
+WHERE title = 'Farmers Working at Dawn';
+```
+
+```sql Missing date
+DELETE FROM collections
+WHERE acquired IS NULL;
+```
+</CodeGroup>
+
+<Warning>
+  `DELETE FROM collections;` empties the table.
+</Warning>
+
+## Related references
+
+- [Delete rows](/how-to/delete-rows)
+- [UPDATE](/reference/update)
+- [NULL](/reference/null)

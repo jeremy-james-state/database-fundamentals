@@ -1,0 +1,67 @@
+---
+title: "Alter a table"
+description: "Drop a table, or rename it, rename a column, add a column, or drop a column."
+---
+
+`DROP TABLE` removes the table and its rows. `ALTER TABLE` keeps the table and changes its [schema](/concepts/schemas).
+
+## Prerequisites
+
+- An existing table ([create a table](/how-to/create-a-table))
+- A backup if the data matters
+
+## Change the schema
+
+<Steps>
+  <Step title="Drop a table">
+    ```sql
+    DROP TABLE visits;
+    ```
+
+    <Warning>
+      Rows are gone. There is no undo in SQLite except your own backup file.
+    </Warning>
+  </Step>
+  <Step title="Rename a table">
+    ```sql
+    ALTER TABLE visits
+    RENAME TO swipes;
+    ```
+  </Step>
+  <Step title="Rename a column">
+    ```sql
+    ALTER TABLE visits
+    RENAME COLUMN type TO direction;
+    ```
+  </Step>
+  <Step title="Add a column">
+    ```sql
+    ALTER TABLE visits
+    ADD COLUMN duration INTEGER;
+    ```
+
+    Existing rows get `NULL` in the new column unless you set a [DEFAULT](/reference/default).
+  </Step>
+  <Step title="Drop a column">
+    ```sql
+    ALTER TABLE visits
+    DROP COLUMN duration;
+    ```
+  </Step>
+</Steps>
+
+## Verify the result
+
+You succeeded when `.schema` matches the new names and columns, and `SELECT *` still runs.
+
+## Troubleshooting
+
+- **`no such table` after `DROP`**: expected. Recreate from `schema.sql` if you still need it.
+- **Cannot drop a column**: SQLite versions before 3.35.0 cannot `DROP COLUMN`. Recreate the table instead.
+- **Foreign key blocks `DROP`**: another table still [REFERENCES](/reference/foreign-key) this one, and `PRAGMA foreign_keys` is on.
+
+## Related pages
+
+- [DROP TABLE](/reference/drop-table)
+- [ALTER TABLE](/reference/alter-table)
+- [Apply a schema file](/how-to/apply-a-schema-file)

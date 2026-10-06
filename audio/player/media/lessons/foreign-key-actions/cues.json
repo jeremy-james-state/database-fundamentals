@@ -1,0 +1,1541 @@
+{
+  "title": "Foreign key actions",
+  "subtitle": "ON DELETE and ON UPDATE",
+  "audio": "narration.mp3",
+  "duration": 395.544,
+  "slides": [],
+  "scenes": [
+    {
+      "id": "declare",
+      "label": "Declare",
+      "kind": "sql",
+      "title": "Lines ride with the order",
+      "prompt": "CASCADE on a part",
+      "sql": [
+        "FOREIGN KEY (order_id)",
+        "REFERENCES orders (order_id)",
+        "ON DELETE CASCADE",
+        "ON UPDATE CASCADE"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 0,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 0,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 1,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 0,
+      "toLyric": 2
+    },
+    {
+      "id": "shape",
+      "label": "Shape",
+      "kind": "schema",
+      "title": "Parts versus history",
+      "tables": [
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id"
+          ],
+          "pk": "order_id",
+          "hub": true
+        },
+        {
+          "id": "lines",
+          "label": "order_lines",
+          "cols": [
+            "order_id",
+            "line_no"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "order_id": "orders.order_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 2,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 3,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 2,
+      "toLyric": 4
+    },
+    {
+      "id": "declare-2",
+      "label": "Declare",
+      "kind": "sql",
+      "title": "Lines ride with the order",
+      "prompt": "CASCADE on a part",
+      "sql": [
+        "FOREIGN KEY (order_id)",
+        "REFERENCES orders (order_id)",
+        "ON DELETE CASCADE",
+        "ON UPDATE CASCADE"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 4,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 4,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 4,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 4,
+      "toLyric": 5
+    },
+    {
+      "id": "shape-2",
+      "label": "Shape",
+      "kind": "schema",
+      "title": "Parts versus history",
+      "tables": [
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id"
+          ],
+          "pk": "order_id",
+          "hub": true
+        },
+        {
+          "id": "lines",
+          "label": "order_lines",
+          "cols": [
+            "order_id",
+            "line_no"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "order_id": "orders.order_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 5,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 6,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 5,
+      "toLyric": 7
+    },
+    {
+      "id": "declare-3",
+      "label": "Declare",
+      "kind": "sql",
+      "title": "Lines ride with the order",
+      "prompt": "CASCADE on a part",
+      "sql": [
+        "FOREIGN KEY (order_id)",
+        "REFERENCES orders (order_id)",
+        "ON DELETE CASCADE",
+        "ON UPDATE CASCADE"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 7,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 9,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 11,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 7,
+      "toLyric": 18
+    },
+    {
+      "id": "shape-3",
+      "label": "Shape",
+      "kind": "schema",
+      "title": "Parts versus history",
+      "tables": [
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id"
+          ],
+          "pk": "order_id",
+          "hub": true
+        },
+        {
+          "id": "lines",
+          "label": "order_lines",
+          "cols": [
+            "order_id",
+            "line_no"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "order_id": "orders.order_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 18,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 19,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 18,
+      "toLyric": 23
+    },
+    {
+      "tables": [
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id"
+          ],
+          "pk": "order_id",
+          "hub": true
+        },
+        {
+          "id": "lines",
+          "label": "order_lines",
+          "cols": [
+            "order_id",
+            "line_no"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "order_id": "orders.order_id"
+          }
+        }
+      ],
+      "title": "Parts versus history",
+      "id": "policy",
+      "label": "Shape",
+      "kind": "schema",
+      "fromLyric": 23,
+      "toLyric": 26,
+      "steps": [
+        {
+          "lyricMin": 23,
+          "actions": [
+            "enter",
+            "show-schema",
+            "show-title"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "declare-4",
+      "label": "Declare",
+      "kind": "sql",
+      "title": "Lines ride with the order",
+      "prompt": "CASCADE on a part",
+      "sql": [
+        "FOREIGN KEY (order_id)",
+        "REFERENCES orders (order_id)",
+        "ON DELETE CASCADE",
+        "ON UPDATE CASCADE"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 26,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 26,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 27,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 26,
+      "toLyric": 33
+    },
+    {
+      "tables": [
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id"
+          ],
+          "pk": "order_id",
+          "hub": true
+        },
+        {
+          "id": "lines",
+          "label": "order_lines",
+          "cols": [
+            "order_id",
+            "line_no"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "order_id": "orders.order_id"
+          }
+        }
+      ],
+      "title": "Parts versus history",
+      "id": "actions",
+      "label": "Shape",
+      "kind": "schema",
+      "fromLyric": 33,
+      "toLyric": 34,
+      "steps": [
+        {
+          "lyricMin": 33,
+          "actions": [
+            "enter",
+            "show-schema",
+            "show-title"
+          ]
+        }
+      ]
+    },
+    {
+      "tables": [
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id"
+          ],
+          "pk": "order_id",
+          "hub": true
+        },
+        {
+          "id": "lines",
+          "label": "order_lines",
+          "cols": [
+            "order_id",
+            "line_no"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "order_id": "orders.order_id"
+          }
+        }
+      ],
+      "title": "Parts versus history",
+      "id": "test",
+      "label": "Shape",
+      "kind": "schema",
+      "fromLyric": 34,
+      "toLyric": 35,
+      "steps": [
+        {
+          "lyricMin": 34,
+          "actions": [
+            "enter",
+            "show-schema",
+            "show-title"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "shape-4",
+      "label": "Shape",
+      "kind": "schema",
+      "title": "Parts versus history",
+      "tables": [
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id"
+          ],
+          "pk": "order_id",
+          "hub": true
+        },
+        {
+          "id": "lines",
+          "label": "order_lines",
+          "cols": [
+            "order_id",
+            "line_no"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "order_id": "orders.order_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 35,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 36,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 35,
+      "toLyric": 43
+    },
+    {
+      "id": "declare-5",
+      "label": "Declare",
+      "kind": "sql",
+      "title": "Lines ride with the order",
+      "prompt": "CASCADE on a part",
+      "sql": [
+        "FOREIGN KEY (order_id)",
+        "REFERENCES orders (order_id)",
+        "ON DELETE CASCADE",
+        "ON UPDATE CASCADE"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 43,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 43,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 44,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 43,
+      "toLyric": 47
+    },
+    {
+      "id": "shape-5",
+      "label": "Shape",
+      "kind": "schema",
+      "title": "Parts versus history",
+      "tables": [
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id"
+          ],
+          "pk": "order_id",
+          "hub": true
+        },
+        {
+          "id": "lines",
+          "label": "order_lines",
+          "cols": [
+            "order_id",
+            "line_no"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "order_id": "orders.order_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 47,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 48,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 47,
+      "toLyric": 50
+    },
+    {
+      "id": "declare-6",
+      "label": "Declare",
+      "kind": "sql",
+      "title": "Lines ride with the order",
+      "prompt": "CASCADE on a part",
+      "sql": [
+        "FOREIGN KEY (order_id)",
+        "REFERENCES orders (order_id)",
+        "ON DELETE CASCADE",
+        "ON UPDATE CASCADE"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 50,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 50,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 51,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 50,
+      "toLyric": 62
+    },
+    {
+      "id": "shape-6",
+      "label": "Shape",
+      "kind": "schema",
+      "title": "Parts versus history",
+      "tables": [
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id"
+          ],
+          "pk": "order_id",
+          "hub": true
+        },
+        {
+          "id": "lines",
+          "label": "order_lines",
+          "cols": [
+            "order_id",
+            "line_no"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "order_id": "orders.order_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 62,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 63,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 62,
+      "toLyric": 71
+    },
+    {
+      "id": "declare-7",
+      "label": "Declare",
+      "kind": "sql",
+      "title": "Lines ride with the order",
+      "prompt": "CASCADE on a part",
+      "sql": [
+        "FOREIGN KEY (order_id)",
+        "REFERENCES orders (order_id)",
+        "ON DELETE CASCADE",
+        "ON UPDATE CASCADE"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 71,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 71,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 72,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 71,
+      "toLyric": 77
+    },
+    {
+      "id": "shape-7",
+      "label": "Shape",
+      "kind": "schema",
+      "title": "Parts versus history",
+      "tables": [
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id"
+          ],
+          "pk": "order_id",
+          "hub": true
+        },
+        {
+          "id": "lines",
+          "label": "order_lines",
+          "cols": [
+            "order_id",
+            "line_no"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "order_id": "orders.order_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 77,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 78,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 77,
+      "toLyric": 85
+    },
+    {
+      "id": "declare-8",
+      "label": "Declare",
+      "kind": "sql",
+      "title": "Lines ride with the order",
+      "prompt": "CASCADE on a part",
+      "sql": [
+        "FOREIGN KEY (order_id)",
+        "REFERENCES orders (order_id)",
+        "ON DELETE CASCADE",
+        "ON UPDATE CASCADE"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 85,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 87,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 88,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 85,
+      "toLyric": 99
+    },
+    {
+      "id": "shape-8",
+      "label": "Shape",
+      "kind": "schema",
+      "title": "Parts versus history",
+      "tables": [
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id"
+          ],
+          "pk": "order_id",
+          "hub": true
+        },
+        {
+          "id": "lines",
+          "label": "order_lines",
+          "cols": [
+            "order_id",
+            "line_no"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "order_id": "orders.order_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 99,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 99,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 99,
+      "toLyric": 100
+    },
+    {
+      "id": "declare-9",
+      "label": "Declare",
+      "kind": "sql",
+      "title": "Lines ride with the order",
+      "prompt": "CASCADE on a part",
+      "sql": [
+        "FOREIGN KEY (order_id)",
+        "REFERENCES orders (order_id)",
+        "ON DELETE CASCADE",
+        "ON UPDATE CASCADE"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 100,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 101,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 102,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 100,
+      "toLyric": 106
+    },
+    {
+      "id": "shape-9",
+      "label": "Shape",
+      "kind": "schema",
+      "title": "Parts versus history",
+      "tables": [
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id"
+          ],
+          "pk": "order_id",
+          "hub": true
+        },
+        {
+          "id": "lines",
+          "label": "order_lines",
+          "cols": [
+            "order_id",
+            "line_no"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "order_id": "orders.order_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 106,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 107,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 106,
+      "toLyric": 110
+    }
+  ],
+  "lyrics": [
+    {
+      "start": 0.05,
+      "end": 3.458,
+      "text": "A foreign key does not only check new child rows.",
+      "slide": ""
+    },
+    {
+      "start": 3.458,
+      "end": 7.43,
+      "text": "It also decides what happens when the parent moves or leaves.",
+      "slide": ""
+    },
+    {
+      "start": 7.43,
+      "end": 13.611,
+      "text": "ON DELETE RESTRICT or NO ACTION refuses to delete a parent that still has children.",
+      "slide": ""
+    },
+    {
+      "start": 13.611,
+      "end": 18.638,
+      "text": "That is the safe default in spirit, even when the dialect wording differs.",
+      "slide": ""
+    },
+    {
+      "start": 18.638,
+      "end": 21.513,
+      "text": "Maya still has orders, so Maya stays.",
+      "slide": ""
+    },
+    {
+      "start": 21.513,
+      "end": 24.597,
+      "text": "ON DELETE CASCADE deletes the children too.",
+      "slide": ""
+    },
+    {
+      "start": 24.597,
+      "end": 27.819,
+      "text": "Delete the order, and the order lines go with it.",
+      "slide": ""
+    },
+    {
+      "start": 27.819,
+      "end": 29.68,
+      "text": "That matches a weak entity.",
+      "slide": ""
+    },
+    {
+      "start": 29.68,
+      "end": 31.472,
+      "text": "It is violent on a customer.",
+      "slide": ""
+    },
+    {
+      "start": 31.472,
+      "end": 36.402,
+      "text": "Do not cascade a customer delete unless you truly mean to erase history.",
+      "slide": ""
+    },
+    {
+      "start": 36.402,
+      "end": 40.388,
+      "text": "ON DELETE SET NULL clears the pointer and keeps the child.",
+      "slide": ""
+    },
+    {
+      "start": 40.388,
+      "end": 43.069,
+      "text": "The order remains, with no customer.",
+      "slide": ""
+    },
+    {
+      "start": 43.069,
+      "end": 44.944,
+      "text": "The column must allow NULL.",
+      "slide": ""
+    },
+    {
+      "start": 44.944,
+      "end": 48.916,
+      "text": "ON DELETE SET DEFAULT writes the default value instead.",
+      "slide": ""
+    },
+    {
+      "start": 48.916,
+      "end": 53.013,
+      "text": "Useful when a placeholder parent exists, rare otherwise.",
+      "slide": ""
+    },
+    {
+      "start": 53.013,
+      "end": 57.666,
+      "text": "ON UPDATE CASCADE copies a changed parent key into the children.",
+      "slide": ""
+    },
+    {
+      "start": 57.666,
+      "end": 61.166,
+      "text": "If you never change primary keys, you barely need it.",
+      "slide": ""
+    },
+    {
+      "start": 61.166,
+      "end": 64.583,
+      "text": "That is one more reason to prefer dull surrogates.",
+      "slide": ""
+    },
+    {
+      "start": 64.583,
+      "end": 68.319,
+      "text": "Write the action next to the foreign key, not in a wiki.",
+      "slide": ""
+    },
+    {
+      "start": 68.319,
+      "end": 70.527,
+      "text": "The engine will not read the wiki.",
+      "slide": ""
+    },
+    {
+      "start": 70.527,
+      "end": 73.791,
+      "text": "Different relationships deserve different actions.",
+      "slide": ""
+    },
+    {
+      "start": 73.791,
+      "end": 76.777,
+      "text": "order_lines cascade from orders.",
+      "slide": ""
+    },
+    {
+      "start": 76.777,
+      "end": 79.041,
+      "text": "orders restrict from customers.",
+      "slide": ""
+    },
+    {
+      "start": 79.041,
+      "end": 83.305,
+      "text": "credentials cascade from customers if you treat them as a part.",
+      "slide": ""
+    },
+    {
+      "start": 83.305,
+      "end": 84.833,
+      "text": "Think in sentences.",
+      "slide": ""
+    },
+    {
+      "start": 84.833,
+      "end": 89.0,
+      "text": "When an order disappears, its lines were never independent.",
+      "slide": ""
+    },
+    {
+      "start": 89.0,
+      "end": 96.569,
+      "text": "When a customer disappears, the orders are history, so refuse, or archive, or soft-delete instead.",
+      "slide": ""
+    },
+    {
+      "start": 96.569,
+      "end": 101.222,
+      "text": "Soft-delete is an application pattern: a deleted_at column.",
+      "slide": ""
+    },
+    {
+      "start": 101.222,
+      "end": 103.208,
+      "text": "It is not an ON DELETE action.",
+      "slide": ""
+    },
+    {
+      "start": 103.208,
+      "end": 105.236,
+      "text": "Do not mix them without a plan.",
+      "slide": ""
+    },
+    {
+      "start": 105.236,
+      "end": 107.486,
+      "text": "Test the action with two rows.",
+      "slide": ""
+    },
+    {
+      "start": 107.486,
+      "end": 108.819,
+      "text": "Delete the parent.",
+      "slide": ""
+    },
+    {
+      "start": 108.819,
+      "end": 112.555,
+      "text": "See whether the child vanished, blocked, or went null.",
+      "slide": ""
+    },
+    {
+      "start": 112.555,
+      "end": 114.236,
+      "text": "Then keep that behavior.",
+      "slide": ""
+    },
+    {
+      "start": 114.236,
+      "end": 118.666,
+      "text": "ON DELETE CASCADE on a tall tree can remove more than you see.",
+      "slide": ""
+    },
+    {
+      "start": 118.666,
+      "end": 125.416,
+      "text": "A customer cascade that also cascades orders that cascade lines that cascade shipments is a cliff.",
+      "slide": ""
+    },
+    {
+      "start": 125.416,
+      "end": 127.75,
+      "text": "Draw the cliff before you enable it.",
+      "slide": ""
+    },
+    {
+      "start": 127.75,
+      "end": 131.569,
+      "text": "RESTRICT two levels up even if the bottom cascades.",
+      "slide": ""
+    },
+    {
+      "start": 131.569,
+      "end": 134.444,
+      "text": "NO ACTION and RESTRICT are close.",
+      "slide": ""
+    },
+    {
+      "start": 134.444,
+      "end": 139.305,
+      "text": "The difference is when the check runs, especially with deferred constraints.",
+      "slide": ""
+    },
+    {
+      "start": 139.305,
+      "end": 141.833,
+      "text": "In classroom SQL they feel the same.",
+      "slide": ""
+    },
+    {
+      "start": 141.833,
+      "end": 144.347,
+      "text": "In a long transaction they might not.",
+      "slide": ""
+    },
+    {
+      "start": 144.347,
+      "end": 147.375,
+      "text": "SET NULL can surprise a NOT NULL you forgot.",
+      "slide": ""
+    },
+    {
+      "start": 147.375,
+      "end": 151.013,
+      "text": "The ALTER will fail, or the delete will fail later.",
+      "slide": ""
+    },
+    {
+      "start": 151.013,
+      "end": 152.444,
+      "text": "Pair them on purpose.",
+      "slide": ""
+    },
+    {
+      "start": 152.444,
+      "end": 156.055,
+      "text": "Some teams never cascade from an application user.",
+      "slide": ""
+    },
+    {
+      "start": 156.055,
+      "end": 162.222,
+      "text": "They delete children in a script, then delete the parent, all inside one transaction.",
+      "slide": ""
+    },
+    {
+      "start": 162.222,
+      "end": 166.68,
+      "text": "The foreign key still RESTRICT, which catches a missed child table.",
+      "slide": ""
+    },
+    {
+      "start": 166.68,
+      "end": 168.388,
+      "text": "That is a valid policy.",
+      "slide": ""
+    },
+    {
+      "start": 168.388,
+      "end": 170.638,
+      "text": "The engine is the last reviewer.",
+      "slide": ""
+    },
+    {
+      "start": 170.638,
+      "end": 174.347,
+      "text": "Triggers that delete children are a homemade cascade.",
+      "slide": ""
+    },
+    {
+      "start": 174.347,
+      "end": 178.111,
+      "text": "Prefer the declared action unless you need extra logging.",
+      "slide": ""
+    },
+    {
+      "start": 178.111,
+      "end": 181.763,
+      "text": "Logging can live in a trigger that does not replace the action.",
+      "slide": ""
+    },
+    {
+      "start": 181.763,
+      "end": 183.263,
+      "text": "Document the cliff.",
+      "slide": ""
+    },
+    {
+      "start": 183.263,
+      "end": 184.666,
+      "text": "Test it on a copy.",
+      "slide": ""
+    },
+    {
+      "start": 184.666,
+      "end": 187.097,
+      "text": "Then the production delete is boring.",
+      "slide": ""
+    },
+    {
+      "start": 187.097,
+      "end": 188.847,
+      "text": "Boring deletes are the goal.",
+      "slide": ""
+    },
+    {
+      "start": 188.847,
+      "end": 194.958,
+      "text": "Actions are how you choose the boredom: refuse, take the children, or drop the pointer.",
+      "slide": ""
+    },
+    {
+      "start": 194.958,
+      "end": 196.138,
+      "text": "Pick per arrow.",
+      "slide": ""
+    },
+    {
+      "start": 196.138,
+      "end": 197.805,
+      "text": "Write it in the constraint.",
+      "slide": ""
+    },
+    {
+      "start": 197.805,
+      "end": 198.625,
+      "text": "Sleep.",
+      "slide": ""
+    },
+    {
+      "start": 198.625,
+      "end": 201.263,
+      "text": "An action is a story about grief.",
+      "slide": ""
+    },
+    {
+      "start": 201.263,
+      "end": 202.638,
+      "text": "The parent is gone.",
+      "slide": ""
+    },
+    {
+      "start": 202.638,
+      "end": 206.875,
+      "text": "Do the children vanish, stay unnamed, or block the funeral?",
+      "slide": ""
+    },
+    {
+      "start": 206.875,
+      "end": 208.638,
+      "text": "Pick the story per arrow.",
+      "slide": ""
+    },
+    {
+      "start": 208.638,
+      "end": 211.25,
+      "text": "Do not inherit CASCADE from a snippet.",
+      "slide": ""
+    },
+    {
+      "start": 211.25,
+      "end": 214.097,
+      "text": "Snippets do not know your history table.",
+      "slide": ""
+    },
+    {
+      "start": 214.097,
+      "end": 215.555,
+      "text": "Restrict history.",
+      "slide": ""
+    },
+    {
+      "start": 215.555,
+      "end": 216.93,
+      "text": "Cascade parts.",
+      "slide": ""
+    },
+    {
+      "start": 216.93,
+      "end": 220.027,
+      "text": "Null only when unnamed is a real state.",
+      "slide": ""
+    },
+    {
+      "start": 220.027,
+      "end": 223.041,
+      "text": "Test with two rows, not with production.",
+      "slide": ""
+    },
+    {
+      "start": 223.041,
+      "end": 225.597,
+      "text": "Read the row counts after the delete.",
+      "slide": ""
+    },
+    {
+      "start": 225.597,
+      "end": 228.416,
+      "text": "Keep the story that matches those counts.",
+      "slide": ""
+    },
+    {
+      "start": 228.416,
+      "end": 230.708,
+      "text": "Write the story in the constraint.",
+      "slide": ""
+    },
+    {
+      "start": 230.708,
+      "end": 233.027,
+      "text": "Then a new engineer will not guess.",
+      "slide": ""
+    },
+    {
+      "start": 233.027,
+      "end": 235.361,
+      "text": "Guessing is how cliffs get steeper.",
+      "slide": ""
+    },
+    {
+      "start": 235.361,
+      "end": 237.708,
+      "text": "Declared actions are the railing.",
+      "slide": ""
+    },
+    {
+      "start": 237.708,
+      "end": 243.694,
+      "text": "A foreign key is a link: one or more columns in a child that reference a parent's key.",
+      "slide": ""
+    },
+    {
+      "start": 243.694,
+      "end": 247.486,
+      "text": "A review points at a product and may also point at a user.",
+      "slide": ""
+    },
+    {
+      "start": 247.486,
+      "end": 250.472,
+      "text": "Two foreign keys on one child is normal.",
+      "slide": ""
+    },
+    {
+      "start": 250.472,
+      "end": 252.18,
+      "text": "Name each constraint.",
+      "slide": ""
+    },
+    {
+      "start": 252.18,
+      "end": 263.722,
+      "text": "CONSTRAINT reviews_product_fk FOREIGN KEY (product_id) REFERENCES products (product_id) is a sentence the engine can run.",
+      "slide": ""
+    },
+    {
+      "start": 263.722,
+      "end": 272.777,
+      "text": "The default referential action is NO ACTION or RESTRICT, depending on dialect: refuse the parent change if children exist.",
+      "slide": ""
+    },
+    {
+      "start": 272.777,
+      "end": 278.263,
+      "text": "That default is how you do not evaporate history by deleting a product someone reviewed.",
+      "slide": ""
+    },
+    {
+      "start": 278.378,
+      "end": 282.855,
+      "text": "ON DELETE CASCADE deletes matching children when the parent goes.",
+      "slide": ""
+    },
+    {
+      "start": 282.855,
+      "end": 292.411,
+      "text": "Use it when the child cannot exist without the parent and you mean to destroy the whole bundle: order lines when an unfinished order is discarded.",
+      "slide": ""
+    },
+    {
+      "start": 292.411,
+      "end": 295.994,
+      "text": "Do not cascade a product into a year of invoices.",
+      "slide": ""
+    },
+    {
+      "start": 295.994,
+      "end": 300.703,
+      "text": "ON DELETE SET NULL clears the child's pointer and keeps the child row.",
+      "slide": ""
+    },
+    {
+      "start": 300.703,
+      "end": 306.716,
+      "text": "Reviews might remain as anonymous text if a user is removed and the business allows it.",
+      "slide": ""
+    },
+    {
+      "start": 306.716,
+      "end": 308.591,
+      "text": "The column must allow NULL.",
+      "slide": ""
+    },
+    {
+      "start": 308.591,
+      "end": 315.064,
+      "text": "ON DELETE SET DEFAULT points the child at a declared default parent, such as a placeholder user.",
+      "slide": ""
+    },
+    {
+      "start": 315.064,
+      "end": 320.203,
+      "text": "ON UPDATE CASCADE rewrites the copied key if the parent's key changes.",
+      "slide": ""
+    },
+    {
+      "start": 320.203,
+      "end": 325.508,
+      "text": "If your primary keys are dull and never edited, you will barely need ON UPDATE.",
+      "slide": ""
+    },
+    {
+      "start": 325.508,
+      "end": 327.966,
+      "text": "That is a reason dull keys are kind.",
+      "slide": ""
+    },
+    {
+      "start": 327.966,
+      "end": 334.466,
+      "text": "If you used a natural key people edit, ON UPDATE CASCADE is a moving truck for every child.",
+      "slide": ""
+    },
+    {
+      "start": 334.466,
+      "end": 336.828,
+      "text": "Prefer not to move the house numbers.",
+      "slide": ""
+    },
+    {
+      "start": 336.828,
+      "end": 339.591,
+      "text": "Prefer a surrogate that never changes.",
+      "slide": ""
+    },
+    {
+      "start": 339.591,
+      "end": 350.064,
+      "text": "Match the action to the sentence in requirements: when a parent leaves, children vanish, children stay with a hole, or the parent is not allowed to leave.",
+      "slide": ""
+    },
+    {
+      "start": 350.064,
+      "end": 352.369,
+      "text": "Write that sentence in the constraint.",
+      "slide": ""
+    },
+    {
+      "start": 352.369,
+      "end": 358.341,
+      "text": "Test it: insert parent, insert child, delete parent, SELECT the child.",
+      "slide": ""
+    },
+    {
+      "start": 358.341,
+      "end": 363.244,
+      "text": "If the child is gone and you wanted a hole, you cascaded by mistake.",
+      "slide": ""
+    },
+    {
+      "start": 363.244,
+      "end": 368.341,
+      "text": "If the delete errors and you wanted a bundle gone, you restricted by mistake.",
+      "slide": ""
+    },
+    {
+      "start": 368.341,
+      "end": 371.411,
+      "text": "Multiple children mean multiple policies.",
+      "slide": ""
+    },
+    {
+      "start": 371.411,
+      "end": 373.064,
+      "text": "Payments might restrict.",
+      "slide": ""
+    },
+    {
+      "start": 373.064,
+      "end": 374.966,
+      "text": "Draft lines might cascade.",
+      "slide": ""
+    },
+    {
+      "start": 374.966,
+      "end": 378.758,
+      "text": "Do not pick one action for the whole database out of fashion.",
+      "slide": ""
+    },
+    {
+      "start": 378.758,
+      "end": 380.328,
+      "text": "Pick per relationship.",
+      "slide": ""
+    },
+    {
+      "start": 380.328,
+      "end": 385.286,
+      "text": "SQLite still needs foreign keys enabled or none of the actions run.",
+      "slide": ""
+    },
+    {
+      "start": 385.286,
+      "end": 389.564,
+      "text": "Turn them on in every connection that should obey the design.",
+      "slide": ""
+    },
+    {
+      "start": 389.564,
+      "end": 395.494,
+      "text": "Then delete and update are part of the schema, not a scavenger hunt in application code.",
+      "slide": ""
+    }
+  ]
+}

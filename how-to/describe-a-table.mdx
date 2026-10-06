@@ -1,0 +1,45 @@
+---
+title: "Describe a table"
+description: "Show column types and keys in MySQL with DESCRIBE."
+---
+
+`.schema` is SQLite. On MySQL, `DESCRIBE` (or `DESC`) prints the live column list.
+
+## Prerequisites
+
+- [Connect to MySQL](/how-to/connect-to-mysql)
+- A table in the current database
+
+## Describe the table
+
+<Steps>
+  <Step title="Run DESCRIBE">
+    ```sql
+    DESCRIBE cards;
+    ```
+
+    Columns include `Field`, `Type`, `Null`, `Key`, `Default`, `Extra`.
+  </Step>
+  <Step title="Read the Key column">
+    | Key | Meaning |
+    | --- | --- |
+    | `PRI` | Primary key |
+    | `UNI` | Unique |
+    | `MUL` | Indexed, non-unique (often a foreign key) |
+  </Step>
+</Steps>
+
+## Verify the result
+
+You succeeded when every column you created appears with the expected type and key flags.
+
+## Troubleshooting
+
+- **Empty result / unknown table**: `USE` the right database; check spelling.
+- **Need create text**: `SHOW CREATE TABLE cards;` prints the full `CREATE` statement.
+
+## Related pages
+
+- [DESCRIBE](/reference/describe)
+- [Create a table in MySQL](/how-to/create-a-mysql-table)
+- [Show a schema](/how-to/show-a-schema)

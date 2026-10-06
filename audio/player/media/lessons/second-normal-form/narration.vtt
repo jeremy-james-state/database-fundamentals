@@ -1,0 +1,652 @@
+1
+00:00:00,050 --> 00:00:04,930
+Second normal form starts from first, then asks a narrower question.
+
+2
+00:00:04,930 --> 00:00:11,222
+If the primary key has more than one column, every non-key fact must depend on the whole key.
+
+3
+00:00:11,222 --> 00:00:12,569
+Not on a piece of it.
+
+4
+00:00:12,569 --> 00:00:17,833
+Enrollment has student_id and course_id as the key.
+
+5
+00:00:17,833 --> 00:00:19,472
+grade depends on both.
+
+6
+00:00:19,472 --> 00:00:25,930
+Maya's A in Harbor Light is not Maya's grade in general, and not the course's grade in general.
+
+7
+00:00:25,930 --> 00:00:30,000
+student_name depends only on student_id.
+
+8
+00:00:30,000 --> 00:00:31,861
+That is a partial dependence.
+
+9
+00:00:31,861 --> 00:00:34,944
+The name will repeat on every enrollment row.
+
+10
+00:00:34,944 --> 00:00:38,944
+If Maya changes her name, you hunt every course she took.
+
+11
+00:00:38,944 --> 00:00:41,861
+Move student_name to students.
+
+12
+00:00:41,861 --> 00:00:43,666
+Leave grade on enrollment.
+
+13
+00:00:43,666 --> 00:00:47,527
+course_title depends only on course_id.
+
+14
+00:00:47,527 --> 00:00:48,958
+Move it to courses.
+
+15
+00:00:48,958 --> 00:00:50,722
+The test is a sentence.
+
+16
+00:00:50,722 --> 00:00:54,805
+Does this fact describe the pair, or only one of the partners?
+
+17
+00:00:54,805 --> 00:00:58,430
+Facts about one partner belong on that partner's table.
+
+18
+00:00:58,430 --> 00:01:03,472
+If the primary key is a single column, partial dependence cannot happen.
+
+19
+00:01:03,472 --> 00:01:06,430
+A single-column key is already whole.
+
+20
+00:01:06,430 --> 00:01:10,944
+That is why people say second normal form is about composite keys.
+
+21
+00:01:10,944 --> 00:01:12,250
+They are right enough.
+
+22
+00:01:12,250 --> 00:01:14,708
+You still want first normal form either way.
+
+23
+00:01:14,708 --> 00:01:20,444
+A surrogate key on enrollment does not excuse stuffing student_name beside it.
+
+24
+00:01:20,444 --> 00:01:24,222
+The real identifier of the fact might still be the pair.
+
+25
+00:01:24,222 --> 00:01:27,611
+Look at the meaning, not only the columns you numbered.
+
+26
+00:01:27,611 --> 00:01:29,888
+Repeating a name is the smell.
+
+27
+00:01:29,888 --> 00:01:33,388
+Updating a name in three places is the fire.
+
+28
+00:01:33,388 --> 00:01:35,236
+Fix by splitting the table.
+
+29
+00:01:35,236 --> 00:01:38,125
+Do not fix by asking people to be careful.
+
+30
+00:01:38,125 --> 00:01:40,763
+Careful does not survive a second clerk.
+
+31
+00:01:40,763 --> 00:01:42,444
+Draw the composite key.
+
+32
+00:01:42,444 --> 00:01:44,013
+List the other columns.
+
+33
+00:01:44,013 --> 00:01:48,527
+Arrow each one to the smallest set of key columns it describes.
+
+34
+00:01:48,527 --> 00:01:51,944
+Arrows that stop short of the full key are the work.
+
+35
+00:01:51,944 --> 00:01:54,444
+That drawing is second normal form.
+
+36
+00:01:54,444 --> 00:01:57,291
+Partial dependence hides in shipping dumps.
+
+37
+00:01:57,291 --> 00:02:01,972
+A file of lines includes customer email because the warehouse wanted it.
+
+38
+00:02:01,972 --> 00:02:04,861
+Email depends on customer, not on the line.
+
+39
+00:02:04,861 --> 00:02:07,402
+Put it back on customers, and join.
+
+40
+00:02:07,402 --> 00:02:13,208
+If the dump is a snapshot for a truck that already left, that email might be history.
+
+41
+00:02:13,208 --> 00:02:18,138
+Then it is denormalization with an owner, not second normal form failure.
+
+42
+00:02:18,138 --> 00:02:19,194
+Say which.
+
+43
+00:02:19,194 --> 00:02:24,402
+Wide composite keys collect extra columns the way pockets collect coins.
+
+44
+00:02:24,402 --> 00:02:28,486
+Each coin gets the sentence: does this describe the whole key?
+
+45
+00:02:28,486 --> 00:02:32,277
+If you cannot answer, you do not understand the column yet.
+
+46
+00:02:32,277 --> 00:02:34,013
+Do not keep it until you do.
+
+47
+00:02:34,013 --> 00:02:39,777
+Star schemas in warehouses sometimes sit in a different normal-form conversation.
+
+48
+00:02:39,777 --> 00:02:42,180
+Dimensions repeat on purpose.
+
+49
+00:02:42,180 --> 00:02:46,416
+This lesson is about operational tables you update all day.
+
+50
+00:02:46,416 --> 00:02:51,319
+Do not copy a warehouse shape into checkout because a talk mentioned stars.
+
+51
+00:02:51,319 --> 00:02:53,583
+Checkout wants second normal form.
+
+52
+00:02:53,583 --> 00:02:55,152
+The warehouse can wait.
+
+53
+00:02:55,152 --> 00:03:01,986
+When a composite key is only there because you refused a surrogate, you can add the surrogate and UNIQUE the pair.
+
+54
+00:03:01,986 --> 00:03:05,222
+Partial dependence is still about the pair's meaning.
+
+55
+00:03:05,222 --> 00:03:11,875
+student_name still does not belong beside enrollment_id if it describes the student.
+
+56
+00:03:11,875 --> 00:03:13,847
+Meaning, then columns.
+
+57
+00:03:13,847 --> 00:03:18,652
+The drawing of arrows from facts to the smallest key is the whole skill.
+
+58
+00:03:18,652 --> 00:03:21,291
+Practice it on one ugly spreadsheet.
+
+59
+00:03:21,291 --> 00:03:24,513
+The ugly ones teach more than the tidy bookstore.
+
+60
+00:03:24,513 --> 00:03:28,152
+Ask of every extra column: whose fact is this?
+
+61
+00:03:28,152 --> 00:03:31,930
+If the answer is only one partner of a pair, move it.
+
+62
+00:03:31,930 --> 00:03:34,361
+If the answer is the pair, keep it.
+
+63
+00:03:34,361 --> 00:03:37,680
+If the answer is I do not know, do not load it yet.
+
+64
+00:03:37,680 --> 00:03:41,375
+Unknown ownership is how email lands on a line item.
+
+65
+00:03:41,375 --> 00:03:43,944
+Known ownership is a two-table join.
+
+66
+00:03:43,944 --> 00:03:45,194
+Prefer the join.
+
+67
+00:03:45,194 --> 00:03:48,000
+The repeating name is not decoration.
+
+68
+00:03:48,000 --> 00:03:50,277
+It is a pointer you refused to draw.
+
+69
+00:03:50,277 --> 00:03:51,125
+Draw it.
+
+70
+00:03:51,125 --> 00:03:55,291
+Second normal form is that drawing, with less vocabulary.
+
+71
+00:03:55,291 --> 00:03:57,458
+Use the vocabulary if you like.
+
+72
+00:03:57,458 --> 00:03:59,180
+Use the drawing either way.
+
+73
+00:03:59,180 --> 00:04:04,222
+A table can have a key, types, and atomic cells, and still be wrong.
+
+74
+00:04:04,222 --> 00:04:07,958
+Second normal form starts only after first is true.
+
+75
+00:04:07,958 --> 00:04:14,583
+The simplified rule: every non-key column depends on the whole primary key, not a piece of it.
+
+76
+00:04:14,583 --> 00:04:17,666
+Partial dependency is the name of the crime.
+
+77
+00:04:17,666 --> 00:04:21,055
+It shows up when the primary key is composite.
+
+78
+00:04:21,055 --> 00:04:29,541
+If the key is order_id plus product_id, product_name depends only on product_id.
+
+79
+00:04:29,541 --> 00:04:31,847
+It does not need the order to be true.
+
+80
+00:04:31,847 --> 00:04:37,736
+So product_name on that table will repeat on every order that sells the product.
+
+81
+00:04:37,850 --> 00:04:43,994
+Update the name on one line, miss the others, and the catalog disagrees with itself.
+
+82
+00:04:43,994 --> 00:04:49,772
+Insert a product you have not sold yet, and you cannot store the name without faking an order.
+
+83
+00:04:49,772 --> 00:04:55,244
+Delete the last order line for a product, and you may lose the only copy of the name.
+
+84
+00:04:55,244 --> 00:05:00,383
+Those are insert, update, and delete anomalies from a partial dependency.
+
+85
+00:05:00,383 --> 00:05:06,494
+The fix is a product table with product_id as key and name as a column there.
+
+86
+00:05:06,494 --> 00:05:14,355
+The order line keeps order_id, product_id, and quantity, which really does depend on both.
+
+87
+00:05:14,355 --> 00:05:17,175
+Quantity is about this product on this order.
+
+88
+00:05:17,175 --> 00:05:18,869
+Name is about the product.
+
+89
+00:05:18,869 --> 00:05:23,036
+A non-key column is any column not in the primary key.
+
+90
+00:05:23,036 --> 00:05:30,897
+If the key is a single column, partial dependency cannot happen, and second normal form is free once first is done.
+
+91
+00:05:30,897 --> 00:05:36,897
+That is why surrogate keys make second look easy, and why composite keys make it visible.
+
+92
+00:05:36,897 --> 00:05:39,369
+Easy is not the same as understood.
+
+93
+00:05:39,369 --> 00:05:43,688
+Functional dependency means: if I know this, I know that.
+
+94
+00:05:43,688 --> 00:05:47,813
+If I know product_id, I know product_name.
+
+95
+00:05:47,813 --> 00:05:52,619
+If I know only order_id, I do not know product_name.
+
+96
+00:05:52,619 --> 00:05:56,730
+Draw those arrows on a scrap of paper when the table feels off.
+
+97
+00:05:56,730 --> 00:06:02,911
+Any arrow that starts from part of the key and lands on a non-key column is a split you still owe.
+
+98
+00:06:02,911 --> 00:06:09,466
+The full definition talks about every candidate key, not only the primary key you happened to pick.
+
+99
+00:06:09,466 --> 00:06:15,425
+If a leftover unique pair still has partial dependents, the table is not in second.
+
+100
+00:06:15,425 --> 00:06:22,147
+For this lesson, hunt composite keys and leftover attributes of one parent hiding on the child.
+
+101
+00:06:22,147 --> 00:06:24,591
+Move those attributes to the parent.
+
+102
+00:06:24,591 --> 00:06:26,688
+Keep the attributes of the pairing.
+
+103
+00:06:26,688 --> 00:06:33,202
+Then first still holds, and second holds, and third can talk about chains of non-key columns.
+
+104
+00:06:33,202 --> 00:06:44,758
+Another composite: classroom assignment with key (student_id, course_id), columns student_name, course_title, term, grade.
+
+105
+00:06:44,758 --> 00:06:48,688
+student_name depends on student_id only.
+
+106
+00:06:48,688 --> 00:06:52,341
+course_title depends on course_id only.
+
+107
+00:06:52,341 --> 00:06:56,147
+term and grade depend on both if a student can retake.
+
+108
+00:06:56,147 --> 00:06:58,161
+Split students and courses.
+
+109
+00:06:58,161 --> 00:07:01,550
+Keep enrollments as the pairing with term and grade.
+
+110
+00:07:01,550 --> 00:07:05,091
+You just turned a first-normal-form sheet into second.
+
+111
+00:07:05,091 --> 00:07:09,008
+The full version of second talks about every candidate key.
+
+112
+00:07:09,008 --> 00:07:18,105
+If UNIQUE (student_id, course_id, term) is the real identity, check dependents against that whole triple.
+
+113
+00:07:18,105 --> 00:07:22,063
+Simplified second is the whole primary key you declared.
+
+114
+00:07:22,063 --> 00:07:29,772
+Use simplified to learn, then glance at other uniques so you do not hide a partial dependency behind a surrogate.
+
+115
+00:07:29,772 --> 00:07:39,744
+A surrogate enrollment_id as primary key can hide that course_title still depends only on course_id sitting on the same row.
+
+116
+00:07:39,744 --> 00:07:42,063
+The surrogate did not grant second.
+
+117
+00:07:42,063 --> 00:07:46,161
+The leftover course_title still fails the spirit.
+
+118
+00:07:46,161 --> 00:07:47,341
+Move it anyway.
+
+119
+00:07:47,341 --> 00:07:50,980
+Close with questions, the way a careful lecture does.
+
+120
+00:07:50,980 --> 00:07:54,036
+Answer in a sentence you could defend at a keyboard.
+
+121
+00:07:54,036 --> 00:07:55,591
+When does second apply?
+
+122
+00:07:55,591 --> 00:07:58,952
+After first, especially on composite keys.
+
+123
+00:07:58,952 --> 00:08:00,758
+What is partial dependency?
+
+124
+00:08:00,758 --> 00:08:04,563
+A non-key column that depends on only part of the key.
+
+125
+00:08:04,563 --> 00:08:08,230
+Where does product_name belong on an order line?
+
+126
+00:08:08,230 --> 00:08:12,452
+On products, not on the line, if it is the catalog name.
+
+127
+00:08:12,452 --> 00:08:13,897
+What stays on the line?
+
+128
+00:08:13,897 --> 00:08:18,230
+Facts of the pairing: quantity, maybe sold price as history.
+
+129
+00:08:18,230 --> 00:08:19,619
+Three anomalies?
+
+130
+00:08:19,619 --> 00:08:24,772
+Insert, update, delete, from the leftover parent attributes.
+
+131
+00:08:24,772 --> 00:08:26,772
+Single-column primary key?
+
+132
+00:08:26,772 --> 00:08:31,772
+Partial dependency cannot happen; second is free once first holds.
+
+133
+00:08:31,772 --> 00:08:34,494
+Does a surrogate automatically grant second?
+
+134
+00:08:34,494 --> 00:08:35,258
+No.
+
+135
+00:08:35,258 --> 00:08:39,063
+Leftover parent attributes still fail the spirit.
+
+136
+00:08:39,063 --> 00:08:41,091
+What is a functional dependency?
+
+137
+00:08:41,091 --> 00:08:43,119
+If I know this, I know that.
+
+138
+00:08:43,119 --> 00:08:45,494
+Whole-key rule in one line?
+
+139
+00:08:45,494 --> 00:08:48,800
+Non-key columns depend on the whole primary key.
+
+140
+00:08:48,800 --> 00:08:50,161
+Candidate keys?
+
+141
+00:08:50,161 --> 00:08:55,286
+The full definition checks every candidate, not only the primary you picked.
+
+142
+00:08:55,286 --> 00:08:58,550
+Classroom assignment leftover student_name?
+
+143
+00:08:58,550 --> 00:09:02,147
+Depends only on student_id; move it.
+
+144
+00:09:02,147 --> 00:09:03,369
+grade on the pairing?
+
+145
+00:09:03,369 --> 00:09:07,091
+Depends on the whole enrollment key if retakes exist.
+
+146
+00:09:07,091 --> 00:09:08,147
+How do you hunt?
+
+147
+00:09:08,147 --> 00:09:12,452
+Composite keys and leftover parent attributes on the child.
+
+148
+00:09:12,452 --> 00:09:13,327
+Fix?
+
+149
+00:09:13,327 --> 00:09:18,175
+Parent table for the partial attributes, child keeps pairing facts.
+
+150
+00:09:18,175 --> 00:09:20,258
+Why composites make it visible?
+
+151
+00:09:20,258 --> 00:09:23,758
+You can see a key part that already determines a column.
+
+152
+00:09:23,758 --> 00:09:25,258
+Why surrogates hide it?
+
+153
+00:09:25,370 --> 00:09:29,597
+The key looks atomic while extra columns still describe a parent.
+
+154
+00:09:29,597 --> 00:09:30,861
+Must first hold?
+
+155
+00:09:30,861 --> 00:09:31,764
+Yes.
+
+156
+00:09:31,764 --> 00:09:32,986
+Nested dolls.
+
+157
+00:09:32,986 --> 00:09:35,292
+Is line_total a partial?
+
+158
+00:09:35,292 --> 00:09:38,903
+No if it needs both quantity and this line's price.
+
+159
+00:09:38,903 --> 00:09:41,472
+Sold price versus catalog price?
+
+160
+00:09:41,472 --> 00:09:45,625
+Catalog moves; sold price may be a freeze on the pairing.
+
+161
+00:09:45,625 --> 00:09:47,000
+When is second done?
+
+162
+00:09:47,000 --> 00:09:50,667
+No arrows from a key part to a non-key leftover.
+
+163
+00:09:50,667 --> 00:09:55,389
+If an answer needed a second table, go draw it before you write more SQL.
+

@@ -1,0 +1,34 @@
+---
+title: "SUM"
+description: "Returns the total of numeric values."
+---
+
+`NULL` values are skipped.
+
+## Syntax
+
+```sql
+SELECT SUM(column)
+FROM table;
+```
+
+## Arguments
+
+<ParamField body="column" type="numeric" required>
+  The numeric column to add, for example `votes`.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql Total votes
+SELECT SUM(votes)
+FROM books;
+```
+</CodeGroup>
+
+## Related references
+
+- [AVG](/reference/avg)
+- [COUNT](/reference/count)
+- [SQL](/concepts/sql#aggregator-functions)

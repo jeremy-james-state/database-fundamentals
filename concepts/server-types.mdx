@@ -1,0 +1,47 @@
+---
+title: "Server types"
+description: "MySQL and PostgreSQL use strict column types. SQLite mostly uses storage-class affinities."
+---
+
+The same idea—“this column is text”—becomes `TEXT` in SQLite, often `VARCHAR(n)` or `CHAR(n)` on a server. Wrong values are more likely to be rejected.
+
+## How types map from SQLite
+
+| Need | SQLite | MySQL (typical) | PostgreSQL (typical) |
+| --- | --- | --- | --- |
+| Short / fixed text | `TEXT` | `CHAR(n)`, `VARCHAR(n)` | `CHAR(n)`, `VARCHAR(n)`, `TEXT` |
+| Whole numbers | `INTEGER` | `TINYINT` … `BIGINT`, `INT` | `SMALLINT`, `INT`, `BIGINT` |
+| Auto id | `INTEGER PRIMARY KEY` | `INT AUTO_INCREMENT` | `SERIAL`, `BIGSERIAL` |
+| Decimals | `REAL` / `NUMERIC` | `FLOAT`, `DOUBLE`, `DECIMAL` | `REAL`, `DOUBLE PRECISION`, `NUMERIC` |
+| Date / time | `TEXT` / `NUMERIC` | `DATE`, `TIME`, `DATETIME`, `TIMESTAMP`, `YEAR` | `DATE`, `TIME`, `TIMESTAMP` |
+| Closed label set | `TEXT` + [CHECK](/reference/check) | `ENUM`, `SET` | `TEXT` + `CHECK`, or custom enum types |
+
+`ENUM` allows one value from a fixed list. `SET` allows zero or more from a list (MySQL).
+
+**Floating-point imprecision:** `FLOAT` and `DOUBLE` are approximate. Money and exact decimals belong in fixed-precision types (`DECIMAL` / `NUMERIC`), not binary floating point.
+
+## Why servers are stricter
+
+Affinity in SQLite will coerce when it can. MySQL and Postgres enforce the declared type more tightly by default. That catches bad inserts earlier.
+
+## When to pick a type
+
+- **`VARCHAR(n)`**: text with a known upper length
+- **`AUTO_INCREMENT` / `SERIAL`**: invent integer keys
+- **`DATE` / `TIMESTAMP`**: real calendar values, not free-form strings
+- **Skip `FLOAT` for money**: use exact numeric types
+
+## Related ideas
+
+Inspect MySQL columns with [DESCRIBE](/reference/describe). Change a type with [MODIFY](/how-to/modify-a-column).
+
+## Common mix-ups
+
+- **Affinity vs type**: SQLite prefers; servers require
+- **`ENUM` vs `CHECK`**: both limit values; dialect support differs
+
+## Further reading
+
+- [Storage classes](/concepts/storage-classes)
+- [Database servers](/concepts/database-servers)
+- [Create a table in MySQL](/how-to/create-a-mysql-table)

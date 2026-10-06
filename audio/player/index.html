@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relational databases — synced lesson</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css?v=91" />
+  </head>
+  <body>
+    <div class="atmosphere" aria-hidden="true"></div>
+
+    <header class="top" id="top">
+      <div class="top-main">
+        <div class="chrome-strip" id="chromeStrip">
+        <div class="now-playing" id="nowPlaying">
+          <p class="now-kicker" id="collectionTitle">Database fundamentals</p>
+          <div class="now-row">
+            <h1 id="title">Relational databases</h1>
+            <span class="now-dur" id="nowDuration"></span>
+          </div>
+        </div>
+
+        <div class="library" id="playlistRail">
+          <div class="library-disclose">
+            <button
+              type="button"
+              class="playlist-peek"
+              id="playlistPeek"
+              aria-label="Show library"
+              title="Show library"
+            ></button>
+            <button
+              type="button"
+              class="chrome-toggle playlist-toggle"
+              id="playlistToggle"
+              aria-expanded="true"
+              aria-controls="playlistViewport"
+              aria-label="Hide library"
+              title="Hide library"
+            >
+              <span class="chrome-toggle-icon" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="library-body" id="playlistViewport">
+            <button
+              type="button"
+              class="library-step"
+              id="playlistPrev"
+              aria-label="Scroll library left"
+              title="Scroll library left"
+            >
+              <span class="library-step-mark" aria-hidden="true"></span>
+            </button>
+            <nav class="playlist" id="playlist" aria-label="Course library"></nav>
+            <button
+              type="button"
+              class="library-step is-next"
+              id="playlistNext"
+              aria-label="Scroll library right"
+              title="Scroll library right"
+            >
+              <span class="library-step-mark" aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
+        </div>
+
+        <div class="controls" id="controls">
+          <button
+            type="button"
+            class="speed-btn"
+            id="speedBtn"
+            aria-label="Playback speed 1×"
+            title="Change playback speed"
+          >
+            1×
+          </button>
+          <button type="button" class="play-btn" id="playBtn" aria-label="Play">
+            <span class="play-icon" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="stage" id="stage">
+      <aside class="filmstrip-rail" id="filmstripRail">
+        <button
+          type="button"
+          class="chrome-toggle filmstrip-toggle"
+          id="filmstripToggle"
+          aria-expanded="true"
+          aria-controls="filmstrip"
+          aria-label="Hide chapters"
+          title="Hide chapters"
+        >
+          <span class="chrome-toggle-icon" aria-hidden="true"></span>
+        </button>
+        <nav class="filmstrip" id="filmstrip" aria-label="Chapters"></nav>
+      </aside>
+
+      <section class="pane visual" aria-label="Slide">
+        <div class="slide-frame">
+          <img id="slide" class="slide-img" alt="" aria-hidden="true" />
+          <div id="visualStage" class="visual-stage" aria-live="polite"></div>
+          <div class="slide-glow" aria-hidden="true"></div>
+        </div>
+      </section>
+
+      <section class="pane lyrics-pane" aria-label="Synced narration">
+        <button
+          type="button"
+          class="chrome-toggle lyrics-toggle"
+          id="lyricsToggle"
+          aria-expanded="true"
+          aria-controls="lyricsViewport"
+          aria-label="Hide lyrics"
+          title="Hide lyrics"
+        >
+          <span class="chrome-toggle-icon" aria-hidden="true"></span>
+        </button>
+        <div class="lyrics-viewport" id="lyricsViewport">
+          <div class="lyrics" id="lyrics"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="transport" id="transport">
+      <button
+        type="button"
+        class="chrome-toggle transport-toggle"
+        id="transportToggle"
+        aria-expanded="true"
+        aria-controls="transportBody"
+        aria-label="Hide scrubber"
+        title="Hide scrubber"
+      >
+        <span class="chrome-toggle-icon" aria-hidden="true"></span>
+      </button>
+      <div class="transport-body" id="transportBody">
+        <button type="button" class="ghost" id="backBtn" aria-label="Back 10 seconds">−10s</button>
+        <div class="scrub">
+          <div class="scrub-rail">
+            <div class="scrub-fill" id="scrubFill"></div>
+            <input type="range" id="scrub" min="0" max="1000" value="0" step="1" aria-label="Seek" />
+          </div>
+          <div class="times">
+            <span id="currentTime">0:00</span>
+            <span id="duration">0:00</span>
+          </div>
+        </div>
+        <button type="button" class="ghost" id="fwdBtn" aria-label="Forward 10 seconds">+10s</button>
+      </div>
+    </footer>
+
+    <audio id="audio" preload="auto"></audio>
+    <script src="player.js?v=91" type="module"></script>
+  </body>
+</html>

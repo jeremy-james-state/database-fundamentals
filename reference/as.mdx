@@ -1,0 +1,34 @@
+---
+title: "AS"
+description: "Names an output column."
+---
+
+Works for any item in the `SELECT` list, not only aggregates.
+
+## Syntax
+
+```sql
+SELECT expression AS alias
+FROM table;
+```
+
+## Arguments
+
+<ParamField body="alias" type="identifier" required>
+  The name shown in the result, for example `average_rating`.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql Rename
+SELECT ROUND(AVG(rating), 2) AS average_rating
+FROM books;
+```
+</CodeGroup>
+
+## Related references
+
+- [SELECT](/reference/select)
+- [ROUND](/reference/round)
+- [Summarize rows](/how-to/summarize-rows)

@@ -1,0 +1,60 @@
+---
+title: "ORDER BY"
+description: "Sorts the rows a query returns."
+---
+
+`ORDER BY` works for numbers and for text.
+
+## Syntax
+
+```sql
+SELECT column
+FROM table
+ORDER BY expression [ASC | DESC] [, expression [ASC | DESC] ...];
+```
+
+## Arguments
+
+<ParamField body="expression" type="column or expression" required>
+  Usually a column name. Earlier expressions in the list take priority. Later ones break ties.
+</ParamField>
+
+<ParamField body="ASC" type="keyword" default="ASC">
+  Least to greatest. A to Z for text. This is the default if you omit `ASC` and `DESC`.
+</ParamField>
+
+<ParamField body="DESC" type="keyword">
+  Greatest to least. Z to A for text.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql Default ascending
+SELECT title, rating
+FROM books
+ORDER BY rating
+LIMIT 10;
+```
+
+```sql Descending
+SELECT title, rating
+FROM books
+ORDER BY rating DESC
+LIMIT 10;
+```
+
+```sql Two columns
+SELECT title, rating, votes
+FROM books
+ORDER BY rating DESC, votes DESC
+LIMIT 10;
+```
+</CodeGroup>
+
+## Related references
+
+- [ASC](/reference/asc)
+- [DESC](/reference/desc)
+- [LIMIT](/reference/limit)
+- [Sort rows](/how-to/sort-rows)

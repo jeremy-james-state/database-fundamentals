@@ -1,0 +1,33 @@
+---
+title: "NATURAL JOIN"
+description: "Joins on every pair of columns that share a name."
+---
+
+You omit `ON`. If both tables have `id`, SQLite matches `id` to `id`. If they share more than one name, it matches all of them.
+
+## Syntax
+
+```sql
+SELECT column
+FROM table1
+NATURAL JOIN table2;
+```
+
+## Examples
+
+<CodeGroup>
+```sql Shared name
+SELECT *
+FROM books
+NATURAL JOIN ratings;
+```
+</CodeGroup>
+
+<Info>
+Prefer [JOIN](/reference/join) with `ON` so the match is visible. `NATURAL JOIN` hides the columns.
+</Info>
+
+## Related references
+
+- [JOIN](/reference/join)
+- [Join tables](/how-to/join-tables)

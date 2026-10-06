@@ -1,0 +1,361 @@
+A join is how you read two tables as if they were one honest list.
+
+customers has names.
+
+orders has totals.
+
+Neither table has the full sentence: Maya spent forty-two.
+
+The sentence appears when customer_id matches.
+
+FROM customers JOIN orders ON customers.customer_id equals orders.customer_id.
+
+ON is the match rule.
+
+It is not a filter in the WHERE sense, though it looks like one.
+
+It says which row on the left belongs with which row on the right.
+
+Inner join keeps a pair only when both sides match.
+
+Maya has two orders, so Maya appears twice.
+
+That duplication is correct.
+
+She really did order twice.
+
+A customer with no orders disappears from an inner join.
+
+An order whose customer_id is missing disappears too.
+
+Left join keeps every row from the left table.
+
+When there is no match, the right-hand columns are NULL.
+
+Those empty cells are the point, not a bug.
+
+They show you customers who have not ordered yet.
+
+Right join keeps every row from the right table.
+
+Most people write a left join and swap the table order instead.
+
+Full join keeps unmatched rows from both sides.
+
+SQLite does not ship a full join keyword.
+
+You can still build the idea with a union of two left joins.
+
+CROSS JOIN pairs every row with every row.
+
+Four customers and four orders become sixteen rows.
+
+Use it only when you mean a combination, not a match.
+
+When a result explodes in size, you probably forgot the ON clause.
+
+That accidental cross join is a famous mess.
+
+Natural join matches columns that share a name.
+
+It saves typing and hides the rule.
+
+Prefer ON with explicit columns.
+
+You can see the contract.
+
+Join more than two tables by repeating the pattern.
+
+Match orders to customers, then orders to stores.
+
+Each ON is one relationship.
+
+WHERE after a join filters the paired rows.
+
+Put city equals Austin in WHERE if you only want Austin pairs.
+
+Do not put the match itself in WHERE if you meant a left join.
+
+A condition on the right table in WHERE can turn a left join back into an inner join.
+
+Keep match rules in ON.
+
+Keep extra filters in WHERE, and watch NULLs.
+
+Aliases keep the sentence short.
+
+FROM customers AS c JOIN orders AS o ON c.customer_id equals o.customer_id.
+
+Qualify every column when names collide.
+
+Run the inner join, then the left join, on the same ON clause.
+
+Compare the row counts.
+
+The extra empty cells tell you who has no partner.
+
+That is the join doing its job.
+
+A join condition with OR is usually a mistake.
+
+You meant two different relationships, or you meant a filter.
+
+Keep ON tight.
+
+Inequality joins exist: every order whose total is greater than a threshold row.
+
+They are rare in this course.
+
+They can explode like a cross join.
+
+Prefer equality on keys.
+
+USING is a shorthand when both columns share a name.
+
+JOIN orders USING customer_id.
+
+It also folds the two columns into one in the result in some engines.
+
+ON is clearer while you learn.
+
+Select the columns you need.
+
+SELECT star after a join duplicates customer_id and hides which table it came from.
+
+Qualify.
+
+c.customer_id, o.order_id, o.total.
+
+When you join three tables, walk with your finger.
+
+customers to orders on customer_id.
+
+orders to lines on order_id.
+
+If a hop is missing, you invented a cross join in the middle.
+
+COUNT after a join counts pairs, not customers, unless you DISTINCT or group.
+
+Maya's two orders become two in the count.
+
+That is why summaries often group after they join.
+
+NULL on the match column never equals NULL.
+
+Those rows only survive a left join as unmatched.
+
+If you stored missing customers as zero, zero will join to nothing useful unless you have a fake customer zero.
+
+Prefer NULL and a left join, or a real guest customer row, and pick one.
+
+Practice with the four orders and three customers until the inner and left counts are numbers you can explain.
+
+Then the syntax is just spelling.
+
+The idea is the match.
+
+Name the match.
+
+Keep it in ON.
+
+Then choose which unmatched rows you still want to see.
+
+A join is how you ask a question that no single table can answer.
+
+Product names live on products.
+
+Review text lives on reviews.
+
+The question which reviews belong to which product needs both.
+
+FROM products JOIN reviews ON products.product_id equals reviews.product_id is the map.
+
+ON is the matching rule.
+
+It is not decoration.
+
+Without a matching rule, every product pairs with every review.
+
+That Cartesian product is huge, and almost every pair is a lie.
+
+The engine is not being clever.
+
+It is being literal: you asked for every combination.
+
+INNER JOIN keeps only pairs that match.
+
+A product with no reviews disappears from an inner join.
+
+A review whose product_id is missing from products also disappears.
+
+LEFT JOIN keeps every row from the left table.
+
+When there is no match, the right-hand columns are NULL.
+
+That is how you find products that have never been reviewed: LEFT JOIN, then WHERE review_id IS NULL.
+
+RIGHT JOIN keeps every row from the right table.
+
+FULL OUTER JOIN, where the engine has it, keeps rows from both sides, with NULLs where a match is missing.
+
+Most day-to-day work is inner or left.
+
+Say which rows you refuse to lose before you pick the join type.
+
+WHERE after a join filters the combined rows.
+
+Putting a right-table filter in WHERE on a left join can accidentally turn it into an inner join.
+
+If you meant to keep unmatched left rows, put that filter in ON, or test IS NULL on purpose.
+
+JOIN is about how rows meet.
+
+WHERE is about which combined rows you still want.
+
+Aliases shorten table names so products.product_id can be p.product_id.
+
+Once you alias, use the alias everywhere in that query.
+
+Qualify every column that exists on more than one table.
+
+product_id without a table name is ambiguous once both tables have it.
+
+You can join more than two tables, one pair at a time.
+
+Each ON should name a real key relationship, not a guess that two names look similar.
+
+Joining on city because both tables have a city column is usually a mistake.
+
+Cities are not identifiers.
+
+Keys are.
+
+Read a join query as: start from this table, bring matching rows from that table, then keep the ones that still matter.
+
+If the row count explodes, you probably matched too loosely or forgot ON.
+
+If the row count collapses to nothing, you probably inner-joined past a missing parent.
+
+Check counts at each join when the result looks wrong.
+
+The join is not magic.
+
+It is a matching rule you can say in one sentence.
+
+If you cannot say the sentence, do not write the JOIN yet.
+
+WHERE versus JOIN, as the lecture insists.
+
+Old style FROM products, reviews WHERE products.product_id equals reviews.product_id is an inner join in costume.
+
+Miss the WHERE and you have a Cartesian product again.
+
+JOIN ON makes the matching rule visible.
+
+Prefer the visible form.
+
+A WHERE that further filters price greater than twenty after the join is a row filter on the combined result.
+
+It is not a second join.
+
+People confuse them because both can mention two tables.
+
+ON is for how they meet.
+
+WHERE is for who remains.
+
+If you write LEFT JOIN and then WHERE right.key IS NOT NULL, you asked for inner.
+
+Write INNER JOIN if that is what you meant.
+
+The comparison of WHERE and JOIN is this: one combines, one selects, and stuffing combine logic into WHERE is how 2010 tutorials hid the Cartesian risk.
+
+Do not hide it.
+
+JOIN ON, then WHERE, then the rest.
+
+Close with questions, the way a careful lecture does.
+
+Answer in a sentence you could defend at a keyboard.
+
+What question needs a join?
+
+One that no single table can answer.
+
+What does ON do?
+
+It states the matching rule, usually a key.
+
+What is a Cartesian product here?
+
+Every row paired with every row because ON was missing.
+
+What does INNER JOIN drop?
+
+Unmatched rows from both sides.
+
+What does LEFT JOIN keep?
+
+Every row from the left table, NULL on the right when missing.
+
+How do you find parents with no children?
+
+LEFT JOIN, then WHERE child key IS NULL.
+
+When does WHERE turn a left join into an inner join?
+
+When it demands a non-NULL right column.
+
+Join versus WHERE?
+
+JOIN combines, WHERE filters the combination.
+
+Why alias tables?
+
+Shorter names, required once you alias, and to qualify shared column names.
+
+Why qualify product_id?
+
+Both tables have it after a join.
+
+Is joining on city usually right?
+
+No. Cities are not identifiers.
+
+Why did the product name repeat?
+
+Two reviews, so two result rows; the grain is the review.
+
+Should you SUM price on that grain?
+
+Not if you would count the product twice by accident.
+
+Old comma FROM with WHERE match?
+
+An inner join in costume, easy to forget the match.
+
+What do you count after each join?
+
+Row counts, to catch explosion or collapse.
+
+RIGHT JOIN in one sentence?
+
+Keep every row from the right table.
+
+FULL OUTER in one sentence?
+
+Keep rows from both sides, NULL where a match is missing.
+
+Which two types do most work?
+
+INNER and LEFT.
+
+What sentence must you say before JOIN?
+
+How these rows meet.
+
+If you cannot say it?
+
+Do not write the JOIN yet.
+
+If an answer needed a second table, go draw it before you write more SQL.

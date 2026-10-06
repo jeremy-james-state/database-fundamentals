@@ -1,0 +1,235 @@
+An entity is a thing you can describe and tell apart from other things of the same kind.
+
+A customer is an entity.
+
+An order is an entity.
+
+A book is an entity.
+
+Austin is usually not an entity on day one.
+
+It is a value of city, an attribute of customer.
+
+Attributes are facts about one entity.
+
+name, city, joined_on.
+
+If a fact has its own facts, it wanted to be an entity.
+
+city might grow a population, a state, a mayor.
+
+Then city becomes a table, and customers hold city_id.
+
+That promotion is normal.
+
+It is not a mistake in the first sketch.
+
+List nouns from the sentences people actually say.
+
+A customer places an order for a book.
+
+Three nouns.
+
+Then list facts about each noun.
+
+Customer: name, city, email.
+
+Order: placed_on, total.
+
+Book: title, year.
+
+Check one row in your head.
+
+Does it describe one thing?
+
+If a row describes Maya and also Harbor Light and also a shipping box, you mixed entities.
+
+Split until a row is one noun.
+
+Relationships are not attributes.
+
+customer_id on orders is not a fact about an order in the same way total is.
+
+It is a pointer to another entity.
+
+Keep that difference visible.
+
+Attributes should be atomic for first normal form, which is a later lesson.
+
+For now: one cell, one value.
+
+Not a comma-separated pile of authors.
+
+Derived facts are not attributes you must store.
+
+age can be computed from birth_date.
+
+Storing both is a chance to disagree.
+
+Prefer the source fact.
+
+Names are attributes; identity is a key.
+
+Do not use name as if it were a customer.
+
+Two Mayas exist.
+
+Walk a new domain with sticky notes if you want.
+
+One note per entity.
+
+Facts on the note.
+
+Arrows between notes.
+
+The notes become tables.
+
+The facts become columns.
+
+The arrows become keys.
+
+Events can be entities.
+
+A login is a thing that happened.
+
+It has a time and a customer_id.
+
+It is not an attribute of customer unless you only store last_login_at.
+
+last_login_at is a derived cache of the latest event.
+
+Know which you are building.
+
+Roles can be entities when they have facts.
+
+admin is a flag until admins have offices and rotations.
+
+Then role is a table.
+
+Status values start as text and become entities when they grow labels in three languages.
+
+Promote them when the facts appear, not before.
+
+A good attribute name is a noun or a short noun phrase.
+
+total, placed_at, is_active.
+
+Avoid mystery flags named flag1.
+
+Units belong in the name or in a separate unit column, not in the value.
+
+total_cents versus total dollars as text with a dollar sign.
+
+The first is an attribute.
+
+The second is a poster.
+
+Walk an example row with a skeptic.
+
+If they ask whose city, you mixed entities.
+
+If they ask which of the two titles, you mixed rows.
+
+If they ask what the number means, you mixed attributes.
+
+Fix the mix before you write CREATE.
+
+The sticky notes are cheaper than ALTER.
+
+The nouns were in the sentences all along.
+
+Your job is to hear them.
+
+Design does not start with tables.
+
+It starts with messy speech: we have users, they have payment methods, orders go out, products come back as returns.
+
+Your job is to sort subjects from characteristics, then decide which subjects are entities worth a table.
+
+A subject is a thing you can talk about with a verb: a user has an email, an order contains lines.
+
+A characteristic belongs to a subject: email belongs to user, not to the whole store.
+
+Interview transcripts are full of both.
+
+Highlight nouns that can be the subject of has, contains, places, or belongs to.
+
+Those candidates become entities if they have more than one fact of their own, a lifecycle, and a reason to be found later.
+
+Color might be a characteristic of product, not an entity, until you discover colors have codes, suppliers, and photos.
+
+Then color grew up into an entity.
+
+The test is not the English noun.
+
+The test is whether it has attributes and identity.
+
+Attributes become columns.
+
+Each attribute should be one meaning: email, not contact which mixes phone and email.
+
+If a characteristic repeats as a list in speech — a user has several payment methods — it is not a column on users.
+
+It is a second entity related to users.
+
+Ignore noise: adverbs, one-off anecdotes, and attributes nobody will query or constrain.
+
+You can store a note, but you should not invent a table for a sentence said once.
+
+Name entities in the language of the business, then spell them in snake_case when they become tables.
+
+user is an entity.
+
+users is a table if you chose plural tables.
+
+Do not let the sketch and the SQL drift in names.
+
+After you have entities and attributes, you still do not have keys.
+
+Keys are the next lesson.
+
+Here the win is a clean inventory: these are the things, these are the facts about each thing, these lists of facts are actually more things.
+
+If two subjects share a pile of attributes, ask whether they are the same entity in costume.
+
+Customer and user might be one table or two, depending on whether a user can exist without ever buying.
+
+That question is a requirement, not a taste in naming.
+
+Write the entities on boxes.
+
+Write attributes inside.
+
+Leave the lines for the relationship lesson.
+
+A box with twenty attributes is a warning that several subjects are hiding in one list.
+
+Split the box before you draw the first key.
+
+Parse one interview sentence: a user has an account, payment methods, and a cart of products.
+
+Subjects: user, account, payment method, cart, product.
+
+Characteristics: whatever facts they mentioned — email on user, last four on payment method, quantity in the cart.
+
+Account might be the same as user if login is one-to-one with the person.
+
+Ask.
+
+Cart might be a table of lines, not a column of product names.
+
+Payment methods are many, so not columns card1 card2 on users.
+
+Product is its own entity because it has name, price, manufacturer.
+
+Manufacturer might be text on product until you have manufacturer addresses and contacts.
+
+Then it graduates.
+
+Throw away the word quickly from the interview; it is not an attribute.
+
+Keep email, because uniqueness and login will need it.
+
+This noun work is the whole conversion from real-world ideas to tables.
+
+Tables come after the inventory is honest.

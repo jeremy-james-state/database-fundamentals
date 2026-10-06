@@ -1,0 +1,64 @@
+---
+title: "Import a CSV"
+description: "Load comma-separated rows into a table with SQLite’s .import command."
+---
+
+`.import` is a SQLite command, not a SQL keyword. Create the table first so types and [constraints](/concepts/constraints) already exist.
+
+## Prerequisites
+
+- A table whose columns match the CSV ([create a table](/how-to/create-a-table))
+- A `.csv` file whose first row is a header
+
+## Import the file
+
+<Steps>
+  <Step title="Inspect the CSV">
+    Open `collections.csv` in a text editor. Confirm a header row, then data rows separated by commas.
+
+    To throw the file away in the shell:
+
+    ```bash
+    rm collections.csv
+    ```
+  </Step>
+  <Step title="Create an empty database if you need one">
+    ```bash
+    sqlite3 collections.db
+    ```
+
+    Create `collections` (or [read a schema file](/how-to/apply-a-schema-file)), then import:
+
+    ```text
+    sqlite> .import --csv --skip 1 collections.csv collections
+    ```
+
+    `--csv` reads comma-separated fields. `--skip 1` skips the header so it does not become a data row. The table name is the last argument.
+
+    <Tip>
+      SQLite commands here are unquoted. SQL identifiers you type in `SELECT` still use SQL quoting rules. That split is about `.import`, not a rule for every statement.
+    </Tip>
+  </Step>
+  <Step title="Confirm">
+    ```sql
+    SELECT *
+    FROM collections
+    LIMIT 5;
+    ```
+  </Step>
+</Steps>
+
+## Verify the result
+
+You succeeded when the table has one row per CSV data line, and the header is not stored as a row.
+
+## Troubleshooting
+
+- **Header became a row**: add `--skip 1`.
+- **Constraint failed on import**: the CSV has a duplicate, a missing required column, or a type the affinity will not accept. Fix the file, [delete](/how-to/delete-rows) the partial rows if any landed, and import again.
+- **Wrong table**: `.import` does not guess the table from the filename. Name `collections` at the end of the command.
+
+## Related pages
+
+- [Insert rows](/how-to/insert-rows)
+- [CREATE TABLE](/reference/create-table)

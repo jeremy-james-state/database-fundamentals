@@ -1,0 +1,33 @@
+---
+title: "trim"
+description: "Returns the string with leading and trailing whitespace removed."
+---
+
+A [scalar function](/concepts/sql#scalar-functions). It does not change stored rows until you [UPDATE](/reference/update) a column with the result.
+
+## Syntax
+
+```sql
+trim(column)
+```
+
+## Arguments
+
+<ParamField body="column" type="text" required>
+  The value to strip. Spaces at both ends go away. Characters in the middle stay.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql Clean titles
+UPDATE votes
+SET title = trim(title);
+```
+</CodeGroup>
+
+## Related references
+
+- [upper](/reference/upper)
+- [lower](/reference/lower)
+- [Update rows](/how-to/update-rows)

@@ -1,0 +1,53 @@
+---
+title: "Replication"
+description: "Replication keeps copies of the same database on more than one server."
+---
+
+Copies raise capacity for reads and survive a single machine failing. Someone must decide **who accepts writes** and **how followers catch up**.
+
+## How replication works
+
+| Role | Job |
+| --- | --- |
+| **Leader** (primary) | Accepts writes; sends changes to followers |
+| **Follower** (replica) | Applies the leader’s changes; often serves reads (**read replica**) |
+
+### Topologies
+
+| Model | Writers | Notes |
+| --- | --- | --- |
+| **Single-leader** | One leader | Simplest mental model; followers replicate from it |
+| **Multi-leader** | More than one leader | Writes in several places; conflicts need rules |
+| **Leaderless** | Clients write to several nodes | Coordination differs by product; no single leader |
+
+### Synchronous vs asynchronous
+
+| Mode | After a write | Trade-off |
+| --- | --- | --- |
+| **Synchronous** | Leader waits until a follower confirms | Safer copy; slower response |
+| **Asynchronous** | Leader replies sooner; follower catches up later | Faster; brief window where a crash can lose the newest write |
+
+## Why databases replicate
+
+Horizontal [scaling](/concepts/scaling) needs more than one machine. Replication is how those machines stay in sync (or nearly sync).
+
+## When to use replication
+
+- **Read-heavy apps**: send reads to replicas
+- **Durability**: another server has a copy if one dies
+- **Skip it when**: one SQLite or one server database still meets the load
+
+## Related ideas
+
+[Sharding](/concepts/sharding) splits data by key. Replication copies the same data (or the same shard).
+
+## Common mix-ups
+
+- **Replica vs shard**: replica = copy. Shard = piece of the data.
+- **Async vs wrong**: async is a durability trade-off, not free consistency
+
+## Further reading
+
+- [Scaling](/concepts/scaling)
+- [Sharding](/concepts/sharding)
+- [Database servers](/concepts/database-servers)

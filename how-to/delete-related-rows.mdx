@@ -1,0 +1,69 @@
+---
+title: "Delete related rows"
+description: "Remove a parent row by clearing the join table first, or by declaring ON DELETE on the foreign key."
+---
+
+`artists` → `created` → `collections` is a [many-to-many](/concepts/relationships) through a [join table](/concepts/keys). `created` holds the foreign keys. SQLite blocks a delete that would leave `created` pointing at a missing artist unless you say otherwise.
+
+## Prerequisites
+
+- [Constrain a table](/how-to/constrain-a-table) with `FOREIGN KEY`
+- `PRAGMA foreign_keys = ON;`
+
+## Delete in order
+
+<Steps>
+  <Step title="Delete the join rows">
+    ```sql
+    DELETE FROM created
+    WHERE artist_id = 3;
+    ```
+  </Step>
+  <Step title="Delete the parent">
+    ```sql
+    DELETE FROM artists
+    WHERE id = 3;
+    ```
+  </Step>
+</Steps>
+
+## Declare ON DELETE instead
+
+Write the action on the [FOREIGN KEY](/reference/foreign-key) when you [CREATE TABLE](/reference/create-table):
+
+```sql
+CREATE TABLE created (
+  artist_id INTEGER,
+  collection_id INTEGER,
+  PRIMARY KEY (artist_id, collection_id),
+  FOREIGN KEY (artist_id) REFERENCES artists (id)
+    ON DELETE CASCADE,
+  FOREIGN KEY (collection_id) REFERENCES collections (id)
+    ON DELETE CASCADE
+);
+```
+
+| Action | What happens to the child |
+| --- | --- |
+| `RESTRICT` | Reject the parent delete while children exist |
+| `NO ACTION` | Reject at the end of the statement if children still exist (SQLite’s default) |
+| `SET NULL` | Set the foreign key to `NULL` |
+| `SET DEFAULT` | Set the foreign key to the column’s [DEFAULT](/reference/default) |
+| `CASCADE` | Delete the child rows too |
+
+`RESTRICT` and `NO ACTION` both refuse the unsafe delete. `CASCADE` is the one that continues into `created` for you.
+
+## Verify the result
+
+You succeeded when the artist is gone and `created` has no row with that `artist_id`.
+
+## Troubleshooting
+
+- **Constraint error on `DELETE FROM artists`**: a `created` row still references that `id`. Delete it, or use `ON DELETE CASCADE`.
+- **`ON DELETE` seems ignored**: `PRAGMA foreign_keys` is off.
+
+## Related pages
+
+- [FOREIGN KEY](/reference/foreign-key)
+- [Delete rows](/how-to/delete-rows)
+- [Keys](/concepts/keys)

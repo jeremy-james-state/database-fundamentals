@@ -1,0 +1,392 @@
+1
+00:00:00,050 --> 00:00:03,472
+Boyce–Codd normal form is a stricter third.
+
+2
+00:00:03,472 --> 00:00:06,444
+Every determinant must be a candidate key.
+
+3
+00:00:06,444 --> 00:00:10,638
+A determinant is a set of columns that determines other columns.
+
+4
+00:00:10,638 --> 00:00:16,305
+Third normal form mostly watches non-key columns depending on other non-key columns.
+
+5
+00:00:16,305 --> 00:00:20,000
+It can miss a case where a non-key determines part of the key.
+
+6
+00:00:20,000 --> 00:00:23,777
+That case shows up with overlapping candidate keys.
+
+7
+00:00:23,777 --> 00:00:27,805
+Imagine a table of rooms, times, and teachers.
+
+8
+00:00:27,805 --> 00:00:30,513
+A room and a time determine the teacher.
+
+9
+00:00:30,513 --> 00:00:33,152
+A teacher and a time determine the room.
+
+10
+00:00:33,152 --> 00:00:35,416
+Both pairs are candidate keys.
+
+11
+00:00:35,416 --> 00:00:44,916
+If you pick room plus time as the primary key, teacher is a non-key that still determines room — a piece of the key — when you also know time.
+
+12
+00:00:44,916 --> 00:00:46,416
+The language is dry.
+
+13
+00:00:46,416 --> 00:00:50,277
+The bug is a constraint you cannot say with primary key alone.
+
+14
+00:00:50,277 --> 00:00:56,583
+Two teachers could be assigned to the same room at the same time if you only unique the wrong pair.
+
+15
+00:00:56,583 --> 00:01:03,611
+BCNF says: split until every rule of the form A determines B is a key of its table.
+
+16
+00:01:03,611 --> 00:01:08,986
+One table for room, time, teacher with a key that matches one rule.
+
+17
+00:01:08,986 --> 00:01:12,097
+Another table if a second rule still needs a home.
+
+18
+00:01:12,097 --> 00:01:14,861
+You will join them to reconstruct the schedule.
+
+19
+00:01:14,861 --> 00:01:18,041
+That join is the cost of an honest constraint.
+
+20
+00:01:18,041 --> 00:01:21,500
+Most bookstore tables never need this conversation.
+
+21
+00:01:21,500 --> 00:01:25,361
+You meet it when two different unique pairs both seem right.
+
+22
+00:01:25,361 --> 00:01:27,361
+Do not ignore the second pair.
+
+23
+00:01:27,361 --> 00:01:31,541
+Put UNIQUE on it, or split until both rules are keys.
+
+24
+00:01:31,541 --> 00:01:37,041
+If UNIQUE on both pairs is enough for your engine to refuse bad rows, you may stop.
+
+25
+00:01:37,041 --> 00:01:40,500
+BCNF is the design version of that refusal.
+
+26
+00:01:40,500 --> 00:01:43,708
+It wants the rule to be a key, not a footnote.
+
+27
+00:01:43,708 --> 00:01:49,833
+When someone says a table is in third but still feels twisty, look for overlapping keys.
+
+28
+00:01:49,833 --> 00:01:51,888
+Name both candidate keys.
+
+29
+00:01:51,888 --> 00:01:56,152
+Ask whether a non-key is determining part of the primary key.
+
+30
+00:01:56,152 --> 00:01:58,208
+If yes, you found the leak.
+
+31
+00:01:58,208 --> 00:02:03,416
+Split, or add the missing unique constraint, and write down which you chose.
+
+32
+00:02:03,416 --> 00:02:11,583
+The classic textbook example uses something like a student, a subject, and a teacher who is the only teacher of that subject.
+
+33
+00:02:11,583 --> 00:02:15,597
+If each subject has one teacher, teacher determines subject.
+
+34
+00:02:15,597 --> 00:02:22,347
+If the key was student plus subject, teacher is a non-key determining subject, a piece of the key.
+
+35
+00:02:22,347 --> 00:02:28,319
+Split: one table of subject and teacher, one table of student and subject.
+
+36
+00:02:28,319 --> 00:02:31,541
+Now each determinant is a key of its table.
+
+37
+00:02:31,541 --> 00:02:33,694
+You join to see who teaches Maya.
+
+38
+00:02:33,694 --> 00:02:35,680
+That split is BCNF.
+
+39
+00:02:35,680 --> 00:02:42,944
+If the real world allows two teachers per subject, the determinant vanished and you needed a different model anyway.
+
+40
+00:02:42,944 --> 00:02:46,319
+The form follows the rule, not the other way around.
+
+41
+00:02:46,319 --> 00:02:49,722
+Write the rules in English before you chase the acronym.
+
+42
+00:02:49,722 --> 00:02:52,944
+A room cannot host two classes at the same time.
+
+43
+00:02:52,944 --> 00:02:56,263
+A teacher cannot be in two rooms at the same time.
+
+44
+00:02:56,263 --> 00:02:57,777
+Those are two rules.
+
+45
+00:02:57,777 --> 00:03:01,944
+Two rules often want two unique pairs or two tables.
+
+46
+00:03:01,944 --> 00:03:05,291
+BCNF is a way to notice you only enforced one.
+
+47
+00:03:05,291 --> 00:03:10,666
+Do not rename third normal form to Boyce–Codd on a slide to look strict.
+
+48
+00:03:10,666 --> 00:03:13,291
+Use it when overlapping keys appear.
+
+49
+00:03:13,291 --> 00:03:16,180
+Otherwise, third is the working stop.
+
+50
+00:03:16,180 --> 00:03:17,972
+The acronyms are a ladder.
+
+51
+00:03:17,972 --> 00:03:22,055
+You climb when a leak appears, not because the ladder is there.
+
+52
+00:03:22,055 --> 00:03:23,250
+Name the leak.
+
+53
+00:03:23,250 --> 00:03:24,791
+Name the determinant.
+
+54
+00:03:24,791 --> 00:03:25,861
+Make it a key.
+
+55
+00:03:25,861 --> 00:03:28,486
+That is the lesson, in one charge.
+
+56
+00:03:28,486 --> 00:03:31,847
+Write the rules on paper before you pick a primary key.
+
+57
+00:03:31,847 --> 00:03:36,166
+Each rule of the form this determines that wants to be a key somewhere.
+
+58
+00:03:36,166 --> 00:03:42,819
+If two rules overlap, one table may not be able to say both with a single primary key.
+
+59
+00:03:42,819 --> 00:03:45,861
+UNIQUE on the second pair is the small fix.
+
+60
+00:03:45,861 --> 00:03:47,972
+A split is the large fix.
+
+61
+00:03:47,972 --> 00:03:50,736
+Either fix is BCNF in spirit.
+
+62
+00:03:50,736 --> 00:03:54,388
+Ignoring the second rule is how double booking appears.
+
+63
+00:03:54,388 --> 00:03:56,888
+Double booking is not an edge case.
+
+64
+00:03:56,888 --> 00:03:59,180
+It is the rule you did not enforce.
+
+65
+00:03:59,180 --> 00:04:02,083
+Overlapping keys are rare in a bookstore.
+
+66
+00:04:02,083 --> 00:04:06,027
+They are common in schedules, assignments, and seats.
+
+67
+00:04:06,027 --> 00:04:08,958
+When you meet a schedule, remember this lesson.
+
+68
+00:04:08,958 --> 00:04:10,500
+Name both keys.
+
+69
+00:04:10,500 --> 00:04:11,722
+Enforce both.
+
+70
+00:04:11,722 --> 00:04:12,986
+Join if you split.
+
+71
+00:04:12,986 --> 00:04:16,069
+That is stricter third, in working clothes.
+
+72
+00:04:16,069 --> 00:04:18,583
+You do not need the acronym in production.
+
+73
+00:04:18,583 --> 00:04:20,625
+You need both rules on the table.
+
+74
+00:04:20,625 --> 00:04:21,652
+Put them there.
+
+75
+00:04:21,652 --> 00:04:24,291
+Then 3NF's leak is closed.
+
+76
+00:04:24,291 --> 00:04:28,833
+You can satisfy third normal form and still have a table that breaks.
+
+77
+00:04:28,833 --> 00:04:35,638
+Raymond Boyce found that in the 1970s, working examples where two candidate keys overlapped.
+
+78
+00:04:35,762 --> 00:04:40,462
+Codd's third form was protecting non-key columns from bad dependencies.
+
+79
+00:04:40,462 --> 00:04:48,198
+When a determinant was itself part of a key, third could look satisfied while a dependency still caused anomalies.
+
+80
+00:04:48,198 --> 00:04:55,656
+Boyce–Codd normal form says: every determinant of a functional dependency must be a candidate key.
+
+81
+00:04:55,656 --> 00:04:59,587
+Not merely: non-keys must not depend on non-keys.
+
+82
+00:04:59,587 --> 00:05:11,114
+If room determines building in a table whose keys are (student, room) and (student, building) style overlaps, you can get a mess third did not catch cleanly.
+
+83
+00:05:11,114 --> 00:05:20,225
+A classic shape is: a table with two overlapping candidate keys, and one attribute determining another that is also in a key.
+
+84
+00:05:20,225 --> 00:05:27,295
+The fix is still a split: put the determining pair in its own table whose key is the real determinant.
+
+85
+00:05:27,295 --> 00:05:31,253
+Boyce died young, and Codd named the form after both of them.
+
+86
+00:05:31,253 --> 00:05:33,017
+The story is not trivia.
+
+87
+00:05:33,017 --> 00:05:37,712
+It is a reminder that definitions get sharper when someone tries to break them.
+
+88
+00:05:37,712 --> 00:05:43,989
+Most schemas that reached a clean third never meet a Boyce–Codd violation in daily work.
+
+89
+00:05:43,989 --> 00:05:49,350
+When they do, it is usually overlapping natural keys you insisted on keeping.
+
+90
+00:05:49,350 --> 00:05:57,809
+A surrogate primary key does not automatically grant Boyce–Codd if another unique combination still determines a column badly.
+
+91
+00:05:57,809 --> 00:06:02,170
+Look at every uniqueness rule, not only the PRIMARY KEY line.
+
+92
+00:06:02,170 --> 00:06:06,712
+If A determines B, A should be a candidate key of that table.
+
+93
+00:06:06,712 --> 00:06:09,753
+If A is not, B does not belong here.
+
+94
+00:06:09,753 --> 00:06:13,864
+That one sentence is the operational form of BCNF.
+
+95
+00:06:13,864 --> 00:06:20,225
+Use it when third is done and a unique constraint still feels like it is smuggling a second table.
+
+96
+00:06:20,225 --> 00:06:25,587
+Then split, and let each table have determinants that are keys, nothing less.
+
+97
+00:06:25,587 --> 00:06:27,253
+You are not being fancy.
+
+98
+00:06:27,253 --> 00:06:29,600
+You are finishing the job third started.
+

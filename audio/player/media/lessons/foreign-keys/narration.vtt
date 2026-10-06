@@ -1,0 +1,736 @@
+1
+00:00:00,050 --> 00:00:05,194
+A foreign key is a column that says: this value already exists over there.
+
+2
+00:00:05,194 --> 00:00:09,250
+orders.customer_id is not a random number.
+
+3
+00:00:09,250 --> 00:00:13,125
+It is a promise that customers has that customer_id.
+
+4
+00:00:13,125 --> 00:00:17,472
+Without the promise, you can insert an order for customer ninety-nine.
+
+5
+00:00:17,472 --> 00:00:20,847
+Nobody named ninety-nine lives in customers.
+
+6
+00:00:20,847 --> 00:00:22,375
+The order is an orphan.
+
+7
+00:00:22,375 --> 00:00:27,055
+Reports that join the two tables will drop it, or invent a blank name.
+
+8
+00:00:27,055 --> 00:00:30,000
+The foreign key stops the orphan at the door.
+
+9
+00:00:30,000 --> 00:00:31,472
+Draw two boxes.
+
+10
+00:00:31,472 --> 00:00:34,013
+customers holds one row per person.
+
+11
+00:00:34,013 --> 00:00:36,500
+orders holds one row per purchase.
+
+12
+00:00:36,500 --> 00:00:38,444
+The arrow starts on orders.
+
+13
+00:00:38,444 --> 00:00:42,000
+It lands on customers.customer_id.
+
+14
+00:00:42,000 --> 00:00:44,861
+The many side holds the copy of the key.
+
+15
+00:00:44,861 --> 00:00:47,138
+The one side holds the original.
+
+16
+00:00:47,138 --> 00:00:50,250
+That direction is easy to get backwards.
+
+17
+00:00:50,250 --> 00:00:53,666
+You do not put order_id on customers.
+
+18
+00:00:53,666 --> 00:00:57,013
+One customer would then have room for only one order.
+
+19
+00:00:57,013 --> 00:01:02,652
+You put customer_id on orders, as many times as that person buys.
+
+20
+00:01:02,652 --> 00:01:06,625
+The parent table is the one whose primary key is copied.
+
+21
+00:01:06,625 --> 00:01:09,625
+The child table is the one that stores the copy.
+
+22
+00:01:09,625 --> 00:01:14,625
+Declare the foreign key when you create the child, or add it later with ALTER.
+
+23
+00:01:14,625 --> 00:01:18,847
+The engine then checks every INSERT and UPDATE on the child.
+
+24
+00:01:18,847 --> 00:01:21,958
+It also checks DELETE and UPDATE on the parent.
+
+25
+00:01:21,958 --> 00:01:27,722
+You cannot delete Maya while her orders still point at her — unless you said so on purpose.
+
+26
+00:01:27,722 --> 00:01:30,569
+That next lesson is foreign key actions.
+
+27
+00:01:30,569 --> 00:01:35,527
+For now, the default is: refuse the change that would orphan a row.
+
+28
+00:01:35,527 --> 00:01:36,958
+Types must match.
+
+29
+00:01:36,958 --> 00:01:38,500
+Integer to integer.
+
+30
+00:01:38,500 --> 00:01:39,819
+Text to text.
+
+31
+00:01:39,819 --> 00:01:44,097
+A value that is allowed to be NULL is a child with no parent yet.
+
+32
+00:01:44,097 --> 00:01:46,638
+That is a choice, not an accident.
+
+33
+00:01:46,638 --> 00:01:52,916
+If every order must belong to someone, mark customer_id NOT NULL as well.
+
+34
+00:01:52,916 --> 00:01:56,777
+The foreign key and NOT NULL are two different promises.
+
+35
+00:01:56,777 --> 00:02:01,083
+One says: if a value is present, it is a real parent.
+
+36
+00:02:01,083 --> 00:02:04,152
+The other says: a value must be present.
+
+37
+00:02:04,152 --> 00:02:08,138
+Name the constraint so error messages read like English.
+
+38
+00:02:08,138 --> 00:02:13,250
+orders_customer_id_fk tells you which door failed.
+
+39
+00:02:13,250 --> 00:02:16,069
+A table may have more than one foreign key.
+
+40
+00:02:16,069 --> 00:02:19,333
+An order might point at a customer and at a store.
+
+41
+00:02:19,333 --> 00:02:21,180
+Each arrow is its own rule.
+
+42
+00:02:21,180 --> 00:02:25,347
+Do not store the customer's name on the order just to avoid the key.
+
+43
+00:02:25,347 --> 00:02:27,069
+That copy will drift.
+
+44
+00:02:27,069 --> 00:02:29,569
+Let the key find the name when you join.
+
+45
+00:02:29,569 --> 00:02:33,833
+If you cannot name the parent table, you do not have a foreign key yet.
+
+46
+00:02:33,833 --> 00:02:35,611
+You have a lonely integer.
+
+47
+00:02:35,611 --> 00:02:39,416
+Draw the boxes and the arrow before you write the constraint.
+
+48
+00:02:39,416 --> 00:02:42,069
+The arrow always starts on the many side.
+
+49
+00:02:42,069 --> 00:02:45,097
+Then the two tables stay related on purpose.
+
+50
+00:02:45,097 --> 00:02:48,708
+Enable foreign keys in SQLite explicitly.
+
+51
+00:02:48,708 --> 00:02:51,708
+PRAGMA foreign_keys equals ON.
+
+52
+00:02:51,708 --> 00:02:54,222
+Otherwise the constraint is jewelry.
+
+53
+00:02:54,222 --> 00:03:03,486
+PostgreSQL and MySQL enforce them when the engine is asked to, with engine-specific caveats on MySQL's older types.
+
+54
+00:03:03,486 --> 00:03:05,041
+Know whether yours is on.
+
+55
+00:03:05,041 --> 00:03:08,527
+A composite foreign key copies more than one column.
+
+56
+00:03:08,527 --> 00:03:12,541
+Both columns together must match a unique pair on the parent.
+
+57
+00:03:12,541 --> 00:03:14,958
+Partial copies are not a foreign key.
+
+58
+00:03:14,958 --> 00:03:16,972
+Self-references are allowed.
+
+59
+00:03:16,972 --> 00:03:22,208
+employee.manager_id points at employee.employee_id.
+
+60
+00:03:22,208 --> 00:03:26,680
+The top manager is NULL, or points at themselves, by policy.
+
+61
+00:03:26,680 --> 00:03:29,263
+Cycles in deletes then need a plan.
+
+62
+00:03:29,263 --> 00:03:34,291
+Deferring a check until the end of a transaction is a PostgreSQL tool.
+
+63
+00:03:34,291 --> 00:03:39,402
+It lets you insert parent and child in an awkward order inside one BEGIN.
+
+64
+00:03:39,402 --> 00:03:41,111
+Do not need it on day one.
+
+65
+00:03:41,111 --> 00:03:44,083
+Know it exists when a loader fails in the middle.
+
+66
+00:03:44,083 --> 00:03:48,194
+Orphan rows that already exist will block adding the constraint.
+
+67
+00:03:48,194 --> 00:03:52,208
+Clean them, or map them to a real parent, then ALTER.
+
+68
+00:03:52,208 --> 00:03:53,791
+The error is a gift.
+
+69
+00:03:53,791 --> 00:03:55,722
+It named the lie in the data.
+
+70
+00:03:55,722 --> 00:04:00,027
+Indexes on the child column make the check and the join cheaper.
+
+71
+00:04:00,027 --> 00:04:02,333
+Add them when the table is not tiny.
+
+72
+00:04:02,333 --> 00:04:05,944
+A foreign key is documentation the engine reads.
+
+73
+00:04:05,944 --> 00:04:09,375
+Comments in SQL are documentation it does not.
+
+74
+00:04:09,375 --> 00:04:12,069
+Prefer the one that refuses a bad row.
+
+75
+00:04:12,069 --> 00:04:16,611
+When two teams share a database, the constraint is the contract.
+
+76
+00:04:16,611 --> 00:04:18,916
+Meetings do not survive a deploy.
+
+77
+00:04:18,916 --> 00:04:20,277
+The arrow does.
+
+78
+00:04:20,277 --> 00:04:24,125
+Draw it, name it, turn it on, and leave it on.
+
+79
+00:04:24,125 --> 00:04:26,611
+Then joins have something true to match.
+
+80
+00:04:26,611 --> 00:04:33,250
+Related tables are tables that share a column on purpose, so a row over here can point at a row over there.
+
+81
+00:04:33,250 --> 00:04:36,625
+The shared column is not a coincidence of names.
+
+82
+00:04:36,625 --> 00:04:40,236
+It is a meaning: this review is about that product.
+
+83
+00:04:40,346 --> 00:04:44,129
+In the parent table, that column is the primary key.
+
+84
+00:04:44,129 --> 00:04:47,559
+In the child table, the copy is the foreign key.
+
+85
+00:04:47,559 --> 00:04:50,032
+products holds one row per product.
+
+86
+00:04:50,032 --> 00:04:52,559
+reviews holds one row per review.
+
+87
+00:04:52,559 --> 00:04:57,532
+reviews.product_id stores which product the review is about.
+
+88
+00:04:57,532 --> 00:05:03,254
+When both rows show product_id three, the review belongs to that product.
+
+89
+00:05:03,254 --> 00:05:11,323
+That is the whole trick of related tables: the same identifier in two places, with one place owning the original.
+
+90
+00:05:11,323 --> 00:05:15,712
+You do not store the product name on every review to save a lookup.
+
+91
+00:05:15,712 --> 00:05:19,573
+The name would drift the first time marketing renamed the product.
+
+92
+00:05:19,573 --> 00:05:23,073
+You store the key, and you look the name up when you need it.
+
+93
+00:05:23,073 --> 00:05:25,657
+The many side holds the foreign key.
+
+94
+00:05:25,657 --> 00:05:28,365
+The one side holds the primary key.
+
+95
+00:05:28,365 --> 00:05:34,282
+If you put review_id on products, a product could remember only one review.
+
+96
+00:05:34,282 --> 00:05:39,573
+That is the backwards arrow, and it shows up as soon as a second review arrives.
+
+97
+00:05:39,573 --> 00:05:44,490
+Declare the foreign key in CREATE TABLE, or add it later with ALTER.
+
+98
+00:05:44,490 --> 00:05:51,323
+Name the constraint so the error reads like English: reviews_product_id_fk.
+
+99
+00:05:51,323 --> 00:05:54,948
+The engine then checks INSERT and UPDATE on the child.
+
+100
+00:05:54,948 --> 00:06:00,393
+You cannot insert a review for product ninety-nine if products has no ninety-nine.
+
+101
+00:06:00,393 --> 00:06:03,921
+That refused insert is an orphan you did not create.
+
+102
+00:06:03,921 --> 00:06:07,671
+The engine also checks DELETE and UPDATE on the parent.
+
+103
+00:06:07,671 --> 00:06:14,421
+You cannot delete a product while reviews still point at it, unless you declared an action that says otherwise.
+
+104
+00:06:14,421 --> 00:06:18,990
+The default is: refuse the change that would leave a dangling pointer.
+
+105
+00:06:18,990 --> 00:06:23,671
+Types must match: integer to integer, text to text.
+
+106
+00:06:23,671 --> 00:06:27,087
+A NULL foreign key is a child with no parent yet.
+
+107
+00:06:27,087 --> 00:06:30,393
+That is allowed only if you did not also say NOT NULL.
+
+108
+00:06:30,393 --> 00:06:36,532
+Two promises: if a value is present it is a real parent, and a value must be present.
+
+109
+00:06:36,532 --> 00:06:39,504
+A table may hold more than one foreign key.
+
+110
+00:06:39,504 --> 00:06:43,004
+A review may point at a product and at a user.
+
+111
+00:06:43,004 --> 00:06:45,809
+Each arrow is its own named constraint.
+
+112
+00:06:45,809 --> 00:06:48,629
+Insert parents first, then children.
+
+113
+00:06:48,629 --> 00:06:54,643
+Delete children first, then parents — unless an ON DELETE action does that work for you.
+
+114
+00:06:54,643 --> 00:06:58,754
+In SQLite, foreign keys are off until you turn them on.
+
+115
+00:06:58,754 --> 00:07:01,754
+PRAGMA foreign_keys equals ON.
+
+116
+00:07:01,754 --> 00:07:04,365
+Without it, the constraint is jewelry.
+
+117
+00:07:04,365 --> 00:07:11,032
+A composite foreign key copies more than one column, and the parent must have a matching composite key.
+
+118
+00:07:11,032 --> 00:07:14,129
+Do not invent a shared column that is not a key.
+
+119
+00:07:14,129 --> 00:07:17,809
+A city name in two tables is not a relationship.
+
+120
+00:07:17,809 --> 00:07:20,907
+It is a duplicated fact waiting to disagree.
+
+121
+00:07:20,907 --> 00:07:25,004
+If you cannot name the parent table, you do not have a foreign key.
+
+122
+00:07:25,004 --> 00:07:26,782
+You have a lonely integer.
+
+123
+00:07:26,782 --> 00:07:30,476
+Give it a parent, or stop pretending the tables are related.
+
+124
+00:07:30,476 --> 00:07:36,212
+Related tables formally: tables connected by one or more common key columns.
+
+125
+00:07:36,212 --> 00:07:38,698
+Not common names, key columns.
+
+126
+00:07:38,698 --> 00:07:43,768
+Product_id is a key on products and a foreign key on reviews.
+
+127
+00:07:43,768 --> 00:07:48,226
+Manufacturer as text on two tables is not relatedness.
+
+128
+00:07:48,226 --> 00:07:52,059
+Manage data in related tables by respecting the parent.
+
+129
+00:07:52,059 --> 00:08:01,254
+You cannot load reviews.csv first if products is empty, unless you defer constraints, which you should not do as a beginner habit.
+
+130
+00:08:01,254 --> 00:08:03,532
+Load parents, then children.
+
+131
+00:08:03,532 --> 00:08:10,504
+Or load into staging tables without foreign keys, clean orphans, then INSERT into the real child.
+
+132
+00:08:10,504 --> 00:08:17,101
+That staging pattern is still the same idea: the parent must exist before the pointer is honest.
+
+133
+00:08:17,101 --> 00:08:23,018
+When two tables share a column that is not a key, fix the design before you write the join.
+
+134
+00:08:23,018 --> 00:08:24,323
+The join will run.
+
+135
+00:08:24,323 --> 00:08:25,726
+The meaning will not.
+
+136
+00:08:25,726 --> 00:08:29,365
+Close with questions, the way a careful lecture does.
+
+137
+00:08:29,365 --> 00:08:32,421
+Answer in a sentence you could defend at a keyboard.
+
+138
+00:08:32,421 --> 00:08:34,504
+What makes two tables related?
+
+139
+00:08:34,504 --> 00:08:39,712
+A key column copied on purpose, parent as primary, child as foreign.
+
+140
+00:08:39,712 --> 00:08:41,573
+Where does the foreign key live?
+
+141
+00:08:41,573 --> 00:08:43,796
+On the many side, the child.
+
+142
+00:08:43,796 --> 00:08:47,323
+What happens if you insert a child with a fake parent id?
+
+143
+00:08:47,323 --> 00:08:50,476
+The engine refuses, if the constraint is on.
+
+144
+00:08:50,476 --> 00:08:54,365
+What happens if you delete a parent with children and no action?
+
+145
+00:08:54,365 --> 00:08:56,615
+The engine refuses the delete.
+
+146
+00:08:56,615 --> 00:08:59,240
+Is a shared city name a relationship?
+
+147
+00:08:59,240 --> 00:09:00,004
+No.
+
+148
+00:09:00,004 --> 00:09:01,976
+It is a duplicated fact.
+
+149
+00:09:01,976 --> 00:09:04,434
+Can one child have two foreign keys?
+
+150
+00:09:04,434 --> 00:09:05,337
+Yes.
+
+151
+00:09:05,337 --> 00:09:08,434
+A review can point at a product and a user.
+
+152
+00:09:08,434 --> 00:09:09,823
+Must types match?
+
+153
+00:09:09,823 --> 00:09:10,726
+Yes.
+
+154
+00:09:10,726 --> 00:09:13,559
+Integer to integer, text to text.
+
+155
+00:09:13,559 --> 00:09:15,657
+What does a NULL foreign key mean?
+
+156
+00:09:15,657 --> 00:09:20,421
+A child with no parent yet, only legal if NOT NULL is absent.
+
+157
+00:09:20,546 --> 00:09:22,426
+Which insert order is safe?
+
+158
+00:09:22,426 --> 00:09:24,732
+Parents first, then children.
+
+159
+00:09:24,732 --> 00:09:28,065
+Which delete order is safe under the default action?
+
+160
+00:09:28,065 --> 00:09:30,537
+Children first, then parents.
+
+161
+00:09:30,537 --> 00:09:32,093
+Why name the constraint?
+
+162
+00:09:32,093 --> 00:09:34,579
+So the error names the door that failed.
+
+163
+00:09:34,579 --> 00:09:38,121
+Does SQLite enforce foreign keys by default?
+
+164
+00:09:38,121 --> 00:09:38,884
+No.
+
+165
+00:09:38,884 --> 00:09:39,912
+Turn them on.
+
+166
+00:09:39,912 --> 00:09:43,148
+Is product name on the review a substitute for a key?
+
+167
+00:09:43,148 --> 00:09:43,912
+No.
+
+168
+00:09:43,912 --> 00:09:45,412
+The name will drift.
+
+169
+00:09:45,412 --> 00:09:46,621
+What is an orphan?
+
+170
+00:09:46,621 --> 00:09:48,968
+A child pointer with no parent row.
+
+171
+00:09:48,968 --> 00:09:50,496
+What is the parent table?
+
+172
+00:09:50,496 --> 00:09:53,440
+The table whose primary key is copied.
+
+173
+00:09:53,440 --> 00:09:55,259
+When do you add the foreign key?
+
+174
+00:09:55,259 --> 00:09:58,440
+At CREATE of the child, or later with ALTER.
+
+175
+00:09:58,440 --> 00:10:00,634
+Can a foreign key be composite?
+
+176
+00:10:00,634 --> 00:10:03,926
+Yes, if the parent key is composite too.
+
+177
+00:10:03,926 --> 00:10:06,634
+Should application code be the only check?
+
+178
+00:10:06,634 --> 00:10:07,398
+No.
+
+179
+00:10:07,398 --> 00:10:09,621
+A second writer will skip your code.
+
+180
+00:10:09,621 --> 00:10:11,926
+What is the default action in words?
+
+181
+00:10:11,926 --> 00:10:14,551
+Refuse the change that would orphan a row.
+
+182
+00:10:14,551 --> 00:10:15,843
+How do you verify?
+
+183
+00:10:15,843 --> 00:10:19,357
+Insert a fake parent id and watch the refusal.
+
+184
+00:10:19,357 --> 00:10:24,079
+If an answer needed a second table, go draw it before you write more SQL.
+

@@ -1,0 +1,53 @@
+---
+title: "Use a prepared statement"
+description: "Bind values with PREPARE and EXECUTE so user input cannot change the SQL shape."
+---
+
+Never concatenate user text into a statement string. See [SQL injection](/concepts/sql-injection).
+
+## Prerequisites
+
+- [Connect to MySQL](/how-to/connect-to-mysql)
+- A table such as `accounts`
+
+## Prepare, set, execute
+
+<Steps>
+  <Step title="Prepare the shape">
+    ```sql
+    PREPARE balance_check FROM
+      'SELECT balance FROM accounts WHERE id = ?';
+    ```
+
+    `?` is a placeholder for a value.
+  </Step>
+  <Step title="Bind and run">
+    ```sql
+    SET @id = 1;
+    EXECUTE balance_check USING @id;
+    ```
+  </Step>
+  <Step title="Prove injection fails">
+    ```sql
+    SET @id = '1 UNION SELECT balance FROM accounts';
+    EXECUTE balance_check USING @id;
+    ```
+
+    You should get a normal parameter binding result (or no row), not a second result set of every balance.
+  </Step>
+</Steps>
+
+## Verify the result
+
+You succeeded when only the intended row shape returns, even if `@id` contains SQL-looking text.
+
+## Troubleshooting
+
+- **Wrong number of variables**: one `?` needs one value in `USING`.
+- **App code**: use your driver’s bind/parameter API; it prepares for you.
+
+## Related pages
+
+- [SQL injection](/concepts/sql-injection)
+- [PREPARE](/reference/prepare)
+- [EXECUTE](/reference/execute)

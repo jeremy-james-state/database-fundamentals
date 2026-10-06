@@ -1,0 +1,41 @@
+---
+title: "GRANT"
+description: "Gives privileges on a database or table to a user."
+---
+
+## Syntax
+
+```sql
+GRANT privilege [, privilege] ...
+ON database.table
+TO 'user'@'host';
+```
+
+## Arguments
+
+<ParamField body="privilege" type="keyword" required>
+  For example `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `ALL PRIVILEGES`.
+</ParamField>
+
+<ParamField body="database.table" type="identifier" required>
+  Use `db.*` for every table in `db`.
+</ParamField>
+
+<ParamField body="'user'@'host'" type="account" required>
+  MySQL account name and client host.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql MySQL
+GRANT SELECT
+ON transit.*
+TO 'analyst'@'localhost';
+```
+</CodeGroup>
+
+## Related references
+
+- [REVOKE](/reference/revoke)
+- [Grant privileges](/how-to/grant-privileges)

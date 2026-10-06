@@ -1,0 +1,886 @@
+{
+  "title": "Relational databases",
+  "subtitle": "Tables, entities, keys & SQL",
+  "audio": "narration.mp3",
+  "duration": 435.343,
+  "slides": [
+    {
+      "start": 1.0,
+      "src": "slides/slide-01-0001s.png"
+    },
+    {
+      "start": 10.0,
+      "src": "slides/slide-02-0010s.png"
+    },
+    {
+      "start": 15.0,
+      "src": "slides/slide-03-0015s.png"
+    },
+    {
+      "start": 30.0,
+      "src": "slides/slide-04-0030s.png"
+    },
+    {
+      "start": 33.0,
+      "src": "slides/slide-05-0033s.png"
+    },
+    {
+      "start": 40.0,
+      "src": "slides/slide-06-0040s.png"
+    },
+    {
+      "start": 47.0,
+      "src": "slides/slide-07-0047s.png"
+    },
+    {
+      "start": 57.0,
+      "src": "slides/slide-08-0057s.png"
+    },
+    {
+      "start": 91.099,
+      "src": "slides/slide-09-0091s.png"
+    },
+    {
+      "start": 98.099,
+      "src": "slides/slide-10-0098s.png"
+    },
+    {
+      "start": 175.099,
+      "src": "slides/slide-11-0175s.png"
+    },
+    {
+      "start": 201.099,
+      "src": "slides/slide-12-0201s.png"
+    },
+    {
+      "start": 204.099,
+      "src": "slides/slide-13-0204s.png"
+    },
+    {
+      "start": 242.099,
+      "src": "slides/slide-14-0242s.png"
+    },
+    {
+      "start": 262.099,
+      "src": "slides/slide-15-0262s.png"
+    },
+    {
+      "start": 352.099,
+      "src": "slides/slide-16-0352s.png"
+    },
+    {
+      "start": 393.099,
+      "src": "slides/slide-17-0393s.png"
+    },
+    {
+      "start": 402.099,
+      "src": "slides/slide-18-0402s.png"
+    },
+    {
+      "start": 421.099,
+      "src": "slides/slide-19-0421s.png"
+    },
+    {
+      "start": 423.099,
+      "src": "slides/slide-20-0423s.png"
+    },
+    {
+      "start": 431.099,
+      "src": "slides/slide-21-0431s.png"
+    },
+    {
+      "start": 431.302,
+      "src": "slides/slide-22-0443s.png"
+    },
+    {
+      "start": 431.505,
+      "src": "slides/slide-23-0462s.png"
+    },
+    {
+      "start": 431.707,
+      "src": "slides/slide-24-0472s.png"
+    },
+    {
+      "start": 431.91,
+      "src": "slides/slide-25-0510s.png"
+    },
+    {
+      "start": 432.113,
+      "src": "slides/slide-26-0544s.png"
+    },
+    {
+      "start": 432.315,
+      "src": "slides/slide-27-0550s.png"
+    },
+    {
+      "start": 432.518,
+      "src": "slides/slide-28-0564s.png"
+    },
+    {
+      "start": 432.721,
+      "src": "slides/slide-29-0589s.png"
+    },
+    {
+      "start": 432.924,
+      "src": "slides/slide-30-0715s.png"
+    },
+    {
+      "start": 433.127,
+      "src": "slides/slide-31-0742s.png"
+    },
+    {
+      "start": 433.329,
+      "src": "slides/slide-32-0746s.png"
+    },
+    {
+      "start": 433.532,
+      "src": "slides/slide-33-0774s.png"
+    },
+    {
+      "start": 433.735,
+      "src": "slides/slide-34-0843s.png"
+    },
+    {
+      "start": 433.938,
+      "src": "slides/slide-35-0845s.png"
+    },
+    {
+      "start": 434.14,
+      "src": "slides/slide-36-0876s.png"
+    }
+  ],
+  "lyrics": [
+    {
+      "start": 0.05,
+      "end": 1.736,
+      "text": "Alright \u2014 picture this.",
+      "slide": "slides/slide-01-0001s.png"
+    },
+    {
+      "start": 1.736,
+      "end": 8.5,
+      "text": "You\u2019re keeping track of fifty club members in a spreadsheet: names, emails, and phone numbers.",
+      "slide": "slides/slide-01-0001s.png"
+    },
+    {
+      "start": 8.5,
+      "end": 11.138,
+      "text": "It feels simple enough\u2026 until it isn\u2019t.",
+      "slide": "slides/slide-01-0001s.png"
+    },
+    {
+      "start": 11.138,
+      "end": 12.944,
+      "text": "Someone gets added twice.",
+      "slide": "slides/slide-02-0010s.png"
+    },
+    {
+      "start": 12.944,
+      "end": 15.555,
+      "text": "Someone else\u2019s email gets overwritten.",
+      "slide": "slides/slide-02-0010s.png"
+    },
+    {
+      "start": 15.555,
+      "end": 23.152,
+      "text": "Suddenly you\u2019re tracking payments, committees, and event RSVPs \u2014 and the whole thing turns into a mess.",
+      "slide": "slides/slide-03-0015s.png"
+    },
+    {
+      "start": 23.152,
+      "end": 26.75,
+      "text": "That\u2019s the moment you realize you don\u2019t need a bigger spreadsheet.",
+      "slide": "slides/slide-03-0015s.png"
+    },
+    {
+      "start": 26.75,
+      "end": 33.43,
+      "text": "You need structure: a better way to organize the data, connect it, and keep it from falling apart.",
+      "slide": "slides/slide-03-0015s.png"
+    },
+    {
+      "start": 33.43,
+      "end": 35.388,
+      "text": "That\u2019s where databases come in.",
+      "slide": "slides/slide-05-0033s.png"
+    },
+    {
+      "start": 35.388,
+      "end": 37.305,
+      "text": "So what is a database, really?",
+      "slide": "slides/slide-05-0033s.png"
+    },
+    {
+      "start": 37.305,
+      "end": 38.861,
+      "text": "Why do we use tables?",
+      "slide": "slides/slide-05-0033s.png"
+    },
+    {
+      "start": 38.861,
+      "end": 40.43,
+      "text": "What\u2019s a primary key?",
+      "slide": "slides/slide-05-0033s.png"
+    },
+    {
+      "start": 40.43,
+      "end": 48.43,
+      "text": "And why does almost every app you use \u2014 social media, banking, you name it \u2014 run on something called an RDBMS?",
+      "slide": "slides/slide-06-0040s.png"
+    },
+    {
+      "start": 48.48,
+      "end": 49.916,
+      "text": "Here's the short version.",
+      "slide": "slides/slide-07-0047s.png"
+    },
+    {
+      "start": 49.916,
+      "end": 55.485,
+      "text": "A database organizes data with structure \u2014 tables, not one giant sheet.",
+      "slide": "slides/slide-07-0047s.png"
+    },
+    {
+      "start": 55.485,
+      "end": 59.777,
+      "text": "Each table holds one kind of thing, in rows and columns.",
+      "slide": "slides/slide-07-0047s.png"
+    },
+    {
+      "start": 59.777,
+      "end": 65.638,
+      "text": "A primary key uniquely identifies a row, so you can point at it and nowhere else.",
+      "slide": "slides/slide-08-0057s.png"
+    },
+    {
+      "start": 65.638,
+      "end": 69.402,
+      "text": "An RDBMS is the software that stores that world.",
+      "slide": "slides/slide-08-0057s.png"
+    },
+    {
+      "start": 69.402,
+      "end": 71.332,
+      "text": "SQL is how you talk to it.",
+      "slide": "slides/slide-08-0057s.png"
+    },
+    {
+      "start": 71.398,
+      "end": 75.009,
+      "text": "And before we\u2019re done, you\u2019ll write your first line of SQL.",
+      "slide": "slides/slide-08-0057s.png"
+    },
+    {
+      "start": 75.059,
+      "end": 79.163,
+      "text": "A relational database is a collection of related tables.",
+      "slide": "slides/slide-08-0057s.png"
+    },
+    {
+      "start": 79.163,
+      "end": 80.816,
+      "text": "Not one giant sheet.",
+      "slide": "slides/slide-08-0057s.png"
+    },
+    {
+      "start": 80.816,
+      "end": 86.524,
+      "text": "Separate tables, each with one job, that you connect when you need the whole story.",
+      "slide": "slides/slide-08-0057s.png"
+    },
+    {
+      "start": 86.524,
+      "end": 89.052,
+      "text": "This diagram is a tiny store.",
+      "slide": "slides/slide-08-0057s.png"
+    },
+    {
+      "start": 89.052,
+      "end": 93.191,
+      "text": "We'll add one table at a time, so you can actually see the pieces.",
+      "slide": "slides/slide-08-0057s.png"
+    },
+    {
+      "start": 93.191,
+      "end": 94.885,
+      "text": "First: users.",
+      "slide": "slides/slide-09-0091s.png"
+    },
+    {
+      "start": 94.885,
+      "end": 96.885,
+      "text": "These are the people with accounts.",
+      "slide": "slides/slide-09-0091s.png"
+    },
+    {
+      "start": 96.885,
+      "end": 102.024,
+      "text": "Each row is one person \u2014 an email, an id, a password.",
+      "slide": "slides/slide-09-0091s.png"
+    },
+    {
+      "start": 102.024,
+      "end": 103.316,
+      "text": "Hold that picture.",
+      "slide": "slides/slide-10-0098s.png"
+    },
+    {
+      "start": 103.316,
+      "end": 104.816,
+      "text": "Users is the hub.",
+      "slide": "slides/slide-10-0098s.png"
+    },
+    {
+      "start": 104.816,
+      "end": 107.038,
+      "text": "Other tables will point back here.",
+      "slide": "slides/slide-10-0098s.png"
+    },
+    {
+      "start": 107.038,
+      "end": 108.33,
+      "text": "Now products.",
+      "slide": "slides/slide-10-0098s.png"
+    },
+    {
+      "start": 108.33,
+      "end": 111.455,
+      "text": "That's the catalog \u2014 the things the store sells.",
+      "slide": "slides/slide-10-0098s.png"
+    },
+    {
+      "start": 111.455,
+      "end": 114.135,
+      "text": "A product id, and a product name.",
+      "slide": "slides/slide-10-0098s.png"
+    },
+    {
+      "start": 114.135,
+      "end": 116.58,
+      "text": "Different entity, so a different table.",
+      "slide": "slides/slide-10-0098s.png"
+    },
+    {
+      "start": 116.58,
+      "end": 117.955,
+      "text": "Users stay put.",
+      "slide": "slides/slide-10-0098s.png"
+    },
+    {
+      "start": 117.955,
+      "end": 119.83,
+      "text": "Products is its own box.",
+      "slide": "slides/slide-10-0098s.png"
+    },
+    {
+      "start": 119.83,
+      "end": 122.302,
+      "text": "Reviews live in a third table.",
+      "slide": "slides/slide-10-0098s.png"
+    },
+    {
+      "start": 122.302,
+      "end": 125.955,
+      "text": "A review has an id, some text, and a time.",
+      "slide": "slides/slide-10-0098s.png"
+    },
+    {
+      "start": 125.955,
+      "end": 132.705,
+      "text": "It also has two pointers, because a review is a relationship: someone wrote it, about a product.",
+      "slide": "slides/slide-10-0098s.png"
+    },
+    {
+      "start": 132.705,
+      "end": 134.691,
+      "text": "Look at reviews.email.",
+      "slide": "slides/slide-10-0098s.png"
+    },
+    {
+      "start": 134.691,
+      "end": 137.496,
+      "text": "That value matches users.email.",
+      "slide": "slides/slide-10-0098s.png"
+    },
+    {
+      "start": 137.496,
+      "end": 139.094,
+      "text": "That's who wrote the review.",
+      "slide": "slides/slide-10-0098s.png"
+    },
+    {
+      "start": 139.094,
+      "end": 141.26,
+      "text": "Same email, two tables.",
+      "slide": "slides/slide-10-0098s.png"
+    },
+    {
+      "start": 141.26,
+      "end": 143.427,
+      "text": "The relationship is the match.",
+      "slide": "slides/slide-10-0098s.png"
+    },
+    {
+      "start": 143.427,
+      "end": 144.941,
+      "text": "There's a second pointer.",
+      "slide": "slides/slide-10-0098s.png"
+    },
+    {
+      "start": 144.941,
+      "end": 150.038,
+      "text": "Reviews.product_id matches products.product_id.",
+      "slide": "slides/slide-10-0098s.png"
+    },
+    {
+      "start": 150.038,
+      "end": 151.955,
+      "text": "That's which item they reviewed.",
+      "slide": "slides/slide-10-0098s.png"
+    },
+    {
+      "start": 151.955,
+      "end": 156.108,
+      "text": "Two quiet matches, and you can ask who said what about which product.",
+      "slide": "slides/slide-10-0098s.png"
+    },
+    {
+      "start": 156.108,
+      "end": 157.969,
+      "text": "States is a tiny lookup.",
+      "slide": "slides/slide-10-0098s.png"
+    },
+    {
+      "start": 157.969,
+      "end": 163.302,
+      "text": "A state id and a name \u2014 so you don't spell California fifty different ways.",
+      "slide": "slides/slide-10-0098s.png"
+    },
+    {
+      "start": 163.302,
+      "end": 165.33,
+      "text": "Addresses hang off users.",
+      "slide": "slides/slide-10-0098s.png"
+    },
+    {
+      "start": 165.33,
+      "end": 167.955,
+      "text": "Street, city, postal code.",
+      "slide": "slides/slide-10-0098s.png"
+    },
+    {
+      "start": 167.955,
+      "end": 172.83,
+      "text": "Plus a user id that points back to users: whose place this is.",
+      "slide": "slides/slide-10-0098s.png"
+    },
+    {
+      "start": 172.83,
+      "end": 175.469,
+      "text": "And a state id that points at states.",
+      "slide": "slides/slide-10-0098s.png"
+    },
+    {
+      "start": 175.469,
+      "end": 178.177,
+      "text": "Those matching fields light up the same way.",
+      "slide": "slides/slide-11-0175s.png"
+    },
+    {
+      "start": 178.177,
+      "end": 180.691,
+      "text": "That's whose address, and which state.",
+      "slide": "slides/slide-11-0175s.png"
+    },
+    {
+      "start": 180.691,
+      "end": 182.385,
+      "text": "The tables stay small.",
+      "slide": "slides/slide-11-0175s.png"
+    },
+    {
+      "start": 182.385,
+      "end": 186.941,
+      "text": "Inside each table: rows, columns, and keys.",
+      "slide": "slides/slide-11-0175s.png"
+    },
+    {
+      "start": 186.941,
+      "end": 189.663,
+      "text": "Between the tables: relationships.",
+      "slide": "slides/slide-11-0175s.png"
+    },
+    {
+      "start": 189.663,
+      "end": 192.552,
+      "text": "That's what a relational database is made of.",
+      "slide": "slides/slide-11-0175s.png"
+    },
+    {
+      "start": 192.552,
+      "end": 195.705,
+      "text": "Next we'll look inside one table: products.",
+      "slide": "slides/slide-11-0175s.png"
+    },
+    {
+      "start": 195.756,
+      "end": 201.922,
+      "text": "A table looks a lot like a spreadsheet \u2014 with rows and columns \u2014 but it isn\u2019t a junk drawer.",
+      "slide": "slides/slide-11-0175s.png"
+    },
+    {
+      "start": 201.922,
+      "end": 208.964,
+      "text": "One table has one job: it represents a single entity, or a single relationship between entities.",
+      "slide": "slides/slide-12-0201s.png"
+    },
+    {
+      "start": 208.964,
+      "end": 210.297,
+      "text": "So what\u2019s an entity?",
+      "slide": "slides/slide-13-0204s.png"
+    },
+    {
+      "start": 210.297,
+      "end": 218.145,
+      "text": "It\u2019s just a thing you can describe \u2014 a product, a customer, an order \u2014 something with attributes you care about.",
+      "slide": "slides/slide-13-0204s.png"
+    },
+    {
+      "start": 218.145,
+      "end": 221.756,
+      "text": "Let\u2019s say you run an online store called the Sci-Fi Collective.",
+      "slide": "slides/slide-13-0204s.png"
+    },
+    {
+      "start": 221.756,
+      "end": 229.839,
+      "text": "They sell weird gear, including a time machine that only takes you back five minutes \u2014 you know, in case you forgot your keys.",
+      "slide": "slides/slide-13-0204s.png"
+    },
+    {
+      "start": 229.839,
+      "end": 231.728,
+      "text": "Each product is an entity.",
+      "slide": "slides/slide-13-0204s.png"
+    },
+    {
+      "start": 231.728,
+      "end": 236.561,
+      "text": "It has a name, a description, a price, and a manufacturer.",
+      "slide": "slides/slide-13-0204s.png"
+    },
+    {
+      "start": 236.561,
+      "end": 241.103,
+      "text": "Those become the columns in your table, and each product becomes a row.",
+      "slide": "slides/slide-13-0204s.png"
+    },
+    {
+      "start": 241.103,
+      "end": 245.381,
+      "text": "And you\u2019ll almost always add one more column: a product ID.",
+      "slide": "slides/slide-13-0204s.png"
+    },
+    {
+      "start": 245.381,
+      "end": 252.228,
+      "text": "It has to be unique \u2014 no doubles \u2014 so you can point at exactly one product and nowhere else.",
+      "slide": "slides/slide-14-0242s.png"
+    },
+    {
+      "start": 252.228,
+      "end": 258.381,
+      "text": "That\u2019s your primary key: one per table, the \u201cthis row \u2014 and only this row\u201d handle.",
+      "slide": "slides/slide-14-0242s.png"
+    },
+    {
+      "start": 258.381,
+      "end": 260.339,
+      "text": "Keep one entity per table.",
+      "slide": "slides/slide-14-0242s.png"
+    },
+    {
+      "start": 260.339,
+      "end": 263.45,
+      "text": "Break that rule, and things get ugly fast.",
+      "slide": "slides/slide-14-0242s.png"
+    },
+    {
+      "start": 263.45,
+      "end": 267.589,
+      "text": "What if you cram customers and products into one giant table?",
+      "slide": "slides/slide-15-0262s.png"
+    },
+    {
+      "start": 267.589,
+      "end": 271.075,
+      "text": "You\u2019ll repeat the same customer info over and over.",
+      "slide": "slides/slide-15-0262s.png"
+    },
+    {
+      "start": 271.075,
+      "end": 274.7,
+      "text": "That\u2019s redundancy \u2014 and then the real problems show up.",
+      "slide": "slides/slide-15-0262s.png"
+    },
+    {
+      "start": 274.7,
+      "end": 279.506,
+      "text": "Here\u2019s a delete anomaly: that customer only lives in one row.",
+      "slide": "slides/slide-15-0262s.png"
+    },
+    {
+      "start": 279.506,
+      "end": 283.103,
+      "text": "Delete the product, and you\u2019ve just deleted the customer too.",
+      "slide": "slides/slide-15-0262s.png"
+    },
+    {
+      "start": 283.103,
+      "end": 291.825,
+      "text": "Here\u2019s an insertion anomaly: you want to add a product nobody\u2019s bought yet, but the table demands customer info on every row.",
+      "slide": "slides/slide-15-0262s.png"
+    },
+    {
+      "start": 291.825,
+      "end": 294.867,
+      "text": "So you\u2019re stuck \u2014 you can\u2019t even insert the product.",
+      "slide": "slides/slide-15-0262s.png"
+    },
+    {
+      "start": 294.867,
+      "end": 295.936,
+      "text": "One table.",
+      "slide": "slides/slide-15-0262s.png"
+    },
+    {
+      "start": 295.936,
+      "end": 298.978,
+      "text": "One entity \u2014 or one clear relationship.",
+      "slide": "slides/slide-15-0262s.png"
+    },
+    {
+      "start": 298.978,
+      "end": 301.783,
+      "text": "Hold that line, and your data stays clean.",
+      "slide": "slides/slide-15-0262s.png"
+    },
+    {
+      "start": 301.783,
+      "end": 308.895,
+      "text": "Now, the software that runs all of this is the RDBMS: the relational database management system.",
+      "slide": "slides/slide-15-0262s.png"
+    },
+    {
+      "start": 308.895,
+      "end": 316.27,
+      "text": "You\u2019ll hear names like MySQL, MariaDB, PostgreSQL, SQL Server, and SQLite.",
+      "slide": "slides/slide-15-0262s.png"
+    },
+    {
+      "start": 316.27,
+      "end": 321.297,
+      "text": "It talks to the hardware, stores the data, and gives you tools to work with it.",
+      "slide": "slides/slide-15-0262s.png"
+    },
+    {
+      "start": 321.297,
+      "end": 324.908,
+      "text": "The big one is SQL \u2014 Structured Query Language.",
+      "slide": "slides/slide-15-0262s.png"
+    },
+    {
+      "start": 324.908,
+      "end": 329.214,
+      "text": "That\u2019s how you create tables, change data, and ask questions.",
+      "slide": "slides/slide-15-0262s.png"
+    },
+    {
+      "start": 329.214,
+      "end": 333.797,
+      "text": "Vendors add their own flavors, but the core language travels well.",
+      "slide": "slides/slide-15-0262s.png"
+    },
+    {
+      "start": 333.797,
+      "end": 336.408,
+      "text": "Learn it once, and you can move around.",
+      "slide": "slides/slide-15-0262s.png"
+    },
+    {
+      "start": 336.408,
+      "end": 341.131,
+      "text": "You don\u2019t always have to write SQL by hand \u2014 some tools generate it for you.",
+      "slide": "slides/slide-15-0262s.png"
+    },
+    {
+      "start": 341.131,
+      "end": 343.436,
+      "text": "But knowing SQL makes you sharper.",
+      "slide": "slides/slide-15-0262s.png"
+    },
+    {
+      "start": 343.436,
+      "end": 350.311,
+      "text": "You\u2019ll catch integrity problems sooner, understand performance better, and scale with fewer surprises.",
+      "slide": "slides/slide-15-0262s.png"
+    },
+    {
+      "start": 350.311,
+      "end": 351.853,
+      "text": "Okay \u2014 first query.",
+      "slide": "slides/slide-15-0262s.png"
+    },
+    {
+      "start": 351.853,
+      "end": 355.006,
+      "text": "We\u2019re using the Sci-Fi Collective\u2019s product table.",
+      "slide": "slides/slide-15-0262s.png"
+    },
+    {
+      "start": 355.006,
+      "end": 359.283,
+      "text": "The goal is to get the names of products that cost more than twenty bucks.",
+      "slide": "slides/slide-16-0352s.png"
+    },
+    {
+      "start": 359.283,
+      "end": 360.27,
+      "text": "Here it is:",
+      "slide": "slides/slide-16-0352s.png"
+    },
+    {
+      "start": 360.27,
+      "end": 366.45,
+      "text": "SELECT name FROM product WHERE price is greater than 20 \u2014 and finish with a semicolon.",
+      "slide": "slides/slide-16-0352s.png"
+    },
+    {
+      "start": 366.45,
+      "end": 367.242,
+      "text": "Run it.",
+      "slide": "slides/slide-16-0352s.png"
+    },
+    {
+      "start": 367.292,
+      "end": 370.325,
+      "text": "You should get one column with three product names.",
+      "slide": "slides/slide-16-0352s.png"
+    },
+    {
+      "start": 370.386,
+      "end": 372.344,
+      "text": "That\u2019s your first SQL query.",
+      "slide": "slides/slide-16-0352s.png"
+    },
+    {
+      "start": 372.344,
+      "end": 378.108,
+      "text": "Typo a column name \u2014 \u201cnames\u201d instead of \u201cname\u201d \u2014 and SQL will yell at you.",
+      "slide": "slides/slide-16-0352s.png"
+    },
+    {
+      "start": 378.108,
+      "end": 378.844,
+      "text": "Good.",
+      "slide": "slides/slide-16-0352s.png"
+    },
+    {
+      "start": 378.844,
+      "end": 380.567,
+      "text": "It\u2019s picky on purpose.",
+      "slide": "slides/slide-16-0352s.png"
+    },
+    {
+      "start": 380.567,
+      "end": 382.247,
+      "text": "So what\u2019s actually happening?",
+      "slide": "slides/slide-16-0352s.png"
+    },
+    {
+      "start": 382.247,
+      "end": 385.289,
+      "text": "SELECT picks the columns \u2014 we asked for name.",
+      "slide": "slides/slide-16-0352s.png"
+    },
+    {
+      "start": 385.289,
+      "end": 387.469,
+      "text": "FROM picks the table \u2014 product.",
+      "slide": "slides/slide-16-0352s.png"
+    },
+    {
+      "start": 387.469,
+      "end": 391.025,
+      "text": "WHERE filters the rows \u2014 only prices over twenty.",
+      "slide": "slides/slide-16-0352s.png"
+    },
+    {
+      "start": 391.025,
+      "end": 393.58,
+      "text": "And the semicolon means we\u2019re done here.",
+      "slide": "slides/slide-16-0352s.png"
+    },
+    {
+      "start": 393.58,
+      "end": 399.692,
+      "text": "SQL reads a bit like English\u2026 if English skipped the small talk and made you stick to the script.",
+      "slide": "slides/slide-17-0393s.png"
+    },
+    {
+      "start": 399.692,
+      "end": 401.344,
+      "text": "Specific clauses.",
+      "slide": "slides/slide-17-0393s.png"
+    },
+    {
+      "start": 401.344,
+      "end": 402.692,
+      "text": "Specific shape.",
+      "slide": "slides/slide-17-0393s.png"
+    },
+    {
+      "start": 402.692,
+      "end": 406.4,
+      "text": "The database does exactly what you asked \u2014 nothing more.",
+      "slide": "slides/slide-18-0402s.png"
+    },
+    {
+      "start": 406.505,
+      "end": 407.649,
+      "text": "Quick recap.",
+      "slide": "slides/slide-18-0402s.png"
+    },
+    {
+      "start": 407.649,
+      "end": 412.441,
+      "text": "Spreadsheets break when life gets complicated, and structure matters.",
+      "slide": "slides/slide-18-0402s.png"
+    },
+    {
+      "start": 412.441,
+      "end": 420.816,
+      "text": "Relational databases organize data into tables around entities, with primary keys to identify each row.",
+      "slide": "slides/slide-18-0402s.png"
+    },
+    {
+      "start": 420.816,
+      "end": 425.482,
+      "text": "An RDBMS manages that world, and SQL is how you talk to it.",
+      "slide": "slides/slide-18-0402s.png"
+    },
+    {
+      "start": 425.482,
+      "end": 428.76,
+      "text": "Those are the foundations \u2014 and they\u2019re just the start.",
+      "slide": "slides/slide-20-0423s.png"
+    },
+    {
+      "start": 428.76,
+      "end": 435.343,
+      "text": "Next time, we dig into the building blocks of SQL so you can read and write queries without guessing.",
+      "slide": "slides/slide-20-0423s.png"
+    }
+  ]
+}

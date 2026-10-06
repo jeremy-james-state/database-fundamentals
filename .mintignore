@@ -5,3 +5,10 @@
 # Draft content
 drafts/
 *.draft.mdx
+
+# Lecture/player audio is not docs content. mint hashes each MP3 as a
+# staticFile (~20–35s each); hundreds of listen/media/**/_parts files
+# stall localhost:3000 until the preview never answers HTTP.
+**/*.mp3
+audio/
+listen/media/

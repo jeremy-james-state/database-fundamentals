@@ -1,0 +1,1722 @@
+{
+  "title": "Third normal form",
+  "subtitle": "No transitive extras",
+  "audio": "narration.mp3",
+  "duration": 570.6,
+  "slides": [],
+  "scenes": [
+    {
+      "id": "chain",
+      "label": "Chain",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "city",
+        "state"
+      ],
+      "rows": [
+        [
+          "1",
+          "Austin",
+          "TX"
+        ],
+        [
+          "2",
+          "Austin",
+          "TX"
+        ],
+        [
+          "3",
+          "Denver",
+          "CO"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 0,
+          "actions": [
+            "enter",
+            "show-header"
+          ]
+        },
+        {
+          "lyricMin": 2,
+          "actions": [
+            "reveal-rows"
+          ]
+        }
+      ],
+      "fromLyric": 0,
+      "toLyric": 15
+    },
+    {
+      "id": "test",
+      "label": "Chain",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "city",
+        "state"
+      ],
+      "rows": [
+        [
+          "1",
+          "Austin",
+          "TX"
+        ],
+        [
+          "2",
+          "Austin",
+          "TX"
+        ],
+        [
+          "3",
+          "Denver",
+          "CO"
+        ]
+      ],
+      "fromLyric": 15,
+      "toLyric": 26,
+      "steps": [
+        {
+          "lyricMin": 15,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chain-2",
+      "label": "Chain",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "city",
+        "state"
+      ],
+      "rows": [
+        [
+          "1",
+          "Austin",
+          "TX"
+        ],
+        [
+          "2",
+          "Austin",
+          "TX"
+        ],
+        [
+          "3",
+          "Denver",
+          "CO"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 26,
+          "actions": [
+            "enter",
+            "show-header"
+          ]
+        },
+        {
+          "lyricMin": 26,
+          "actions": [
+            "reveal-rows"
+          ]
+        }
+      ],
+      "fromLyric": 26,
+      "toLyric": 28
+    },
+    {
+      "id": "stop",
+      "label": "Chain",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "city",
+        "state"
+      ],
+      "rows": [
+        [
+          "1",
+          "Austin",
+          "TX"
+        ],
+        [
+          "2",
+          "Austin",
+          "TX"
+        ],
+        [
+          "3",
+          "Denver",
+          "CO"
+        ]
+      ],
+      "fromLyric": 28,
+      "toLyric": 36,
+      "steps": [
+        {
+          "lyricMin": 28,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chain-3",
+      "label": "Chain",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "city",
+        "state"
+      ],
+      "rows": [
+        [
+          "1",
+          "Austin",
+          "TX"
+        ],
+        [
+          "2",
+          "Austin",
+          "TX"
+        ],
+        [
+          "3",
+          "Denver",
+          "CO"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 36,
+          "actions": [
+            "enter",
+            "show-header"
+          ]
+        },
+        {
+          "lyricMin": 37,
+          "actions": [
+            "reveal-rows"
+          ]
+        }
+      ],
+      "fromLyric": 36,
+      "toLyric": 42
+    },
+    {
+      "id": "test-2",
+      "label": "Chain",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "city",
+        "state"
+      ],
+      "rows": [
+        [
+          "1",
+          "Austin",
+          "TX"
+        ],
+        [
+          "2",
+          "Austin",
+          "TX"
+        ],
+        [
+          "3",
+          "Denver",
+          "CO"
+        ]
+      ],
+      "fromLyric": 42,
+      "toLyric": 60,
+      "steps": [
+        {
+          "lyricMin": 42,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "break",
+      "label": "Break",
+      "kind": "schema",
+      "title": "City holds state",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "city_id"
+          ],
+          "pk": "customer_id"
+        },
+        {
+          "id": "cities",
+          "label": "cities",
+          "cols": [
+            "city_id",
+            "name",
+            "state"
+          ],
+          "pk": "city_id",
+          "hub": true
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 60,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 61,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 60,
+      "toLyric": 72
+    },
+    {
+      "id": "test-3",
+      "label": "Chain",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "city",
+        "state"
+      ],
+      "rows": [
+        [
+          "1",
+          "Austin",
+          "TX"
+        ],
+        [
+          "2",
+          "Austin",
+          "TX"
+        ],
+        [
+          "3",
+          "Denver",
+          "CO"
+        ]
+      ],
+      "fromLyric": 72,
+      "toLyric": 81,
+      "steps": [
+        {
+          "lyricMin": 72,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "break-2",
+      "label": "Break",
+      "kind": "schema",
+      "title": "City holds state",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "city_id"
+          ],
+          "pk": "customer_id"
+        },
+        {
+          "id": "cities",
+          "label": "cities",
+          "cols": [
+            "city_id",
+            "name",
+            "state"
+          ],
+          "pk": "city_id",
+          "hub": true
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 81,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 82,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 81,
+      "toLyric": 89
+    },
+    {
+      "id": "test-4",
+      "label": "Chain",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "city",
+        "state"
+      ],
+      "rows": [
+        [
+          "1",
+          "Austin",
+          "TX"
+        ],
+        [
+          "2",
+          "Austin",
+          "TX"
+        ],
+        [
+          "3",
+          "Denver",
+          "CO"
+        ]
+      ],
+      "fromLyric": 89,
+      "toLyric": 96,
+      "steps": [
+        {
+          "lyricMin": 89,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "stop-2",
+      "label": "Chain",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "city",
+        "state"
+      ],
+      "rows": [
+        [
+          "1",
+          "Austin",
+          "TX"
+        ],
+        [
+          "2",
+          "Austin",
+          "TX"
+        ],
+        [
+          "3",
+          "Denver",
+          "CO"
+        ]
+      ],
+      "fromLyric": 96,
+      "toLyric": 97,
+      "steps": [
+        {
+          "lyricMin": 96,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "break-3",
+      "label": "Break",
+      "kind": "schema",
+      "title": "City holds state",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "city_id"
+          ],
+          "pk": "customer_id"
+        },
+        {
+          "id": "cities",
+          "label": "cities",
+          "cols": [
+            "city_id",
+            "name",
+            "state"
+          ],
+          "pk": "city_id",
+          "hub": true
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 97,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 98,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 97,
+      "toLyric": 109
+    },
+    {
+      "id": "test-5",
+      "label": "Chain",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "city",
+        "state"
+      ],
+      "rows": [
+        [
+          "1",
+          "Austin",
+          "TX"
+        ],
+        [
+          "2",
+          "Austin",
+          "TX"
+        ],
+        [
+          "3",
+          "Denver",
+          "CO"
+        ]
+      ],
+      "fromLyric": 109,
+      "toLyric": 123,
+      "steps": [
+        {
+          "lyricMin": 109,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "break-4",
+      "label": "Break",
+      "kind": "schema",
+      "title": "City holds state",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "city_id"
+          ],
+          "pk": "customer_id"
+        },
+        {
+          "id": "cities",
+          "label": "cities",
+          "cols": [
+            "city_id",
+            "name",
+            "state"
+          ],
+          "pk": "city_id",
+          "hub": true
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 123,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 124,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 123,
+      "toLyric": 127
+    },
+    {
+      "id": "test-6",
+      "label": "Chain",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "city",
+        "state"
+      ],
+      "rows": [
+        [
+          "1",
+          "Austin",
+          "TX"
+        ],
+        [
+          "2",
+          "Austin",
+          "TX"
+        ],
+        [
+          "3",
+          "Denver",
+          "CO"
+        ]
+      ],
+      "fromLyric": 127,
+      "toLyric": 147,
+      "steps": [
+        {
+          "lyricMin": 127,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chain-4",
+      "label": "Chain",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "city",
+        "state"
+      ],
+      "rows": [
+        [
+          "1",
+          "Austin",
+          "TX"
+        ],
+        [
+          "2",
+          "Austin",
+          "TX"
+        ],
+        [
+          "3",
+          "Denver",
+          "CO"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 147,
+          "actions": [
+            "enter",
+            "show-header"
+          ]
+        },
+        {
+          "lyricMin": 147,
+          "actions": [
+            "reveal-rows"
+          ]
+        }
+      ],
+      "fromLyric": 147,
+      "toLyric": 159
+    },
+    {
+      "id": "break-5",
+      "label": "Break",
+      "kind": "schema",
+      "title": "City holds state",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "city_id"
+          ],
+          "pk": "customer_id"
+        },
+        {
+          "id": "cities",
+          "label": "cities",
+          "cols": [
+            "city_id",
+            "name",
+            "state"
+          ],
+          "pk": "city_id",
+          "hub": true
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 159,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 160,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 159,
+      "toLyric": 165
+    }
+  ],
+  "lyrics": [
+    {
+      "start": 0.05,
+      "end": 4.291,
+      "text": "Third normal form starts from second, then hunts a longer chain.",
+      "slide": ""
+    },
+    {
+      "start": 4.291,
+      "end": 9.138,
+      "text": "A non-key column must depend on the key, not on another non-key column.",
+      "slide": ""
+    },
+    {
+      "start": 9.138,
+      "end": 13.375,
+      "text": "customers has customer_id, city, state.",
+      "slide": ""
+    },
+    {
+      "start": 13.375,
+      "end": 16.972,
+      "text": "state depends on city more than it depends on the customer.",
+      "slide": ""
+    },
+    {
+      "start": 16.972,
+      "end": 18.583,
+      "text": "Maya lives in Austin.",
+      "slide": ""
+    },
+    {
+      "start": 18.583,
+      "end": 20.333,
+      "text": "Austin is in Texas.",
+      "slide": ""
+    },
+    {
+      "start": 20.333,
+      "end": 24.069,
+      "text": "If Jordan also lives in Austin, Texas repeats.",
+      "slide": ""
+    },
+    {
+      "start": 24.069,
+      "end": 30.708,
+      "text": "If Austin is recoded into a different state in one row, the table disagrees with itself.",
+      "slide": ""
+    },
+    {
+      "start": 30.708,
+      "end": 33.291,
+      "text": "That chain is a transitive dependence.",
+      "slide": ""
+    },
+    {
+      "start": 33.291,
+      "end": 37.847,
+      "text": "customer_id determines city, city determines state.",
+      "slide": ""
+    },
+    {
+      "start": 37.847,
+      "end": 43.041,
+      "text": "So customer_id determines state, but only by walking through city.",
+      "slide": ""
+    },
+    {
+      "start": 43.041,
+      "end": 44.18,
+      "text": "Break the chain.",
+      "slide": ""
+    },
+    {
+      "start": 44.18,
+      "end": 48.055,
+      "text": "cities holds city_id, name, state.",
+      "slide": ""
+    },
+    {
+      "start": 48.055,
+      "end": 50.583,
+      "text": "customers holds city_id.",
+      "slide": ""
+    },
+    {
+      "start": 50.583,
+      "end": 52.68,
+      "text": "Texas lives in one place.",
+      "slide": ""
+    },
+    {
+      "start": 52.68,
+      "end": 57.652,
+      "text": "ZIP codes, country codes, tax rates on a region \u2014 same shape.",
+      "slide": ""
+    },
+    {
+      "start": 57.652,
+      "end": 61.25,
+      "text": "If a fact is about the region, give the region a table.",
+      "slide": ""
+    },
+    {
+      "start": 61.25,
+      "end": 63.347,
+      "text": "The test is again a sentence.",
+      "slide": ""
+    },
+    {
+      "start": 63.347,
+      "end": 70.291,
+      "text": "If I know this non-key value, do I already know that other non-key value, no matter which customer I picked?",
+      "slide": ""
+    },
+    {
+      "start": 70.291,
+      "end": 73.25,
+      "text": "Then the second value was not about the customer.",
+      "slide": ""
+    },
+    {
+      "start": 73.25,
+      "end": 74.986,
+      "text": "Do not over-split trivia.",
+      "slide": ""
+    },
+    {
+      "start": 74.986,
+      "end": 82.319,
+      "text": "first_name and last_name both depend on the customer, not on each other in the table sense.",
+      "slide": ""
+    },
+    {
+      "start": 82.319,
+      "end": 84.583,
+      "text": "You do not need a names table for that.",
+      "slide": ""
+    },
+    {
+      "start": 84.583,
+      "end": 88.777,
+      "text": "The dependence that matters is a real-world rule you would enforce.",
+      "slide": ""
+    },
+    {
+      "start": 88.777,
+      "end": 91.625,
+      "text": "Austin is always in Texas in your data.",
+      "slide": ""
+    },
+    {
+      "start": 91.625,
+      "end": 92.791,
+      "text": "That is a rule.",
+      "slide": ""
+    },
+    {
+      "start": 92.791,
+      "end": 96.208,
+      "text": "Maya's last name does not determine her first name.",
+      "slide": ""
+    },
+    {
+      "start": 96.208,
+      "end": 100.527,
+      "text": "Third normal form is often enough for operational tables.",
+      "slide": ""
+    },
+    {
+      "start": 100.527,
+      "end": 103.944,
+      "text": "It is the usual stopping point before Boyce\u2013Codd.",
+      "slide": ""
+    },
+    {
+      "start": 103.944,
+      "end": 105.902,
+      "text": "You still chose keys first.",
+      "slide": ""
+    },
+    {
+      "start": 105.902,
+      "end": 109.527,
+      "text": "Without a clear key, talking about dependence is fog.",
+      "slide": ""
+    },
+    {
+      "start": 109.527,
+      "end": 112.444,
+      "text": "Sketch the arrows from key to facts.",
+      "slide": ""
+    },
+    {
+      "start": 112.444,
+      "end": 118.694,
+      "text": "If an arrow lands on a fact and another arrow leaves that fact toward a third, you have work.",
+      "slide": ""
+    },
+    {
+      "start": 118.694,
+      "end": 121.125,
+      "text": "Move the third fact with the second.",
+      "slide": ""
+    },
+    {
+      "start": 121.125,
+      "end": 123.458,
+      "text": "Leave a key behind on the customer.",
+      "slide": ""
+    },
+    {
+      "start": 123.458,
+      "end": 127.041,
+      "text": "Transitive chains like to hide in address blocks.",
+      "slide": ""
+    },
+    {
+      "start": 127.041,
+      "end": 131.805,
+      "text": "city, state, country, region, tax_zone.",
+      "slide": ""
+    },
+    {
+      "start": 131.805,
+      "end": 134.305,
+      "text": "Each step may determine the next.",
+      "slide": ""
+    },
+    {
+      "start": 134.305,
+      "end": 136.861,
+      "text": "You do not need five tables on day one.",
+      "slide": ""
+    },
+    {
+      "start": 136.861,
+      "end": 141.958,
+      "text": "You do need to notice when two customers in the same city disagree on the state.",
+      "slide": ""
+    },
+    {
+      "start": 141.958,
+      "end": 145.027,
+      "text": "That disagreement is the chain telling on you.",
+      "slide": ""
+    },
+    {
+      "start": 145.027,
+      "end": 148.263,
+      "text": "Lookups of codes are third-normal-form friends.",
+      "slide": ""
+    },
+    {
+      "start": 148.263,
+      "end": 155.18,
+      "text": "status_id pointing at statuses, instead of a color name copied onto every order.",
+      "slide": ""
+    },
+    {
+      "start": 155.18,
+      "end": 157.652,
+      "text": "The color is a fact about the status.",
+      "slide": ""
+    },
+    {
+      "start": 157.652,
+      "end": 160.125,
+      "text": "Derived totals can look transitive.",
+      "slide": ""
+    },
+    {
+      "start": 160.125,
+      "end": 164.805,
+      "text": "line_total plus tax equals invoice_total.",
+      "slide": ""
+    },
+    {
+      "start": 164.805,
+      "end": 167.68,
+      "text": "If you store all three, they can disagree.",
+      "slide": ""
+    },
+    {
+      "start": 167.68,
+      "end": 173.736,
+      "text": "Prefer storing the inputs, compute the output, unless you freeze a snapshot for history.",
+      "slide": ""
+    },
+    {
+      "start": 173.736,
+      "end": 175.472,
+      "text": "Again, say which.",
+      "slide": ""
+    },
+    {
+      "start": 175.472,
+      "end": 178.125,
+      "text": "Third normal form will not compute for you.",
+      "slide": ""
+    },
+    {
+      "start": 178.125,
+      "end": 182.694,
+      "text": "It will stop you storing a computed fact as if it were independent.",
+      "slide": ""
+    },
+    {
+      "start": 182.694,
+      "end": 187.416,
+      "text": "When a column is a code plus a name, the name belongs with the code.",
+      "slide": ""
+    },
+    {
+      "start": 187.416,
+      "end": 194.013,
+      "text": "country_code and country_name on the customer is the city-state bug in a passport.",
+      "slide": ""
+    },
+    {
+      "start": 194.013,
+      "end": 198.111,
+      "text": "countries table, then country_code on the customer.",
+      "slide": ""
+    },
+    {
+      "start": 198.111,
+      "end": 199.875,
+      "text": "The hop is the same hop.",
+      "slide": ""
+    },
+    {
+      "start": 199.875,
+      "end": 205.069,
+      "text": "You are done when every non-key fact answers to the key and only the key.",
+      "slide": ""
+    },
+    {
+      "start": 205.069,
+      "end": 207.166,
+      "text": "No tour through another fact.",
+      "slide": ""
+    },
+    {
+      "start": 207.166,
+      "end": 208.736,
+      "text": "That is the whole standard.",
+      "slide": ""
+    },
+    {
+      "start": 208.736,
+      "end": 211.958,
+      "text": "Most clean stores stop here and get back to work.",
+      "slide": ""
+    },
+    {
+      "start": 211.958,
+      "end": 217.902,
+      "text": "If two rows share a city and fight about the state, you stored a region fact on a person.",
+      "slide": ""
+    },
+    {
+      "start": 217.902,
+      "end": 223.555,
+      "text": "Move the fight to a cities table, where it becomes one row and one truth.",
+      "slide": ""
+    },
+    {
+      "start": 223.555,
+      "end": 227.694,
+      "text": "That is the entire emotional content of third normal form.",
+      "slide": ""
+    },
+    {
+      "start": 227.694,
+      "end": 229.277,
+      "text": "The rest is arrows.",
+      "slide": ""
+    },
+    {
+      "start": 229.277,
+      "end": 231.68,
+      "text": "Key to city, city to state.",
+      "slide": ""
+    },
+    {
+      "start": 231.68,
+      "end": 234.222,
+      "text": "Cut the second arrow out of customers.",
+      "slide": ""
+    },
+    {
+      "start": 234.222,
+      "end": 236.236,
+      "text": "Leave city_id.",
+      "slide": ""
+    },
+    {
+      "start": 236.236,
+      "end": 239.069,
+      "text": "Do not leave state behind as a souvenir.",
+      "slide": ""
+    },
+    {
+      "start": 239.069,
+      "end": 240.694,
+      "text": "Souvenirs disagree.",
+      "slide": ""
+    },
+    {
+      "start": 240.694,
+      "end": 243.069,
+      "text": "Lookup tables are not bureaucracy.",
+      "slide": ""
+    },
+    {
+      "start": 243.069,
+      "end": 246.361,
+      "text": "They are how a state stays still while customers move.",
+      "slide": ""
+    },
+    {
+      "start": 246.361,
+      "end": 250.263,
+      "text": "When the non-key facts all answer to the key, stop.",
+      "slide": ""
+    },
+    {
+      "start": 250.263,
+      "end": 251.263,
+      "text": "Go query.",
+      "slide": ""
+    },
+    {
+      "start": 251.263,
+      "end": 257.444,
+      "text": "You update a major name on one student row and forget the other three who share that major.",
+      "slide": ""
+    },
+    {
+      "start": 257.444,
+      "end": 259.041,
+      "text": "Reports now disagree.",
+      "slide": ""
+    },
+    {
+      "start": 259.041,
+      "end": 273.569,
+      "text": "That is a transitive dependency: student_id determines major_id, major_id determines major_name, so student_id determines major_name through a middle column.",
+      "slide": ""
+    },
+    {
+      "start": 273.569,
+      "end": 280.513,
+      "text": "Third normal form, simplified: no non-key column is allowed to depend on another non-key column.",
+      "slide": ""
+    },
+    {
+      "start": 280.513,
+      "end": 283.486,
+      "text": "Non-key means not part of the primary key.",
+      "slide": ""
+    },
+    {
+      "start": 283.486,
+      "end": 287.68,
+      "text": "You must already be in second, which already required first.",
+      "slide": ""
+    },
+    {
+      "start": 287.68,
+      "end": 289.569,
+      "text": "The nested dolls still apply.",
+      "slide": ""
+    },
+    {
+      "start": 289.682,
+      "end": 303.007,
+      "text": "If department_name lives on employees because department_id is also on employees, department_name depends on department_id, not on employee_id directly.",
+      "slide": ""
+    },
+    {
+      "start": 303.007,
+      "end": 306.02,
+      "text": "Move department_name to departments.",
+      "slide": ""
+    },
+    {
+      "start": 306.02,
+      "end": 310.076,
+      "text": "Employees keep department_id as a foreign key.",
+      "slide": ""
+    },
+    {
+      "start": 310.076,
+      "end": 312.215,
+      "text": "The transitive chain is cut.",
+      "slide": ""
+    },
+    {
+      "start": 312.215,
+      "end": 316.715,
+      "text": "The determinant of the moved fact becomes the key of the new table.",
+      "slide": ""
+    },
+    {
+      "start": 316.715,
+      "end": 319.77,
+      "text": "Columns that really describe the employee stay.",
+      "slide": ""
+    },
+    {
+      "start": 319.77,
+      "end": 326.979,
+      "text": "The shared department_id stays in both: as key in departments, as foreign key in employees.",
+      "slide": ""
+    },
+    {
+      "start": 326.979,
+      "end": 329.423,
+      "text": "That copy of the key is allowed.",
+      "slide": ""
+    },
+    {
+      "start": 329.423,
+      "end": 331.798,
+      "text": "That is not redundancy of a fact.",
+      "slide": ""
+    },
+    {
+      "start": 331.798,
+      "end": 333.118,
+      "text": "It is the pointer.",
+      "slide": ""
+    },
+    {
+      "start": 333.118,
+      "end": 335.604,
+      "text": "Redundancy is copying the name.",
+      "slide": ""
+    },
+    {
+      "start": 335.604,
+      "end": 340.923,
+      "text": "Codd published the relational model and the early normal forms in 1970.",
+      "slide": ""
+    },
+    {
+      "start": 340.923,
+      "end": 344.895,
+      "text": "Third was the practical target for most operational schemas.",
+      "slide": ""
+    },
+    {
+      "start": 344.895,
+      "end": 347.104,
+      "text": "It stops the major-name problem.",
+      "slide": ""
+    },
+    {
+      "start": 347.104,
+      "end": 350.187,
+      "text": "It does not stop every exotic key overlap.",
+      "slide": ""
+    },
+    {
+      "start": 350.187,
+      "end": 353.187,
+      "text": "That leftover is Boyce\u2013Codd's story.",
+      "slide": ""
+    },
+    {
+      "start": 353.187,
+      "end": 356.965,
+      "text": "For now, hunt arrows from non-key to non-key.",
+      "slide": ""
+    },
+    {
+      "start": 356.965,
+      "end": 368.284,
+      "text": "If city_name depends on zip, and zip is not the key of the customer table, zip and city belong in a location table, or zip determines city in a lookup.",
+      "slide": ""
+    },
+    {
+      "start": 368.284,
+      "end": 376.048,
+      "text": "If the dependence is not always true \u2014 zip that straddles cities \u2014 do not encode a lie as third normal form.",
+      "slide": ""
+    },
+    {
+      "start": 376.048,
+      "end": 379.882,
+      "text": "Dependencies are about what the business says must be true.",
+      "slide": ""
+    },
+    {
+      "start": 379.882,
+      "end": 383.229,
+      "text": "Not about what a sample of twenty rows happened to show.",
+      "slide": ""
+    },
+    {
+      "start": 383.229,
+      "end": 388.451,
+      "text": "Ask: if I change this non-key, must that other non-key change with it everywhere?",
+      "slide": ""
+    },
+    {
+      "start": 388.451,
+      "end": 391.604,
+      "text": "If yes, they are one fact in two seats.",
+      "slide": ""
+    },
+    {
+      "start": 391.604,
+      "end": 393.548,
+      "text": "Give the fact its own table.",
+      "slide": ""
+    },
+    {
+      "start": 393.548,
+      "end": 395.548,
+      "text": "Leave the foreign key behind.",
+      "slide": ""
+    },
+    {
+      "start": 395.548,
+      "end": 402.382,
+      "text": "Then a student can change major by changing an id, and the name updates because there is only one name row.",
+      "slide": ""
+    },
+    {
+      "start": 402.382,
+      "end": 409.409,
+      "text": "Zip codes: if zip determines city in your country, city on customers is transitive through zip.",
+      "slide": ""
+    },
+    {
+      "start": 409.409,
+      "end": 415.284,
+      "text": "If it does not, because one zip spans cities, do not split on a false dependency.",
+      "slide": ""
+    },
+    {
+      "start": 415.284,
+      "end": 418.395,
+      "text": "Third is only as true as the dependency.",
+      "slide": ""
+    },
+    {
+      "start": 418.395,
+      "end": 422.382,
+      "text": "Invented dependencies are how people over-normalize.",
+      "slide": ""
+    },
+    {
+      "start": 422.382,
+      "end": 425.632,
+      "text": "Missed dependencies are how major names drift.",
+      "slide": ""
+    },
+    {
+      "start": 425.632,
+      "end": 430.548,
+      "text": "Write the arrow, test it with an update story, then split or stay.",
+      "slide": ""
+    },
+    {
+      "start": 430.548,
+      "end": 434.215,
+      "text": "That is using third in design, not reciting it.",
+      "slide": ""
+    },
+    {
+      "start": 434.215,
+      "end": 441.284,
+      "text": "After the split, JOIN is how reports look the same as the old wide table, with one name to edit.",
+      "slide": ""
+    },
+    {
+      "start": 441.284,
+      "end": 450.465,
+      "text": "If the report is slow, that is indexes or denormalization later, not a reason to put major_name back on students as truth.",
+      "slide": ""
+    },
+    {
+      "start": 450.465,
+      "end": 453.02,
+      "text": "A cache copy would be labeled a cache.",
+      "slide": ""
+    },
+    {
+      "start": 453.02,
+      "end": 454.798,
+      "text": "Truth stays in majors.",
+      "slide": ""
+    },
+    {
+      "start": 454.798,
+      "end": 458.437,
+      "text": "Close with questions, the way a careful lecture does.",
+      "slide": ""
+    },
+    {
+      "start": 458.437,
+      "end": 461.493,
+      "text": "Answer in a sentence you could defend at a keyboard.",
+      "slide": ""
+    },
+    {
+      "start": 461.493,
+      "end": 463.59,
+      "text": "What is a transitive dependency?",
+      "slide": ""
+    },
+    {
+      "start": 463.59,
+      "end": 470.173,
+      "text": "Key determines A, A determines B, so B lives on the row through a bridge that is not a key.",
+      "slide": ""
+    },
+    {
+      "start": 470.173,
+      "end": 471.618,
+      "text": "Simplified third?",
+      "slide": ""
+    },
+    {
+      "start": 471.618,
+      "end": 475.187,
+      "text": "No non-key column depends on another non-key column.",
+      "slide": ""
+    },
+    {
+      "start": 475.187,
+      "end": 477.451,
+      "text": "major_name on students?",
+      "slide": ""
+    },
+    {
+      "start": 477.451,
+      "end": 482.104,
+      "text": "Move to majors; keep major_id as a foreign key.",
+      "slide": ""
+    },
+    {
+      "start": 482.104,
+      "end": 484.187,
+      "text": "Is the foreign key redundancy?",
+      "slide": ""
+    },
+    {
+      "start": 484.187,
+      "end": 484.951,
+      "text": "No.",
+      "slide": ""
+    },
+    {
+      "start": 484.951,
+      "end": 486.27,
+      "text": "It is the pointer.",
+      "slide": ""
+    },
+    {
+      "start": 486.27,
+      "end": 488.09,
+      "text": "The name was the redundancy.",
+      "slide": ""
+    },
+    {
+      "start": 488.09,
+      "end": 490.048,
+      "text": "Must first and second hold?",
+      "slide": ""
+    },
+    {
+      "start": 490.048,
+      "end": 490.951,
+      "text": "Yes.",
+      "slide": ""
+    },
+    {
+      "start": 490.951,
+      "end": 492.09,
+      "text": "Zip and city?",
+      "slide": ""
+    },
+    {
+      "start": 492.09,
+      "end": 496.118,
+      "text": "Split only if zip actually determines city in your rules.",
+      "slide": ""
+    },
+    {
+      "start": 496.118,
+      "end": 497.548,
+      "text": "False dependency?",
+      "slide": ""
+    },
+    {
+      "start": 497.548,
+      "end": 499.034,
+      "text": "Over-normalization.",
+      "slide": ""
+    },
+    {
+      "start": 499.034,
+      "end": 500.618,
+      "text": "Do not split on a lie.",
+      "slide": ""
+    },
+    {
+      "start": 500.618,
+      "end": 502.382,
+      "text": "Why do reports still join?",
+      "slide": ""
+    },
+    {
+      "start": 502.382,
+      "end": 504.562,
+      "text": "Because the name lives next door.",
+      "slide": ""
+    },
+    {
+      "start": 504.562,
+      "end": 505.923,
+      "text": "That is success.",
+      "slide": ""
+    },
+    {
+      "start": 505.923,
+      "end": 507.534,
+      "text": "If the join is slow?",
+      "slide": ""
+    },
+    {
+      "start": 507.534,
+      "end": 512.84,
+      "text": "Indexes or a labeled cache later, not putting truth back on students.",
+      "slide": ""
+    },
+    {
+      "start": 512.84,
+      "end": 514.965,
+      "text": "Who published the early forms?",
+      "slide": ""
+    },
+    {
+      "start": 514.965,
+      "end": 517.354,
+      "text": "Codd, around 1970.",
+      "slide": ""
+    },
+    {
+      "start": 517.354,
+      "end": 519.048,
+      "text": "What does third not catch?",
+      "slide": ""
+    },
+    {
+      "start": 519.048,
+      "end": 523.368,
+      "text": "Some overlapping candidate-key cases; that is Boyce\u2013Codd.",
+      "slide": ""
+    },
+    {
+      "start": 523.368,
+      "end": 526.701,
+      "text": "advisor_office through advisor_name?",
+      "slide": ""
+    },
+    {
+      "start": 526.701,
+      "end": 528.923,
+      "text": "Move offices with advisors.",
+      "slide": ""
+    },
+    {
+      "start": 528.923,
+      "end": 530.132,
+      "text": "How do you test?",
+      "slide": ""
+    },
+    {
+      "start": 530.132,
+      "end": 534.854,
+      "text": "Change the name once and see whether four rows would have needed four edits.",
+      "slide": ""
+    },
+    {
+      "start": 534.854,
+      "end": 536.409,
+      "text": "What question to ask?",
+      "slide": ""
+    },
+    {
+      "start": 536.409,
+      "end": 540.687,
+      "text": "If I change this non-key, must that other non-key change everywhere?",
+      "slide": ""
+    },
+    {
+      "start": 540.687,
+      "end": 541.701,
+      "text": "If yes?",
+      "slide": ""
+    },
+    {
+      "start": 541.701,
+      "end": 543.618,
+      "text": "One fact in two seats.",
+      "slide": ""
+    },
+    {
+      "start": 543.618,
+      "end": 544.493,
+      "text": "Split.",
+      "slide": ""
+    },
+    {
+      "start": 544.493,
+      "end": 545.59,
+      "text": "Nested order?",
+      "slide": ""
+    },
+    {
+      "start": 545.59,
+      "end": 549.909,
+      "text": "Atomic cells, whole key, then no non-key chains.",
+      "slide": ""
+    },
+    {
+      "start": 549.909,
+      "end": 551.882,
+      "text": "Is JOIN a failure of third?",
+      "slide": ""
+    },
+    {
+      "start": 551.882,
+      "end": 552.645,
+      "text": "No.",
+      "slide": ""
+    },
+    {
+      "start": 552.645,
+      "end": 553.77,
+      "text": "Cache copy?",
+      "slide": ""
+    },
+    {
+      "start": 553.77,
+      "end": 555.173,
+      "text": "Label it a cache.",
+      "slide": ""
+    },
+    {
+      "start": 555.173,
+      "end": 557.312,
+      "text": "Truth stays in the parent table.",
+      "slide": ""
+    },
+    {
+      "start": 557.312,
+      "end": 559.173,
+      "text": "Sample of twenty rows?",
+      "slide": ""
+    },
+    {
+      "start": 559.173,
+      "end": 561.409,
+      "text": "Not enough to invent a dependency.",
+      "slide": ""
+    },
+    {
+      "start": 561.409,
+      "end": 562.743,
+      "text": "When is third done?",
+      "slide": ""
+    },
+    {
+      "start": 562.743,
+      "end": 565.812,
+      "text": "No non-key to non-key arrows remain.",
+      "slide": ""
+    },
+    {
+      "start": 565.812,
+      "end": 570.534,
+      "text": "If an answer needed a second table, go draw it before you write more SQL.",
+      "slide": ""
+    }
+  ]
+}

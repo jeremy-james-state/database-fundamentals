@@ -1,0 +1,71 @@
+---
+title: "CREATE TRIGGER"
+description: "Stores SQL that runs automatically before or after INSERT, UPDATE, or DELETE."
+---
+
+`.schema` lists triggers with tables. Drop a trigger with `DROP TRIGGER name` if you need to replace it.
+
+## Syntax
+
+```sql
+CREATE TRIGGER name
+AFTER INSERT ON table
+FOR EACH ROW
+BEGIN
+  statement;
+END;
+```
+
+Use `BEFORE` instead of `AFTER`, and `UPDATE` or `DELETE` instead of `INSERT`, as needed.
+
+On a [view](/concepts/views), use **`INSTEAD OF`**: SQLite cannot change the view’s rows directly, so the trigger body runs in place of the write.
+
+## Arguments
+
+<ParamField body="name" type="identifier" required>
+  Unique among triggers in this database.
+</ParamField>
+
+<ParamField body="AFTER, BEFORE, or INSTEAD OF" type="keyword" required>
+  When the body runs. `INSTEAD OF` replaces the original `INSERT`, `UPDATE`, or `DELETE` (typical on views).
+</ParamField>
+
+<ParamField body="FOR EACH ROW" type="clause">
+  Run the body once per affected row. `NEW` is the incoming row. `OLD` is the previous row (`OLD.id` is that row’s id).
+</ParamField>
+
+<ParamField body="BEGIN … END" type="block" required>
+  One or more statements, each ending with a semicolon.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql Log an insert
+CREATE TRIGGER log_insert
+AFTER INSERT ON collections
+FOR EACH ROW
+BEGIN
+  INSERT INTO transactions (title, action)
+  VALUES (NEW.title, 'bought');
+END;
+```
+
+```sql Soft-delete through a view
+CREATE TRIGGER soft_delete_collection
+INSTEAD OF DELETE ON current_collections
+FOR EACH ROW
+BEGIN
+  UPDATE collections
+  SET deleted = 1
+  WHERE id = OLD.id;
+END;
+```
+</CodeGroup>
+
+## Related references
+
+- [Triggers](/concepts/triggers)
+- [Create a trigger](/how-to/create-a-trigger)
+- [Write through a view](/how-to/write-through-a-view)
+- [INSERT](/reference/insert)

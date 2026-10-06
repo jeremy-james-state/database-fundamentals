@@ -1,0 +1,307 @@
+Reading a table is only half the job.
+
+You also create it, fill it, change it, and sometimes throw a column away.
+
+Until now the table felt like a given.
+
+Someone else had already named the columns.
+
+Now you are the someone.
+
+CREATE TABLE names the table and lists columns with types.
+
+Each column is one attribute you promise to store.
+
+customer_id is an integer.
+
+name is text.
+
+city is text.
+
+That list is a contract.
+
+Rows that arrive later have to fit it.
+
+INSERT adds a row.
+
+You list the columns, then the values, in the same order.
+
+A second INSERT is a second customer — not an edit of the first.
+
+Maya is one row.
+
+Jordan is another.
+
+If you insert Maya twice, you now have two Mayas unless a key stops you.
+
+UPDATE changes values already in the table.
+
+SET names the new value.
+
+WHERE names which rows move.
+
+Always pair UPDATE with WHERE, or every row moves.
+
+That is the classic accident.
+
+You meant Sofia's city.
+
+You rewrote the whole column.
+
+DELETE removes rows.
+
+Again: WHERE, or the table goes quiet.
+
+DELETE FROM customers with no filter is not bravery.
+
+It is a wipe.
+
+SELECT first when you are unsure.
+
+See the rows the WHERE would catch.
+
+Then change them.
+
+ALTER TABLE adds a column when the world changes.
+
+Maybe you now store an email.
+
+Existing rows get NULL unless you supply a default.
+
+ALTER can also rename a column.
+
+It can drop a column.
+
+Dropping a column throws the values away.
+
+There is no undo in the statement itself.
+
+DROP TABLE removes the table itself.
+
+That is not a row delete.
+
+The whole object is gone.
+
+The name, the columns, the rows.
+
+Think of CREATE as the shape.
+
+INSERT as the first facts.
+
+UPDATE as a correction.
+
+DELETE as a removal of a fact.
+
+ALTER as a later change to the shape.
+
+DROP as taking the object off the shelf.
+
+Practice on a copy, not the only copy you have.
+
+Insert two rows.
+
+Update one.
+
+Delete the other.
+
+Select to see the shape.
+
+If ALTER feels scary, it should.
+
+You are changing the contract other queries depend on.
+
+Write the dangerous statements slowly.
+
+Read the WHERE twice.
+
+Then the table stays a place you can trust.
+
+Transactions belong with this family of verbs, even if they get their own later lesson.
+
+BEGIN, then INSERT, then a SELECT that looks wrong, then ROLLBACK.
+
+The table forgets the insert.
+
+COMMIT is how you keep it.
+
+Until you commit, another session may not see your rows.
+
+That is a feature when you are still deciding.
+
+CREATE TABLE IF NOT EXISTS is for scripts you run twice.
+
+It is not a design tool.
+
+DROP TABLE IF EXISTS is for throwaway sandboxes.
+
+It is not how a store retires a customer list.
+
+INSERT can take a SELECT instead of VALUES.
+
+That copies rows from a staging table.
+
+Check the column order twice.
+
+UPDATE can use a join in some dialects to patch from another table.
+
+In SQLite you often write a subquery in SET.
+
+Still use WHERE.
+
+DELETE with a subquery can remove orphans you found on purpose.
+
+SELECT those orphans first.
+
+Keep a backup file before a destructive script.
+
+A dump is cheaper than archaeology.
+
+Column types on ALTER vary by engine.
+
+SQLite will add a column and will not freely drop one in older versions.
+
+PostgreSQL will do more in one ALTER.
+
+Read the dialect before you promise a migration.
+
+Default values on a new column backfill old rows.
+
+Choose the default as if it were a historical fact, because it becomes one.
+
+Rename with care.
+
+Queries you have not found yet still use the old name.
+
+The verbs are few.
+
+The damage is large when WHERE is missing.
+
+That is why this lesson is slow on purpose.
+
+Shape, facts, correction, removal.
+
+Say which one you are doing before you type it.
+
+Table work and row work are two families of verbs.
+
+CREATE and ALTER and DROP change the object.
+
+INSERT and UPDATE and DELETE change the facts inside it.
+
+Mixing the families in your head is how DROP gets typed when DELETE was meant.
+
+CREATE TABLE starts with the name, then a list of columns in parentheses.
+
+Each column is a name, then a type.
+
+Lines in that list are separated by commas.
+
+The primary key is part of the contract, not a later wish.
+
+You can mark a column PRIMARY KEY on its line, or name the key in a separate line.
+
+Both mean: this value identifies the row, and it will not repeat.
+
+Types on CREATE are promises about what a cell may hold.
+
+A later INSERT that breaks the type is refused.
+
+That refusal is the point of the type.
+
+CREATE TABLE IF NOT EXISTS is for a script you run twice.
+
+It will not fix a table you already created with the wrong columns.
+
+DROP TABLE removes the object: name, columns, rows.
+
+DROP TABLE IF EXISTS is for a sandbox you are allowed to destroy.
+
+It is not how a store retires customers.
+
+INSERT lists columns, then VALUES, in the same order.
+
+A second INSERT is a second row.
+
+If you omit the column list, you are betting the table's column order never changes.
+
+Name the columns.
+
+INSERT can take a SELECT instead of VALUES when you copy from a staging table.
+
+Check that copy with a SELECT first.
+
+UPDATE names SET for the new value and WHERE for the rows that move.
+
+Without WHERE, every row takes the new value.
+
+That is the classic accident, and it is not rare.
+
+SELECT the same WHERE before you UPDATE, and look at the rows.
+
+Then change them.
+
+DELETE removes rows that match WHERE.
+
+Without WHERE, the table is empty and still exists.
+
+That is different from DROP, which removes the table itself.
+
+TRUNCATE, in engines that have it, empties rows as a bulk wipe and may reset counters.
+
+Know which verb you are holding before you run it.
+
+ALTER TABLE changes the contract after the table already has friends: queries, views, application code.
+
+ADD COLUMN is the usual growth.
+
+Existing rows get NULL unless you supply a default, and that default becomes history.
+
+DROP COLUMN throws the values away.
+
+There is no undo in the statement.
+
+RENAME COLUMN breaks every query still using the old name, including ones you have not found yet.
+
+Dialects disagree on how much ALTER can do in one trip.
+
+SQLite will add a column readily and historically fought dropping one.
+
+PostgreSQL will do more in a single ALTER.
+
+Read the engine you are on before you promise a migration.
+
+BEGIN, then a change, then SELECT, then ROLLBACK, is how you practice without keeping the damage.
+
+COMMIT is how you keep it.
+
+Until you commit, another session may not see your rows.
+
+That isolation is a feature while you are still deciding.
+
+Shape, facts, correction, removal, later shape, destruction of the object.
+
+Say which one you are doing out loud.
+
+Then type the verb that matches.
+
+The table stays a place you can trust when WHERE is present and DROP is rare.
+
+Table management commands: CREATE, ALTER, DROP.
+
+Data management commands: INSERT, UPDATE, DELETE, and SELECT to verify.
+
+The lecture splits those families so you do not DROP when you meant DELETE.
+
+CREATE needs a name and a column list and usually a key.
+
+ALTER ADD is growth, ALTER DROP is loss, ALTER RENAME is a breaking change for callers.
+
+INSERT adds facts, UPDATE edits facts, DELETE removes facts.
+
+SELECT is how you look before you leap.
+
+Together they are the exact SQL you need to get a table installed and keep it honest, without a theory detour.
+
+Practice the families on a copy named customers_lab until the verbs feel different in your hands.
+
+Then use them on real names, slowly.

@@ -1,0 +1,45 @@
+---
+description: Audio lesson player — visuals must match the current lyric; tables teach by mutating, not bullet dumps
+alwaysApply: true
+---
+
+# Visual ↔ lyric sync
+
+The player in `audio/player/` is a lyric-synced lesson, not a slide deck.
+
+Author beats: **learning goals → milestones → visual plan → narration last**. After scene edits: `node audio/player/eval-visual-sync.mjs` and `node audio/authoring/assert-sync.mjs`.
+
+## Tables teach what is said
+
+When narration names a column, row, value, or SQL clause, the **table highlights that part** on that lyric — pulse/glow, dim the rest. Never a static full grid, never a header-only empty grid (unless the lyric is literally “no rows”).
+
+- Named cell (Maya, Austin, 42.00) → that row/cell lights
+- `SELECT` → keep/emphasize those columns; others dim
+- `WHERE` → matching rows stay; others dim or leave. **Keep the table on stage.** Do not replace it with a SQL dump + result chip
+- `COUNT` / `GROUP BY` → tally / collapse animation on the same table
+- Optional SQL strip under the table, clause-lit in sync — the **table mutation is the explanation**
+
+Use `pulse-col`, `pulse-row`, `keep-cols`, `keep-rows`, `reveal-rows`, `highlight-dups`, `missing` (same language as lesson 1 Querying). Frost theme: Inter, charcoal, muted dark red — not candy.
+
+Applies to **all lessons**: `visual-stage.js` and `media/lessons/*/cues.json`.
+
+## Prefer diagrams, not text
+
+- Prefer tables, schema, highlights, counts, row-filter choreography over bullet lists and title cards
+- `kind: bullets` and recap syllabi are last resort
+- Recap = a small visual of the idea (filtered leftover row, COUNT badge), not “What you can ask now” plus grey bullets
+- One idea per beat; no frost punchline on recap, outline, vendors, or SQL clauses
+
+```js
+// ❌ BAD — SQL card replaces the table
+{ kind: "sql", sql: ["SELECT … WHERE …"] }
+
+// ✅ GOOD — same orders table; WHERE dims non-matching rows
+{ kind: "table", steps: [{ lyricMin: 15, actions: ["keep-rows:0,1,3", "pulse-col:2"] }] }
+
+// ❌ BAD — recap as bullets
+{ kind: "bullets", title: "What you can ask now" }
+
+// ✅ GOOD — leftover filtered row is the recap
+{ kind: "table", steps: [{ lyricMin: 194, actions: ["reveal-rows", "keep-rows:0"] }] }
+```

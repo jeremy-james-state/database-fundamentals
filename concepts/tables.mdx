@@ -1,0 +1,38 @@
+---
+title: "Tables"
+description: "A table stores a set of items. Each row is one item. Each column is one attribute."
+---
+
+You already know this shape from paper lists and spreadsheets. Databases use the same grid: items down, attributes across.
+
+## How a table works
+
+Take a `books` table:
+
+| title | author | year |
+| --- | --- | --- |
+| The Left Hand of Darkness | Ursula K. Le Guin | 1969 |
+| Kindred | Octavia E. Butler | 1979 |
+
+Each <Tooltip tip="One item in the table">row</Tooltip> is one book. Each <Tooltip tip="One attribute of every item">column</Tooltip> is one kind of fact. Each <Tooltip tip="One value: one row and one column">cell</Tooltip> is one fact, such as `1969`. Add a book with a new row. Add a fact about every book with a new column.
+
+## Why databases use tables
+
+A table makes each fact sit in a known place. You can ask for every title, or every book from `1969`, without reading a paragraph of prose.
+
+Ledgers used rows and columns long before software.
+
+## When to use a table
+
+- **A set of similar items**: books, orders, customers
+- **The same attributes on every item**: every book has a title and an author
+- **Skip it when**: you only have one unstructured blob of text with no repeating attributes
+
+## Related ideas
+
+A table lives inside a [database](/concepts/databases). You read its rows with [SQL](/concepts/sql). See the [Tutorial](/tutorials/query-a-table) to select rows.
+
+## Common mix-ups
+
+- **Table vs database**: the table is one grid. The database is the whole collection of tables and the system around them.
+- **Row vs column**: the row is the item. The column is one kind of fact about every item.

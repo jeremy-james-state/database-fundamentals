@@ -1,0 +1,38 @@
+---
+title: "ROUND"
+description: "Rounds a number to a given number of decimal places."
+---
+
+`ROUND` is not an aggregate. It wraps a value, including the result of `AVG` or `SUM`.
+
+## Syntax
+
+```sql
+SELECT ROUND(expression, decimal_places)
+FROM table;
+```
+
+## Arguments
+
+<ParamField body="expression" type="numeric" required>
+  The number to round.
+</ParamField>
+
+<ParamField body="decimal_places" type="integer" required>
+  Digits after the decimal point.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql Two places
+SELECT ROUND(AVG(rating), 2) AS average_rating
+FROM books;
+```
+</CodeGroup>
+
+## Related references
+
+- [AVG](/reference/avg)
+- [AS](/reference/as)
+- [SQL](/concepts/sql#aggregator-functions)

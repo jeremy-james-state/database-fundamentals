@@ -1,0 +1,104 @@
+---
+title: "Filter rows"
+description: "Keep rows where a WHERE condition is true."
+---
+
+## Prerequisites
+
+- A table you can query, for example `books`
+- How to write `SELECT` and `FROM` ([select columns](/how-to/select-columns))
+
+## Keep matching rows
+
+<Steps>
+  <Step title="Add a WHERE condition">
+    Add `WHERE` after `FROM`.
+
+    ```sql
+    SELECT title, author
+    FROM books
+    WHERE year = 2023;
+    ```
+
+    Comparison operators: `=`, `!=`, `<>` (`!=` and `<>` both mean not equal; `!=` is more common), `<`, `>`, `<=`, `>=`.
+  </Step>
+  <Step title="Quote strings, not numbers">
+    Strings use single quotes. Identifiers (table and column names) use double quotes if you quote them. Numbers stay unquoted.
+
+    ```sql
+    SELECT title, format
+    FROM books
+    WHERE format != 'hardcover';
+    ```
+
+    `NOT` negates a condition:
+
+    ```sql
+    SELECT title, format
+    FROM books
+    WHERE NOT format = 'hardcover';
+    ```
+  </Step>
+  <Step title="Combine conditions">
+    `AND` requires every part. `OR` requires at least one. Parentheses `()` group parts (sometimes called brackets).
+
+    ```sql
+    SELECT title, author
+    FROM books
+    WHERE year = 2022
+       OR year = 2023;
+    ```
+
+    ```sql
+    SELECT title, format
+    FROM books
+    WHERE (year = 2022 OR year = 2023)
+      AND format != 'hardcover';
+    ```
+  </Step>
+  <Step title="Filter a range">
+    Prefer a range over a long chain of `OR`s.
+
+    ```sql
+    SELECT title, year
+    FROM books
+    WHERE year >= 2019
+      AND year <= 2022;
+    ```
+
+    `BETWEEN` is inclusive on both ends:
+
+    ```sql
+    SELECT title, year
+    FROM books
+    WHERE year BETWEEN 2019 AND 2022;
+    ```
+  </Step>
+  <Step title="Find missing values">
+    `NULL` means the value is missing. Use `IS NULL` and `IS NOT NULL`. Do not use `=`.
+
+    ```sql
+    SELECT title, translator
+    FROM books
+    WHERE translator IS NULL;
+    ```
+  </Step>
+</Steps>
+
+## Verify the result
+
+You succeeded when every returned row matches the condition, and rows that fail the condition are absent.
+
+## Troubleshooting
+
+- **No rows**: the value may be a string you compared as a number, or the opposite. Check quotes.
+- **Still seeing NULLs you wanted to drop**: use `IS NOT NULL`, not `!= NULL`.
+- **Wrong years in an `OR` list**: add parentheses before combining with `AND`.
+
+## Related pages
+
+- [Select columns](/how-to/select-columns)
+- [WHERE](/reference/where)
+- [Match text patterns](/how-to/match-patterns)
+- [Delete rows](/how-to/delete-rows)
+- [NULL](/reference/null)

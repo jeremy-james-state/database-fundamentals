@@ -1,0 +1,195 @@
+Time in a table is three different ideas that people mash together.
+
+A date is a calendar day.
+
+born_on is a date.
+
+A time is a clock reading without a day.
+
+store_opens_at is a time.
+
+A timestamp is a date and a time together.
+
+placed_at is a timestamp.
+
+If you store placed_at as text, you will sort December before February.
+
+Use a real temporal type.
+
+Time zones are the hard part.
+
+TIMESTAMP WITHOUT TIME ZONE is a local wall clock.
+
+TIMESTAMP WITH TIME ZONE, in PostgreSQL, stores an instant and displays in a zone.
+
+Those are not the same column.
+
+Pick instants for events that happened.
+
+An order was placed at one instant for everyone.
+
+Pick wall clocks for civil times that should not shift.
+
+A class that meets at nine in Austin stays nine when you fly.
+
+SQLite stores dates as text, real, or integer, by convention.
+
+ISO text is the least painful convention: year-month-day.
+
+Do not invent month-day-year in a column.
+
+NOW is a function, not a type.
+
+DEFAULT CURRENT_TIMESTAMP stamps an insert with the server's idea of now.
+
+That is useful for created_at.
+
+It is a poor birthday.
+
+Do not split a timestamp into six integer columns.
+
+You will forget leap days.
+
+Intervals measure a length, not a point.
+
+subscription_length is an interval in dialects that have it.
+
+In SQLite you compute lengths with functions.
+
+Comparisons work when the type is temporal.
+
+placed_at greater than a date is a real question.
+
+placed_at LIKE 2024 is a text trick.
+
+Write the sentence.
+
+This is a birthday, a calendar day, no clock, no zone.
+
+This is an order instant, one moment in history, store UTC.
+
+Then DATE, TIME, or TIMESTAMP is an easy choice.
+
+Unix integers as seconds are a physical trick.
+
+They sort, they are instants, and they are hostile to calendar questions.
+
+Prefer a timestamp type, convert at the edge if you must speak Unix to a client.
+
+Calendar arithmetic is not integer arithmetic.
+
+Plus one month is a civil question.
+
+Use the engine's date functions.
+
+Do not add 30 days and call it a month.
+
+DST will bite wall clocks that pretended to be instants.
+
+Store the instant, display the wall clock in the user's zone.
+
+Or store the civil date if the business is a date, like a due day.
+
+Birthdays should not shift when a server moves from one coast to another.
+
+That is why they are DATE, not TIMESTAMP.
+
+Recurring weekly meetings are civil times plus a zone rule, which is more than a column.
+
+Do not pretend a TIME column solved recurrence.
+
+NULL means unknown or not applicable.
+
+A zero date like 0000-00-00 is a MySQL antique.
+
+Do not resurrect it.
+
+Validate at the door.
+
+ISO 8601 in text if you must use SQLite text.
+
+Always four-digit years.
+
+Always hyphens.
+
+Then lexicographic sort matches chronological sort.
+
+That is the whole convention.
+
+Three clocks, one sentence each.
+
+Day, clock, instant.
+
+Pick, and refuse the other two in that column.
+
+Ask whether the value would still be true if the server moved city.
+
+If yes, it was an instant, or a date with no clock.
+
+If no, it was a wall clock with a zone you forgot.
+
+That question prevents most timestamp bugs.
+
+Ask it at CREATE TABLE, not after the first DST weekend.
+
+Store what the question answers.
+
+Display the other thing in the application.
+
+Do not store the display.
+
+Display changes.
+
+Instants and dates do not, if you named them honestly.
+
+Honesty is the type.
+
+Pick DATE, TIME, or TIMESTAMP, and then leave the column alone.
+
+DATE is a calendar day: year, month, day, no clock.
+
+Use it for birth dates, due dates, and library return days when the hour does not matter.
+
+TIME is a clock with no day: a class that starts at nine, a reminder at fourteen thirty.
+
+DATETIME, in engines that have it, is a date and a time of day in a local sense unless you document otherwise.
+
+TIMESTAMP is an instant, often stored relative to UTC, and it moves when you display it in a zone.
+
+Those two words get swapped in casual speech.
+
+Do not swap them in a column.
+
+Ask whether the value would still be true if the server moved city.
+
+A meeting at 09:00 in Chicago is a local wall time with a zone attached in the application or in a zone column.
+
+The instant a payment cleared is a timestamp.
+
+A birthday is a date.
+
+Mixing them is how airlines and calendars disagree.
+
+Do not store display strings like March fifth in a text column and hope to sort them.
+
+Store the typed value.
+
+Format in the application.
+
+Know whether your engine stores TIMESTAMP in UTC and converts on the way out.
+
+Know what happens at daylight saving boundaries.
+
+A local 02:30 that happens twice is a zone problem, not a DATE problem.
+
+If you only need a day, do not add a time of midnight and then compare across zones.
+
+Midnight in UTC is still yesterday in Chicago.
+
+THAT is the bug.
+
+Name columns after the meaning: created_at for an instant, birth_date for a date, start_time for a clock.
+
+The name should tell you which type is legal.
+
+If the name cannot, the type is probably wrong.

@@ -1,0 +1,31 @@
+---
+title: "FULL JOIN"
+description: "Keeps every row from both tables. Missing matches are NULL."
+---
+
+`FULL JOIN` is an outer join. SQLite supports it from 3.39.
+
+## Syntax
+
+```sql
+SELECT column
+FROM table1
+FULL JOIN table2
+  ON table1.column = table2.column;
+```
+
+## Examples
+
+<CodeGroup>
+```sql Both sides
+SELECT title, stars
+FROM books
+FULL JOIN ratings
+  ON ratings.book_id = books.book_id;
+```
+</CodeGroup>
+
+## Related references
+
+- [LEFT JOIN](/reference/left-join)
+- [RIGHT JOIN](/reference/right-join)

@@ -1,0 +1,440 @@
+1
+00:00:00,050 --> 00:00:03,458
+A foreign key does not only check new child rows.
+
+2
+00:00:03,458 --> 00:00:07,430
+It also decides what happens when the parent moves or leaves.
+
+3
+00:00:07,430 --> 00:00:13,611
+ON DELETE RESTRICT or NO ACTION refuses to delete a parent that still has children.
+
+4
+00:00:13,611 --> 00:00:18,638
+That is the safe default in spirit, even when the dialect wording differs.
+
+5
+00:00:18,638 --> 00:00:21,513
+Maya still has orders, so Maya stays.
+
+6
+00:00:21,513 --> 00:00:24,597
+ON DELETE CASCADE deletes the children too.
+
+7
+00:00:24,597 --> 00:00:27,819
+Delete the order, and the order lines go with it.
+
+8
+00:00:27,819 --> 00:00:29,680
+That matches a weak entity.
+
+9
+00:00:29,680 --> 00:00:31,472
+It is violent on a customer.
+
+10
+00:00:31,472 --> 00:00:36,402
+Do not cascade a customer delete unless you truly mean to erase history.
+
+11
+00:00:36,402 --> 00:00:40,388
+ON DELETE SET NULL clears the pointer and keeps the child.
+
+12
+00:00:40,388 --> 00:00:43,069
+The order remains, with no customer.
+
+13
+00:00:43,069 --> 00:00:44,944
+The column must allow NULL.
+
+14
+00:00:44,944 --> 00:00:48,916
+ON DELETE SET DEFAULT writes the default value instead.
+
+15
+00:00:48,916 --> 00:00:53,013
+Useful when a placeholder parent exists, rare otherwise.
+
+16
+00:00:53,013 --> 00:00:57,666
+ON UPDATE CASCADE copies a changed parent key into the children.
+
+17
+00:00:57,666 --> 00:01:01,166
+If you never change primary keys, you barely need it.
+
+18
+00:01:01,166 --> 00:01:04,583
+That is one more reason to prefer dull surrogates.
+
+19
+00:01:04,583 --> 00:01:08,319
+Write the action next to the foreign key, not in a wiki.
+
+20
+00:01:08,319 --> 00:01:10,527
+The engine will not read the wiki.
+
+21
+00:01:10,527 --> 00:01:13,791
+Different relationships deserve different actions.
+
+22
+00:01:13,791 --> 00:01:16,777
+order_lines cascade from orders.
+
+23
+00:01:16,777 --> 00:01:19,041
+orders restrict from customers.
+
+24
+00:01:19,041 --> 00:01:23,305
+credentials cascade from customers if you treat them as a part.
+
+25
+00:01:23,305 --> 00:01:24,833
+Think in sentences.
+
+26
+00:01:24,833 --> 00:01:29,000
+When an order disappears, its lines were never independent.
+
+27
+00:01:29,000 --> 00:01:36,569
+When a customer disappears, the orders are history, so refuse, or archive, or soft-delete instead.
+
+28
+00:01:36,569 --> 00:01:41,222
+Soft-delete is an application pattern: a deleted_at column.
+
+29
+00:01:41,222 --> 00:01:43,208
+It is not an ON DELETE action.
+
+30
+00:01:43,208 --> 00:01:45,236
+Do not mix them without a plan.
+
+31
+00:01:45,236 --> 00:01:47,486
+Test the action with two rows.
+
+32
+00:01:47,486 --> 00:01:48,819
+Delete the parent.
+
+33
+00:01:48,819 --> 00:01:52,555
+See whether the child vanished, blocked, or went null.
+
+34
+00:01:52,555 --> 00:01:54,236
+Then keep that behavior.
+
+35
+00:01:54,236 --> 00:01:58,666
+ON DELETE CASCADE on a tall tree can remove more than you see.
+
+36
+00:01:58,666 --> 00:02:05,416
+A customer cascade that also cascades orders that cascade lines that cascade shipments is a cliff.
+
+37
+00:02:05,416 --> 00:02:07,750
+Draw the cliff before you enable it.
+
+38
+00:02:07,750 --> 00:02:11,569
+RESTRICT two levels up even if the bottom cascades.
+
+39
+00:02:11,569 --> 00:02:14,444
+NO ACTION and RESTRICT are close.
+
+40
+00:02:14,444 --> 00:02:19,305
+The difference is when the check runs, especially with deferred constraints.
+
+41
+00:02:19,305 --> 00:02:21,833
+In classroom SQL they feel the same.
+
+42
+00:02:21,833 --> 00:02:24,347
+In a long transaction they might not.
+
+43
+00:02:24,347 --> 00:02:27,375
+SET NULL can surprise a NOT NULL you forgot.
+
+44
+00:02:27,375 --> 00:02:31,013
+The ALTER will fail, or the delete will fail later.
+
+45
+00:02:31,013 --> 00:02:32,444
+Pair them on purpose.
+
+46
+00:02:32,444 --> 00:02:36,055
+Some teams never cascade from an application user.
+
+47
+00:02:36,055 --> 00:02:42,222
+They delete children in a script, then delete the parent, all inside one transaction.
+
+48
+00:02:42,222 --> 00:02:46,680
+The foreign key still RESTRICT, which catches a missed child table.
+
+49
+00:02:46,680 --> 00:02:48,388
+That is a valid policy.
+
+50
+00:02:48,388 --> 00:02:50,638
+The engine is the last reviewer.
+
+51
+00:02:50,638 --> 00:02:54,347
+Triggers that delete children are a homemade cascade.
+
+52
+00:02:54,347 --> 00:02:58,111
+Prefer the declared action unless you need extra logging.
+
+53
+00:02:58,111 --> 00:03:01,763
+Logging can live in a trigger that does not replace the action.
+
+54
+00:03:01,763 --> 00:03:03,263
+Document the cliff.
+
+55
+00:03:03,263 --> 00:03:04,666
+Test it on a copy.
+
+56
+00:03:04,666 --> 00:03:07,097
+Then the production delete is boring.
+
+57
+00:03:07,097 --> 00:03:08,847
+Boring deletes are the goal.
+
+58
+00:03:08,847 --> 00:03:14,958
+Actions are how you choose the boredom: refuse, take the children, or drop the pointer.
+
+59
+00:03:14,958 --> 00:03:16,138
+Pick per arrow.
+
+60
+00:03:16,138 --> 00:03:17,805
+Write it in the constraint.
+
+61
+00:03:17,805 --> 00:03:18,625
+Sleep.
+
+62
+00:03:18,625 --> 00:03:21,263
+An action is a story about grief.
+
+63
+00:03:21,263 --> 00:03:22,638
+The parent is gone.
+
+64
+00:03:22,638 --> 00:03:26,875
+Do the children vanish, stay unnamed, or block the funeral?
+
+65
+00:03:26,875 --> 00:03:28,638
+Pick the story per arrow.
+
+66
+00:03:28,638 --> 00:03:31,250
+Do not inherit CASCADE from a snippet.
+
+67
+00:03:31,250 --> 00:03:34,097
+Snippets do not know your history table.
+
+68
+00:03:34,097 --> 00:03:35,555
+Restrict history.
+
+69
+00:03:35,555 --> 00:03:36,930
+Cascade parts.
+
+70
+00:03:36,930 --> 00:03:40,027
+Null only when unnamed is a real state.
+
+71
+00:03:40,027 --> 00:03:43,041
+Test with two rows, not with production.
+
+72
+00:03:43,041 --> 00:03:45,597
+Read the row counts after the delete.
+
+73
+00:03:45,597 --> 00:03:48,416
+Keep the story that matches those counts.
+
+74
+00:03:48,416 --> 00:03:50,708
+Write the story in the constraint.
+
+75
+00:03:50,708 --> 00:03:53,027
+Then a new engineer will not guess.
+
+76
+00:03:53,027 --> 00:03:55,361
+Guessing is how cliffs get steeper.
+
+77
+00:03:55,361 --> 00:03:57,708
+Declared actions are the railing.
+
+78
+00:03:57,708 --> 00:04:03,694
+A foreign key is a link: one or more columns in a child that reference a parent's key.
+
+79
+00:04:03,694 --> 00:04:07,486
+A review points at a product and may also point at a user.
+
+80
+00:04:07,486 --> 00:04:10,472
+Two foreign keys on one child is normal.
+
+81
+00:04:10,472 --> 00:04:12,180
+Name each constraint.
+
+82
+00:04:12,180 --> 00:04:23,722
+CONSTRAINT reviews_product_fk FOREIGN KEY (product_id) REFERENCES products (product_id) is a sentence the engine can run.
+
+83
+00:04:23,722 --> 00:04:32,777
+The default referential action is NO ACTION or RESTRICT, depending on dialect: refuse the parent change if children exist.
+
+84
+00:04:32,777 --> 00:04:38,263
+That default is how you do not evaporate history by deleting a product someone reviewed.
+
+85
+00:04:38,378 --> 00:04:42,855
+ON DELETE CASCADE deletes matching children when the parent goes.
+
+86
+00:04:42,855 --> 00:04:52,411
+Use it when the child cannot exist without the parent and you mean to destroy the whole bundle: order lines when an unfinished order is discarded.
+
+87
+00:04:52,411 --> 00:04:55,994
+Do not cascade a product into a year of invoices.
+
+88
+00:04:55,994 --> 00:05:00,703
+ON DELETE SET NULL clears the child's pointer and keeps the child row.
+
+89
+00:05:00,703 --> 00:05:06,716
+Reviews might remain as anonymous text if a user is removed and the business allows it.
+
+90
+00:05:06,716 --> 00:05:08,591
+The column must allow NULL.
+
+91
+00:05:08,591 --> 00:05:15,064
+ON DELETE SET DEFAULT points the child at a declared default parent, such as a placeholder user.
+
+92
+00:05:15,064 --> 00:05:20,203
+ON UPDATE CASCADE rewrites the copied key if the parent's key changes.
+
+93
+00:05:20,203 --> 00:05:25,508
+If your primary keys are dull and never edited, you will barely need ON UPDATE.
+
+94
+00:05:25,508 --> 00:05:27,966
+That is a reason dull keys are kind.
+
+95
+00:05:27,966 --> 00:05:34,466
+If you used a natural key people edit, ON UPDATE CASCADE is a moving truck for every child.
+
+96
+00:05:34,466 --> 00:05:36,828
+Prefer not to move the house numbers.
+
+97
+00:05:36,828 --> 00:05:39,591
+Prefer a surrogate that never changes.
+
+98
+00:05:39,591 --> 00:05:50,064
+Match the action to the sentence in requirements: when a parent leaves, children vanish, children stay with a hole, or the parent is not allowed to leave.
+
+99
+00:05:50,064 --> 00:05:52,369
+Write that sentence in the constraint.
+
+100
+00:05:52,369 --> 00:05:58,341
+Test it: insert parent, insert child, delete parent, SELECT the child.
+
+101
+00:05:58,341 --> 00:06:03,244
+If the child is gone and you wanted a hole, you cascaded by mistake.
+
+102
+00:06:03,244 --> 00:06:08,341
+If the delete errors and you wanted a bundle gone, you restricted by mistake.
+
+103
+00:06:08,341 --> 00:06:11,411
+Multiple children mean multiple policies.
+
+104
+00:06:11,411 --> 00:06:13,064
+Payments might restrict.
+
+105
+00:06:13,064 --> 00:06:14,966
+Draft lines might cascade.
+
+106
+00:06:14,966 --> 00:06:18,758
+Do not pick one action for the whole database out of fashion.
+
+107
+00:06:18,758 --> 00:06:20,328
+Pick per relationship.
+
+108
+00:06:20,328 --> 00:06:25,286
+SQLite still needs foreign keys enabled or none of the actions run.
+
+109
+00:06:25,286 --> 00:06:29,564
+Turn them on in every connection that should obey the design.
+
+110
+00:06:29,564 --> 00:06:35,494
+Then delete and update are part of the schema, not a scavenger hunt in application code.
+

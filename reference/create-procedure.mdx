@@ -1,0 +1,44 @@
+---
+title: "CREATE PROCEDURE"
+description: "Saves a named routine of SQL statements on the server."
+---
+
+Body sits between `BEGIN` and `END`. In the `mysql` client, change `DELIMITER` so inner semicolons do not end the `CREATE` early.
+
+## Syntax
+
+```sql
+CREATE PROCEDURE procedure_name(IN param type, ...)
+BEGIN
+  statements;
+END;
+```
+
+## Arguments
+
+<ParamField body="procedure_name" type="identifier" required>
+  Name to [CALL](/reference/call).
+</ParamField>
+
+<ParamField body="IN param type" type="parameter">
+  Input parameters. Dialects also support `OUT` / `INOUT`.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql MySQL
+CREATE PROCEDURE credit_account(IN account_id INT, IN amount INT)
+BEGIN
+  UPDATE accounts
+  SET balance = balance + amount
+  WHERE id = account_id;
+END;
+```
+</CodeGroup>
+
+## Related references
+
+- [CALL](/reference/call)
+- [Stored procedures](/concepts/stored-procedures)
+- [Create a stored procedure](/how-to/create-a-stored-procedure)

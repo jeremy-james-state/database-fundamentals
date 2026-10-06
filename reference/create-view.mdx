@@ -1,0 +1,52 @@
+---
+title: "CREATE VIEW"
+description: "Saves a SELECT as a named view in the schema."
+---
+
+Add `TEMPORARY` (or `TEMP`) to keep the view only for this connection.
+
+## Syntax
+
+```sql
+CREATE VIEW view_name AS
+SELECT ...;
+
+CREATE TEMPORARY VIEW view_name AS
+SELECT ...;
+```
+
+## Arguments
+
+<ParamField body="view_name" type="identifier" required>
+  Name you will use in `FROM`. Must be unique among tables and views.
+</ParamField>
+
+<ParamField body="AS SELECT …" type="query" required>
+  The query the view runs on each use.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql Join as one view
+CREATE VIEW author_titles AS
+SELECT authors.name, books.title
+FROM authors
+JOIN authored ON authored.author_id = authors.id
+JOIN books ON books.id = authored.book_id;
+```
+
+```sql Temporary
+CREATE TEMPORARY VIEW average_ratings_by_year AS
+SELECT year, ROUND(AVG(rating), 2) AS rating
+FROM average_book_ratings
+GROUP BY year;
+```
+</CodeGroup>
+
+## Related references
+
+- [DROP VIEW](/reference/drop-view)
+- [WITH](/reference/with)
+- [Create a view](/how-to/create-a-view)
+- [Views](/concepts/views)

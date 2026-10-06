@@ -1,0 +1,36 @@
+---
+title: "GROUP BY"
+description: "Collapses rows that share the same values into one result row per group."
+---
+
+Use it with an aggregator: `AVG`, `COUNT`, `MIN`, `MAX`, or `SUM`.
+
+## Syntax
+
+```sql
+SELECT column, aggregate(column)
+FROM table
+GROUP BY column;
+```
+
+## Arguments
+
+<ParamField body="column" type="identifier or expression" required>
+  Each distinct combination becomes one group. List every non-aggregated `SELECT` column here.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql Average per book
+SELECT book_id, AVG(stars) AS average_rating
+FROM ratings
+GROUP BY book_id;
+```
+</CodeGroup>
+
+## Related references
+
+- [HAVING](/reference/having)
+- [AVG](/reference/avg)
+- [Group rows](/how-to/group-rows)

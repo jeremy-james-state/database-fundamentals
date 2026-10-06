@@ -1,0 +1,453 @@
+A type is a coarse promise.
+
+INTEGER says whole numbers, not that quantity is at least one.
+
+Constraints are the finer promises.
+
+NOT NULL means the fact must exist.
+
+name TEXT NOT NULL.
+
+The engine refuses an insert that skips it.
+
+DEFAULT fills a value when the insert omits the column.
+
+DEFAULT zero for a counter.
+
+DEFAULT CURRENT_TIMESTAMP for created_at.
+
+DEFAULT is not a substitute for NOT NULL if you still want the column present.
+
+They pair well.
+
+CHECK is a boolean test on the row.
+
+CHECK quantity greater than zero.
+
+CHECK rating BETWEEN one AND five.
+
+CHECK price greater than or equal to zero.
+
+The test may mention more than one column.
+
+CHECK end_on greater than or equal to start_on.
+
+Keep CHECKs cheap and obvious.
+
+A CHECK that looks up another table is a foreign key, or a trigger, depending on the engine.
+
+SQLite CHECKs are real if you keep them on.
+
+Some old environments skipped them.
+
+Know your engine.
+
+Name the constraint.
+
+orders_quantity_positive is a better failure than CHECK constraint failed.
+
+Column constraints run on INSERT and UPDATE.
+
+They do not clean rows that were loaded with checks off.
+
+VALIDATE after a bulk load if your dialect can.
+
+Do not encode a relationship in CHECK when a foreign key exists.
+
+Do not encode a unique rule in CHECK when UNIQUE exists.
+
+Use the tool that states the meaning.
+
+NULL still bypasses most CHECKs, because unknown is not true.
+
+If zero is allowed and empty is not, NOT NULL plus CHECK quantity greater than or equal to zero.
+
+Write the promises in English first.
+
+Must exist.
+
+If omitted, use this.
+
+Must pass this test.
+
+Then NOT NULL, DEFAULT, CHECK fall out of the sentences.
+
+CHECK (email LIKE %@%) is a weak email validator, and still better than nothing.
+
+Do not try to parse RFC email in CHECK.
+
+Do it in the application or a real library, then keep a coarse CHECK.
+
+Exclusion constraints in PostgreSQL are a cousin: this range may not overlap that range.
+
+They are how rooms and time slots refuse double booking when UNIQUE is not enough.
+
+Know the name.
+
+Use it when you meet the room.
+
+DEFAULT random() is a cute way to get a surprise.
+
+Do not.
+
+Defaults should be dull: zero, empty forbidden, now, a known status_id.
+
+A default that hides a missing fact will poison reports.
+
+If you do not know the city, NULL, not Unknown string, unless Unknown is a real place in your lookup table.
+
+Domain types in some engines bundle a type plus a CHECK.
+
+They are reusable promises.
+
+A column-level CHECK is enough while you learn.
+
+Disable constraints only in a locked maintenance window, and re-enable with validation.
+
+A loader that needs them off is a loader that should write to staging instead.
+
+Staging has loose rules.
+
+The real table has tight ones.
+
+Copy with a query that only moves clean rows.
+
+The promises you wrote in English are the acceptance tests.
+
+NOT NULL, DEFAULT, CHECK.
+
+Three tools, a lot of quiet tables.
+
+Quiet tables make quiet nights.
+
+A type lets 0 through.
+
+A CHECK decides whether 0 is a quantity.
+
+A DEFAULT decides what happens when the app is silent.
+
+NOT NULL decides whether silence is allowed.
+
+Four decisions, four tools if you count the type.
+
+Skip one, and the table will invent a meaning.
+
+Invented meanings show up in dashboards as mysterious zeros.
+
+Mysterious zeros become meetings.
+
+Meetings are more expensive than CHECK (quantity > 0).
+
+Name the CHECK.
+
+Refuse the mystery.
+
+English first, keywords second.
+
+The table will keep the promise at 2 a.m. when nobody is in the meeting.
+
+That is the point of a constraint.
+
+NOT NULL, DEFAULT, and CHECK look optional until a NULL status means pending and failed at once.
+
+NULL is unknown or missing.
+
+Aggregates that meet a NULL can go quiet: SUM of a set containing NULL may ignore it, AVG too, while an expression like price plus tax becomes NULL if tax is NULL.
+
+Know the difference before you allow the hole.
+
+NOT NULL means the column will not accept NULL on INSERT or UPDATE.
+
+Username, password hash, and last name often cannot be holes.
+
+Phone might be a hole if the business does not require it.
+
+People treat NOT NULL as a column property, like a type, so it is often unnamed.
+
+You still choose it on purpose.
+
+A primary key already implies NOT NULL.
+
+Saying it twice is noise.
+
+Saying it on email when email is UNIQUE is not noise if you refuse accounts without email.
+
+DEFAULT supplies a value when INSERT omits the column.
+
+It is not a check that the value is wise.
+
+DEFAULT CURRENT_TIMESTAMP on created_at writes the clock you meant.
+
+DEFAULT zero on a quantity can hide a forgotten value.
+
+Choose defaults that are true history, not a shrug.
+
+A new NOT NULL column on a table that already has rows needs a default, or the ALTER fails, or old rows become lies.
+
+CHECK is a boolean test the row must pass.
+
+CHECK (price >= 0) stops a negative price.
+
+CHECK (status IN ('open', 'paid', 'canceled')) stops a status nobody defined.
+
+CHECK can compare two columns: end_date >= start_date.
+
+Keep CHECK expressions sargable and obvious.
+
+A check that calls a vague function nobody can read will not be maintained.
+
+Some engines skip CHECK.
+
+Know yours.
+
+NOT NULL is about presence.
+
+DEFAULT is about what presence is assumed.
+
+CHECK is about whether the present value is legal.
+
+Together they encode business rules next to the type.
+
+Application code still validates for friendly errors.
+
+The table validates for truth when a second writer appears, or a tool, or a tired INSERT.
+
+Ignore them and the database will store a negative salary with a NULL status and a smile.
+
+Name CHECK constraints so the error names the rule: orders_total_nonnegative.
+
+Then a failed write is a sentence, not a puzzle.
+
+Write the three on every column that has a rule in the interviews.
+
+If the interview never said the rule, do not invent a CHECK that will surprise the business.
+
+Constraints are requirements in SQL form.
+
+Not decoration.
+
+Not later.
+
+On the column, when you CREATE, while you still remember why.
+
+Revisit them when a rule changes, with ALTER, the same as any other contract.
+
+A status that gained a new legal value needs the CHECK rewritten, not a silent VARCHAR that already allowed it.
+
+That rewrite is cheaper than a year of fake statuses.
+
+Practice: take one table from the store schema and say for each column: hole or not, default or not, extra test or not.
+
+If you cannot answer, the requirement is unfinished.
+
+Finish the requirement, then the constraint.
+
+That is how NOT NULL, DEFAULT, and CHECK earn their keep.
+
+Dialect notes without turning into a vendor manual: some engines ignore CHECK, some allow multiple NULLs under UNIQUE, some attach NOT NULL as a property you cannot name.
+
+Read yours.
+
+The ideas stay: refuse holes, fill omissions, refuse illegal values.
+
+If CHECK is missing in an engine, you might use a trigger, which is a later tool, or you refuse in the application and accept the risk of a second writer.
+
+Prefer an engine that can CHECK if the rule matters.
+
+This course is fundamentals: the rule belongs next to the column whenever the engine can hold it.
+
+Walk DEFAULT CURRENT_DATE on an order_date and then INSERT an explicit old date for backfill.
+
+Explicit values override defaults.
+
+Defaults are for omission, not for locking the column.
+
+CHECK still validates the explicit old date.
+
+If backfill can be yesterday, the check must allow yesterday.
+
+If it cannot, the check and the backfill policy disagree, and you found a requirement bug.
+
+That is why this lecture is long: every keyword meets a policy.
+
+Close with questions, the way a careful lecture does.
+
+Answer in a sentence you could defend at a keyboard.
+
+What is NULL?
+
+Unknown or missing, not zero, not empty string.
+
+What does NOT NULL refuse?
+
+Holes on INSERT and UPDATE.
+
+What does DEFAULT do?
+
+Fills a value when INSERT omits the column.
+
+Does DEFAULT block bad UPDATEs?
+
+No. CHECK does.
+
+What does CHECK do?
+
+A boolean test the row must pass.
+
+SUM versus a plus expression with NULL?
+
+SUM often skips NULL; plus becomes NULL.
+
+DEFAULT zero on unknown quantity?
+
+A lie. Zero is a real quantity.
+
+NOT NULL plus DEFAULT plus CHECK on status?
+
+Presence, starting value, legal list.
+
+New legal status?
+
+ALTER the CHECK, do not hope VARCHAR allows it.
+
+Why name CHECK?
+
+So the error names the rule.
+
+Do some engines skip CHECK?
+
+Yes. Know yours.
+
+Is NOT NULL usually named?
+
+Often treated as a column property.
+
+Primary key and NOT NULL?
+
+Primary key already implies NOT NULL.
+
+Test which writes?
+
+INSERT omit, INSERT illegal, UPDATE illegal, UPDATE NULL.
+
+Are the three keywords the same sentence?
+
+No. Required, if omitted use this, if present it must pass.
+
+Second writer?
+
+The table still enforces when an app does not.
+
+Negative salary?
+
+CHECK (salary >= 0), and NOT NULL if it must exist.
+
+created_at DEFAULT?
+
+A true clock, not a shrug.
+
+ALTER add NOT NULL to old rows?
+
+Need a default or fill the holes first.
+
+When do you skip a CHECK?
+
+Only with a reason the data owner would agree to.
+
+What is this lecture really about?
+
+Business rules next to types, not optional decoration.
+
+Dialect differences?
+
+Read yours for CHECK and UNIQUE NULL, keep the three ideas.
+
+Explicit INSERT versus default?
+
+Explicit wins; CHECK still validates.
+
+Backfill versus CHECK?
+
+If they disagree, the requirement is unfinished.
+
+Three tests?
+
+NULL path, default path, illegal value.
+
+Goal?
+
+Boring columns that refuse nonsense.
+
+Optional constraints?
+
+How negative salaries arrived.
+
+When to write them?
+
+At CREATE, while you remember why.
+
+When to revisit?
+
+When a rule changes, with ALTER.
+
+If the interview never said the rule?
+
+Do not invent a surprising CHECK.
+
+If an answer needed a second table, go draw it before you write more SQL.
+
+Walk every column on orders: order_id PRIMARY KEY, customer_id NOT NULL REFERENCES, placed_at NOT NULL DEFAULT now, status NOT NULL DEFAULT open CHECK in the list, total DECIMAL NOT NULL CHECK greater than or equal to zero, notes TEXT NULL.
+
+That one table is the whole lecture in costume.
+
+order_id is identity.
+
+customer_id is presence plus a foreign key, which is next door's lesson.
+
+placed_at refuses holes and fills the clock when omitted.
+
+status refuses holes, starts open, refuses invented words.
+
+total refuses holes and refuses negative money.
+
+notes may be a hole, and empty string is a different choice you should not mix without a rule.
+
+INSERT that omits status becomes open, then CHECK still accepts open.
+
+UPDATE status to shipped fails until shipped is in the list.
+
+UPDATE total to minus one fails even though the row already existed.
+
+INSERT that omits notes stores NULL, and COUNT notes ignores that row, while COUNT star does not.
+
+That NULL lesson again, now attached to a real column.
+
+DEFAULT and CHECK together on status are why marketing cannot sneak a string.
+
+NOT NULL on total is why a forgotten total is not a silent NULL that poisons a plus tax expression.
+
+If tax is a separate column, decide NOT NULL DEFAULT zero versus NULL means unknown tax.
+
+Unknown tax cannot be invoiced.
+
+So NOT NULL DEFAULT zero may be honest for tax, and a lie for quantity.
+
+Say which.
+
+Write the CHECK that quantity is greater than zero if free gifts are stored another way.
+
+If free gifts exist, quantity greater than or equal to zero, and a gift flag, or a zero-price product.
+
+The CHECK is the policy.
+
+Eighteen minutes is policies meeting keywords, over and over, until you can do it cold on a new table.
+
+Do it cold on reviews next: review_id, product_id NOT NULL, body NOT NULL, rating CHECK between one and five, created_at DEFAULT now.
+
+If rating can be skipped, allow NULL and do not DEFAULT three, because three is a real opinion.
+
+That is the last mile of NOT NULL, DEFAULT, and CHECK.
+
+You are not recapping three words.
+
+You are refusing fake ratings, fake totals, and fake statuses at the door.

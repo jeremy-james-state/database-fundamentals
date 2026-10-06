@@ -1,0 +1,56 @@
+---
+title: "ALTER TABLE"
+description: "Renames a table or column, adds a column, or drops a column."
+---
+
+Use [DROP TABLE](/reference/drop-table) when you want the whole table gone. `ALTER TABLE` keeps the rows that still fit.
+
+## Syntax
+
+```sql
+ALTER TABLE table_name
+RENAME TO new_name;
+
+ALTER TABLE table_name
+RENAME COLUMN column_name TO new_name;
+
+ALTER TABLE table_name
+ADD COLUMN column_name STORAGE_CLASS;
+
+ALTER TABLE table_name
+DROP COLUMN column_name;
+```
+
+## Arguments
+
+<ParamField body="table_name" type="identifier" required>
+  The table to change.
+</ParamField>
+
+<ParamField body="new_name" type="identifier">
+  The name after `RENAME TO` or `RENAME COLUMN`.
+</ParamField>
+
+<ParamField body="column_name" type="identifier">
+  The column you add, drop, or rename.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql Add a column
+ALTER TABLE visits
+ADD COLUMN duration INTEGER;
+```
+
+```sql Rename a table
+ALTER TABLE visits
+RENAME TO swipes;
+```
+</CodeGroup>
+
+## Related references
+
+- [CREATE TABLE](/reference/create-table)
+- [DROP TABLE](/reference/drop-table)
+- [Alter a table](/how-to/alter-a-table)

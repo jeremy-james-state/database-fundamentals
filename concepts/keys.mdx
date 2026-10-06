@@ -1,0 +1,55 @@
+---
+title: "Keys"
+description: "A key is a column (or set of columns) that identifies a row or points to a row in another table."
+---
+
+A **unique identifier** names one item and no other. You can invent one (`book_id`) or use a value the world already treats as unique (an ISBN). Invented integer keys stay short when you copy them into other tables.
+
+## How keys work
+
+A <Tooltip tip="A column or set of columns that uniquely identifies each row">primary key</Tooltip> is unique for every row in **this** table. No two books share a `book_id`.
+
+A **foreign key** is a primary key copied into another table. `ratings.book_id` is a foreign key: it must match `books.book_id`. A [JOIN](/how-to/join-tables) follows that match.
+
+## Join tables
+
+A **join table** (also called a junction table) holds two foreign keys. It represents a [many-to-many](/concepts/relationships) match.
+
+| author_id | book_id |
+| --- | --- |
+| 2 | 1 |
+| 2 | 4 |
+| 7 | 1 |
+
+Author `2` wrote books `1` and `4`. Book `1` has more than one author. The pair `(author_id, book_id)` is unique. The same `author_id` may appear on many rows.
+
+## Why databases use keys
+
+Matching by row order fails as soon as you insert or delete. A key travels with the item.
+
+A long natural code (ISBN) is unique, but repeating it on every rating wastes space. Store a short `book_id` as the primary key. Keep the ISBN as an ordinary column on `books`.
+
+## When to use a key
+
+- **Primary key**: every table that stores items you will point at later
+- **Foreign key**: a many-side table that belongs to one parent (`ratings` belong to `books`)
+- **Join table**: many items on both sides
+- **Skip a join table when**: one side owns the other; put the foreign key on the many side only
+
+## Related ideas
+
+Keys show up as crow’s feet on an [entity-relationship diagram](/concepts/entity-relationship-diagrams). You follow them in a [nested query](/how-to/nest-a-query) or a [JOIN](/reference/join).
+
+## Common mix-ups
+
+- **Primary vs foreign**: the primary key lives on the home table. The foreign key is that same value stored somewhere else.
+- **Join table vs two tables**: `authored` is not an author and not a book. It only records who wrote what.
+
+## Further reading
+
+- [Relationships](/concepts/relationships)
+- [JOIN](/reference/join)
+- [PRIMARY KEY](/reference/primary-key)
+- [Constraints](/concepts/constraints)
+- [Constrain a table](/how-to/constrain-a-table)
+- [Tutorial](/tutorials/query-related-tables)

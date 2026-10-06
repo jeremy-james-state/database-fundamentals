@@ -1,0 +1,91 @@
+---
+title: "Tutorial"
+description: "Connect to MySQL, create typed tables, describe them, call a procedure, then prepare a safe SELECT."
+---
+
+When you finish, you can move a SQLite-style schema onto a server DBMS, inspect it with `DESCRIBE`, and bind parameters safely.
+
+## Prerequisites
+
+- MySQL available locally (or a lab server)
+- [Scaling](/concepts/scaling) and [server types](/concepts/server-types)
+- About 30 minutes
+
+<Info>
+Examples use MySQL. PostgreSQL steps are on [connect to PostgreSQL](/how-to/connect-to-postgresql).
+</Info>
+
+## Step 1: Connect and create a database
+
+```bash
+mysql -u root -h 127.0.0.1 -P 3306 -p
+```
+
+```sql
+CREATE DATABASE transit;
+USE transit;
+```
+
+## Step 2: Create typed tables
+
+```sql
+CREATE TABLE cards (
+  id INT AUTO_INCREMENT,
+  number VARCHAR(20) NOT NULL UNIQUE,
+  issued DATE,
+  type ENUM('standard', 'senior', 'student') NOT NULL,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE swipes (
+  id INT AUTO_INCREMENT,
+  card_id INT NOT NULL,
+  station VARCHAR(64) NOT NULL,
+  swiped_at DATETIME NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (card_id) REFERENCES cards (id)
+);
+
+DESCRIBE cards;
+DESCRIBE swipes;
+```
+
+You are on track when `Key` shows `PRI` on `id` and `MUL` on `card_id`.
+
+## Step 3: Stored procedure
+
+```sql
+DELIMITER //
+
+CREATE PROCEDURE record_swipe(
+  IN p_card_id INT,
+  IN p_station VARCHAR(64)
+)
+BEGIN
+  INSERT INTO swipes (card_id, station, swiped_at)
+  VALUES (p_card_id, p_station, NOW());
+END //
+
+DELIMITER ;
+
+CALL record_swipe(1, 'Park Street');
+```
+
+## Step 4: Prepared statement
+
+```sql
+PREPARE card_lookup FROM
+  'SELECT number, type FROM cards WHERE id = ?';
+
+SET @id = 1;
+EXECUTE card_lookup USING @id;
+```
+
+## Next steps
+
+You can run SQL on a server, not only in a SQLite file. Continue with:
+
+- [Replication](/concepts/replication)
+- [Sharding](/concepts/sharding)
+- [Grant privileges](/how-to/grant-privileges)
+- [Connect to PostgreSQL](/how-to/connect-to-postgresql)

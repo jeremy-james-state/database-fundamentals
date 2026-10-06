@@ -1,0 +1,1483 @@
+{
+  "title": "Denormalization",
+  "subtitle": "When copies are on purpose",
+  "audio": "narration.mp3",
+  "duration": 541.968,
+  "slides": [],
+  "scenes": [
+    {
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "city"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "title": "City is born here",
+      "id": "copy",
+      "label": "Source",
+      "kind": "schema",
+      "fromLyric": 0,
+      "toLyric": 4,
+      "steps": [
+        {
+          "lyricMin": 0,
+          "actions": [
+            "enter",
+            "show-schema",
+            "show-title"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "source",
+      "label": "Source",
+      "kind": "schema",
+      "title": "City is born here",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "city"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 4,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 5,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 4,
+      "toLyric": 9
+    },
+    {
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "city"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "title": "City is born here",
+      "id": "copy-2",
+      "label": "Source",
+      "kind": "schema",
+      "fromLyric": 9,
+      "toLyric": 33,
+      "steps": [
+        {
+          "lyricMin": 9,
+          "actions": [
+            "enter",
+            "show-schema",
+            "show-title"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "source-2",
+      "label": "Source",
+      "kind": "schema",
+      "title": "City is born here",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "city"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 33,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 33,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 33,
+      "toLyric": 34
+    },
+    {
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "city"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "title": "City is born here",
+      "id": "copy-3",
+      "label": "Source",
+      "kind": "schema",
+      "fromLyric": 34,
+      "toLyric": 57,
+      "steps": [
+        {
+          "lyricMin": 34,
+          "actions": [
+            "enter",
+            "show-schema",
+            "show-title"
+          ]
+        }
+      ]
+    },
+    {
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "city"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "title": "City is born here",
+      "id": "rule",
+      "label": "Source",
+      "kind": "schema",
+      "fromLyric": 57,
+      "toLyric": 63,
+      "steps": [
+        {
+          "lyricMin": 57,
+          "actions": [
+            "enter",
+            "show-schema",
+            "show-title"
+          ]
+        }
+      ]
+    },
+    {
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "city"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "title": "City is born here",
+      "id": "copy-4",
+      "label": "Source",
+      "kind": "schema",
+      "fromLyric": 63,
+      "toLyric": 79,
+      "steps": [
+        {
+          "lyricMin": 63,
+          "actions": [
+            "enter",
+            "show-schema",
+            "show-title"
+          ]
+        }
+      ]
+    },
+    {
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "city"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "title": "City is born here",
+      "id": "rule-2",
+      "label": "Source",
+      "kind": "schema",
+      "fromLyric": 79,
+      "toLyric": 86,
+      "steps": [
+        {
+          "lyricMin": 79,
+          "actions": [
+            "enter",
+            "show-schema",
+            "show-title"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "source-3",
+      "label": "Source",
+      "kind": "schema",
+      "title": "City is born here",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "city"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 86,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 87,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 86,
+      "toLyric": 98
+    },
+    {
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "city"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "title": "City is born here",
+      "id": "rule-3",
+      "label": "Source",
+      "kind": "schema",
+      "fromLyric": 98,
+      "toLyric": 108,
+      "steps": [
+        {
+          "lyricMin": 98,
+          "actions": [
+            "enter",
+            "show-schema",
+            "show-title"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "source-4",
+      "label": "Source",
+      "kind": "schema",
+      "title": "City is born here",
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "city"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "lyricMin": 108,
+          "actions": [
+            "enter",
+            "show-schema"
+          ]
+        },
+        {
+          "lyricMin": 109,
+          "actions": [
+            "show-edge"
+          ]
+        }
+      ],
+      "fromLyric": 108,
+      "toLyric": 125
+    },
+    {
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "city"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "title": "City is born here",
+      "id": "copy-5",
+      "label": "Source",
+      "kind": "schema",
+      "fromLyric": 125,
+      "toLyric": 134,
+      "steps": [
+        {
+          "lyricMin": 125,
+          "actions": [
+            "enter",
+            "show-schema",
+            "show-title"
+          ]
+        }
+      ]
+    },
+    {
+      "tables": [
+        {
+          "id": "customers",
+          "label": "customers",
+          "cols": [
+            "customer_id",
+            "city"
+          ],
+          "pk": "customer_id",
+          "hub": true
+        },
+        {
+          "id": "orders",
+          "label": "orders",
+          "cols": [
+            "order_id",
+            "customer_id"
+          ],
+          "pk": "order_id",
+          "fks": {
+            "customer_id": "customers.customer_id"
+          }
+        }
+      ],
+      "title": "City is born here",
+      "id": "rule-4",
+      "label": "Source",
+      "kind": "schema",
+      "fromLyric": 134,
+      "toLyric": 151,
+      "steps": [
+        {
+          "lyricMin": 134,
+          "actions": [
+            "enter",
+            "show-schema",
+            "show-title"
+          ]
+        }
+      ]
+    }
+  ],
+  "lyrics": [
+    {
+      "start": 0.05,
+      "end": 3.666,
+      "text": "Normalization puts each fact in one place.",
+      "slide": ""
+    },
+    {
+      "start": 3.666,
+      "end": 9.861,
+      "text": "Denormalization copies a fact on purpose because a read path is too expensive without it.",
+      "slide": ""
+    },
+    {
+      "start": 9.861,
+      "end": 11.833,
+      "text": "That purpose has to be named.",
+      "slide": ""
+    },
+    {
+      "start": 11.833,
+      "end": 15.291,
+      "text": "A copy without an owner is just a bug you scheduled.",
+      "slide": ""
+    },
+    {
+      "start": 15.291,
+      "end": 18.694,
+      "text": "Example: orders.customer_city.",
+      "slide": ""
+    },
+    {
+      "start": 18.694,
+      "end": 21.0,
+      "text": "You already have city on customers.",
+      "slide": ""
+    },
+    {
+      "start": 21.0,
+      "end": 24.93,
+      "text": "You copy it because a nightly report cannot afford the join.",
+      "slide": ""
+    },
+    {
+      "start": 24.93,
+      "end": 32.652,
+      "text": "Now a move to Denver must update customers and every open order, or you accept stale city on old orders.",
+      "slide": ""
+    },
+    {
+      "start": 32.652,
+      "end": 34.333,
+      "text": "Those are different products.",
+      "slide": ""
+    },
+    {
+      "start": 34.333,
+      "end": 38.194,
+      "text": "A snapshot on a closed order can be a fact about history.",
+      "slide": ""
+    },
+    {
+      "start": 38.194,
+      "end": 41.486,
+      "text": "A living copy of the current city is a cache.",
+      "slide": ""
+    },
+    {
+      "start": 41.486,
+      "end": 46.847,
+      "text": "Caches need a rule: who writes, when, and what happens on a miss.",
+      "slide": ""
+    },
+    {
+      "start": 46.847,
+      "end": 49.888,
+      "text": "Summary tables are denormalization too.",
+      "slide": ""
+    },
+    {
+      "start": 49.888,
+      "end": 54.194,
+      "text": "daily_sales holds a date and a SUM you could recompute.",
+      "slide": ""
+    },
+    {
+      "start": 54.194,
+      "end": 57.708,
+      "text": "You keep it because the recompute is overnight work.",
+      "slide": ""
+    },
+    {
+      "start": 57.708,
+      "end": 59.541,
+      "text": "You refresh it on a schedule.",
+      "slide": ""
+    },
+    {
+      "start": 59.541,
+      "end": 64.041,
+      "text": "If the summary disagrees with the base table, the base table wins.",
+      "slide": ""
+    },
+    {
+      "start": 64.041,
+      "end": 65.208,
+      "text": "Write that down.",
+      "slide": ""
+    },
+    {
+      "start": 65.208,
+      "end": 70.736,
+      "text": "Do not denormalize during the first sketch because a mockup showed city next to total.",
+      "slide": ""
+    },
+    {
+      "start": 70.736,
+      "end": 72.111,
+      "text": "Screens can join.",
+      "slide": ""
+    },
+    {
+      "start": 72.111,
+      "end": 73.291,
+      "text": "Start honest.",
+      "slide": ""
+    },
+    {
+      "start": 73.291,
+      "end": 79.0,
+      "text": "Copy when a measured query is too slow, or when history must freeze a value.",
+      "slide": ""
+    },
+    {
+      "start": 79.0,
+      "end": 81.555,
+      "text": "Indexes are not denormalization.",
+      "slide": ""
+    },
+    {
+      "start": 81.555,
+      "end": 84.458,
+      "text": "They copy keys, not business facts.",
+      "slide": ""
+    },
+    {
+      "start": 84.458,
+      "end": 85.777,
+      "text": "Add them first.",
+      "slide": ""
+    },
+    {
+      "start": 85.777,
+      "end": 89.111,
+      "text": "When you do copy a fact, constrain what you can.",
+      "slide": ""
+    },
+    {
+      "start": 89.111,
+      "end": 91.666,
+      "text": "A trigger might keep the copy in sync.",
+      "slide": ""
+    },
+    {
+      "start": 91.666,
+      "end": 94.611,
+      "text": "Triggers are easy to forget during a bulk load.",
+      "slide": ""
+    },
+    {
+      "start": 94.611,
+      "end": 97.708,
+      "text": "An application service might be the only writer.",
+      "slide": ""
+    },
+    {
+      "start": 97.708,
+      "end": 99.819,
+      "text": "Then two writers will drift.",
+      "slide": ""
+    },
+    {
+      "start": 99.819,
+      "end": 101.375,
+      "text": "Name the single writer.",
+      "slide": ""
+    },
+    {
+      "start": 101.375,
+      "end": 107.375,
+      "text": "On a diagram, mark copied columns so nobody thinks city is born on orders.",
+      "slide": ""
+    },
+    {
+      "start": 107.375,
+      "end": 110.222,
+      "text": "The lesson is not that copies are forbidden.",
+      "slide": ""
+    },
+    {
+      "start": 110.222,
+      "end": 117.305,
+      "text": "The lesson is that copies are a product decision with an owner, a refresh rule, and a source of truth.",
+      "slide": ""
+    },
+    {
+      "start": 117.305,
+      "end": 121.597,
+      "text": "Materialized views are a managed summary table in some engines.",
+      "slide": ""
+    },
+    {
+      "start": 121.597,
+      "end": 123.43,
+      "text": "They still have a refresh rule.",
+      "slide": ""
+    },
+    {
+      "start": 123.43,
+      "end": 126.0,
+      "text": "They still lose a fight with the base table.",
+      "slide": ""
+    },
+    {
+      "start": 126.0,
+      "end": 130.888,
+      "text": "Search engines and caches outside the database are denormalization too.",
+      "slide": ""
+    },
+    {
+      "start": 130.888,
+      "end": 135.361,
+      "text": "The owner might be a worker that rebuilds a document on every order.",
+      "slide": ""
+    },
+    {
+      "start": 135.361,
+      "end": 139.75,
+      "text": "If the worker is down, the product should say stale, not true.",
+      "slide": ""
+    },
+    {
+      "start": 139.75,
+      "end": 142.138,
+      "text": "That product sentence is the design.",
+      "slide": ""
+    },
+    {
+      "start": 142.138,
+      "end": 146.805,
+      "text": "Copying a price onto an order line at purchase time is a snapshot.",
+      "slide": ""
+    },
+    {
+      "start": 146.805,
+      "end": 149.416,
+      "text": "The catalog price may change tomorrow.",
+      "slide": ""
+    },
+    {
+      "start": 149.416,
+      "end": 150.861,
+      "text": "The line must not.",
+      "slide": ""
+    },
+    {
+      "start": 150.861,
+      "end": 153.847,
+      "text": "That copy is not a cache of the catalog.",
+      "slide": ""
+    },
+    {
+      "start": 153.847,
+      "end": 155.5,
+      "text": "It is the price you agreed.",
+      "slide": ""
+    },
+    {
+      "start": 155.5,
+      "end": 161.708,
+      "text": "Name it unit_price_at_sale so nobody 'fixes' it from the catalog.",
+      "slide": ""
+    },
+    {
+      "start": 161.708,
+      "end": 164.222,
+      "text": "Names prevent helpful disasters.",
+      "slide": ""
+    },
+    {
+      "start": 164.222,
+      "end": 168.68,
+      "text": "Read-time joins versus write-time copies is the real spectrum.",
+      "slide": ""
+    },
+    {
+      "start": 168.68,
+      "end": 170.166,
+      "text": "Start at read-time.",
+      "slide": ""
+    },
+    {
+      "start": 170.166,
+      "end": 173.875,
+      "text": "Move left only with a measurement or a legal freeze.",
+      "slide": ""
+    },
+    {
+      "start": 173.875,
+      "end": 177.263,
+      "text": "A legal freeze is a measurement of a different kind.",
+      "slide": ""
+    },
+    {
+      "start": 177.263,
+      "end": 179.958,
+      "text": "It still has an owner: the invoice.",
+      "slide": ""
+    },
+    {
+      "start": 179.958,
+      "end": 184.069,
+      "text": "Do not denormalize because an ORM is awkward to join.",
+      "slide": ""
+    },
+    {
+      "start": 184.069,
+      "end": 185.722,
+      "text": "Fix the query helper.",
+      "slide": ""
+    },
+    {
+      "start": 185.722,
+      "end": 187.527,
+      "text": "Awkward is not slow.",
+      "slide": ""
+    },
+    {
+      "start": 187.527,
+      "end": 188.791,
+      "text": "Slow is slow.",
+      "slide": ""
+    },
+    {
+      "start": 188.791,
+      "end": 195.777,
+      "text": "The copy is a product decision with an owner, a refresh or freeze rule, and a source of truth.",
+      "slide": ""
+    },
+    {
+      "start": 195.777,
+      "end": 197.43,
+      "text": "Say those three out loud.",
+      "slide": ""
+    },
+    {
+      "start": 197.43,
+      "end": 200.75,
+      "text": "If you cannot, you are not denormalizing yet.",
+      "slide": ""
+    },
+    {
+      "start": 200.75,
+      "end": 202.138,
+      "text": "You are duplicating.",
+      "slide": ""
+    },
+    {
+      "start": 202.138,
+      "end": 206.847,
+      "text": "Duplication is how Austin and Denver both stay true for Maya.",
+      "slide": ""
+    },
+    {
+      "start": 206.847,
+      "end": 209.208,
+      "text": "We already decided that is not a goal.",
+      "slide": ""
+    },
+    {
+      "start": 209.208,
+      "end": 211.291,
+      "text": "On purpose, or not at all.",
+      "slide": ""
+    },
+    {
+      "start": 211.291,
+      "end": 214.388,
+      "text": "If a copy has no owner, delete the column.",
+      "slide": ""
+    },
+    {
+      "start": 214.388,
+      "end": 218.194,
+      "text": "If it has an owner, write the refresh in the same migration.",
+      "slide": ""
+    },
+    {
+      "start": 218.194,
+      "end": 221.18,
+      "text": "Future dashboards will ask for another copy.",
+      "slide": ""
+    },
+    {
+      "start": 221.18,
+      "end": 224.472,
+      "text": "Hand them the three-sentence test before you say yes.",
+      "slide": ""
+    },
+    {
+      "start": 224.472,
+      "end": 226.402,
+      "text": "A copy is a second clock.",
+      "slide": ""
+    },
+    {
+      "start": 226.402,
+      "end": 227.93,
+      "text": "Two clocks disagree.",
+      "slide": ""
+    },
+    {
+      "start": 227.93,
+      "end": 231.875,
+      "text": "You must say which clock is for display and which is for truth.",
+      "slide": ""
+    },
+    {
+      "start": 231.875,
+      "end": 235.541,
+      "text": "Truth stays normalized until a snapshot is the product.",
+      "slide": ""
+    },
+    {
+      "start": 235.541,
+      "end": 238.333,
+      "text": "An invoice line price is a snapshot.",
+      "slide": ""
+    },
+    {
+      "start": 238.333,
+      "end": 242.194,
+      "text": "A cached city on an open cart is a clock that will lie.",
+      "slide": ""
+    },
+    {
+      "start": 242.194,
+      "end": 246.069,
+      "text": "Do not ship the liar unless a worker owns the rewind.",
+      "slide": ""
+    },
+    {
+      "start": 246.069,
+      "end": 248.638,
+      "text": "Name the worker in the migration comment.",
+      "slide": ""
+    },
+    {
+      "start": 248.638,
+      "end": 252.208,
+      "text": "If you cannot name the worker, you are not ready to copy.",
+      "slide": ""
+    },
+    {
+      "start": 252.208,
+      "end": 253.694,
+      "text": "Join a little longer.",
+      "slide": ""
+    },
+    {
+      "start": 253.694,
+      "end": 256.277,
+      "text": "Indexes are cheaper than a second clock.",
+      "slide": ""
+    },
+    {
+      "start": 256.277,
+      "end": 261.513,
+      "text": "When you finally copy, freeze or refresh, never both in silence.",
+      "slide": ""
+    },
+    {
+      "start": 261.513,
+      "end": 263.486,
+      "text": "Silence is duplication.",
+      "slide": ""
+    },
+    {
+      "start": 263.486,
+      "end": 265.652,
+      "text": "Speech is denormalization.",
+      "slide": ""
+    },
+    {
+      "start": 265.652,
+      "end": 266.861,
+      "text": "Use speech.",
+      "slide": ""
+    },
+    {
+      "start": 266.861,
+      "end": 271.18,
+      "text": "Normalization splits tables so each fact has one home.",
+      "slide": ""
+    },
+    {
+      "start": 271.18,
+      "end": 276.638,
+      "text": "Denormalization copies a fact on purpose so a frequent query can avoid a join.",
+      "slide": ""
+    },
+    {
+      "start": 276.638,
+      "end": 282.263,
+      "text": "It is a last-ditch optimization after you have evidence, not a shortcut past design.",
+      "slide": ""
+    },
+    {
+      "start": 282.386,
+      "end": 287.461,
+      "text": "A clean schema can still make a dashboard join five tables and take seconds.",
+      "slide": ""
+    },
+    {
+      "start": 287.461,
+      "end": 290.669,
+      "text": "Users feel the seconds, not the purity.",
+      "slide": ""
+    },
+    {
+      "start": 290.669,
+      "end": 293.544,
+      "text": "The responsible version has two steps.",
+      "slide": ""
+    },
+    {
+      "start": 293.544,
+      "end": 299.099,
+      "text": "First, watch which queries run often and which of them join more than two tables.",
+      "slide": ""
+    },
+    {
+      "start": 299.099,
+      "end": 301.863,
+      "text": "Guessing is how you duplicate the wrong column.",
+      "slide": ""
+    },
+    {
+      "start": 301.863,
+      "end": 309.558,
+      "text": "Second, copy a column into a table that already participates, so the hot query joins less, or not at all.",
+      "slide": ""
+    },
+    {
+      "start": 309.558,
+      "end": 320.919,
+      "text": "A music catalog might store artist_name on a track row that already has album_id, if top tracks by famous artists are the hot path and always needed the name.",
+      "slide": ""
+    },
+    {
+      "start": 320.919,
+      "end": 328.78,
+      "text": "You now update artist_name in two places, or you accept a nightly rebuild, or you use a trigger to copy.",
+      "slide": ""
+    },
+    {
+      "start": 328.78,
+      "end": 330.947,
+      "text": "That extra write is the cost.",
+      "slide": ""
+    },
+    {
+      "start": 330.947,
+      "end": 334.016,
+      "text": "The extra consistency work is the cost.",
+      "slide": ""
+    },
+    {
+      "start": 334.016,
+      "end": 338.988,
+      "text": "If you cannot name the job that keeps the copy true, you did not denormalize.",
+      "slide": ""
+    },
+    {
+      "start": 338.988,
+      "end": 342.044,
+      "text": "You created an anomaly and called it speed.",
+      "slide": ""
+    },
+    {
+      "start": 342.044,
+      "end": 349.822,
+      "text": "Document the source of truth: artists.name is canonical, tracks.artist_name is a cache.",
+      "slide": ""
+    },
+    {
+      "start": 349.822,
+      "end": 354.474,
+      "text": "If they disagree, the canonical wins, and the cache is rebuilt.",
+      "slide": ""
+    },
+    {
+      "start": 354.474,
+      "end": 357.502,
+      "text": "Do not denormalize because joins look scary.",
+      "slide": ""
+    },
+    {
+      "start": 357.502,
+      "end": 361.724,
+      "text": "Joins on keys with indexes are the relational model working.",
+      "slide": ""
+    },
+    {
+      "start": 361.724,
+      "end": 370.224,
+      "text": "Denormalize because a measured query is hot, the join is the bottleneck, and the copied column is stable enough to cache.",
+      "slide": ""
+    },
+    {
+      "start": 370.224,
+      "end": 375.155,
+      "text": "Counts and totals on an order header copied from lines are a common form.",
+      "slide": ""
+    },
+    {
+      "start": 375.155,
+      "end": 383.627,
+      "text": "They go stale the moment a line changes unless a trigger or application transaction updates the header in the same unit of work.",
+      "slide": ""
+    },
+    {
+      "start": 383.627,
+      "end": 387.169,
+      "text": "If that unit of work is missing, the header is a rumor.",
+      "slide": ""
+    },
+    {
+      "start": 387.169,
+      "end": 394.252,
+      "text": "Sometimes a reporting table filled on a schedule is cleaner than sprinkling copies through operational tables.",
+      "slide": ""
+    },
+    {
+      "start": 394.252,
+      "end": 396.391,
+      "text": "That is still denormalization.",
+      "slide": ""
+    },
+    {
+      "start": 396.391,
+      "end": 402.683,
+      "text": "It keeps the OLTP schema honest and puts redundancy in a place you already rebuild.",
+      "slide": ""
+    },
+    {
+      "start": 402.683,
+      "end": 406.419,
+      "text": "The lesson after weeks of normal forms is restraint.",
+      "slide": ""
+    },
+    {
+      "start": 406.419,
+      "end": 408.988,
+      "text": "You now know why redundancy hurts.",
+      "slide": ""
+    },
+    {
+      "start": 408.988,
+      "end": 411.558,
+      "text": "So when you add it back, you add a broom.",
+      "slide": ""
+    },
+    {
+      "start": 411.558,
+      "end": 413.586,
+      "text": "No broom, no copy.",
+      "slide": ""
+    },
+    {
+      "start": 413.586,
+      "end": 416.308,
+      "text": "Speed is not a reason to forget the broom.",
+      "slide": ""
+    },
+    {
+      "start": 416.308,
+      "end": 422.447,
+      "text": "Hot query: top tracks for an artist, joining artists to albums to tracks every time.",
+      "slide": ""
+    },
+    {
+      "start": 422.447,
+      "end": 429.127,
+      "text": "Evidence: it is the home page, it runs constantly, EXPLAIN shows the joins as the cost.",
+      "slide": ""
+    },
+    {
+      "start": 429.127,
+      "end": 439.016,
+      "text": "Copy artist_id and artist_name onto tracks, or keep artist_id only if you still join artists, which you were trying not to.",
+      "slide": ""
+    },
+    {
+      "start": 439.016,
+      "end": 444.363,
+      "text": "If you copy the name, a trigger on artists UPDATE writes the new name to tracks.",
+      "slide": ""
+    },
+    {
+      "start": 444.363,
+      "end": 448.363,
+      "text": "If you skip the trigger, the home page lies after a rebrand.",
+      "slide": ""
+    },
+    {
+      "start": 448.363,
+      "end": 455.113,
+      "text": "A nightly table home_top_tracks rebuilt from the normalized sources may be cleaner.",
+      "slide": ""
+    },
+    {
+      "start": 455.113,
+      "end": 456.891,
+      "text": "Readers hit the snapshot.",
+      "slide": ""
+    },
+    {
+      "start": 456.891,
+      "end": 459.252,
+      "text": "Writers hit the normalized tables.",
+      "slide": ""
+    },
+    {
+      "start": 459.252,
+      "end": 463.377,
+      "text": "That is denormalization with a broom called the rebuild job.",
+      "slide": ""
+    },
+    {
+      "start": 463.377,
+      "end": 466.544,
+      "text": "Without the job, you only added redundancy.",
+      "slide": ""
+    },
+    {
+      "start": 466.544,
+      "end": 472.516,
+      "text": "With the job, you bought seconds for users and kept a place that is allowed to be redundant.",
+      "slide": ""
+    },
+    {
+      "start": 472.516,
+      "end": 480.183,
+      "text": "That is the twist after learning to split tables: sometimes you add a snapshot, on purpose, with a name that admits it.",
+      "slide": ""
+    },
+    {
+      "start": 480.183,
+      "end": 483.822,
+      "text": "Close with questions, the way a careful lecture does.",
+      "slide": ""
+    },
+    {
+      "start": 483.822,
+      "end": 486.877,
+      "text": "Answer in a sentence you could defend at a keyboard.",
+      "slide": ""
+    },
+    {
+      "start": 486.877,
+      "end": 488.586,
+      "text": "What is denormalization?",
+      "slide": ""
+    },
+    {
+      "start": 488.586,
+      "end": 492.572,
+      "text": "Copying a fact on purpose after evidence, with a broom.",
+      "slide": ""
+    },
+    {
+      "start": 492.572,
+      "end": 493.697,
+      "text": "Without a broom?",
+      "slide": ""
+    },
+    {
+      "start": 493.697,
+      "end": 495.669,
+      "text": "An anomaly named speed.",
+      "slide": ""
+    },
+    {
+      "start": 495.669,
+      "end": 496.377,
+      "text": "When?",
+      "slide": ""
+    },
+    {
+      "start": 496.377,
+      "end": 502.391,
+      "text": "A hot query, measured, joins are the cost, column stable enough to cache.",
+      "slide": ""
+    },
+    {
+      "start": 502.391,
+      "end": 503.683,
+      "text": "Source of truth?",
+      "slide": ""
+    },
+    {
+      "start": 503.683,
+      "end": 504.766,
+      "text": "Document it.",
+      "slide": ""
+    },
+    {
+      "start": 504.766,
+      "end": 506.808,
+      "text": "Cache loses if they disagree.",
+      "slide": ""
+    },
+    {
+      "start": 506.808,
+      "end": 508.086,
+      "text": "Reporting table?",
+      "slide": ""
+    },
+    {
+      "start": 508.086,
+      "end": 512.349,
+      "text": "Often cleaner than sprinkling copies through operational tables.",
+      "slide": ""
+    },
+    {
+      "start": 512.349,
+      "end": 514.183,
+      "text": "Trigger or transaction?",
+      "slide": ""
+    },
+    {
+      "start": 514.183,
+      "end": 516.586,
+      "text": "How an order header total stays true.",
+      "slide": ""
+    },
+    {
+      "start": 516.586,
+      "end": 517.78,
+      "text": "Joins scary?",
+      "slide": ""
+    },
+    {
+      "start": 517.78,
+      "end": 518.849,
+      "text": "Not a reason.",
+      "slide": ""
+    },
+    {
+      "start": 518.849,
+      "end": 521.711,
+      "text": "Keys plus indexes are the model working.",
+      "slide": ""
+    },
+    {
+      "start": 521.711,
+      "end": 523.197,
+      "text": "Home page tracks?",
+      "slide": ""
+    },
+    {
+      "start": 523.197,
+      "end": 527.058,
+      "text": "Snapshot table rebuilt from normalized sources.",
+      "slide": ""
+    },
+    {
+      "start": 527.058,
+      "end": 528.419,
+      "text": "Name the snapshot?",
+      "slide": ""
+    },
+    {
+      "start": 528.419,
+      "end": 531.294,
+      "text": "So nobody treats it as the only truth.",
+      "slide": ""
+    },
+    {
+      "start": 531.294,
+      "end": 532.308,
+      "text": "Restraint?",
+      "slide": ""
+    },
+    {
+      "start": 532.308,
+      "end": 537.183,
+      "text": "You know why redundancy hurts, so you add a broom when you add it back.",
+      "slide": ""
+    },
+    {
+      "start": 537.183,
+      "end": 541.905,
+      "text": "If an answer needed a second table, go draw it before you write more SQL.",
+      "slide": ""
+    }
+  ]
+}

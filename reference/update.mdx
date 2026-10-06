@@ -1,0 +1,49 @@
+---
+title: "UPDATE"
+description: "Rewrites column values on rows that match WHERE."
+---
+
+Without `WHERE`, every row in the table is rewritten.
+
+## Syntax
+
+```sql
+UPDATE table
+SET column = value, ...
+WHERE condition;
+```
+
+## Arguments
+
+<ParamField body="table" type="identifier" required>
+  The table to change.
+</ParamField>
+
+<ParamField body="column = value" type="assignment" required>
+  New value, or a [scalar function](/concepts/sql#scalar-functions) of an existing column (`trim(title)`).
+</ParamField>
+
+<ParamField body="WHERE" type="boolean expression">
+  Limits which rows change. Same condition language as [DELETE](/reference/delete) and [SELECT](/reference/select).
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql One title
+UPDATE collections
+SET title = 'Farmers Working at Dawn'
+WHERE id = 2;
+```
+
+```sql Trim whitespace
+UPDATE votes
+SET title = trim(title);
+```
+</CodeGroup>
+
+## Related references
+
+- [Update rows](/how-to/update-rows)
+- [DELETE](/reference/delete)
+- [trim](/reference/trim)

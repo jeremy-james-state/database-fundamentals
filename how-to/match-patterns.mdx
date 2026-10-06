@@ -1,0 +1,60 @@
+---
+title: "Match text patterns"
+description: "Find rows whose text roughly matches a LIKE pattern."
+---
+
+## Prerequisites
+
+- A text column you can filter, for example `books.title`
+- `WHERE` ([filter rows](/how-to/filter-rows))
+
+## Match with LIKE
+
+<Steps>
+  <Step title="Match a word anywhere">
+    `LIKE` compares a column to a pattern. `%` matches any sequence of characters, including none.
+
+    ```sql
+    SELECT title
+    FROM books
+    WHERE title LIKE '%love%';
+    ```
+
+    In SQLite, `LIKE` is case-insensitive. `=` is case-sensitive.
+  </Step>
+  <Step title="Anchor the start of the string">
+    Put `%` only after the prefix. `The%` matches `The`, `There`, and `They`. Add a space if you mean the word `The`:
+
+    ```sql
+    SELECT title
+    FROM books
+    WHERE title LIKE 'The %';
+    ```
+  </Step>
+  <Step title="Match one unknown character">
+    `_` matches exactly one character. `P_re` matches `Pyre` and `Pure`.
+
+    ```sql
+    SELECT title
+    FROM books
+    WHERE title LIKE 'P_re';
+    ```
+
+    Use several underscores to match several unknown characters. You can mix `%` and `_` in one pattern.
+  </Step>
+</Steps>
+
+## Verify the result
+
+You succeeded when every title matches the pattern you intended, and obvious non-matches (for example `There` when you wanted `The `) are gone.
+
+## Troubleshooting
+
+- **Too many rows with a prefix**: `%` after three letters also matches longer words. Use a trailing space or a tighter pattern.
+- **No rows with `=` on mixed case**: switch to `LIKE` if you want case-insensitive match in SQLite.
+- **`%` used as “one character”**: use `_` for a single character.
+
+## Related pages
+
+- [LIKE](/reference/like)
+- [Filter rows](/how-to/filter-rows)

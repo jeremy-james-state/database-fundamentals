@@ -1,0 +1,1274 @@
+{
+  "title": "First normal form",
+  "subtitle": "Atomic values and a primary key",
+  "audio": "narration.mp3",
+  "duration": 493.272,
+  "slides": [],
+  "scenes": [
+    {
+      "id": "test",
+      "label": "Atomic",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "line_no",
+        "title"
+      ],
+      "rows": [
+        [
+          "101",
+          "1",
+          "Harbor Light"
+        ],
+        [
+          "101",
+          "2",
+          "Quiet Fields"
+        ],
+        [
+          "102",
+          "1",
+          "Night Train"
+        ]
+      ],
+      "fromLyric": 0,
+      "toLyric": 4,
+      "steps": [
+        {
+          "lyricMin": 0,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "atomic",
+      "label": "Atomic",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "line_no",
+        "title"
+      ],
+      "rows": [
+        [
+          "101",
+          "1",
+          "Harbor Light"
+        ],
+        [
+          "101",
+          "2",
+          "Quiet Fields"
+        ],
+        [
+          "102",
+          "1",
+          "Night Train"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 4,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows"
+          ]
+        },
+        {
+          "lyricMin": 8,
+          "actions": [
+            "reveal-rows"
+          ]
+        }
+      ],
+      "fromLyric": 4,
+      "toLyric": 16
+    },
+    {
+      "id": "sins",
+      "label": "Atomic",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "line_no",
+        "title"
+      ],
+      "rows": [
+        [
+          "101",
+          "1",
+          "Harbor Light"
+        ],
+        [
+          "101",
+          "2",
+          "Quiet Fields"
+        ],
+        [
+          "102",
+          "1",
+          "Night Train"
+        ]
+      ],
+      "fromLyric": 16,
+      "toLyric": 36,
+      "steps": [
+        {
+          "lyricMin": 16,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "test-2",
+      "label": "Atomic",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "line_no",
+        "title"
+      ],
+      "rows": [
+        [
+          "101",
+          "1",
+          "Harbor Light"
+        ],
+        [
+          "101",
+          "2",
+          "Quiet Fields"
+        ],
+        [
+          "102",
+          "1",
+          "Night Train"
+        ]
+      ],
+      "fromLyric": 36,
+      "toLyric": 41,
+      "steps": [
+        {
+          "lyricMin": 36,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sins-2",
+      "label": "Atomic",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "line_no",
+        "title"
+      ],
+      "rows": [
+        [
+          "101",
+          "1",
+          "Harbor Light"
+        ],
+        [
+          "101",
+          "2",
+          "Quiet Fields"
+        ],
+        [
+          "102",
+          "1",
+          "Night Train"
+        ]
+      ],
+      "fromLyric": 41,
+      "toLyric": 83,
+      "steps": [
+        {
+          "lyricMin": 41,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "test-3",
+      "label": "Atomic",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "line_no",
+        "title"
+      ],
+      "rows": [
+        [
+          "101",
+          "1",
+          "Harbor Light"
+        ],
+        [
+          "101",
+          "2",
+          "Quiet Fields"
+        ],
+        [
+          "102",
+          "1",
+          "Night Train"
+        ]
+      ],
+      "fromLyric": 83,
+      "toLyric": 110,
+      "steps": [
+        {
+          "lyricMin": 83,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sins-3",
+      "label": "Atomic",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "line_no",
+        "title"
+      ],
+      "rows": [
+        [
+          "101",
+          "1",
+          "Harbor Light"
+        ],
+        [
+          "101",
+          "2",
+          "Quiet Fields"
+        ],
+        [
+          "102",
+          "1",
+          "Night Train"
+        ]
+      ],
+      "fromLyric": 110,
+      "toLyric": 112,
+      "steps": [
+        {
+          "lyricMin": 110,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "atomic-2",
+      "label": "Atomic",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "line_no",
+        "title"
+      ],
+      "rows": [
+        [
+          "101",
+          "1",
+          "Harbor Light"
+        ],
+        [
+          "101",
+          "2",
+          "Quiet Fields"
+        ],
+        [
+          "102",
+          "1",
+          "Night Train"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 112,
+          "actions": [
+            "enter",
+            "show-header"
+          ]
+        },
+        {
+          "lyricMin": 113,
+          "actions": [
+            "reveal-rows"
+          ]
+        }
+      ],
+      "fromLyric": 112,
+      "toLyric": 121
+    },
+    {
+      "id": "sins-4",
+      "label": "Atomic",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "line_no",
+        "title"
+      ],
+      "rows": [
+        [
+          "101",
+          "1",
+          "Harbor Light"
+        ],
+        [
+          "101",
+          "2",
+          "Quiet Fields"
+        ],
+        [
+          "102",
+          "1",
+          "Night Train"
+        ]
+      ],
+      "fromLyric": 121,
+      "toLyric": 149,
+      "steps": [
+        {
+          "lyricMin": 121,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    }
+  ],
+  "lyrics": [
+    {
+      "start": 0.05,
+      "end": 4.138,
+      "text": "First normal form is the agreement that a table is a table.",
+      "slide": ""
+    },
+    {
+      "start": 4.138,
+      "end": 7.263,
+      "text": "Each cell holds one value, not a list.",
+      "slide": ""
+    },
+    {
+      "start": 7.263,
+      "end": 11.388,
+      "text": "Each row is one thing, identified by a primary key.",
+      "slide": ""
+    },
+    {
+      "start": 11.388,
+      "end": 13.444,
+      "text": "Each column has a single meaning.",
+      "slide": ""
+    },
+    {
+      "start": 13.444,
+      "end": 17.069,
+      "text": "Look at a cell that says Harbor Light, Quiet Fields.",
+      "slide": ""
+    },
+    {
+      "start": 17.069,
+      "end": 20.541,
+      "text": "That is two titles pretending to be one attribute.",
+      "slide": ""
+    },
+    {
+      "start": 20.541,
+      "end": 22.347,
+      "text": "You cannot sort by title.",
+      "slide": ""
+    },
+    {
+      "start": 22.347,
+      "end": 24.527,
+      "text": "You cannot foreign-key to books.",
+      "slide": ""
+    },
+    {
+      "start": 24.527,
+      "end": 28.916,
+      "text": "You cannot count how many titles Maya bought without splitting the string.",
+      "slide": ""
+    },
+    {
+      "start": 28.916,
+      "end": 30.847,
+      "text": "Split into rows instead.",
+      "slide": ""
+    },
+    {
+      "start": 30.847,
+      "end": 32.611,
+      "text": "One order line per book.",
+      "slide": ""
+    },
+    {
+      "start": 32.611,
+      "end": 34.875,
+      "text": "Now each title is atomic.",
+      "slide": ""
+    },
+    {
+      "start": 34.875,
+      "end": 41.444,
+      "text": "Repeating groups are the same sin with extra columns: title1, title2, title3.",
+      "slide": ""
+    },
+    {
+      "start": 41.444,
+      "end": 46.652,
+      "text": "title3 is empty for most rows, and a fourth book has nowhere to go.",
+      "slide": ""
+    },
+    {
+      "start": 46.652,
+      "end": 49.569,
+      "text": "Rows scale; numbered columns do not.",
+      "slide": ""
+    },
+    {
+      "start": 49.569,
+      "end": 52.166,
+      "text": "A primary key is part of the form.",
+      "slide": ""
+    },
+    {
+      "start": 52.166,
+      "end": 56.375,
+      "text": "Without a key, two identical rows are not two facts.",
+      "slide": ""
+    },
+    {
+      "start": 56.375,
+      "end": 57.708,
+      "text": "They are a smudge.",
+      "slide": ""
+    },
+    {
+      "start": 57.708,
+      "end": 59.638,
+      "text": "Atomic does not mean short.",
+      "slide": ""
+    },
+    {
+      "start": 59.638,
+      "end": 62.833,
+      "text": "A biography in TEXT can still be one value.",
+      "slide": ""
+    },
+    {
+      "start": 62.833,
+      "end": 67.18,
+      "text": "Atomic means you are not smuggling a second table into a cell.",
+      "slide": ""
+    },
+    {
+      "start": 67.18,
+      "end": 71.902,
+      "text": "JSON in a column can be a document, or it can be a hidden table.",
+      "slide": ""
+    },
+    {
+      "start": 71.902,
+      "end": 76.138,
+      "text": "If you query inside it as if it had rows, you wanted rows.",
+      "slide": ""
+    },
+    {
+      "start": 76.138,
+      "end": 80.222,
+      "text": "Names with a middle initial are still one name if that is how you treat them.",
+      "slide": ""
+    },
+    {
+      "start": 80.222,
+      "end": 85.097,
+      "text": "If you sort by last name, you wanted last_name as its own column.",
+      "slide": ""
+    },
+    {
+      "start": 85.097,
+      "end": 87.791,
+      "text": "The test is use, not philosophy.",
+      "slide": ""
+    },
+    {
+      "start": 87.791,
+      "end": 90.555,
+      "text": "Start with a messy grid from a spreadsheet.",
+      "slide": ""
+    },
+    {
+      "start": 90.555,
+      "end": 92.847,
+      "text": "Circle every cell with a comma.",
+      "slide": ""
+    },
+    {
+      "start": 92.847,
+      "end": 95.277,
+      "text": "Circle every title1 column.",
+      "slide": ""
+    },
+    {
+      "start": 95.277,
+      "end": 96.944,
+      "text": "Those circles are the work.",
+      "slide": ""
+    },
+    {
+      "start": 96.944,
+      "end": 98.458,
+      "text": "Make a child table.",
+      "slide": ""
+    },
+    {
+      "start": 98.458,
+      "end": 99.5,
+      "text": "Give it a key.",
+      "slide": ""
+    },
+    {
+      "start": 99.5,
+      "end": 100.847,
+      "text": "Point at the parent.",
+      "slide": ""
+    },
+    {
+      "start": 100.847,
+      "end": 103.5,
+      "text": "That is first normal form in practice.",
+      "slide": ""
+    },
+    {
+      "start": 103.5,
+      "end": 105.902,
+      "text": "Higher normal forms assume this one.",
+      "slide": ""
+    },
+    {
+      "start": 105.902,
+      "end": 109.833,
+      "text": "If you skip it, later rules have nothing honest to stand on.",
+      "slide": ""
+    },
+    {
+      "start": 109.833,
+      "end": 111.763,
+      "text": "One cell, one value.",
+      "slide": ""
+    },
+    {
+      "start": 111.763,
+      "end": 113.291,
+      "text": "One row, one thing.",
+      "slide": ""
+    },
+    {
+      "start": 113.291,
+      "end": 115.041,
+      "text": "A key that finds the row.",
+      "slide": ""
+    },
+    {
+      "start": 115.041,
+      "end": 117.013,
+      "text": "Then you can talk about dependence.",
+      "slide": ""
+    },
+    {
+      "start": 117.013,
+      "end": 122.027,
+      "text": "Repeating groups sometimes wear JSON or arrays in modern engines.",
+      "slide": ""
+    },
+    {
+      "start": 122.027,
+      "end": 125.236,
+      "text": "An array of titles is still a list in a cell.",
+      "slide": ""
+    },
+    {
+      "start": 125.236,
+      "end": 129.638,
+      "text": "If you query unnest, you wanted a child table for operational data.",
+      "slide": ""
+    },
+    {
+      "start": 129.638,
+      "end": 134.444,
+      "text": "Document-looking payloads can stay documents if you always fetch them whole.",
+      "slide": ""
+    },
+    {
+      "start": 134.444,
+      "end": 138.375,
+      "text": "The moment you join to a title inside, you wanted rows.",
+      "slide": ""
+    },
+    {
+      "start": 138.375,
+      "end": 142.555,
+      "text": "CSV imports are the usual first-normal-form crime scene.",
+      "slide": ""
+    },
+    {
+      "start": 142.555,
+      "end": 145.777,
+      "text": "Someone exported a spreadsheet with a list column.",
+      "slide": ""
+    },
+    {
+      "start": 145.777,
+      "end": 147.625,
+      "text": "Split before you INSERT.",
+      "slide": ""
+    },
+    {
+      "start": 147.625,
+      "end": 151.722,
+      "text": "Or insert into a staging table and normalize in SQL.",
+      "slide": ""
+    },
+    {
+      "start": 151.722,
+      "end": 155.152,
+      "text": "Multivalued dependencies are a later theory word.",
+      "slide": ""
+    },
+    {
+      "start": 155.152,
+      "end": 161.069,
+      "text": "In practice you already felt them when two lists in one row multiplied into a mess.",
+      "slide": ""
+    },
+    {
+      "start": 161.069,
+      "end": 164.444,
+      "text": "Keep lists out, and you will not need the word yet.",
+      "slide": ""
+    },
+    {
+      "start": 164.444,
+      "end": 168.708,
+      "text": "Primary keys that are hashes of the whole row are a last resort.",
+      "slide": ""
+    },
+    {
+      "start": 168.708,
+      "end": 170.847,
+      "text": "They say we could not find identity.",
+      "slide": ""
+    },
+    {
+      "start": 170.847,
+      "end": 172.152,
+      "text": "Find identity.",
+      "slide": ""
+    },
+    {
+      "start": 172.152,
+      "end": 175.375,
+      "text": "A line number plus parent id is identity.",
+      "slide": ""
+    },
+    {
+      "start": 175.375,
+      "end": 179.694,
+      "text": "A random uuid is identity if you assign it at birth.",
+      "slide": ""
+    },
+    {
+      "start": 179.694,
+      "end": 181.597,
+      "text": "A pile of titles is not.",
+      "slide": ""
+    },
+    {
+      "start": 181.597,
+      "end": 183.458,
+      "text": "Walk a report you care about.",
+      "slide": ""
+    },
+    {
+      "start": 183.458,
+      "end": 186.861,
+      "text": "If it needs COUNT of books, you need rows of books.",
+      "slide": ""
+    },
+    {
+      "start": 186.861,
+      "end": 193.944,
+      "text": "If it needs a poster of the whole cart as one blob, you might keep a document copy, on purpose, later.",
+      "slide": ""
+    },
+    {
+      "start": 193.944,
+      "end": 197.875,
+      "text": "First normal form is for the tables you query as tables.",
+      "slide": ""
+    },
+    {
+      "start": 197.875,
+      "end": 199.236,
+      "text": "Keep them atomic.",
+      "slide": ""
+    },
+    {
+      "start": 199.236,
+      "end": 200.527,
+      "text": "Give them keys.",
+      "slide": ""
+    },
+    {
+      "start": 200.527,
+      "end": 202.569,
+      "text": "Then the later forms have a floor.",
+      "slide": ""
+    },
+    {
+      "start": 202.569,
+      "end": 206.125,
+      "text": "If a report needs to count it, it needed its own row.",
+      "slide": ""
+    },
+    {
+      "start": 206.125,
+      "end": 209.541,
+      "text": "If a join needs to match it, it needed its own row.",
+      "slide": ""
+    },
+    {
+      "start": 209.541,
+      "end": 213.0,
+      "text": "If a key needs to point at it, it needed its own row.",
+      "slide": ""
+    },
+    {
+      "start": 213.0,
+      "end": 215.416,
+      "text": "Lists in cells fail all three.",
+      "slide": ""
+    },
+    {
+      "start": 215.416,
+      "end": 217.347,
+      "text": "Spreadsheets do not care.",
+      "slide": ""
+    },
+    {
+      "start": 217.347,
+      "end": 218.472,
+      "text": "Engines do.",
+      "slide": ""
+    },
+    {
+      "start": 218.472,
+      "end": 220.222,
+      "text": "Split, key, point.",
+      "slide": ""
+    },
+    {
+      "start": 220.222,
+      "end": 221.583,
+      "text": "That is the repair.",
+      "slide": ""
+    },
+    {
+      "start": 221.583,
+      "end": 224.263,
+      "text": "Do it before you load a million rows.",
+      "slide": ""
+    },
+    {
+      "start": 224.263,
+      "end": 228.68,
+      "text": "Splitting a million lists is a worse afternoon than splitting twenty.",
+      "slide": ""
+    },
+    {
+      "start": 228.68,
+      "end": 231.013,
+      "text": "Atomic now, dependence later.",
+      "slide": ""
+    },
+    {
+      "start": 231.013,
+      "end": 232.805,
+      "text": "The floor has to exist.",
+      "slide": ""
+    },
+    {
+      "start": 232.805,
+      "end": 234.333,
+      "text": "You are laying the floor.",
+      "slide": ""
+    },
+    {
+      "start": 234.333,
+      "end": 242.138,
+      "text": "Normalization is putting each fact in one proper place so you can find it, change it once, and avoid anomalies.",
+      "slide": ""
+    },
+    {
+      "start": 242.138,
+      "end": 248.013,
+      "text": "You start when you have a first ER draft: entities, attributes, relationships.",
+      "slide": ""
+    },
+    {
+      "start": 248.013,
+      "end": 250.263,
+      "text": "Normal forms are nested rules.",
+      "slide": ""
+    },
+    {
+      "start": 250.263,
+      "end": 253.375,
+      "text": "You cannot skip to third if first is still broken.",
+      "slide": ""
+    },
+    {
+      "start": 253.375,
+      "end": 260.055,
+      "text": "First normal form asks for a primary key, a type on each column, and atomic cells.",
+      "slide": ""
+    },
+    {
+      "start": 260.055,
+      "end": 266.597,
+      "text": "Atomic means one value per intersection of row and column, not a list hiding in the cell.",
+      "slide": ""
+    },
+    {
+      "start": 266.597,
+      "end": 276.236,
+      "text": "A phone column with 555-0100, 555-0199 is two facts in one seat.",
+      "slide": ""
+    },
+    {
+      "start": 276.236,
+      "end": 279.25,
+      "text": "Queries cannot LIKE their way into integrity.",
+      "slide": ""
+    },
+    {
+      "start": 279.25,
+      "end": 285.166,
+      "text": "Split to a phones table, one number per row, with a type of mobile or desk if you need it.",
+      "slide": ""
+    },
+    {
+      "start": 285.29,
+      "end": 289.865,
+      "text": "A column of product ids separated by commas is the same crime.",
+      "slide": ""
+    },
+    {
+      "start": 289.865,
+      "end": 297.156,
+      "text": "Repeating groups as extra columns \u2014 skill1, skill2, skill3 \u2014 are lists wearing hats.",
+      "slide": ""
+    },
+    {
+      "start": 297.156,
+      "end": 299.281,
+      "text": "The fourth skill has nowhere to go.",
+      "slide": ""
+    },
+    {
+      "start": 299.281,
+      "end": 302.753,
+      "text": "The third skill is NULL for most people, forever.",
+      "slide": ""
+    },
+    {
+      "start": 302.753,
+      "end": 305.17,
+      "text": "Make a skill assignment table instead.",
+      "slide": ""
+    },
+    {
+      "start": 305.17,
+      "end": 309.531,
+      "text": "Without a primary key, you cannot say which row you meant to update.",
+      "slide": ""
+    },
+    {
+      "start": 309.531,
+      "end": 312.656,
+      "text": "Two identical rows are not two facts.",
+      "slide": ""
+    },
+    {
+      "start": 312.656,
+      "end": 313.823,
+      "text": "They are a dare.",
+      "slide": ""
+    },
+    {
+      "start": 313.823,
+      "end": 318.17,
+      "text": "Give every table a key before you talk about anything fancier.",
+      "slide": ""
+    },
+    {
+      "start": 318.17,
+      "end": 323.767,
+      "text": "Types belong in first normal form because an untyped column is a junk drawer.",
+      "slide": ""
+    },
+    {
+      "start": 323.767,
+      "end": 325.962,
+      "text": "The form is boring on purpose.",
+      "slide": ""
+    },
+    {
+      "start": 325.962,
+      "end": 329.698,
+      "text": "Boring is what lets GROUP BY and foreign keys mean something.",
+      "slide": ""
+    },
+    {
+      "start": 329.698,
+      "end": 336.545,
+      "text": "Fixing first normal form is splitting lists into rows, giving keys, and typing columns.",
+      "slide": ""
+    },
+    {
+      "start": 336.545,
+      "end": 339.115,
+      "text": "It is not renaming tables for style.",
+      "slide": ""
+    },
+    {
+      "start": 339.115,
+      "end": 345.115,
+      "text": "After first, you may still have redundancy across columns that depend on only part of a key.",
+      "slide": ""
+    },
+    {
+      "start": 345.115,
+      "end": 347.281,
+      "text": "That is second normal form's job.",
+      "slide": ""
+    },
+    {
+      "start": 347.281,
+      "end": 351.378,
+      "text": "Do not drag those problems into a first-normal-form discussion.",
+      "slide": ""
+    },
+    {
+      "start": 351.378,
+      "end": 356.156,
+      "text": "One idea: one value, one type, one way to find the row.",
+      "slide": ""
+    },
+    {
+      "start": 356.156,
+      "end": 361.128,
+      "text": "If a cell needs a comma to be honest, the table is not in first normal form.",
+      "slide": ""
+    },
+    {
+      "start": 361.128,
+      "end": 366.531,
+      "text": "If two rows cannot be told apart, the table is not in first normal form.",
+      "slide": ""
+    },
+    {
+      "start": 366.531,
+      "end": 370.115,
+      "text": "Repair those, then stop and look at the key's parts.",
+      "slide": ""
+    },
+    {
+      "start": 370.115,
+      "end": 379.726,
+      "text": "Start with a spreadsheet of orders: one row, a customer, a cell of product names comma separated, a cell of quantities comma separated.",
+      "slide": ""
+    },
+    {
+      "start": 379.726,
+      "end": 382.99,
+      "text": "That sheet is not a table in first normal form.",
+      "slide": ""
+    },
+    {
+      "start": 382.99,
+      "end": 389.128,
+      "text": "Split products into order_lines, one product per row, one quantity per row.",
+      "slide": ""
+    },
+    {
+      "start": 389.128,
+      "end": 391.517,
+      "text": "Give orders an order_id.",
+      "slide": ""
+    },
+    {
+      "start": 391.517,
+      "end": 395.962,
+      "text": "Give lines a key of order_id plus line_no.",
+      "slide": ""
+    },
+    {
+      "start": 395.962,
+      "end": 400.837,
+      "text": "Type quantity as integer, name as text, price as decimal.",
+      "slide": ""
+    },
+    {
+      "start": 400.837,
+      "end": 404.184,
+      "text": "No repeating product1 product2 columns.",
+      "slide": ""
+    },
+    {
+      "start": 404.184,
+      "end": 406.976,
+      "text": "Now GROUP BY and JOIN have a grain.",
+      "slide": ""
+    },
+    {
+      "start": 406.976,
+      "end": 412.378,
+      "text": "Normalization started as library shelves: each book, one place.",
+      "slide": ""
+    },
+    {
+      "start": 412.378,
+      "end": 418.878,
+      "text": "First normal form is the shelf labels and the rule against stuffing two books in one slot.",
+      "slide": ""
+    },
+    {
+      "start": 418.878,
+      "end": 423.323,
+      "text": "Higher forms are about not writing the same title on two shelves.",
+      "slide": ""
+    },
+    {
+      "start": 423.323,
+      "end": 425.115,
+      "text": "Do not skip the slot rule.",
+      "slide": ""
+    },
+    {
+      "start": 425.115,
+      "end": 428.74,
+      "text": "Lists in cells make every later form meaningless.",
+      "slide": ""
+    },
+    {
+      "start": 428.74,
+      "end": 437.198,
+      "text": "Practice: find a column that needs a split, write the child table, migrate the values to rows, drop the list column.",
+      "slide": ""
+    },
+    {
+      "start": 437.198,
+      "end": 440.781,
+      "text": "That migration is first normal form as a verb.",
+      "slide": ""
+    },
+    {
+      "start": 440.781,
+      "end": 444.42,
+      "text": "Close with questions, the way a careful lecture does.",
+      "slide": ""
+    },
+    {
+      "start": 444.42,
+      "end": 447.476,
+      "text": "Answer in a sentence you could defend at a keyboard.",
+      "slide": ""
+    },
+    {
+      "start": 447.476,
+      "end": 449.059,
+      "text": "What does first require?",
+      "slide": ""
+    },
+    {
+      "start": 449.059,
+      "end": 451.767,
+      "text": "A key, types, atomic cells.",
+      "slide": ""
+    },
+    {
+      "start": 451.767,
+      "end": 452.99,
+      "text": "Lists in a cell?",
+      "slide": ""
+    },
+    {
+      "start": 452.99,
+      "end": 454.156,
+      "text": "Not first.",
+      "slide": ""
+    },
+    {
+      "start": 454.156,
+      "end": 455.476,
+      "text": "Split to rows.",
+      "slide": ""
+    },
+    {
+      "start": 455.476,
+      "end": 457.142,
+      "text": "Repeating group columns?",
+      "slide": ""
+    },
+    {
+      "start": 457.142,
+      "end": 458.406,
+      "text": "Also a list.",
+      "slide": ""
+    },
+    {
+      "start": 458.406,
+      "end": 459.281,
+      "text": "Split.",
+      "slide": ""
+    },
+    {
+      "start": 459.281,
+      "end": 460.795,
+      "text": "No primary key?",
+      "slide": ""
+    },
+    {
+      "start": 460.795,
+      "end": 461.962,
+      "text": "Not first.",
+      "slide": ""
+    },
+    {
+      "start": 461.962,
+      "end": 463.17,
+      "text": "Why start here?",
+      "slide": ""
+    },
+    {
+      "start": 463.17,
+      "end": 464.92,
+      "text": "Later forms need a grain.",
+      "slide": ""
+    },
+    {
+      "start": 464.92,
+      "end": 467.295,
+      "text": "Comma separated product ids?",
+      "slide": ""
+    },
+    {
+      "start": 467.295,
+      "end": 468.295,
+      "text": "A list.",
+      "slide": ""
+    },
+    {
+      "start": 468.295,
+      "end": 469.503,
+      "text": "Child table.",
+      "slide": ""
+    },
+    {
+      "start": 469.503,
+      "end": 471.601,
+      "text": "Is renaming tables first?",
+      "slide": ""
+    },
+    {
+      "start": 471.601,
+      "end": 472.365,
+      "text": "No.",
+      "slide": ""
+    },
+    {
+      "start": 472.365,
+      "end": 474.406,
+      "text": "What is the library metaphor?",
+      "slide": ""
+    },
+    {
+      "start": 474.406,
+      "end": 478.017,
+      "text": "One book, one slot, labels on shelves.",
+      "slide": ""
+    },
+    {
+      "start": 478.017,
+      "end": 479.295,
+      "text": "After first?",
+      "slide": ""
+    },
+    {
+      "start": 479.295,
+      "end": 482.712,
+      "text": "Redundancy across key parts is second's job.",
+      "slide": ""
+    },
+    {
+      "start": 482.712,
+      "end": 484.434,
+      "text": "Migration as a verb?",
+      "slide": ""
+    },
+    {
+      "start": 484.434,
+      "end": 488.476,
+      "text": "Split the list, load rows, drop the list column.",
+      "slide": ""
+    },
+    {
+      "start": 488.476,
+      "end": 493.198,
+      "text": "If an answer needed a second table, go draw it before you write more SQL.",
+      "slide": ""
+    }
+  ]
+}

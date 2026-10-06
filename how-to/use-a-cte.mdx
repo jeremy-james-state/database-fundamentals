@@ -1,0 +1,64 @@
+---
+title: "Use a CTE"
+description: "Name a subquery for one statement with WITH. That common table expression is not stored in the schema."
+---
+
+A **common table expression** (CTE) is the shortest-lived of the three: [saved view](/how-to/create-a-view) (schema), [temporary view](/how-to/create-a-temporary-view) (connection), CTE (this statement). **`WITH` starts the CTE.**
+
+## Prerequisites
+
+- A working `SELECT`
+- Optional: [DROP VIEW](/reference/drop-view) if you are replacing a permanent view of the same name in your workflow
+
+## Write WITH, then SELECT
+
+<Steps>
+  <Step title="Define the CTE">
+    ```sql
+    WITH average_book_ratings AS (
+      SELECT
+        books.id AS book_id,
+        books.title,
+        books.year,
+        ROUND(AVG(ratings.stars), 2) AS rating
+      FROM ratings
+      JOIN books ON books.id = ratings.book_id
+      GROUP BY books.id
+    )
+    SELECT year, ROUND(AVG(rating), 2) AS rating
+    FROM average_book_ratings
+    GROUP BY year;
+    ```
+
+    No semicolon between the CTE’s closing `)` and the main `SELECT`. More CTEs: put a comma after each `)`, then another name `AS (…)`.
+  </Step>
+  <Step title="Confirm it is not in the schema">
+    ```text
+    sqlite> .schema
+    ```
+
+    You should not see a permanent `average_book_ratings` view from this CTE alone.
+  </Step>
+</Steps>
+
+If a permanent view already uses that name and you want the CTE instead for this experiment:
+
+```sql
+DROP VIEW average_book_ratings;
+```
+
+## Verify the result
+
+You succeeded when the statement returns yearly averages, and `.schema` does not gain a new view from the CTE.
+
+## Troubleshooting
+
+- **Syntax error near `WITH`**: the main query must follow the CTE in the same statement.
+- **Need it for the whole session**: [create a temporary view](/how-to/create-a-temporary-view) instead.
+
+## Related pages
+
+- [Views](/concepts/views)
+- [WITH](/reference/with)
+- [Create a temporary view](/how-to/create-a-temporary-view)
+- [DROP VIEW](/reference/drop-view)

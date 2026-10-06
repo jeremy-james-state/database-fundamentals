@@ -1,0 +1,207 @@
+An entity-relationship diagram is a map of tables before they become SQL, or beside the SQL.
+
+A box is an entity.
+
+The name on the box is the table you expect.
+
+Inside the box you list attributes.
+
+You mark the primary key.
+
+You mark foreign keys as copies of someone else's primary key.
+
+A line is a relationship.
+
+The ends of the line carry cardinality: one or many.
+
+A crow's foot means many.
+
+A single bar means one.
+
+A circle means zero is allowed.
+
+A second bar means one is required.
+
+You do not need every symbol on day one.
+
+You need boxes, keys, and honest lines.
+
+Read a line as a sentence.
+
+One customer places many orders.
+
+Each order belongs to one customer.
+
+If you cannot say the sentence, the line is decoration.
+
+Do not draw a line labeled after a one-off demo.
+
+Draw the store you are actually building.
+
+Keep example names ordinary: customers, orders, books.
+
+A diagram that uses joke names will be quoted as if they were tables.
+
+Attributes that are only display labels stay off the line.
+
+The line is not where you write total.
+
+total lives in a box.
+
+When a relationship has its own attributes, it wants a box.
+
+Enrollment has a grade.
+
+That is the many-to-many lesson.
+
+On the diagram, the middle box is a real entity.
+
+Layout is pedagogy.
+
+Put the hub table in the middle.
+
+customers in the center, orders to the side.
+
+Do not cross lines if you can avoid it.
+
+The drawing should match the join you will write.
+
+Update the diagram when you ALTER.
+
+A stale picture is worse than none.
+
+The point is not software that draws cylinders.
+
+The point is a shared sentence: these are the things, these are the keys, these are the allowed counts.
+
+Crow's foot is not the only notation.
+
+Chen diagrams use diamonds for relationships.
+
+IDEF1X uses dots and crow's feet with different mandatory marks.
+
+Pick one notation for a team.
+
+Mixing them is how a bar gets read as optional when it meant mandatory.
+
+Subtype boxes appear when a customer is either a person or an organization.
+
+That is a later modeling choice.
+
+Do not draw it on day one unless the facts already split.
+
+Color is not notation.
+
+A calm diagram in one ink beats a rainbow of departments.
+
+Your player uses a dark calm stage for the same reason.
+
+Print the diagram at the size a new engineer can read on one screen.
+
+If you need a poster, you have too many boxes for one talk.
+
+Split by bounded context: catalog, checkout, fulfillment.
+
+Each picture should still use the same names for the shared keys.
+
+customer_id is customer_id everywhere.
+
+A glossary next to the pictures beats clever synonyms.
+
+When a line has numbers, 1 and 0..* are enough.
+
+Do not write a paragraph on the line.
+
+Put the paragraph in a comment on the foreign key.
+
+The diagram is the map.
+
+The SQL is the territory.
+
+Walk both, in that order, until they agree.
+
+Then the next join is a line you already drew.
+
+A diagram that cannot be read in two minutes is a mural.
+
+Murals do not ship.
+
+Cut until a new person can say the sentences on the lines.
+
+If they invent a table that is not on the page, the page is incomplete.
+
+If they cannot find a table that is in SQL, the page is stale.
+
+Incomplete and stale are the only two diagram failures that matter.
+
+Pretty is optional.
+
+Agreement is not.
+
+Print the keys.
+
+Print the counts.
+
+Sit the SQL beside it.
+
+When they match, you have a map.
+
+An entity-relationship diagram is a picture of what you will store and how those things connect, drawn before CREATE TABLE hardens a guess.
+
+Entities are the things: customer, product, order.
+
+They appear as rectangles.
+
+Attributes are the facts inside the rectangle: name, email, price, with types once you know them.
+
+Relationships are how entities participate: a customer places an order, an order contains products.
+
+Chen notation uses diamonds for relationships, and it showed up in a 1976 paper, which is why textbooks still teach it.
+
+Crow's foot notation uses lines and little marks at the ends for cardinality, and practitioners sketch it on whiteboards because it is fast.
+
+Neither is more true.
+
+Switching mid-diagram is what is false.
+
+A complete diagram names the entities, the attributes you will actually store, the relationships, and the cardinalities once you know them.
+
+It is a map, not a screenshot of the application.
+
+Screens have buttons.
+
+Diagrams have identity and connection.
+
+Start by placing the entities you already found.
+
+Then ask, for each pair that your interviews connected, whether a relationship belongs.
+
+Not every pair gets a line.
+
+Customers and manufacturers might only meet through products.
+
+Draw the real verb.
+
+places, contains, reviews, works for.
+
+If you cannot name the verb, you do not have a relationship yet.
+
+You have two boxes on a poster.
+
+Cardinality marks wait for the next lessons.
+
+Here the skill is connecting without spaghetti: every line is a sentence from requirements.
+
+The benefit is forgetting less.
+
+A missing line is a join you will fake with a comment in six months.
+
+An extra line is a constraint you cannot explain.
+
+Read the diagram out loud as sentences.
+
+If a sentence was never said in gathering, erase the line.
+
+If a sentence was said and there is no line, draw it.
+
+Then you are ready to talk about one, many, and identifying relationships.

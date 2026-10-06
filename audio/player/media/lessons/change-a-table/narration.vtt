@@ -1,0 +1,616 @@
+1
+00:00:00,050 --> 00:00:02,888
+Reading a table is only half the job.
+
+2
+00:00:02,888 --> 00:00:08,125
+You also create it, fill it, change it, and sometimes throw a column away.
+
+3
+00:00:08,125 --> 00:00:10,555
+Until now the table felt like a given.
+
+4
+00:00:10,555 --> 00:00:13,305
+Someone else had already named the columns.
+
+5
+00:00:13,305 --> 00:00:14,722
+Now you are the someone.
+
+6
+00:00:14,722 --> 00:00:18,805
+CREATE TABLE names the table and lists columns with types.
+
+7
+00:00:18,805 --> 00:00:22,138
+Each column is one attribute you promise to store.
+
+8
+00:00:22,138 --> 00:00:25,000
+customer_id is an integer.
+
+9
+00:00:25,000 --> 00:00:26,347
+name is text.
+
+10
+00:00:26,347 --> 00:00:27,819
+city is text.
+
+11
+00:00:27,819 --> 00:00:29,625
+That list is a contract.
+
+12
+00:00:29,625 --> 00:00:32,000
+Rows that arrive later have to fit it.
+
+13
+00:00:32,000 --> 00:00:33,597
+INSERT adds a row.
+
+14
+00:00:33,597 --> 00:00:37,680
+You list the columns, then the values, in the same order.
+
+15
+00:00:37,680 --> 00:00:42,291
+A second INSERT is a second customer — not an edit of the first.
+
+16
+00:00:42,291 --> 00:00:43,722
+Maya is one row.
+
+17
+00:00:43,722 --> 00:00:45,111
+Jordan is another.
+
+18
+00:00:45,111 --> 00:00:50,027
+If you insert Maya twice, you now have two Mayas unless a key stops you.
+
+19
+00:00:50,027 --> 00:00:53,138
+UPDATE changes values already in the table.
+
+20
+00:00:53,138 --> 00:00:55,111
+SET names the new value.
+
+21
+00:00:55,111 --> 00:00:57,083
+WHERE names which rows move.
+
+22
+00:00:57,083 --> 00:01:00,972
+Always pair UPDATE with WHERE, or every row moves.
+
+23
+00:01:00,972 --> 00:01:02,916
+That is the classic accident.
+
+24
+00:01:02,916 --> 00:01:04,625
+You meant Sofia's city.
+
+25
+00:01:04,625 --> 00:01:06,541
+You rewrote the whole column.
+
+26
+00:01:06,541 --> 00:01:08,486
+DELETE removes rows.
+
+27
+00:01:08,486 --> 00:01:11,972
+Again: WHERE, or the table goes quiet.
+
+28
+00:01:11,972 --> 00:01:15,861
+DELETE FROM customers with no filter is not bravery.
+
+29
+00:01:15,861 --> 00:01:17,027
+It is a wipe.
+
+30
+00:01:17,027 --> 00:01:19,236
+SELECT first when you are unsure.
+
+31
+00:01:19,236 --> 00:01:21,375
+See the rows the WHERE would catch.
+
+32
+00:01:21,375 --> 00:01:22,513
+Then change them.
+
+33
+00:01:22,513 --> 00:01:26,125
+ALTER TABLE adds a column when the world changes.
+
+34
+00:01:26,125 --> 00:01:28,069
+Maybe you now store an email.
+
+35
+00:01:28,069 --> 00:01:31,833
+Existing rows get NULL unless you supply a default.
+
+36
+00:01:31,833 --> 00:01:34,083
+ALTER can also rename a column.
+
+37
+00:01:34,083 --> 00:01:35,527
+It can drop a column.
+
+38
+00:01:35,527 --> 00:01:38,402
+Dropping a column throws the values away.
+
+39
+00:01:38,402 --> 00:01:41,375
+There is no undo in the statement itself.
+
+40
+00:01:41,375 --> 00:01:44,222
+DROP TABLE removes the table itself.
+
+41
+00:01:44,222 --> 00:01:45,902
+That is not a row delete.
+
+42
+00:01:45,902 --> 00:01:47,625
+The whole object is gone.
+
+43
+00:01:47,625 --> 00:01:50,638
+The name, the columns, the rows.
+
+44
+00:01:50,638 --> 00:01:52,833
+Think of CREATE as the shape.
+
+45
+00:01:52,833 --> 00:01:54,958
+INSERT as the first facts.
+
+46
+00:01:54,958 --> 00:01:56,666
+UPDATE as a correction.
+
+47
+00:01:56,666 --> 00:01:59,166
+DELETE as a removal of a fact.
+
+48
+00:01:59,166 --> 00:02:01,666
+ALTER as a later change to the shape.
+
+49
+00:02:01,666 --> 00:02:04,263
+DROP as taking the object off the shelf.
+
+50
+00:02:04,263 --> 00:02:07,666
+Practice on a copy, not the only copy you have.
+
+51
+00:02:07,666 --> 00:02:09,388
+Insert two rows.
+
+52
+00:02:09,388 --> 00:02:10,486
+Update one.
+
+53
+00:02:10,486 --> 00:02:11,722
+Delete the other.
+
+54
+00:02:11,722 --> 00:02:13,361
+Select to see the shape.
+
+55
+00:02:13,361 --> 00:02:15,736
+If ALTER feels scary, it should.
+
+56
+00:02:15,736 --> 00:02:19,000
+You are changing the contract other queries depend on.
+
+57
+00:02:19,000 --> 00:02:21,430
+Write the dangerous statements slowly.
+
+58
+00:02:21,430 --> 00:02:23,152
+Read the WHERE twice.
+
+59
+00:02:23,152 --> 00:02:25,722
+Then the table stays a place you can trust.
+
+60
+00:02:25,722 --> 00:02:31,402
+Transactions belong with this family of verbs, even if they get their own later lesson.
+
+61
+00:02:31,402 --> 00:02:36,847
+BEGIN, then INSERT, then a SELECT that looks wrong, then ROLLBACK.
+
+62
+00:02:36,847 --> 00:02:38,833
+The table forgets the insert.
+
+63
+00:02:38,833 --> 00:02:40,430
+COMMIT is how you keep it.
+
+64
+00:02:40,430 --> 00:02:44,597
+Until you commit, another session may not see your rows.
+
+65
+00:02:44,597 --> 00:02:46,972
+That is a feature when you are still deciding.
+
+66
+00:02:46,972 --> 00:02:51,111
+CREATE TABLE IF NOT EXISTS is for scripts you run twice.
+
+67
+00:02:51,111 --> 00:02:52,791
+It is not a design tool.
+
+68
+00:02:52,791 --> 00:02:56,555
+DROP TABLE IF EXISTS is for throwaway sandboxes.
+
+69
+00:02:56,555 --> 00:02:59,652
+It is not how a store retires a customer list.
+
+70
+00:02:59,652 --> 00:03:02,750
+INSERT can take a SELECT instead of VALUES.
+
+71
+00:03:02,750 --> 00:03:05,375
+That copies rows from a staging table.
+
+72
+00:03:05,375 --> 00:03:07,597
+Check the column order twice.
+
+73
+00:03:07,597 --> 00:03:11,944
+UPDATE can use a join in some dialects to patch from another table.
+
+74
+00:03:11,944 --> 00:03:15,611
+In SQLite you often write a subquery in SET.
+
+75
+00:03:15,611 --> 00:03:16,944
+Still use WHERE.
+
+76
+00:03:16,944 --> 00:03:21,444
+DELETE with a subquery can remove orphans you found on purpose.
+
+77
+00:03:21,444 --> 00:03:23,500
+SELECT those orphans first.
+
+78
+00:03:23,500 --> 00:03:26,638
+Keep a backup file before a destructive script.
+
+79
+00:03:26,638 --> 00:03:29,152
+A dump is cheaper than archaeology.
+
+80
+00:03:29,152 --> 00:03:31,902
+Column types on ALTER vary by engine.
+
+81
+00:03:31,902 --> 00:03:37,111
+SQLite will add a column and will not freely drop one in older versions.
+
+82
+00:03:37,111 --> 00:03:40,458
+PostgreSQL will do more in one ALTER.
+
+83
+00:03:40,458 --> 00:03:43,625
+Read the dialect before you promise a migration.
+
+84
+00:03:43,625 --> 00:03:47,680
+Default values on a new column backfill old rows.
+
+85
+00:03:47,680 --> 00:03:52,680
+Choose the default as if it were a historical fact, because it becomes one.
+
+86
+00:03:52,680 --> 00:03:53,944
+Rename with care.
+
+87
+00:03:53,944 --> 00:03:57,375
+Queries you have not found yet still use the old name.
+
+88
+00:03:57,375 --> 00:03:58,722
+The verbs are few.
+
+89
+00:03:58,722 --> 00:04:01,291
+The damage is large when WHERE is missing.
+
+90
+00:04:01,291 --> 00:04:04,083
+That is why this lesson is slow on purpose.
+
+91
+00:04:04,083 --> 00:04:07,555
+Shape, facts, correction, removal.
+
+92
+00:04:07,555 --> 00:04:10,208
+Say which one you are doing before you type it.
+
+93
+00:04:10,208 --> 00:04:14,097
+Table work and row work are two families of verbs.
+
+94
+00:04:14,097 --> 00:04:17,555
+CREATE and ALTER and DROP change the object.
+
+95
+00:04:17,555 --> 00:04:21,708
+INSERT and UPDATE and DELETE change the facts inside it.
+
+96
+00:04:21,708 --> 00:04:26,930
+Mixing the families in your head is how DROP gets typed when DELETE was meant.
+
+97
+00:04:26,930 --> 00:04:32,013
+CREATE TABLE starts with the name, then a list of columns in parentheses.
+
+98
+00:04:32,013 --> 00:04:34,694
+Each column is a name, then a type.
+
+99
+00:04:34,694 --> 00:04:37,847
+Lines in that list are separated by commas.
+
+100
+00:04:37,847 --> 00:04:42,138
+The primary key is part of the contract, not a later wish.
+
+101
+00:04:42,266 --> 00:04:47,854
+You can mark a column PRIMARY KEY on its line, or name the key in a separate line.
+
+102
+00:04:47,854 --> 00:04:52,896
+Both mean: this value identifies the row, and it will not repeat.
+
+103
+00:04:52,896 --> 00:04:56,729
+Types on CREATE are promises about what a cell may hold.
+
+104
+00:04:56,729 --> 00:05:00,229
+A later INSERT that breaks the type is refused.
+
+105
+00:05:00,229 --> 00:05:02,785
+That refusal is the point of the type.
+
+106
+00:05:02,785 --> 00:05:06,938
+CREATE TABLE IF NOT EXISTS is for a script you run twice.
+
+107
+00:05:06,938 --> 00:05:10,952
+It will not fix a table you already created with the wrong columns.
+
+108
+00:05:10,952 --> 00:05:16,118
+DROP TABLE removes the object: name, columns, rows.
+
+109
+00:05:16,118 --> 00:05:20,563
+DROP TABLE IF EXISTS is for a sandbox you are allowed to destroy.
+
+110
+00:05:20,563 --> 00:05:23,257
+It is not how a store retires customers.
+
+111
+00:05:23,257 --> 00:05:27,771
+INSERT lists columns, then VALUES, in the same order.
+
+112
+00:05:27,771 --> 00:05:30,243
+A second INSERT is a second row.
+
+113
+00:05:30,243 --> 00:05:35,896
+If you omit the column list, you are betting the table's column order never changes.
+
+114
+00:05:35,896 --> 00:05:37,313
+Name the columns.
+
+115
+00:05:37,313 --> 00:05:42,327
+INSERT can take a SELECT instead of VALUES when you copy from a staging table.
+
+116
+00:05:42,327 --> 00:05:44,966
+Check that copy with a SELECT first.
+
+117
+00:05:44,966 --> 00:05:49,646
+UPDATE names SET for the new value and WHERE for the rows that move.
+
+118
+00:05:49,646 --> 00:05:53,257
+Without WHERE, every row takes the new value.
+
+119
+00:05:53,257 --> 00:05:56,591
+That is the classic accident, and it is not rare.
+
+120
+00:05:56,591 --> 00:06:00,729
+SELECT the same WHERE before you UPDATE, and look at the rows.
+
+121
+00:06:00,729 --> 00:06:01,868
+Then change them.
+
+122
+00:06:01,868 --> 00:06:04,716
+DELETE removes rows that match WHERE.
+
+123
+00:06:04,716 --> 00:06:08,660
+Without WHERE, the table is empty and still exists.
+
+124
+00:06:08,660 --> 00:06:12,577
+That is different from DROP, which removes the table itself.
+
+125
+00:06:12,577 --> 00:06:19,007
+TRUNCATE, in engines that have it, empties rows as a bulk wipe and may reset counters.
+
+126
+00:06:19,007 --> 00:06:21,660
+Know which verb you are holding before you run it.
+
+127
+00:06:21,660 --> 00:06:29,813
+ALTER TABLE changes the contract after the table already has friends: queries, views, application code.
+
+128
+00:06:29,813 --> 00:06:32,327
+ADD COLUMN is the usual growth.
+
+129
+00:06:32,327 --> 00:06:37,924
+Existing rows get NULL unless you supply a default, and that default becomes history.
+
+130
+00:06:37,924 --> 00:06:40,591
+DROP COLUMN throws the values away.
+
+131
+00:06:40,591 --> 00:06:43,160
+There is no undo in the statement.
+
+132
+00:06:43,160 --> 00:06:49,702
+RENAME COLUMN breaks every query still using the old name, including ones you have not found yet.
+
+133
+00:06:49,702 --> 00:06:54,188
+Dialects disagree on how much ALTER can do in one trip.
+
+134
+00:06:54,188 --> 00:06:59,354
+SQLite will add a column readily and historically fought dropping one.
+
+135
+00:06:59,354 --> 00:07:02,896
+PostgreSQL will do more in a single ALTER.
+
+136
+00:07:02,896 --> 00:07:06,341
+Read the engine you are on before you promise a migration.
+
+137
+00:07:06,341 --> 00:07:13,716
+BEGIN, then a change, then SELECT, then ROLLBACK, is how you practice without keeping the damage.
+
+138
+00:07:13,716 --> 00:07:15,313
+COMMIT is how you keep it.
+
+139
+00:07:15,313 --> 00:07:19,479
+Until you commit, another session may not see your rows.
+
+140
+00:07:19,479 --> 00:07:22,799
+That isolation is a feature while you are still deciding.
+
+141
+00:07:22,799 --> 00:07:29,077
+Shape, facts, correction, removal, later shape, destruction of the object.
+
+142
+00:07:29,077 --> 00:07:31,160
+Say which one you are doing out loud.
+
+143
+00:07:31,160 --> 00:07:33,285
+Then type the verb that matches.
+
+144
+00:07:33,285 --> 00:07:38,216
+The table stays a place you can trust when WHERE is present and DROP is rare.
+
+145
+00:07:38,216 --> 00:07:42,729
+Table management commands: CREATE, ALTER, DROP.
+
+146
+00:07:42,729 --> 00:07:49,132
+Data management commands: INSERT, UPDATE, DELETE, and SELECT to verify.
+
+147
+00:07:49,132 --> 00:07:53,674
+The lecture splits those families so you do not DROP when you meant DELETE.
+
+148
+00:07:53,674 --> 00:07:57,757
+CREATE needs a name and a column list and usually a key.
+
+149
+00:07:57,757 --> 00:08:05,438
+ALTER ADD is growth, ALTER DROP is loss, ALTER RENAME is a breaking change for callers.
+
+150
+00:08:05,438 --> 00:08:10,979
+INSERT adds facts, UPDATE edits facts, DELETE removes facts.
+
+151
+00:08:10,979 --> 00:08:13,396
+SELECT is how you look before you leap.
+
+152
+00:08:13,396 --> 00:08:20,368
+Together they are the exact SQL you need to get a table installed and keep it honest, without a theory detour.
+
+153
+00:08:20,368 --> 00:08:27,257
+Practice the families on a copy named customers_lab until the verbs feel different in your hands.
+
+154
+00:08:27,257 --> 00:08:30,091
+Then use them on real names, slowly.
+

@@ -1,0 +1,68 @@
+---
+title: "Join tables"
+description: "Combine rows from two tables where a key on one side matches a key on the other."
+---
+
+`FROM` names the left table. `JOIN` names the right table. `ON` says which columns must be equal. `SELECT *` is a useful first peek.
+
+## Prerequisites
+
+- [Keys](/concepts/keys) on both tables
+- How to [select columns](/how-to/select-columns)
+
+## Join on matching keys
+
+<Steps>
+  <Step title="Peek with SELECT *">
+    ```sql
+    SELECT *
+    FROM books
+    JOIN ratings
+      ON ratings.book_id = books.book_id;
+    ```
+
+    In SQLite, `JOIN` means [INNER JOIN](/reference/inner-join): only rows that match on both sides.
+  </Step>
+  <Step title="Keep every left row">
+    [LEFT JOIN](/reference/left-join) is an outer join. Rows in `books` with no rating still appear. The rating columns are `NULL`.
+
+    ```sql
+    SELECT title, stars
+    FROM books
+    LEFT JOIN ratings
+      ON ratings.book_id = books.book_id;
+    ```
+  </Step>
+  <Step title="Walk a join table">
+    Many-to-many needs `authored` in the middle. Each `JOIN` has its own `ON`:
+
+    ```sql
+    SELECT authors.name, books.title
+    FROM authors
+    JOIN authored
+      ON authored.author_id = authors.author_id
+    JOIN books
+      ON books.book_id = authored.book_id;
+    ```
+  </Step>
+</Steps>
+
+<Info>
+The table before `JOIN` is the left table. The table after `JOIN` is the right table. [RIGHT JOIN](/reference/right-join) and [FULL JOIN](/reference/full-join) are outer joins. SQLite supports them from 3.39.
+</Info>
+
+## Verify the result
+
+You succeeded when each result row has columns from both tables, and unmatched inner-join rows are gone.
+
+## Troubleshooting
+
+- **Duplicate `book_id` columns**: `SELECT *` returns the key twice. Name the columns you need.
+- **Cartesian blow-up**: you omitted `ON`, or joined the wrong columns.
+- **NATURAL JOIN surprised you**: it matches **every** pair of columns with the same name. Prefer `ON`.
+
+## Related pages
+
+- [JOIN](/reference/join)
+- [LEFT JOIN](/reference/left-join)
+- [Nest a query](/how-to/nest-a-query)

@@ -1,0 +1,81 @@
+---
+title: "Create a view"
+description: "Save a SELECT as a named view so you can query joined or aggregated rows like a table."
+---
+
+Start from a query that already returns the shape you want. Then wrap it in [CREATE VIEW](/reference/create-view).
+
+That is the **saved** view: it stays in the schema until you [DROP VIEW](/reference/drop-view). A [temporary view](/how-to/create-a-temporary-view) lasts one connection. A [CTE](/how-to/use-a-cte) lasts one statement. See the comparison on [Views](/concepts/views).
+
+## Prerequisites
+
+- [Join tables](/how-to/join-tables) or [group rows](/how-to/group-rows)
+- Tables such as `authors`, `authored`, `books`, and `ratings`
+
+## Simplify related tables
+
+<Steps>
+  <Step title="Write the join">
+    ```sql
+    SELECT authors.name, books.title
+    FROM authors
+    JOIN authored ON authored.author_id = authors.id
+    JOIN books ON books.id = authored.book_id;
+    ```
+  </Step>
+  <Step title="Save it as a view">
+    ```sql
+    CREATE VIEW author_titles AS
+    SELECT authors.name, books.title
+    FROM authors
+    JOIN authored ON authored.author_id = authors.id
+    JOIN books ON books.id = authored.book_id;
+    ```
+  </Step>
+  <Step title="Query the view">
+    ```sql
+    SELECT name, title
+    FROM author_titles
+    ORDER BY title;
+    ```
+
+    `ORDER BY` on the outer query sorts for this read. Put `ORDER BY` inside the view definition only if every use should come back sorted.
+  </Step>
+</Steps>
+
+## Aggregate in a view
+
+Keep individual ratings in the table. Save the average as a view so it updates when ratings change.
+
+```sql
+CREATE VIEW average_book_ratings AS
+SELECT
+  books.id AS book_id,
+  books.title,
+  books.year,
+  ROUND(AVG(ratings.stars), 2) AS rating
+FROM ratings
+JOIN books ON books.id = ratings.book_id
+GROUP BY books.id;
+```
+
+```sql
+SELECT *
+FROM average_book_ratings;
+```
+
+## Verify the result
+
+You succeeded when `.schema` lists the view and `SELECT * FROM author_titles;` returns name and title without writing the join again.
+
+## Troubleshooting
+
+- **View already exists**: [DROP VIEW](/reference/drop-view) first, or pick a new name.
+- **Cannot modify view**: update the underlying table, or use [write through a view](/how-to/write-through-a-view).
+
+## Related pages
+
+- [Views](/concepts/views)
+- [Create a temporary view](/how-to/create-a-temporary-view)
+- [Use a CTE](/how-to/use-a-cte)
+- [CREATE VIEW](/reference/create-view)

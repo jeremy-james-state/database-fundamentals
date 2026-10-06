@@ -1,0 +1,47 @@
+---
+title: "PRIMARY KEY"
+description: "Declares the column or columns that uniquely identify each row."
+---
+
+Written as a [table constraint](/concepts/constraints) (`PRIMARY KEY (id)`) or on the column (`id INTEGER PRIMARY KEY`). A composite key can only be a table constraint. SQLite also keeps an internal `rowid` unless you say `WITHOUT ROWID`. An `INTEGER PRIMARY KEY` column becomes an alias for that `rowid`.
+
+## Syntax
+
+```sql
+CREATE TABLE table_name (
+  column_name STORAGE_CLASS,
+  PRIMARY KEY (column_name)
+);
+```
+
+A composite key lists more than one column:
+
+```sql
+PRIMARY KEY (column_a, column_b)
+```
+
+## Arguments
+
+<ParamField body="column_name" type="identifier" required>
+  Must be unique for every row. `NULL` is not a valid primary key value.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql Single column
+CREATE TABLE stations (
+  id INTEGER,
+  name TEXT,
+  PRIMARY KEY (id)
+);
+```
+</CodeGroup>
+
+Do not use a composite primary key for events you expect to repeat. Two visits by the same rider at the same station need two rows, so `(rider_id, station_id)` is the wrong identity.
+
+## Related references
+
+- [FOREIGN KEY](/reference/foreign-key)
+- [UNIQUE](/reference/unique)
+- [Keys](/concepts/keys)

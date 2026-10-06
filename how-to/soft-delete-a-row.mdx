@@ -1,0 +1,57 @@
+---
+title: "Soft-delete a row"
+description: "Mark a row deleted with an UPDATE to a deleted column instead of removing it."
+---
+
+Add the column once. Everyday reads filter it out.
+
+## Prerequisites
+
+- [Alter a table](/how-to/alter-a-table)
+- [Update rows](/how-to/update-rows)
+
+## Mark the row
+
+<Steps>
+  <Step title="Add a deleted column">
+    ```sql
+    ALTER TABLE collections
+    ADD COLUMN deleted INTEGER DEFAULT 0;
+    ```
+
+    Existing rows get `0` (live).
+  </Step>
+  <Step title="Flip the flag">
+    ```sql
+    UPDATE collections
+    SET deleted = 1
+    WHERE title = 'Farmers Working at Dawn';
+    ```
+  </Step>
+  <Step title="Query live rows">
+    ```sql
+    SELECT *
+    FROM collections
+    WHERE deleted != 1;
+    ```
+  </Step>
+</Steps>
+
+<Warning>
+  A flag is not erasure. If someone asked you to remove their data, use [DELETE](/how-to/delete-rows).
+</Warning>
+
+## Verify the result
+
+You succeeded when `SELECT * FROM collections` still shows the row, and `WHERE deleted != 1` does not.
+
+## Troubleshooting
+
+- **The row vanished**: you ran `DELETE FROM` instead of `UPDATE`.
+- **The row still appears in an app query**: that query is missing `WHERE deleted != 1`.
+
+## Related pages
+
+- [Soft deletion](/concepts/soft-deletion)
+- [UPDATE](/reference/update)
+- [ALTER TABLE](/reference/alter-table)

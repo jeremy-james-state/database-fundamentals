@@ -1,0 +1,249 @@
+One-to-many is the default shape in a store.
+
+One customer places many orders.
+
+Each order belongs to one customer.
+
+The foreign key lives on the many side.
+
+orders.customer_id.
+
+You already met this as a foreign key lesson.
+
+Here we stay with the count.
+
+Many is zero, one, or more, unless you add extra rules.
+
+A customer with zero orders is still a customer.
+
+That is one-to-zero-or-many.
+
+If every customer must have an order, you need a process or a constraint that is harder than a foreign key.
+
+Usually you do not require it.
+
+The one side is required more often.
+
+NOT NULL on orders.customer_id means every order has a customer.
+
+That is one-to-many with a mandatory parent.
+
+Optional parent is a nullable foreign key.
+
+Use it when an order can be anonymous.
+
+Do not put a list of order ids on the customer.
+
+Lists in a cell break first normal form, and they fight the count.
+
+The many side can grow without rewriting the one side.
+
+That is the whole payoff.
+
+Maya places a third order.
+
+You insert a row.
+
+You do not edit Maya's row.
+
+Cascading deletes are a policy on this shape.
+
+If the customer leaves, do the orders leave?
+
+That is the actions lesson.
+
+On the diagram, crow's foot on orders, bar on customers.
+
+Say the sentence both ways.
+
+If both ends say many, you wanted a middle table.
+
+If both ends say one, you wanted the previous lesson.
+
+Join from the one to the many and expect more rows than customers.
+
+That fan-out is correct.
+
+Group when you want one row per customer again.
+
+This shape is ordinary on purpose.
+
+Most honest schemas are a handful of one-to-many arrows around a few hubs.
+
+Hierarchies are one-to-many stacked.
+
+A publisher has many authors, an author has many books — if that is true in your store.
+
+Sometimes a book has many authors, which is many-to-many.
+
+The stacked one-to-many is a tree.
+
+The many-to-many is a net.
+
+Do not force a net into a tree because trees are easier to draw.
+
+Self one-to-many is a tree in one table.
+
+parent_id on category.
+
+The root has a null parent.
+
+Cycles need a CHECK or a procedure if they would be nonsense.
+
+Aggregates after one-to-many are the usual reports.
+
+COUNT orders per customer.
+
+SUM totals per customer.
+
+You already have those verbs.
+
+The relationship is why they work.
+
+Orphan orders after a bad import are many-side rows whose parent is missing.
+
+A foreign key would have stopped them.
+
+If you find them, you found a missing arrow.
+
+Put the arrow on, then clean, or clean, then put the arrow on, in that painful order the data requires.
+
+The usual relationship is usual because commerce is one person, many events.
+
+Learn to see it without thinking.
+
+Then the unusual shapes will stand out.
+
+One box, crow's foot, other box.
+
+Key on the crow's foot side.
+
+That is the whole picture, and most of a store.
+
+Count the parents.
+
+Count the children.
+
+The children should be greater or equal, except when some parents have none.
+
+That arithmetic is the relationship.
+
+If children outnumber parents by thousands, you still might be right.
+
+If children equal parents always, you might have one-to-one in disguise.
+
+Look.
+
+If children can list two parents in one row, you wanted many-to-many.
+
+Look again.
+
+The usual shape earns its name by surviving that look.
+
+Put the key on the child.
+
+Do not list children on the parent.
+
+Insert to grow.
+
+That is one-to-many when it is healthy.
+
+One-to-many is the default shape of operational data.
+
+One customer places many orders.
+
+One product receives many reviews.
+
+One building contains many rooms.
+
+The many side holds the foreign key.
+
+That sentence is worth repeating until it is muscle.
+
+If you put order_id on customers, you reserved one order slot per customer.
+
+The second order has nowhere to live.
+
+If you put customer_id on orders, every extra purchase is another row with the same customer_id.
+
+That is the implementation.
+
+Cardinality still has two sentences.
+
+A customer has zero, one, or more orders.
+
+An order belongs to one customer, or to one if guests can check out without an account, zero or one.
+
+Optional parent is a NULL foreign key.
+
+Required parent is NOT NULL plus the foreign key.
+
+Crow's foot: the crow's foot sits on the many entity.
+
+The bar sits on the one.
+
+A circle on the one side means a child may exist without a parent.
+
+Read the marks as the English you already wrote.
+
+If the marks and the English disagree, the marks are wrong.
+
+Identifying one-to-many is when the child's key includes the parent: order lines.
+
+Non-identifying is when the child has its own id and merely points: reviews with review_id.
+
+Most application tables are non-identifying one-to-many.
+
+That is healthy.
+
+Do not draw many-to-many because both nouns feel important.
+
+If one side is clearly the parent of a list, it is one-to-many.
+
+Students in a section, lines on a receipt, payments on an invoice.
+
+Lists with a single owner are one-to-many.
+
+Implement, then query: FROM orders JOIN customers ON orders.customer_id equals customers.customer_id.
+
+The join follows the key you placed on the many side.
+
+If the join needs a third table already, you may have many-to-many hiding.
+
+Check the English before you invent the junction.
+
+Practice: write both sentences, place the foreign key, mark NOT NULL if the parent is required, name the constraint.
+
+That is a complete one-to-many.
+
+Pretty crow's feet without the column are theater.
+
+Orders and customers, both sentences, then SQL.
+
+A customer has zero one or more orders.
+
+An order has one customer in this store, because guests get a guest customer row.
+
+Foreign key orders.customer_id NOT NULL references customers.
+
+Insert customer one, then two orders with customer_id one.
+
+SELECT from orders where customer_id equals one returns two.
+
+That is the many.
+
+SELECT from customers join orders should not put customer columns on the many grain if you then count customers as orders.
+
+Watch the grain.
+
+Crow's foot on orders, bar on customers.
+
+If guest checkout allows NULL customer_id, circle on customers, and the second sentence becomes zero or one.
+
+The column changes with the sentence.
+
+Teachers and students in a single section is one-to-many if each student has one homeroom teacher.
+
+If students have many teachers, you already left this lesson for many-to-many.
+
+Stay until the list has one owner.

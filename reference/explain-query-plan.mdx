@@ -1,0 +1,38 @@
+---
+title: "EXPLAIN QUERY PLAN"
+description: "Shows how SQLite intends to run a SELECT (or other statement): SCAN vs SEARCH with an index."
+---
+
+Other DBMS products often use `EXPLAIN` alone. In SQLite, prefer `EXPLAIN QUERY PLAN` for this readout.
+
+## Syntax
+
+```sql
+EXPLAIN QUERY PLAN
+SELECT ...;
+```
+
+## Arguments
+
+<ParamField body="statement" type="SQL" required>
+  The statement to analyze. It is not fully executed for its result rows the way a normal run is; you are asking for the plan.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql Plan a title lookup
+EXPLAIN QUERY PLAN
+SELECT *
+FROM movies
+WHERE title = 'Cars';
+```
+</CodeGroup>
+
+Read **SCAN** as a full pass. Read **SEARCH … INDEX** as an [index](/concepts/indexes) path. **COVERING INDEX** means the index alone supplies the selected columns.
+
+## Related references
+
+- [CREATE INDEX](/reference/create-index)
+- [Explain a query plan](/how-to/explain-a-query-plan)
+- [Indexes](/concepts/indexes)

@@ -1,0 +1,924 @@
+1
+00:00:00,050 --> 00:00:02,055
+A type is a coarse promise.
+
+2
+00:00:02,055 --> 00:00:06,388
+INTEGER says whole numbers, not that quantity is at least one.
+
+3
+00:00:06,388 --> 00:00:09,111
+Constraints are the finer promises.
+
+4
+00:00:09,111 --> 00:00:12,180
+NOT NULL means the fact must exist.
+
+5
+00:00:12,180 --> 00:00:13,708
+name TEXT NOT NULL.
+
+6
+00:00:13,708 --> 00:00:16,777
+The engine refuses an insert that skips it.
+
+7
+00:00:16,777 --> 00:00:20,500
+DEFAULT fills a value when the insert omits the column.
+
+8
+00:00:20,500 --> 00:00:22,555
+DEFAULT zero for a counter.
+
+9
+00:00:22,555 --> 00:00:26,861
+DEFAULT CURRENT_TIMESTAMP for created_at.
+
+10
+00:00:26,861 --> 00:00:31,875
+DEFAULT is not a substitute for NOT NULL if you still want the column present.
+
+11
+00:00:31,875 --> 00:00:33,000
+They pair well.
+
+12
+00:00:33,000 --> 00:00:35,333
+CHECK is a boolean test on the row.
+
+13
+00:00:35,333 --> 00:00:37,791
+CHECK quantity greater than zero.
+
+14
+00:00:37,791 --> 00:00:40,138
+CHECK rating BETWEEN one AND five.
+
+15
+00:00:40,138 --> 00:00:43,430
+CHECK price greater than or equal to zero.
+
+16
+00:00:43,430 --> 00:00:46,013
+The test may mention more than one column.
+
+17
+00:00:46,013 --> 00:00:50,680
+CHECK end_on greater than or equal to start_on.
+
+18
+00:00:50,680 --> 00:00:52,847
+Keep CHECKs cheap and obvious.
+
+19
+00:00:52,847 --> 00:00:58,611
+A CHECK that looks up another table is a foreign key, or a trigger, depending on the engine.
+
+20
+00:00:58,611 --> 00:01:01,694
+SQLite CHECKs are real if you keep them on.
+
+21
+00:01:01,694 --> 00:01:03,833
+Some old environments skipped them.
+
+22
+00:01:03,833 --> 00:01:04,972
+Know your engine.
+
+23
+00:01:04,972 --> 00:01:06,402
+Name the constraint.
+
+24
+00:01:06,402 --> 00:01:12,055
+orders_quantity_positive is a better failure than CHECK constraint failed.
+
+25
+00:01:12,055 --> 00:01:15,472
+Column constraints run on INSERT and UPDATE.
+
+26
+00:01:15,472 --> 00:01:18,680
+They do not clean rows that were loaded with checks off.
+
+27
+00:01:18,680 --> 00:01:22,166
+VALIDATE after a bulk load if your dialect can.
+
+28
+00:01:22,166 --> 00:01:26,555
+Do not encode a relationship in CHECK when a foreign key exists.
+
+29
+00:01:26,555 --> 00:01:30,722
+Do not encode a unique rule in CHECK when UNIQUE exists.
+
+30
+00:01:30,722 --> 00:01:33,055
+Use the tool that states the meaning.
+
+31
+00:01:33,055 --> 00:01:38,097
+NULL still bypasses most CHECKs, because unknown is not true.
+
+32
+00:01:38,097 --> 00:01:45,722
+If zero is allowed and empty is not, NOT NULL plus CHECK quantity greater than or equal to zero.
+
+33
+00:01:45,722 --> 00:01:48,291
+Write the promises in English first.
+
+34
+00:01:48,291 --> 00:01:49,527
+Must exist.
+
+35
+00:01:49,527 --> 00:01:51,694
+If omitted, use this.
+
+36
+00:01:51,694 --> 00:01:53,291
+Must pass this test.
+
+37
+00:01:53,291 --> 00:01:57,527
+Then NOT NULL, DEFAULT, CHECK fall out of the sentences.
+
+38
+00:01:57,527 --> 00:02:04,027
+CHECK (email LIKE %@%) is a weak email validator, and still better than nothing.
+
+39
+00:02:04,027 --> 00:02:07,000
+Do not try to parse RFC email in CHECK.
+
+40
+00:02:07,000 --> 00:02:11,944
+Do it in the application or a real library, then keep a coarse CHECK.
+
+41
+00:02:11,944 --> 00:02:18,916
+Exclusion constraints in PostgreSQL are a cousin: this range may not overlap that range.
+
+42
+00:02:18,916 --> 00:02:24,625
+They are how rooms and time slots refuse double booking when UNIQUE is not enough.
+
+43
+00:02:24,625 --> 00:02:25,625
+Know the name.
+
+44
+00:02:25,625 --> 00:02:27,333
+Use it when you meet the room.
+
+45
+00:02:27,333 --> 00:02:30,763
+DEFAULT random() is a cute way to get a surprise.
+
+46
+00:02:30,763 --> 00:02:31,708
+Do not.
+
+47
+00:02:31,708 --> 00:02:38,652
+Defaults should be dull: zero, empty forbidden, now, a known status_id.
+
+48
+00:02:38,652 --> 00:02:42,555
+A default that hides a missing fact will poison reports.
+
+49
+00:02:42,555 --> 00:02:49,694
+If you do not know the city, NULL, not Unknown string, unless Unknown is a real place in your lookup table.
+
+50
+00:02:49,694 --> 00:02:53,666
+Domain types in some engines bundle a type plus a CHECK.
+
+51
+00:02:53,666 --> 00:02:55,847
+They are reusable promises.
+
+52
+00:02:55,847 --> 00:02:58,750
+A column-level CHECK is enough while you learn.
+
+53
+00:02:58,750 --> 00:03:04,833
+Disable constraints only in a locked maintenance window, and re-enable with validation.
+
+54
+00:03:04,833 --> 00:03:09,222
+A loader that needs them off is a loader that should write to staging instead.
+
+55
+00:03:09,222 --> 00:03:11,166
+Staging has loose rules.
+
+56
+00:03:11,166 --> 00:03:13,263
+The real table has tight ones.
+
+57
+00:03:13,263 --> 00:03:16,500
+Copy with a query that only moves clean rows.
+
+58
+00:03:16,500 --> 00:03:20,111
+The promises you wrote in English are the acceptance tests.
+
+59
+00:03:20,111 --> 00:03:22,666
+NOT NULL, DEFAULT, CHECK.
+
+60
+00:03:22,666 --> 00:03:25,319
+Three tools, a lot of quiet tables.
+
+61
+00:03:25,319 --> 00:03:27,694
+Quiet tables make quiet nights.
+
+62
+00:03:27,694 --> 00:03:29,708
+A type lets 0 through.
+
+63
+00:03:29,708 --> 00:03:32,791
+A CHECK decides whether 0 is a quantity.
+
+64
+00:03:32,791 --> 00:03:36,361
+A DEFAULT decides what happens when the app is silent.
+
+65
+00:03:36,361 --> 00:03:39,111
+NOT NULL decides whether silence is allowed.
+
+66
+00:03:39,111 --> 00:03:42,333
+Four decisions, four tools if you count the type.
+
+67
+00:03:42,333 --> 00:03:45,430
+Skip one, and the table will invent a meaning.
+
+68
+00:03:45,430 --> 00:03:50,027
+Invented meanings show up in dashboards as mysterious zeros.
+
+69
+00:03:50,027 --> 00:03:52,736
+Mysterious zeros become meetings.
+
+70
+00:03:52,736 --> 00:03:56,597
+Meetings are more expensive than CHECK (quantity > 0).
+
+71
+00:03:56,597 --> 00:03:57,791
+Name the CHECK.
+
+72
+00:03:57,791 --> 00:03:59,416
+Refuse the mystery.
+
+73
+00:03:59,416 --> 00:04:02,055
+English first, keywords second.
+
+74
+00:04:02,055 --> 00:04:06,694
+The table will keep the promise at 2 a.m. when nobody is in the meeting.
+
+75
+00:04:06,694 --> 00:04:08,805
+That is the point of a constraint.
+
+76
+00:04:08,805 --> 00:04:15,625
+NOT NULL, DEFAULT, and CHECK look optional until a NULL status means pending and failed at once.
+
+77
+00:04:15,625 --> 00:04:17,875
+NULL is unknown or missing.
+
+78
+00:04:17,875 --> 00:04:29,805
+Aggregates that meet a NULL can go quiet: SUM of a set containing NULL may ignore it, AVG too, while an expression like price plus tax becomes NULL if tax is NULL.
+
+79
+00:04:29,805 --> 00:04:32,291
+Know the difference before you allow the hole.
+
+80
+00:04:32,291 --> 00:04:37,402
+NOT NULL means the column will not accept NULL on INSERT or UPDATE.
+
+81
+00:04:37,402 --> 00:04:42,375
+Username, password hash, and last name often cannot be holes.
+
+82
+00:04:42,375 --> 00:04:45,750
+Phone might be a hole if the business does not require it.
+
+83
+00:04:45,866 --> 00:04:52,024
+People treat NOT NULL as a column property, like a type, so it is often unnamed.
+
+84
+00:04:52,024 --> 00:04:53,899
+You still choose it on purpose.
+
+85
+00:04:53,899 --> 00:04:57,107
+A primary key already implies NOT NULL.
+
+86
+00:04:57,107 --> 00:04:59,024
+Saying it twice is noise.
+
+87
+00:04:59,024 --> 00:05:05,218
+Saying it on email when email is UNIQUE is not noise if you refuse accounts without email.
+
+88
+00:05:05,218 --> 00:05:09,024
+DEFAULT supplies a value when INSERT omits the column.
+
+89
+00:05:09,024 --> 00:05:11,718
+It is not a check that the value is wise.
+
+90
+00:05:11,718 --> 00:05:17,302
+DEFAULT CURRENT_TIMESTAMP on created_at writes the clock you meant.
+
+91
+00:05:17,302 --> 00:05:21,302
+DEFAULT zero on a quantity can hide a forgotten value.
+
+92
+00:05:21,302 --> 00:05:24,663
+Choose defaults that are true history, not a shrug.
+
+93
+00:05:24,663 --> 00:05:32,774
+A new NOT NULL column on a table that already has rows needs a default, or the ALTER fails, or old rows become lies.
+
+94
+00:05:32,774 --> 00:05:35,927
+CHECK is a boolean test the row must pass.
+
+95
+00:05:35,927 --> 00:05:40,413
+CHECK (price >= 0) stops a negative price.
+
+96
+00:05:40,413 --> 00:05:47,774
+CHECK (status IN ('open', 'paid', 'canceled')) stops a status nobody defined.
+
+97
+00:05:47,774 --> 00:05:53,441
+CHECK can compare two columns: end_date >= start_date.
+
+98
+00:05:53,441 --> 00:05:57,010
+Keep CHECK expressions sargable and obvious.
+
+99
+00:05:57,010 --> 00:06:01,566
+A check that calls a vague function nobody can read will not be maintained.
+
+100
+00:06:01,566 --> 00:06:03,232
+Some engines skip CHECK.
+
+101
+00:06:03,232 --> 00:06:04,288
+Know yours.
+
+102
+00:06:04,288 --> 00:06:06,538
+NOT NULL is about presence.
+
+103
+00:06:06,538 --> 00:06:09,385
+DEFAULT is about what presence is assumed.
+
+104
+00:06:09,385 --> 00:06:12,718
+CHECK is about whether the present value is legal.
+
+105
+00:06:12,718 --> 00:06:16,246
+Together they encode business rules next to the type.
+
+106
+00:06:16,246 --> 00:06:20,024
+Application code still validates for friendly errors.
+
+107
+00:06:20,024 --> 00:06:26,788
+The table validates for truth when a second writer appears, or a tool, or a tired INSERT.
+
+108
+00:06:26,788 --> 00:06:32,802
+Ignore them and the database will store a negative salary with a NULL status and a smile.
+
+109
+00:06:32,802 --> 00:06:39,496
+Name CHECK constraints so the error names the rule: orders_total_nonnegative.
+
+110
+00:06:39,496 --> 00:06:42,899
+Then a failed write is a sentence, not a puzzle.
+
+111
+00:06:42,899 --> 00:06:47,441
+Write the three on every column that has a rule in the interviews.
+
+112
+00:06:47,441 --> 00:06:52,913
+If the interview never said the rule, do not invent a CHECK that will surprise the business.
+
+113
+00:06:52,913 --> 00:06:55,816
+Constraints are requirements in SQL form.
+
+114
+00:06:55,816 --> 00:06:57,135
+Not decoration.
+
+115
+00:06:57,135 --> 00:06:58,163
+Not later.
+
+116
+00:06:58,163 --> 00:07:02,441
+On the column, when you CREATE, while you still remember why.
+
+117
+00:07:02,441 --> 00:07:08,704
+Revisit them when a rule changes, with ALTER, the same as any other contract.
+
+118
+00:07:08,704 --> 00:07:15,816
+A status that gained a new legal value needs the CHECK rewritten, not a silent VARCHAR that already allowed it.
+
+119
+00:07:15,816 --> 00:07:19,468
+That rewrite is cheaper than a year of fake statuses.
+
+120
+00:07:19,468 --> 00:07:29,454
+Practice: take one table from the store schema and say for each column: hole or not, default or not, extra test or not.
+
+121
+00:07:29,454 --> 00:07:33,038
+If you cannot answer, the requirement is unfinished.
+
+122
+00:07:33,038 --> 00:07:36,038
+Finish the requirement, then the constraint.
+
+123
+00:07:36,038 --> 00:07:40,454
+That is how NOT NULL, DEFAULT, and CHECK earn their keep.
+
+124
+00:07:40,454 --> 00:07:52,399
+Dialect notes without turning into a vendor manual: some engines ignore CHECK, some allow multiple NULLs under UNIQUE, some attach NOT NULL as a property you cannot name.
+
+125
+00:07:52,399 --> 00:07:53,454
+Read yours.
+
+126
+00:07:53,454 --> 00:07:59,524
+The ideas stay: refuse holes, fill omissions, refuse illegal values.
+
+127
+00:07:59,524 --> 00:08:09,371
+If CHECK is missing in an engine, you might use a trigger, which is a later tool, or you refuse in the application and accept the risk of a second writer.
+
+128
+00:08:09,371 --> 00:08:12,607
+Prefer an engine that can CHECK if the rule matters.
+
+129
+00:08:12,607 --> 00:08:19,093
+This course is fundamentals: the rule belongs next to the column whenever the engine can hold it.
+
+130
+00:08:19,093 --> 00:08:26,663
+Walk DEFAULT CURRENT_DATE on an order_date and then INSERT an explicit old date for backfill.
+
+131
+00:08:26,663 --> 00:08:29,593
+Explicit values override defaults.
+
+132
+00:08:29,593 --> 00:08:33,066
+Defaults are for omission, not for locking the column.
+
+133
+00:08:33,066 --> 00:08:36,288
+CHECK still validates the explicit old date.
+
+134
+00:08:36,288 --> 00:08:40,482
+If backfill can be yesterday, the check must allow yesterday.
+
+135
+00:08:40,482 --> 00:08:46,454
+If it cannot, the check and the backfill policy disagree, and you found a requirement bug.
+
+136
+00:08:46,454 --> 00:08:50,843
+That is why this lecture is long: every keyword meets a policy.
+
+137
+00:08:50,843 --> 00:08:54,482
+Close with questions, the way a careful lecture does.
+
+138
+00:08:54,482 --> 00:08:57,538
+Answer in a sentence you could defend at a keyboard.
+
+139
+00:08:57,538 --> 00:08:58,593
+What is NULL?
+
+140
+00:08:58,593 --> 00:09:02,829
+Unknown or missing, not zero, not empty string.
+
+141
+00:09:02,829 --> 00:09:04,579
+What does NOT NULL refuse?
+
+142
+00:09:04,579 --> 00:09:06,677
+Holes on INSERT and UPDATE.
+
+143
+00:09:06,677 --> 00:09:08,191
+What does DEFAULT do?
+
+144
+00:09:08,191 --> 00:09:11,399
+Fills a value when INSERT omits the column.
+
+145
+00:09:11,399 --> 00:09:13,746
+Does DEFAULT block bad UPDATEs?
+
+146
+00:09:13,746 --> 00:09:14,510
+No.
+
+147
+00:09:14,510 --> 00:09:15,607
+CHECK does.
+
+148
+00:09:15,607 --> 00:09:16,843
+What does CHECK do?
+
+149
+00:09:16,843 --> 00:09:19,441
+A boolean test the row must pass.
+
+150
+00:09:19,441 --> 00:09:22,135
+SUM versus a plus expression with NULL?
+
+151
+00:09:22,135 --> 00:09:25,371
+SUM often skips NULL; plus becomes NULL.
+
+152
+00:09:25,371 --> 00:09:28,149
+DEFAULT zero on unknown quantity?
+
+153
+00:09:28,149 --> 00:09:29,066
+A lie.
+
+154
+00:09:29,066 --> 00:09:31,135
+Zero is a real quantity.
+
+155
+00:09:31,135 --> 00:09:34,524
+NOT NULL plus DEFAULT plus CHECK on status?
+
+156
+00:09:34,524 --> 00:09:37,677
+Presence, starting value, legal list.
+
+157
+00:09:37,802 --> 00:09:39,238
+New legal status?
+
+158
+00:09:39,238 --> 00:09:42,446
+ALTER the CHECK, do not hope VARCHAR allows it.
+
+159
+00:09:42,446 --> 00:09:43,682
+Why name CHECK?
+
+160
+00:09:43,682 --> 00:09:45,571
+So the error names the rule.
+
+161
+00:09:45,571 --> 00:09:47,321
+Do some engines skip CHECK?
+
+162
+00:09:47,321 --> 00:09:48,224
+Yes.
+
+163
+00:09:48,224 --> 00:09:49,279
+Know yours.
+
+164
+00:09:49,279 --> 00:09:51,210
+Is NOT NULL usually named?
+
+165
+00:09:51,210 --> 00:09:53,640
+Often treated as a column property.
+
+166
+00:09:53,640 --> 00:09:55,738
+Primary key and NOT NULL?
+
+167
+00:09:55,738 --> 00:09:58,835
+Primary key already implies NOT NULL.
+
+168
+00:09:58,835 --> 00:10:00,265
+Test which writes?
+
+169
+00:10:00,265 --> 00:10:05,099
+INSERT omit, INSERT illegal, UPDATE illegal, UPDATE NULL.
+
+170
+00:10:05,099 --> 00:10:07,821
+Are the three keywords the same sentence?
+
+171
+00:10:07,821 --> 00:10:08,585
+No.
+
+172
+00:10:08,585 --> 00:10:13,224
+Required, if omitted use this, if present it must pass.
+
+173
+00:10:13,224 --> 00:10:14,377
+Second writer?
+
+174
+00:10:14,377 --> 00:10:17,502
+The table still enforces when an app does not.
+
+175
+00:10:17,502 --> 00:10:18,765
+Negative salary?
+
+176
+00:10:18,765 --> 00:10:24,029
+CHECK (salary >= 0), and NOT NULL if it must exist.
+
+177
+00:10:24,029 --> 00:10:26,085
+created_at DEFAULT?
+
+178
+00:10:26,085 --> 00:10:28,265
+A true clock, not a shrug.
+
+179
+00:10:28,265 --> 00:10:30,696
+ALTER add NOT NULL to old rows?
+
+180
+00:10:30,696 --> 00:10:33,390
+Need a default or fill the holes first.
+
+181
+00:10:33,390 --> 00:10:34,835
+When do you skip a CHECK?
+
+182
+00:10:34,835 --> 00:10:37,988
+Only with a reason the data owner would agree to.
+
+183
+00:10:37,988 --> 00:10:39,960
+What is this lecture really about?
+
+184
+00:10:39,960 --> 00:10:43,724
+Business rules next to types, not optional decoration.
+
+185
+00:10:43,724 --> 00:10:45,293
+Dialect differences?
+
+186
+00:10:45,293 --> 00:10:49,585
+Read yours for CHECK and UNIQUE NULL, keep the three ideas.
+
+187
+00:10:49,585 --> 00:10:52,127
+Explicit INSERT versus default?
+
+188
+00:10:52,127 --> 00:10:55,279
+Explicit wins; CHECK still validates.
+
+189
+00:10:55,279 --> 00:10:57,029
+Backfill versus CHECK?
+
+190
+00:10:57,029 --> 00:11:00,863
+If they disagree, the requirement is unfinished.
+
+191
+00:11:00,863 --> 00:11:02,154
+Three tests?
+
+192
+00:11:02,154 --> 00:11:05,543
+NULL path, default path, illegal value.
+
+193
+00:11:05,543 --> 00:11:06,321
+Goal?
+
+194
+00:11:06,321 --> 00:11:08,932
+Boring columns that refuse nonsense.
+
+195
+00:11:08,932 --> 00:11:10,599
+Optional constraints?
+
+196
+00:11:10,599 --> 00:11:12,682
+How negative salaries arrived.
+
+197
+00:11:12,682 --> 00:11:13,807
+When to write them?
+
+198
+00:11:13,807 --> 00:11:16,377
+At CREATE, while you remember why.
+
+199
+00:11:16,377 --> 00:11:17,640
+When to revisit?
+
+200
+00:11:17,640 --> 00:11:20,085
+When a rule changes, with ALTER.
+
+201
+00:11:20,085 --> 00:11:22,154
+If the interview never said the rule?
+
+202
+00:11:22,154 --> 00:11:24,390
+Do not invent a surprising CHECK.
+
+203
+00:11:24,390 --> 00:11:29,113
+If an answer needed a second table, go draw it before you write more SQL.
+
+204
+00:11:29,113 --> 00:11:50,265
+Walk every column on orders: order_id PRIMARY KEY, customer_id NOT NULL REFERENCES, placed_at NOT NULL DEFAULT now, status NOT NULL DEFAULT open CHECK in the list, total DECIMAL NOT NULL CHECK greater than or equal to zero, notes TEXT NULL.
+
+205
+00:11:50,265 --> 00:11:53,488
+That one table is the whole lecture in costume.
+
+206
+00:11:53,488 --> 00:11:56,043
+order_id is identity.
+
+207
+00:11:56,043 --> 00:12:02,168
+customer_id is presence plus a foreign key, which is next door's lesson.
+
+208
+00:12:02,168 --> 00:12:06,863
+placed_at refuses holes and fills the clock when omitted.
+
+209
+00:12:06,863 --> 00:12:12,307
+status refuses holes, starts open, refuses invented words.
+
+210
+00:12:12,307 --> 00:12:16,043
+total refuses holes and refuses negative money.
+
+211
+00:12:16,043 --> 00:12:21,904
+notes may be a hole, and empty string is a different choice you should not mix without a rule.
+
+212
+00:12:21,904 --> 00:12:26,724
+INSERT that omits status becomes open, then CHECK still accepts open.
+
+213
+00:12:26,724 --> 00:12:31,085
+UPDATE status to shipped fails until shipped is in the list.
+
+214
+00:12:31,085 --> 00:12:36,349
+UPDATE total to minus one fails even though the row already existed.
+
+215
+00:12:36,349 --> 00:12:43,293
+INSERT that omits notes stores NULL, and COUNT notes ignores that row, while COUNT star does not.
+
+216
+00:12:43,293 --> 00:12:47,252
+That NULL lesson again, now attached to a real column.
+
+217
+00:12:47,252 --> 00:12:52,349
+DEFAULT and CHECK together on status are why marketing cannot sneak a string.
+
+218
+00:12:52,349 --> 00:12:59,154
+NOT NULL on total is why a forgotten total is not a silent NULL that poisons a plus tax expression.
+
+219
+00:12:59,154 --> 00:13:06,168
+If tax is a separate column, decide NOT NULL DEFAULT zero versus NULL means unknown tax.
+
+220
+00:13:06,168 --> 00:13:08,710
+Unknown tax cannot be invoiced.
+
+221
+00:13:08,710 --> 00:13:14,043
+So NOT NULL DEFAULT zero may be honest for tax, and a lie for quantity.
+
+222
+00:13:14,043 --> 00:13:15,099
+Say which.
+
+223
+00:13:15,099 --> 00:13:20,390
+Write the CHECK that quantity is greater than zero if free gifts are stored another way.
+
+224
+00:13:20,390 --> 00:13:28,377
+If free gifts exist, quantity greater than or equal to zero, and a gift flag, or a zero-price product.
+
+225
+00:13:28,377 --> 00:13:30,043
+The CHECK is the policy.
+
+226
+00:13:30,043 --> 00:13:37,460
+Eighteen minutes is policies meeting keywords, over and over, until you can do it cold on a new table.
+
+227
+00:13:37,460 --> 00:13:49,807
+Do it cold on reviews next: review_id, product_id NOT NULL, body NOT NULL, rating CHECK between one and five, created_at DEFAULT now.
+
+228
+00:13:49,807 --> 00:13:56,682
+If rating can be skipped, allow NULL and do not DEFAULT three, because three is a real opinion.
+
+229
+00:13:56,682 --> 00:14:01,043
+That is the last mile of NOT NULL, DEFAULT, and CHECK.
+
+230
+00:14:01,043 --> 00:14:03,474
+You are not recapping three words.
+
+231
+00:14:03,474 --> 00:14:08,807
+You are refusing fake ratings, fake totals, and fake statuses at the door.
+

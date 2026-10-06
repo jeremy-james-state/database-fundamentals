@@ -1,0 +1,61 @@
+---
+title: "Show a schema"
+description: "Print the CREATE TABLE statements that define a SQLite database."
+---
+
+`.schema` is a SQLite command. The SQL equivalent is the `sql` column of `sqlite_master`.
+
+## Prerequisites
+
+- An open SQLite session ([open a SQLite database](/how-to/open-a-database))
+- [List tables](/how-to/list-tables) if you do not know the names yet
+
+## Print the schema
+
+<Steps>
+  <Step title="Show every table">
+    At the `sqlite>` prompt:
+
+    ```text
+    sqlite> .schema
+    ```
+
+    You get the `CREATE TABLE` text SQLite stored.
+  </Step>
+  <Step title="Show one table">
+    ```text
+    sqlite> .schema stations
+    ```
+  </Step>
+  <Step title="Use SQL instead">
+    ```sql
+    SELECT sql
+    FROM sqlite_master
+    WHERE type = 'table';
+    ```
+
+    Filter to one name:
+
+    ```sql
+    SELECT sql
+    FROM sqlite_master
+    WHERE type = 'table'
+      AND name = 'stations';
+    ```
+  </Step>
+</Steps>
+
+## Verify the result
+
+You succeeded when you see column names, types, and any constraints inside `CREATE TABLE`.
+
+## Troubleshooting
+
+- **Empty result**: the file has no tables, or you opened a new path.
+- **`.schema` is not SQL**: other DBMS products have different catalog queries.
+
+## Related pages
+
+- [Schemas](/concepts/schemas)
+- [List tables](/how-to/list-tables)
+- [CREATE TABLE](/reference/create-table)

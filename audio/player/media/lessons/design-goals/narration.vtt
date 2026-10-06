@@ -1,0 +1,488 @@
+1
+00:00:00,050 --> 00:00:02,902
+Schema design is not interior decorating.
+
+2
+00:00:02,902 --> 00:00:07,402
+It is a short list of goals you protect when someone asks for a new column.
+
+3
+00:00:07,402 --> 00:00:09,500
+The first goal is identity.
+
+4
+00:00:09,500 --> 00:00:14,277
+Every row should name one thing, and you should be able to find that thing again.
+
+5
+00:00:14,277 --> 00:00:17,138
+A primary key is how you keep that promise.
+
+6
+00:00:17,138 --> 00:00:20,333
+The second goal is one fact in one place.
+
+7
+00:00:20,333 --> 00:00:21,944
+Maya lives in Austin.
+
+8
+00:00:21,944 --> 00:00:27,472
+If Austin is stored on every order, a move to Denver becomes a scavenger hunt.
+
+9
+00:00:27,472 --> 00:00:29,597
+Store the city on the customer.
+
+10
+00:00:29,597 --> 00:00:31,736
+Let orders point at the customer.
+
+11
+00:00:31,736 --> 00:00:33,944
+The third goal is completeness.
+
+12
+00:00:33,944 --> 00:00:38,847
+If a fact must exist, the schema should refuse a row that lacks it.
+
+13
+00:00:38,847 --> 00:00:41,319
+NOT NULL is a completeness tool.
+
+14
+00:00:41,319 --> 00:00:45,097
+A foreign key is a completeness tool for relationships.
+
+15
+00:00:45,097 --> 00:00:48,055
+The fourth goal is honesty under change.
+
+16
+00:00:48,055 --> 00:00:50,944
+Updates should not create contradictions.
+
+17
+00:00:50,944 --> 00:00:54,291
+Deletes should not leave orphans unless you chose that.
+
+18
+00:00:54,291 --> 00:00:58,388
+The fifth goal is a schema people can query without folklore.
+
+19
+00:00:58,388 --> 00:01:04,027
+If you need a five-page memo to know which total is the real total, the design is leaking.
+
+20
+00:01:04,027 --> 00:01:05,722
+Speed is a later goal.
+
+21
+00:01:05,722 --> 00:01:11,194
+Indexes, copies, and caches come after the facts are in the right tables.
+
+22
+00:01:11,194 --> 00:01:14,833
+If you chase speed first, you freeze a messy shape.
+
+23
+00:01:14,833 --> 00:01:19,208
+When a new column appears in a meeting, ask which goal it serves.
+
+24
+00:01:19,208 --> 00:01:24,027
+If it serves none, it is probably a copy of a fact you already store.
+
+25
+00:01:24,027 --> 00:01:25,458
+Copies want an owner.
+
+26
+00:01:25,458 --> 00:01:30,861
+Either the original table, or a later denormalization you admit in public.
+
+27
+00:01:30,861 --> 00:01:32,847
+Protect identity first.
+
+28
+00:01:32,847 --> 00:01:34,486
+Then fight repetition.
+
+29
+00:01:34,486 --> 00:01:37,250
+Then require the facts that must exist.
+
+30
+00:01:37,250 --> 00:01:38,944
+Then worry about speed.
+
+31
+00:01:38,944 --> 00:01:42,013
+Normalization is a method for the second goal.
+
+32
+00:01:42,013 --> 00:01:43,430
+It is not a religion.
+
+33
+00:01:43,430 --> 00:01:47,263
+It is a way to notice when one table is doing three jobs.
+
+34
+00:01:47,263 --> 00:01:51,263
+A design that meets the goals can still be ugly on a whiteboard.
+
+35
+00:01:51,263 --> 00:01:54,819
+Ugly and honest beats pretty and contradictory.
+
+36
+00:01:54,819 --> 00:01:57,152
+Write the goals at the top of the sketch.
+
+37
+00:01:57,152 --> 00:01:58,166
+Identity.
+
+38
+00:01:58,166 --> 00:01:59,958
+One fact, one place.
+
+39
+00:01:59,958 --> 00:02:02,041
+Required facts required.
+
+40
+00:02:02,041 --> 00:02:04,000
+Change without contradiction.
+
+41
+00:02:04,000 --> 00:02:05,958
+Queryable without folklore.
+
+42
+00:02:05,958 --> 00:02:07,152
+Speed last.
+
+43
+00:02:07,152 --> 00:02:10,250
+Then every new column has to pass the list.
+
+44
+00:02:10,250 --> 00:02:12,375
+Conflicting goals will appear.
+
+45
+00:02:12,375 --> 00:02:17,430
+Legal retention may force you to keep a fact you would rather normalize away.
+
+46
+00:02:17,430 --> 00:02:18,819
+Write the conflict.
+
+47
+00:02:18,819 --> 00:02:21,152
+Do not hide it in a mystery column.
+
+48
+00:02:21,152 --> 00:02:29,958
+Audit columns — created_at, created_by — serve completeness of history, not identity of the customer.
+
+49
+00:02:29,958 --> 00:02:34,194
+They still belong, as long as they do not duplicate the customer.
+
+50
+00:02:34,194 --> 00:02:39,694
+Soft-delete flags serve honesty under change when a hard delete would smash history.
+
+51
+00:02:39,694 --> 00:02:43,083
+They also complicate every query with a filter.
+
+52
+00:02:43,083 --> 00:02:45,958
+That is a real trade, not a free goal.
+
+53
+00:02:45,958 --> 00:02:49,930
+International addresses will test one-fact-one-place.
+
+54
+00:02:49,930 --> 00:02:52,666
+A city name is not unique on Earth.
+
+55
+00:02:52,666 --> 00:02:56,222
+You may need a place table sooner than the first sketch thought.
+
+56
+00:02:56,222 --> 00:02:58,930
+That is the goal working, not failing.
+
+57
+00:02:58,930 --> 00:03:02,666
+When product wants a dashboard tomorrow, speed shouts.
+
+58
+00:03:02,666 --> 00:03:05,777
+Give them a query on honest tables first.
+
+59
+00:03:05,777 --> 00:03:09,819
+If it is too slow, measure, then copy with an owner.
+
+60
+00:03:09,819 --> 00:03:12,666
+The goal list is the agenda of that meeting.
+
+61
+00:03:12,666 --> 00:03:15,597
+Without it, the dashboard becomes the schema.
+
+62
+00:03:15,597 --> 00:03:18,166
+Teach the list to whoever can add a column.
+
+63
+00:03:18,166 --> 00:03:23,500
+A schema that only the original author understands has already missed the folklore goal.
+
+64
+00:03:23,500 --> 00:03:30,694
+Identity, one place, required facts, honest change, queryable shape, speed last.
+
+65
+00:03:30,694 --> 00:03:32,402
+Say it until it is boring.
+
+66
+00:03:32,402 --> 00:03:34,666
+Boring goals survive launches.
+
+67
+00:03:34,666 --> 00:03:37,180
+A goal you cannot test is a slogan.
+
+68
+00:03:37,180 --> 00:03:40,791
+Identity is tested by finding the same row tomorrow.
+
+69
+00:03:40,791 --> 00:03:44,555
+One fact in one place is tested by changing it once.
+
+70
+00:03:44,555 --> 00:03:49,986
+Required facts are tested by inserting a hole and watching the engine refuse.
+
+71
+00:03:49,986 --> 00:03:55,583
+Honest change is tested by a delete that does not orphan, or that orphans on purpose.
+
+72
+00:03:55,583 --> 00:04:00,736
+Queryable shape is tested by a new teammate writing a SELECT without a huddle.
+
+73
+00:04:00,736 --> 00:04:04,458
+Speed is tested with EXPLAIN after the rest is true.
+
+74
+00:04:04,458 --> 00:04:07,083
+Hang that test list next to the sketch.
+
+75
+00:04:07,083 --> 00:04:10,972
+Then a column request has somewhere to land besides yes.
+
+76
+00:04:10,972 --> 00:04:14,708
+A database that is fast and wrong is still wrong.
+
+77
+00:04:14,708 --> 00:04:16,916
+The five goals are not slogans.
+
+78
+00:04:16,916 --> 00:04:19,444
+They are tests you can fail on a Tuesday.
+
+79
+00:04:19,444 --> 00:04:24,152
+Consistency means two tables do not disagree about the same fact.
+
+80
+00:04:24,152 --> 00:04:30,097
+Integrity means the fact was allowed by the types, keys, and constraints you declared.
+
+81
+00:04:30,097 --> 00:04:34,861
+Together they say: one meaning, stored once, checked at the door.
+
+82
+00:04:34,970 --> 00:04:45,517
+If product price lives on products and also on every order line as a copy you never freeze on purpose, the confirmation page and the receipt can disagree.
+
+83
+00:04:45,517 --> 00:04:48,489
+That disagreement is not a rounding bug.
+
+84
+00:04:48,489 --> 00:04:50,670
+It is two sources of truth.
+
+85
+00:04:50,670 --> 00:04:58,183
+Related entities belong in related tables, sharing a key, not sharing a pile of overlapping columns.
+
+86
+00:04:58,183 --> 00:05:02,267
+Redundancy is extra copies of a fact that can drift.
+
+87
+00:05:02,267 --> 00:05:07,878
+Insert, update, and delete anomalies are what drift feels like in practice.
+
+88
+00:05:07,878 --> 00:05:12,267
+You change a name in one row and the old name survives in another.
+
+89
+00:05:12,267 --> 00:05:15,961
+You cannot insert a fact until you invent a fake parent.
+
+90
+00:05:15,961 --> 00:05:21,670
+You delete the last child and accidentally lose the only copy of a parent attribute.
+
+91
+00:05:21,670 --> 00:05:25,420
+Normalization is one way to hunt those anomalies.
+
+92
+00:05:25,420 --> 00:05:26,947
+Constraints are another.
+
+93
+00:05:26,947 --> 00:05:30,850
+The second goal is maintainability and ease of use.
+
+94
+00:05:30,850 --> 00:05:36,308
+A schema a new teammate can query without a huddle is easier to keep alive.
+
+95
+00:05:36,308 --> 00:05:44,114
+Stable naming is part of that: snake_case, table names as plurals or singulars, but not both.
+
+96
+00:05:44,114 --> 00:05:52,517
+customer_id everywhere, not custId in one table and customer_code in the next for the same meaning.
+
+97
+00:05:52,517 --> 00:05:56,225
+The third goal is performance when the facts are already true.
+
+98
+00:05:56,225 --> 00:06:01,267
+Indexes, types that fit, and joins on keys are how you buy speed.
+
+99
+00:06:01,267 --> 00:06:06,503
+Speed as a first goal produces wide tables that cannot be updated safely.
+
+100
+00:06:06,503 --> 00:06:10,197
+Earn integrity first, then measure the slow query.
+
+101
+00:06:10,197 --> 00:06:16,628
+The fourth goal is security: who may read, who may write, what is stored in the clear.
+
+102
+00:06:16,628 --> 00:06:21,933
+Access control and hashing belong here as design, not as a later patch.
+
+103
+00:06:21,933 --> 00:06:30,267
+The fifth goal is the ability to grow: a new attribute should not require rewriting history of unrelated tables.
+
+104
+00:06:30,267 --> 00:06:38,072
+If adding email requires copying customers into a new god table, the design was a snapshot, not a schema.
+
+105
+00:06:38,072 --> 00:06:40,392
+Hang the tests next to the sketch.
+
+106
+00:06:40,392 --> 00:06:43,447
+Identity: can I find the same row tomorrow?
+
+107
+00:06:43,447 --> 00:06:45,906
+One fact: can I change it once?
+
+108
+00:06:45,906 --> 00:06:49,406
+Required facts: does INSERT refuse a hole?
+
+109
+00:06:49,406 --> 00:06:52,628
+Honest change: does DELETE do what I said?
+
+110
+00:06:52,628 --> 00:06:56,350
+Queryable shape: can a new person write the SELECT?
+
+111
+00:06:56,350 --> 00:06:59,489
+A goal you cannot test is a poster on the wall.
+
+112
+00:06:59,489 --> 00:07:02,433
+Miss one goal and the app still ships.
+
+113
+00:07:02,433 --> 00:07:10,850
+The regret arrives as a receipt that does not match, or a name that changes mid-trip, or a query nobody dares to touch.
+
+114
+00:07:10,850 --> 00:07:15,322
+Design for the five, then optimize the one that is actually slow.
+
+115
+00:07:15,322 --> 00:07:23,656
+Five goals against the store: consistency so product price and receipt match unless you froze a sold price on purpose.
+
+116
+00:07:23,656 --> 00:07:30,197
+Maintainability so a new analyst can find orders.customer_id without folklore.
+
+117
+00:07:30,197 --> 00:07:34,586
+Performance so the home page has indexes after the keys are right.
+
+118
+00:07:34,586 --> 00:07:37,378
+Security so clerks are not admins.
+
+119
+00:07:37,378 --> 00:07:42,892
+Growth so a new gift-card entity is a table, not a column dump on users.
+
+120
+00:07:42,892 --> 00:07:46,183
+Fail one and you will meet it as a support ticket.
+
+121
+00:07:46,183 --> 00:07:55,517
+Test them in the order you can: integrity first, then naming, then EXPLAIN, then GRANT, then ALTER for the new entity.
+
+122
+00:07:55,517 --> 00:07:59,878
+That order is how the five stay a design method, not a slide title.
+

@@ -1,0 +1,61 @@
+---
+title: "Apply a schema file"
+description: "Run a .sql file that contains CREATE TABLE statements so you rebuild the structure without typing it."
+---
+
+`.read` is a SQLite command. It has no SQL keyword. From the shell you redirect the file into `sqlite3` instead.
+
+## Prerequisites
+
+- A `schema.sql` file of `CREATE TABLE` statements
+- [Create a table](/how-to/create-a-table) so you know what belongs in the file
+
+## Run the file
+
+<Steps>
+  <Step title="Write the schema">
+    Save SQL, not data, in `schema.sql`:
+
+    ```sql schema.sql
+    CREATE TABLE stations (
+      id INTEGER,
+      name TEXT NOT NULL UNIQUE,
+      line TEXT,
+      PRIMARY KEY (id)
+    );
+
+    CREATE TABLE riders (
+      id INTEGER,
+      name TEXT,
+      PRIMARY KEY (id)
+    );
+    ```
+  </Step>
+  <Step title="Read it inside sqlite3">
+    ```text
+    sqlite> .read schema.sql
+    ```
+  </Step>
+  <Step title="Read it from the shell">
+    There is no `READ` SQL statement. Feed the file to the `sqlite3` program:
+
+    ```bash
+    sqlite3 transit.db < schema.sql
+    ```
+  </Step>
+</Steps>
+
+## Verify the result
+
+You succeeded when `.schema` matches `schema.sql`.
+
+## Troubleshooting
+
+- **Table already exists**: drop the tables first, or start from a new `.db` file.
+- **`.read` cannot open the file**: use a path relative to where you launched `sqlite3`.
+
+## Related pages
+
+- [Show a schema](/how-to/show-a-schema)
+- [CREATE TABLE](/reference/create-table)
+- [Schemas](/concepts/schemas)

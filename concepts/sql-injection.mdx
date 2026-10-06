@@ -1,0 +1,51 @@
+---
+title: "SQL injection"
+description: "SQL injection is when untrusted input is pasted into a statement string and runs as SQL."
+---
+
+If you build `SELECT … WHERE id = ` + user_text, an attacker can send `1 OR 1=1` or a `UNION` that reveals other tables. The DBMS cannot tell your query from theirs.
+
+## How injection works
+
+Unsafe pattern (do not use):
+
+```sql
+-- Pseudocode: string concatenation with user input
+SELECT balance FROM accounts WHERE id = 1 UNION SELECT balance FROM accounts;
+```
+
+A **prepared statement** sends the SQL shape first, then binds values separately. The value is data, not syntax.
+
+```sql
+PREPARE balance_check FROM
+  'SELECT balance FROM accounts WHERE id = ?';
+
+SET @id = 1;
+EXECUTE balance_check USING @id;
+```
+
+Even if `@id` contains text that looks like SQL, it is not executed as SQL.
+
+## Why this matters
+
+Injection is a common way to read or change data without permission. [GRANT](/reference/grant) limits accounts; prepared statements protect statement construction.
+
+## When to use prepared statements
+
+- **Any SQL that includes user or external input**
+- **Skip string concatenation for values**: never assemble keywords from the user
+
+## Related ideas
+
+Least privilege with [GRANT](/how-to/grant-privileges) / [REVOKE](/reference/revoke). App libraries usually prepare under the hood.
+
+## Common mix-ups
+
+- **Escaping by hand vs prepare**: prefer bind parameters; do not invent your own escape logic
+- **Views vs safety**: a view does not stop injection in a concatenated `WHERE`
+
+## Further reading
+
+- [Use a prepared statement](/how-to/use-a-prepared-statement)
+- [PREPARE](/reference/prepare)
+- [Grant privileges](/how-to/grant-privileges)

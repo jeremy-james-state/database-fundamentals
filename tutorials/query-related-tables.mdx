@@ -1,0 +1,106 @@
+---
+title: "Tutorial"
+description: "List related tables, nest a query, join on keys, and average ratings per book."
+---
+
+When you finish, you can walk a foreign key with a subquery or a `JOIN`, and collapse ratings with `GROUP BY`.
+
+## Prerequisites
+
+- SQLite and a database with `authors`, `authored`, `books`, `publishers`, and `ratings`
+- [Querying](/tutorials/query-a-table) on a single table
+- About 25 minutes
+
+<Info>
+Examples use SQLite. End every SQL statement with a semicolon.
+</Info>
+
+## Step 1: List the tables
+
+```text
+sqlite> .tables
+```
+
+Or in SQL:
+
+```sql
+SELECT name
+FROM sqlite_master
+WHERE type = 'table';
+```
+
+Peek:
+
+```sql
+SELECT *
+FROM books
+LIMIT 5;
+```
+
+You are on track when you see more than one table.
+
+## Step 2: Nest a query
+
+Find titles from one publisher without typing the id:
+
+```sql
+SELECT title
+FROM books
+WHERE publisher_id = (
+    SELECT publisher_id
+    FROM publishers
+    WHERE name = 'Graywolf Press'
+);
+```
+
+You succeeded when those titles print.
+
+## Step 3: Use IN across a join table
+
+```sql
+SELECT title
+FROM books
+WHERE book_id IN (
+    SELECT book_id
+    FROM authored
+    WHERE author_id = (
+        SELECT author_id
+        FROM authors
+        WHERE name = 'Ursula K. Le Guin'
+    )
+);
+```
+
+## Step 4: Join instead of nesting
+
+```sql
+SELECT authors.name, books.title
+FROM authors
+JOIN authored
+  ON authored.author_id = authors.author_id
+JOIN books
+  ON books.book_id = authored.book_id;
+```
+
+`JOIN` is an inner join. Unmatched ids drop out.
+
+## Step 5: Average ratings per book
+
+```sql
+SELECT book_id, ROUND(AVG(stars), 2) AS average_rating
+FROM ratings
+GROUP BY book_id
+HAVING AVG(stars) >= 4.0
+ORDER BY average_rating DESC;
+```
+
+You succeeded when each `book_id` appears once.
+
+## Next steps
+
+- [Nest a query](/how-to/nest-a-query)
+- [Join tables](/how-to/join-tables)
+- [Combine result sets](/how-to/combine-result-sets)
+- [Group rows](/how-to/group-rows)
+- [Relationships](/concepts/relationships)
+- [JOIN](/reference/join)

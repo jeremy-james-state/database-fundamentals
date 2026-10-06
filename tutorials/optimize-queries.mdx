@@ -1,0 +1,93 @@
+---
+title: "Tutorial"
+description: "Time a slow lookup, add indexes, read the query plan, vacuum, then commit a multi-step update as one transaction."
+---
+
+When you finish, you can tell scan from search, make a covering index on purpose, and wrap related updates in a transaction.
+
+## Prerequisites
+
+- A SQLite database large enough to feel a scan (lecture uses movies / people / stars), or any big table you have
+- About 25 minutes
+
+<Info>
+Examples use SQLite. End every SQL statement with a semicolon.
+</Info>
+
+## Step 1: Time a scan
+
+```text
+sqlite> .timer on
+```
+
+```sql
+SELECT *
+FROM movies
+WHERE title = 'Cars';
+```
+
+Note the **real** time.
+
+## Step 2: Index and re-check the plan
+
+```sql
+CREATE INDEX title_index
+ON movies (title);
+
+EXPLAIN QUERY PLAN
+SELECT *
+FROM movies
+WHERE title = 'Cars';
+```
+
+You want SEARCH using `title_index`, not SCAN. Run the `SELECT` again and compare real time.
+
+## Step 3: Covering index on a join table
+
+`stars` is a [join table](/concepts/keys): `person_id` and `movie_id` are foreign keys.
+
+```sql
+CREATE INDEX person_index
+ON stars (person_id, movie_id);
+
+EXPLAIN QUERY PLAN
+SELECT movie_id
+FROM stars
+WHERE person_id = 31;
+```
+
+**Covering index** here means `person_id` and `movie_id` were both in the index, so SQLite did not need the `stars` table heap for this `SELECT`.
+
+## Step 4: Vacuum after cleanup
+
+```sql
+DROP INDEX IF EXISTS title_index;
+VACUUM;
+```
+
+## Step 5: Transaction
+
+```sql
+BEGIN TRANSACTION;
+
+UPDATE accounts
+SET balance = balance + 10
+WHERE id = 2;
+
+UPDATE accounts
+SET balance = balance - 10
+WHERE id = 1;
+
+COMMIT;
+```
+
+Use `ROLLBACK;` instead of `COMMIT;` if you want to abandon the unit.
+
+## Next steps
+
+You can optimize reads with indexes and keep multi-step writes consistent. Continue with:
+
+- [Indexes](/concepts/indexes)
+- [B-trees](/concepts/b-trees)
+- [Transactions](/concepts/transactions)
+- [Explain a query plan](/how-to/explain-a-query-plan)

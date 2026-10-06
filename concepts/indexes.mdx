@@ -1,0 +1,73 @@
+---
+title: "Indexes"
+description: "An index is a sorted lookup structure on a column (or columns) that helps the DBMS find rows without scanning the whole table."
+---
+
+A **scan** walks every row, top to bottom. An **index search** jumps closer to the match, the way a book index points you to a page.
+
+SQLite already indexes an `INTEGER PRIMARY KEY`. You add more with [CREATE INDEX](/reference/create-index) when you filter or join on other columns often.
+
+## How an index works
+
+You name the index and the column:
+
+```sql
+CREATE INDEX title_index
+ON movies (title);
+```
+
+Then `WHERE title = 'Cars'` can **SEARCH** with that index instead of **SCAN** `movies`. Check with [EXPLAIN QUERY PLAN](/reference/explain-query-plan).
+
+### Covering index
+
+A normal index stores enough to find the row (often the key columns and a pointer into the table). The DBMS may still open the table to read other columns.
+
+A **covering index** already holds **every column the query needs**. The plan can answer from the index alone—no table lookup.
+
+| Kind | What the index holds | Extra step? |
+| --- | --- | --- |
+| Ordinary index | Columns you indexed (to locate the row) | Often yes: fetch the full row from the table |
+| Covering index | Those columns **plus** any other columns the `SELECT` needs | No: the answer is already in the index |
+
+Example: you need `movie_id` for a given `person_id`. Index only `(person_id)` → find matches, then read `movie_id` from `stars`. Index `(person_id, movie_id)` → both values sit in the index; that is covering for `SELECT movie_id … WHERE person_id = …`.
+
+You do not write `COVERING` in SQL. SQLite reports “covering index” in the plan when your index is enough.
+
+### Partial index
+
+A **partial index** indexes only rows that match a `WHERE` clause. Smaller file; useful when queries almost always use that filter (for example recent years only).
+
+```sql
+CREATE INDEX recents
+ON movies (title)
+WHERE year = 2023;
+```
+
+A search for `year = 1998` will not use `recents`.
+
+## Why databases use indexes
+
+Reads get faster on large tables. You pay with disk space and slower writes: every `INSERT`/`UPDATE`/`DELETE` must update the index too.
+
+## When to use an index
+
+- **Repeated filters or joins** on a column that is not already the primary key
+- **Covering**: the query only needs a few columns; put them all in the index list
+- **Partial**: almost every query uses the same `WHERE` subset
+- **Skip it when**: the table is tiny, or you write far more than you read
+
+## Related ideas
+
+Under the hood, many indexes are [B-trees](/concepts/b-trees). After you [DROP INDEX](/reference/drop-index), [VACUUM](/reference/vacuum) can reclaim file space.
+
+## Common mix-ups
+
+- **Scan vs search**: scan = whole table. Search = use an index.
+- **Covering vs magic**: covering only means “this index already has the columns I selected.”
+- **Index vs primary key**: a primary key is already unique and indexed; add indexes for other hot columns.
+
+## Further reading
+
+- [Create an index](/how-to/create-an-index)
+- [Explain a query plan](/how-to/explain-a-query-plan)
+- [B-trees](/concepts/b-trees)

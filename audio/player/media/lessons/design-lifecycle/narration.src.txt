@@ -1,0 +1,259 @@
+A schema does not appear fully formed in CREATE TABLE.
+
+It moves through three views of the same idea.
+
+Conceptual design names the things and how they relate.
+
+Customer, order, book.
+
+A customer places many orders.
+
+An order contains many books.
+
+You can sketch this with boxes and lines, or with sentences.
+
+No types yet.
+
+No indexes.
+
+Logical design turns those things into tables, keys, and constraints.
+
+Now you choose primary keys.
+
+You add foreign keys.
+
+You decide which attributes are NOT NULL.
+
+You normalize so each table has one job.
+
+Physical design is how a particular engine stores and finds the rows.
+
+Types get sharper.
+
+Indexes appear.
+
+Partitioning, files, and memory settings live here.
+
+If you start physical, you will pick VARCHAR forty because a form looked forty wide.
+
+That is not a conceptual reason.
+
+Keep the conceptual sketch next to the CREATE statements.
+
+When they disagree, the sketch wins until you update it on purpose.
+
+Requirements change.
+
+A bookstore starts lending, not only selling.
+
+That is a new relationship, not a new column on orders.
+
+Walk the three views again.
+
+Name the new entity.
+
+Place it on the sketch.
+
+Then give it a table.
+
+Then decide how it is stored.
+
+Teams skip the sketch because SQL feels like progress.
+
+Progress without a sketch is a pile of columns named extra1.
+
+Document the keys in the sketch.
+
+Document the verbs: places, contains, borrows.
+
+Then the SQL has a source of truth besides memory.
+
+Review is part of the lifecycle.
+
+A second person should try to query a question from the sketch.
+
+If they cannot, the sketch is unfinished.
+
+Migration is the lifecycle continuing after launch.
+
+ALTER is not a failure of the first design.
+
+It is the design meeting a new fact.
+
+Still start from the sketch.
+
+Physical tricks come last, after the keys are honest.
+
+That order is the lifecycle.
+
+Tools will try to skip a view.
+
+An ORM that emits tables from classes is a logical step wearing a programming language.
+
+It still needs a conceptual sketch, or the classes will be screens.
+
+Screens are not entities.
+
+A checkout page can show customer, cart, and tax at once.
+
+That is three entities, maybe four.
+
+If you start from the page, you get one wide table named checkout.
+
+Resist.
+
+Reverse engineering is a lifecycle too.
+
+When you inherit a database, sketch what it actually is, not what you wish it were.
+
+Then decide which wish is a migration.
+
+Version the sketch.
+
+A picture in a slide deck from last year is not versioned.
+
+A file next to the migrations is.
+
+Physical design includes collation, fillfactor, and tablespaces in some engines.
+
+You can ignore them while the keys are wrong.
+
+You cannot ignore them forever on a large cluster.
+
+That is still last.
+
+The lifecycle is a loop.
+
+New requirement, new sketch mark, new logical change, new physical tweak if needed.
+
+Skipping the first two is how extra1 is born.
+
+Keep the loop boring and the tables stay dull in the best way.
+
+Dull tables are queryable.
+
+That was the point of walking in order.
+
+A skipped conceptual hour becomes a month of ALTER.
+
+That trade is almost never worth it.
+
+Write three sentences before three tables.
+
+What exists, how it relates, what must never duplicate.
+
+Those sentences are the conceptual design.
+
+Logical design is only spelling them in keys.
+
+Physical design is only storing them.
+
+If you cannot find the three sentences, you are not ready for CREATE.
+
+Find them, then type.
+
+Most failed databases were not failed SQL.
+
+They were skipped conversations.
+
+Professionals gather requirements, then shape a conceptual picture, then a logical schema, then a physical one, then they load data and check that the questions still work.
+
+Requirement gathering is talking to the people who will live with the data.
+
+Owners, staff who enter rows, people who answer customers, people who write the application.
+
+Each group gets different questions.
+
+What must never be lost.
+
+What must never be duplicated.
+
+What a day of work looks like in names of things, not in screen mockups only.
+
+Study the old system if there is one.
+
+Sample files, spreadsheets, and reports are requirements in disguise.
+
+Write down whether you will record interviews, and get permission if you will.
+
+A prompt to a language model can suggest interview questions.
+
+It cannot attend the meeting for you.
+
+You still have to hear the nouns they actually use.
+
+Conceptual design turns those nouns into entities and relationships, often as an ER sketch, before types exist.
+
+If you cannot say what exists and how it relates in three sentences, you are not ready for CREATE TABLE.
+
+Logical design chooses keys, attributes, and tables that implement that sketch.
+
+This is where primary keys, foreign keys, and normal forms earn their keep.
+
+Physical design chooses types, indexes, and engine-specific storage.
+
+It is last on purpose.
+
+A beautiful index on a table that should not exist is a fast mistake.
+
+Implementation is CREATE, load, and constraint.
+
+Validation is: insert the ugly cases, run the questions from the interviews, and watch for anomalies.
+
+If a report from week one of gathering cannot be written as SQL, the schema is not done.
+
+Skipping conceptual work feels like speed.
+
+It becomes a month of ALTER.
+
+Skipping validation feels like shipping.
+
+It becomes two sources of truth in production.
+
+The lifecycle is a loop when the business changes.
+
+You gather again, you sketch again, you migrate with ALTER instead of pretending the first CREATE was eternal.
+
+Write three sentences: what exists, how it relates, what must never duplicate.
+
+Then type.
+
+Not the other way around.
+
+Walk the store through the three big steps, slowly.
+
+Requirements: owners say they sell products, take reviews, and refund by order.
+
+Staff say they retype emails because the old spreadsheet allowed two Mayas.
+
+Developers say they need a user id for login that is not the email.
+
+Those are requirements, not tables yet.
+
+Conceptual: product, user, order, review, refund as boxes, verbs between them.
+
+No types.
+
+No VARCHAR 255.
+
+Logical: keys on each box, review points at product and user, refund points at order.
+
+Normal forms applied until names live in one place.
+
+Physical: INTEGER ids, DECIMAL prices, TIMESTAMPTZ for placed_at if the engine has it, indexes on foreign keys.
+
+Implement: CREATE in dependency order, parents first.
+
+Load a dozen ugly rows: two reviews on one product, a refund, a user with no orders.
+
+Validate: can you list reviews for a product, refunds for an order, and refuse a review with a fake product_id.
+
+If any interview question from day one cannot run, you are still in logical design, not in production.
+
+Generative tools can draft interview questions and even draft CREATE statements.
+
+They cannot sit with the staff who retype emails.
+
+That conversation is the step that fails when teams open a SQL window first.
+
+Do not open the SQL window first.

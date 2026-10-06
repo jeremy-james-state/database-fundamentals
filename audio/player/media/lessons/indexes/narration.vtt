@@ -1,0 +1,584 @@
+1
+00:00:00,050 --> 00:00:05,972
+An index is extra structure that helps the engine find rows without reading the whole table.
+
+2
+00:00:05,972 --> 00:00:10,041
+Without one, a WHERE on email walks every customer.
+
+3
+00:00:10,041 --> 00:00:11,861
+That is a sequential scan.
+
+4
+00:00:11,861 --> 00:00:13,305
+Fine at four rows.
+
+5
+00:00:13,305 --> 00:00:15,041
+Painful at four million.
+
+6
+00:00:15,041 --> 00:00:18,222
+A B-tree keeps keys in sorted pages.
+
+7
+00:00:18,222 --> 00:00:19,972
+Lookups are logarithmic.
+
+8
+00:00:19,972 --> 00:00:25,611
+Range queries work: email greater than m, placed_at last week.
+
+9
+00:00:25,611 --> 00:00:28,875
+The primary key usually already has an index.
+
+10
+00:00:28,875 --> 00:00:31,527
+UNIQUE usually already has an index.
+
+11
+00:00:31,527 --> 00:00:35,000
+You add more for the columns you filter and join on.
+
+12
+00:00:35,000 --> 00:00:38,555
+orders.customer_id is a join column.
+
+13
+00:00:38,555 --> 00:00:42,944
+Index it if the engine did not already, because of the foreign key.
+
+14
+00:00:42,944 --> 00:00:45,569
+Some engines index foreign keys for you.
+
+15
+00:00:45,569 --> 00:00:46,763
+Some do not.
+
+16
+00:00:46,763 --> 00:00:47,583
+Check.
+
+17
+00:00:47,583 --> 00:00:53,958
+A covering index includes the columns a query selects, so the engine can skip the table heap.
+
+18
+00:00:53,958 --> 00:00:55,791
+That is a later tuning move.
+
+19
+00:00:55,791 --> 00:00:58,750
+A partial index covers only some rows.
+
+20
+00:00:58,750 --> 00:01:01,402
+WHERE deleted_at IS NULL.
+
+21
+00:01:01,402 --> 00:01:03,930
+Useful when most rows are archived.
+
+22
+00:01:03,930 --> 00:01:05,833
+Indexes cost writes.
+
+23
+00:01:05,833 --> 00:01:09,750
+Every INSERT, UPDATE, and DELETE maintains them.
+
+24
+00:01:09,750 --> 00:01:11,500
+They also cost disk.
+
+25
+00:01:11,500 --> 00:01:13,513
+Do not index every column.
+
+26
+00:01:13,513 --> 00:01:18,361
+Index the ones in WHERE, JOIN, and ORDER BY that actually run.
+
+27
+00:01:18,361 --> 00:01:20,638
+EXPLAIN a query before you argue.
+
+28
+00:01:20,638 --> 00:01:25,347
+If it already uses a primary key lookup, another index will not help.
+
+29
+00:01:25,347 --> 00:01:32,486
+Low-cardinality columns like a boolean make weak indexes unless you combine them or use a partial index.
+
+30
+00:01:32,486 --> 00:01:35,305
+Write CREATE INDEX with a name you can drop.
+
+31
+00:01:35,305 --> 00:01:38,763
+orders_customer_id_idx.
+
+32
+00:01:38,763 --> 00:01:39,652
+Measure.
+
+33
+00:01:39,652 --> 00:01:45,166
+If a report is still slow, look at the query shape before adding a fifth index.
+
+34
+00:01:45,166 --> 00:01:48,291
+Normalization and indexes are partners.
+
+35
+00:01:48,291 --> 00:01:51,138
+A good key lets a small index do a lot.
+
+36
+00:01:51,138 --> 00:01:54,458
+A wide, messy row makes a fat index.
+
+37
+00:01:54,458 --> 00:01:57,847
+Find without a full scan, but only where you look.
+
+38
+00:01:57,847 --> 00:02:00,305
+B-trees are not the only structure.
+
+39
+00:02:00,305 --> 00:02:05,625
+Hash indexes exist for equality in some engines and not in SQLite.
+
+40
+00:02:05,625 --> 00:02:10,611
+GIN and GiST in PostgreSQL serve documents and geometry.
+
+41
+00:02:10,611 --> 00:02:14,541
+You do not need them to understand why email should be indexed.
+
+42
+00:02:14,541 --> 00:02:17,472
+You need them when you search inside JSON later.
+
+43
+00:02:17,472 --> 00:02:21,333
+Clustered indexes in some engines are the table order.
+
+44
+00:02:21,333 --> 00:02:27,041
+SQLite's WITHOUT ROWID tables make the primary key the table organization.
+
+45
+00:02:27,041 --> 00:02:30,402
+That is physical design, after the logical key.
+
+46
+00:02:30,402 --> 00:02:33,625
+Fillfactor and reindex are maintenance.
+
+47
+00:02:33,625 --> 00:02:38,055
+VACUUM in SQLite reclaims space and can help the planner.
+
+48
+00:02:38,055 --> 00:02:39,583
+That is a later how-to.
+
+49
+00:02:39,583 --> 00:02:43,444
+Here, know that indexes fragment under heavy writes.
+
+50
+00:02:43,444 --> 00:02:45,930
+Measure again after a bulk load.
+
+51
+00:02:45,930 --> 00:02:48,986
+Composite indexes have a left-prefix rule.
+
+52
+00:02:48,986 --> 00:02:54,416
+An index on city, last_name helps WHERE city equals Austin.
+
+53
+00:02:54,416 --> 00:03:00,194
+It does not help WHERE last_name equals Maya as well as the other order would.
+
+54
+00:03:00,194 --> 00:03:06,569
+Put equality columns that shrink the set first, in the way your queries actually filter.
+
+55
+00:03:06,569 --> 00:03:09,180
+Do not guess the order without EXPLAIN.
+
+56
+00:03:09,180 --> 00:03:11,888
+Unused indexes still cost writes.
+
+57
+00:03:11,888 --> 00:03:14,208
+Drop them when the query is gone.
+
+58
+00:03:14,208 --> 00:03:16,555
+Name them so you can find who asked.
+
+59
+00:03:16,555 --> 00:03:19,069
+A comment in the migration is enough.
+
+60
+00:03:19,069 --> 00:03:24,250
+Find without a full scan, where you actually look, and not everywhere else.
+
+61
+00:03:24,250 --> 00:03:27,958
+That sentence is the whole index policy for this course.
+
+62
+00:03:27,958 --> 00:03:32,125
+B-trees, JOIN columns, EXPLAIN, then stop.
+
+63
+00:03:32,125 --> 00:03:35,833
+If you cannot name the query, you cannot name the index.
+
+64
+00:03:35,833 --> 00:03:37,458
+Write the query first.
+
+65
+00:03:37,458 --> 00:03:38,513
+EXPLAIN it.
+
+66
+00:03:38,513 --> 00:03:42,638
+If it scans a toy table, wait until the table is not a toy.
+
+67
+00:03:42,638 --> 00:03:48,444
+If it scans a large table on a column you filter every time, index that column.
+
+68
+00:03:48,444 --> 00:03:52,000
+If it already seeks on the primary key, walk away.
+
+69
+00:03:52,000 --> 00:03:56,916
+If writes hurt after the fifth index, drop the one whose query retired.
+
+70
+00:03:56,916 --> 00:04:00,375
+Names in migrations are how you find the retiree.
+
+71
+00:04:00,375 --> 00:04:03,166
+B-trees for equality and ranges.
+
+72
+00:04:03,166 --> 00:04:05,347
+Left prefix for composites.
+
+73
+00:04:05,347 --> 00:04:07,250
+Partial for the live subset.
+
+74
+00:04:07,250 --> 00:04:09,319
+That is enough policy to start.
+
+75
+00:04:09,319 --> 00:04:13,166
+Exotic index types can wait for exotic predicates.
+
+76
+00:04:13,166 --> 00:04:15,194
+Most stores are WHERE and JOIN.
+
+77
+00:04:15,194 --> 00:04:17,597
+Index those, then measure again.
+
+78
+00:04:17,597 --> 00:04:25,305
+An index is a lookup structure beside the table, like a book's table of contents, pointing at where a row lives.
+
+79
+00:04:25,305 --> 00:04:28,583
+Without one, a search can walk every row.
+
+80
+00:04:28,583 --> 00:04:33,000
+That is a sequential scan, and it gets slower as the table grows.
+
+81
+00:04:33,000 --> 00:04:37,305
+With a useful index, the engine jumps closer to the matches.
+
+82
+00:04:37,305 --> 00:04:43,541
+A B-tree index keeps keys in a balanced tree so every lookup is about the same depth.
+
+83
+00:04:43,541 --> 00:04:52,736
+Equality and ranges both like B-trees: customer_id equals seven, created_at greater than a date.
+
+84
+00:04:52,850 --> 00:04:56,591
+ORDER BY on an indexed column can avoid a separate sort.
+
+85
+00:04:56,591 --> 00:05:00,022
+The tree is a copy of the key values plus pointers.
+
+86
+00:05:00,022 --> 00:05:05,980
+Insert, update, and delete must maintain the tree, so writes get a little slower.
+
+87
+00:05:05,980 --> 00:05:08,661
+That is the tax you pay for faster reads.
+
+88
+00:05:08,661 --> 00:05:15,119
+Create an index on columns you filter and join, not on every column because it felt complete.
+
+89
+00:05:15,119 --> 00:05:19,216
+Each extra index is another structure to store and update.
+
+90
+00:05:19,216 --> 00:05:29,550
+A composite index on (city, created_at) helps a filter that uses city, or city and created_at, left to right.
+
+91
+00:05:29,550 --> 00:05:35,063
+It may not help a filter that only uses created_at, depending on the engine.
+
+92
+00:05:35,063 --> 00:05:38,313
+Lead with the equality column you actually use.
+
+93
+00:05:38,313 --> 00:05:43,216
+Primary keys and unique constraints usually already have an index.
+
+94
+00:05:43,216 --> 00:05:46,925
+Do not invent a second one for the same columns without a reason.
+
+95
+00:05:46,925 --> 00:05:54,147
+Full-text indexes are for language: words in a description, a body of text, a title search.
+
+96
+00:05:54,147 --> 00:06:00,744
+A B-tree on a huge TEXT column is a poor match for find me reviews that mention delayed shipping.
+
+97
+00:06:00,744 --> 00:06:08,452
+Full-text tokenization splits text into words, often ignores common words, and can rank by relevance.
+
+98
+00:06:08,452 --> 00:06:16,841
+It is not the same as LIKE percent delayed percent, which cannot use a normal B-tree well when the pattern starts with a wildcard.
+
+99
+00:06:16,841 --> 00:06:23,661
+Use B-tree for keys, dates, statuses, and the columns in JOIN and WHERE equality.
+
+100
+00:06:23,661 --> 00:06:26,550
+Use full-text for natural language search.
+
+101
+00:06:26,550 --> 00:06:33,452
+Clustered versus heap storage, hash indexes, and covering indexes are extra costumes.
+
+102
+00:06:33,452 --> 00:06:38,147
+Most application work is B-tree plus the occasional full-text.
+
+103
+00:06:38,147 --> 00:06:41,230
+Prove it with EXPLAIN when a query is slow.
+
+104
+00:06:41,230 --> 00:06:48,744
+If the plan still scans the heap of a large table, your WHERE is not using an index, or no index matches.
+
+105
+00:06:48,744 --> 00:06:53,286
+If writes crawled after you added six indexes, you over-indexed.
+
+106
+00:06:53,286 --> 00:06:55,800
+Index the questions you actually ask.
+
+107
+00:06:55,800 --> 00:06:58,133
+Not the columns you might someday filter.
+
+108
+00:06:58,133 --> 00:07:01,744
+A bookstore needs title search and isbn lookup.
+
+109
+00:07:01,744 --> 00:07:05,355
+It does not need an index on every descriptive adjective.
+
+110
+00:07:05,355 --> 00:07:08,619
+Measure, then add, then measure again.
+
+111
+00:07:08,619 --> 00:07:11,397
+The index is a tool, not a trophy.
+
+112
+00:07:11,397 --> 00:07:19,022
+B-tree on orders.customer_id speeds WHERE customer_id equals and JOIN customers.
+
+113
+00:07:19,022 --> 00:07:23,369
+B-tree on created_at speeds recent-order ranges.
+
+114
+00:07:23,369 --> 00:07:27,119
+Full-text on reviews.body speeds language search.
+
+115
+00:07:27,119 --> 00:07:30,119
+LIKE percent heat still struggles on a B-tree.
+
+116
+00:07:30,119 --> 00:07:32,855
+A shopping app search box is full-text.
+
+117
+00:07:32,855 --> 00:07:35,966
+An admin lookup by id is B-tree.
+
+118
+00:07:35,966 --> 00:07:46,355
+EXPLAIN a slow list of a customer's orders; if it scans orders, add customer_id index unless it is already a foreign key with an index.
+
+119
+00:07:46,355 --> 00:07:48,980
+Some engines index foreign keys for you.
+
+120
+00:07:48,980 --> 00:07:50,175
+Some do not.
+
+121
+00:07:50,175 --> 00:07:50,925
+Look.
+
+122
+00:07:50,925 --> 00:07:55,647
+Then stop adding indexes until the next slow query names a column.
+
+123
+00:07:55,647 --> 00:07:59,286
+Close with questions, the way a careful lecture does.
+
+124
+00:07:59,286 --> 00:08:02,341
+Answer in a sentence you could defend at a keyboard.
+
+125
+00:08:02,341 --> 00:08:03,675
+What is an index?
+
+126
+00:08:03,675 --> 00:08:06,133
+A lookup structure beside the table.
+
+127
+00:08:06,133 --> 00:08:07,550
+B-tree good for?
+
+128
+00:08:07,550 --> 00:08:11,258
+Equality, ranges, many ORDER BY keys.
+
+129
+00:08:11,258 --> 00:08:12,688
+Full-text good for?
+
+130
+00:08:12,688 --> 00:08:14,341
+Natural language search.
+
+131
+00:08:14,341 --> 00:08:15,508
+Write tax?
+
+132
+00:08:15,508 --> 00:08:17,647
+Each index must be maintained.
+
+133
+00:08:17,647 --> 00:08:19,077
+Index every column?
+
+134
+00:08:19,077 --> 00:08:19,841
+No.
+
+135
+00:08:19,841 --> 00:08:21,813
+Left prefix of composite?
+
+136
+00:08:21,813 --> 00:08:24,786
+Helps filters that start from the leading column.
+
+137
+00:08:24,786 --> 00:08:26,119
+LIKE percent word?
+
+138
+00:08:26,119 --> 00:08:28,022
+B-tree will not help much.
+
+139
+00:08:28,022 --> 00:08:30,522
+Primary key already indexed?
+
+140
+00:08:30,522 --> 00:08:31,480
+Usually.
+
+141
+00:08:31,480 --> 00:08:33,313
+Foreign keys indexed?
+
+142
+00:08:33,313 --> 00:08:34,772
+Depends on the engine.
+
+143
+00:08:34,772 --> 00:08:35,522
+Look.
+
+144
+00:08:35,522 --> 00:08:36,369
+Prove it?
+
+145
+00:08:36,369 --> 00:08:39,827
+EXPLAIN, then add, then EXPLAIN again.
+
+146
+00:08:39,827 --> 00:08:44,550
+If an answer needed a second table, go draw it before you write more SQL.
+

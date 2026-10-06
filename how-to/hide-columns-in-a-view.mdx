@@ -1,0 +1,71 @@
+---
+title: "Hide columns in a view"
+description: "Expose a view that omits or replaces sensitive columns while the underlying table keeps them."
+---
+
+Share the view, not the full table, when someone only needs part of the data.
+
+## Prerequisites
+
+- [Create a view](/how-to/create-a-view)
+- A table with a column you must not expose (for example `rides.rider`)
+
+## Omit or anonymize
+
+<Steps>
+  <Step title="See the full table">
+    ```sql
+    SELECT id, origin, destination, rider
+    FROM rides;
+    ```
+  </Step>
+  <Step title="Build a safer SELECT">
+    Leave `rider` out, or replace it with a label:
+
+    ```sql
+    SELECT
+      id,
+      origin,
+      destination,
+      'anonymous' AS rider
+    FROM rides;
+    ```
+
+    `'anonymous' AS rider` keeps a rider column for the reader, without the real names.
+  </Step>
+  <Step title="Save the view">
+    ```sql
+    CREATE VIEW analysis AS
+    SELECT
+      id,
+      origin,
+      destination,
+      'anonymous' AS rider
+    FROM rides;
+    ```
+
+    ```sql
+    SELECT *
+    FROM analysis;
+    ```
+  </Step>
+</Steps>
+
+<Warning>
+  A view is not a permissions system by itself. Anyone who can query `rides` can still read the real `rider` values. Restrict access to the underlying table as well.
+</Warning>
+
+## Verify the result
+
+You succeeded when `analysis` shows origins and destinations, and every `rider` value is `anonymous` (or the column is absent).
+
+## Troubleshooting
+
+- **Real names still visible**: you queried `rides`, not `analysis`.
+- **Need the ids hidden too**: omit `id` from the view’s `SELECT` list.
+
+## Related pages
+
+- [Views](/concepts/views)
+- [AS](/reference/as)
+- [CREATE VIEW](/reference/create-view)

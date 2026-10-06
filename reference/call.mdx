@@ -1,0 +1,33 @@
+---
+title: "CALL"
+description: "Runs a stored procedure."
+---
+
+## Syntax
+
+```sql
+CALL procedure_name(argument, ...);
+```
+
+## Arguments
+
+<ParamField body="procedure_name" type="identifier" required>
+  Procedure created with [CREATE PROCEDURE](/reference/create-procedure).
+</ParamField>
+
+<ParamField body="argument" type="value">
+  One value per parameter, in order.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql MySQL
+CALL credit_account(1, 10);
+```
+</CodeGroup>
+
+## Related references
+
+- [CREATE PROCEDURE](/reference/create-procedure)
+- [Create a stored procedure](/how-to/create-a-stored-procedure)

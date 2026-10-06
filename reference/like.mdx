@@ -1,0 +1,57 @@
+---
+title: "LIKE"
+description: "Matches a string against a pattern."
+---
+
+Use `LIKE` in `WHERE` when you need a rough match, not an exact `=`.
+
+In SQLite, `LIKE` is case-insensitive. `=` is case-sensitive.
+
+## Syntax
+
+```sql
+SELECT column
+FROM table
+WHERE column LIKE pattern;
+```
+
+## Arguments
+
+<ParamField body="pattern" type="string" required>
+  A string in single quotes. May include `%` and `_`.
+</ParamField>
+
+<ParamField body="%" type="wildcard">
+  Any sequence of characters, including an empty sequence. Not a single-character wildcard.
+</ParamField>
+
+<ParamField body="_" type="wildcard">
+  Exactly one character.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql Anywhere
+SELECT title
+FROM books
+WHERE title LIKE '%love%';
+```
+
+```sql Prefix
+SELECT title
+FROM books
+WHERE title LIKE 'The %';
+```
+
+```sql One letter
+SELECT title
+FROM books
+WHERE title LIKE 'P_re';
+```
+</CodeGroup>
+
+## Related references
+
+- [WHERE](/reference/where)
+- [Match text patterns](/how-to/match-patterns)

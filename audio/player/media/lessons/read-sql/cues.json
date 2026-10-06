@@ -1,0 +1,1608 @@
+{
+  "title": "Read SQL carefully",
+  "subtitle": "Clause order, then meaning",
+  "audio": "narration.mp3",
+  "duration": 561.072,
+  "slides": [],
+  "scenes": [
+    {
+      "id": "read",
+      "label": "Read",
+      "kind": "sql",
+      "title": "Say it in order",
+      "prompt": "Table, filter, columns",
+      "sql": [
+        "SELECT customer, total",
+        "FROM orders",
+        "WHERE city = 'Austin'",
+        "ORDER BY total DESC;"
+      ],
+      "products": [
+        [
+          "1",
+          "Maya",
+          "42.00"
+        ],
+        [
+          "2",
+          "Jordan",
+          "18.50"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 0,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 0,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 1,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 0,
+      "toLyric": 2
+    },
+    {
+      "id": "engine",
+      "label": "Order",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "customer",
+        "city",
+        "total"
+      ],
+      "rows": [
+        [
+          "101",
+          "Maya",
+          "Austin",
+          "42.00"
+        ],
+        [
+          "102",
+          "Jordan",
+          "Austin",
+          "18.50"
+        ],
+        [
+          "103",
+          "Sofia",
+          "Denver",
+          "61.00"
+        ],
+        [
+          "104",
+          "Maya",
+          "Austin",
+          "9.25"
+        ]
+      ],
+      "fromLyric": 2,
+      "toLyric": 3,
+      "steps": [
+        {
+          "lyricMin": 2,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "read-2",
+      "label": "Read",
+      "kind": "sql",
+      "title": "Say it in order",
+      "prompt": "Table, filter, columns",
+      "sql": [
+        "SELECT customer, total",
+        "FROM orders",
+        "WHERE city = 'Austin'",
+        "ORDER BY total DESC;"
+      ],
+      "products": [
+        [
+          "1",
+          "Maya",
+          "42.00"
+        ],
+        [
+          "2",
+          "Jordan",
+          "18.50"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 3,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 3,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 4,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 3,
+      "toLyric": 5
+    },
+    {
+      "id": "engine-2",
+      "label": "Order",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "customer",
+        "city",
+        "total"
+      ],
+      "rows": [
+        [
+          "101",
+          "Maya",
+          "Austin",
+          "42.00"
+        ],
+        [
+          "102",
+          "Jordan",
+          "Austin",
+          "18.50"
+        ],
+        [
+          "103",
+          "Sofia",
+          "Denver",
+          "61.00"
+        ],
+        [
+          "104",
+          "Maya",
+          "Austin",
+          "9.25"
+        ]
+      ],
+      "fromLyric": 5,
+      "toLyric": 6,
+      "steps": [
+        {
+          "lyricMin": 5,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nested",
+      "label": "Nested",
+      "kind": "sql",
+      "title": "Inside first",
+      "prompt": "A query as a table",
+      "sql": [
+        "SELECT city, AVG(total) AS avg_total",
+        "FROM (",
+        "  SELECT city, total FROM orders",
+        "  WHERE total > 10",
+        ") AS kept",
+        "GROUP BY city;"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 6,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 6,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 7,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 6,
+      "toLyric": 15
+    },
+    {
+      "id": "care",
+      "label": "Care",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "customer",
+        "city",
+        "total"
+      ],
+      "rows": [
+        [
+          "101",
+          "Maya",
+          "Austin",
+          "42.00"
+        ],
+        [
+          "102",
+          "Jordan",
+          "Austin",
+          "18.50"
+        ],
+        [
+          "103",
+          "Sofia",
+          "Denver",
+          "61.00"
+        ],
+        [
+          "104",
+          "Maya",
+          "Austin",
+          "9.25"
+        ]
+      ],
+      "fromLyric": 15,
+      "toLyric": 18,
+      "steps": [
+        {
+          "lyricMin": 15,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "read-3",
+      "label": "Read",
+      "kind": "sql",
+      "title": "Say it in order",
+      "prompt": "Table, filter, columns",
+      "sql": [
+        "SELECT customer, total",
+        "FROM orders",
+        "WHERE city = 'Austin'",
+        "ORDER BY total DESC;"
+      ],
+      "products": [
+        [
+          "1",
+          "Maya",
+          "42.00"
+        ],
+        [
+          "2",
+          "Jordan",
+          "18.50"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 18,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 18,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 18,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 18,
+      "toLyric": 24
+    },
+    {
+      "id": "nested-2",
+      "label": "Nested",
+      "kind": "sql",
+      "title": "Inside first",
+      "prompt": "A query as a table",
+      "sql": [
+        "SELECT city, AVG(total) AS avg_total",
+        "FROM (",
+        "  SELECT city, total FROM orders",
+        "  WHERE total > 10",
+        ") AS kept",
+        "GROUP BY city;"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 24,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 24,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 25,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 24,
+      "toLyric": 97
+    },
+    {
+      "id": "engine-3",
+      "label": "Order",
+      "kind": "table",
+      "headers": [
+        "order_id",
+        "customer",
+        "city",
+        "total"
+      ],
+      "rows": [
+        [
+          "101",
+          "Maya",
+          "Austin",
+          "42.00"
+        ],
+        [
+          "102",
+          "Jordan",
+          "Austin",
+          "18.50"
+        ],
+        [
+          "103",
+          "Sofia",
+          "Denver",
+          "61.00"
+        ],
+        [
+          "104",
+          "Maya",
+          "Austin",
+          "9.25"
+        ]
+      ],
+      "fromLyric": 97,
+      "toLyric": 100,
+      "steps": [
+        {
+          "lyricMin": 97,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "read-4",
+      "label": "Read",
+      "kind": "sql",
+      "title": "Say it in order",
+      "prompt": "Table, filter, columns",
+      "sql": [
+        "SELECT customer, total",
+        "FROM orders",
+        "WHERE city = 'Austin'",
+        "ORDER BY total DESC;"
+      ],
+      "products": [
+        [
+          "1",
+          "Maya",
+          "42.00"
+        ],
+        [
+          "2",
+          "Jordan",
+          "18.50"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 100,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 100,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 101,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 100,
+      "toLyric": 103
+    },
+    {
+      "id": "nested-3",
+      "label": "Nested",
+      "kind": "sql",
+      "title": "Inside first",
+      "prompt": "A query as a table",
+      "sql": [
+        "SELECT city, AVG(total) AS avg_total",
+        "FROM (",
+        "  SELECT city, total FROM orders",
+        "  WHERE total > 10",
+        ") AS kept",
+        "GROUP BY city;"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 103,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 103,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 105,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 103,
+      "toLyric": 182
+    }
+  ],
+  "lyrics": [
+    {
+      "start": 0.05,
+      "end": 2.722,
+      "text": "SQL looks like English until it does not.",
+      "slide": ""
+    },
+    {
+      "start": 2.722,
+      "end": 6.472,
+      "text": "The engine does not read a statement in the order you type it.",
+      "slide": ""
+    },
+    {
+      "start": 6.472,
+      "end": 9.555,
+      "text": "You type SELECT first because that is the custom.",
+      "slide": ""
+    },
+    {
+      "start": 9.555,
+      "end": 11.777,
+      "text": "The engine finds FROM first.",
+      "slide": ""
+    },
+    {
+      "start": 11.777,
+      "end": 14.875,
+      "text": "It needs a table before it can talk about columns.",
+      "slide": ""
+    },
+    {
+      "start": 14.875,
+      "end": 16.375,
+      "text": "Then it applies WHERE.",
+      "slide": ""
+    },
+    {
+      "start": 16.375,
+      "end": 17.652,
+      "text": "Then GROUP BY.",
+      "slide": ""
+    },
+    {
+      "start": 17.652,
+      "end": 18.694,
+      "text": "Then HAVING.",
+      "slide": ""
+    },
+    {
+      "start": 18.694,
+      "end": 19.902,
+      "text": "Then SELECT.",
+      "slide": ""
+    },
+    {
+      "start": 19.902,
+      "end": 21.333,
+      "text": "Then ORDER BY.",
+      "slide": ""
+    },
+    {
+      "start": 21.333,
+      "end": 22.347,
+      "text": "Then LIMIT.",
+      "slide": ""
+    },
+    {
+      "start": 22.347,
+      "end": 25.444,
+      "text": "If you read in that order, surprises shrink.",
+      "slide": ""
+    },
+    {
+      "start": 25.444,
+      "end": 26.902,
+      "text": "Start with the table.",
+      "slide": ""
+    },
+    {
+      "start": 26.902,
+      "end": 29.013,
+      "text": "Which rows survive the filter.",
+      "slide": ""
+    },
+    {
+      "start": 29.013,
+      "end": 30.388,
+      "text": "How they collapse.",
+      "slide": ""
+    },
+    {
+      "start": 30.388,
+      "end": 32.402,
+      "text": "Which columns you actually show.",
+      "slide": ""
+    },
+    {
+      "start": 32.402,
+      "end": 33.555,
+      "text": "How they sort.",
+      "slide": ""
+    },
+    {
+      "start": 33.555,
+      "end": 37.222,
+      "text": "A nested query is a table you invented for a moment.",
+      "slide": ""
+    },
+    {
+      "start": 37.222,
+      "end": 41.583,
+      "text": "Read the inside SELECT until it is a named result in your head.",
+      "slide": ""
+    },
+    {
+      "start": 41.583,
+      "end": 45.5,
+      "text": "Then read the outside SELECT as if that result were real.",
+      "slide": ""
+    },
+    {
+      "start": 45.5,
+      "end": 48.277,
+      "text": "Aliases are nicknames, not magic.",
+      "slide": ""
+    },
+    {
+      "start": 48.277,
+      "end": 52.361,
+      "text": "If you alias a column in SELECT, WHERE cannot see it yet.",
+      "slide": ""
+    },
+    {
+      "start": 52.361,
+      "end": 53.736,
+      "text": "WHERE ran earlier.",
+      "slide": ""
+    },
+    {
+      "start": 53.736,
+      "end": 59.68,
+      "text": "Use the real expression in WHERE, or filter later with HAVING, or wrap a subquery.",
+      "slide": ""
+    },
+    {
+      "start": 59.68,
+      "end": 61.43,
+      "text": "DISTINCT is not a group.",
+      "slide": ""
+    },
+    {
+      "start": 61.43,
+      "end": 65.055,
+      "text": "It only hides duplicate result rows after SELECT.",
+      "slide": ""
+    },
+    {
+      "start": 65.055,
+      "end": 67.361,
+      "text": "COUNT DISTINCT is a different tool.",
+      "slide": ""
+    },
+    {
+      "start": 67.361,
+      "end": 71.097,
+      "text": "It counts unique values, not unique whole rows.",
+      "slide": ""
+    },
+    {
+      "start": 71.097,
+      "end": 74.916,
+      "text": "AND and OR still need parentheses when they share a sentence.",
+      "slide": ""
+    },
+    {
+      "start": 74.916,
+      "end": 77.152,
+      "text": "BETWEEN includes both ends.",
+      "slide": ""
+    },
+    {
+      "start": 77.152,
+      "end": 79.583,
+      "text": "IN is a list of allowed values.",
+      "slide": ""
+    },
+    {
+      "start": 79.583,
+      "end": 83.125,
+      "text": "NOT IN becomes strange when the list contains NULL.",
+      "slide": ""
+    },
+    {
+      "start": 83.125,
+      "end": 86.486,
+      "text": "Prefer NOT EXISTS when absence is the point.",
+      "slide": ""
+    },
+    {
+      "start": 86.486,
+      "end": 89.847,
+      "text": "A correlated subquery runs once per outer row.",
+      "slide": ""
+    },
+    {
+      "start": 89.847,
+      "end": 92.527,
+      "text": "It can be clear, and it can be slow.",
+      "slide": ""
+    },
+    {
+      "start": 92.527,
+      "end": 96.361,
+      "text": "If you can write a join instead, try the join and compare.",
+      "slide": ""
+    },
+    {
+      "start": 96.361,
+      "end": 99.763,
+      "text": "SELECT star is fine at the keyboard when you are exploring.",
+      "slide": ""
+    },
+    {
+      "start": 99.763,
+      "end": 102.583,
+      "text": "It is a poor contract in an application.",
+      "slide": ""
+    },
+    {
+      "start": 102.583,
+      "end": 104.097,
+      "text": "Name the columns you mean.",
+      "slide": ""
+    },
+    {
+      "start": 104.097,
+      "end": 108.111,
+      "text": "Then a new column on the table does not leak into a report.",
+      "slide": ""
+    },
+    {
+      "start": 108.111,
+      "end": 111.138,
+      "text": "Comments in SQL start with dash dash.",
+      "slide": ""
+    },
+    {
+      "start": 111.138,
+      "end": 113.444,
+      "text": "They are for you, not the engine.",
+      "slide": ""
+    },
+    {
+      "start": 113.444,
+      "end": 118.597,
+      "text": "Read a statement out loud as columns, table, match, filter.",
+      "slide": ""
+    },
+    {
+      "start": 118.597,
+      "end": 122.138,
+      "text": "If you cannot say it in that order, the query is not ready.",
+      "slide": ""
+    },
+    {
+      "start": 122.138,
+      "end": 124.694,
+      "text": "Shrink it until the surprise goes away.",
+      "slide": ""
+    },
+    {
+      "start": 124.694,
+      "end": 126.416,
+      "text": "Remove the ORDER BY.",
+      "slide": ""
+    },
+    {
+      "start": 126.416,
+      "end": 128.083,
+      "text": "Remove the extra AND.",
+      "slide": ""
+    },
+    {
+      "start": 128.083,
+      "end": 130.263,
+      "text": "Run the smallest true question.",
+      "slide": ""
+    },
+    {
+      "start": 130.263,
+      "end": 131.569,
+      "text": "Then build back.",
+      "slide": ""
+    },
+    {
+      "start": 131.569,
+      "end": 134.986,
+      "text": "Careful reading is a skill, not a personality.",
+      "slide": ""
+    },
+    {
+      "start": 134.986,
+      "end": 137.083,
+      "text": "The clause order is the map.",
+      "slide": ""
+    },
+    {
+      "start": 137.083,
+      "end": 139.097,
+      "text": "Walk it the same way every time.",
+      "slide": ""
+    },
+    {
+      "start": 139.097,
+      "end": 141.138,
+      "text": "Punctuation is meaning.",
+      "slide": ""
+    },
+    {
+      "start": 141.138,
+      "end": 146.791,
+      "text": "A missing comma in the SELECT list glues two names into a bizarre alias.",
+      "slide": ""
+    },
+    {
+      "start": 146.791,
+      "end": 150.083,
+      "text": "A trailing comma is an error in standard SQL.",
+      "slide": ""
+    },
+    {
+      "start": 150.083,
+      "end": 154.333,
+      "text": "Read commas as and, then see if the sentence still works.",
+      "slide": ""
+    },
+    {
+      "start": 154.333,
+      "end": 158.611,
+      "text": "Indent so FROM, WHERE, and GROUP BY start a line.",
+      "slide": ""
+    },
+    {
+      "start": 158.611,
+      "end": 161.277,
+      "text": "Your eye should find the table without hunting.",
+      "slide": ""
+    },
+    {
+      "start": 161.277,
+      "end": 164.93,
+      "text": "Uppercase keywords are a style, not a requirement.",
+      "slide": ""
+    },
+    {
+      "start": 164.93,
+      "end": 167.611,
+      "text": "Pick one style and keep it for a file.",
+      "slide": ""
+    },
+    {
+      "start": 167.611,
+      "end": 171.652,
+      "text": "Comments should say why a filter exists, not what WHERE means.",
+      "slide": ""
+    },
+    {
+      "start": 171.652,
+      "end": 176.777,
+      "text": "If a query is a report, name it after the question, not after a person.",
+      "slide": ""
+    },
+    {
+      "start": 176.777,
+      "end": 180.791,
+      "text": "Future you will search for unpaid invoices, not a nickname.",
+      "slide": ""
+    },
+    {
+      "start": 180.791,
+      "end": 184.361,
+      "text": "When a query is slow, read it before you index it.",
+      "slide": ""
+    },
+    {
+      "start": 184.361,
+      "end": 187.208,
+      "text": "A cross join is not an index problem.",
+      "slide": ""
+    },
+    {
+      "start": 187.208,
+      "end": 195.041,
+      "text": "A function wrapped around a column can disable an index, which is a later lesson, but you can still see the function while reading.",
+      "slide": ""
+    },
+    {
+      "start": 195.041,
+      "end": 198.166,
+      "text": "CASE is a small decision tree in SELECT.",
+      "slide": ""
+    },
+    {
+      "start": 198.166,
+      "end": 200.666,
+      "text": "Read it as if, then, else.",
+      "slide": ""
+    },
+    {
+      "start": 200.666,
+      "end": 204.513,
+      "text": "Do not nest five of them if a table of labels would be clearer.",
+      "slide": ""
+    },
+    {
+      "start": 204.513,
+      "end": 208.194,
+      "text": "UNION removes duplicates between two result shapes.",
+      "slide": ""
+    },
+    {
+      "start": 208.194,
+      "end": 209.736,
+      "text": "UNION ALL keeps them.",
+      "slide": ""
+    },
+    {
+      "start": 209.736,
+      "end": 212.402,
+      "text": "Both require the same number of columns.",
+      "slide": ""
+    },
+    {
+      "start": 212.402,
+      "end": 214.763,
+      "text": "That is combining, not joining.",
+      "slide": ""
+    },
+    {
+      "start": 214.763,
+      "end": 217.347,
+      "text": "If you meant a match, you wanted JOIN.",
+      "slide": ""
+    },
+    {
+      "start": 217.347,
+      "end": 220.555,
+      "text": "If you meant two lists stacked, you wanted UNION.",
+      "slide": ""
+    },
+    {
+      "start": 220.555,
+      "end": 224.444,
+      "text": "Read the first line of a file of SQL as the question.",
+      "slide": ""
+    },
+    {
+      "start": 224.444,
+      "end": 230.472,
+      "text": "If the first line is SELECT star FROM a huge table with no WHERE, you are exploring.",
+      "slide": ""
+    },
+    {
+      "start": 230.472,
+      "end": 232.375,
+      "text": "Add LIMIT while you explore.",
+      "slide": ""
+    },
+    {
+      "start": 232.375,
+      "end": 236.25,
+      "text": "Take it off when the question is real and the filter is tight.",
+      "slide": ""
+    },
+    {
+      "start": 236.25,
+      "end": 238.111,
+      "text": "Care is a habit of shrinking.",
+      "slide": ""
+    },
+    {
+      "start": 238.111,
+      "end": 240.18,
+      "text": "The engine will run what you wrote.",
+      "slide": ""
+    },
+    {
+      "start": 240.18,
+      "end": 243.013,
+      "text": "Your job is to have written the question you meant.",
+      "slide": ""
+    },
+    {
+      "start": 243.013,
+      "end": 250.888,
+      "text": "Memorizing clause order as if it were 2010 sets you up to compete with a machine that already memorized it.",
+      "slide": ""
+    },
+    {
+      "start": 250.888,
+      "end": 252.694,
+      "text": "You will lose that contest.",
+      "slide": ""
+    },
+    {
+      "start": 252.694,
+      "end": 260.25,
+      "text": "Your job is to know what question you are asking, why a query answers it, and whether the tables can even hold the answer.",
+      "slide": ""
+    },
+    {
+      "start": 260.25,
+      "end": 262.013,
+      "text": "SQL is declarative.",
+      "slide": ""
+    },
+    {
+      "start": 262.013,
+      "end": 263.638,
+      "text": "You describe the result.",
+      "slide": ""
+    },
+    {
+      "start": 263.638,
+      "end": 267.902,
+      "text": "You do not narrate the nested loops unless you are reading a query plan.",
+      "slide": ""
+    },
+    {
+      "start": 267.902,
+      "end": 272.75,
+      "text": "That is why a short English question translates so well into SELECT.",
+      "slide": ""
+    },
+    {
+      "start": 272.858,
+      "end": 276.96,
+      "text": "It is also why a vague question produces confident nonsense.",
+      "slide": ""
+    },
+    {
+      "start": 276.96,
+      "end": 281.516,
+      "text": "If you cannot say which rows should vanish, you are not ready to filter.",
+      "slide": ""
+    },
+    {
+      "start": 281.516,
+      "end": 285.641,
+      "text": "If you cannot name the grain of a row, you are not ready to join.",
+      "slide": ""
+    },
+    {
+      "start": 285.641,
+      "end": 288.169,
+      "text": "Grain means: what is one row about.",
+      "slide": ""
+    },
+    {
+      "start": 288.169,
+      "end": 292.488,
+      "text": "An orders row is about one purchase, not about a customer.",
+      "slide": ""
+    },
+    {
+      "start": 292.488,
+      "end": 297.169,
+      "text": "A customers row is about one person, not about their purchases.",
+      "slide": ""
+    },
+    {
+      "start": 297.169,
+      "end": 299.599,
+      "text": "Mix the grain, and totals lie.",
+      "slide": ""
+    },
+    {
+      "start": 299.599,
+      "end": 303.474,
+      "text": "When a tool writes SQL for you, read it like a code review.",
+      "slide": ""
+    },
+    {
+      "start": 303.474,
+      "end": 307.308,
+      "text": "Does the FROM name the table whose grain matches the question?",
+      "slide": ""
+    },
+    {
+      "start": 307.308,
+      "end": 310.21,
+      "text": "Does every JOIN have an ON that is a real key?",
+      "slide": ""
+    },
+    {
+      "start": 310.21,
+      "end": 312.835,
+      "text": "Is there a Cartesian risk if ON is missing?",
+      "slide": ""
+    },
+    {
+      "start": 312.835,
+      "end": 317.627,
+      "text": "Does WHERE filter rows before grouping, and HAVING filter groups after?",
+      "slide": ""
+    },
+    {
+      "start": 317.627,
+      "end": 320.03,
+      "text": "Are strings quoted and numbers not?",
+      "slide": ""
+    },
+    {
+      "start": 320.03,
+      "end": 322.099,
+      "text": "Is NULL tested with IS NULL?",
+      "slide": ""
+    },
+    {
+      "start": 322.099,
+      "end": 324.71,
+      "text": "Does the SELECT list match the GROUP BY?",
+      "slide": ""
+    },
+    {
+      "start": 324.71,
+      "end": 329.752,
+      "text": "If any answer is no, the generated query is a draft, not a fact.",
+      "slide": ""
+    },
+    {
+      "start": 329.752,
+      "end": 338.21,
+      "text": "Ask better questions of the tool: show only Austin orders over twenty, one row per order, columns customer and total.",
+      "slide": ""
+    },
+    {
+      "start": 338.21,
+      "end": 342.474,
+      "text": "That prompt has a grain, a filter, and a column list.",
+      "slide": ""
+    },
+    {
+      "start": 342.474,
+      "end": 344.877,
+      "text": "show insights about sales does not.",
+      "slide": ""
+    },
+    {
+      "start": 344.877,
+      "end": 349.127,
+      "text": "Learn how a filter is applied: each row is kept or dropped.",
+      "slide": ""
+    },
+    {
+      "start": 349.127,
+      "end": 354.224,
+      "text": "Learn how a join is applied: rows are matched, not stacked by honesty.",
+      "slide": ""
+    },
+    {
+      "start": 354.224,
+      "end": 360.696,
+      "text": "Learn how a group is applied: many rows become one, and leftover columns become lies.",
+      "slide": ""
+    },
+    {
+      "start": 360.696,
+      "end": 363.655,
+      "text": "Those three machines are the whole beginner engine.",
+      "slide": ""
+    },
+    {
+      "start": 363.655,
+      "end": 366.433,
+      "text": "Syntax is the spelling of those machines.",
+      "slide": ""
+    },
+    {
+      "start": 366.433,
+      "end": 371.349,
+      "text": "Spelling without the machines is karaoke in a language you do not speak.",
+      "slide": ""
+    },
+    {
+      "start": 371.349,
+      "end": 376.113,
+      "text": "Practice by taking a result you trust and writing the English first.",
+      "slide": ""
+    },
+    {
+      "start": 376.113,
+      "end": 377.585,
+      "text": "Then write the SQL.",
+      "slide": ""
+    },
+    {
+      "start": 377.585,
+      "end": 383.099,
+      "text": "Then break it on purpose: drop ON, drop WHERE, group the wrong column.",
+      "slide": ""
+    },
+    {
+      "start": 383.099,
+      "end": 384.266,
+      "text": "Watch the lie.",
+      "slide": ""
+    },
+    {
+      "start": 384.266,
+      "end": 388.738,
+      "text": "That is how you learn to see the lie when a tool hands it to you smiling.",
+      "slide": ""
+    },
+    {
+      "start": 388.738,
+      "end": 392.877,
+      "text": "Design tables so the questions you will ask have a place to land.",
+      "slide": ""
+    },
+    {
+      "start": 392.877,
+      "end": 396.308,
+      "text": "A missing parent key cannot be joined later by wishing.",
+      "slide": ""
+    },
+    {
+      "start": 396.308,
+      "end": 398.002,
+      "text": "Read SQL slowly.",
+      "slide": ""
+    },
+    {
+      "start": 398.002,
+      "end": 400.058,
+      "text": "One clause, one idea.",
+      "slide": ""
+    },
+    {
+      "start": 400.058,
+      "end": 402.502,
+      "text": "Then you are not competing with a generator.",
+      "slide": ""
+    },
+    {
+      "start": 402.502,
+      "end": 405.655,
+      "text": "You are the person who knows whether the answer is true.",
+      "slide": ""
+    },
+    {
+      "start": 405.655,
+      "end": 410.252,
+      "text": "Declarative means you can ask for Austin totals without writing a for-loop.",
+      "slide": ""
+    },
+    {
+      "start": 410.252,
+      "end": 414.849,
+      "text": "The engine may hash or nest-loop; you still described the result.",
+      "slide": ""
+    },
+    {
+      "start": 414.849,
+      "end": 421.349,
+      "text": "Your learning plan is: grain, keys, filters, groups, then syntax.",
+      "slide": ""
+    },
+    {
+      "start": 421.349,
+      "end": 423.821,
+      "text": "AI is a typist for the last step.",
+      "slide": ""
+    },
+    {
+      "start": 423.821,
+      "end": 430.877,
+      "text": "Tutorials that only show SELECT FROM WHERE JOIN forever never show a Cartesian product on purpose.",
+      "slide": ""
+    },
+    {
+      "start": 430.877,
+      "end": 432.196,
+      "text": "Show yourself one.",
+      "slide": ""
+    },
+    {
+      "start": 432.196,
+      "end": 434.669,
+      "text": "Then you will see it in generated SQL.",
+      "slide": ""
+    },
+    {
+      "start": 434.669,
+      "end": 440.016,
+      "text": "Then you are learning SQL in a way that still works when the typist is faster than you.",
+      "slide": ""
+    },
+    {
+      "start": 440.016,
+      "end": 443.419,
+      "text": "The 2010 path was reciting clauses.",
+      "slide": ""
+    },
+    {
+      "start": 443.419,
+      "end": 445.974,
+      "text": "The current path is defending meaning.",
+      "slide": ""
+    },
+    {
+      "start": 445.974,
+      "end": 447.363,
+      "text": "Defend it out loud.",
+      "slide": ""
+    },
+    {
+      "start": 447.363,
+      "end": 449.988,
+      "text": "If you cannot, do not run the query.",
+      "slide": ""
+    },
+    {
+      "start": 449.988,
+      "end": 453.627,
+      "text": "Close with questions, the way a careful lecture does.",
+      "slide": ""
+    },
+    {
+      "start": 453.627,
+      "end": 456.683,
+      "text": "Answer in a sentence you could defend at a keyboard.",
+      "slide": ""
+    },
+    {
+      "start": 456.683,
+      "end": 459.349,
+      "text": "Why not memorize syntax as the path?",
+      "slide": ""
+    },
+    {
+      "start": 459.349,
+      "end": 462.877,
+      "text": "A generator already did, and meaning still fails.",
+      "slide": ""
+    },
+    {
+      "start": 462.877,
+      "end": 464.558,
+      "text": "What does declarative mean?",
+      "slide": ""
+    },
+    {
+      "start": 464.558,
+      "end": 467.752,
+      "text": "You describe the result, not the nested loops.",
+      "slide": ""
+    },
+    {
+      "start": 467.752,
+      "end": 468.835,
+      "text": "What is grain?",
+      "slide": ""
+    },
+    {
+      "start": 468.835,
+      "end": 470.488,
+      "text": "What one row is about.",
+      "slide": ""
+    },
+    {
+      "start": 470.488,
+      "end": 472.016,
+      "text": "What is a bad prompt?",
+      "slide": ""
+    },
+    {
+      "start": 472.016,
+      "end": 476.641,
+      "text": "Show insights, with no grain, filter, or columns.",
+      "slide": ""
+    },
+    {
+      "start": 476.641,
+      "end": 478.044,
+      "text": "What is a good prompt?",
+      "slide": ""
+    },
+    {
+      "start": 478.044,
+      "end": 483.891,
+      "text": "One row per city, sum of totals, last month, columns city and spent.",
+      "slide": ""
+    },
+    {
+      "start": 483.891,
+      "end": 486.641,
+      "text": "What do you check in generated SQL first?",
+      "slide": ""
+    },
+    {
+      "start": 486.641,
+      "end": 493.724,
+      "text": "FROM grain, JOIN ON keys, WHERE versus HAVING, types, NULL tests, GROUP BY.",
+      "slide": ""
+    },
+    {
+      "start": 493.724,
+      "end": 495.224,
+      "text": "When do you delete a join?",
+      "slide": ""
+    },
+    {
+      "start": 495.224,
+      "end": 498.627,
+      "text": "When the column you need is already on the FROM table.",
+      "slide": ""
+    },
+    {
+      "start": 498.627,
+      "end": 500.433,
+      "text": "What is karaoke SQL?",
+      "slide": ""
+    },
+    {
+      "start": 500.433,
+      "end": 505.821,
+      "text": "Syntax without knowing the three machines: filter, join, group.",
+      "slide": ""
+    },
+    {
+      "start": 505.821,
+      "end": 507.155,
+      "text": "How do you practice?",
+      "slide": ""
+    },
+    {
+      "start": 507.155,
+      "end": 512.405,
+      "text": "English first, SQL second, then break ON and GROUP on purpose.",
+      "slide": ""
+    },
+    {
+      "start": 512.405,
+      "end": 514.169,
+      "text": "What must tables provide?",
+      "slide": ""
+    },
+    {
+      "start": 514.169,
+      "end": 516.558,
+      "text": "Keys so the questions can land.",
+      "slide": ""
+    },
+    {
+      "start": 516.558,
+      "end": 519.349,
+      "text": "Who wins if you compete on typing clauses?",
+      "slide": ""
+    },
+    {
+      "start": 519.349,
+      "end": 520.516,
+      "text": "The generator.",
+      "slide": ""
+    },
+    {
+      "start": 520.516,
+      "end": 522.405,
+      "text": "Who wins if you defend meaning?",
+      "slide": ""
+    },
+    {
+      "start": 522.405,
+      "end": 523.141,
+      "text": "You.",
+      "slide": ""
+    },
+    {
+      "start": 523.141,
+      "end": 526.308,
+      "text": "Is SQL like Java in how you specify steps?",
+      "slide": ""
+    },
+    {
+      "start": 526.308,
+      "end": 527.071,
+      "text": "No.",
+      "slide": ""
+    },
+    {
+      "start": 527.071,
+      "end": 529.002,
+      "text": "You do not narrate the steps.",
+      "slide": ""
+    },
+    {
+      "start": 529.002,
+      "end": 531.516,
+      "text": "Should you trust COUNT after a bad join?",
+      "slide": ""
+    },
+    {
+      "start": 531.516,
+      "end": 532.28,
+      "text": "No.",
+      "slide": ""
+    },
+    {
+      "start": 532.28,
+      "end": 534.196,
+      "text": "The grain already lied.",
+      "slide": ""
+    },
+    {
+      "start": 534.196,
+      "end": 536.03,
+      "text": "What is a Cartesian risk?",
+      "slide": ""
+    },
+    {
+      "start": 536.03,
+      "end": 538.558,
+      "text": "ON missing or matching a non-key.",
+      "slide": ""
+    },
+    {
+      "start": 538.558,
+      "end": 540.349,
+      "text": "WHERE versus HAVING again?",
+      "slide": ""
+    },
+    {
+      "start": 540.349,
+      "end": 543.155,
+      "text": "Rows before the group, groups after.",
+      "slide": ""
+    },
+    {
+      "start": 543.155,
+      "end": 544.46,
+      "text": "Quoted numbers?",
+      "slide": ""
+    },
+    {
+      "start": 544.46,
+      "end": 545.544,
+      "text": "A type lie.",
+      "slide": ""
+    },
+    {
+      "start": 545.544,
+      "end": 546.752,
+      "text": "LIKE on a date?",
+      "slide": ""
+    },
+    {
+      "start": 546.752,
+      "end": 548.28,
+      "text": "Usually a type lie.",
+      "slide": ""
+    },
+    {
+      "start": 548.28,
+      "end": 550.071,
+      "text": "When is the draft a fact?",
+      "slide": ""
+    },
+    {
+      "start": 550.071,
+      "end": 552.474,
+      "text": "When every clause earns its keep.",
+      "slide": ""
+    },
+    {
+      "start": 552.474,
+      "end": 555.099,
+      "text": "What do you do if you cannot explain a clause?",
+      "slide": ""
+    },
+    {
+      "start": 555.218,
+      "end": 556.279,
+      "text": "Do not run it.",
+      "slide": ""
+    },
+    {
+      "start": 556.279,
+      "end": 561.001,
+      "text": "If an answer needed a second table, go draw it before you write more SQL.",
+      "slide": ""
+    }
+  ]
+}

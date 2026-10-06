@@ -1,0 +1,63 @@
+---
+title: "Run a transaction"
+description: "Wrap related writes in BEGIN TRANSACTION, then COMMIT or ROLLBACK as one unit."
+---
+
+Other connections should not see half of a transfer. That is [isolation](/concepts/transactions).
+
+## Prerequisites
+
+- [Update rows](/how-to/update-rows)
+- [Transactions](/concepts/transactions) (ACID, locks, race conditions)
+
+## Commit a unit of work
+
+<Steps>
+  <Step title="Begin">
+    ```sql
+    BEGIN TRANSACTION;
+    ```
+  </Step>
+  <Step title="Do every write that belongs together">
+    ```sql
+    UPDATE accounts
+    SET balance = balance + 10
+    WHERE id = 2;
+
+    UPDATE accounts
+    SET balance = balance - 10
+    WHERE id = 1;
+    ```
+
+    A second terminal’s `SELECT` should still show the old balances until you commit.
+  </Step>
+  <Step title="Commit or roll back">
+    Save:
+
+    ```sql
+    COMMIT;
+    ```
+
+    Or undo the whole unit:
+
+    ```sql
+    ROLLBACK;
+    ```
+  </Step>
+</Steps>
+
+## Verify the result
+
+You succeeded when both balances change only after `COMMIT`, and `ROLLBACK` restores the pre-`BEGIN` state.
+
+## Troubleshooting
+
+- **Constraint failed mid-transaction**: `ROLLBACK` (or let the failed statement abort the unit, depending on mode) and fix the data.
+- **Race with another writer**: exclusive locks serialize writes; retry if you get a busy/locked error.
+
+## Related pages
+
+- [Transactions](/concepts/transactions)
+- [BEGIN](/reference/begin)
+- [COMMIT](/reference/commit)
+- [ROLLBACK](/reference/rollback)

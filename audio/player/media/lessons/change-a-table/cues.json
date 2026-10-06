@@ -1,0 +1,1926 @@
+{
+  "title": "Change a table",
+  "subtitle": "CREATE, INSERT, UPDATE, DELETE, ALTER",
+  "audio": "narration.mp3",
+  "duration": 510.144,
+  "slides": [],
+  "scenes": [
+    {
+      "id": "shape",
+      "label": "CREATE",
+      "kind": "sql",
+      "title": "Shape the table",
+      "prompt": "customers",
+      "sql": [
+        "CREATE TABLE customers (",
+        "  customer_id INTEGER,",
+        "  name TEXT,",
+        "  city TEXT",
+        ");"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 0,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 1,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 2,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 0,
+      "toLyric": 12
+    },
+    {
+      "id": "verbs",
+      "label": "INSERT",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "name",
+        "city"
+      ],
+      "rows": [
+        [
+          "1",
+          "Maya",
+          "Austin"
+        ],
+        [
+          "2",
+          "Jordan",
+          "Austin"
+        ],
+        [
+          "3",
+          "Sofia",
+          "Denver"
+        ]
+      ],
+      "fromLyric": 12,
+      "toLyric": 15,
+      "steps": [
+        {
+          "lyricMin": 12,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rows",
+      "label": "INSERT",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "name",
+        "city"
+      ],
+      "rows": [
+        [
+          "1",
+          "Maya",
+          "Austin"
+        ],
+        [
+          "2",
+          "Jordan",
+          "Austin"
+        ],
+        [
+          "3",
+          "Sofia",
+          "Denver"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 15,
+          "actions": [
+            "enter",
+            "show-header"
+          ]
+        },
+        {
+          "lyricMin": 15,
+          "actions": [
+            "reveal-rows"
+          ]
+        }
+      ],
+      "fromLyric": 15,
+      "toLyric": 18
+    },
+    {
+      "id": "update",
+      "label": "UPDATE",
+      "kind": "sql",
+      "title": "Change one row",
+      "prompt": "Move Sofia",
+      "sql": [
+        "UPDATE customers",
+        "SET city = 'Boulder'",
+        "WHERE customer_id = 3;"
+      ],
+      "products": [
+        [
+          "1",
+          "3",
+          "Sofia",
+          "Boulder"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 18,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 18,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 19,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 18,
+      "toLyric": 25
+    },
+    {
+      "id": "rows-2",
+      "label": "INSERT",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "name",
+        "city"
+      ],
+      "rows": [
+        [
+          "1",
+          "Maya",
+          "Austin"
+        ],
+        [
+          "2",
+          "Jordan",
+          "Austin"
+        ],
+        [
+          "3",
+          "Sofia",
+          "Denver"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 25,
+          "actions": [
+            "enter",
+            "show-header"
+          ]
+        },
+        {
+          "lyricMin": 25,
+          "actions": [
+            "reveal-rows"
+          ]
+        }
+      ],
+      "fromLyric": 25,
+      "toLyric": 26
+    },
+    {
+      "id": "update-2",
+      "label": "UPDATE",
+      "kind": "sql",
+      "title": "Change one row",
+      "prompt": "Move Sofia",
+      "sql": [
+        "UPDATE customers",
+        "SET city = 'Boulder'",
+        "WHERE customer_id = 3;"
+      ],
+      "products": [
+        [
+          "1",
+          "3",
+          "Sofia",
+          "Boulder"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 26,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 26,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 27,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 26,
+      "toLyric": 32
+    },
+    {
+      "id": "verbs-2",
+      "label": "INSERT",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "name",
+        "city"
+      ],
+      "rows": [
+        [
+          "1",
+          "Maya",
+          "Austin"
+        ],
+        [
+          "2",
+          "Jordan",
+          "Austin"
+        ],
+        [
+          "3",
+          "Sofia",
+          "Denver"
+        ]
+      ],
+      "fromLyric": 32,
+      "toLyric": 39,
+      "steps": [
+        {
+          "lyricMin": 32,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "caution",
+      "label": "INSERT",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "name",
+        "city"
+      ],
+      "rows": [
+        [
+          "1",
+          "Maya",
+          "Austin"
+        ],
+        [
+          "2",
+          "Jordan",
+          "Austin"
+        ],
+        [
+          "3",
+          "Sofia",
+          "Denver"
+        ]
+      ],
+      "fromLyric": 39,
+      "toLyric": 43,
+      "steps": [
+        {
+          "lyricMin": 39,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rows-3",
+      "label": "INSERT",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "name",
+        "city"
+      ],
+      "rows": [
+        [
+          "1",
+          "Maya",
+          "Austin"
+        ],
+        [
+          "2",
+          "Jordan",
+          "Austin"
+        ],
+        [
+          "3",
+          "Sofia",
+          "Denver"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 43,
+          "actions": [
+            "enter",
+            "show-header"
+          ]
+        },
+        {
+          "lyricMin": 44,
+          "actions": [
+            "reveal-rows"
+          ]
+        }
+      ],
+      "fromLyric": 43,
+      "toLyric": 45
+    },
+    {
+      "id": "verbs-3",
+      "label": "INSERT",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "name",
+        "city"
+      ],
+      "rows": [
+        [
+          "1",
+          "Maya",
+          "Austin"
+        ],
+        [
+          "2",
+          "Jordan",
+          "Austin"
+        ],
+        [
+          "3",
+          "Sofia",
+          "Denver"
+        ]
+      ],
+      "fromLyric": 45,
+      "toLyric": 47,
+      "steps": [
+        {
+          "lyricMin": 45,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "update-3",
+      "label": "UPDATE",
+      "kind": "sql",
+      "title": "Change one row",
+      "prompt": "Move Sofia",
+      "sql": [
+        "UPDATE customers",
+        "SET city = 'Boulder'",
+        "WHERE customer_id = 3;"
+      ],
+      "products": [
+        [
+          "1",
+          "3",
+          "Sofia",
+          "Boulder"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 47,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 47,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 47,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 47,
+      "toLyric": 48
+    },
+    {
+      "id": "caution-2",
+      "label": "INSERT",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "name",
+        "city"
+      ],
+      "rows": [
+        [
+          "1",
+          "Maya",
+          "Austin"
+        ],
+        [
+          "2",
+          "Jordan",
+          "Austin"
+        ],
+        [
+          "3",
+          "Sofia",
+          "Denver"
+        ]
+      ],
+      "fromLyric": 48,
+      "toLyric": 51,
+      "steps": [
+        {
+          "lyricMin": 48,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "update-4",
+      "label": "UPDATE",
+      "kind": "sql",
+      "title": "Change one row",
+      "prompt": "Move Sofia",
+      "sql": [
+        "UPDATE customers",
+        "SET city = 'Boulder'",
+        "WHERE customer_id = 3;"
+      ],
+      "products": [
+        [
+          "1",
+          "3",
+          "Sofia",
+          "Boulder"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 51,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 51,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 52,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 51,
+      "toLyric": 67
+    },
+    {
+      "id": "caution-3",
+      "label": "INSERT",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "name",
+        "city"
+      ],
+      "rows": [
+        [
+          "1",
+          "Maya",
+          "Austin"
+        ],
+        [
+          "2",
+          "Jordan",
+          "Austin"
+        ],
+        [
+          "3",
+          "Sofia",
+          "Denver"
+        ]
+      ],
+      "fromLyric": 67,
+      "toLyric": 72,
+      "steps": [
+        {
+          "lyricMin": 67,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "update-5",
+      "label": "UPDATE",
+      "kind": "sql",
+      "title": "Change one row",
+      "prompt": "Move Sofia",
+      "sql": [
+        "UPDATE customers",
+        "SET city = 'Boulder'",
+        "WHERE customer_id = 3;"
+      ],
+      "products": [
+        [
+          "1",
+          "3",
+          "Sofia",
+          "Boulder"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 72,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 72,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 84,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 72,
+      "toLyric": 96
+    },
+    {
+      "id": "shape-2",
+      "label": "CREATE",
+      "kind": "sql",
+      "title": "Shape the table",
+      "prompt": "customers",
+      "sql": [
+        "CREATE TABLE customers (",
+        "  customer_id INTEGER,",
+        "  name TEXT,",
+        "  city TEXT",
+        ");"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 96,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 96,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 97,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 96,
+      "toLyric": 108
+    },
+    {
+      "id": "rows-4",
+      "label": "INSERT",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "name",
+        "city"
+      ],
+      "rows": [
+        [
+          "1",
+          "Maya",
+          "Austin"
+        ],
+        [
+          "2",
+          "Jordan",
+          "Austin"
+        ],
+        [
+          "3",
+          "Sofia",
+          "Denver"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 108,
+          "actions": [
+            "enter",
+            "show-header"
+          ]
+        },
+        {
+          "lyricMin": 108,
+          "actions": [
+            "reveal-rows"
+          ]
+        }
+      ],
+      "fromLyric": 108,
+      "toLyric": 109
+    },
+    {
+      "id": "shape-3",
+      "label": "CREATE",
+      "kind": "sql",
+      "title": "Shape the table",
+      "prompt": "customers",
+      "sql": [
+        "CREATE TABLE customers (",
+        "  customer_id INTEGER,",
+        "  name TEXT,",
+        "  city TEXT",
+        ");"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 109,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 110,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 111,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 109,
+      "toLyric": 116
+    },
+    {
+      "id": "update-6",
+      "label": "UPDATE",
+      "kind": "sql",
+      "title": "Change one row",
+      "prompt": "Move Sofia",
+      "sql": [
+        "UPDATE customers",
+        "SET city = 'Boulder'",
+        "WHERE customer_id = 3;"
+      ],
+      "products": [
+        [
+          "1",
+          "3",
+          "Sofia",
+          "Boulder"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 116,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 116,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 117,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 116,
+      "toLyric": 123
+    },
+    {
+      "id": "caution-4",
+      "label": "INSERT",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "name",
+        "city"
+      ],
+      "rows": [
+        [
+          "1",
+          "Maya",
+          "Austin"
+        ],
+        [
+          "2",
+          "Jordan",
+          "Austin"
+        ],
+        [
+          "3",
+          "Sofia",
+          "Denver"
+        ]
+      ],
+      "fromLyric": 123,
+      "toLyric": 126,
+      "steps": [
+        {
+          "lyricMin": 123,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "verbs-4",
+      "label": "INSERT",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "name",
+        "city"
+      ],
+      "rows": [
+        [
+          "1",
+          "Maya",
+          "Austin"
+        ],
+        [
+          "2",
+          "Jordan",
+          "Austin"
+        ],
+        [
+          "3",
+          "Sofia",
+          "Denver"
+        ]
+      ],
+      "fromLyric": 126,
+      "toLyric": 144,
+      "steps": [
+        {
+          "lyricMin": 126,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "update-7",
+      "label": "UPDATE",
+      "kind": "sql",
+      "title": "Change one row",
+      "prompt": "Move Sofia",
+      "sql": [
+        "UPDATE customers",
+        "SET city = 'Boulder'",
+        "WHERE customer_id = 3;"
+      ],
+      "products": [
+        [
+          "1",
+          "3",
+          "Sofia",
+          "Boulder"
+        ]
+      ],
+      "steps": [
+        {
+          "lyricMin": 144,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 144,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 145,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 144,
+      "toLyric": 151
+    },
+    {
+      "id": "verbs-5",
+      "label": "INSERT",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "name",
+        "city"
+      ],
+      "rows": [
+        [
+          "1",
+          "Maya",
+          "Austin"
+        ],
+        [
+          "2",
+          "Jordan",
+          "Austin"
+        ],
+        [
+          "3",
+          "Sofia",
+          "Denver"
+        ]
+      ],
+      "fromLyric": 151,
+      "toLyric": 152,
+      "steps": [
+        {
+          "lyricMin": 151,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "caution-5",
+      "label": "INSERT",
+      "kind": "table",
+      "headers": [
+        "customer_id",
+        "name",
+        "city"
+      ],
+      "rows": [
+        [
+          "1",
+          "Maya",
+          "Austin"
+        ],
+        [
+          "2",
+          "Jordan",
+          "Austin"
+        ],
+        [
+          "3",
+          "Sofia",
+          "Denver"
+        ]
+      ],
+      "fromLyric": 152,
+      "toLyric": 154,
+      "steps": [
+        {
+          "lyricMin": 152,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows",
+            "keep-rows:0"
+          ]
+        }
+      ]
+    }
+  ],
+  "lyrics": [
+    {
+      "start": 0.05,
+      "end": 2.888,
+      "text": "Reading a table is only half the job.",
+      "slide": ""
+    },
+    {
+      "start": 2.888,
+      "end": 8.125,
+      "text": "You also create it, fill it, change it, and sometimes throw a column away.",
+      "slide": ""
+    },
+    {
+      "start": 8.125,
+      "end": 10.555,
+      "text": "Until now the table felt like a given.",
+      "slide": ""
+    },
+    {
+      "start": 10.555,
+      "end": 13.305,
+      "text": "Someone else had already named the columns.",
+      "slide": ""
+    },
+    {
+      "start": 13.305,
+      "end": 14.722,
+      "text": "Now you are the someone.",
+      "slide": ""
+    },
+    {
+      "start": 14.722,
+      "end": 18.805,
+      "text": "CREATE TABLE names the table and lists columns with types.",
+      "slide": ""
+    },
+    {
+      "start": 18.805,
+      "end": 22.138,
+      "text": "Each column is one attribute you promise to store.",
+      "slide": ""
+    },
+    {
+      "start": 22.138,
+      "end": 25.0,
+      "text": "customer_id is an integer.",
+      "slide": ""
+    },
+    {
+      "start": 25.0,
+      "end": 26.347,
+      "text": "name is text.",
+      "slide": ""
+    },
+    {
+      "start": 26.347,
+      "end": 27.819,
+      "text": "city is text.",
+      "slide": ""
+    },
+    {
+      "start": 27.819,
+      "end": 29.625,
+      "text": "That list is a contract.",
+      "slide": ""
+    },
+    {
+      "start": 29.625,
+      "end": 32.0,
+      "text": "Rows that arrive later have to fit it.",
+      "slide": ""
+    },
+    {
+      "start": 32.0,
+      "end": 33.597,
+      "text": "INSERT adds a row.",
+      "slide": ""
+    },
+    {
+      "start": 33.597,
+      "end": 37.68,
+      "text": "You list the columns, then the values, in the same order.",
+      "slide": ""
+    },
+    {
+      "start": 37.68,
+      "end": 42.291,
+      "text": "A second INSERT is a second customer \u2014 not an edit of the first.",
+      "slide": ""
+    },
+    {
+      "start": 42.291,
+      "end": 43.722,
+      "text": "Maya is one row.",
+      "slide": ""
+    },
+    {
+      "start": 43.722,
+      "end": 45.111,
+      "text": "Jordan is another.",
+      "slide": ""
+    },
+    {
+      "start": 45.111,
+      "end": 50.027,
+      "text": "If you insert Maya twice, you now have two Mayas unless a key stops you.",
+      "slide": ""
+    },
+    {
+      "start": 50.027,
+      "end": 53.138,
+      "text": "UPDATE changes values already in the table.",
+      "slide": ""
+    },
+    {
+      "start": 53.138,
+      "end": 55.111,
+      "text": "SET names the new value.",
+      "slide": ""
+    },
+    {
+      "start": 55.111,
+      "end": 57.083,
+      "text": "WHERE names which rows move.",
+      "slide": ""
+    },
+    {
+      "start": 57.083,
+      "end": 60.972,
+      "text": "Always pair UPDATE with WHERE, or every row moves.",
+      "slide": ""
+    },
+    {
+      "start": 60.972,
+      "end": 62.916,
+      "text": "That is the classic accident.",
+      "slide": ""
+    },
+    {
+      "start": 62.916,
+      "end": 64.625,
+      "text": "You meant Sofia's city.",
+      "slide": ""
+    },
+    {
+      "start": 64.625,
+      "end": 66.541,
+      "text": "You rewrote the whole column.",
+      "slide": ""
+    },
+    {
+      "start": 66.541,
+      "end": 68.486,
+      "text": "DELETE removes rows.",
+      "slide": ""
+    },
+    {
+      "start": 68.486,
+      "end": 71.972,
+      "text": "Again: WHERE, or the table goes quiet.",
+      "slide": ""
+    },
+    {
+      "start": 71.972,
+      "end": 75.861,
+      "text": "DELETE FROM customers with no filter is not bravery.",
+      "slide": ""
+    },
+    {
+      "start": 75.861,
+      "end": 77.027,
+      "text": "It is a wipe.",
+      "slide": ""
+    },
+    {
+      "start": 77.027,
+      "end": 79.236,
+      "text": "SELECT first when you are unsure.",
+      "slide": ""
+    },
+    {
+      "start": 79.236,
+      "end": 81.375,
+      "text": "See the rows the WHERE would catch.",
+      "slide": ""
+    },
+    {
+      "start": 81.375,
+      "end": 82.513,
+      "text": "Then change them.",
+      "slide": ""
+    },
+    {
+      "start": 82.513,
+      "end": 86.125,
+      "text": "ALTER TABLE adds a column when the world changes.",
+      "slide": ""
+    },
+    {
+      "start": 86.125,
+      "end": 88.069,
+      "text": "Maybe you now store an email.",
+      "slide": ""
+    },
+    {
+      "start": 88.069,
+      "end": 91.833,
+      "text": "Existing rows get NULL unless you supply a default.",
+      "slide": ""
+    },
+    {
+      "start": 91.833,
+      "end": 94.083,
+      "text": "ALTER can also rename a column.",
+      "slide": ""
+    },
+    {
+      "start": 94.083,
+      "end": 95.527,
+      "text": "It can drop a column.",
+      "slide": ""
+    },
+    {
+      "start": 95.527,
+      "end": 98.402,
+      "text": "Dropping a column throws the values away.",
+      "slide": ""
+    },
+    {
+      "start": 98.402,
+      "end": 101.375,
+      "text": "There is no undo in the statement itself.",
+      "slide": ""
+    },
+    {
+      "start": 101.375,
+      "end": 104.222,
+      "text": "DROP TABLE removes the table itself.",
+      "slide": ""
+    },
+    {
+      "start": 104.222,
+      "end": 105.902,
+      "text": "That is not a row delete.",
+      "slide": ""
+    },
+    {
+      "start": 105.902,
+      "end": 107.625,
+      "text": "The whole object is gone.",
+      "slide": ""
+    },
+    {
+      "start": 107.625,
+      "end": 110.638,
+      "text": "The name, the columns, the rows.",
+      "slide": ""
+    },
+    {
+      "start": 110.638,
+      "end": 112.833,
+      "text": "Think of CREATE as the shape.",
+      "slide": ""
+    },
+    {
+      "start": 112.833,
+      "end": 114.958,
+      "text": "INSERT as the first facts.",
+      "slide": ""
+    },
+    {
+      "start": 114.958,
+      "end": 116.666,
+      "text": "UPDATE as a correction.",
+      "slide": ""
+    },
+    {
+      "start": 116.666,
+      "end": 119.166,
+      "text": "DELETE as a removal of a fact.",
+      "slide": ""
+    },
+    {
+      "start": 119.166,
+      "end": 121.666,
+      "text": "ALTER as a later change to the shape.",
+      "slide": ""
+    },
+    {
+      "start": 121.666,
+      "end": 124.263,
+      "text": "DROP as taking the object off the shelf.",
+      "slide": ""
+    },
+    {
+      "start": 124.263,
+      "end": 127.666,
+      "text": "Practice on a copy, not the only copy you have.",
+      "slide": ""
+    },
+    {
+      "start": 127.666,
+      "end": 129.388,
+      "text": "Insert two rows.",
+      "slide": ""
+    },
+    {
+      "start": 129.388,
+      "end": 130.486,
+      "text": "Update one.",
+      "slide": ""
+    },
+    {
+      "start": 130.486,
+      "end": 131.722,
+      "text": "Delete the other.",
+      "slide": ""
+    },
+    {
+      "start": 131.722,
+      "end": 133.361,
+      "text": "Select to see the shape.",
+      "slide": ""
+    },
+    {
+      "start": 133.361,
+      "end": 135.736,
+      "text": "If ALTER feels scary, it should.",
+      "slide": ""
+    },
+    {
+      "start": 135.736,
+      "end": 139.0,
+      "text": "You are changing the contract other queries depend on.",
+      "slide": ""
+    },
+    {
+      "start": 139.0,
+      "end": 141.43,
+      "text": "Write the dangerous statements slowly.",
+      "slide": ""
+    },
+    {
+      "start": 141.43,
+      "end": 143.152,
+      "text": "Read the WHERE twice.",
+      "slide": ""
+    },
+    {
+      "start": 143.152,
+      "end": 145.722,
+      "text": "Then the table stays a place you can trust.",
+      "slide": ""
+    },
+    {
+      "start": 145.722,
+      "end": 151.402,
+      "text": "Transactions belong with this family of verbs, even if they get their own later lesson.",
+      "slide": ""
+    },
+    {
+      "start": 151.402,
+      "end": 156.847,
+      "text": "BEGIN, then INSERT, then a SELECT that looks wrong, then ROLLBACK.",
+      "slide": ""
+    },
+    {
+      "start": 156.847,
+      "end": 158.833,
+      "text": "The table forgets the insert.",
+      "slide": ""
+    },
+    {
+      "start": 158.833,
+      "end": 160.43,
+      "text": "COMMIT is how you keep it.",
+      "slide": ""
+    },
+    {
+      "start": 160.43,
+      "end": 164.597,
+      "text": "Until you commit, another session may not see your rows.",
+      "slide": ""
+    },
+    {
+      "start": 164.597,
+      "end": 166.972,
+      "text": "That is a feature when you are still deciding.",
+      "slide": ""
+    },
+    {
+      "start": 166.972,
+      "end": 171.111,
+      "text": "CREATE TABLE IF NOT EXISTS is for scripts you run twice.",
+      "slide": ""
+    },
+    {
+      "start": 171.111,
+      "end": 172.791,
+      "text": "It is not a design tool.",
+      "slide": ""
+    },
+    {
+      "start": 172.791,
+      "end": 176.555,
+      "text": "DROP TABLE IF EXISTS is for throwaway sandboxes.",
+      "slide": ""
+    },
+    {
+      "start": 176.555,
+      "end": 179.652,
+      "text": "It is not how a store retires a customer list.",
+      "slide": ""
+    },
+    {
+      "start": 179.652,
+      "end": 182.75,
+      "text": "INSERT can take a SELECT instead of VALUES.",
+      "slide": ""
+    },
+    {
+      "start": 182.75,
+      "end": 185.375,
+      "text": "That copies rows from a staging table.",
+      "slide": ""
+    },
+    {
+      "start": 185.375,
+      "end": 187.597,
+      "text": "Check the column order twice.",
+      "slide": ""
+    },
+    {
+      "start": 187.597,
+      "end": 191.944,
+      "text": "UPDATE can use a join in some dialects to patch from another table.",
+      "slide": ""
+    },
+    {
+      "start": 191.944,
+      "end": 195.611,
+      "text": "In SQLite you often write a subquery in SET.",
+      "slide": ""
+    },
+    {
+      "start": 195.611,
+      "end": 196.944,
+      "text": "Still use WHERE.",
+      "slide": ""
+    },
+    {
+      "start": 196.944,
+      "end": 201.444,
+      "text": "DELETE with a subquery can remove orphans you found on purpose.",
+      "slide": ""
+    },
+    {
+      "start": 201.444,
+      "end": 203.5,
+      "text": "SELECT those orphans first.",
+      "slide": ""
+    },
+    {
+      "start": 203.5,
+      "end": 206.638,
+      "text": "Keep a backup file before a destructive script.",
+      "slide": ""
+    },
+    {
+      "start": 206.638,
+      "end": 209.152,
+      "text": "A dump is cheaper than archaeology.",
+      "slide": ""
+    },
+    {
+      "start": 209.152,
+      "end": 211.902,
+      "text": "Column types on ALTER vary by engine.",
+      "slide": ""
+    },
+    {
+      "start": 211.902,
+      "end": 217.111,
+      "text": "SQLite will add a column and will not freely drop one in older versions.",
+      "slide": ""
+    },
+    {
+      "start": 217.111,
+      "end": 220.458,
+      "text": "PostgreSQL will do more in one ALTER.",
+      "slide": ""
+    },
+    {
+      "start": 220.458,
+      "end": 223.625,
+      "text": "Read the dialect before you promise a migration.",
+      "slide": ""
+    },
+    {
+      "start": 223.625,
+      "end": 227.68,
+      "text": "Default values on a new column backfill old rows.",
+      "slide": ""
+    },
+    {
+      "start": 227.68,
+      "end": 232.68,
+      "text": "Choose the default as if it were a historical fact, because it becomes one.",
+      "slide": ""
+    },
+    {
+      "start": 232.68,
+      "end": 233.944,
+      "text": "Rename with care.",
+      "slide": ""
+    },
+    {
+      "start": 233.944,
+      "end": 237.375,
+      "text": "Queries you have not found yet still use the old name.",
+      "slide": ""
+    },
+    {
+      "start": 237.375,
+      "end": 238.722,
+      "text": "The verbs are few.",
+      "slide": ""
+    },
+    {
+      "start": 238.722,
+      "end": 241.291,
+      "text": "The damage is large when WHERE is missing.",
+      "slide": ""
+    },
+    {
+      "start": 241.291,
+      "end": 244.083,
+      "text": "That is why this lesson is slow on purpose.",
+      "slide": ""
+    },
+    {
+      "start": 244.083,
+      "end": 247.555,
+      "text": "Shape, facts, correction, removal.",
+      "slide": ""
+    },
+    {
+      "start": 247.555,
+      "end": 250.208,
+      "text": "Say which one you are doing before you type it.",
+      "slide": ""
+    },
+    {
+      "start": 250.208,
+      "end": 254.097,
+      "text": "Table work and row work are two families of verbs.",
+      "slide": ""
+    },
+    {
+      "start": 254.097,
+      "end": 257.555,
+      "text": "CREATE and ALTER and DROP change the object.",
+      "slide": ""
+    },
+    {
+      "start": 257.555,
+      "end": 261.708,
+      "text": "INSERT and UPDATE and DELETE change the facts inside it.",
+      "slide": ""
+    },
+    {
+      "start": 261.708,
+      "end": 266.93,
+      "text": "Mixing the families in your head is how DROP gets typed when DELETE was meant.",
+      "slide": ""
+    },
+    {
+      "start": 266.93,
+      "end": 272.013,
+      "text": "CREATE TABLE starts with the name, then a list of columns in parentheses.",
+      "slide": ""
+    },
+    {
+      "start": 272.013,
+      "end": 274.694,
+      "text": "Each column is a name, then a type.",
+      "slide": ""
+    },
+    {
+      "start": 274.694,
+      "end": 277.847,
+      "text": "Lines in that list are separated by commas.",
+      "slide": ""
+    },
+    {
+      "start": 277.847,
+      "end": 282.138,
+      "text": "The primary key is part of the contract, not a later wish.",
+      "slide": ""
+    },
+    {
+      "start": 282.266,
+      "end": 287.854,
+      "text": "You can mark a column PRIMARY KEY on its line, or name the key in a separate line.",
+      "slide": ""
+    },
+    {
+      "start": 287.854,
+      "end": 292.896,
+      "text": "Both mean: this value identifies the row, and it will not repeat.",
+      "slide": ""
+    },
+    {
+      "start": 292.896,
+      "end": 296.729,
+      "text": "Types on CREATE are promises about what a cell may hold.",
+      "slide": ""
+    },
+    {
+      "start": 296.729,
+      "end": 300.229,
+      "text": "A later INSERT that breaks the type is refused.",
+      "slide": ""
+    },
+    {
+      "start": 300.229,
+      "end": 302.785,
+      "text": "That refusal is the point of the type.",
+      "slide": ""
+    },
+    {
+      "start": 302.785,
+      "end": 306.938,
+      "text": "CREATE TABLE IF NOT EXISTS is for a script you run twice.",
+      "slide": ""
+    },
+    {
+      "start": 306.938,
+      "end": 310.952,
+      "text": "It will not fix a table you already created with the wrong columns.",
+      "slide": ""
+    },
+    {
+      "start": 310.952,
+      "end": 316.118,
+      "text": "DROP TABLE removes the object: name, columns, rows.",
+      "slide": ""
+    },
+    {
+      "start": 316.118,
+      "end": 320.563,
+      "text": "DROP TABLE IF EXISTS is for a sandbox you are allowed to destroy.",
+      "slide": ""
+    },
+    {
+      "start": 320.563,
+      "end": 323.257,
+      "text": "It is not how a store retires customers.",
+      "slide": ""
+    },
+    {
+      "start": 323.257,
+      "end": 327.771,
+      "text": "INSERT lists columns, then VALUES, in the same order.",
+      "slide": ""
+    },
+    {
+      "start": 327.771,
+      "end": 330.243,
+      "text": "A second INSERT is a second row.",
+      "slide": ""
+    },
+    {
+      "start": 330.243,
+      "end": 335.896,
+      "text": "If you omit the column list, you are betting the table's column order never changes.",
+      "slide": ""
+    },
+    {
+      "start": 335.896,
+      "end": 337.313,
+      "text": "Name the columns.",
+      "slide": ""
+    },
+    {
+      "start": 337.313,
+      "end": 342.327,
+      "text": "INSERT can take a SELECT instead of VALUES when you copy from a staging table.",
+      "slide": ""
+    },
+    {
+      "start": 342.327,
+      "end": 344.966,
+      "text": "Check that copy with a SELECT first.",
+      "slide": ""
+    },
+    {
+      "start": 344.966,
+      "end": 349.646,
+      "text": "UPDATE names SET for the new value and WHERE for the rows that move.",
+      "slide": ""
+    },
+    {
+      "start": 349.646,
+      "end": 353.257,
+      "text": "Without WHERE, every row takes the new value.",
+      "slide": ""
+    },
+    {
+      "start": 353.257,
+      "end": 356.591,
+      "text": "That is the classic accident, and it is not rare.",
+      "slide": ""
+    },
+    {
+      "start": 356.591,
+      "end": 360.729,
+      "text": "SELECT the same WHERE before you UPDATE, and look at the rows.",
+      "slide": ""
+    },
+    {
+      "start": 360.729,
+      "end": 361.868,
+      "text": "Then change them.",
+      "slide": ""
+    },
+    {
+      "start": 361.868,
+      "end": 364.716,
+      "text": "DELETE removes rows that match WHERE.",
+      "slide": ""
+    },
+    {
+      "start": 364.716,
+      "end": 368.66,
+      "text": "Without WHERE, the table is empty and still exists.",
+      "slide": ""
+    },
+    {
+      "start": 368.66,
+      "end": 372.577,
+      "text": "That is different from DROP, which removes the table itself.",
+      "slide": ""
+    },
+    {
+      "start": 372.577,
+      "end": 379.007,
+      "text": "TRUNCATE, in engines that have it, empties rows as a bulk wipe and may reset counters.",
+      "slide": ""
+    },
+    {
+      "start": 379.007,
+      "end": 381.66,
+      "text": "Know which verb you are holding before you run it.",
+      "slide": ""
+    },
+    {
+      "start": 381.66,
+      "end": 389.813,
+      "text": "ALTER TABLE changes the contract after the table already has friends: queries, views, application code.",
+      "slide": ""
+    },
+    {
+      "start": 389.813,
+      "end": 392.327,
+      "text": "ADD COLUMN is the usual growth.",
+      "slide": ""
+    },
+    {
+      "start": 392.327,
+      "end": 397.924,
+      "text": "Existing rows get NULL unless you supply a default, and that default becomes history.",
+      "slide": ""
+    },
+    {
+      "start": 397.924,
+      "end": 400.591,
+      "text": "DROP COLUMN throws the values away.",
+      "slide": ""
+    },
+    {
+      "start": 400.591,
+      "end": 403.16,
+      "text": "There is no undo in the statement.",
+      "slide": ""
+    },
+    {
+      "start": 403.16,
+      "end": 409.702,
+      "text": "RENAME COLUMN breaks every query still using the old name, including ones you have not found yet.",
+      "slide": ""
+    },
+    {
+      "start": 409.702,
+      "end": 414.188,
+      "text": "Dialects disagree on how much ALTER can do in one trip.",
+      "slide": ""
+    },
+    {
+      "start": 414.188,
+      "end": 419.354,
+      "text": "SQLite will add a column readily and historically fought dropping one.",
+      "slide": ""
+    },
+    {
+      "start": 419.354,
+      "end": 422.896,
+      "text": "PostgreSQL will do more in a single ALTER.",
+      "slide": ""
+    },
+    {
+      "start": 422.896,
+      "end": 426.341,
+      "text": "Read the engine you are on before you promise a migration.",
+      "slide": ""
+    },
+    {
+      "start": 426.341,
+      "end": 433.716,
+      "text": "BEGIN, then a change, then SELECT, then ROLLBACK, is how you practice without keeping the damage.",
+      "slide": ""
+    },
+    {
+      "start": 433.716,
+      "end": 435.313,
+      "text": "COMMIT is how you keep it.",
+      "slide": ""
+    },
+    {
+      "start": 435.313,
+      "end": 439.479,
+      "text": "Until you commit, another session may not see your rows.",
+      "slide": ""
+    },
+    {
+      "start": 439.479,
+      "end": 442.799,
+      "text": "That isolation is a feature while you are still deciding.",
+      "slide": ""
+    },
+    {
+      "start": 442.799,
+      "end": 449.077,
+      "text": "Shape, facts, correction, removal, later shape, destruction of the object.",
+      "slide": ""
+    },
+    {
+      "start": 449.077,
+      "end": 451.16,
+      "text": "Say which one you are doing out loud.",
+      "slide": ""
+    },
+    {
+      "start": 451.16,
+      "end": 453.285,
+      "text": "Then type the verb that matches.",
+      "slide": ""
+    },
+    {
+      "start": 453.285,
+      "end": 458.216,
+      "text": "The table stays a place you can trust when WHERE is present and DROP is rare.",
+      "slide": ""
+    },
+    {
+      "start": 458.216,
+      "end": 462.729,
+      "text": "Table management commands: CREATE, ALTER, DROP.",
+      "slide": ""
+    },
+    {
+      "start": 462.729,
+      "end": 469.132,
+      "text": "Data management commands: INSERT, UPDATE, DELETE, and SELECT to verify.",
+      "slide": ""
+    },
+    {
+      "start": 469.132,
+      "end": 473.674,
+      "text": "The lecture splits those families so you do not DROP when you meant DELETE.",
+      "slide": ""
+    },
+    {
+      "start": 473.674,
+      "end": 477.757,
+      "text": "CREATE needs a name and a column list and usually a key.",
+      "slide": ""
+    },
+    {
+      "start": 477.757,
+      "end": 485.438,
+      "text": "ALTER ADD is growth, ALTER DROP is loss, ALTER RENAME is a breaking change for callers.",
+      "slide": ""
+    },
+    {
+      "start": 485.438,
+      "end": 490.979,
+      "text": "INSERT adds facts, UPDATE edits facts, DELETE removes facts.",
+      "slide": ""
+    },
+    {
+      "start": 490.979,
+      "end": 493.396,
+      "text": "SELECT is how you look before you leap.",
+      "slide": ""
+    },
+    {
+      "start": 493.396,
+      "end": 500.368,
+      "text": "Together they are the exact SQL you need to get a table installed and keep it honest, without a theory detour.",
+      "slide": ""
+    },
+    {
+      "start": 500.368,
+      "end": 507.257,
+      "text": "Practice the families on a copy named customers_lab until the verbs feel different in your hands.",
+      "slide": ""
+    },
+    {
+      "start": 507.257,
+      "end": 510.091,
+      "text": "Then use them on real names, slowly.",
+      "slide": ""
+    }
+  ]
+}

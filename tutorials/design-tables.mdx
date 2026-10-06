@@ -1,0 +1,113 @@
+---
+title: "Tutorial"
+description: "Create related tables with types and keys, then alter the schema and rebuild it from a file."
+---
+
+When you finish, you can write a `schema.sql`, apply it, and change a table without starting from a spreadsheet.
+
+## Prerequisites
+
+- SQLite ([open a SQLite database](/how-to/open-a-database))
+- [Normalization](/concepts/normalization) and [keys](/concepts/keys)
+- About 25 minutes
+
+<Info>
+Examples use SQLite. End every SQL statement with a semicolon. Use a new file such as `transit.db` so you do not overwrite lesson data.
+</Info>
+
+## Step 1: Create tables with types
+
+```sql
+CREATE TABLE stations (
+  id INTEGER,
+  name TEXT,
+  line TEXT
+);
+
+CREATE TABLE riders (
+  id INTEGER,
+  name TEXT
+);
+
+CREATE TABLE visits (
+  rider_id INTEGER,
+  station_id INTEGER,
+  type TEXT,
+  datetime NUMERIC,
+  fare NUMERIC
+);
+```
+
+You are on track when `.tables` lists all three.
+
+## Step 2: Recreate with constraints
+
+Drop the empty tables, then add keys and column rules:
+
+```sql
+DROP TABLE visits;
+DROP TABLE riders;
+DROP TABLE stations;
+
+CREATE TABLE stations (
+  id INTEGER,
+  name TEXT NOT NULL UNIQUE,
+  line TEXT,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE riders (
+  id INTEGER,
+  name TEXT,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE visits (
+  id INTEGER,
+  rider_id INTEGER,
+  station_id INTEGER,
+  type TEXT CHECK (type IN ('enter', 'exit')),
+  datetime NUMERIC DEFAULT CURRENT_TIMESTAMP,
+  fare NUMERIC CHECK (fare != 0),
+  PRIMARY KEY (id),
+  FOREIGN KEY (rider_id) REFERENCES riders (id),
+  FOREIGN KEY (station_id) REFERENCES stations (id)
+);
+```
+
+Turn foreign keys on in this session:
+
+```sql
+PRAGMA foreign_keys = ON;
+```
+
+## Step 3: Alter a column
+
+```sql
+ALTER TABLE visits
+ADD COLUMN duration INTEGER;
+```
+
+`.schema visits` should list `duration`.
+
+## Step 4: Save and apply a file
+
+Copy the `CREATE TABLE` statements into `schema.sql`. In a new empty database:
+
+```text
+sqlite> .read schema.sql
+```
+
+From the shell, the same file is:
+
+```bash
+sqlite3 transit.db < schema.sql
+```
+
+## Next steps
+
+You can design tables, constrain them, and rebuild from a file. Continue with:
+
+- [Show a schema](/how-to/show-a-schema)
+- [Alter a table](/how-to/alter-a-table)
+- [Storage classes](/concepts/storage-classes)

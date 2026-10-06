@@ -1,0 +1,275 @@
+Some things in the world carry their own identity.
+
+A customer is one of those.
+
+You can talk about Maya without mentioning an order.
+
+Her customer_id is enough.
+
+That is a strong entity.
+
+The table has a primary key that does not need another table to make sense.
+
+A weak entity cannot stand on that kind of key alone.
+
+Think of an order line: line one, two copies of Harbor Light.
+
+Line one on which order?
+
+Every order has a line one.
+
+The line number only identifies a row when you also know the order.
+
+The identity is borrowed.
+
+The parent order is the owner.
+
+The child's key is usually the owner's key plus a discriminator.
+
+order_id and line_no together.
+
+That composite key is a feature, not clutter.
+
+If you hide the parent, the child row stops making sense.
+
+Ask that question out loud.
+
+Does this row still name one thing if I erase the parent?
+
+If the answer is no, you have a weak entity.
+
+Rooms in a building work the same way.
+
+Room 12 in which building?
+
+Seats on a flight.
+
+Seat 14A on which flight number?
+
+Do not invent a random line_id just to pretend the child is strong.
+
+You can, and applications sometimes do.
+
+Then you still need a unique pair of order_id and line_no, or you will insert two line ones.
+
+The surrogate hides the weakness.
+
+It does not remove it.
+
+On a diagram, a weak entity is often a double box.
+
+The relationship to the owner is often a double diamond.
+
+You do not need the symbols to use the idea.
+
+You need the question about identity.
+
+Foreign keys and weak entities overlap but are not the same.
+
+orders.customer_id is a foreign key on a strong entity.
+
+The order still has order_id of its own.
+
+A weak child uses the parent's key as part of its own primary key.
+
+That is a tighter bond.
+
+Deleting the owner without the children is almost always wrong.
+
+The children were never independent facts.
+
+When you model, list the nouns.
+
+Circle the ones that already have a passport.
+
+Underline the ones that only make sense as a part of something else.
+
+Give the parts a composite key.
+
+Give the passports a simple key.
+
+Then the schema tells you which rows can travel alone.
+
+Ownership is not the same as a mere pointer.
+
+An order points at a customer and still has its own life.
+
+An order line is owned.
+
+You would not archive a line in a warehouse without the order header.
+
+That operational fact is the model.
+
+When teams argue about line_id, ask how they pick up the phone.
+
+Do they say line forty-two globally, or line two on order one-oh-one?
+
+The phone script is the key.
+
+History tables sometimes freeze a weak entity into a strong one by giving it a surrogate and copying the parent id as a plain foreign key.
+
+That can be right for analytics.
+
+It is a different job than checkout.
+
+Do not let the warehouse rewrite the checkout key without a meeting.
+
+Identifying relationships are the ER phrase for the weak bond.
+
+Non-identifying relationships are foreign keys that are not part of the child's primary key.
+
+Use the phrases if your diagram tool does.
+
+Use the identity test if it does not.
+
+Cascade deletes follow ownership.
+
+They do not follow every arrow.
+
+A weak child almost always cascades.
+
+A strong child almost always restricts.
+
+Write that next to the box.
+
+Examples besides lines: chapters of a book if you identify them as chapter three of book eleven.
+
+Comments on a review if they are numbered only inside the review.
+
+If comments have public permalink ids, they became strong.
+
+The world gets to decide.
+
+Your schema records the decision.
+
+Revisit it when permalinks appear.
+
+Until then, composite keys keep the weakness visible, which is a kindness to the next designer.
+
+Strong and weak are not about how important a table feels.
+
+They are about whether a thing can be identified on its own.
+
+Cardinality is how many: one, zero, many.
+
+Weakness is how identity works.
+
+Do not mix those two dials.
+
+A strong entity has its own unique identifier.
+
+A purchase with purchase_id is strong even if it points at a customer.
+
+Depending on another table for a foreign key is normal.
+
+Depending on another table to exist as an identity is the weak case.
+
+A weak entity cannot identify a row with only its own attributes.
+
+Its key is usually composite: the parent's key plus something local.
+
+A line on an order might be identified by order_id plus line_number.
+
+Line number three means nothing until you know which order.
+
+That is a weak entity, or at least a dependent identity.
+
+Beginners mark everything that 'belongs to' something as weak.
+
+An employee has a manager, so employee must be weak.
+
+No.
+
+Employee still has employee_id.
+
+Belonging is a relationship.
+
+Identity is a key.
+
+Use a weak design when the child is meaningless and unidentifiable without the parent, and you will never look it up by a surrogate of its own.
+
+Room 12 in building A is not the same as room 12 in building B.
+
+If the business says room numbers restart per building, the room is identified by building plus number.
+
+If every room gets a global room_id, you made it strong on purpose.
+
+That is allowed.
+
+You are choosing an identifier, not discovering a law of nature.
+
+When you do use a weak entity, the relationship to the parent is identifying.
+
+The parent's key is part of the child's key.
+
+Deleting the parent without a plan orphans identity itself, not just a pointer.
+
+In an ER diagram, weak entities are often shown with a double rectangle, and the identifying relationship with a double diamond, in Chen style.
+
+Crow's foot sketches may instead show the composite key in the table box.
+
+Pick a notation and stay consistent.
+
+The rare honest case is a child whose natural key is not unique until the parent is included.
+
+The common dishonest case is a regular table you were afraid to give an id.
+
+Give it an id if it is a thing you will query, update, and relate on its own.
+
+Keep it weak if its name is always 'the third line of that order' and never a thing with a passport of its own.
+
+Ask: can I find this row tomorrow without naming the parent?
+
+If yes, it is strong.
+
+If no, either add a surrogate and make it strong, or accept the composite and call it weak on purpose.
+
+Purpose is the whole lesson.
+
+Weak is a design choice with a cost.
+
+Do not spend it on ordinary belongs-to relationships.
+
+Walk a receipt.
+
+The purchase has purchase_id, a strong entity.
+
+Each line is line_number one, two, three inside that purchase.
+
+Line number two in another purchase is a different thing.
+
+Identity of a line is purchase_id plus line_number.
+
+That is weak, or identifying dependent, on purpose.
+
+Do not give the line a global line_id if the business will only ever say the third line of order 5001.
+
+Do give a global id if warehouse software will move lines between orders and still talk about line 88901.
+
+That second world made the line strong.
+
+A dependent person on an employee benefits form is the textbook weak example: name plus employee_id, because dependents are not issued employee numbers.
+
+If your company later issues every dependent a person_id, they stopped being weak.
+
+The ER mark changed because the identifiers changed, not because cardinality changed.
+
+One employee still has many dependents.
+
+That was always one-to-many.
+
+Weakness was only about the key.
+
+When not to use weak: any table you will load, search, and relate without reciting the parent id every time.
+
+Users, products, invoices with invoice_id, shipments with tracking numbers.
+
+Those are strong.
+
+Mislabeling them weak clutters the diagram with double lines that mean nothing in SQL.
+
+SQL still wants a PRIMARY KEY either way.
+
+The weak case just makes that key composite and identifying.
+
+Choose with the find-this-tomorrow test, then draw.

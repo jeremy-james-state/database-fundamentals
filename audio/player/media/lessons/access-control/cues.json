@@ -1,0 +1,1585 @@
+{
+  "title": "Access control",
+  "subtitle": "Who may read and write",
+  "audio": "narration.mp3",
+  "duration": 849.984,
+  "slides": [],
+  "scenes": [
+    {
+      "id": "grant",
+      "label": "GRANT",
+      "kind": "sql",
+      "title": "Least privilege",
+      "prompt": "Analyst reads",
+      "sql": [
+        "GRANT SELECT ON orders TO analyst;",
+        "REVOKE UPDATE ON orders FROM analyst;"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 0,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 0,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 1,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 0,
+      "toLyric": 30
+    },
+    {
+      "id": "layers",
+      "label": "Layers",
+      "kind": "table",
+      "headers": [
+        "role",
+        "SELECT",
+        "UPDATE"
+      ],
+      "rows": [
+        [
+          "analyst",
+          "yes",
+          "no"
+        ],
+        [
+          "clerk",
+          "yes",
+          "yes"
+        ]
+      ],
+      "fromLyric": 30,
+      "toLyric": 32,
+      "steps": [
+        {
+          "lyricMin": 30,
+          "actions": [
+            "enter",
+            "show-header",
+            "reveal-rows"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "grant-2",
+      "label": "GRANT",
+      "kind": "sql",
+      "title": "Least privilege",
+      "prompt": "Analyst reads",
+      "sql": [
+        "GRANT SELECT ON orders TO analyst;",
+        "REVOKE UPDATE ON orders FROM analyst;"
+      ],
+      "products": [],
+      "steps": [
+        {
+          "lyricMin": 32,
+          "actions": [
+            "enter",
+            "show-prompt"
+          ]
+        },
+        {
+          "lyricMin": 34,
+          "actions": [
+            "sql-type"
+          ]
+        },
+        {
+          "lyricMin": 35,
+          "actions": [
+            "results"
+          ]
+        }
+      ],
+      "fromLyric": 32,
+      "toLyric": 245
+    }
+  ],
+  "lyrics": [
+    {
+      "start": 0.05,
+      "end": 5.236,
+      "text": "A correct schema still leaks if every login can SELECT star from customers.",
+      "slide": ""
+    },
+    {
+      "start": 5.236,
+      "end": 12.541,
+      "text": "Access control is who may read, write, change shape, or grant those powers to someone else.",
+      "slide": ""
+    },
+    {
+      "start": 12.541,
+      "end": 16.263,
+      "text": "SQLite files are usually one user on disk.",
+      "slide": ""
+    },
+    {
+      "start": 16.263,
+      "end": 19.277,
+      "text": "The operating system password is the lock.",
+      "slide": ""
+    },
+    {
+      "start": 19.277,
+      "end": 23.763,
+      "text": "MySQL and PostgreSQL have users inside the server.",
+      "slide": ""
+    },
+    {
+      "start": 23.763,
+      "end": 26.736,
+      "text": "GRANT SELECT ON orders TO analyst.",
+      "slide": ""
+    },
+    {
+      "start": 26.736,
+      "end": 29.875,
+      "text": "REVOKE UPDATE ON orders FROM analyst.",
+      "slide": ""
+    },
+    {
+      "start": 29.875,
+      "end": 34.458,
+      "text": "Least privilege means start with nothing, then add the verbs required.",
+      "slide": ""
+    },
+    {
+      "start": 34.458,
+      "end": 38.097,
+      "text": "An analyst who never updates should not hold UPDATE.",
+      "slide": ""
+    },
+    {
+      "start": 38.097,
+      "end": 42.597,
+      "text": "A checkout service needs INSERT on orders and SELECT on books.",
+      "slide": ""
+    },
+    {
+      "start": 42.597,
+      "end": 44.472,
+      "text": "It does not need DROP TABLE.",
+      "slide": ""
+    },
+    {
+      "start": 44.472,
+      "end": 46.18,
+      "text": "Roles group privileges.",
+      "slide": ""
+    },
+    {
+      "start": 46.18,
+      "end": 49.527,
+      "text": "Grant to a role, then grant the role to people.",
+      "slide": ""
+    },
+    {
+      "start": 49.527,
+      "end": 54.805,
+      "text": "When someone changes jobs, you revoke the role, not twenty tables by hand.",
+      "slide": ""
+    },
+    {
+      "start": 54.805,
+      "end": 56.763,
+      "text": "Views can narrow columns.",
+      "slide": ""
+    },
+    {
+      "start": 56.763,
+      "end": 61.888,
+      "text": "A view without email lets support read names without seeing mailboxes.",
+      "slide": ""
+    },
+    {
+      "start": 61.888,
+      "end": 65.18,
+      "text": "GRANT SELECT on the view, not on the base table.",
+      "slide": ""
+    },
+    {
+      "start": 65.18,
+      "end": 69.541,
+      "text": "That is hide-columns as a security tool, not only a convenience.",
+      "slide": ""
+    },
+    {
+      "start": 69.541,
+      "end": 73.263,
+      "text": "Do not put the database root password in an application.",
+      "slide": ""
+    },
+    {
+      "start": 73.263,
+      "end": 77.708,
+      "text": "The application gets a user that can do its job and nothing louder.",
+      "slide": ""
+    },
+    {
+      "start": 77.708,
+      "end": 82.541,
+      "text": "Migrations may use a stricter user in a pipeline, not at runtime.",
+      "slide": ""
+    },
+    {
+      "start": 82.541,
+      "end": 85.972,
+      "text": "Row-level policies exist in PostgreSQL.",
+      "slide": ""
+    },
+    {
+      "start": 85.972,
+      "end": 88.736,
+      "text": "They filter which rows a user sees.",
+      "slide": ""
+    },
+    {
+      "start": 88.736,
+      "end": 91.0,
+      "text": "That is a later, sharper tool.",
+      "slide": ""
+    },
+    {
+      "start": 91.0,
+      "end": 93.208,
+      "text": "Start with GRANT and views.",
+      "slide": ""
+    },
+    {
+      "start": 93.208,
+      "end": 94.652,
+      "text": "Audit who has what.",
+      "slide": ""
+    },
+    {
+      "start": 94.652,
+      "end": 98.416,
+      "text": "A privilege you cannot name is a privilege you should revoke.",
+      "slide": ""
+    },
+    {
+      "start": 98.416,
+      "end": 101.347,
+      "text": "SQL injection is not a GRANT problem.",
+      "slide": ""
+    },
+    {
+      "start": 101.347,
+      "end": 103.291,
+      "text": "It is a query-building problem.",
+      "slide": ""
+    },
+    {
+      "start": 103.291,
+      "end": 107.263,
+      "text": "Prepared statements keep user text out of the statement shape.",
+      "slide": ""
+    },
+    {
+      "start": 107.263,
+      "end": 112.416,
+      "text": "You still GRANT only what the app user needs, so a stolen query does less.",
+      "slide": ""
+    },
+    {
+      "start": 112.416,
+      "end": 113.847,
+      "text": "Defense is layered.",
+      "slide": ""
+    },
+    {
+      "start": 113.847,
+      "end": 118.097,
+      "text": "Schema, privileges, views, prepared statements.",
+      "slide": ""
+    },
+    {
+      "start": 118.097,
+      "end": 120.583,
+      "text": "Write the job as verbs on tables.",
+      "slide": ""
+    },
+    {
+      "start": 120.583,
+      "end": 122.513,
+      "text": "Then GRANT those verbs.",
+      "slide": ""
+    },
+    {
+      "start": 122.513,
+      "end": 123.527,
+      "text": "Then stop.",
+      "slide": ""
+    },
+    {
+      "start": 123.527,
+      "end": 125.666,
+      "text": "PUBLIC is a role you should look at.",
+      "slide": ""
+    },
+    {
+      "start": 125.666,
+      "end": 129.18,
+      "text": "Some engines grant surprising defaults to PUBLIC.",
+      "slide": ""
+    },
+    {
+      "start": 129.18,
+      "end": 131.902,
+      "text": "REVOKE them when you mean least privilege.",
+      "slide": ""
+    },
+    {
+      "start": 131.902,
+      "end": 134.527,
+      "text": "Table owners bypass some checks.",
+      "slide": ""
+    },
+    {
+      "start": 134.527,
+      "end": 138.847,
+      "text": "Do not own application tables as the app user if you can avoid it.",
+      "slide": ""
+    },
+    {
+      "start": 138.847,
+      "end": 141.555,
+      "text": "Own as a migrator, grant to the app.",
+      "slide": ""
+    },
+    {
+      "start": 141.555,
+      "end": 144.944,
+      "text": "Column-level GRANT exists in PostgreSQL.",
+      "slide": ""
+    },
+    {
+      "start": 144.944,
+      "end": 149.694,
+      "text": "GRANT SELECT (name, city) ON customers TO support.",
+      "slide": ""
+    },
+    {
+      "start": 149.694,
+      "end": 152.68,
+      "text": "Views are still easier to explain to a human.",
+      "slide": ""
+    },
+    {
+      "start": 152.68,
+      "end": 155.805,
+      "text": "Use column grants when a view is too heavy.",
+      "slide": ""
+    },
+    {
+      "start": 155.805,
+      "end": 160.333,
+      "text": "TEMPORARY tables and TEMP are session-scoped in many engines.",
+      "slide": ""
+    },
+    {
+      "start": 160.333,
+      "end": 162.708,
+      "text": "They do not replace privilege design.",
+      "slide": ""
+    },
+    {
+      "start": 162.708,
+      "end": 167.18,
+      "text": "A user who can create a temp table still should not SELECT emails.",
+      "slide": ""
+    },
+    {
+      "start": 167.18,
+      "end": 172.638,
+      "text": "Passwords in the server should be hashed, and rotation should be a calendar event.",
+      "slide": ""
+    },
+    {
+      "start": 172.638,
+      "end": 177.041,
+      "text": "That is operations, and it still belongs next to GRANT in your head.",
+      "slide": ""
+    },
+    {
+      "start": 177.041,
+      "end": 181.208,
+      "text": "A leaked read-only user is better than a leaked superuser.",
+      "slide": ""
+    },
+    {
+      "start": 181.208,
+      "end": 183.069,
+      "text": "Design for leak size.",
+      "slide": ""
+    },
+    {
+      "start": 183.069,
+      "end": 186.472,
+      "text": "Logs of GRANT changes are part of access control.",
+      "slide": ""
+    },
+    {
+      "start": 186.472,
+      "end": 190.583,
+      "text": "If you cannot say who gave UPDATE last month, you cannot audit.",
+      "slide": ""
+    },
+    {
+      "start": 190.583,
+      "end": 191.902,
+      "text": "Turn the logs on.",
+      "slide": ""
+    },
+    {
+      "start": 191.902,
+      "end": 193.5,
+      "text": "The verbs were the start.",
+      "slide": ""
+    },
+    {
+      "start": 193.5,
+      "end": 196.097,
+      "text": "The job description is the GRANT list.",
+      "slide": ""
+    },
+    {
+      "start": 196.097,
+      "end": 197.319,
+      "text": "Keep them equal.",
+      "slide": ""
+    },
+    {
+      "start": 197.319,
+      "end": 199.222,
+      "text": "When they drift, revoke.",
+      "slide": ""
+    },
+    {
+      "start": 199.222,
+      "end": 202.736,
+      "text": "Then the schema's privacy matches the schema's shape.",
+      "slide": ""
+    },
+    {
+      "start": 202.736,
+      "end": 207.055,
+      "text": "If everyone is a superuser, you do not have access control.",
+      "slide": ""
+    },
+    {
+      "start": 207.055,
+      "end": 209.5,
+      "text": "You have a shared login and a hope.",
+      "slide": ""
+    },
+    {
+      "start": 209.5,
+      "end": 210.944,
+      "text": "Hope is not a GRANT.",
+      "slide": ""
+    },
+    {
+      "start": 210.944,
+      "end": 214.486,
+      "text": "Split migrator, app, analyst, support.",
+      "slide": ""
+    },
+    {
+      "start": 214.486,
+      "end": 216.361,
+      "text": "Give each a verb list.",
+      "slide": ""
+    },
+    {
+      "start": 216.361,
+      "end": 217.763,
+      "text": "Views for support.",
+      "slide": ""
+    },
+    {
+      "start": 217.763,
+      "end": 219.472,
+      "text": "SELECT for analysts.",
+      "slide": ""
+    },
+    {
+      "start": 219.472,
+      "end": 221.333,
+      "text": "INSERT where the app sells.",
+      "slide": ""
+    },
+    {
+      "start": 221.333,
+      "end": 222.888,
+      "text": "No DROP at runtime.",
+      "slide": ""
+    },
+    {
+      "start": 222.888,
+      "end": 224.75,
+      "text": "Revoke PUBLIC extras.",
+      "slide": ""
+    },
+    {
+      "start": 224.75,
+      "end": 226.125,
+      "text": "Log the GRANTs.",
+      "slide": ""
+    },
+    {
+      "start": 226.125,
+      "end": 227.708,
+      "text": "Prepare the statements.",
+      "slide": ""
+    },
+    {
+      "start": 227.708,
+      "end": 231.541,
+      "text": "Layer those, and a stolen query is a smaller fire.",
+      "slide": ""
+    },
+    {
+      "start": 231.541,
+      "end": 233.541,
+      "text": "Smaller fires are the design.",
+      "slide": ""
+    },
+    {
+      "start": 233.541,
+      "end": 235.513,
+      "text": "Least privilege is the name.",
+      "slide": ""
+    },
+    {
+      "start": 235.513,
+      "end": 238.277,
+      "text": "The job description is the implementation.",
+      "slide": ""
+    },
+    {
+      "start": 238.277,
+      "end": 242.416,
+      "text": "Databases hold credentials, payments, and secrets.",
+      "slide": ""
+    },
+    {
+      "start": 242.416,
+      "end": 249.347,
+      "text": "Two pillars protect them: access control for who may act, and cryptography for what a thief would see.",
+      "slide": ""
+    },
+    {
+      "start": 249.347,
+      "end": 253.93,
+      "text": "Miss either, and a copied file or a curious intern is enough.",
+      "slide": ""
+    },
+    {
+      "start": 253.93,
+      "end": 258.847,
+      "text": "Access control decides who can read, write, or administer.",
+      "slide": ""
+    },
+    {
+      "start": 258.847,
+      "end": 264.277,
+      "text": "Discretionary access control is an administrator granting privileges by hand.",
+      "slide": ""
+    },
+    {
+      "start": 264.277,
+      "end": 265.611,
+      "text": "It works on a toy.",
+      "slide": ""
+    },
+    {
+      "start": 265.611,
+      "end": 269.222,
+      "text": "It does not scale past a handful of people who never leave.",
+      "slide": ""
+    },
+    {
+      "start": 269.222,
+      "end": 274.194,
+      "text": "Mandatory access control assigns clearance levels to data and to people.",
+      "slide": ""
+    },
+    {
+      "start": 274.194,
+      "end": 279.083,
+      "text": "A user may read a row only if their clearance meets the label on that data.",
+      "slide": ""
+    },
+    {
+      "start": 279.083,
+      "end": 285.166,
+      "text": "Public, sensitive, confidential is a typical ladder in a school or hospital sketch.",
+      "slide": ""
+    },
+    {
+      "start": 285.29,
+      "end": 288.934,
+      "text": "Student names might be public inside the institution.",
+      "slide": ""
+    },
+    {
+      "start": 288.934,
+      "end": 290.67,
+      "text": "Grades might be sensitive.",
+      "slide": ""
+    },
+    {
+      "start": 290.67,
+      "end": 292.99,
+      "text": "Identity documents confidential.",
+      "slide": ""
+    },
+    {
+      "start": 292.99,
+      "end": 297.809,
+      "text": "The engine, or the surrounding system, must actually enforce the labels.",
+      "slide": ""
+    },
+    {
+      "start": 297.809,
+      "end": 301.878,
+      "text": "A comment in a wiki is not mandatory access control.",
+      "slide": ""
+    },
+    {
+      "start": 301.878,
+      "end": 308.253,
+      "text": "Role-based access control groups privileges into roles: analyst, clerk, admin.",
+      "slide": ""
+    },
+    {
+      "start": 308.253,
+      "end": 313.045,
+      "text": "You grant the role, not a thousand table privileges, to each person.",
+      "slide": ""
+    },
+    {
+      "start": 313.045,
+      "end": 316.267,
+      "text": "When someone changes jobs, you revoke the role.",
+      "slide": ""
+    },
+    {
+      "start": 316.267,
+      "end": 320.003,
+      "text": "When a job's duties change, you edit the role once.",
+      "slide": ""
+    },
+    {
+      "start": 320.003,
+      "end": 321.698,
+      "text": "That is why roles scale.",
+      "slide": ""
+    },
+    {
+      "start": 321.698,
+      "end": 326.448,
+      "text": "In SQL, GRANT SELECT ON orders TO analyst is the shape.",
+      "slide": ""
+    },
+    {
+      "start": 326.448,
+      "end": 328.073,
+      "text": "REVOKE takes it back.",
+      "slide": ""
+    },
+    {
+      "start": 328.073,
+      "end": 334.573,
+      "text": "GRANT with GRANT OPTION lets a user pass privileges on, which is a power you should hand out rarely.",
+      "slide": ""
+    },
+    {
+      "start": 334.573,
+      "end": 338.115,
+      "text": "Least privilege means a reporting user cannot DELETE.",
+      "slide": ""
+    },
+    {
+      "start": 338.115,
+      "end": 342.198,
+      "text": "An application role that takes orders should not ALTER TABLE.",
+      "slide": ""
+    },
+    {
+      "start": 342.198,
+      "end": 347.67,
+      "text": "Separate the account the app uses from the account a human uses to administer.",
+      "slide": ""
+    },
+    {
+      "start": 347.67,
+      "end": 349.087,
+      "text": "Hashing is one-way.",
+      "slide": ""
+    },
+    {
+      "start": 349.087,
+      "end": 352.49,
+      "text": "You store a hash of a password, not the password.",
+      "slide": ""
+    },
+    {
+      "start": 352.49,
+      "end": 356.531,
+      "text": "When the user types it again, you hash the attempt and compare.",
+      "slide": ""
+    },
+    {
+      "start": 356.531,
+      "end": 360.809,
+      "text": "A stolen table of hashes should not give readable passwords.",
+      "slide": ""
+    },
+    {
+      "start": 360.809,
+      "end": 370.24,
+      "text": "Salt, a per-row random value mixed into the hash, stops a single rainbow table from cracking every user who chose the same password.",
+      "slide": ""
+    },
+    {
+      "start": 370.24,
+      "end": 376.531,
+      "text": "Use a slow password hash designed for passwords, not a fast general hash meant for files.",
+      "slide": ""
+    },
+    {
+      "start": 376.531,
+      "end": 379.045,
+      "text": "Encryption is two-way with a key.",
+      "slide": ""
+    },
+    {
+      "start": 379.045,
+      "end": 385.99,
+      "text": "At rest, a disk or column can be ciphertext so a stolen file is not a stolen diary.",
+      "slide": ""
+    },
+    {
+      "start": 385.99,
+      "end": 391.753,
+      "text": "In transit, connections use encryption so a packet sniff is not a password dump.",
+      "slide": ""
+    },
+    {
+      "start": 391.753,
+      "end": 397.823,
+      "text": "Keys must live somewhere that is not the same stolen disk, or you encrypted with a sticky note.",
+      "slide": ""
+    },
+    {
+      "start": 397.823,
+      "end": 399.24,
+      "text": "Hash passwords.",
+      "slide": ""
+    },
+    {
+      "start": 399.24,
+      "end": 404.906,
+      "text": "Encrypt secrets you must later read, like a stored token the app must present.",
+      "slide": ""
+    },
+    {
+      "start": 404.906,
+      "end": 408.045,
+      "text": "Do not encrypt passwords you only need to check.",
+      "slide": ""
+    },
+    {
+      "start": 408.045,
+      "end": 413.198,
+      "text": "You would have to decrypt to compare, and then you are back to storing something reversible.",
+      "slide": ""
+    },
+    {
+      "start": 413.198,
+      "end": 419.087,
+      "text": "Access control without hashing still leaks passwords if the table is SELECT-able.",
+      "slide": ""
+    },
+    {
+      "start": 419.087,
+      "end": 425.823,
+      "text": "Hashing without access control still lets anyone run SELECT on the hashes and attack them at leisure.",
+      "slide": ""
+    },
+    {
+      "start": 425.823,
+      "end": 427.906,
+      "text": "Together they are the two doors.",
+      "slide": ""
+    },
+    {
+      "start": 427.906,
+      "end": 430.24,
+      "text": "This lesson stays on those doors.",
+      "slide": ""
+    },
+    {
+      "start": 430.24,
+      "end": 432.392,
+      "text": "It is not a cloud console tour.",
+      "slide": ""
+    },
+    {
+      "start": 432.392,
+      "end": 439.101,
+      "text": "It is GRANT, roles, labels, hashes, salts, and encryption used on purpose.",
+      "slide": ""
+    },
+    {
+      "start": 439.101,
+      "end": 446.281,
+      "text": "Write down who may read orders, who may update them, and whether a password is ever stored in the clear.",
+      "slide": ""
+    },
+    {
+      "start": 446.281,
+      "end": 449.837,
+      "text": "If the answer to the last is yes, stop and hash.",
+      "slide": ""
+    },
+    {
+      "start": 449.837,
+      "end": 454.212,
+      "text": "If everyone shares one admin login, stop and make roles.",
+      "slide": ""
+    },
+    {
+      "start": 454.212,
+      "end": 458.378,
+      "text": "Then the valuable rows have a chance of staying boring to an attacker.",
+      "slide": ""
+    },
+    {
+      "start": 458.378,
+      "end": 462.448,
+      "text": "Hashing is not encryption, said again with the school passwords.",
+      "slide": ""
+    },
+    {
+      "start": 462.448,
+      "end": 466.698,
+      "text": "Counselors do not decrypt a password to help a student log in.",
+      "slide": ""
+    },
+    {
+      "start": 466.698,
+      "end": 469.573,
+      "text": "They reset, which writes a new hash.",
+      "slide": ""
+    },
+    {
+      "start": 469.573,
+      "end": 473.99,
+      "text": "Encryption would have let them read the old password, which you never want.",
+      "slide": ""
+    },
+    {
+      "start": 473.99,
+      "end": 482.476,
+      "text": "Access control says counselors may UPDATE password_hash and not SELECT other students' grades if that is the policy.",
+      "slide": ""
+    },
+    {
+      "start": 482.476,
+      "end": 489.823,
+      "text": "GRANT UPDATE on that column, or on a procedure that resets, is tighter than GRANT UPDATE on the whole table.",
+      "slide": ""
+    },
+    {
+      "start": 489.823,
+      "end": 494.226,
+      "text": "Procedures and column grants are how least privilege gets specific.",
+      "slide": ""
+    },
+    {
+      "start": 494.226,
+      "end": 498.601,
+      "text": "If the engine lacks column grants, split confidential columns.",
+      "slide": ""
+    },
+    {
+      "start": 498.601,
+      "end": 505.198,
+      "text": "Splitting for security is still normalization-shaped: a table whose only job is secrets.",
+      "slide": ""
+    },
+    {
+      "start": 505.198,
+      "end": 507.642,
+      "text": "Point at it with a key from students.",
+      "slide": ""
+    },
+    {
+      "start": 507.642,
+      "end": 510.809,
+      "text": "GRANT on the secrets table to counselors only.",
+      "slide": ""
+    },
+    {
+      "start": 510.809,
+      "end": 515.295,
+      "text": "Now a leaked SELECT star on students is not a leaked id number.",
+      "slide": ""
+    },
+    {
+      "start": 515.295,
+      "end": 520.003,
+      "text": "That design is the long security film, in fundamentals language.",
+      "slide": ""
+    },
+    {
+      "start": 520.003,
+      "end": 523.642,
+      "text": "Close with questions, the way a careful lecture does.",
+      "slide": ""
+    },
+    {
+      "start": 523.642,
+      "end": 526.698,
+      "text": "Answer in a sentence you could defend at a keyboard.",
+      "slide": ""
+    },
+    {
+      "start": 526.698,
+      "end": 527.906,
+      "text": "Two pillars?",
+      "slide": ""
+    },
+    {
+      "start": 527.906,
+      "end": 532.962,
+      "text": "Access control for who may act, cryptography for what a thief would see.",
+      "slide": ""
+    },
+    {
+      "start": 532.962,
+      "end": 534.753,
+      "text": "Discretionary access?",
+      "slide": ""
+    },
+    {
+      "start": 534.753,
+      "end": 536.448,
+      "text": "Hand-granted privileges.",
+      "slide": ""
+    },
+    {
+      "start": 536.448,
+      "end": 537.698,
+      "text": "Fine for a toy.",
+      "slide": ""
+    },
+    {
+      "start": 537.698,
+      "end": 538.976,
+      "text": "Does not scale.",
+      "slide": ""
+    },
+    {
+      "start": 538.976,
+      "end": 540.642,
+      "text": "Mandatory access?",
+      "slide": ""
+    },
+    {
+      "start": 540.642,
+      "end": 543.476,
+      "text": "Clearance labels on data and on people.",
+      "slide": ""
+    },
+    {
+      "start": 543.476,
+      "end": 545.087,
+      "text": "Role-based access?",
+      "slide": ""
+    },
+    {
+      "start": 545.087,
+      "end": 548.684,
+      "text": "Privileges bundled in roles you grant and revoke.",
+      "slide": ""
+    },
+    {
+      "start": 548.684,
+      "end": 549.74,
+      "text": "GRANT shape?",
+      "slide": ""
+    },
+    {
+      "start": 549.74,
+      "end": 552.712,
+      "text": "GRANT SELECT ON orders TO analyst.",
+      "slide": ""
+    },
+    {
+      "start": 552.712,
+      "end": 553.642,
+      "text": "REVOKE?",
+      "slide": ""
+    },
+    {
+      "start": 553.642,
+      "end": 557.448,
+      "text": "Takes the privilege or role back the day someone leaves.",
+      "slide": ""
+    },
+    {
+      "start": 557.448,
+      "end": 558.503,
+      "text": "GRANT OPTION?",
+      "slide": ""
+    },
+    {
+      "start": 558.503,
+      "end": 560.837,
+      "text": "Lets a user pass privileges on.",
+      "slide": ""
+    },
+    {
+      "start": 560.837,
+      "end": 561.615,
+      "text": "Rare.",
+      "slide": ""
+    },
+    {
+      "start": 561.615,
+      "end": 562.878,
+      "text": "Least privilege?",
+      "slide": ""
+    },
+    {
+      "start": 562.878,
+      "end": 565.031,
+      "text": "The app cannot ALTER TABLE.",
+      "slide": ""
+    },
+    {
+      "start": 565.031,
+      "end": 567.003,
+      "text": "A reporter cannot DELETE.",
+      "slide": ""
+    },
+    {
+      "start": 567.122,
+      "end": 569.335,
+      "text": "Why split confidential columns?",
+      "slide": ""
+    },
+    {
+      "start": 569.335,
+      "end": 573.099,
+      "text": "If you cannot GRANT by column, make a secrets table.",
+      "slide": ""
+    },
+    {
+      "start": 573.099,
+      "end": 574.752,
+      "text": "Hash versus encrypt?",
+      "slide": ""
+    },
+    {
+      "start": 574.752,
+      "end": 576.877,
+      "text": "Hash is one-way for passwords.",
+      "slide": ""
+    },
+    {
+      "start": 576.877,
+      "end": 580.28,
+      "text": "Encrypt is two-way for secrets you must read back.",
+      "slide": ""
+    },
+    {
+      "start": 580.28,
+      "end": 581.113,
+      "text": "Salt?",
+      "slide": ""
+    },
+    {
+      "start": 581.113,
+      "end": 586.766,
+      "text": "Per-row randomness so one rainbow table cannot crack every identical password.",
+      "slide": ""
+    },
+    {
+      "start": 586.766,
+      "end": 588.71,
+      "text": "Why not encrypt passwords?",
+      "slide": ""
+    },
+    {
+      "start": 588.71,
+      "end": 592.863,
+      "text": "You would decrypt to compare, which means reversible storage.",
+      "slide": ""
+    },
+    {
+      "start": 592.863,
+      "end": 595.224,
+      "text": "Why not hash tokens you must send later?",
+      "slide": ""
+    },
+    {
+      "start": 595.224,
+      "end": 597.933,
+      "text": "You cannot recover the token from a hash.",
+      "slide": ""
+    },
+    {
+      "start": 597.933,
+      "end": 599.335,
+      "text": "Plaintext allowed?",
+      "slide": ""
+    },
+    {
+      "start": 599.335,
+      "end": 603.113,
+      "text": "For public facts like a course title, not for secrets.",
+      "slide": ""
+    },
+    {
+      "start": 603.113,
+      "end": 605.599,
+      "text": "GRANT SELECT to everyone on hashes?",
+      "slide": ""
+    },
+    {
+      "start": 605.599,
+      "end": 607.627,
+      "text": "Still a gift to attackers.",
+      "slide": ""
+    },
+    {
+      "start": 607.627,
+      "end": 610.21,
+      "text": "Locked GRANT with plaintext passwords?",
+      "slide": ""
+    },
+    {
+      "start": 610.21,
+      "end": 612.335,
+      "text": "A gift to a backup thief.",
+      "slide": ""
+    },
+    {
+      "start": 612.335,
+      "end": 614.113,
+      "text": "Column comment worth writing?",
+      "slide": ""
+    },
+    {
+      "start": 614.113,
+      "end": 617.474,
+      "text": "Hashed, encrypted, or plain, and why.",
+      "slide": ""
+    },
+    {
+      "start": 617.474,
+      "end": 618.96,
+      "text": "Clerk versus admin?",
+      "slide": ""
+    },
+    {
+      "start": 618.96,
+      "end": 620.155,
+      "text": "Different roles.",
+      "slide": ""
+    },
+    {
+      "start": 620.155,
+      "end": 622.558,
+      "text": "Never one shared admin login.",
+      "slide": ""
+    },
+    {
+      "start": 622.558,
+      "end": 624.419,
+      "text": "When do you review privileges?",
+      "slide": ""
+    },
+    {
+      "start": 624.419,
+      "end": 628.752,
+      "text": "Hire, leave, and when a table gains a sensitive column.",
+      "slide": ""
+    },
+    {
+      "start": 628.752,
+      "end": 630.169,
+      "text": "Is this a cloud tour?",
+      "slide": ""
+    },
+    {
+      "start": 630.169,
+      "end": 630.933,
+      "text": "No.",
+      "slide": ""
+    },
+    {
+      "start": 630.933,
+      "end": 636.197,
+      "text": "GRANT, roles, labels, hashes, salts, encryption.",
+      "slide": ""
+    },
+    {
+      "start": 636.197,
+      "end": 637.53,
+      "text": "Reset password?",
+      "slide": ""
+    },
+    {
+      "start": 637.53,
+      "end": 638.835,
+      "text": "Write a new hash.",
+      "slide": ""
+    },
+    {
+      "start": 638.835,
+      "end": 640.627,
+      "text": "Do not decrypt an old one.",
+      "slide": ""
+    },
+    {
+      "start": 640.627,
+      "end": 642.016,
+      "text": "Backup files?",
+      "slide": ""
+    },
+    {
+      "start": 642.016,
+      "end": 646.447,
+      "text": "Encrypt at rest so a stolen file is not a stolen diary.",
+      "slide": ""
+    },
+    {
+      "start": 646.447,
+      "end": 647.572,
+      "text": "Connections?",
+      "slide": ""
+    },
+    {
+      "start": 647.572,
+      "end": 649.141,
+      "text": "Encrypt in transit.",
+      "slide": ""
+    },
+    {
+      "start": 649.141,
+      "end": 650.502,
+      "text": "Where do keys live?",
+      "slide": ""
+    },
+    {
+      "start": 650.502,
+      "end": 653.766,
+      "text": "Not on the same stolen disk as the ciphertext.",
+      "slide": ""
+    },
+    {
+      "start": 653.766,
+      "end": 658.03,
+      "text": "Public students, sensitive grades, confidential ids?",
+      "slide": ""
+    },
+    {
+      "start": 658.03,
+      "end": 660.877,
+      "text": "A clearance ladder you must actually enforce.",
+      "slide": ""
+    },
+    {
+      "start": 660.877,
+      "end": 662.516,
+      "text": "Views that hide names?",
+      "slide": ""
+    },
+    {
+      "start": 662.516,
+      "end": 664.752,
+      "text": "A way to GRANT analysts less.",
+      "slide": ""
+    },
+    {
+      "start": 664.752,
+      "end": 666.905,
+      "text": "App account versus human admin?",
+      "slide": ""
+    },
+    {
+      "start": 666.905,
+      "end": 667.863,
+      "text": "Separate.",
+      "slide": ""
+    },
+    {
+      "start": 667.863,
+      "end": 670.933,
+      "text": "If a line in the security design is TBD?",
+      "slide": ""
+    },
+    {
+      "start": 670.933,
+      "end": 672.891,
+      "text": "Do not load real people yet.",
+      "slide": ""
+    },
+    {
+      "start": 672.891,
+      "end": 674.474,
+      "text": "Why is the film long?",
+      "slide": ""
+    },
+    {
+      "start": 674.474,
+      "end": 677.974,
+      "text": "Two doors, walked, with people in the schema.",
+      "slide": ""
+    },
+    {
+      "start": 677.974,
+      "end": 679.377,
+      "text": "What do you refuse?",
+      "slide": ""
+    },
+    {
+      "start": 679.377,
+      "end": 683.794,
+      "text": "TEXT passwords and a login named admin shared by all.",
+      "slide": ""
+    },
+    {
+      "start": 683.794,
+      "end": 688.516,
+      "text": "If an answer needed a second table, go draw it before you write more SQL.",
+      "slide": ""
+    },
+    {
+      "start": 688.516,
+      "end": 692.53,
+      "text": "Walk GRANT from a blank engine user who can only connect.",
+      "slide": ""
+    },
+    {
+      "start": 692.53,
+      "end": 699.197,
+      "text": "CREATE ROLE clerk, CREATE ROLE analyst, CREATE ROLE app, CREATE ROLE registrar.",
+      "slide": ""
+    },
+    {
+      "start": 699.197,
+      "end": 702.835,
+      "text": "GRANT SELECT INSERT UPDATE ON students TO clerk.",
+      "slide": ""
+    },
+    {
+      "start": 702.835,
+      "end": 705.516,
+      "text": "GRANT SELECT ON courses TO clerk.",
+      "slide": ""
+    },
+    {
+      "start": 705.516,
+      "end": 708.599,
+      "text": "GRANT SELECT ON enrollments TO analyst.",
+      "slide": ""
+    },
+    {
+      "start": 708.599,
+      "end": 711.766,
+      "text": "GRANT INSERT UPDATE ON enrollments TO app.",
+      "slide": ""
+    },
+    {
+      "start": 711.766,
+      "end": 716.655,
+      "text": "GRANT ALL ON ALL TABLES to registrar is tempting and usually too wide.",
+      "slide": ""
+    },
+    {
+      "start": 716.655,
+      "end": 721.766,
+      "text": "Registrar needs grades and ids; analyst does not need ids.",
+      "slide": ""
+    },
+    {
+      "start": 721.766,
+      "end": 725.919,
+      "text": "If ALL TABLES is how ids leak, list tables instead.",
+      "slide": ""
+    },
+    {
+      "start": 725.919,
+      "end": 730.863,
+      "text": "REVOKE INSERT ON students FROM clerk when clerks should not invent people.",
+      "slide": ""
+    },
+    {
+      "start": 730.863,
+      "end": 738.363,
+      "text": "A procedure reset_password that only updates password_hash is tighter than column guesswork.",
+      "slide": ""
+    },
+    {
+      "start": 738.363,
+      "end": 743.96,
+      "text": "GRANT EXECUTE on that procedure to helpdesk, not UPDATE on the whole users table.",
+      "slide": ""
+    },
+    {
+      "start": 743.96,
+      "end": 750.849,
+      "text": "Mandatory labels on rows, when you have them, mean a volunteer cannot UNION their way around a role.",
+      "slide": ""
+    },
+    {
+      "start": 750.849,
+      "end": 759.072,
+      "text": "Without row labels, two tables students_public and students_confidential are the poor person's MAC.",
+      "slide": ""
+    },
+    {
+      "start": 759.072,
+      "end": 763.058,
+      "text": "Do not put the confidential table in the same PUBLIC synonym.",
+      "slide": ""
+    },
+    {
+      "start": 763.058,
+      "end": 769.863,
+      "text": "Hashing parameters belong in a documented standard: algorithm, iterations, salt length.",
+      "slide": ""
+    },
+    {
+      "start": 769.863,
+      "end": 772.419,
+      "text": "Do not invent a fast homemade hash.",
+      "slide": ""
+    },
+    {
+      "start": 772.419,
+      "end": 782.266,
+      "text": "Encryption algorithms likewise: use what your platform already supports for columns or files, and keep keys in a vault the app reads at start.",
+      "slide": ""
+    },
+    {
+      "start": 782.266,
+      "end": 790.016,
+      "text": "Rotating keys means decrypting with the old and encrypting with the new, which is why reversible secrets are expensive.",
+      "slide": ""
+    },
+    {
+      "start": 790.016,
+      "end": 795.335,
+      "text": "Passwords never rotate by decryption; they rotate by user reset.",
+      "slide": ""
+    },
+    {
+      "start": 795.335,
+      "end": 805.266,
+      "text": "Audit who has GRANT OPTION once a quarter even in a fundamentals class project, because copies of class databases become real faster than you think.",
+      "slide": ""
+    },
+    {
+      "start": 805.266,
+      "end": 809.738,
+      "text": "A shared homework login is the admin-named-admin problem in costume.",
+      "slide": ""
+    },
+    {
+      "start": 809.738,
+      "end": 812.53,
+      "text": "Give each human a user, then a role.",
+      "slide": ""
+    },
+    {
+      "start": 812.53,
+      "end": 815.738,
+      "text": "Give the application a user, then a tighter role.",
+      "slide": ""
+    },
+    {
+      "start": 815.738,
+      "end": 817.294,
+      "text": "Never reuse those.",
+      "slide": ""
+    },
+    {
+      "start": 817.294,
+      "end": 824.155,
+      "text": "SELECT current privilege list after every GRANT until reading grants is a habit like reading WHERE.",
+      "slide": ""
+    },
+    {
+      "start": 824.155,
+      "end": 827.891,
+      "text": "Security that you cannot list is security you imagined.",
+      "slide": ""
+    },
+    {
+      "start": 827.891,
+      "end": 828.724,
+      "text": "List it.",
+      "slide": ""
+    },
+    {
+      "start": 828.724,
+      "end": 829.794,
+      "text": "Then hashing.",
+      "slide": ""
+    },
+    {
+      "start": 829.794,
+      "end": 831.085,
+      "text": "Then backups.",
+      "slide": ""
+    },
+    {
+      "start": 831.085,
+      "end": 837.072,
+      "text": "Then you are in the same ballpark as a twenty-minute security lecture instead of a three-minute slogan.",
+      "slide": ""
+    },
+    {
+      "start": 837.072,
+      "end": 839.002,
+      "text": "The slogan was two doors.",
+      "slide": ""
+    },
+    {
+      "start": 839.002,
+      "end": 848.335,
+      "text": "The lecture is walking through them with GRANT, roles, labels, hashes, salts, and encryption until the design has no TBD.",
+      "slide": ""
+    },
+    {
+      "start": 848.335,
+      "end": 849.919,
+      "text": "Close the TBD.",
+      "slide": ""
+    }
+  ]
+}

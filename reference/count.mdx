@@ -1,0 +1,53 @@
+---
+title: "COUNT"
+description: "Returns how many rows, or how many non-NULL values, you asked for."
+---
+
+`COUNT(*)` counts rows. `COUNT(column)` skips `NULL` in that column.
+
+## Syntax
+
+```sql
+SELECT COUNT(*)
+FROM table;
+
+SELECT COUNT(column)
+FROM table;
+
+SELECT COUNT(DISTINCT column)
+FROM table;
+```
+
+## Arguments
+
+<ParamField body="*" type="wildcard">
+  Count every row.
+</ParamField>
+
+<ParamField body="column" type="identifier">
+  Count non-`NULL` values in that column only.
+</ParamField>
+
+<ParamField body="DISTINCT" type="keyword">
+  Count unique non-`NULL` values.
+</ParamField>
+
+## Examples
+
+<CodeGroup>
+```sql Rows
+SELECT COUNT(*)
+FROM books;
+```
+
+```sql Unique
+SELECT COUNT(DISTINCT publisher) AS publisher_count
+FROM books;
+```
+</CodeGroup>
+
+## Related references
+
+- [DISTINCT](/reference/distinct)
+- [SQL](/concepts/sql#aggregator-functions)
+- [Summarize rows](/how-to/summarize-rows)

@@ -1,0 +1,32 @@
+---
+title: "LEFT JOIN"
+description: "Keeps every row from the left table. Missing matches are NULL."
+---
+
+`LEFT JOIN` is an outer join. The left table is the one in `FROM`.
+
+## Syntax
+
+```sql
+SELECT column
+FROM table1
+LEFT JOIN table2
+  ON table1.column = table2.column;
+```
+
+## Examples
+
+<CodeGroup>
+```sql Books without ratings
+SELECT title, stars
+FROM books
+LEFT JOIN ratings
+  ON ratings.book_id = books.book_id;
+```
+</CodeGroup>
+
+## Related references
+
+- [RIGHT JOIN](/reference/right-join)
+- [FULL JOIN](/reference/full-join)
+- [INNER JOIN](/reference/inner-join)

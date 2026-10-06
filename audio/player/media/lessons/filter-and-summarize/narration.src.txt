@@ -1,0 +1,433 @@
+You already know how to pull columns out of a table.
+
+The next skill is keeping only the rows you mean, and then counting them.
+
+Picture an orders table: who bought, from which city, and how much they spent.
+
+Four rows are enough to see the pattern.
+
+Maya ordered twice from Austin.
+
+Jordan ordered once from Austin.
+
+Sofia ordered once from Denver.
+
+SELECT without a filter returns every order.
+
+That is fine when the table fits on a screen.
+
+It falls apart when the table grows to thousands of rows.
+
+WHERE keeps a row only when a condition is true.
+
+Think of it as a gate on the way out of the table.
+
+Equals compares a column to a value.
+
+Strings sit in single quotes.
+
+Numbers do not.
+
+city equals Austin is a string test.
+
+total greater than twenty is a number test.
+
+You can ask for both at once.
+
+AND requires every condition to be true.
+
+OR lets a row through if any condition is true.
+
+Parentheses keep the logic honest when you mix them.
+
+Without parentheses, AND usually binds tighter than OR.
+
+Write the grouping you mean, then read it back out loud.
+
+NULL is not a value you can compare with equals.
+
+Unknown compared to Austin is not true.
+
+Use IS NULL when the cell is empty on purpose.
+
+Use IS NOT NULL when you need a real city.
+
+LIKE matches a pattern instead of an exact string.
+
+Percent means any run of characters.
+
+Underscore means exactly one character.
+
+Patterns still live in quotes.
+
+Once the rows are honest, you summarize.
+
+COUNT star counts rows that survived the filter.
+
+It does not count columns.
+
+It counts surviving rows.
+
+SUM adds a numeric column across those rows.
+
+AVG takes the mean.
+
+MIN and MAX find the edges.
+
+Those functions collapse many rows into one number — unless you group.
+
+GROUP BY collapses rows that share a value into one result row.
+
+Group by city, and Austin becomes one row.
+
+Denver becomes another.
+
+Then COUNT tells you how many orders that city produced.
+
+SUM tells you how much money that city produced.
+
+The select list may only keep the grouped column and the summaries.
+
+You cannot keep customer name unless you also group by it.
+
+That rule is the engine protecting you from a fake fact.
+
+HAVING filters groups after the grouping is done.
+
+WHERE filters rows before the group.
+
+That order is the whole trick.
+
+If you filter cities after the count, you want HAVING.
+
+If you filter rows before the count, you want WHERE.
+
+Read a summary query as a short story.
+
+Pick the columns you will show.
+
+Name the table.
+
+Keep the rows that belong.
+
+Group the ones that share a city.
+
+Keep the groups that still matter.
+
+Sort if the ranking is the point.
+
+Try it on the four-row table before you trust a warehouse.
+
+Filter Austin, and two customers remain.
+
+One of those orders is under twenty.
+
+AND total greater than twenty leaves Maya's large order.
+
+Group the original table by city, and Austin has three orders.
+
+Denver has one.
+
+HAVING COUNT star greater than two keeps only Austin.
+
+If a group looks empty, the filter probably ate the rows first.
+
+Write the WHERE, then count, then see if the story is still the one you meant.
+
+One idea at a time, and the table answers with a short, true list.
+
+A filter is a decision you can defend.
+
+If you cannot say which rows should vanish, you are not ready to summarize.
+
+Totals without a filter are a census.
+
+Totals with a filter are an answer.
+
+Watch the types in the comparison.
+
+Quoted twenty is text, and it will not compare the way a number does.
+
+Unquoted Austin is an identifier, and it will fail unless you have a column of that name.
+
+The quotes are part of the meaning.
+
+When a city list is long, IN keeps the WHERE readable.
+
+When the list comes from another query, the subquery is still a filter, not a join.
+
+You can filter, then join, then filter again.
+
+Each WHERE is still about rows, not groups.
+
+COUNT of a column ignores NULL in that column.
+
+COUNT star does not.
+
+That difference shows up the first time a city is missing.
+
+If you need distinct customers, COUNT DISTINCT customer, not COUNT star.
+
+Three Austin orders from two people are two customers.
+
+Summaries want that honesty.
+
+ORDER BY after a group sorts the groups, not the original rows.
+
+That is usually what a ranking wants.
+
+LIMIT without ORDER BY is an arbitrary handful.
+
+Do not treat it as top cities.
+
+Put the sort in when the ranking is the point.
+
+Practice one change at a time.
+
+Add WHERE.
+
+See the rows.
+
+Add GROUP BY.
+
+See the counts.
+
+Add HAVING.
+
+See which groups remain.
+
+Then you will not blame the engine for a story you wrote in the wrong clause.
+
+The table was ready.
+
+The question had to be too.
+
+Start the query as a sentence you would actually ask a person.
+
+Which product names sell above twenty is a sentence.
+
+SELECT name FROM products WHERE price greater than twenty is that sentence with the small talk stripped out.
+
+SQL is like English with almost no small talk, and almost no freedom of word choice.
+
+You must use clauses, and you must put them in a legal order.
+
+SELECT names the columns you want to see.
+
+FROM names the table those columns live in.
+
+WHERE names the test a row must pass.
+
+If you skip WHERE, every row is a candidate.
+
+If you skip SELECT's column list and use star, every column comes along.
+
+Star is a peek, not a contract.
+
+Name the columns you will use, so the result stays readable.
+
+Comparison operators are the tests: equals, not equals, less, greater, and the inclusive cousins.
+
+Not equals can be written two ways in many engines, and both mean the same test.
+
+Strings live in single quotes.
+
+Numbers do not.
+
+Quoted twenty is text, and a price column will not treat it as money.
+
+AND requires every test to be true for the row to survive.
+
+OR lets a row through if any listed test is true.
+
+NOT flips a test.
+
+Parentheses show the grouping you mean when AND and OR share a WHERE.
+
+Without them, AND usually binds tighter, and the sentence you said in your head may not be the sentence the engine ran.
+
+BETWEEN is a closed range: the edges count.
+
+IN is a list of allowed values, and it reads cleaner than a pile of ORs.
+
+A subquery in IN is still a filter.
+
+It is not a join.
+
+LIKE compares to a pattern.
+
+Percent stands for any run of characters, including none.
+
+Underscore stands for exactly one character.
+
+A pattern that starts with percent cannot use a normal prefix index well, and that is a later speed lesson.
+
+For now, write the pattern that matches the names you mean.
+
+NULL is not a value.
+
+It is a hole.
+
+Equals NULL is never true.
+
+IS NULL is the test for the hole.
+
+IS NOT NULL is the test for a real cell.
+
+ORDER BY sorts the rows that survived.
+
+ASC is lowest to highest, and it is the default.
+
+DESC is highest to lowest.
+
+You can sort by more than one column.
+
+The second column only breaks ties in the first.
+
+Text sorts by the collation of the column, which is why case can surprise you.
+
+LIMIT without ORDER BY is an arbitrary handful, not a ranking.
+
+Once the rows are honest, aggregation collapses them.
+
+COUNT star counts surviving rows.
+
+COUNT of a column ignores NULL in that column.
+
+COUNT DISTINCT counts unique values, so three Austin orders from two people are two customers.
+
+SUM adds a numeric column.
+
+AVG takes the mean of the values it can see.
+
+MIN and MAX find the edges.
+
+ROUND is a display choice on a number you already computed.
+
+AS names the result column so the heading is a word a human can read.
+
+Those functions return one row — unless you GROUP BY.
+
+GROUP BY makes one result row per distinct value of the grouped column.
+
+Group by city, and Austin is one row even if three orders live there.
+
+The select list may keep the grouped columns and the summaries.
+
+A leftover customer name with no grouping is a fake fact: which customer owns the city's total?
+
+The engine is right to refuse that.
+
+WHERE happens before the group.
+
+HAVING happens after.
+
+Filter rows with WHERE.
+
+Filter groups with HAVING.
+
+If you want cities with more than two orders, that is HAVING COUNT star greater than two.
+
+If you want to ignore Denver rows before you count, that is WHERE city is not Denver.
+
+Read the query in engine order, not in the order you typed the words.
+
+FROM finds the table.
+
+WHERE drops rows.
+
+GROUP BY collapses.
+
+HAVING drops groups.
+
+SELECT shapes the columns.
+
+ORDER BY sorts what is left.
+
+LIMIT cuts the page.
+
+Practice on four rows you can see.
+
+Filter Austin over twenty and watch which order remains.
+
+Group the original table by city and watch Austin become three.
+
+Add HAVING and watch Denver leave.
+
+Change one clause at a time.
+
+If the answer is wrong, the story in a clause is wrong.
+
+The table was ready.
+
+The question had to name the filter and the summary as two different moments.
+
+Refresher complete, aggregation complete, now the combined pattern the lecture promised: which customers spend the most, how many orders last month.
+
+Spending is SUM total GROUP BY customer_id ORDER BY the sum DESC, after WHERE on the month if the month is a row filter.
+
+How many orders last month is COUNT star with WHERE on the month, no group if you want one number, GROUP BY day if you want a chart.
+
+Same clauses, different grain.
+
+Write the grain first on a sticky note.
+
+Then the SQL cannot wander.
+
+That is filtering and aggregation together, which is the whole video, not a five-minute taste.
+
+You have the clauses, the NULL rules, the group rules, and a table you can see.
+
+Ask the next question on purpose.
+
+Keep only the rows you mean.
+
+Count or sum what survived.
+
+Do not mix those moments.
+
+Close with questions, the way a careful lecture does.
+
+Answer in a sentence you could defend at a keyboard.
+
+SELECT FROM WHERE meaning?
+
+Columns, table, row test.
+
+AND versus OR?
+
+All tests versus any test.
+
+NULL test?
+
+IS NULL, never equals NULL.
+
+GROUP BY does what?
+
+One result row per group value.
+
+HAVING versus WHERE?
+
+Groups after versus rows before.
+
+COUNT star versus COUNT column?
+
+Rows versus non-NULL in that column.
+
+COUNT DISTINCT?
+
+Unique values.
+
+LIMIT without ORDER BY?
+
+Not a ranking.
+
+Grain of a city report?
+
+One row per city.
+
+Grain of an order list?
+
+One row per order.
+
+If an answer needed a second table, go draw it before you write more SQL.

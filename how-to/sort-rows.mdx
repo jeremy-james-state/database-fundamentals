@@ -1,0 +1,61 @@
+---
+title: "Sort rows"
+description: "Order query results with ORDER BY."
+---
+
+## Prerequisites
+
+- A `SELECT` that already returns the columns you want ([select columns](/how-to/select-columns))
+- Optional: `LIMIT` to take the first *n* rows after the sort
+
+## Sort the result
+
+<Steps>
+  <Step title="Order by one column">
+    Add `ORDER BY` after `FROM`. The default is **ascending** (`ASC`): least to greatest for numbers, A to Z for text.
+
+    ```sql
+    SELECT title, rating
+    FROM books
+    ORDER BY rating
+    LIMIT 10;
+    ```
+
+    That list is the lowest ratings first, not the “top” books.
+  </Step>
+  <Step title="Reverse the order">
+    `DESC` is greatest to least (Z to A for text).
+
+    ```sql
+    SELECT title, rating
+    FROM books
+    ORDER BY rating DESC
+    LIMIT 10;
+    ```
+  </Step>
+  <Step title="Break ties with more columns">
+    List columns left to right. The second column is used only when the first is equal.
+
+    ```sql
+    SELECT title, rating, votes
+    FROM books
+    ORDER BY rating DESC, votes DESC
+    LIMIT 10;
+    ```
+  </Step>
+</Steps>
+
+## Verify the result
+
+You succeeded when the first row is the extreme you wanted (highest rating, or earliest title), and ties follow the second column.
+
+## Troubleshooting
+
+- **“Top 10” looks like the worst rows**: you used the default `ASC`. Add `DESC`.
+- **Order looks random with `LIMIT` only**: `LIMIT` without `ORDER BY` does not mean “best.” It means “some n rows.”
+- **Text not in dictionary order you expected**: `ORDER BY` uses the column’s sort order. `DESC` reverses it.
+
+## Related pages
+
+- [ORDER BY](/reference/order-by)
+- [Tutorial](/tutorials/query-a-table)

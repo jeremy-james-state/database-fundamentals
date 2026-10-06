@@ -1,0 +1,552 @@
+1
+00:00:00,050 --> 00:00:03,083
+Some things in the world carry their own identity.
+
+2
+00:00:03,083 --> 00:00:04,986
+A customer is one of those.
+
+3
+00:00:04,986 --> 00:00:08,263
+You can talk about Maya without mentioning an order.
+
+4
+00:00:08,263 --> 00:00:11,013
+Her customer_id is enough.
+
+5
+00:00:11,013 --> 00:00:12,694
+That is a strong entity.
+
+6
+00:00:12,694 --> 00:00:17,513
+The table has a primary key that does not need another table to make sense.
+
+7
+00:00:17,513 --> 00:00:21,000
+A weak entity cannot stand on that kind of key alone.
+
+8
+00:00:21,000 --> 00:00:25,861
+Think of an order line: line one, two copies of Harbor Light.
+
+9
+00:00:25,861 --> 00:00:27,500
+Line one on which order?
+
+10
+00:00:27,500 --> 00:00:29,402
+Every order has a line one.
+
+11
+00:00:29,402 --> 00:00:33,930
+The line number only identifies a row when you also know the order.
+
+12
+00:00:33,930 --> 00:00:35,847
+The identity is borrowed.
+
+13
+00:00:35,847 --> 00:00:37,902
+The parent order is the owner.
+
+14
+00:00:37,902 --> 00:00:42,486
+The child's key is usually the owner's key plus a discriminator.
+
+15
+00:00:42,486 --> 00:00:46,097
+order_id and line_no together.
+
+16
+00:00:46,097 --> 00:00:49,541
+That composite key is a feature, not clutter.
+
+17
+00:00:49,541 --> 00:00:53,388
+If you hide the parent, the child row stops making sense.
+
+18
+00:00:53,388 --> 00:00:55,152
+Ask that question out loud.
+
+19
+00:00:55,152 --> 00:00:58,902
+Does this row still name one thing if I erase the parent?
+
+20
+00:00:58,902 --> 00:01:02,083
+If the answer is no, you have a weak entity.
+
+21
+00:01:02,083 --> 00:01:04,555
+Rooms in a building work the same way.
+
+22
+00:01:04,555 --> 00:01:06,416
+Room 12 in which building?
+
+23
+00:01:06,416 --> 00:01:07,750
+Seats on a flight.
+
+24
+00:01:07,750 --> 00:01:10,458
+Seat 14A on which flight number?
+
+25
+00:01:10,458 --> 00:01:15,680
+Do not invent a random line_id just to pretend the child is strong.
+
+26
+00:01:15,680 --> 00:01:18,569
+You can, and applications sometimes do.
+
+27
+00:01:18,569 --> 00:01:25,819
+Then you still need a unique pair of order_id and line_no, or you will insert two line ones.
+
+28
+00:01:25,819 --> 00:01:28,041
+The surrogate hides the weakness.
+
+29
+00:01:28,041 --> 00:01:29,527
+It does not remove it.
+
+30
+00:01:29,527 --> 00:01:33,902
+On a diagram, a weak entity is often a double box.
+
+31
+00:01:33,902 --> 00:01:37,763
+The relationship to the owner is often a double diamond.
+
+32
+00:01:37,763 --> 00:01:40,638
+You do not need the symbols to use the idea.
+
+33
+00:01:40,638 --> 00:01:42,722
+You need the question about identity.
+
+34
+00:01:42,722 --> 00:01:47,180
+Foreign keys and weak entities overlap but are not the same.
+
+35
+00:01:47,180 --> 00:01:52,236
+orders.customer_id is a foreign key on a strong entity.
+
+36
+00:01:52,236 --> 00:01:55,722
+The order still has order_id of its own.
+
+37
+00:01:55,722 --> 00:02:00,527
+A weak child uses the parent's key as part of its own primary key.
+
+38
+00:02:00,527 --> 00:02:02,041
+That is a tighter bond.
+
+39
+00:02:02,041 --> 00:02:06,194
+Deleting the owner without the children is almost always wrong.
+
+40
+00:02:06,194 --> 00:02:09,027
+The children were never independent facts.
+
+41
+00:02:09,027 --> 00:02:11,500
+When you model, list the nouns.
+
+42
+00:02:11,500 --> 00:02:14,305
+Circle the ones that already have a passport.
+
+43
+00:02:14,305 --> 00:02:18,486
+Underline the ones that only make sense as a part of something else.
+
+44
+00:02:18,486 --> 00:02:20,569
+Give the parts a composite key.
+
+45
+00:02:20,569 --> 00:02:22,694
+Give the passports a simple key.
+
+46
+00:02:22,694 --> 00:02:26,055
+Then the schema tells you which rows can travel alone.
+
+47
+00:02:26,055 --> 00:02:29,180
+Ownership is not the same as a mere pointer.
+
+48
+00:02:29,180 --> 00:02:32,805
+An order points at a customer and still has its own life.
+
+49
+00:02:32,805 --> 00:02:34,416
+An order line is owned.
+
+50
+00:02:34,416 --> 00:02:38,611
+You would not archive a line in a warehouse without the order header.
+
+51
+00:02:38,611 --> 00:02:41,333
+That operational fact is the model.
+
+52
+00:02:41,333 --> 00:02:46,097
+When teams argue about line_id, ask how they pick up the phone.
+
+53
+00:02:46,097 --> 00:02:51,222
+Do they say line forty-two globally, or line two on order one-oh-one?
+
+54
+00:02:51,222 --> 00:02:53,125
+The phone script is the key.
+
+55
+00:02:53,125 --> 00:03:02,861
+History tables sometimes freeze a weak entity into a strong one by giving it a surrogate and copying the parent id as a plain foreign key.
+
+56
+00:03:02,861 --> 00:03:04,944
+That can be right for analytics.
+
+57
+00:03:04,944 --> 00:03:07,138
+It is a different job than checkout.
+
+58
+00:03:07,138 --> 00:03:11,347
+Do not let the warehouse rewrite the checkout key without a meeting.
+
+59
+00:03:11,347 --> 00:03:15,666
+Identifying relationships are the ER phrase for the weak bond.
+
+60
+00:03:15,666 --> 00:03:21,444
+Non-identifying relationships are foreign keys that are not part of the child's primary key.
+
+61
+00:03:21,444 --> 00:03:24,236
+Use the phrases if your diagram tool does.
+
+62
+00:03:24,236 --> 00:03:27,000
+Use the identity test if it does not.
+
+63
+00:03:27,000 --> 00:03:29,430
+Cascade deletes follow ownership.
+
+64
+00:03:29,430 --> 00:03:31,583
+They do not follow every arrow.
+
+65
+00:03:31,583 --> 00:03:34,680
+A weak child almost always cascades.
+
+66
+00:03:34,680 --> 00:03:37,833
+A strong child almost always restricts.
+
+67
+00:03:37,833 --> 00:03:39,625
+Write that next to the box.
+
+68
+00:03:39,625 --> 00:03:46,361
+Examples besides lines: chapters of a book if you identify them as chapter three of book eleven.
+
+69
+00:03:46,361 --> 00:03:50,513
+Comments on a review if they are numbered only inside the review.
+
+70
+00:03:50,513 --> 00:03:54,583
+If comments have public permalink ids, they became strong.
+
+71
+00:03:54,583 --> 00:03:56,361
+The world gets to decide.
+
+72
+00:03:56,361 --> 00:03:58,583
+Your schema records the decision.
+
+73
+00:03:58,583 --> 00:04:01,152
+Revisit it when permalinks appear.
+
+74
+00:04:01,152 --> 00:04:07,625
+Until then, composite keys keep the weakness visible, which is a kindness to the next designer.
+
+75
+00:04:07,625 --> 00:04:11,680
+Strong and weak are not about how important a table feels.
+
+76
+00:04:11,680 --> 00:04:15,444
+They are about whether a thing can be identified on its own.
+
+77
+00:04:15,444 --> 00:04:19,694
+Cardinality is how many: one, zero, many.
+
+78
+00:04:19,694 --> 00:04:22,125
+Weakness is how identity works.
+
+79
+00:04:22,125 --> 00:04:24,041
+Do not mix those two dials.
+
+80
+00:04:24,041 --> 00:04:27,569
+A strong entity has its own unique identifier.
+
+81
+00:04:27,569 --> 00:04:32,958
+A purchase with purchase_id is strong even if it points at a customer.
+
+82
+00:04:32,958 --> 00:04:36,638
+Depending on another table for a foreign key is normal.
+
+83
+00:04:36,746 --> 00:04:42,071
+Depending on another table to exist as an identity is the weak case.
+
+84
+00:04:42,071 --> 00:04:47,029
+A weak entity cannot identify a row with only its own attributes.
+
+85
+00:04:47,029 --> 00:04:51,876
+Its key is usually composite: the parent's key plus something local.
+
+86
+00:04:51,876 --> 00:04:58,126
+A line on an order might be identified by order_id plus line_number.
+
+87
+00:04:58,126 --> 00:05:01,793
+Line number three means nothing until you know which order.
+
+88
+00:05:01,793 --> 00:05:05,751
+That is a weak entity, or at least a dependent identity.
+
+89
+00:05:05,751 --> 00:05:10,265
+Beginners mark everything that 'belongs to' something as weak.
+
+90
+00:05:10,265 --> 00:05:14,293
+An employee has a manager, so employee must be weak.
+
+91
+00:05:14,293 --> 00:05:15,057
+No.
+
+92
+00:05:15,057 --> 00:05:17,904
+Employee still has employee_id.
+
+93
+00:05:17,904 --> 00:05:20,168
+Belonging is a relationship.
+
+94
+00:05:20,168 --> 00:05:22,015
+Identity is a key.
+
+95
+00:05:22,015 --> 00:05:31,001
+Use a weak design when the child is meaningless and unidentifiable without the parent, and you will never look it up by a surrogate of its own.
+
+96
+00:05:31,001 --> 00:05:36,029
+Room 12 in building A is not the same as room 12 in building B.
+
+97
+00:05:36,029 --> 00:05:43,057
+If the business says room numbers restart per building, the room is identified by building plus number.
+
+98
+00:05:43,057 --> 00:05:48,418
+If every room gets a global room_id, you made it strong on purpose.
+
+99
+00:05:48,418 --> 00:05:49,654
+That is allowed.
+
+100
+00:05:49,654 --> 00:05:54,390
+You are choosing an identifier, not discovering a law of nature.
+
+101
+00:05:54,390 --> 00:05:59,584
+When you do use a weak entity, the relationship to the parent is identifying.
+
+102
+00:05:59,584 --> 00:06:02,543
+The parent's key is part of the child's key.
+
+103
+00:06:02,543 --> 00:06:08,071
+Deleting the parent without a plan orphans identity itself, not just a pointer.
+
+104
+00:06:08,071 --> 00:06:17,890
+In an ER diagram, weak entities are often shown with a double rectangle, and the identifying relationship with a double diamond, in Chen style.
+
+105
+00:06:17,890 --> 00:06:22,946
+Crow's foot sketches may instead show the composite key in the table box.
+
+106
+00:06:22,946 --> 00:06:25,557
+Pick a notation and stay consistent.
+
+107
+00:06:25,557 --> 00:06:31,973
+The rare honest case is a child whose natural key is not unique until the parent is included.
+
+108
+00:06:31,973 --> 00:06:36,890
+The common dishonest case is a regular table you were afraid to give an id.
+
+109
+00:06:36,890 --> 00:06:42,196
+Give it an id if it is a thing you will query, update, and relate on its own.
+
+110
+00:06:42,196 --> 00:06:49,418
+Keep it weak if its name is always 'the third line of that order' and never a thing with a passport of its own.
+
+111
+00:06:49,418 --> 00:06:53,390
+Ask: can I find this row tomorrow without naming the parent?
+
+112
+00:06:53,390 --> 00:06:55,321
+If yes, it is strong.
+
+113
+00:06:55,321 --> 00:07:02,265
+If no, either add a surrogate and make it strong, or accept the composite and call it weak on purpose.
+
+114
+00:07:02,265 --> 00:07:04,293
+Purpose is the whole lesson.
+
+115
+00:07:04,293 --> 00:07:06,932
+Weak is a design choice with a cost.
+
+116
+00:07:06,932 --> 00:07:10,459
+Do not spend it on ordinary belongs-to relationships.
+
+117
+00:07:10,459 --> 00:07:11,709
+Walk a receipt.
+
+118
+00:07:11,709 --> 00:07:15,737
+The purchase has purchase_id, a strong entity.
+
+119
+00:07:15,737 --> 00:07:21,209
+Each line is line_number one, two, three inside that purchase.
+
+120
+00:07:21,209 --> 00:07:24,709
+Line number two in another purchase is a different thing.
+
+121
+00:07:24,709 --> 00:07:29,987
+Identity of a line is purchase_id plus line_number.
+
+122
+00:07:29,987 --> 00:07:33,904
+That is weak, or identifying dependent, on purpose.
+
+123
+00:07:33,904 --> 00:07:42,751
+Do not give the line a global line_id if the business will only ever say the third line of order 5001.
+
+124
+00:07:42,751 --> 00:07:51,418
+Do give a global id if warehouse software will move lines between orders and still talk about line 88901.
+
+125
+00:07:51,418 --> 00:07:54,251
+That second world made the line strong.
+
+126
+00:07:54,251 --> 00:08:05,654
+A dependent person on an employee benefits form is the textbook weak example: name plus employee_id, because dependents are not issued employee numbers.
+
+127
+00:08:05,654 --> 00:08:11,654
+If your company later issues every dependent a person_id, they stopped being weak.
+
+128
+00:08:11,654 --> 00:08:17,696
+The ER mark changed because the identifiers changed, not because cardinality changed.
+
+129
+00:08:17,696 --> 00:08:20,321
+One employee still has many dependents.
+
+130
+00:08:20,321 --> 00:08:22,112
+That was always one-to-many.
+
+131
+00:08:22,112 --> 00:08:24,348
+Weakness was only about the key.
+
+132
+00:08:24,348 --> 00:08:32,543
+When not to use weak: any table you will load, search, and relate without reciting the parent id every time.
+
+133
+00:08:32,543 --> 00:08:39,376
+Users, products, invoices with invoice_id, shipments with tracking numbers.
+
+134
+00:08:39,376 --> 00:08:40,626
+Those are strong.
+
+135
+00:08:40,626 --> 00:08:46,598
+Mislabeling them weak clutters the diagram with double lines that mean nothing in SQL.
+
+136
+00:08:46,598 --> 00:08:49,459
+SQL still wants a PRIMARY KEY either way.
+
+137
+00:08:49,459 --> 00:08:53,696
+The weak case just makes that key composite and identifying.
+
+138
+00:08:53,696 --> 00:08:57,098
+Choose with the find-this-tomorrow test, then draw.
+

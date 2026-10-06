@@ -1,0 +1,297 @@
+Normalization puts each fact in one place.
+
+Denormalization copies a fact on purpose because a read path is too expensive without it.
+
+That purpose has to be named.
+
+A copy without an owner is just a bug you scheduled.
+
+Example: orders.customer_city.
+
+You already have city on customers.
+
+You copy it because a nightly report cannot afford the join.
+
+Now a move to Denver must update customers and every open order, or you accept stale city on old orders.
+
+Those are different products.
+
+A snapshot on a closed order can be a fact about history.
+
+A living copy of the current city is a cache.
+
+Caches need a rule: who writes, when, and what happens on a miss.
+
+Summary tables are denormalization too.
+
+daily_sales holds a date and a SUM you could recompute.
+
+You keep it because the recompute is overnight work.
+
+You refresh it on a schedule.
+
+If the summary disagrees with the base table, the base table wins.
+
+Write that down.
+
+Do not denormalize during the first sketch because a mockup showed city next to total.
+
+Screens can join.
+
+Start honest.
+
+Copy when a measured query is too slow, or when history must freeze a value.
+
+Indexes are not denormalization.
+
+They copy keys, not business facts.
+
+Add them first.
+
+When you do copy a fact, constrain what you can.
+
+A trigger might keep the copy in sync.
+
+Triggers are easy to forget during a bulk load.
+
+An application service might be the only writer.
+
+Then two writers will drift.
+
+Name the single writer.
+
+On a diagram, mark copied columns so nobody thinks city is born on orders.
+
+The lesson is not that copies are forbidden.
+
+The lesson is that copies are a product decision with an owner, a refresh rule, and a source of truth.
+
+Materialized views are a managed summary table in some engines.
+
+They still have a refresh rule.
+
+They still lose a fight with the base table.
+
+Search engines and caches outside the database are denormalization too.
+
+The owner might be a worker that rebuilds a document on every order.
+
+If the worker is down, the product should say stale, not true.
+
+That product sentence is the design.
+
+Copying a price onto an order line at purchase time is a snapshot.
+
+The catalog price may change tomorrow.
+
+The line must not.
+
+That copy is not a cache of the catalog.
+
+It is the price you agreed.
+
+Name it unit_price_at_sale so nobody 'fixes' it from the catalog.
+
+Names prevent helpful disasters.
+
+Read-time joins versus write-time copies is the real spectrum.
+
+Start at read-time.
+
+Move left only with a measurement or a legal freeze.
+
+A legal freeze is a measurement of a different kind.
+
+It still has an owner: the invoice.
+
+Do not denormalize because an ORM is awkward to join.
+
+Fix the query helper.
+
+Awkward is not slow.
+
+Slow is slow.
+
+The copy is a product decision with an owner, a refresh or freeze rule, and a source of truth.
+
+Say those three out loud.
+
+If you cannot, you are not denormalizing yet.
+
+You are duplicating.
+
+Duplication is how Austin and Denver both stay true for Maya.
+
+We already decided that is not a goal.
+
+On purpose, or not at all.
+
+If a copy has no owner, delete the column.
+
+If it has an owner, write the refresh in the same migration.
+
+Future dashboards will ask for another copy.
+
+Hand them the three-sentence test before you say yes.
+
+A copy is a second clock.
+
+Two clocks disagree.
+
+You must say which clock is for display and which is for truth.
+
+Truth stays normalized until a snapshot is the product.
+
+An invoice line price is a snapshot.
+
+A cached city on an open cart is a clock that will lie.
+
+Do not ship the liar unless a worker owns the rewind.
+
+Name the worker in the migration comment.
+
+If you cannot name the worker, you are not ready to copy.
+
+Join a little longer.
+
+Indexes are cheaper than a second clock.
+
+When you finally copy, freeze or refresh, never both in silence.
+
+Silence is duplication.
+
+Speech is denormalization.
+
+Use speech.
+
+Normalization splits tables so each fact has one home.
+
+Denormalization copies a fact on purpose so a frequent query can avoid a join.
+
+It is a last-ditch optimization after you have evidence, not a shortcut past design.
+
+A clean schema can still make a dashboard join five tables and take seconds.
+
+Users feel the seconds, not the purity.
+
+The responsible version has two steps.
+
+First, watch which queries run often and which of them join more than two tables.
+
+Guessing is how you duplicate the wrong column.
+
+Second, copy a column into a table that already participates, so the hot query joins less, or not at all.
+
+A music catalog might store artist_name on a track row that already has album_id, if top tracks by famous artists are the hot path and always needed the name.
+
+You now update artist_name in two places, or you accept a nightly rebuild, or you use a trigger to copy.
+
+That extra write is the cost.
+
+The extra consistency work is the cost.
+
+If you cannot name the job that keeps the copy true, you did not denormalize.
+
+You created an anomaly and called it speed.
+
+Document the source of truth: artists.name is canonical, tracks.artist_name is a cache.
+
+If they disagree, the canonical wins, and the cache is rebuilt.
+
+Do not denormalize because joins look scary.
+
+Joins on keys with indexes are the relational model working.
+
+Denormalize because a measured query is hot, the join is the bottleneck, and the copied column is stable enough to cache.
+
+Counts and totals on an order header copied from lines are a common form.
+
+They go stale the moment a line changes unless a trigger or application transaction updates the header in the same unit of work.
+
+If that unit of work is missing, the header is a rumor.
+
+Sometimes a reporting table filled on a schedule is cleaner than sprinkling copies through operational tables.
+
+That is still denormalization.
+
+It keeps the OLTP schema honest and puts redundancy in a place you already rebuild.
+
+The lesson after weeks of normal forms is restraint.
+
+You now know why redundancy hurts.
+
+So when you add it back, you add a broom.
+
+No broom, no copy.
+
+Speed is not a reason to forget the broom.
+
+Hot query: top tracks for an artist, joining artists to albums to tracks every time.
+
+Evidence: it is the home page, it runs constantly, EXPLAIN shows the joins as the cost.
+
+Copy artist_id and artist_name onto tracks, or keep artist_id only if you still join artists, which you were trying not to.
+
+If you copy the name, a trigger on artists UPDATE writes the new name to tracks.
+
+If you skip the trigger, the home page lies after a rebrand.
+
+A nightly table home_top_tracks rebuilt from the normalized sources may be cleaner.
+
+Readers hit the snapshot.
+
+Writers hit the normalized tables.
+
+That is denormalization with a broom called the rebuild job.
+
+Without the job, you only added redundancy.
+
+With the job, you bought seconds for users and kept a place that is allowed to be redundant.
+
+That is the twist after learning to split tables: sometimes you add a snapshot, on purpose, with a name that admits it.
+
+Close with questions, the way a careful lecture does.
+
+Answer in a sentence you could defend at a keyboard.
+
+What is denormalization?
+
+Copying a fact on purpose after evidence, with a broom.
+
+Without a broom?
+
+An anomaly named speed.
+
+When?
+
+A hot query, measured, joins are the cost, column stable enough to cache.
+
+Source of truth?
+
+Document it. Cache loses if they disagree.
+
+Reporting table?
+
+Often cleaner than sprinkling copies through operational tables.
+
+Trigger or transaction?
+
+How an order header total stays true.
+
+Joins scary?
+
+Not a reason. Keys plus indexes are the model working.
+
+Home page tracks?
+
+Snapshot table rebuilt from normalized sources.
+
+Name the snapshot?
+
+So nobody treats it as the only truth.
+
+Restraint?
+
+You know why redundancy hurts, so you add a broom when you add it back.
+
+If an answer needed a second table, go draw it before you write more SQL.

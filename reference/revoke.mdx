@@ -1,0 +1,27 @@
+---
+title: "REVOKE"
+description: "Removes privileges previously granted to a user."
+---
+
+## Syntax
+
+```sql
+REVOKE privilege [, privilege] ...
+ON database.table
+FROM 'user'@'host';
+```
+
+## Examples
+
+<CodeGroup>
+```sql MySQL
+REVOKE INSERT
+ON transit.*
+FROM 'analyst'@'localhost';
+```
+</CodeGroup>
+
+## Related references
+
+- [GRANT](/reference/grant)
+- [Grant privileges](/how-to/grant-privileges)

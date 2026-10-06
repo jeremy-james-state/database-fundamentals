@@ -1,0 +1,728 @@
+1
+00:00:00,050 --> 00:00:02,722
+SQL looks like English until it does not.
+
+2
+00:00:02,722 --> 00:00:06,472
+The engine does not read a statement in the order you type it.
+
+3
+00:00:06,472 --> 00:00:09,555
+You type SELECT first because that is the custom.
+
+4
+00:00:09,555 --> 00:00:11,777
+The engine finds FROM first.
+
+5
+00:00:11,777 --> 00:00:14,875
+It needs a table before it can talk about columns.
+
+6
+00:00:14,875 --> 00:00:16,375
+Then it applies WHERE.
+
+7
+00:00:16,375 --> 00:00:17,652
+Then GROUP BY.
+
+8
+00:00:17,652 --> 00:00:18,694
+Then HAVING.
+
+9
+00:00:18,694 --> 00:00:19,902
+Then SELECT.
+
+10
+00:00:19,902 --> 00:00:21,333
+Then ORDER BY.
+
+11
+00:00:21,333 --> 00:00:22,347
+Then LIMIT.
+
+12
+00:00:22,347 --> 00:00:25,444
+If you read in that order, surprises shrink.
+
+13
+00:00:25,444 --> 00:00:26,902
+Start with the table.
+
+14
+00:00:26,902 --> 00:00:29,013
+Which rows survive the filter.
+
+15
+00:00:29,013 --> 00:00:30,388
+How they collapse.
+
+16
+00:00:30,388 --> 00:00:32,402
+Which columns you actually show.
+
+17
+00:00:32,402 --> 00:00:33,555
+How they sort.
+
+18
+00:00:33,555 --> 00:00:37,222
+A nested query is a table you invented for a moment.
+
+19
+00:00:37,222 --> 00:00:41,583
+Read the inside SELECT until it is a named result in your head.
+
+20
+00:00:41,583 --> 00:00:45,500
+Then read the outside SELECT as if that result were real.
+
+21
+00:00:45,500 --> 00:00:48,277
+Aliases are nicknames, not magic.
+
+22
+00:00:48,277 --> 00:00:52,361
+If you alias a column in SELECT, WHERE cannot see it yet.
+
+23
+00:00:52,361 --> 00:00:53,736
+WHERE ran earlier.
+
+24
+00:00:53,736 --> 00:00:59,680
+Use the real expression in WHERE, or filter later with HAVING, or wrap a subquery.
+
+25
+00:00:59,680 --> 00:01:01,430
+DISTINCT is not a group.
+
+26
+00:01:01,430 --> 00:01:05,055
+It only hides duplicate result rows after SELECT.
+
+27
+00:01:05,055 --> 00:01:07,361
+COUNT DISTINCT is a different tool.
+
+28
+00:01:07,361 --> 00:01:11,097
+It counts unique values, not unique whole rows.
+
+29
+00:01:11,097 --> 00:01:14,916
+AND and OR still need parentheses when they share a sentence.
+
+30
+00:01:14,916 --> 00:01:17,152
+BETWEEN includes both ends.
+
+31
+00:01:17,152 --> 00:01:19,583
+IN is a list of allowed values.
+
+32
+00:01:19,583 --> 00:01:23,125
+NOT IN becomes strange when the list contains NULL.
+
+33
+00:01:23,125 --> 00:01:26,486
+Prefer NOT EXISTS when absence is the point.
+
+34
+00:01:26,486 --> 00:01:29,847
+A correlated subquery runs once per outer row.
+
+35
+00:01:29,847 --> 00:01:32,527
+It can be clear, and it can be slow.
+
+36
+00:01:32,527 --> 00:01:36,361
+If you can write a join instead, try the join and compare.
+
+37
+00:01:36,361 --> 00:01:39,763
+SELECT star is fine at the keyboard when you are exploring.
+
+38
+00:01:39,763 --> 00:01:42,583
+It is a poor contract in an application.
+
+39
+00:01:42,583 --> 00:01:44,097
+Name the columns you mean.
+
+40
+00:01:44,097 --> 00:01:48,111
+Then a new column on the table does not leak into a report.
+
+41
+00:01:48,111 --> 00:01:51,138
+Comments in SQL start with dash dash.
+
+42
+00:01:51,138 --> 00:01:53,444
+They are for you, not the engine.
+
+43
+00:01:53,444 --> 00:01:58,597
+Read a statement out loud as columns, table, match, filter.
+
+44
+00:01:58,597 --> 00:02:02,138
+If you cannot say it in that order, the query is not ready.
+
+45
+00:02:02,138 --> 00:02:04,694
+Shrink it until the surprise goes away.
+
+46
+00:02:04,694 --> 00:02:06,416
+Remove the ORDER BY.
+
+47
+00:02:06,416 --> 00:02:08,083
+Remove the extra AND.
+
+48
+00:02:08,083 --> 00:02:10,263
+Run the smallest true question.
+
+49
+00:02:10,263 --> 00:02:11,569
+Then build back.
+
+50
+00:02:11,569 --> 00:02:14,986
+Careful reading is a skill, not a personality.
+
+51
+00:02:14,986 --> 00:02:17,083
+The clause order is the map.
+
+52
+00:02:17,083 --> 00:02:19,097
+Walk it the same way every time.
+
+53
+00:02:19,097 --> 00:02:21,138
+Punctuation is meaning.
+
+54
+00:02:21,138 --> 00:02:26,791
+A missing comma in the SELECT list glues two names into a bizarre alias.
+
+55
+00:02:26,791 --> 00:02:30,083
+A trailing comma is an error in standard SQL.
+
+56
+00:02:30,083 --> 00:02:34,333
+Read commas as and, then see if the sentence still works.
+
+57
+00:02:34,333 --> 00:02:38,611
+Indent so FROM, WHERE, and GROUP BY start a line.
+
+58
+00:02:38,611 --> 00:02:41,277
+Your eye should find the table without hunting.
+
+59
+00:02:41,277 --> 00:02:44,930
+Uppercase keywords are a style, not a requirement.
+
+60
+00:02:44,930 --> 00:02:47,611
+Pick one style and keep it for a file.
+
+61
+00:02:47,611 --> 00:02:51,652
+Comments should say why a filter exists, not what WHERE means.
+
+62
+00:02:51,652 --> 00:02:56,777
+If a query is a report, name it after the question, not after a person.
+
+63
+00:02:56,777 --> 00:03:00,791
+Future you will search for unpaid invoices, not a nickname.
+
+64
+00:03:00,791 --> 00:03:04,361
+When a query is slow, read it before you index it.
+
+65
+00:03:04,361 --> 00:03:07,208
+A cross join is not an index problem.
+
+66
+00:03:07,208 --> 00:03:15,041
+A function wrapped around a column can disable an index, which is a later lesson, but you can still see the function while reading.
+
+67
+00:03:15,041 --> 00:03:18,166
+CASE is a small decision tree in SELECT.
+
+68
+00:03:18,166 --> 00:03:20,666
+Read it as if, then, else.
+
+69
+00:03:20,666 --> 00:03:24,513
+Do not nest five of them if a table of labels would be clearer.
+
+70
+00:03:24,513 --> 00:03:28,194
+UNION removes duplicates between two result shapes.
+
+71
+00:03:28,194 --> 00:03:29,736
+UNION ALL keeps them.
+
+72
+00:03:29,736 --> 00:03:32,402
+Both require the same number of columns.
+
+73
+00:03:32,402 --> 00:03:34,763
+That is combining, not joining.
+
+74
+00:03:34,763 --> 00:03:37,347
+If you meant a match, you wanted JOIN.
+
+75
+00:03:37,347 --> 00:03:40,555
+If you meant two lists stacked, you wanted UNION.
+
+76
+00:03:40,555 --> 00:03:44,444
+Read the first line of a file of SQL as the question.
+
+77
+00:03:44,444 --> 00:03:50,472
+If the first line is SELECT star FROM a huge table with no WHERE, you are exploring.
+
+78
+00:03:50,472 --> 00:03:52,375
+Add LIMIT while you explore.
+
+79
+00:03:52,375 --> 00:03:56,250
+Take it off when the question is real and the filter is tight.
+
+80
+00:03:56,250 --> 00:03:58,111
+Care is a habit of shrinking.
+
+81
+00:03:58,111 --> 00:04:00,180
+The engine will run what you wrote.
+
+82
+00:04:00,180 --> 00:04:03,013
+Your job is to have written the question you meant.
+
+83
+00:04:03,013 --> 00:04:10,888
+Memorizing clause order as if it were 2010 sets you up to compete with a machine that already memorized it.
+
+84
+00:04:10,888 --> 00:04:12,694
+You will lose that contest.
+
+85
+00:04:12,694 --> 00:04:20,250
+Your job is to know what question you are asking, why a query answers it, and whether the tables can even hold the answer.
+
+86
+00:04:20,250 --> 00:04:22,013
+SQL is declarative.
+
+87
+00:04:22,013 --> 00:04:23,638
+You describe the result.
+
+88
+00:04:23,638 --> 00:04:27,902
+You do not narrate the nested loops unless you are reading a query plan.
+
+89
+00:04:27,902 --> 00:04:32,750
+That is why a short English question translates so well into SELECT.
+
+90
+00:04:32,858 --> 00:04:36,960
+It is also why a vague question produces confident nonsense.
+
+91
+00:04:36,960 --> 00:04:41,516
+If you cannot say which rows should vanish, you are not ready to filter.
+
+92
+00:04:41,516 --> 00:04:45,641
+If you cannot name the grain of a row, you are not ready to join.
+
+93
+00:04:45,641 --> 00:04:48,169
+Grain means: what is one row about.
+
+94
+00:04:48,169 --> 00:04:52,488
+An orders row is about one purchase, not about a customer.
+
+95
+00:04:52,488 --> 00:04:57,169
+A customers row is about one person, not about their purchases.
+
+96
+00:04:57,169 --> 00:04:59,599
+Mix the grain, and totals lie.
+
+97
+00:04:59,599 --> 00:05:03,474
+When a tool writes SQL for you, read it like a code review.
+
+98
+00:05:03,474 --> 00:05:07,308
+Does the FROM name the table whose grain matches the question?
+
+99
+00:05:07,308 --> 00:05:10,210
+Does every JOIN have an ON that is a real key?
+
+100
+00:05:10,210 --> 00:05:12,835
+Is there a Cartesian risk if ON is missing?
+
+101
+00:05:12,835 --> 00:05:17,627
+Does WHERE filter rows before grouping, and HAVING filter groups after?
+
+102
+00:05:17,627 --> 00:05:20,030
+Are strings quoted and numbers not?
+
+103
+00:05:20,030 --> 00:05:22,099
+Is NULL tested with IS NULL?
+
+104
+00:05:22,099 --> 00:05:24,710
+Does the SELECT list match the GROUP BY?
+
+105
+00:05:24,710 --> 00:05:29,752
+If any answer is no, the generated query is a draft, not a fact.
+
+106
+00:05:29,752 --> 00:05:38,210
+Ask better questions of the tool: show only Austin orders over twenty, one row per order, columns customer and total.
+
+107
+00:05:38,210 --> 00:05:42,474
+That prompt has a grain, a filter, and a column list.
+
+108
+00:05:42,474 --> 00:05:44,877
+show insights about sales does not.
+
+109
+00:05:44,877 --> 00:05:49,127
+Learn how a filter is applied: each row is kept or dropped.
+
+110
+00:05:49,127 --> 00:05:54,224
+Learn how a join is applied: rows are matched, not stacked by honesty.
+
+111
+00:05:54,224 --> 00:06:00,696
+Learn how a group is applied: many rows become one, and leftover columns become lies.
+
+112
+00:06:00,696 --> 00:06:03,655
+Those three machines are the whole beginner engine.
+
+113
+00:06:03,655 --> 00:06:06,433
+Syntax is the spelling of those machines.
+
+114
+00:06:06,433 --> 00:06:11,349
+Spelling without the machines is karaoke in a language you do not speak.
+
+115
+00:06:11,349 --> 00:06:16,113
+Practice by taking a result you trust and writing the English first.
+
+116
+00:06:16,113 --> 00:06:17,585
+Then write the SQL.
+
+117
+00:06:17,585 --> 00:06:23,099
+Then break it on purpose: drop ON, drop WHERE, group the wrong column.
+
+118
+00:06:23,099 --> 00:06:24,266
+Watch the lie.
+
+119
+00:06:24,266 --> 00:06:28,738
+That is how you learn to see the lie when a tool hands it to you smiling.
+
+120
+00:06:28,738 --> 00:06:32,877
+Design tables so the questions you will ask have a place to land.
+
+121
+00:06:32,877 --> 00:06:36,308
+A missing parent key cannot be joined later by wishing.
+
+122
+00:06:36,308 --> 00:06:38,002
+Read SQL slowly.
+
+123
+00:06:38,002 --> 00:06:40,058
+One clause, one idea.
+
+124
+00:06:40,058 --> 00:06:42,502
+Then you are not competing with a generator.
+
+125
+00:06:42,502 --> 00:06:45,655
+You are the person who knows whether the answer is true.
+
+126
+00:06:45,655 --> 00:06:50,252
+Declarative means you can ask for Austin totals without writing a for-loop.
+
+127
+00:06:50,252 --> 00:06:54,849
+The engine may hash or nest-loop; you still described the result.
+
+128
+00:06:54,849 --> 00:07:01,349
+Your learning plan is: grain, keys, filters, groups, then syntax.
+
+129
+00:07:01,349 --> 00:07:03,821
+AI is a typist for the last step.
+
+130
+00:07:03,821 --> 00:07:10,877
+Tutorials that only show SELECT FROM WHERE JOIN forever never show a Cartesian product on purpose.
+
+131
+00:07:10,877 --> 00:07:12,196
+Show yourself one.
+
+132
+00:07:12,196 --> 00:07:14,669
+Then you will see it in generated SQL.
+
+133
+00:07:14,669 --> 00:07:20,016
+Then you are learning SQL in a way that still works when the typist is faster than you.
+
+134
+00:07:20,016 --> 00:07:23,419
+The 2010 path was reciting clauses.
+
+135
+00:07:23,419 --> 00:07:25,974
+The current path is defending meaning.
+
+136
+00:07:25,974 --> 00:07:27,363
+Defend it out loud.
+
+137
+00:07:27,363 --> 00:07:29,988
+If you cannot, do not run the query.
+
+138
+00:07:29,988 --> 00:07:33,627
+Close with questions, the way a careful lecture does.
+
+139
+00:07:33,627 --> 00:07:36,683
+Answer in a sentence you could defend at a keyboard.
+
+140
+00:07:36,683 --> 00:07:39,349
+Why not memorize syntax as the path?
+
+141
+00:07:39,349 --> 00:07:42,877
+A generator already did, and meaning still fails.
+
+142
+00:07:42,877 --> 00:07:44,558
+What does declarative mean?
+
+143
+00:07:44,558 --> 00:07:47,752
+You describe the result, not the nested loops.
+
+144
+00:07:47,752 --> 00:07:48,835
+What is grain?
+
+145
+00:07:48,835 --> 00:07:50,488
+What one row is about.
+
+146
+00:07:50,488 --> 00:07:52,016
+What is a bad prompt?
+
+147
+00:07:52,016 --> 00:07:56,641
+Show insights, with no grain, filter, or columns.
+
+148
+00:07:56,641 --> 00:07:58,044
+What is a good prompt?
+
+149
+00:07:58,044 --> 00:08:03,891
+One row per city, sum of totals, last month, columns city and spent.
+
+150
+00:08:03,891 --> 00:08:06,641
+What do you check in generated SQL first?
+
+151
+00:08:06,641 --> 00:08:13,724
+FROM grain, JOIN ON keys, WHERE versus HAVING, types, NULL tests, GROUP BY.
+
+152
+00:08:13,724 --> 00:08:15,224
+When do you delete a join?
+
+153
+00:08:15,224 --> 00:08:18,627
+When the column you need is already on the FROM table.
+
+154
+00:08:18,627 --> 00:08:20,433
+What is karaoke SQL?
+
+155
+00:08:20,433 --> 00:08:25,821
+Syntax without knowing the three machines: filter, join, group.
+
+156
+00:08:25,821 --> 00:08:27,155
+How do you practice?
+
+157
+00:08:27,155 --> 00:08:32,405
+English first, SQL second, then break ON and GROUP on purpose.
+
+158
+00:08:32,405 --> 00:08:34,169
+What must tables provide?
+
+159
+00:08:34,169 --> 00:08:36,558
+Keys so the questions can land.
+
+160
+00:08:36,558 --> 00:08:39,349
+Who wins if you compete on typing clauses?
+
+161
+00:08:39,349 --> 00:08:40,516
+The generator.
+
+162
+00:08:40,516 --> 00:08:42,405
+Who wins if you defend meaning?
+
+163
+00:08:42,405 --> 00:08:43,141
+You.
+
+164
+00:08:43,141 --> 00:08:46,308
+Is SQL like Java in how you specify steps?
+
+165
+00:08:46,308 --> 00:08:47,071
+No.
+
+166
+00:08:47,071 --> 00:08:49,002
+You do not narrate the steps.
+
+167
+00:08:49,002 --> 00:08:51,516
+Should you trust COUNT after a bad join?
+
+168
+00:08:51,516 --> 00:08:52,280
+No.
+
+169
+00:08:52,280 --> 00:08:54,196
+The grain already lied.
+
+170
+00:08:54,196 --> 00:08:56,030
+What is a Cartesian risk?
+
+171
+00:08:56,030 --> 00:08:58,558
+ON missing or matching a non-key.
+
+172
+00:08:58,558 --> 00:09:00,349
+WHERE versus HAVING again?
+
+173
+00:09:00,349 --> 00:09:03,155
+Rows before the group, groups after.
+
+174
+00:09:03,155 --> 00:09:04,460
+Quoted numbers?
+
+175
+00:09:04,460 --> 00:09:05,544
+A type lie.
+
+176
+00:09:05,544 --> 00:09:06,752
+LIKE on a date?
+
+177
+00:09:06,752 --> 00:09:08,280
+Usually a type lie.
+
+178
+00:09:08,280 --> 00:09:10,071
+When is the draft a fact?
+
+179
+00:09:10,071 --> 00:09:12,474
+When every clause earns its keep.
+
+180
+00:09:12,474 --> 00:09:15,099
+What do you do if you cannot explain a clause?
+
+181
+00:09:15,218 --> 00:09:16,279
+Do not run it.
+
+182
+00:09:16,279 --> 00:09:21,001
+If an answer needed a second table, go draw it before you write more SQL.
+

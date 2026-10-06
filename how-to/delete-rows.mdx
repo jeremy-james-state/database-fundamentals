@@ -1,0 +1,67 @@
+---
+title: "Delete rows"
+description: "Remove rows with DELETE FROM and a WHERE condition."
+---
+
+Without `WHERE`, SQLite deletes **every** row in the table. The table remains.
+
+## Prerequisites
+
+- Rows you can see with `SELECT` ([filter rows](/how-to/filter-rows))
+- [NULL](/reference/null) if you are targeting missing values (`IS NULL` is the same test you already use in `WHERE`)
+
+## Delete matching rows
+
+<Steps>
+  <Step title="Select the row first">
+    Build the condition from a query that returns only the row you mean:
+
+    ```sql
+    SELECT *
+    FROM collections
+    WHERE title = 'Farmers Working at Dawn';
+    ```
+  </Step>
+  <Step title="Run DELETE with that condition">
+    ```sql
+    DELETE FROM collections
+    WHERE title = 'Farmers Working at Dawn';
+    ```
+
+    Missing acquired date:
+
+    ```sql
+    DELETE FROM collections
+    WHERE acquired IS NULL;
+    ```
+
+    Dates as text compare in `YYYY-MM-DD` order:
+
+    ```sql
+    DELETE FROM collections
+    WHERE acquired < '2015-01-01';
+    ```
+  </Step>
+  <Step title="Confirm">
+    Run the same `SELECT`. You should get no row.
+  </Step>
+</Steps>
+
+<Warning>
+  `DELETE FROM collections;` with no `WHERE` empties the table. There is no undo except a backup.
+</Warning>
+
+## Verify the result
+
+You succeeded when the target row is gone and other rows remain.
+
+## Troubleshooting
+
+- **Foreign key constraint failed**: a [join table](/concepts/keys) or child row still points here. [Delete related rows](/how-to/delete-related-rows) first, or set `ON DELETE` on the foreign key.
+- **Still seeing the row**: you may want a [soft deletion](/concepts/soft-deletion) instead, or you filtered the wrong column.
+
+## Related pages
+
+- [DELETE](/reference/delete)
+- [NULL](/reference/null)
+- [Soft-delete a row](/how-to/soft-delete-a-row)

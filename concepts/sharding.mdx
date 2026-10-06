@@ -1,0 +1,37 @@
+---
+title: "Sharding"
+description: "Sharding splits a large dataset across servers so each holds only a slice."
+---
+
+One server may not fit terabytes of rows. A **shard** is a horizontal piece (for example ids `1–1000` on server A, `1001–2000` on server B).
+
+## How sharding works
+
+You choose a **shard key** (user id, region, id range). Each write lands on the server that owns that key. Queries that span all shards must hit many servers.
+
+Sharding alone is a **single point of failure** per slice: if that shard’s only copy dies, that slice is gone. Teams often pair sharding with [replication](/concepts/replication) so each shard has followers.
+
+Uneven keys create **hot shards** (one server does most of the work). Pick a key that spreads load.
+
+## Why databases shard
+
+Vertical [scaling](/concepts/scaling) hits a ceiling. Splitting data is how you grow past one disk and one CPU for storage.
+
+## When to use sharding
+
+- **Data or traffic no longer fits one primary**
+- **Skip it when**: one server (maybe with read replicas) is enough; sharding adds operational cost
+
+## Related ideas
+
+Replication copies; sharding partitions. [Indexes](/concepts/indexes) still matter on each shard.
+
+## Common mix-ups
+
+- **Shard vs replica**: shard = different rows. Replica = same rows elsewhere.
+- **More shards always better**: only if the key distributes work evenly
+
+## Further reading
+
+- [Scaling](/concepts/scaling)
+- [Replication](/concepts/replication)

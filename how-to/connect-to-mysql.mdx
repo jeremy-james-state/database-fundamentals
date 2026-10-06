@@ -1,0 +1,56 @@
+---
+title: "Connect to MySQL"
+description: "Log in to a MySQL server with the mysql client, then select a database."
+---
+
+MySQL is a [database server](/concepts/database-servers). You pass a user, host, port, and password.
+
+## Prerequisites
+
+- A running MySQL server you can reach
+- A user account (lecture demos often use `root` on localhost)
+
+## Log in and pick a database
+
+<Steps>
+  <Step title="Connect">
+    ```bash
+    mysql -u root -h 127.0.0.1 -P 3306 -p
+    ```
+
+    | Flag | Meaning |
+    | --- | --- |
+    | `-u` | User name |
+    | `-h` | Host (use `127.0.0.1` for this machine) |
+    | `-P` | Port (`3306` is the default) |
+    | `-p` | Prompt for password |
+  </Step>
+  <Step title="List databases">
+    ```sql
+    SHOW DATABASES;
+    ```
+  </Step>
+  <Step title="Create and use one">
+    Identifiers use **backticks**, not double quotes:
+
+    ```sql
+    CREATE DATABASE transit;
+    USE transit;
+    ```
+  </Step>
+</Steps>
+
+## Verify the result
+
+You succeeded when the `mysql>` prompt accepts `SHOW DATABASES;` and `USE transit;` selects your database.
+
+## Troubleshooting
+
+- **Access denied**: wrong user/password, or the user cannot connect from this host.
+- **Can't connect**: server not running, or wrong `-h` / `-P`.
+
+## Related pages
+
+- [Database servers](/concepts/database-servers)
+- [Create a table in MySQL](/how-to/create-a-mysql-table)
+- [Connect to PostgreSQL](/how-to/connect-to-postgresql)
