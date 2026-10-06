@@ -1,57 +1,52 @@
 ---
 title: "Databases"
-description: "A database is an organized collection of data you can create, read, update, and delete."
-keywords: ["CS50"]
+description: "A database is an organized store of data. A DBMS is the software that lets you create, read, update, and delete it."
+keywords: ["DBMS", "relational database", "SQLite", "MySQL", "PostgreSQL", "database file", "host"]
 ---
 
-Those four actions are often called **CRUD**.
+Spreadsheets hold a grid. A database holds that grid — and often many grids — so many programs can create, read, update, and delete the same data at scale.
 
-You do not edit the files by hand. You talk to a **database management system** (DBMS): software that stores the data and runs your statements.
+## Where the data lives
 
-## How a database works
+The **database** is the store itself. How you reach it depends on the product:
 
-You send SQL to the DBMS. The DBMS:
-
-- Accepts the statement through an **interface** (for example the `sqlite3` program)
-- Keeps **storage** for tables on disk
-- Uses a **query processor** to parse the statement, plan how to read the table, and return rows
-
-The database is the collection. The DBMS is the program. In everyday speech people say “database” for both. Keep the split when you choose tools or debug a connection.
-
-## Spreadsheets to databases
-
-A spreadsheet can hold a table. Move to a database when you need:
-
-- **Scale**: millions of rows, not a sheet you can scroll
-- **Frequent updates**: many writes per second, not one person editing a file
-- **Speed**: search with algorithms (including indexes) instead of scanning every row with find-in-page
-
-Those algorithms are why a lookup that is painful in a huge spreadsheet can be fast in a database.
-
-## Choosing a DBMS
-
-Products differ on two axes you will meet early:
-
-| Choice | What you get | What you take on |
+| | SQLite | MySQL / PostgreSQL |
 | --- | --- | --- |
-| **Proprietary** | Paid product, often with vendor support | License cost and vendor lock-in |
-| **Open source** | Free to run (`SQLite`, `PostgreSQL`, `MySQL`) | You operate it yourself |
-| **Heavier / fully featured** | More types, users, and server features | More resources to run |
-| **Lighter** | Small footprint (`SQLite`) | Fewer server features |
+| Where the data lives | A **path** to a file, or `:memory:` | A named database on a host |
+| You connect with | That path | Host, credentials, database name |
 
-This site’s examples use SQLite unless a page says otherwise. [MySQL and PostgreSQL](/concepts/database-servers) appear in [Scaling](/concepts/scaling) as heavier, fully featured servers.
+### Create a database
 
-## When to use a database
+| Product | How you create it |
+| --- | --- |
+| SQLite | Open a path with `sqlite3 books.db`. No `CREATE DATABASE`. Missing file → empty database. See [Open a SQLite database](/how-to/open-a-database). |
+| MySQL / PostgreSQL | Connect to the server, then run `CREATE DATABASE name;` and `USE` / connect to that name. See the [scaling tutorial](/tutorials/scale-with-servers). |
 
-- **Shared, growing data**: many readers or writers, or data that outgrows a sheet
-- **Repeated questions**: the same lookup, filter, or total, run often
-- **Skip it when**: a short list in a spreadsheet is enough and will stay small
+The suffix (`.db`, `.sqlite`) is convention only: SQLite opens the file when the contents are a SQLite database (it starts with `SQLite format 3`).
 
-## Related ideas
+On a [database server](/concepts/database-servers), one host can hold several named databases. You pick which database to use after you connect. An empty database still needs [tables](/concepts/tables) before you store rows.
 
-Data in a database sits in [tables](/concepts/tables). When there is more than one table, [relationships](/concepts/relationships) connect them with [keys](/concepts/keys). You query those tables with [SQL](/concepts/sql). To add rows, see [insert rows](/how-to/insert-rows). To open a SQLite file, see [open a SQLite database](/how-to/open-a-database). To open a server DBMS, see [connect to MySQL](/how-to/connect-to-mysql).
+## Database management system
 
-## Common mix-ups
+A **database management system** (DBMS) is the software between that store and you. You send statements to the DBMS; you do not edit storage files by hand.
 
-- **Database vs table**: CRUD applies to the collection. One `SELECT` still reads a table.
-- **DBMS vs SQL**: SQL is the language. The DBMS is the software that understands a dialect of that language.
+| Term | Meaning |
+| --- | --- |
+| Database | Where the data lives |
+| DBMS | The program that manages it |
+
+Everyday speech often says “database” for both. Keep the split when you choose tools or debug a connection: the file or named store is the database; SQLite, MySQL, and PostgreSQL are DBMS products that manage it.
+
+## Relational databases
+
+A **relational database** stores data in [tables](/concepts/tables) related by [keys](/concepts/keys). Each table is a set of rows under one [schema](/concepts/schemas). Rows in one table correspond to rows in another through [relationships](/concepts/relationships) — for example `books.author_id` matching `authors.author_id`.
+
+That shape is why [SQL](/concepts/sql) starts here. SQL assumes fixed columns, set-based work over rows, and joins across tables. When people say “learn SQL,” they mean talking to a relational DBMS: create tables, insert rows, filter with `WHERE`, join related tables, and enforce [constraints](/concepts/constraints).
+
+This course and site use relational databases throughout. The examples begin with SQLite, then move to MySQL and PostgreSQL on a server.
+
+## Other database types
+
+Not every database is relational. Other products store documents, key–value pairs, graphs, or other shapes, and they often use a different query language than SQL.
+
+Those systems matter in production. This site does not cover them. When a page says **database**, **table**, or **SQL**, it means the relational path above.

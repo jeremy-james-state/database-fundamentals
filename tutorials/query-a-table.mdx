@@ -49,7 +49,7 @@ FROM books
 LIMIT 10;
 ```
 
-Add a second column with a comma (the comma is between columns, not between keywords):
+Add a second column with a comma (the comma is between columns, not between clauses):
 
 ```sql
 SELECT title, author
@@ -57,7 +57,7 @@ FROM books
 LIMIT 10;
 ```
 
-`SELECT`, `FROM`, and `LIMIT` are keywords. You succeeded when ten titles (or fewer, if the table is small) print in the terminal.
+`SELECT`, `FROM`, and `LIMIT` each open a clause. You succeeded when ten titles (or fewer, if the table is small) print in the terminal.
 
 ## Step 4: Keep rows that match a condition
 

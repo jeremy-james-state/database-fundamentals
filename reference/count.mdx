@@ -1,7 +1,7 @@
 ---
 title: "COUNT"
 description: "Returns how many rows, or how many non-NULL values, you asked for."
-keywords: ["CS50"]
+keywords: ["CS50", "COUNT", "how many", "aggregate"]
 ---
 
 `COUNT(*)` counts rows. `COUNT(column)` skips `NULL` in that column.
@@ -29,7 +29,7 @@ FROM table;
   Count non-`NULL` values in that column only.
 </ParamField>
 
-<ParamField body="DISTINCT" type="keyword">
+<ParamField body="DISTINCT" type="reserved word">
   Count unique non-`NULL` values.
 </ParamField>
 
@@ -50,5 +50,5 @@ FROM books;
 ## Related references
 
 - [DISTINCT](/reference/distinct)
-- [SQL](/concepts/sql#aggregator-functions)
+- [SQL](/concepts/sql)
 - [Summarize rows](/how-to/summarize-rows)

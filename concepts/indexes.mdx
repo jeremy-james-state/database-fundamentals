@@ -1,7 +1,7 @@
 ---
 title: "Indexes"
 description: "An index is a sorted lookup structure on a column (or columns) that helps the DBMS find rows without scanning the whole table."
-keywords: ["CS50"]
+keywords: ["CS50", "B-tree", "covering", "partial", "speed"]
 ---
 
 A **scan** walks every row, top to bottom. An **index search** jumps closer to the match, the way a book index points you to a page.
@@ -56,19 +56,3 @@ Reads get faster on large tables. You pay with disk space and slower writes: eve
 - **Covering**: the query only needs a few columns; put them all in the index list
 - **Partial**: almost every query uses the same `WHERE` subset
 - **Skip it when**: the table is tiny, or you write far more than you read
-
-## Related ideas
-
-Under the hood, many indexes are [B-trees](/concepts/b-trees). After you [DROP INDEX](/reference/drop-index), [VACUUM](/reference/vacuum) can reclaim file space.
-
-## Common mix-ups
-
-- **Scan vs search**: scan = whole table. Search = use an index.
-- **Covering vs magic**: covering only means “this index already has the columns I selected.”
-- **Index vs primary key**: a primary key is already unique and indexed; add indexes for other hot columns.
-
-## Further reading
-
-- [Create an index](/how-to/create-an-index)
-- [Explain a query plan](/how-to/explain-a-query-plan)
-- [B-trees](/concepts/b-trees)

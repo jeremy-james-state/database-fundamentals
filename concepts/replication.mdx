@@ -1,7 +1,7 @@
 ---
 title: "Replication"
 description: "Replication keeps copies of the same database on more than one server."
-keywords: ["CS50"]
+keywords: ["CS50", "replica", "leader", "follower", "async"]
 ---
 
 Copies raise capacity for reads and survive a single machine failing. Someone must decide **who accepts writes** and **how followers catch up**.
@@ -37,18 +37,3 @@ Horizontal [scaling](/concepts/scaling) needs more than one machine. Replication
 - **Read-heavy apps**: send reads to replicas
 - **Durability**: another server has a copy if one dies
 - **Skip it when**: one SQLite or one server database still meets the load
-
-## Related ideas
-
-[Sharding](/concepts/sharding) splits data by key. Replication copies the same data (or the same shard).
-
-## Common mix-ups
-
-- **Replica vs shard**: replica = copy. Shard = piece of the data.
-- **Async vs wrong**: async is a durability trade-off, not free consistency
-
-## Further reading
-
-- [Scaling](/concepts/scaling)
-- [Sharding](/concepts/sharding)
-- [Database servers](/concepts/database-servers)

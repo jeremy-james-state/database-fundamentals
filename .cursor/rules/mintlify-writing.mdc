@@ -17,6 +17,7 @@ Read `docs.json` and similar pages before you add or rewrite content. Prefer sea
 - Second person ("you") for instructions
 - Active voice; present tense for current state, future tense for outcomes
 - Sentence case for headings
+- Headings name the concept for the TOC: short nouns/noun phrases (`Primary key`, `One-to-many`). Never wordy syllabus lines (`See it on two tables`, `How you choose…`, `X versus Y`, `Building a … from the …`)
 - One idea per sentence; parallel lists, headings, and steps
 - Bold UI labels; backtick paths, commands, SQL, and identifiers
 - Define jargon on first use
@@ -50,18 +51,20 @@ description: "What the thing is, or what it does — not a syllabus for the page
 ```
 
 - File names are kebab-case: `primary-keys.mdx`
-- Explanation titles are the concept name (`Tables`, `SQL`), not `About …`. Do not nest a page inside a group of the same name. SQL family ideas such as aggregator functions and scalar functions live on the SQL page. Keyword lookup stays in Reference.
-- Reference titles are the clause, keyword, or function (`SELECT`, `FROM`, `COUNT`), not `… reference`. Nest keywords under Read, Filter, Sort, Summarize, Relate, Combine, Write, Define, and Constrain. Operators such as `=` stay on WHERE.
+- Explanation titles are the concept name (`Tables`, `SQL`), not `About …`. Do not nest a page inside a group of the same name. SQL family ideas such as aggregator functions and scalar functions live on the SQL page. Clause lookup stays in Reference. Do not teach "keyword" as a SQL syntax unit — use **clause**, **reserved word**, or name the construct.
+- Reference titles are the clause, function, or constraint (`SELECT`, `FROM`, `COUNT`), not `… reference`. Nest clauses under Read, Filter, Sort, Summarize, Join, Combine, Data, Schema, Constrain, Optimize, and Access. Operators such as `=` stay on WHERE.
 - Explanation `description` states what the concept is. Reference `description` states what the construct does. How-to and tutorial `description` state the task.
 - Mintlify shows `description` under the title. Do not restate it in the first body paragraph. Start the body with a new fact. Do not open with "This page explains", "This guide shows you", or "In this tutorial you" if that repeats the title or description.
 - Internal links are root-relative with no extension: `/quickstart`
-- Add every new lesson to a visible group in `docs.json` navigation. Keep `/templates/` in the hidden Templates group only. Topic groups (for example Querying) hold how-tos in working order (open, select, filter, match, sort, summarize), then the tutorial last. Relating holds list, nest, join, combine, group, then the tutorial. Designing holds show schema, create, constrain, alter, apply a schema file, then the tutorial. Writing holds insert, import CSV, delete, delete related, update, trigger, soft-delete, then the tutorial. Viewing holds create a view, create a temporary view, use a CTE, partition, hide columns, write through a view, then the tutorial. Optimizing holds time a query, create an index, explain a query plan, vacuum, run a transaction, then the tutorial. Scaling nests MySQL-only how-tos under MySQL (connect, create table, describe, modify column, stored procedure) and PostgreSQL under PostgreSQL (connect); grant privileges, prepared statement, and the tutorial stay at the Scaling root. Do not add Tutorial or How-to as group names. **Concepts** nests explanations under Foundations, Structure, Design, Change, Speed, and Scale. **Reference** nests keywords under Read, Filter, Sort, Summarize, Relate, Combine, Write, Optimize, Define, Access, and Constrain. Do not nest Concepts as SQL under SQL.
+- Add every new lesson to a visible group in `docs.json` navigation. Keep `/templates/` in the hidden Templates group only. Topic groups (for example Querying) hold how-tos in working order (open, select, filter, match, sort, summarize), then the tutorial last. Relating holds list, nest, join, combine, group, then the tutorial. Designing holds show schema, create, constrain, alter, apply a schema file, then the tutorial. Writing holds insert, import CSV, delete, delete related, update, trigger, soft-delete, then the tutorial. Viewing holds create a view, create a temporary view, use a CTE, partition, hide columns, write through a view, then the tutorial. Optimizing holds time a query, create an index, explain a query plan, vacuum, run a transaction, then the tutorial. Scaling nests MySQL-only how-tos under MySQL (connect, create table, describe, modify column, stored procedure) and PostgreSQL under PostgreSQL (connect); grant privileges, prepared statement, and the tutorial stay at the Scaling root. Do not add Tutorial or How-to as group names. **Concepts** nests explanations under Foundations, Structure, Data, Speed, and Scale. Structure holds entities → Attributes (root; storage classes, server types) → keys → relationships → ERDs → Schemas nest (schemas, constraints, normalization) (tables stay under Foundations; views under Foundations after SQL; triggers and soft deletion under Data). **Reference** nests clauses under Read, Filter, Sort, Summarize, Join, Combine, Data, Schema, Constrain, Optimize, and Access. Do not nest Concepts as SQL under SQL.
 - Body headings start at H2 (the title is H1)
 - Images live in `/images`, use `<Frame>` plus descriptive alt text
 - Actionable link text; never "click here"
 - Code blocks always have a language tag; use realistic names (`orders`, `customer_id`), not `foo`/`bar`
 - Never put real secrets in examples
 - Mark unknowns with `{/* TODO: ... */}` instead of guessing
+- Mintlify has no per-heading TOC hide. Park draft blocks (for example `## Under review` plus nested `###`s) in an MDX comment `{/* … */}` so they stay in source but leave the page and on-this-page TOC. Do not promote draft headings outside the comment just for anchors — retarget inbound links to the page or to a live how-to / reference. See `AGENTS.md`.
+- Do not add `## Further reading`, `## Related ideas`, or `## Common mix-ups` on lesson pages for now.
 - After edits: `mint validate` and `mint broken-links`
 
 ## Component selection

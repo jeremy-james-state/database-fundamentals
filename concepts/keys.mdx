@@ -1,56 +1,97 @@
 ---
 title: "Keys"
-description: "A key is a column (or set of columns) that identifies a row or points to a row in another table."
-keywords: ["CS50"]
+description: "A key is a column, or a small set of columns, that uniquely identifies a row or points to a row in another table."
+keywords: ["CS50", "primary key", "foreign key", "super key", "candidate key", "surrogate", "natural key", "composite key", "unique", "join table", "unique identifier", "junction table"]
 ---
 
-A **unique identifier** names one item and no other. You can invent one (`book_id`) or use a value the world already treats as unique (an ISBN). Invented integer keys stay short when you copy them into other tables.
+A **key** is an [attribute](/concepts/attributes) — or a small set of attributes — with a special job: uniquely identify a row, or point at a row in another table. In the [table](/concepts/tables) that is one [column](/concepts/tables#columns) or a few columns. In design, that unique identity belongs to the [entity](/concepts/entities). Keys keep structure clear, protect integrity, and link related tables.
 
-## How keys work
+| | Primary key | Foreign key |
+| --- | --- | --- |
+| **Job** | Identifies a row in **this** table | Points at a row in **another** table |
+| **Must be unique?** | Yes — one value (or combination), one row here | No — many rows may point at the same parent |
+| **Where it lives** | On the table that owns the item | On the table that refers to that item |
+| **Example** | `books.book_id` | `ratings.book_id` → `books.book_id` |
 
-A <Tooltip tip="A column or set of columns that uniquely identifies each row">primary key</Tooltip> is unique for every row in **this** table. No two books share a `book_id`.
+## Super key
 
-A **foreign key** is a primary key copied into another table. `ratings.book_id` is a foreign key: it must match `books.book_id`. A [JOIN](/how-to/join-tables) follows that match.
+A **super key** is any set of one or more columns that can uniquely identify a row. It may include extras you do not need. Example: `username` alone is unique, so `username` + `first_name` is still a super key — but the name is redundant.
+
+## Candidate key
+
+A **candidate key** is a **minimal** super key — unique, with no unnecessary columns. A table can have several candidates (for example `username`, `email`, and `phone` if each alone is unique).
+
+```text
+Super key
+  └ Candidate key   (minimal super key)
+       └ Primary key   (the candidate you choose)
+```
+
+## Primary key
+
+The **primary key** is the one candidate key you pick as the official identifier for the table. Values must be unique. They must not be `NULL`.
+
+**`books`** — `book_id` is the <Tooltip tip="The chosen candidate key that uniquely identifies each row in this table">primary key</Tooltip>.
+
+| book_id (PK) | title | year |
+| --- | --- | --- |
+| 1 | Kindred | 1979 |
+| 2 | Neuromancer | 1984 |
+
+### Natural key
+
+A **natural key** is a primary key taken from a real-world value that already identifies the item — an ISBN, a UPC, sometimes an email. It can block duplicates because the world already treats that value as unique.
+
+### Surrogate key
+
+A **surrogate key** is invented for the database — usually an auto-increment integer such as `book_id` or `user_id`. Use it when no natural candidate is stable or short enough to copy into other tables. Keep the ISBN as an ordinary column if you still need it.
+
+### Composite key
+
+A **composite key** is a primary key made of **two or more** columns when one column is not enough. Join tables often use this: `(author_id, book_id)` uniquely identifies one authorship row.
+
+## Foreign key
+
+A **foreign key** is a column (or columns) in a child table that references the primary key of a parent table. It connects related [entities](/concepts/entities) and enforces that the parent row exists.
+
+**`ratings`** — `book_id` is a foreign key to `books`.
+
+| rating_id (PK) | book_id (FK → books) | stars |
+| --- | --- | --- |
+| 10 | 1 | 5 |
+| 11 | 1 | 4 |
+| 12 | 2 | 5 |
+
+Two ratings may point at book `1`. Two books with `book_id` `1` may not.
+
+A [JOIN](/how-to/join-tables) follows the foreign key to the primary key it matches.
+
+```sql
+SELECT books.title, ratings.stars
+FROM ratings
+JOIN books ON ratings.book_id = books.book_id;
+```
 
 ## Join tables
 
-A **join table** (also called a junction table) holds two foreign keys. It represents a [many-to-many](/concepts/relationships) match.
+A **join table** (also called a junction table) holds **two foreign keys**. It represents a [many-to-many](/concepts/relationships#many-to-many) match. The pair of foreign keys is often the composite primary key of that table.
 
-| author_id | book_id |
+| author_id (FK → authors) | book_id (FK → books) |
 | --- | --- |
 | 2 | 1 |
 | 2 | 4 |
 | 7 | 1 |
 
-Author `2` wrote books `1` and `4`. Book `1` has more than one author. The pair `(author_id, book_id)` is unique. The same `author_id` may appear on many rows.
+Author `2` wrote books `1` and `4`. Book `1` has more than one author.
 
-## Why databases use keys
+## Why
 
 Matching by row order fails as soon as you insert or delete. A key travels with the item.
 
-A long natural code (ISBN) is unique, but repeating it on every rating wastes space. Store a short `book_id` as the primary key. Keep the ISBN as an ordinary column on `books`.
-
-## When to use a key
+## When
 
 - **Primary key**: every table that stores items you will point at later
-- **Foreign key**: a many-side table that belongs to one parent (`ratings` belong to `books`)
+- **Surrogate**: no short, stable natural candidate
+- **Foreign key**: a many-side table that belongs to one parent
 - **Join table**: many items on both sides
 - **Skip a join table when**: one side owns the other; put the foreign key on the many side only
-
-## Related ideas
-
-Keys show up as crow’s feet on an [entity-relationship diagram](/concepts/entity-relationship-diagrams). You follow them in a [nested query](/how-to/nest-a-query) or a [JOIN](/reference/join).
-
-## Common mix-ups
-
-- **Primary vs foreign**: the primary key lives on the home table. The foreign key is that same value stored somewhere else.
-- **Join table vs two tables**: `authored` is not an author and not a book. It only records who wrote what.
-
-## Further reading
-
-- [Relationships](/concepts/relationships)
-- [JOIN](/reference/join)
-- [PRIMARY KEY](/reference/primary-key)
-- [Constraints](/concepts/constraints)
-- [Constrain a table](/how-to/constrain-a-table)
-- [Tutorial](/tutorials/query-related-tables)

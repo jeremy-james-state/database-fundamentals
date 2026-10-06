@@ -1,7 +1,7 @@
 ---
 title: "Soft deletion"
 description: "Soft deletion marks a row as gone without removing it. A deleted or archived column holds that mark."
-keywords: ["CS50"]
+keywords: ["CS50", "deleted_at", "hide row", "tombstone"]
 ---
 
 A hard [DELETE](/reference/delete) drops the row. Recovery means a backup. A **soft delete** [UPDATE](/reference/update)s a flag such as `deleted` from `0` to `1`. Queries that should see “live” rows add `WHERE deleted != 1`.
@@ -35,19 +35,3 @@ You take on a duty: every everyday `SELECT` must filter the flag, or “deleted�
 
 - **You may need the row later**: inventory, audit, undo
 - **Skip it when**: the owner asked you to erase the data, or the row has no reason to exist
-
-## Related ideas
-
-The flag is an ordinary column, often with a [DEFAULT](/reference/default) of `0`. Everyday queries add `WHERE deleted != 1`. A [view](/concepts/views) of live rows (`WHERE deleted = 0`) plus an [INSTEAD OF DELETE](/how-to/write-through-a-view) trigger can soft-delete when someone deletes from the view.
-
-## Common mix-ups
-
-- **Soft vs hard**: `UPDATE … SET deleted = 1` keeps the row. `DELETE FROM` does not.
-- **Default 0**: new rows are live unless you set the flag.
-
-## Further reading
-
-- [Soft-delete a row](/how-to/soft-delete-a-row)
-- [Write through a view](/how-to/write-through-a-view)
-- [Delete rows](/how-to/delete-rows)
-- [UPDATE](/reference/update)

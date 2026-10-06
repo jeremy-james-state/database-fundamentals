@@ -1,0 +1,29 @@
+---
+title: "Entities"
+description: "An entity is a real-world object or concept you store facts about. Attributes describe it. Each instance is one occurrence."
+keywords: ["CS50", "entity vs table", "attribute vs column", "instance vs row", "unique identifier", "primary key", "entity", "attribute", "instance", "conceptual vs physical", "one entity one table"]
+---
+
+In database design, a [table](/concepts/tables) often **represents an entity** — the kind of thing you store facts about: customer, product, book. The table is the SQL structure; the entity is what you named in the design. Same name in both places is common (`books` entity → `books` table); they are still two layers.
+
+| Entity (conceptual) | Table (physical) | Example |
+| --- | --- | --- |
+| Entity name | Table name | `books` |
+| [Attributes](/concepts/attributes) | Columns | `title`, `year`, `isbn` |
+| Instances | Rows | one book |
+| Attribute on an instance | [Cell](/concepts/tables#cells) value | `1979` |
+| Unique identifier | [Primary key](/concepts/keys) | `book_id` |
+
+**One table = one entity**, or one [relationship](/concepts/relationships) between entities. Point across tables with [keys](/concepts/keys). [Normalization](/concepts/normalization) is the systematic version of that split.
+
+Facts about the entity are [attributes](/concepts/attributes) — each becomes a typed column. Do not park a whole second kind of thing as a column when it needs its own identity; that is another entity.
+
+## Instances
+
+An **instance** is one occurrence of the entity — *The Left Hand of Darkness* is one book. In the table, each instance is a [row](/concepts/tables#rows). The value of an attribute on that instance sits in a [cell](/concepts/tables#cells).
+
+## When to use an entity
+
+- **A kind of thing you can describe**: a customer, a product, an order
+- **Facts that belong together**: name, email, and phone all describe the customer
+- **Skip it when**: the fact is just a value on another entity (keep it as an [attribute](/concepts/attributes))

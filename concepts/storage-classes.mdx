@@ -1,7 +1,7 @@
 ---
 title: "Storage classes"
 description: "A storage class is how SQLite holds a value. A type affinity is what a column prefers to convert that value into."
-keywords: ["CS50"]
+keywords: ["CS50", "type", "affinity", "INTEGER", "TEXT", "REAL", "BLOB"]
 ---
 
 Five **storage classes** apply to values: `NULL`, `INTEGER`, `REAL`, `TEXT`, and `BLOB` (binary large object: bytes as given, for example an image).
@@ -24,7 +24,7 @@ SQLite has no boolean type. Use `INTEGER` `0`/`1`, or `TEXT`, and a [CHECK](/ref
 
 ## Why databases use types
 
-You cannot total fares stored as `'$0.10'`. Text is not a number. Affinity is SQLite’s way of nudging values toward a class without a rigid type system. [MySQL and PostgreSQL](/concepts/server-types) use stricter types by default.
+You cannot total fares stored as `'$0.10'`. Text is not a number. Affinity is SQLite’s way of nudging values toward a class without a rigid type system. [MySQL and PostgreSQL](/concepts/server-types) declare a type on the column (`VARCHAR`, `INT`, `DECIMAL`) and reject values that do not fit.
 
 ## When to use each class
 
@@ -34,18 +34,3 @@ You cannot total fares stored as `'$0.10'`. Text is not a number. Affinity is SQ
 - **BLOB**: files you must not reinterpret
 - **NULL**: missing
 - **Skip mixing money as text**: strip the `$` before you store it
-
-## Related ideas
-
-You name the affinity on [CREATE TABLE](/reference/create-table). [DEFAULT](/reference/default) fills a column when the insert omits it.
-
-## Common mix-ups
-
-- **Storage class vs affinity**: the class is the stored value. The affinity is the column’s preference.
-- **NUMERIC vs INTEGER vs REAL**: NUMERIC is the flexible column affinity. INTEGER and REAL are stricter preferences (and also names of storage classes).
-
-## Further reading
-
-- [CREATE TABLE](/reference/create-table)
-- [Schemas](/concepts/schemas)
-- [CHECK](/reference/check)

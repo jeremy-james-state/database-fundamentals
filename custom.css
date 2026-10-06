@@ -21,22 +21,335 @@
   font-size: calc(1.125rem * 1.1) !important;
 }
 
-.code-block {
-  font-size: 1.15em !important;
+/* Code blocks — large type, dense lines (not sparse / double-spaced) */
+.code-block,
+.mdx-content.prose pre,
+.mdx-content.prose pre code {
+  font-size: 1.3em !important;
+  line-height: 1.2 !important;
 }
 
-chat-assistant-floating-input,
-#chat-assistant-sheet,
-.fixed.z-999.cursor-grab {
+/*
+  Steps clause build-up: Mintlify defaults (mt-5 mb-8, py-3.5) make one-line
+  fences ~80px tall. Tighten only inside .steps so multi-line page blocks stay.
+*/
+.steps .code-block,
+.step .code-block {
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.625rem !important;
+}
+
+.steps .code-block [class*="overflow"],
+.step .code-block [class*="overflow"],
+.steps .code-block pre,
+.step .code-block pre {
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+/*
+  Shiki dual themes (github-light-default / dark-plus): spans use inline color +
+  --shiki-dark. Bold clause openers only (first token on the line) so identifiers
+  that share the keyword color (e.g. year) stay regular weight.
+  --shiki-dark-font-weight: dark mode resets font-weight from that var.
+  text-shadow: PaperMono’s 700 face is optically flat at code size.
+*/
+pre.shiki .line > span:first-child[style*="#569CD6"] {
+  --shiki-dark-font-weight: 700;
+  font-weight: 700 !important;
+  text-shadow: 0.4px 0 0 currentColor, -0.4px 0 0 currentColor;
+}
+
+/* Comments gray in light and dark (dark-plus defaults to green #6A9955). */
+pre.shiki .line > span[style*="#6A9955"] {
+  color: #6e7781 !important;
+  --shiki-dark: #9ca3af !important;
+}
+
+html.dark pre.shiki .line > span[style*="#6A9955"] {
+  color: #9ca3af !important;
+}
+
+.mdx-content.prose pre .line,
+.code-block .line,
+.mdx-content.prose pre [class*="line"] {
+  line-height: 1.2 !important;
+  min-height: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.mdx-content.prose pre .line:empty,
+.code-block .line:empty {
+  display: none !important;
+  height: 0 !important;
+}
+
+.mdx-content.prose :not(pre) > code {
+  font-size: 1.05em !important;
+}
+
+/*
+  Markdown content tables — Mintlify sizes these smaller than body prose.
+  Match the surrounding .mdx-content.prose size; leave code blocks alone.
+*/
+.mdx-content [data-table-wrapper="true"],
+.mdx-content [data-table-wrapper="true"] table {
+  font-size: 1em !important;
+}
+
+/*
+  Hide Mintlify Ask Assistant (remote chat). Prefer dashboard disableAiChat;
+  these selectors cover local preview and any leftover entry points.
+*/
+#assistant-entry,
+#assistant-entry-mobile,
+.chat-assistant-floating-input,
+#content-area > div.sticky.bottom-0.z-20 {
   display: none !important;
 }
 
-#footer a[href*="mintlify.com"] {
+/*
+  mint dev "Compiling . . ." preview status pill (fixed bottom-left, draggable).
+  No official hide flag in Mintlify docs; scope tightly so other role=status regions stay.
+*/
+div[role="status"][aria-live="polite"].fixed.z-999 {
   display: none !important;
 }
 
+/* Page footer (GitHub social / Mintlify link). Reversible CSS hide. */
 #footer {
-  padding-top: 1.25rem !important;
-  padding-bottom: 3.5rem !important;
+  display: none !important;
 }
 
+/* Mintlify product search — local search lives in #local-search-nav. */
+#search-bar-entry,
+#search-bar-entry-mobile {
+  display: none !important;
+}
+
+/* Navbar / sidebar link to the old /search page. */
+#navbar a[href="/search"],
+#sidebar a[href="/search"],
+#navigation-items a[href="/search"] {
+  display: none !important;
+}
+
+/* Local search in the top bar (local-search-nav.js). */
+.local-search-nav {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 36rem;
+}
+
+.local-search-nav__field {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 2.25rem;
+  width: 100%;
+  padding: 0 0.75rem 0 0.875rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgb(156 163 175 / 0.3);
+  background: var(--background-light, #fff);
+  color: rgb(107 114 128);
+  cursor: text;
+}
+
+:is(.dark) .local-search-nav__field {
+  background: var(--background-dark, #0a0a0a);
+  border-color: rgb(75 85 99 / 0.3);
+  color: rgb(255 255 255 / 0.5);
+  filter: brightness(1.1);
+}
+
+.local-search-nav__field:focus-within {
+  border-color: rgb(75 85 99 / 0.45);
+}
+
+.local-search-nav__icon {
+  display: flex;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.local-search-nav__field input {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  outline: none;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: inherit;
+}
+
+.local-search-nav__field input::placeholder {
+  color: inherit;
+  opacity: 0.85;
+}
+
+.local-search-nav__kbd {
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  line-height: 1;
+  padding: 0.2rem 0.35rem;
+  border-radius: 0.35rem;
+  border: 1px solid rgb(156 163 175 / 0.35);
+  opacity: 0.8;
+}
+
+.local-search-nav__panel {
+  position: absolute;
+  top: calc(100% + 0.4rem);
+  left: 0;
+  right: 0;
+  z-index: 50;
+  max-height: min(70vh, 28rem);
+  overflow: auto;
+  border-radius: 0.75rem;
+  border: 1px solid rgb(24 24 27 / 0.12);
+  background: #fff;
+  box-shadow: 0 18px 40px rgb(0 0 0 / 0.18);
+}
+
+:is(.dark) .local-search-nav__panel {
+  background: #09090b;
+  border-color: rgb(255 255 255 / 0.12);
+  box-shadow: 0 18px 40px rgb(0 0 0 / 0.45);
+}
+
+.local-search-nav__empty {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  font-size: 0.8125rem;
+  color: rgb(113 113 122);
+}
+
+:is(.dark) .local-search-nav__empty {
+  color: rgb(255 255 255 / 0.55);
+}
+
+.local-search-nav__results {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.local-search-nav__hit {
+  display: block;
+  padding: 0.7rem 1rem;
+  text-decoration: none;
+  border-top: 1px solid rgb(24 24 27 / 0.08);
+  color: inherit;
+}
+
+:is(.dark) .local-search-nav__hit {
+  border-top-color: rgb(255 255 255 / 0.08);
+}
+
+.local-search-nav__hit:hover {
+  background: rgb(24 24 27 / 0.04);
+}
+
+:is(.dark) .local-search-nav__hit:hover {
+  background: rgb(255 255 255 / 0.05);
+}
+
+.local-search-nav__title {
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: #09090b;
+}
+
+:is(.dark) .local-search-nav__title {
+  color: #fff;
+}
+
+.local-search-nav__desc {
+  margin-top: 0.15rem;
+  font-size: 0.8125rem;
+  color: rgb(82 82 91);
+}
+
+:is(.dark) .local-search-nav__desc {
+  color: rgb(255 255 255 / 0.65);
+}
+
+.local-search-nav__href {
+  margin-top: 0.2rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.7rem;
+  color: rgb(113 113 122);
+}
+
+:is(.dark) .local-search-nav__href {
+  color: rgb(255 255 255 / 0.4);
+}
+
+.local-search-nav-mobile {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgb(156 163 175 / 0.3);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+:is(.dark) .local-search-nav-mobile {
+  border-color: rgb(75 85 99 / 0.3);
+}
+
+@media (max-width: 1023px) {
+  .local-search-nav {
+    display: none;
+  }
+
+  .local-search-nav.is-mobile-sheet {
+    display: block;
+    position: fixed;
+    inset: 0.75rem;
+    z-index: 80;
+    max-width: none;
+    background: #fff;
+    border-radius: 0.75rem;
+    border: 1px solid rgb(24 24 27 / 0.12);
+    padding: 0.75rem;
+    box-shadow: 0 18px 40px rgb(0 0 0 / 0.25);
+  }
+
+  :is(.dark) .local-search-nav.is-mobile-sheet {
+    background: #09090b;
+    border-color: rgb(255 255 255 / 0.12);
+  }
+
+  .local-search-nav.is-mobile-sheet .local-search-nav__panel {
+    position: static;
+    max-height: calc(100vh - 6rem);
+    border: 0;
+    box-shadow: none;
+    margin-top: 0.5rem;
+  }
+
+  .local-search-nav-mobile {
+    display: inline-flex;
+  }
+}
+
+/*
+  Further reading — removed from MDX sitewide; CSS covers stale builds / leftovers.
+*/
+#further-reading,
+#further-reading + ul,
+#further-reading + ol,
+#table-of-contents a[href="#further-reading"],
+#table-of-contents li:has(> a[href="#further-reading"]) {
+  display: none !important;
+}

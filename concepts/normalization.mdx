@@ -1,10 +1,10 @@
 ---
 title: "Normalization"
 description: "Normalization splits a table so each fact lives with one kind of item, and repeating groups go away."
-keywords: ["CS50"]
+keywords: ["CS50", "normal form", "redundancy", "3NF", "split table", "insertion anomaly", "deletion anomaly", "one entity one table"]
 ---
 
-Academics name first, second, and third **normal form**. Each step makes the same data less redundant. The practical test: if you add a column, it must be about **that** table’s entity only.
+Academics name first, second, and third **normal form**. Each step makes the same data less redundant. The practical test: if you add a column, it must be about **that** table’s [entity](/concepts/entities) only — one kind of thing per table. Mixing entities in one table causes the redundancy and insert/delete problems described on [Entities](/concepts/entities).
 
 ## How normalization works
 
@@ -25,18 +25,3 @@ You give up a single spreadsheet-shaped table. You gain updates in one place.
 - **The same name or fare repeats** on many rows
 - **A column is about another entity**: station line does not belong on riders
 - **Skip it when**: you have one list of similar items and it will stay small; a single [table](/concepts/tables) is enough
-
-## Related ideas
-
-Draw the split on an [entity-relationship diagram](/concepts/entity-relationship-diagrams). A bar on the line means at least one; a circle means zero is allowed; a crow’s foot means many.
-
-## Common mix-ups
-
-- **More tables vs more columns**: a new kind of item is a new table. A new fact about the same item is a new column.
-- **Normal form names vs the test**: you do not need to recite 3NF. Ask whether the column is about this entity.
-
-## Further reading
-
-- [Schemas](/concepts/schemas)
-- [Relationships](/concepts/relationships)
-- [Create a table](/how-to/create-a-table)

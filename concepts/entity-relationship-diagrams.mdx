@@ -1,20 +1,36 @@
 ---
-title: "Entity-relationship diagrams"
-description: "An entity-relationship diagram (ER diagram) is a picture of tables and how they connect."
-keywords: ["CS50"]
+title: "Entity-Relationship Diagrams"
+sidebarTitle: "Entity-Relationship Diagrams"
+description: "An Entity-Relationship Diagram (ERD) shows entities as boxes and relationships as lines. You implement each entity as a table."
+keywords: ["CS50", "ERD", "ER diagram", "entity-relationship diagram", "crows foot", "Chen notation", "cardinality", "box", "entity vs table"]
 ---
 
-Each box is a table (an **entity**). Each line is a [relationship](/concepts/relationships). The marks on the line are **cardinality**: how many rows may sit on that end.
+Also called an **ER diagram**. Boxes are [entities](/concepts/entities) (become [tables](/concepts/tables)). Lines are [relationships](/concepts/relationships). Marks on the line show [cardinality](/concepts/relationships#cardinality).
 
-## How an ER diagram works
+**Crow’s foot** is the industry default (this course). **Chen** is the academic alternative.
 
-Crow’s foot notation uses a few marks:
+## Crow's foot
 
-| Mark | Meaning |
+Marks sit at each **end** of the line — next to the entity they describe.
+
+### Symbols
+
+| Symbol | Meaning |
 | --- | --- |
-| Straight bar | Exactly one |
 | Circle | Zero (optional) |
-| Crow’s foot (three lines) | Many |
+| Bar | One |
+| Crow’s foot (three prongs) | Many |
+
+### Ends
+
+| Marks at the end | Meaning |
+| --- | --- |
+| Bar + bar | Exactly one |
+| Circle + bar | Zero or one |
+| Bar + crow’s foot | One or many |
+| Circle + crow’s foot | Zero or many |
+
+Read **toward** the entity beside the marks.
 
 ```mermaid
 erDiagram
@@ -24,32 +40,33 @@ erDiagram
   books ||--o{ authored : written_in
 ```
 
-Read `publishers ||--o{ books` as: one publisher publishes zero or more books. Each book has one publisher.
+| In Mermaid | Same as | Meaning |
+| --- | --- | --- |
+| `\|\|` | Bar + bar | Exactly one |
+| `o\|` | Circle + bar | Zero or one |
+| `\|{` | Bar + crow’s foot | One or many |
+| `o{` | Circle + crow’s foot | Zero or many |
 
-`authored` is the [join table](/concepts/keys#join-tables). Both ends are many: an author writes many books, a book has many authors.
+`publishers ||--o{ books` → one publisher, zero or many books. `authored` is the [join table](/concepts/keys#join-tables) (many ↔ many).
 
-## Why databases use ER diagrams
+## Chen
 
-The picture is the schema you will query. You see where to put a [foreign key](/concepts/keys) before you write `JOIN`.
+Peter Chen, 1976 — textbooks more than industry tools.
 
-## When to use an ER diagram
+| Shape | Meaning |
+| --- | --- |
+| Rectangle | Entity |
+| Diamond | Relationship (for example *writes* between `authors` and `books`) |
+| Oval | Attribute; **underline** the primary key |
 
-- **More than one table**: you need to see the links
-- **Choosing a join table**: many-to-many shows a box in the middle
-- **Skip it when**: you have a single [table](/concepts/tables)
+Cardinality on the line as `1`, `N`, or `M` — not crow’s-foot symbols.
 
-## Related ideas
+## Why
 
-The lines match [one-to-one, one-to-many, and many-to-many](/concepts/relationships). Query along those lines with [JOIN](/how-to/join-tables).
+Map before [schema](/concepts/schemas). See where a [foreign key](/concepts/keys#foreign-key) goes before you `JOIN`.
 
-## Common mix-ups
+## When
 
-- **Box vs column**: a box is a table, not one column. Keys sit inside the box.
-- **Line vs JOIN**: the diagram is structure. `JOIN` is how you read across it.
-
-## Further reading
-
-- [Relationships](/concepts/relationships)
-- [Keys](/concepts/keys)
-- [Normalization](/concepts/normalization)
-- [Join tables](/how-to/join-tables)
+- **More than one table**: see the links
+- **Many-to-many**: join table shows in the middle
+- **Skip it when**: a single [table](/concepts/tables)

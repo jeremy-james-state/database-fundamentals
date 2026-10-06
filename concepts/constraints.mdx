@@ -1,17 +1,18 @@
 ---
 title: "Constraints"
 description: "A constraint is a rule in the schema that rejects a row that would break it."
-keywords: ["CS50"]
+keywords: ["CS50", "NOT NULL", "UNIQUE", "CHECK", "PRIMARY KEY"]
 ---
 
-SQLite checks constraints on insert and update. A **table constraint** is written after the columns and names the table as a whole. A **column constraint** is written on one column, after its [storage class](/concepts/storage-classes).
+Constraints live in the [schema](/concepts/schemas). SQLite **checks them per row** on [INSERT](/reference/insert) and [UPDATE](/reference/update) — there is no separate “row constraint” syntax. What you choose is **where you write the rule**: on one [column](/concepts/tables#columns) or on the [table](/concepts/tables) as a whole.
 
 ## How constraints work
 
-| Kind | Written | Typical keywords |
+| Level | Written | Typical forms |
 | --- | --- | --- |
-| Table | After the column list | [PRIMARY KEY](/reference/primary-key), [FOREIGN KEY](/reference/foreign-key) |
-| Column | On that column | [NOT NULL](/reference/not-null), [UNIQUE](/reference/unique), [DEFAULT](/reference/default), [CHECK](/reference/check) |
+| Column | On that column, after its [storage class](/concepts/storage-classes) | [NOT NULL](/reference/not-null), [UNIQUE](/reference/unique), [DEFAULT](/reference/default), [CHECK](/reference/check) |
+| Table | After the column list | [PRIMARY KEY](/reference/primary-key), [FOREIGN KEY](/reference/foreign-key), multi-column `UNIQUE` / `CHECK` |
+| Row (check time) | Not a syntax kind | Every constraint runs against each row the statement touches |
 
 ```sql
 CREATE TABLE stations (
@@ -26,7 +27,7 @@ CREATE TABLE stations (
 
 A primary key already forbids `NULL` on that key. You do not also need `NOT NULL` on `id`.
 
-Some keywords have both placements. `id INTEGER PRIMARY KEY` is the column form of a single-column key. `PRIMARY KEY (id)` is the table form. A **composite** primary key (two or more columns) can only be a table constraint:
+Some constraints have both placements. `id INTEGER PRIMARY KEY` is the column form of a single-column key. `PRIMARY KEY (id)` is the table form. A **composite** primary key (two or more columns) can only be a table constraint:
 
 ```sql
 PRIMARY KEY (column_a, column_b)
@@ -45,20 +46,3 @@ Table constraints express identity and relationships: which columns are the key,
 - **Table constraint**: [primary keys](/concepts/keys), [foreign keys](/concepts/keys), any rule that names more than one column
 - **Column constraint**: a rule about one column only (`CHECK (fare != 0)`, `DEFAULT CURRENT_TIMESTAMP`)
 - **Skip repeating `NOT NULL` on a primary key**: the key already requires a value
-
-## Related ideas
-
-Constraints are part of the [schema](/concepts/schemas), not of the data. You declare them in [CREATE TABLE](/reference/create-table). [ON DELETE](/reference/foreign-key#on-delete) says what happens to child rows when the parent goes.
-
-## Common mix-ups
-
-- **Table vs column**: where you write it, not how strict it is. Both reject bad rows.
-- **Primary key vs `UNIQUE`**: a primary key identifies the row. `UNIQUE` on `name` only forbids a second station with the same name.
-- **Foreign key vs `NOT NULL`**: pointing at `riders` does not force `rider_id` to be present.
-
-## Further reading
-
-- [Constrain a table](/how-to/constrain-a-table)
-- [Delete related rows](/how-to/delete-related-rows)
-- [Keys](/concepts/keys)
-- [PRIMARY KEY](/reference/primary-key)
