@@ -1,6 +1,7 @@
 ---
 title: "Delete related rows"
 description: "Remove a parent row by clearing the join table first, or by declaring ON DELETE on the foreign key."
+keywords: ["CS50"]
 ---
 
 `artists` → `created` → `collections` is a [many-to-many](/concepts/relationships) through a [join table](/concepts/keys). `created` holds the foreign keys. SQLite blocks a delete that would leave `created` pointing at a missing artist unless you say otherwise.
