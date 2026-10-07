@@ -1,0 +1,54 @@
+---
+title: "Migrations"
+description: "A migration is a versioned SQL change to the schema. Tools record which versions were applied; that is not a full audit of who changed production."
+keywords:
+  - "migration"
+  - "schema migration"
+  - "Supabase"
+  - "DDL"
+  - "ALTER TABLE"
+  - "versioning"
+  - "migration history"
+---
+
+You change the [schema](/concepts/schemas) with DDL such as [ALTER TABLE](/reference/alter-table). A **migration** packages that change as an ordered, named SQL file so every environment can apply the same steps in the same order.
+
+Supabase (and many other stacks) use a **migration convention**: timestamped files under `supabase/migrations/`, plus a history of which version IDs the database has already run.
+
+## How migrations work
+
+Each file is one ordered version. The timestamp in the filename identifies the migration — not necessarily the moment production applied it.
+
+```sql supabase/migrations/20241006120000_add_task_due_date.sql
+ALTER TABLE public.tasks
+ADD COLUMN due_at timestamptz;
+```
+
+| Record | What it tells you |
+| --- | --- |
+| **Migration file** | Ordered version ID and the exact SQL change |
+| **Database migration history** | Which migration versions were applied |
+| **Git history** | Change author, review, and explanation |
+| **Deployment logs** | When and by whom the deployment ran, if recorded |
+
+Together, the files and history answer “which schema versions exist and which are on this database?” They do **not** by themselves answer “who changed production, and when?” For that audit trail you also need Git history and deployment logs. The filename timestamp alone does not tell you who deployed a version or when it landed in production.
+
+## Dashboard edits
+
+Direct edits in a production Dashboard (or ad-hoc SQL against the live database) bypass the migration workflow. Those changes are not automatically turned into migration files. Capture them as migrations afterward, or the next migrate from files can drift from what production actually has.
+
+## Why teams use migrations
+
+- The same `ALTER` runs in development, staging, and production
+- New databases can catch up by applying every pending version
+- Reviewers see the SQL change in Git before it ships
+
+A one-shot [schema file](/how-to/apply-a-schema-file) rebuilds structure from scratch. Migrations are for incremental change on a database that already has data.
+
+## When to use migrations
+
+- **Shared or hosted databases**: keep schema change in versioned SQL
+- **Supabase projects**: prefer `supabase/migrations/<timestamp>_….sql` over Dashboard-only edits
+- **Skip migrations when**: you are learning on a disposable local SQLite file and can recreate it from a schema file
+
+See the [Supabase migration guide](https://supabase.com/docs/guides/deployment/database-migrations) and [migration history](https://supabase.com/docs/guides/deployment/database-migrations#migration-history) for CLI commands and how applied versions are stored.

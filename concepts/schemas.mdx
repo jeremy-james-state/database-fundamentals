@@ -43,7 +43,7 @@ FROM sqlite_master
 WHERE type = 'table';
 ```
 
-Keep a `schema.sql` file if you want to rebuild the empty structure: edit the file, then [apply it](/how-to/apply-a-schema-file).
+Keep a `schema.sql` file if you want to rebuild the empty structure: edit the file, then [apply it](/how-to/apply-a-schema-file). For incremental change on a live database, use [migrations](/concepts/migrations) — versioned SQL files plus a history of which versions were applied.
 
 ## Schema design checklist
 
