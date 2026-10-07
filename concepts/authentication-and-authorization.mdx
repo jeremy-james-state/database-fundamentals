@@ -1,10 +1,12 @@
 ---
 title: "Authentication and authorization"
 sidebarTitle: "Authentication and authorization"
-description: "Model tenant membership and role permissions, then enforce both tenant ownership and allowed actions with Row Level Security."
+description: "The connection proves who you are; privileges and policies decide what that identity may do. Model membership and roles when the app needs finer rules."
 keywords:
   - "authentication"
   - "authorization"
+  - "credentials"
+  - "connection"
   - "RBAC"
   - "role-based access control"
   - "membership"
@@ -17,7 +19,9 @@ keywords:
   - "organisations"
 ---
 
-Authentication proves **who** is making a request. Authorization decides **what that identity may do**. In a multi-tenant application, authorization usually depends on both the tenant membership and the assigned role.
+You [connect to a database server](/concepts/database-servers#connection-and-credentials) before you run SQL. Credentials on that connection are **authentication**: they tell PostgreSQL or MySQL which account the session is. **Authorization** then decides what that account may do — table privileges from [GRANT](/reference/grant), and finer rules such as Row Level Security.
+
+Authentication proves **who** is on the connection. Authorization decides **what that identity may do**. The rest of this page is the application pattern: tenant membership, roles, and RLS on top of that session identity.
 
 ## Model the assignment
 

@@ -6,6 +6,8 @@ keywords: ["CS50"]
 
 PostgreSQL is a [database server](/concepts/database-servers). `psql` meta-commands start with a backslash (they are not SQL).
 
+`-U` names the database account. That login authenticates the session; privileges and policies for that account apply to every statement you run until you disconnect. See [Connection and credentials](/concepts/database-servers#connection-and-credentials).
+
 ## Prerequisites
 
 - A running PostgreSQL server
@@ -18,6 +20,8 @@ PostgreSQL is a [database server](/concepts/database-servers). `psql` meta-comma
     ```bash
     psql -U postgres -h 127.0.0.1 -p 5432
     ```
+
+    You are prompted for that user’s password when the server requires it. The connection now runs as `postgres` (or whichever `-U` you used).
   </Step>
   <Step title="List databases">
     ```text
