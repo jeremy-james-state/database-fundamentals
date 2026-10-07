@@ -44,6 +44,15 @@ For each useful subject–verb–object sentence in the transcript:
 4. **Validate the meaning.** Review the draft with stakeholders before you choose keys or tables.
 5. **Ask for cardinality.** The verb alone does not tell you the minimum or maximum count. Ask whether each side is optional or required, and whether it permits one or many matches.
 
+### Show the verb in ER notation
+
+The same relationship appears differently depending on the notation:
+
+- **Crow’s Foot notation** connects two entity boxes with a line. You may label the line with the verb; symbols at each end show minimum and maximum cardinality.
+- **Chen notation** places the relationship verb inside a diamond between the two entity rectangles.
+
+The verb tells you what the entities do together. The symbols come from separate business rules about whether participation is optional or required and whether each side allows one or many matches. See [Entity-Relationship Diagrams](/concepts/entity-relationship-diagrams) for the notation itself.
+
 <Warning>
   Grammar gives you candidates, not a finished schema. A noun may be an attribute in one system and an entity in another. A verb reveals a possible relationship, but not its cardinality. Ask follow-up questions: How many? Is it required? Can it repeat? Must you keep its history?
 </Warning>
