@@ -1,10 +1,17 @@
 ---
 title: "NATURAL JOIN"
-description: "Joins on every pair of columns that share a name."
-keywords: ["CS50", "NATURAL JOIN", "same column names"]
+description: "Automatically join on every shared column name, understand its merged output, and avoid schema-change surprises."
+keywords:
+  - "CS50"
+  - "NATURAL JOIN"
+  - "same column names"
+  - "USING"
+  - "automatic join condition"
+  - "cross join risk"
+  - "SQL joins"
 ---
 
-You omit `ON`. If both tables have `id`, SQLite matches `id` to `id`. If they share more than one name, it matches all of them.
+`NATURAL JOIN` finds every column name shared by two tables and uses equality on all of them. You omit the `ON` clause because the column names become the hidden join condition.
 
 ## Syntax
 
@@ -14,21 +21,70 @@ FROM table1
 NATURAL JOIN table2;
 ```
 
-## Examples
+## How it chooses columns
 
-<CodeGroup>
-```sql Shared name
+Suppose `books` and `ratings` both contain `book_id`:
+
+```sql
 SELECT *
 FROM books
 NATURAL JOIN ratings;
 ```
-</CodeGroup>
 
-<Info>
-Prefer [JOIN](/reference/join) with `ON` so the match is visible. `NATURAL JOIN` hides the columns.
-</Info>
+The condition is chosen automatically. This is similar to:
+
+```sql
+SELECT *
+FROM books
+JOIN ratings USING (book_id);
+```
+
+`USING (book_id)` makes the chosen name visible and, like `NATURAL JOIN`, returns the shared `book_id` once in `SELECT *`. An explicit `ON ratings.book_id = books.book_id` keeps both source columns available unless you choose a narrower `SELECT` list.
+
+If the tables share several names, every shared name participates:
+
+```sql
+-- Equivalent only when book_id and edition are the shared names.
+SELECT *
+FROM books
+NATURAL JOIN ratings;
+
+SELECT *
+FROM books
+JOIN ratings
+  USING (book_id, edition);
+```
+
+A row must match on both columns. As with other equality joins, `NULL` does not match `NULL`.
+
+<Warning>
+  If the tables share no column names, `NATURAL JOIN` has no equality condition and behaves like a cross join. Every left row combines with every right row.
+</Warning>
+
+## Why explicit joins are usually safer
+
+A natural join depends on the current schema rather than a condition written in the query:
+
+- Adding a same-named column later silently changes the join condition.
+- Generic names such as `id`, `name`, or `status` may describe different facts in each table.
+- A reviewer cannot see which columns connect the tables without inspecting both schemas.
+- Renaming a column can turn the query into a cross join if no shared names remain.
+
+Prefer an explicit condition in application and production SQL:
+
+```sql
+SELECT
+  books.title,
+  ratings.stars
+FROM books
+JOIN ratings
+  ON ratings.book_id = books.book_id;
+```
+
+Use `NATURAL JOIN` only when you control both schemas, intend to match every shared name, and accept that schema changes can alter the query.
 
 ## Related references
 
 - [JOIN](/reference/join)
+- [INNER JOIN](/reference/inner-join)
 - [Join tables](/how-to/join-tables)
