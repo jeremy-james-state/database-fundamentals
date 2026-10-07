@@ -61,7 +61,8 @@
                 "pages": [
                   "concepts/schemas",
                   "concepts/constraints",
-                  "concepts/normalization"
+                  "concepts/normalization",
+                  "concepts/migrations"
                 ]
               }
             ]
