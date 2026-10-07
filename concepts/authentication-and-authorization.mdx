@@ -1,0 +1,128 @@
+---
+title: "Authentication and authorization"
+sidebarTitle: "Authentication and authorization"
+description: "Model tenant membership and role permissions, then enforce both tenant ownership and allowed actions with Row Level Security."
+keywords:
+  - "authentication"
+  - "authorization"
+  - "RBAC"
+  - "role-based access control"
+  - "membership"
+  - "multi-tenant"
+  - "Row Level Security"
+  - "RLS"
+  - "Supabase"
+  - "roles"
+  - "permissions"
+  - "organisations"
+---
+
+Authentication proves **who** is making a request. Authorization decides **what that identity may do**. In a multi-tenant application, authorization usually depends on both the tenant membership and the assigned role.
+
+## Model the assignment
+
+A membership is the connecting object between a user, an organisation, and a role:
+
+| User | Organisation | Role |
+| --- | --- | --- |
+| Alice | Acme | Viewer |
+
+Do not store only these names. Store foreign keys to stable identities:
+
+```text
+memberships
+- user_id → users.user_id
+- organisation_id → organisations.organisation_id
+- role_id → roles.role_id
+```
+
+If each user has exactly one role per organisation, make `(user_id, organisation_id)` unique and keep `role_id` on that membership. If one membership may hold several roles, separate the assignment into `memberships` and `membership_roles` rather than copying membership rows.
+
+## Give roles permissions
+
+A role collects allowed resource–action pairs:
+
+| Role | Resource | Action |
+| --- | --- | --- |
+| Viewer | Opportunities | Read |
+
+The physical model may use a `role_permissions` table:
+
+```text
+role_permissions
+- role_id → roles.role_id
+- resource
+- action
+```
+
+Protect `(role_id, resource, action)` with a `UNIQUE` constraint so the same permission is not assigned twice.
+
+## Keep tenant ownership on the resource
+
+Every tenant-owned opportunity needs a stable organisation reference:
+
+```text
+opportunities.organisation_id → organisations.organisation_id
+```
+
+That foreign key preserves referential integrity. It does not decide whether Alice may read the row; authorization performs that check.
+
+## Enforce the decision with RLS
+
+For Alice to read one opportunity, both statements must be true:
+
+1. The opportunity belongs to Acme, where Alice has a membership.
+2. Alice’s role grants `read` on `opportunities`.
+
+In Supabase, a PostgreSQL Row Level Security policy can express that decision:
+
+```sql
+ALTER TABLE opportunities ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY opportunities_read_by_membership
+ON opportunities
+FOR SELECT
+TO authenticated
+USING (
+  EXISTS (
+    SELECT 1
+    FROM memberships AS membership
+    JOIN role_permissions AS permission
+      ON permission.role_id = membership.role_id
+    WHERE membership.user_id = (SELECT auth.uid())
+      AND membership.organisation_id = opportunities.organisation_id
+      AND permission.resource = 'opportunities'
+      AND permission.action = 'read'
+  )
+);
+```
+
+The tables store the assignments. The policy performs the check for every candidate opportunity row. Alice can read Acme’s opportunities, but not another organisation’s rows and not a resource her role lacks permission to read.
+
+<Warning>
+  `TO authenticated` proves only that a session is authenticated; it is not sufficient authorization by itself. Keep the membership and permission test in `USING`. Do not base authorization on user-editable profile metadata.
+</Warning>
+
+The policy role must also have table-level `SELECT` privilege. Privileges determine whether the operation may be attempted; RLS determines which rows are visible.
+
+## Keep the policy safe and fast
+
+- Index `memberships` on `(user_id, organisation_id, role_id)`.
+- Make `(role_id, resource, action)` unique in `role_permissions`.
+- Index `opportunities.organisation_id`.
+- Wrap `auth.uid()` in `SELECT` so PostgreSQL can evaluate it once per statement.
+- Decide how RLS applies to the authorization tables themselves. For complex checks, use a carefully secured helper in a non-exposed schema rather than a `SECURITY DEFINER` function in `public`.
+- Never expose a Supabase secret or `service_role` key in a browser; it bypasses RLS.
+
+## The complete path
+
+```text
+Alice
+  → Membership in Acme
+  → Viewer role
+  → Read permission on Opportunities
+  → RLS compares Acme with opportunities.organisation_id
+  → Matching rows are visible
+```
+
+This separates durable assignments from enforcement: memberships and permissions are data; the policy is executable authorization logic.
