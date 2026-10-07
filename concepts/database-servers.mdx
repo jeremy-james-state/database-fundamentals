@@ -13,12 +13,32 @@ SQLite opens a file. MySQL and PostgreSQL listen on a host and port. You log in 
 | Shape | Embedded library + `.db` file | Server process | Server process |
 | Clients | Your app / `sqlite3` | `mysql` client, apps | `psql` client, apps |
 | Users | File permissions | Accounts + [GRANT](/reference/grant) | Accounts + privileges |
-| Identifiers | `"name"` or bare | `` `name` `` (backticks) | `"name"` or bare |
+| Identifiers | `"name"` or bare | `name` (backticks) | `"name"` or bare |
 | Types | Affinities ([storage classes](/concepts/storage-classes)) | Strict types ([server types](/concepts/server-types)) | Strict types |
 | Auto ids | `INTEGER PRIMARY KEY` | `AUTO_INCREMENT` | `SERIAL` / `GENERATED` |
 | Scaling tools | One file | Replication, sharding patterns | Replication, sharding patterns |
 
 MySQL and Postgres both support richer types, stored routines, and multi-user access. They cost more to run and operate than SQLite.
+
+## Authentication, authorization, and integrity
+
+These layers answer different questions during a database write:
+
+| Layer | Question | Common mechanisms |
+| --- | --- | --- |
+| **Authentication** | Who is connecting? | Account and password, certificate, token, or operating-system identity |
+| **Authorization** | What may that identity do? | Roles, ownership, [GRANT](/reference/grant), and [REVOKE](/reference/revoke) |
+| **Data integrity** | Is the resulting data valid? | [Primary keys, foreign keys, `NOT NULL`, `UNIQUE`, and `CHECK`](/concepts/constraints) |
+| **Transaction control** | Do related changes become permanent together? | [`BEGIN`, `COMMIT`, and `ROLLBACK`](/concepts/transactions) |
+
+A successful login does not authorize every action. Permission to `INSERT` does not guarantee that an inserted row is valid. The server first identifies the account, then checks its privileges, then applies constraints to the proposed data. A transaction controls whether a group of accepted statements commits as one unit.
+
+Use the layers together:
+
+1. Authenticate the application or person.
+2. Grant only the operations and objects they need.
+3. Enforce business invariants with constraints, regardless of which authorized client writes.
+4. Wrap multi-step changes in a transaction.
 
 ## Why teams move to a server
 
