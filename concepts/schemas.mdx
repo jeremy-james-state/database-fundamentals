@@ -1,7 +1,19 @@
 ---
 title: "Schemas"
 description: "A schema is the structure of a database — not the row data. It names the tables, columns, types, and how those tables relate."
-keywords: ["CS50", ".schema", "CREATE TABLE", "structure", "database schema", "table schema"]
+keywords:
+  - "CS50"
+  - ".schema"
+  - "CREATE TABLE"
+  - "structure"
+  - "database schema"
+  - "table schema"
+  - "schema design"
+  - "row identity"
+  - "authoritative data"
+  - "business uniqueness"
+  - "repeating groups"
+  - "foreign keys"
 ---
 
 You decide it before you load rows. Links between tables usually go through [keys](/concepts/keys) and [constraints](/concepts/constraints). Each [table](/concepts/tables) stores one [entity](/concepts/entities) (or one [relationship](/concepts/relationships) between entities). Each column is one [attribute](/concepts/attributes) with a [storage class](/concepts/storage-classes) (or [server type](/concepts/server-types)) the DBMS will try to store.
@@ -32,6 +44,19 @@ WHERE type = 'table';
 ```
 
 Keep a `schema.sql` file if you want to rebuild the empty structure: edit the file, then [apply it](/how-to/apply-a-schema-file).
+
+## Schema design checklist
+
+| Rule | Concrete choice |
+| --- | --- |
+| **Define what one row represents** | Separate one order from one order item; use `orders` and `order_items` |
+| **Give each row stable identity** | Use a [primary key](/concepts/keys#primary-key); do not identify a row only by a changeable name |
+| **Store each current fact in one authoritative place** | Keep the company name in `companies`; reference `company_id` elsewhere |
+| **Model repeatable things as rows** | Store order items as rows; avoid `product_1`, `product_2`, and `product_3` columns |
+| **Define business uniqueness** | Make `order_reference` `UNIQUE` even when `order_id` is already the primary key |
+| **Create only real relationships** | Add [foreign keys](/concepts/keys#foreign-key) for genuine dependencies; a standalone table is valid when no dependency exists |
+
+These choices work together. The primary key supplies technical identity; a `UNIQUE` constraint protects a separate business identifier. [Normalization](/concepts/normalization) gives each current fact one authoritative home, while related rows preserve values that can repeat.
 
 ## Why
 

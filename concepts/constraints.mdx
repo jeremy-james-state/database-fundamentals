@@ -1,48 +1,201 @@
 ---
 title: "Constraints"
-description: "A constraint is a rule in the schema that rejects a row that would break it."
-keywords: ["CS50", "NOT NULL", "UNIQUE", "CHECK", "PRIMARY KEY"]
+description: "Use SQL constraints to enforce valid values, unique identities, and referential integrity across every database write."
+keywords:
+  - "CS50"
+  - "data integrity"
+  - "data consistency"
+  - "referential integrity"
+  - "NOT NULL"
+  - "DEFAULT"
+  - "CHECK"
+  - "PRIMARY KEY"
+  - "UNIQUE"
+  - "FOREIGN KEY"
+  - "EXCLUDE"
+  - "referential actions"
+  - "ON DELETE"
+  - "ON UPDATE"
+  - "named constraints"
 ---
 
-Constraints live in the [schema](/concepts/schemas). SQLite **checks them per row** on [INSERT](/reference/insert) and [UPDATE](/reference/update) — there is no separate “row constraint” syntax. What you choose is **where you write the rule**: on one [column](/concepts/tables#columns) or on the [table](/concepts/tables) as a whole.
+Constraints live in the [schema](/concepts/schemas). Think of them as guardrails: every application, import, and script must obey the same rules when it writes data. A write that violates a constraint fails instead of leaving an invalid row behind.
 
-## How constraints work
+## Integrity vocabulary
+
+| Term | Meaning |
+| --- | --- |
+| **Data integrity** | Values are accurate, complete enough for the task, and valid under the business rules |
+| **Data consistency** | Stored facts do not contradict one another across rows, tables, or transactions |
+| **Referential integrity** | Every non-`NULL` foreign key points to an allowed parent row |
+
+Application validation can produce friendlier messages, but constraints protect the data even when a different client performs the write.
+
+## Where constraints live
+
+SQLite checks constraints on each row touched by [INSERT](/reference/insert) or [UPDATE](/reference/update). There is no separate “row constraint” syntax. You choose whether to write the rule on one [column](/concepts/tables#columns) or on the [table](/concepts/tables) as a whole.
 
 | Level | Written | Typical forms |
 | --- | --- | --- |
 | Column | On that column, after its [storage class](/concepts/storage-classes) | [NOT NULL](/reference/not-null), [UNIQUE](/reference/unique), [DEFAULT](/reference/default), [CHECK](/reference/check) |
-| Table | After the column list | [PRIMARY KEY](/reference/primary-key), [FOREIGN KEY](/reference/foreign-key), multi-column `UNIQUE` / `CHECK` |
-| Row (check time) | Not a syntax kind | Every constraint runs against each row the statement touches |
+| Table | After the column list | [PRIMARY KEY](/reference/primary-key), [FOREIGN KEY](/reference/foreign-key), multi-column `UNIQUE` or `CHECK` |
+
+Use a table constraint when a rule names multiple columns. A composite key, for example, must be written at table level:
 
 ```sql
-CREATE TABLE stations (
-  id INTEGER,
-  name TEXT NOT NULL UNIQUE,
-  line TEXT,
-  PRIMARY KEY (id)
+PRIMARY KEY (author_id, book_id)
+```
+
+## `NOT NULL`
+
+`NOT NULL` rejects a missing or unknown value. It does not reject an empty string such as `''`.
+
+Use it when the minimum cardinality is one: every row must have the value. Do not add it to an optional foreign key when the relationship permits zero parents.
+
+A primary key implies `NOT NULL` in standard SQL and server databases such as PostgreSQL. SQLite has a historical exception for some non-`INTEGER PRIMARY KEY` rowid tables; use `INTEGER PRIMARY KEY`, a `STRICT` or `WITHOUT ROWID` table, or explicit `NOT NULL` when that distinction matters.
+
+## `DEFAULT`
+
+A [DEFAULT](/reference/default) supplies a value only when an `INSERT` omits the column:
+
+```sql
+created_at NUMERIC NOT NULL DEFAULT CURRENT_TIMESTAMP
+```
+
+An explicit `NULL` remains `NULL`, so `DEFAULT` does not replace `NOT NULL`. Choose a default only when it represents a real business rule; an invented placeholder can hide missing data.
+
+## `CHECK`
+
+A [CHECK](/reference/check) expresses a rule about values in the same row:
+
+```sql
+age INTEGER NOT NULL CHECK (age BETWEEN 0 AND 120),
+status TEXT NOT NULL CHECK (status IN ('draft', 'published', 'archived')),
+borrowed_at NUMERIC NOT NULL,
+due_at NUMERIC NOT NULL,
+CHECK (due_at > borrowed_at)
+```
+
+Use it for ranges, closed lists, and comparisons between columns. In SQLite and PostgreSQL, a `CHECK` passes when its expression is `NULL`; combine it with `NOT NULL` when the value itself is required.
+
+## Primary key and `UNIQUE`
+
+Both reject duplicate non-`NULL` values, but they have different jobs:
+
+| Rule | Primary key | `UNIQUE` |
+| --- | --- | --- |
+| Purpose | Official identity of the row | Protects another candidate key or business rule |
+| Count per table | One, possibly composite | Multiple allowed |
+| `NULL` | Not allowed by the relational model | Treatment varies by database; many allow multiple `NULL` values |
+| Common example | `book_id` | `isbn` or `email` |
+
+Choose one [candidate key](/concepts/keys#candidate-key) as the primary key. Protect other candidate keys with `UNIQUE`.
+
+## Foreign keys and referential actions
+
+A [foreign key](/reference/foreign-key) links a child table to a candidate key in a parent table. A non-`NULL` child value must match an existing parent value.
+
+```sql
+CONSTRAINT loans_book_fk
+  FOREIGN KEY (book_id)
+  REFERENCES books (book_id)
+  ON UPDATE CASCADE
+  ON DELETE RESTRICT
+```
+
+`ON UPDATE` and `ON DELETE` specify what happens when the referenced parent key changes or the parent row is removed:
+
+| Action | Behavior |
+| --- | --- |
+| `RESTRICT` | Blocks the parent change when dependent rows exist; it cannot be deferred |
+| `NO ACTION` | Performs no automatic repair and fails if references are invalid when checked; this is commonly the default |
+| `CASCADE` | Deletes dependent rows or propagates the updated parent key |
+| `SET NULL` | Clears the child foreign key; the column must allow `NULL` |
+| `SET DEFAULT` | Uses the child column’s default, which must still satisfy the foreign key |
+
+Choose actions from the lifecycle of the data. Use `CASCADE` only when child rows should genuinely disappear with the parent. Use `SET NULL` only when an orphaned child still has meaning.
+
+<Warning>
+  SQLite does not enforce foreign keys unless the connection enables them with `PRAGMA foreign_keys = ON`. Enable them for every connection before relying on referential integrity.
+</Warning>
+
+## Cardinality becomes constraints
+
+Translate the ER diagram’s minimum and maximum counts into schema rules:
+
+- **Minimum zero**: the foreign key may be `NULL`.
+- **Minimum one**: add `NOT NULL` to the foreign key.
+- **Maximum one**: add `UNIQUE` to the foreign key when the relationship must be one-to-one.
+- **Maximum many**: allow repeated foreign key values on the many side.
+- **Many-to-many**: use a [junction table](/concepts/relationships#many-to-many), usually with a composite primary key or `UNIQUE` pair.
+
+## Name important constraints
+
+Name table-level constraints so errors and later migrations identify the rule directly:
+
+```sql
+CREATE TABLE visits (
+  visit_id INTEGER PRIMARY KEY,
+  rider_id INTEGER NOT NULL,
+  station_id INTEGER NOT NULL,
+  type TEXT NOT NULL,
+  CONSTRAINT visits_type_check
+    CHECK (type IN ('enter', 'exit')),
+  CONSTRAINT visits_rider_fk
+    FOREIGN KEY (rider_id) REFERENCES riders (rider_id),
+  CONSTRAINT visits_station_fk
+    FOREIGN KEY (station_id) REFERENCES stations (station_id)
 );
 ```
 
-`NOT NULL` and `UNIQUE` sit on `name`. `PRIMARY KEY (id)` sits at the table.
+Names are especially useful for `CHECK`, `UNIQUE`, and foreign key constraints. Inline `NOT NULL` and `DEFAULT` rules are usually left unnamed, and support for naming them varies by database.
 
-A primary key already forbids `NULL` on that key. You do not also need `NOT NULL` on `id`.
+<Note>
+  Naming a constraint does not guarantee that the database can alter it in place. SQLite supports limited `ALTER TABLE` operations, so removing or changing a constraint may require rebuilding the table.
+</Note>
 
-Some constraints have both placements. `id INTEGER PRIMARY KEY` is the column form of a single-column key. `PRIMARY KEY (id)` is the table form. A **composite** primary key (two or more columns) can only be a table constraint:
+## Constraints inside transactions
+
+Constraints protect individual statements. [Transactions](/concepts/transactions) group several statements into one unit so a partial workflow does not become permanent.
+
+Suppose `accounts.balance` has `CHECK (balance >= 0)`. A transfer can run as one transaction:
 
 ```sql
-PRIMARY KEY (column_a, column_b)
+BEGIN;
+
+UPDATE accounts
+SET balance = balance - 100
+WHERE account_id = 1;
+
+UPDATE accounts
+SET balance = balance + 100
+WHERE account_id = 2;
+
+COMMIT;
 ```
 
-`FOREIGN KEY (rider_id) REFERENCES riders (id)` is a table constraint. You can also write `REFERENCES riders (id)` on the `rider_id` column. SQLite still ignores the match until `PRAGMA foreign_keys = ON`.
+If either update violates a constraint or otherwise fails, do not commit the partial transfer. Use `ROLLBACK` so both accounts return to their previous state.
 
-A foreign key may be `NULL` unless you add `NOT NULL`. Missing parent is allowed; a *wrong* parent is not.
+This is the **consistency** part of ACID: a committed transaction must take the database from one valid state to another. Constraints define some of those valid-state rules; the transaction makes the related writes succeed or fail as a unit.
 
-## Why databases use both
+<Note>
+  A constraint error does not produce identical transaction behavior in every database. PostgreSQL marks the transaction as failed until you roll it back. SQLite’s default conflict behavior usually cancels the failing statement, so your application should explicitly roll back the surrounding transaction when the workflow must be all-or-nothing.
+</Note>
 
-Table constraints express identity and relationships: which columns are the key, which columns point at another table. Column constraints express local rules: this value is required, unique, filled in, or from a closed set.
+## Constraint quick reference
 
-## When to use each
+| Type | Rule |
+| --- | --- |
+| `PRIMARY KEY` | Unique row identity; `NULL` is forbidden by the relational model |
+| `NOT NULL` | A value is required |
+| `UNIQUE` | Duplicate values are forbidden; `NULL` handling varies by database |
+| `FOREIGN KEY` | A non-`NULL` reference must match an allowed parent key |
+| `CHECK` | The condition must evaluate to true or `NULL` |
+| `DEFAULT` | An omitted value receives the declared default |
+| `EXCLUDE` | PostgreSQL: selected rows must not conflict under the declared operators |
 
-- **Table constraint**: [primary keys](/concepts/keys), [foreign keys](/concepts/keys), any rule that names more than one column
-- **Column constraint**: a rule about one column only (`CHECK (fare != 0)`, `DEFAULT CURRENT_TIMESTAMP`)
-- **Skip repeating `NOT NULL` on a primary key**: the key already requires a value
+PostgreSQL’s `EXCLUDE` constraint can prevent conflicts that equality-based uniqueness cannot express, such as overlapping booking ranges. It requires suitable operators and indexes and is not available in SQLite.
+
+<Note>
+  SQLite’s historical primary-key `NULL` exception still applies to some rowid tables. See the [`NOT NULL`](#not-null) section above.
+</Note>

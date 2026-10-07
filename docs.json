@@ -89,6 +89,7 @@
             "pages": [
               "concepts/scaling",
               "concepts/database-servers",
+              "concepts/authentication-and-authorization",
               "concepts/replication",
               "concepts/sharding",
               "concepts/stored-procedures",
