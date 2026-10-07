@@ -6,6 +6,8 @@ keywords:
   - "MySQL"
   - "PostgreSQL"
   - "client-server"
+  - "connection"
+  - "credentials"
   - "authentication"
   - "authorization"
   - "database accounts"
@@ -15,7 +17,24 @@ keywords:
   - "transactions"
 ---
 
-SQLite opens a file. MySQL and PostgreSQL listen on a host and port. You log in as a user, pick a database, then run SQL.
+SQLite opens a file. MySQL and PostgreSQL listen on a host and port. You connect with credentials, pick a database, then run SQL.
+
+## Connection and credentials
+
+A **connection** is the session between your client and the server. On PostgreSQL (and MySQL) you supply host, port, database name, and **credentials** — typically a user name and password, or another proof such as a certificate or token.
+
+That login is [authentication](#authentication-authorization-and-integrity): it tells the server **who** is connected. The connection carries that identity for the rest of the session. [Authorization](/concepts/authentication-and-authorization) — roles, [GRANT](/reference/grant), [REVOKE](/reference/revoke), and any row policies — applies to that identity. Without a known account on the connection, the server has no subject for privilege checks.
+
+| Step | What happens |
+| --- | --- |
+| Connect | Client opens a session to the host and database |
+| Authenticate | Credentials prove the account (for example `analyst` on PostgreSQL) |
+| Authorize | The server allows only what that account may do |
+| Query | SQL runs under those privileges |
+
+SQLite usually has no server login. Access is mostly file permissions on the `.db` file, not a per-statement account identity.
+
+See [Connect to PostgreSQL](/how-to/connect-to-postgresql) and [Connect to MySQL](/how-to/connect-to-mysql) for the client steps.
 
 ## How server DBMS products compare
 
