@@ -18,7 +18,7 @@ keywords:
   - "named constraints"
 ---
 
-Constraints live in the [schema](/concepts/schemas). They are the database’s final enforcement layer: every application, import, and script must obey the same rules when it writes data.
+Constraints live in the [schema](/concepts/schemas). Think of them as guardrails: every application, import, and script must obey the same rules when it writes data. A write that violates a constraint fails instead of leaving an invalid row behind.
 
 ## Integrity vocabulary
 
@@ -151,6 +151,34 @@ Names are especially useful for `CHECK`, `UNIQUE`, and foreign key constraints. 
 
 <Note>
   Naming a constraint does not guarantee that the database can alter it in place. SQLite supports limited `ALTER TABLE` operations, so removing or changing a constraint may require rebuilding the table.
+</Note>
+
+## Constraints inside transactions
+
+Constraints protect individual statements. [Transactions](/concepts/transactions) group several statements into one unit so a partial workflow does not become permanent.
+
+Suppose `accounts.balance` has `CHECK (balance >= 0)`. A transfer can run as one transaction:
+
+```sql
+BEGIN;
+
+UPDATE accounts
+SET balance = balance - 100
+WHERE account_id = 1;
+
+UPDATE accounts
+SET balance = balance + 100
+WHERE account_id = 2;
+
+COMMIT;
+```
+
+If either update violates a constraint or otherwise fails, do not commit the partial transfer. Use `ROLLBACK` so both accounts return to their previous state.
+
+This is the **consistency** part of ACID: a committed transaction must take the database from one valid state to another. Constraints define some of those valid-state rules; the transaction makes the related writes succeed or fail as a unit.
+
+<Note>
+  A constraint error does not produce identical transaction behavior in every database. PostgreSQL marks the transaction as failed until you roll it back. SQLite’s default conflict behavior usually cancels the failing statement, so your application should explicitly roll back the surrounding transaction when the workflow must be all-or-nothing.
 </Note>
 
 ## When to use each
