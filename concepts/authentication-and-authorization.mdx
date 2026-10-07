@@ -19,9 +19,9 @@ keywords:
   - "organisations"
 ---
 
-You [connect to a database server](/concepts/database-servers#connection-and-credentials) before you run SQL. Credentials on that connection are **authentication**: they tell PostgreSQL or MySQL which account the session is. **Authorization** then decides what that account may do — table privileges from [GRANT](/reference/grant), and finer rules such as Row Level Security.
+Every request that reaches the database should carry a **user identity**. The database applies [GRANT](/reference/grant) privileges and row policies to that identity. How the identity is attached differs: a Postgres connection string (or backend session context) names a role; in Supabase the client sends the user’s JWT with the project’s publishable key, and Postgres sees `authenticated` plus `auth.uid()` for RLS. See [Connection and credentials](/concepts/database-servers#connection-and-credentials).
 
-Authentication proves **who** is on the connection. Authorization decides **what that identity may do**. The rest of this page is the application pattern: tenant membership, roles, and RLS on top of that session identity.
+Authentication proves **who** is on the request. Authorization decides **what that identity may do**. The rest of this page is the application pattern: tenant membership, roles, and RLS on top of that session identity.
 
 ## Model the assignment
 
