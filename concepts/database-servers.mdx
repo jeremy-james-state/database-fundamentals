@@ -21,20 +21,29 @@ SQLite opens a file. MySQL and PostgreSQL listen on a host and port. You connect
 
 ## Connection and credentials
 
-A **connection** is the session between your client and the server. On PostgreSQL (and MySQL) you supply host, port, database name, and **credentials** — typically a user name and password, or another proof such as a certificate or token.
+A **connection** is the session between your client and the server. Each request on that session carries a **user identity**. The database uses that identity to apply [GRANT](/reference/grant) privileges and row policies — not an anonymous client.
 
-That login is [authentication](#authentication-authorization-and-integrity): it tells the server **who** is connected. The connection carries that identity for the rest of the session. [Authorization](/concepts/authentication-and-authorization) — roles, [GRANT](/reference/grant), [REVOKE](/reference/revoke), and any row policies — applies to that identity. Without a known account on the connection, the server has no subject for privilege checks.
+How the identity arrives depends on the stack:
+
+| Stack | What carries identity | What the database sees |
+| --- | --- | --- |
+| **PostgreSQL / MySQL (direct)** | Connection string role and password (or certificate), or a backend that opens the session then sets session context | A database role such as `analyst`; statements run as that role |
+| **Supabase** | The signed-in user’s JWT plus the project’s publishable (anon) key on the client request | Postgres role `authenticated` (or `anon`), with `auth.uid()` from the JWT for Row Level Security |
+
+In raw Postgres you often connect as a specific role in the connection string. An application backend may instead connect as a shared role and set session variables or `SET ROLE` so the request still has a clear subject for privileges and policies.
+
+In Supabase the browser does not open a Postgres password login for each end user. The request presents the user’s access token and the publishable project key; the API maps that to a database session where grants and RLS run under that identity.
 
 | Step | What happens |
 | --- | --- |
-| Connect | Client opens a session to the host and database |
-| Authenticate | Credentials prove the account (for example `analyst` on PostgreSQL) |
-| Authorize | The server allows only what that account may do |
+| Connect / request | Client opens a session (or sends a request that becomes one) |
+| Authenticate | Credentials or token prove **who** is on the request |
+| Authorize | [GRANT](/reference/grant), roles, and row policies apply to that identity |
 | Query | SQL runs under those privileges |
 
 SQLite usually has no server login. Access is mostly file permissions on the `.db` file, not a per-statement account identity.
 
-See [Connect to PostgreSQL](/how-to/connect-to-postgresql) and [Connect to MySQL](/how-to/connect-to-mysql) for the client steps.
+See [Connect to PostgreSQL](/how-to/connect-to-postgresql) and [Connect to MySQL](/how-to/connect-to-mysql) for direct client steps. See [Authentication and authorization](/concepts/authentication-and-authorization) for membership, roles, and RLS on top of session identity.
 
 ## How server DBMS products compare
 
