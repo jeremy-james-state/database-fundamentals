@@ -4,7 +4,7 @@ description: "Create related tables with types and keys, then alter the schema a
 keywords: ["CS50"]
 ---
 
-When you finish, you can write a `schema.sql`, apply it, and change a table without starting from a spreadsheet.
+When you finish, you can turn a short interview into a first model, write a `schema.sql`, apply it, and change a table without starting from a spreadsheet.
 
 ## Prerequisites
 
@@ -16,7 +16,29 @@ When you finish, you can write a `schema.sql`, apply it, and change a table with
 Examples use SQLite. End every SQL statement with a semicolon. Use a new file such as `transit.db` so you do not overwrite lesson data.
 </Info>
 
-## Step 1: Create tables with types
+## Step 1: Extract a first model from language
+
+Before you write SQL, turn the interview language into a candidate model. Underline the **nouns** and circle the **verbs**:
+
+> “A station has a name and a line. A rider has a name. A rider visits a station. Each visit records a type, time, and fare.”
+
+Use two patterns:
+
+- **Possession verbs** such as _has_ or _owns_: the possessor noun is a candidate [entity](/concepts/entities); the possessed detail is a candidate [attribute](/concepts/attributes).
+- **Action verbs** between two entity nouns: the action is a candidate [relationship](/concepts/relationships).
+
+| Interview phrase | First model |
+| --- | --- |
+| “A station has a name and a line” | `stations` entity with `name` and `line` attributes |
+| “A rider has a name” | `riders` entity with a `name` attribute |
+| “A rider visits a station” | relationship between `riders` and `stations` |
+| “Each visit records a type, time, and fare” | `visits` relationship table with its own attributes |
+
+<Warning>
+  Grammar gives you candidates, not a finished schema. A noun may be an attribute in one system and an entity in another. A verb reveals a possible relationship, but not its cardinality. Ask follow-up questions: How many? Is it required? Can it repeat? Must you keep its history?
+</Warning>
+
+## Step 2: Create tables with types
 
 ```sql
 CREATE TABLE stations (
@@ -41,7 +63,7 @@ CREATE TABLE visits (
 
 You are on track when `.tables` lists all three.
 
-## Step 2: Recreate with constraints
+## Step 3: Recreate with constraints
 
 Drop the empty tables, then add keys and column rules:
 
@@ -82,7 +104,7 @@ Turn foreign keys on in this session:
 PRAGMA foreign_keys = ON;
 ```
 
-## Step 3: Alter a column
+## Step 4: Alter a column
 
 ```sql
 ALTER TABLE visits
@@ -91,7 +113,7 @@ ADD COLUMN duration INTEGER;
 
 `.schema visits` should list `duration`.
 
-## Step 4: Save and apply a file
+## Step 5: Save and apply a file
 
 Copy the `CREATE TABLE` statements into `schema.sql`. In a new empty database:
 
