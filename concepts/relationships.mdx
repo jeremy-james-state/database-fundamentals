@@ -76,6 +76,44 @@ Author `2` wrote books `1` and `4`. Book `1` has authors `2` and `7`.
 
 **When you skip it:** if one side clearly owns the other, stay on **one-to-many** and put a single foreign key on the many side.
 
+## Junction table, `JOIN`, and view
+
+These three ideas solve different parts of the many-to-many problem:
+
+| Tool | What it is | What it stores |
+| --- | --- | --- |
+| **Junction table** | A physical table such as `authored` | One pair of foreign keys per relationship |
+| **`JOIN`** | A query operation | No new stored rows; it combines matching rows for this result |
+| **View** | A named query that behaves like a virtual table | The query definition, not a second copy of the rows |
+
+The `authored` table makes the author–book connections durable. Query through it to retrieve names and titles:
+
+```sql
+SELECT authors.name, books.title
+FROM authors
+JOIN authored ON authored.author_id = authors.author_id
+JOIN books ON books.book_id = authored.book_id;
+```
+
+If you use that query repeatedly, save it as an ordinary [view](/concepts/views):
+
+```sql
+CREATE VIEW longlist AS
+SELECT authors.name AS author_name, books.title
+FROM authors
+JOIN authored ON authored.author_id = authors.author_id
+JOIN books ON books.book_id = authored.book_id;
+```
+
+Then query the virtual table:
+
+```sql
+SELECT *
+FROM longlist;
+```
+
+The view does not duplicate the author and book rows. The database evaluates its underlying query when you read from it. A materialized view is different: it stores a result that you refresh.
+
 ## Why
 
 One table that repeats the publisher on every book wastes space and goes stale when the publisher’s name changes. Split the facts. Connect them with [keys](/concepts/keys). Draw the cardinality on an [Entity-Relationship Diagram](/concepts/entity-relationship-diagrams) before you write `JOIN`.
