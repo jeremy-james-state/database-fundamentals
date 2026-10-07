@@ -1,10 +1,29 @@
 ---
 title: "Grant privileges"
-description: "Give or remove MySQL privileges with GRANT and REVOKE."
-keywords: ["CS50"]
+description: "Apply least-privilege authorization with GRANT and REVOKE while constraints independently protect data integrity."
+keywords:
+  - "CS50"
+  - "authentication"
+  - "authorization"
+  - "least privilege"
+  - "GRANT"
+  - "REVOKE"
+  - "MySQL privileges"
+  - "database permissions"
+  - "data integrity"
 ---
 
 Least privilege: a reporting user may `SELECT` but not `DROP`.
+
+Authentication proves which account connected. Authorization determines what that account may do. A privilege such as `INSERT` permits the account to attempt a write; [constraints](/concepts/constraints) still reject invalid values and broken relationships.
+
+| Layer | Example responsibility |
+| --- | --- |
+| Authentication | Verify that the connection belongs to `analyst` |
+| Authorization | Permit `SELECT`; deny `DROP` |
+| Integrity | Reject an invalid foreign key or failed `CHECK` |
+
+Do not use constraints as permissions, and do not use permissions as data validation. Apply both.
 
 ## Prerequisites
 
