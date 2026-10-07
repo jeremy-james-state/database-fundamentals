@@ -1,7 +1,22 @@
 ---
 title: "Entities"
 description: "An entity is a real-world object or concept you store facts about. Attributes describe it. Each instance is one occurrence."
-keywords: ["CS50", "entity vs table", "attribute vs column", "instance vs row", "unique identifier", "primary key", "entity", "attribute", "instance", "conceptual vs physical", "one entity one table"]
+keywords:
+  - "CS50"
+  - "entity vs table"
+  - "attribute vs column"
+  - "instance vs row"
+  - "unique identifier"
+  - "primary key"
+  - "entity"
+  - "attribute"
+  - "instance"
+  - "conceptual vs physical"
+  - "one entity one table"
+  - "data modeling"
+  - "event table"
+  - "snapshot columns"
+  - "historical data"
 ---
 
 In database design, a [table](/concepts/tables) often **represents an entity** — the kind of thing you store facts about: customer, product, book. The table is the SQL structure; the entity is what you named in the design. Same name in both places is common (`books` entity → `books` table); they are still two layers.
@@ -22,8 +37,19 @@ Facts about the entity are [attributes](/concepts/attributes) — each becomes a
 
 An **instance** is one occurrence of the entity — *The Left Hand of Darkness* is one book. In the table, each instance is a [row](/concepts/tables#rows). The value of an attribute on that instance sits in a [cell](/concepts/tables#cells).
 
-## When to use an entity
+## From requirement to model
 
-- **A kind of thing you can describe**: a customer, a product, an order
-- **Facts that belong together**: name, email, and phone all describe the customer
-- **Skip it when**: the fact is just a value on another entity (keep it as an [attribute](/concepts/attributes))
+Choose the smallest structure that preserves identity, multiplicity, history, and the rules that must remain true:
+
+| Rule of thumb | Model it as | Example |
+| --- | --- | --- |
+| One fact describing something | **Column** | `people.birth_date` |
+| Own identity, details, or lifecycle | **Table** | `products`: `product_id`, `name`, `current_price` |
+| Many related items | **Multiple rows**, usually in a related table | `addresses`: one row per address, linked by `person_id` |
+| Relationship or event has details | **Table with foreign keys and detail columns** | `purchases`: `person_id`, `product_id`, `quantity`, `price_paid`, `purchased_at` |
+| Preserve a fact as it was | **Snapshot columns** on the relevant record; a history table if you need every change | Copy the agreed unit price into `purchases.price_paid` |
+| Must always be true | **Constraint** on columns or tables | Foreign key on `product_id`; `CHECK (quantity > 0)` |
+
+A product’s current price and a purchase’s agreed price answer different questions. Keep `products.current_price` for the value now. Store `purchases.price_paid` so later product updates do not rewrite history.
+
+See [Attributes](/concepts/attributes), [Relationships](/concepts/relationships), and [Constraints](/concepts/constraints) for each decision in detail.
