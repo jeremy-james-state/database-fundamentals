@@ -12,6 +12,7 @@ keywords:
   - "PRIMARY KEY"
   - "UNIQUE"
   - "FOREIGN KEY"
+  - "EXCLUDE"
   - "referential actions"
   - "ON DELETE"
   - "ON UPDATE"
@@ -104,13 +105,13 @@ CONSTRAINT loans_book_fk
 
 `ON UPDATE` and `ON DELETE` specify what happens when the referenced parent key changes or the parent row is removed:
 
-| Action | Effect on matching child rows |
+| Action | Behavior |
 | --- | --- |
-| `NO ACTION` | Rejects the parent change when the constraint is checked; this is commonly the default |
-| `RESTRICT` | Rejects the parent change immediately; timing differs from `NO ACTION` in databases with deferred constraints |
-| `CASCADE` | Propagates the update or deletion to matching children |
-| `SET NULL` | Replaces the child foreign key with `NULL`; the child column must allow `NULL` |
-| `SET DEFAULT` | Replaces the child foreign key with its default, which must still satisfy the foreign key |
+| `RESTRICT` | Blocks the parent change when dependent rows exist; it cannot be deferred |
+| `NO ACTION` | Performs no automatic repair and fails if references are invalid when checked; this is commonly the default |
+| `CASCADE` | Deletes dependent rows or propagates the updated parent key |
+| `SET NULL` | Clears the child foreign key; the column must allow `NULL` |
+| `SET DEFAULT` | Uses the child column’s default, which must still satisfy the foreign key |
 
 Choose actions from the lifecycle of the data. Use `CASCADE` only when child rows should genuinely disappear with the parent. Use `SET NULL` only when an orphaned child still has meaning.
 
@@ -181,12 +182,20 @@ This is the **consistency** part of ACID: a committed transaction must take the 
   A constraint error does not produce identical transaction behavior in every database. PostgreSQL marks the transaction as failed until you roll it back. SQLite’s default conflict behavior usually cancels the failing statement, so your application should explicitly roll back the surrounding transaction when the workflow must be all-or-nothing.
 </Note>
 
-## When to use each
+## Constraint quick reference
 
-- **`NOT NULL`**: the value or parent relationship is required
-- **`DEFAULT`**: omission has one valid, predictable meaning
-- **`CHECK`**: valid values follow a row-local business rule
-- **Primary key**: the official identity of each row
-- **`UNIQUE`**: another value or combination must not repeat
-- **Foreign key**: a relationship must point to a valid parent
-- **Named table constraint**: diagnostics and future migrations should refer to the rule clearly
+| Type | Rule |
+| --- | --- |
+| `PRIMARY KEY` | Unique row identity; `NULL` is forbidden by the relational model |
+| `NOT NULL` | A value is required |
+| `UNIQUE` | Duplicate values are forbidden; `NULL` handling varies by database |
+| `FOREIGN KEY` | A non-`NULL` reference must match an allowed parent key |
+| `CHECK` | The condition must evaluate to true or `NULL` |
+| `DEFAULT` | An omitted value receives the declared default |
+| `EXCLUDE` | PostgreSQL: selected rows must not conflict under the declared operators |
+
+PostgreSQL’s `EXCLUDE` constraint can prevent conflicts that equality-based uniqueness cannot express, such as overlapping booking ranges. It requires suitable operators and indexes and is not available in SQLite.
+
+<Note>
+  SQLite’s historical primary-key `NULL` exception still applies to some rowid tables. See the [`NOT NULL`](#not-null) section above.
+</Note>
