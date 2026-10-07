@@ -34,6 +34,16 @@ Use two patterns:
 | “A rider visits a station” | relationship between `riders` and `stations` |
 | “Each visit records a type, time, and fare” | `visits` relationship table with its own attributes |
 
+### Turn action verbs into draft relationship lines
+
+For each useful subject–verb–object sentence in the transcript:
+
+1. **Extract the sentence.** Mark the subject noun, action verb, and object noun.
+2. **Test both nouns.** If each noun needs its own identity, attributes, or relationships, keep both as entities.
+3. **Draw a candidate line.** Connect the entity boxes and label the line with the action verb. “A rider visits a station” becomes a `visits` relationship between `riders` and `stations`.
+4. **Validate the meaning.** Review the draft with stakeholders before you choose keys or tables.
+5. **Ask for cardinality.** The verb alone does not tell you the minimum or maximum count. Ask whether each side is optional or required, and whether it permits one or many matches.
+
 <Warning>
   Grammar gives you candidates, not a finished schema. A noun may be an attribute in one system and an entity in another. A verb reveals a possible relationship, but not its cardinality. Ask follow-up questions: How many? Is it required? Can it repeat? Must you keep its history?
 </Warning>
