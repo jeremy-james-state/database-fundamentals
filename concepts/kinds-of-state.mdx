@@ -1,0 +1,60 @@
+---
+title: "Kinds of state"
+description: "Business state answers what is true now. Workflow state answers where to continue. Execution history answers what happened. They can share PostgreSQL but serve different purposes."
+keywords:
+  - "business state"
+  - "workflow state"
+  - "checkpoint"
+  - "execution history"
+  - "LangGraph"
+  - "LangSmith"
+  - "persistence"
+  - "tracing"
+  - "agent"
+---
+
+Applications that pause work (especially agent workflows) often store more than one kind of fact. Treat these as **three distinct things**, even when they share a [PostgreSQL](/concepts/database-servers) database.
+
+## Three kinds of state
+
+| Kind | Question it answers | Example |
+| --- | --- | --- |
+| **Business state** | What is currently true? | Deal amount, account status, user permissions |
+| **Workflow state** | Where should execution continue? | Eligibility checked; waiting for approval |
+| **Execution history** | What happened? | Tool called, inputs and result, error, time |
+
+Business rows are the application’s source of truth. A workflow **checkpoint** is where a run paused so it can resume. **Execution history** (traces, logs) is for inspection and debugging — not for deciding what the world looks like now.
+
+## Why the distinction matters
+
+```text
+Agent checks a deal → saves checkpoint → waits overnight
+                                             ↓
+                              Deal or permissions change
+                                             ↓
+                      Resume → reload current facts → validate → act
+```
+
+A checkpoint can contain yesterday’s snapshot. Before a consequential write, reload **current** business facts, permissions, and whether any approval is still valid. Do not treat the checkpoint as authoritative for those values.
+
+- **Checkpoint**: where the agent paused
+- **Application records**: what is true now
+- **History / traces**: what ran, for humans and tools to inspect
+
+If a deal changes overnight, resuming yesterday’s workflow should not blindly apply yesterday’s decision. Resume the workflow position, then validate against live business state before acting.
+
+## Tooling that maps to the kinds
+
+[LangGraph checkpointing](https://docs.langchain.com/oss/python/langgraph/persistence) persists **workflow state** so a run can continue. [LangSmith tracing](https://docs.langchain.com/langsmith/observability-concepts) records **execution history** for inspection. Same Postgres (or other store) may hold both; the purpose of each table or stream stays different.
+
+| Store | Kind | Use for |
+| --- | --- | --- |
+| App tables (deals, accounts, grants) | Business state | Authorization and writes |
+| Checkpoints | Workflow state | Resume after pause |
+| Traces / logs | Execution history | Debug, audit of runs |
+
+## When to keep them separate
+
+- **Always** decide which store is authoritative for “what is true?”
+- **Before writes**: re-read business state and permissions, even if the checkpoint looks complete
+- **Skip using traces as business truth**: history is what happened, not what must be true now
