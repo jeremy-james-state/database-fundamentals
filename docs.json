@@ -91,6 +91,7 @@
               "concepts/scaling",
               "concepts/database-servers",
               "concepts/authentication-and-authorization",
+              "concepts/kinds-of-state",
               "concepts/replication",
               "concepts/sharding",
               "concepts/stored-procedures",
